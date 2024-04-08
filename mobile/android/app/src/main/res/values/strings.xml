@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">guntur-school</string>
+    <string name="title_activity_main">guntur-school</string>
+    <string name="package_name">com.gunturschools</string>
+    <string name="custom_url_scheme">com.gunturschools</string>
+</resources>
