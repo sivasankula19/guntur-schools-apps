@@ -1,0 +1,10 @@
+{
+  "name": "guntur-schools-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/guntur-schools-e2e/src",
+  "tags": [],
+  "implicitDependencies": ["guntur-schools"],
+  "// targets": "to see all targets run: nx show project guntur-schools-e2e --web",
+  "targets": {}
+}
