@@ -22,13 +22,47 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import './Main.css';
 import UserByID from './pages/User';
+import { useEffect, useState } from 'react';
 
 setupIonicReact();
 
 const App: React.FC = () => {
+
+  const [themeToggle, setThemeToggle] = useState(true);
+
+  // Add or remove the "dark" class on the document body
+  const toggleDarkTheme = (shouldAdd: boolean) => {
+    document.body.classList.toggle('dark', shouldAdd);
+  };
+
+  // Check/uncheck the toggle and update the theme based on isDark
+  const initializeDarkTheme = (isDark: boolean) => {
+    setThemeToggle(isDark);
+    toggleDarkTheme(isDark);
+  };
+
+  useEffect(() => {
+    // Use matchMedia to check the user preference
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+    // Initialize the dark theme based on the initial
+    // value of the prefers-color-scheme media query
+    initializeDarkTheme(prefersDark.matches);
+
+    // Listen for changes to the prefers-color-scheme media query
+    prefersDark.addEventListener('change', (mediaQuery) => initializeDarkTheme(mediaQuery.matches));
+  }, []);
+
+  useEffect(()=>{
+    initializeDarkTheme(themeToggle);
+  },[themeToggle])
+
+
+
   return (
-    <IonApp>
+    <IonApp className='dark-theme'>
     <IonReactRouter>
       <IonSplitPane contentId="main">
         <Menu />
