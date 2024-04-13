@@ -31,60 +31,60 @@ const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
   useEffect(() => {
     console.log('inside', name)
   }, [])
-  const getComponent = (name: string) => {
-    switch (name) {
-      case "dashboard":
-        return <Dashboard />
-      case "my-attendance":
-        return <Attendance />
-      case "students-list":
-        return <StudentList />
-      case "staff-list":
-        return <StaffList />
-      case "profile":
-        return <Profile />
-      case "my-progress-card":
-        return <ProgressCard />
-      case "academic-subjects":
-        return <Subjects />
-      case "fee-structure":
-        return <FeesDues />
-      case "time-table":
-        return <TimeTable />
-      case "Gallery":
-        return <Gallery />
-      case "extra-curricular-activities":
-        return <ExCircularActivities />
-      case "about":
-        return <About />
-      case "contact-us":
-        return <ContactUs />
-      case "courses":
-        return <Courses />
-      case "achievements":
-        return <Achievements />
-      case "school-wibe":
-        return <SchoolWibe />
-      case "messages":
-        return <Messages />
-      case "exam-schedules":
-        return <ExamSchedule />
-      case "assets":
-        return <SchoolAssets />
-      case "remainders":
-        return <Remainders />
-      case "diary":
-        return <Dairy />
-
-    }
-  }
+ 
   return (
     <React.Fragment>
-      {
-        getComponent(name)
-      }
+     <GetComponent name={name} />
     </React.Fragment>
   );
 };
+
+const GetComponent = ({name}:any) => {
+  switch (name) {
+    case "dashboard":
+      return <Dashboard />
+    case "my-attendance":
+      return <Attendance />
+    case "students-list":
+      return <StudentList />
+    case "staff-list":
+      return <StaffList />
+    case "profile":
+      return <Profile />
+    case "my-progress-card":
+      return <ProgressCard />
+    case "academic-subjects":
+      return <Subjects />
+    case "fee-structure":
+      return <FeesDues />
+    case "time-table":
+      return <TimeTable />
+    case "Gallery":
+      return <Gallery />
+    case "extra-curricular-activities":
+      return <ExCircularActivities />
+    case "about":
+      return <About />
+    case "contact-us":
+      return <ContactUs />
+    case "courses":
+      return <Courses />
+    case "achievements":
+      return <Achievements />
+    case "school-wibe":
+      return <SchoolWibe />
+    case "messages":
+      return <Messages />
+    case "exam-schedules":
+      return <ExamSchedule />
+    case "assets":
+      return <SchoolAssets />
+    case "remainders":
+      return <Remainders />
+    case "diary":
+      return <Dairy />
+
+  }
+}
 
 export default ExploreContainer;

@@ -7,6 +7,7 @@ http://ionicframework.com/docs/theming/ */
  */
 
  body.dark {
+  --ion-text-color: #ffffff;
   --ion-color-primary: #428cff;
   --ion-color-primary-rgb: 66, 140, 255;
   --ion-color-primary-contrast: #ffffff;

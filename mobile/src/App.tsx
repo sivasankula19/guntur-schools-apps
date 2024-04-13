@@ -25,12 +25,13 @@ import './theme/variables.css';
 import './Main.css';
 import UserByID from './pages/User';
 import { useEffect, useState } from 'react';
+import "./App.css"
 
 setupIonicReact();
 
 const App: React.FC = () => {
 
-  const [themeToggle, setThemeToggle] = useState(true);
+  const [themeToggle, setThemeToggle] = useState(false);
 
   // Add or remove the "dark" class on the document body
   const toggleDarkTheme = (shouldAdd: boolean) => {

@@ -1,0 +1,220 @@
+
+.custome_footer_ion{
+    position: absolute;
+    bottom: 0;
+}
+
+.tool_bar_container{
+    --min-height:auto;
+}
+
+/* Student List & Staff List css */
+.g_flex{
+    display: flex;
+}
+
+.g_aligncntr{
+    align-items: center;
+}
+
+.g_space_btwn{
+    justify-content: space-between;
+}
+
+.g_txt_center{
+    text-align: center;
+}
+
+
+.first_container{
+    width: 65%;
+}
+
+.dark .student_card {
+    color: white !important;
+}
+
+.students_cards_container{
+    height: 66.5vh;
+    overflow-y: auto;
+    padding-bottom: 50px;
+}
+.with_filter_off{
+    height: 84.5vh !important;
+}
+
+.student_card {
+    margin: 14px 10px;
+    color: black;
+    font-family:'auto';
+    border: 1px solid #1D7AF5;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.8s forwards;
+}
+
+.dark .student_card{
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.6);
+}
+
+.card_content{
+    padding: 8px;
+}
+
+.title_name{
+    font-weight: bold !important;
+    color: #1D7AF5;
+}
+
+.user_id{
+    text-align: center;
+}
+
+.user_id_data{
+    font-weight: bold;
+}
+
+.profile_item{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    border: 1px solid;
+}
+
+.prifile_image{
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+}
+
+.card_btn{
+    font-size: 10px;
+    text-transform:none;
+}
+
+.message_btn{
+    margin-left: 5px;
+}
+
+.title_designation{
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+
+
+ion-breadcrumb{
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
+    font-size: 12px;
+    border-radius: 10px;
+    margin: 10px 4px;
+}
+
+.dark ion-breadcrumb{
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.9);
+}
+
+.separator_bread{
+    margin-top: 5px;
+    font-size: 22px;
+}
+
+.bread_toggle_container{
+    margin: 0 10px;
+    height: 7vh;
+}
+
+
+
+/*  */
+
+.custom-toggle {
+    position: relative;
+  }
+  
+  .toggle-text {
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .enabled_filter{
+    left: 44%;
+  }
+  .disabled_filter{
+    left: 76%;
+  }
+
+  ion-toggle {
+    --track-background: #D9D9D9;
+    --track-background-checked: #00FF00;
+    --handle-background-checked: #ffffff;
+
+    --track-height: 35px;
+    --track-width:20px;
+    --track-max-width:auto;
+    --handle-width: 25px;
+    --handle-height: 25px;
+    --handle-max-height: auto;
+    --handle-box-shadow: none;
+    --handle-spacing: 3px;
+  }
+  
+  ion-toggle::part(track) {
+    height: 30px;
+    width: 60px;
+    overflow: visible;
+  }
+
+  .filter_container{
+    height: 18vh;
+  }
+  .filter-card {
+  animation: slideIn 0.5s forwards;
+  margin: 2px 12px;
+}
+.filter_card_content{
+    padding: 8px;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+/* Select custome */
+
+.select_conatainer{
+    width: 100%;
+}
+
+
+.custome_select{
+    --padding-start:10px;
+    --padding-end:8px;
+   
+    --border-radius:12px;
+    font-size: 14px;
+    max-width: 100%;
+}
+
+.ios .custome_select{
+    border: 1px solid;
+    border-radius: 12px;
+}
+
+.custome_select::part(icon) {
+    color: #000000;
+    opacity: 1;
+    width: 26px;
+  }
+
