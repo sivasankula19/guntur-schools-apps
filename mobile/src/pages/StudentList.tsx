@@ -4,18 +4,13 @@ import {
   IonButton,
   IonCard,
   IonCardContent,
-  IonIcon,
-  IonInput,
-  IonItem,
   IonSearchbar,
   IonSelect,
   IonSelectOption,
   IonToggle,
 } from '@ionic/react';
 import React, { useState } from 'react';
-import { search } from 'ionicons/icons';
 import { studentDummyData } from '../common/utility';
-import Footer from '../components/Footer';
 
 const StudentList: React.FC = () => {
   const [isFilterEnabled, setIsFilterEnabled] = useState(true);
