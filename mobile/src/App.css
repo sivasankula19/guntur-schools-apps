@@ -34,11 +34,18 @@
     color: white !important;
 }
 
-.students_cards_container{
-    height: 66.5vh;
+.students_cards_container {
+    height: auto;
     overflow-y: auto;
     padding-bottom: 50px;
+     @media (min-height: 400px) and (max-height: 700px) {
+        max-height:60vh;
+      };
+      @media (min-height: 700px) {
+        max-height: 66vh; 
+      };
 }
+
 .with_filter_off{
     height: 84.5vh !important;
 }
@@ -170,7 +177,8 @@ ion-breadcrumb{
   }
 
   .filter_container{
-    height: 18vh;
+    height: auto;
+    max-height: 21vh;
   }
   .filter-card {
   animation: slideIn 0.5s forwards;
@@ -205,6 +213,8 @@ ion-breadcrumb{
     --border-radius:12px;
     font-size: 14px;
     max-width: 100%;
+    height: 45px;
+    min-height: 36px !important;
 }
 
 .ios .custome_select{
