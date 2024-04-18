@@ -22,10 +22,13 @@ import {
   analyticsOutline,
 } from 'ionicons/icons';
 import React, { useState } from 'react';
-import { studentAttendanceCalendar, transformListToGrid } from '../common/utility';
+import {
+  studentAttendanceCalendar,
+  transformListToGrid,
+} from '../common/utility';
 
 const Attendance: React.FC = () => {
-  const [viewMode, setViewMode] = useState('grid');
+  const [viewMode, setViewMode] = useState('list');
 
   const todayDate = new Date(2024, 2, 15);
   const todayFormate = `${
@@ -33,8 +36,7 @@ const Attendance: React.FC = () => {
   }/${todayDate.getDate()}/${todayDate.getFullYear()}`;
 
   const attendanceDate = studentAttendanceCalendar;
-  const gridAttendace = transformListToGrid(studentAttendanceCalendar)
-  console.log(gridAttendace)
+  const gridAttendace = transformListToGrid(studentAttendanceCalendar);
 
   return (
     <div>
@@ -83,62 +85,67 @@ const Attendance: React.FC = () => {
         <>
           <IonCard className="custome_attendance_card">
             <IonCardContent className="g_flex g_space_around g_aligncntr custome__card_attendance_container">
-              <IonText className="calendar_label_view row_item_quater">
-                {'Date'}
-              </IonText>
-              <IonText className="calendar_label_view row_item_quater">
-                {'Day'}
-              </IonText>
-              <IonText className="calendar_label_view row_item_quater">
-                {'AM'}
-              </IonText>
-              <IonText className="calendar_label_view row_item_quater">
-                {'PM'}
-              </IonText>
+              {['Date', 'Day', 'AM', 'PM'].map((iView) => (
+                <IonText key={iView} className="calendar_label_view row_item_quater">
+                  {iView}
+                </IonText>
+              ))}
             </IonCardContent>
           </IonCard>
           <div className="attendance_container_items">
             {attendanceDate.map((item) => (
-              <IonItem className="attendance_ion_item" key={item.id}>
+              <IonItem className={`attendance_ion_item ${item.isSchoolHoliday && 'danger'} ${item.date === todayFormate && 'special_today_item'}`} key={item.id}>
                 <IonText className="row_item_quater">{item.currentDay}</IonText>
                 <IonText className="row_item_quater">{item.dayShort}</IonText>
                 <div className="row_item_quater">
-                  <IonIcon
-                    className={`${
-                      item.attendanceMarked >= 1
-                        ? item.am
-                          ? 'present_recorded'
-                          : 'absent_recorded'
-                        : 'attendance_not_recorded'
-                    }`}
-                    size="large"
-                    icon={
-                      item.attendanceMarked >= 1
-                        ? item.am
-                          ? checkmarkCircleOutline
-                          : closeCircleOutline
-                        : removeOutline
-                    }
-                  ></IonIcon>
+                  {item.isSchoolHoliday ? (
+                    <>
+                      <IonText>NA</IonText>
+                    </>
+                  ) : (
+                    <IonIcon
+                      className={`${
+                        item.attendanceMarked >= 1
+                          ? item.am
+                            ? 'present_recorded'
+                            : 'absent_recorded'
+                          : 'attendance_not_recorded'
+                      }`}
+                      size="large"
+                      icon={
+                        item.attendanceMarked >= 1
+                          ? item.am
+                            ? checkmarkCircleOutline
+                            : closeCircleOutline
+                          : removeOutline
+                      }
+                    ></IonIcon>
+                  )}
                 </div>
                 <div className="row_item_quater">
-                  <IonIcon
-                    className={`${
-                      item.attendanceMarked == 2
-                        ? item.pm
-                          ? 'present_recorded'
-                          : 'absent_recorded'
-                        : 'attendance_not_recorded'
-                    }`}
-                    size="large"
-                    icon={
-                      item.attendanceMarked == 2
-                        ? item.pm
-                          ? checkmarkCircleOutline
-                          : closeCircleOutline
-                        : removeOutline
-                    }
-                  ></IonIcon>
+                  {item.isSchoolHoliday ? (
+                    <>
+                      <IonText>NA</IonText>
+                    </>
+                  ) : (
+                    <IonIcon
+                      className={`${
+                        item.attendanceMarked == 2
+                          ? item.pm
+                            ? 'present_recorded'
+                            : 'absent_recorded'
+                          : 'attendance_not_recorded'
+                      }`}
+                      size="large"
+                      icon={
+                        item.attendanceMarked == 2
+                          ? item.pm
+                            ? checkmarkCircleOutline
+                            : closeCircleOutline
+                          : removeOutline
+                      }
+                    ></IonIcon>
+                  )}
                 </div>
               </IonItem>
             ))}
@@ -148,74 +155,108 @@ const Attendance: React.FC = () => {
         <>
           <IonCard className="custome_attendance_card">
             <IonCardContent className="g_flex g_aligncntr custome_card_content_day_view">
-              {['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT',"SUN"].map((dayName) => (
-                <IonItem key={dayName} className='day_list_map ion-text-center'>
-                  <IonText className='ion_text_day_view'>{dayName}</IonText>
-                </IonItem>
-              ))}
+              {['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'].map(
+                (dayName) => (
+                  <IonItem
+                    key={dayName}
+                    className="day_list_map ion-text-center"
+                  >
+                    <IonText className="ion_text_day_view">{dayName}</IonText>
+                  </IonItem>
+                )
+              )}
             </IonCardContent>
           </IonCard>
           <div className="attendance_container_items">
-          {gridAttendace.map(gridItem => (
-             <IonCard key={Math.random().toString()} className="custome_attendance_card2">
-             <IonCardContent className="g_flex g_aligncntr custome_card_content_day_view2">
-               {gridItem.map((dayItem) => (
-                 <IonItem key={dayItem?.id || Math.random().toString()} className='day_list_map update_ion_item ion-text-center'>
-                  <div className='chip_item_grid'>
-                  <IonText className='ion_text_day_view'>{dayItem?.dayShort}</IonText>
-                  <IonIcon
-                    className={`${
-                      dayItem?.attendanceMarked >= 1
-                        ? dayItem?.am
-                          ? 'present_recorded'
-                          : 'absent_recorded'
-                        : 'attendance_not_recorded'
-                    }`}
-                    size="large"
-                    icon={
-                      dayItem?.attendanceMarked >= 1
-                        ? dayItem?.am
-                          ? checkmarkCircleOutline
-                          : closeCircleOutline
-                        : removeOutline
-                    }
-                  ></IonIcon>
-                   <IonIcon
-                    className={`${
-                      dayItem?.attendanceMarked == 2
-                        ? dayItem?.pm
-                          ? 'present_recorded'
-                          : 'absent_recorded'
-                        : 'attendance_not_recorded'
-                    }`}
-                    size="large"
-                    icon={
-                      dayItem?.attendanceMarked == 2
-                        ? dayItem?.pm
-                          ? checkmarkCircleOutline
-                          : closeCircleOutline
-                        : removeOutline
-                    }
-                  ></IonIcon>
-                  </div>
-                 </IonItem>
-               ))}
-             </IonCardContent>
-           </IonCard>
-          ))}
+            {gridAttendace.map((gridItem) => (
+              <IonCard
+                key={Math.random().toString()}
+                className="custome_attendance_card2"
+              >
+                <IonCardContent className="g_flex g_aligncntr custome_card_content_day_view2">
+                  {gridItem.map((dayItem) => (
+                    <IonItem
+                      key={dayItem?.id || Math.random().toString()}
+                      className={`day_list_map update_ion_item ion-text-center ${
+                        dayItem == null
+                          ? 'empty_item_day'
+                          : dayItem?.isSchoolHoliday
+                          ? 'holiday_day_calendar'
+                          : dayItem?.attendanceMarked == 0
+                          ? 'non_taked_atendance'
+                          : 'defaut_attendance_taken'
+                      }`}
+                    >
+                      <div className="chip_item_grid">
+                        <IonText className="ion_text_day_view">
+                          {dayItem?.currentDay}
+                        </IonText>
+                        {dayItem !== null && !dayItem?.isSchoolHoliday ? (
+                          <>
+                            <IonIcon
+                              className={`${
+                                dayItem?.attendanceMarked >= 1
+                                  ? dayItem?.am
+                                    ? 'present_recorded'
+                                    : 'absent_recorded'
+                                  : 'attendance_not_recorded'
+                              }`}
+                              size="large"
+                              icon={
+                                dayItem?.attendanceMarked >= 1
+                                  ? dayItem?.am
+                                    ? checkmarkCircleOutline
+                                    : closeCircleOutline
+                                  : removeOutline
+                              }
+                            ></IonIcon>
+                            <IonIcon
+                              className={`${
+                                dayItem?.attendanceMarked == 2
+                                  ? dayItem?.pm
+                                    ? 'present_recorded'
+                                    : 'absent_recorded'
+                                  : 'attendance_not_recorded'
+                              }`}
+                              size="large"
+                              icon={
+                                dayItem?.attendanceMarked == 2
+                                  ? dayItem?.pm
+                                    ? checkmarkCircleOutline
+                                    : closeCircleOutline
+                                  : removeOutline
+                              }
+                            ></IonIcon>
+                          </>
+                        ) : (
+                          <>
+                            <div></div>
+                          </>
+                        )}
+                        {dayItem?.isSchoolHoliday && (
+                          <>
+                            <IonText className="g_small_text">Holiday</IonText>
+                          </>
+                        )}
+                      </div>
+                    </IonItem>
+                  ))}
+                </IonCardContent>
+              </IonCard>
+            ))}
           </div>
         </>
       )}
       <IonCard className="summery_attendance_show">
         <IonCardContent className="custome__card_attendance_container g_flex">
           <IonItem className="summery_text_show">
-            <IonText>WD = 9</IonText>
+            <IonText className="summery_ion_text">WD = 9</IonText>
           </IonItem>
           <IonItem className="summery_text_show">
-            <IonText>P = 8</IonText>
+            <IonText className="summery_ion_text">P = 8</IonText>
           </IonItem>
           <IonItem className="summery_text_show">
-            <IonText>A = 1</IonText>
+            <IonText className="summery_ion_text">A = 1</IonText>
           </IonItem>
           <div className="g_flex g_space_around g_aligncntr summery_icons_container">
             <IonIcon size="large" icon={printSharp}></IonIcon>
