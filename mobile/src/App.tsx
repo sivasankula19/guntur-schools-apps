@@ -1,6 +1,10 @@
-import { IonApp, IonRouterOutlet, IonSplitPane, setupIonicReact } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
-import { Redirect, Route } from 'react-router-dom';
+import {
+  IonApp,
+  IonRouterOutlet,
+  IonSplitPane,
+  setupIonicReact,
+} from '@ionic/react';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Menu from './components/Menu';
 import Page from './pages/Page';
 
@@ -25,12 +29,11 @@ import './theme/variables.css';
 import './Main.css';
 import UserByID from './pages/User';
 import { useEffect, useState } from 'react';
-import "./App.css"
+import './App.css';
 
 setupIonicReact();
 
 const App: React.FC = () => {
-
   const [themeToggle, setThemeToggle] = useState(true);
 
   // Add or remove the "dark" class on the document body
@@ -53,34 +56,30 @@ const App: React.FC = () => {
     initializeDarkTheme(prefersDark.matches);
 
     // Listen for changes to the prefers-color-scheme media query
-    prefersDark.addEventListener('change', (mediaQuery) => initializeDarkTheme(mediaQuery.matches));
+    prefersDark.addEventListener('change', (mediaQuery) =>
+      initializeDarkTheme(mediaQuery.matches)
+    );
   }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     initializeDarkTheme(themeToggle);
-  },[themeToggle])
-
-
+  }, [themeToggle]);
 
   return (
-    <IonApp className='dark-theme'>
-    <IonReactRouter>
-      <IonSplitPane contentId="main">
-        <Menu />
-        <IonRouterOutlet id="main">
-          <Route path="/" exact={true}>
-            <Redirect to="/dashboard" />
-          </Route>
-          <Route path={"/user/:id"} exact >
-            <UserByID />
-          </Route>
-          <Route path="/:name" exact={true}>
-            <Page />
-          </Route>
-        </IonRouterOutlet>
-      </IonSplitPane>
-    </IonReactRouter>
-  </IonApp>
+    <IonApp className="dark-theme">
+      <BrowserRouter>
+        <IonSplitPane contentId="main">
+          <Menu />
+          <IonRouterOutlet id="main">
+            <Routes>
+              <Route path="/" element={<Navigate to={'/dashboard'} />}></Route>
+              <Route path={'/user/:id'} element={<UserByID />}></Route>
+              <Route path="/:name" element={<Page />}></Route>
+            </Routes>
+          </IonRouterOutlet>
+        </IonSplitPane>
+      </BrowserRouter>
+    </IonApp>
   );
 };
 

@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import {
-  IonCard,
-  IonItem,
-  IonButton,
   IonGrid,
   IonRow,
   IonCol,
@@ -15,8 +12,15 @@ import {
 import './Dashboard.css';
 import { chevronDownCircle, chevronUpCircle } from 'ionicons/icons';
 
-
-const subjects=[['Tel','Hin','Tel','Eng','Soc','Sci'],['Tel','Hin','Tel','Eng','Soc','Sci'],['Tel','Hin','Tel','Eng','Soc','Sci'],['Br','Br','Br','Br','Br','Br'],['Tel','Hin','Tel','Eng','Soc','Sci'],['Tel','Hin','Tel','Eng','Soc','Sci'],['Tel','Hin','Tel','Eng','Soc','Sci']]
+const subjects = [
+  ['Tel', 'Hin', 'Tel', 'Eng', 'Soc', 'Sci'],
+  ['Tel', 'Hin', 'Tel', 'Eng', 'Soc', 'Sci'],
+  ['Tel', 'Hin', 'Tel', 'Eng', 'Soc', 'Sci'],
+  ['Br', 'Br', 'Br', 'Br', 'Br', 'Br'],
+  ['Tel', 'Hin', 'Tel', 'Eng', 'Soc', 'Sci'],
+  ['Tel', 'Hin', 'Tel', 'Eng', 'Soc', 'Sci'],
+  ['Tel', 'Hin', 'Tel', 'Eng', 'Soc', 'Sci'],
+];
 
 const Dashboard: React.FC = () => {
   const { name } = useParams<{ name: string }>();
@@ -106,8 +110,8 @@ const Dashboard: React.FC = () => {
                   className="redline"
                   style={{
                     top:
-                      (new Date().getHours() - 7 ) * ( 60 + 8 ) +
-                      new Date().getMinutes()  ,
+                      (new Date().getHours() - 7) * (60 + 8) +
+                      new Date().getMinutes(),
                   }}
                 ></div>
               )}
@@ -125,41 +129,86 @@ const Dashboard: React.FC = () => {
             </div>
           )}
 
-          {segment === 'week' && 
-          (
+          {segment === 'week' && (
             <div>
-              <div style={{display:'flex',flexDirection:'row',justifyContent:'space-between',marginLeft:'17%',border:'1px solid blue',padding:5,marginTop:5,borderRadius:5}}>
-                {['MON','TUE','WED','THU','FRI','SAT'].map((weekday:any,index:number)=>{
-                  return (
-                    <div key={index} style={{fontWeight:'bold'}}>{weekday}</div>
-                  )
-                })}
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  marginLeft: '17%',
+                  border: '1px solid blue',
+                  padding: 5,
+                  marginTop: 5,
+                  borderRadius: 5,
+                }}
+              >
+                {['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'].map(
+                  (weekday: any, index: number) => {
+                    return (
+                      <div key={index} style={{ fontWeight: 'bold' }}>
+                        {weekday}
+                      </div>
+                    );
+                  }
+                )}
               </div>
-              <div style={{display:'flex',flexDirection:'row'}}>
-              <div style={{width:'16%',border:'1px solid blue',borderRadius:5,padding:1,marginRight:5}}>
-                {['10:00','11:00','12:00','01:00','02:00','03:00','04:00'].map((time:any,index:number)=>{
-                  return (
-                    <div key={index} style={{fontWeight:'bold',paddingTop:'2%',paddingBottom:'2%'}}>{time}</div>
-                  )
-                })}
-              </div>
-              <div style={{width:'80%'}}>
-                {subjects.map((subject:any,index:number)=>{
-                  return (
-                    <div style={{display:'flex',flexDirection:'row',justifyContent:'space-between',paddingTop:'2%',paddingBottom:'2%'}}>
-                    { subject.map((subSub:any,subIndex:number)=>{
-                        return(
-                          <div key={index+subIndex}>{subSub}</div>
-                        )
-                    })}
-                    </div>
-                  )
-                })}
-              </div>
+              <div style={{ display: 'flex', flexDirection: 'row' }}>
+                <div
+                  style={{
+                    width: '16%',
+                    border: '1px solid blue',
+                    borderRadius: 5,
+                    padding: 1,
+                    marginRight: 5,
+                  }}
+                >
+                  {[
+                    '10:00',
+                    '11:00',
+                    '12:00',
+                    '01:00',
+                    '02:00',
+                    '03:00',
+                    '04:00',
+                  ].map((time: any, index: number) => {
+                    return (
+                      <div
+                        key={index}
+                        style={{
+                          fontWeight: 'bold',
+                          paddingTop: '2%',
+                          paddingBottom: '2%',
+                        }}
+                      >
+                        {time}
+                      </div>
+                    );
+                  })}
+                </div>
+                <div style={{ width: '80%' }}>
+                  {subjects.map((subject: any, index: number) => {
+                    return (
+                      <div
+                        key={index}
+                        style={{
+                          display: 'flex',
+                          flexDirection: 'row',
+                          justifyContent: 'space-between',
+                          paddingTop: '2%',
+                          paddingBottom: '2%',
+                        }}
+                      >
+                        {subject.map((subSub: any, subIndex: number) => {
+                          return <div key={index + subIndex}>{subSub}</div>;
+                        })}
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
-          )
-          }
+          )}
         </div>
       )}
     </div>
