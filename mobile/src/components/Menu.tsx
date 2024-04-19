@@ -10,7 +10,7 @@ import {
   IonNote,
 } from '@ionic/react';
 
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {
   bookmarkOutline,
 } from 'ionicons/icons';
@@ -25,6 +25,11 @@ const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
 const Menu: React.FC = () => {
   const location = useLocation();
+  const navigate = useNavigate()
+
+  const handleNavigation = (path:string) => {
+    navigate(path)
+  }
 
   return (
     <IonMenu contentId="main" type="overlay">
@@ -39,9 +44,8 @@ const Menu: React.FC = () => {
                   className={
                     location.pathname === appPage.url ? 'selected' : ''
                   }
-                  routerLink={appPage.url}
-                  routerDirection="none"
                   lines="none"
+                  onClick={()=> handleNavigation(appPage.url)}
                   detail={false}
                 >
                   <IonIcon
