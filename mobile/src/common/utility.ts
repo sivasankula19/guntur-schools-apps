@@ -116,6 +116,108 @@ export const studentDummyData =  [
     return finalOp
 
   }
+
+export const remainderDummyData = [
+  {
+    eventName: 'Quize English by S-UserName',
+    desc: 'Online quize compitation by S-UserName for the Pronounce and verbs',
+    date: '15/04/2024',
+    time: '10:10 AM',
+    status: 'To Do',
+    notifyBefore: '15min',
+    isOpen: false,
+    id: 1,
+  },
+  {
+    eventName: 'Quize English by S-UserName',
+    desc: 'Online quize compitation by S-UserName for the Pronounce and verbs',
+    date: '15/04/2024',
+    time: '10:10 AM',
+    status: 'To Do',
+    notifyBefore: '15min',
+    isOpen: false,
+    id: 2,
+  },
+  {
+    eventName: 'Quize English by S-UserName',
+    desc: 'Online quize compitation by S-UserName for the Pronounce and verbs',
+    date: '15/04/2024',
+    time: '10:10 AM',
+    status: 'Delayed',
+    notifyBefore: '15min',
+    isOpen: false,
+    id: 3,
+  },
+  {
+    eventName: 'Quize English by S-UserName',
+    desc: 'Online quize compitation by S-UserName for the Pronounce and verbs',
+    date: '15/04/2024',
+    status: 'Done',
+    time: '10:10 AM',
+    notifyBefore: '15min',
+    isOpen: false,
+    id: 4,
+  },
+]
+
+export const classSubjects = [
+  {
+    subjectName: 'Telugu',
+    subjectCode:'TEL',
+    subjectTeacher: 'SomeTeacher',
+    subjectTeacherId:'gvt-t-008',
+    percentCovered:'70%',
+    isFavarouite:false,
+  },
+  {
+    subjectName: 'English',
+    subjectCode:'ENG',
+    subjectTeacher: 'SomeTeacher',
+    subjectTeacherId:'gvt-t-010',
+    percentCovered:'70%',
+    isFavarouite:false,
+  },
+  {
+    subjectName: 'Hindi',
+    subjectCode:'HIN',
+    subjectTeacher: 'SomeTeacher',
+    subjectTeacherId:'gvt-t-023',
+    percentCovered:'70%',
+    isFavarouite:false,
+  },
+  {
+    subjectName: 'Mathematics',
+    subjectCode:'MAT',
+    subjectTeacher: 'SomeTeacher',
+    subjectTeacherId:'gvt-t-019',
+    percentCovered:'70%',
+    isFavarouite:false,
+  },
+  {
+    subjectName: 'Science - Physics',
+    subjectCode:'PHY',
+    subjectTeacher: 'SomeTeacher',
+    subjectTeacherId:'gvt-t-012',
+    percentCovered:'70%',
+    isFavarouite:false,
+  },
+  {
+    subjectName: 'Science - Chemestry',
+    subjectCode:'CHE',
+    subjectTeacher: 'SomeTeacher',
+    subjectTeacherId:'gvt-t-038',
+    percentCovered:'70%',
+    isFavarouite:false,
+  },
+  {
+    subjectName: 'Social',
+    subjectCode:'SOC',
+    subjectTeacher: 'SomeTeacher',
+    subjectTeacherId:'gvt-t-002',
+    percentCovered:'70%',
+    isFavarouite:false,
+  }
+]
     
 
 

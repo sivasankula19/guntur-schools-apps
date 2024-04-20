@@ -7,6 +7,37 @@
   --min-height: auto;
 }
 
+/* app header */
+
+.header_schoolname{
+  padding-right: 12px;
+  padding-left: 50px;
+}
+
+/* All override modules */
+
+.dark ion-card {
+  color: white !important;
+  box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.6);
+}
+
+/* menu card */
+
+.menu_avatar{
+  border: 1px solid;
+}
+
+.menu_user_name{
+  margin-left: 14px;
+}
+
+.menu_user_name p{
+  margin-top: 0;
+  margin-bottom: 14px;
+}
+
+
+
 /* Student List & Staff List css */
 .g_flex {
   display: flex;
@@ -257,6 +288,10 @@ ion-toggle::part(track) {
   width: 26px;
 }
 
+.dark .custome_select::part(icon) {
+  color: #ffffff;
+}
+
 
 /* Attendance css */
 
@@ -475,12 +510,16 @@ ion-toggle::part(track) {
 /* Remainders Css */
 
 .add_remainder_btn {
-  font-size: 14px;
+  font-size: 12px;
+  --padding-top:0;
+  --padding-bottom:0;
 }
 
 .card_remainder {
+  margin-top: 10px;
   border: 1px solid;
   border-color: #1D7AF5;
+  animation: slideIn 0.8s forwards;
 }
 
 .ion_card_content_remainders {
@@ -603,6 +642,45 @@ ion-toggle::part(track) {
   color: #FFA500;
 }
 
+.add_event_input{
+  border: 1px solid;
+  border-radius: 8px;
+  padding: 0 12px !important;
+}
+
+.date_time_select_item{
+  --inner-padding-end:0;
+  --padding-start:0;
+  margin-bottom: 12px;
+}
+
+.custom_modal_item{
+  --inner-padding-end:0;
+  --padding-start:0;
+  margin-bottom: 12px;
+}
+
+.cutsome_textarea{
+  border: 1px solid;
+  border-radius: 8px;
+  padding: 0 8px;
+}
+
+
+.custome_date_time_modal {
+  background:  rgba(0, 0, 0, 0.5);
+}
+
+.view_card_item{
+  margin: 12px;
+  animation: slideIn 0.8s forwards;
+}
+
+.dark .view_card_item {
+  color: white !important;
+  box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.6);
+}
+
 
 /* ion modal */
 
@@ -612,7 +690,7 @@ ion-toggle::part(track) {
 
 ion-modal{
   --height: fit-content;
-  --width:80%;
+  --width:90%;
   --border-radius:8px;
   --max-height:80%;
 }
@@ -632,11 +710,47 @@ ion-modal{
   --ion-toolbar-background:none;
   --border-color: #1D7AF5;
   --border-style: solid;
-  --border-width: 1px
+  --border-width: 1px;
+  --background-hover: #1d7bf546;
+  --background-activated: #1d7bf546;
+  --background-focused: #1d7bf546;
+
 }
 
 .gmodal-save{
   --ion-toolbar-background:none;
+}
+
+
+/* Subjects */
+
+.subjects_cls_container{
+
+  max-height: 65vh;
+  height: auto;
+  border: 1px solid;
+  overflow-y: auto;
+}
+
+.subjects_cls_select{
+ margin-right: 12px;
+}
+
+.subject_item_card_content{
+  padding: 8px 0;
+}
+
+.custome_subject_item{
+  margin-bottom: 12px;
+}
+
+
+/* progress bar */
+
+.progress_bar{
+  border: 1px solid;
+  width: 100%;
+  position: relative;
 }
 
 

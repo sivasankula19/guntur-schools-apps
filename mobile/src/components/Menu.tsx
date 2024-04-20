@@ -1,6 +1,8 @@
 import {
+  IonAvatar,
   IonContent,
   IonIcon,
+  IonImg,
   IonItem,
   IonLabel,
   IonList,
@@ -8,35 +10,43 @@ import {
   IonMenu,
   IonMenuToggle,
   IonNote,
+  IonText,
 } from '@ionic/react';
 
 import { useLocation, useNavigate } from 'react-router-dom';
-import {
-  bookmarkOutline,
-} from 'ionicons/icons';
+import { bookmarkOutline } from 'ionicons/icons';
 import './Menu.css';
 import { AppPage } from '../common/common-interface';
 import { RoutesListDynamic } from '../common/common-routes-list';
 
-
-const appPages: AppPage[] = RoutesListDynamic
+const appPages: AppPage[] = RoutesListDynamic;
 
 const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
 const Menu: React.FC = () => {
   const location = useLocation();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const handleNavigation = (path:string) => {
-    navigate(path)
-  }
+  const handleNavigation = (path: string) => {
+    navigate(path);
+  };
 
   return (
     <IonMenu contentId="main" type="overlay">
       <IonContent>
+        <IonItem>
+          <IonAvatar className='menu_avatar'>
+            <img
+              alt="Silhouette of a person's head"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Line-style-icons-profile-male.svg/864px-Line-style-icons-profile-male.svg.png"
+            />
+          </IonAvatar>
+          <IonText className='menu_user_name'>
+            <h3>{'<StudentName>'}</h3>
+            <p>View Profile</p>
+          </IonText>
+        </IonItem>
         <IonList id="inbox-list">
-          <IonListHeader>Inbox</IonListHeader>
-          <IonNote>hi@ionicframework.com</IonNote>
           {appPages.map((appPage, index) => {
             return (
               <IonMenuToggle key={index} autoHide={false}>
@@ -45,7 +55,7 @@ const Menu: React.FC = () => {
                     location.pathname === appPage.url ? 'selected' : ''
                   }
                   lines="none"
-                  onClick={()=> handleNavigation(appPage.url)}
+                  onClick={() => handleNavigation(appPage.url)}
                   detail={false}
                 >
                   <IonIcon
