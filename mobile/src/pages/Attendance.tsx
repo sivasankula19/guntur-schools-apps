@@ -40,7 +40,7 @@ const Attendance: React.FC = () => {
 
   return (
     <div>
-      <div className="g_flex g_space_btwn g_aligncntr bread_toggle_container">
+      <div className="g_flex g_space_btwn g_align_cntr bread_toggle_container">
         <IonBreadcrumbs>
           <IonBreadcrumb>
             <div>Home</div> <div slot="separator"></div>
@@ -72,7 +72,7 @@ const Attendance: React.FC = () => {
           <div className="g_flex g_space_around">
             <IonIcon size="large" icon={caretBackOutline}></IonIcon>
             <IonIcon size="large" icon={chevronBackOutline}></IonIcon>
-            <div className="month_year_view g_flex g_space_evnly g_aligncntr">
+            <div className="month_year_view g_flex g_space_evnly g_align_cntr">
               <IonText className="month_year">{'MAR'}</IonText>
               <IonText className="month_year">{'2024'}</IonText>
             </div>
@@ -84,7 +84,7 @@ const Attendance: React.FC = () => {
       {viewMode === 'list' ? (
         <>
           <IonCard className="custome_attendance_card">
-            <IonCardContent className="g_flex g_space_around g_aligncntr custome__card_attendance_container">
+            <IonCardContent className="g_flex g_space_around g_align_cntr custome__card_attendance_container">
               {['Date', 'Day', 'AM', 'PM'].map((iView) => (
                 <IonText key={iView} className="calendar_label_view row_item_quater">
                   {iView}
@@ -154,7 +154,7 @@ const Attendance: React.FC = () => {
       ) : (
         <>
           <IonCard className="custome_attendance_card">
-            <IonCardContent className="g_flex g_aligncntr custome_card_content_day_view">
+            <IonCardContent className="g_flex g_align_cntr custome_card_content_day_view">
               {['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'].map(
                 (dayName) => (
                   <IonItem
@@ -173,7 +173,7 @@ const Attendance: React.FC = () => {
                 key={Math.random().toString()}
                 className="custome_attendance_card2"
               >
-                <IonCardContent className="g_flex g_aligncntr custome_card_content_day_view2">
+                <IonCardContent className="g_flex g_align_cntr custome_card_content_day_view2">
                   {gridItem.map((dayItem) => (
                     <IonItem
                       key={dayItem?.id || Math.random().toString()}
@@ -258,7 +258,7 @@ const Attendance: React.FC = () => {
           <IonItem className="summery_text_show">
             <IonText className="summery_ion_text">A = 1</IonText>
           </IonItem>
-          <div className="g_flex g_space_around g_aligncntr summery_icons_container">
+          <div className="g_flex g_space_around g_align_cntr summery_icons_container">
             <IonIcon size="large" icon={printSharp}></IonIcon>
             <IonIcon size="large" icon={analyticsOutline}></IonIcon>
           </div>
