@@ -21,7 +21,9 @@ import {
     personAddOutline, personAddSharp,
     businessOutline, businessSharp,
     listOutline, listSharp,
-    journalOutline, journalSharp
+    journalOutline, journalSharp,
+    documentAttachOutline,
+    documentAttachSharp
   } from 'ionicons/icons';
   
 export const RoutesListDynamic : AppPage[] = [
@@ -30,6 +32,36 @@ export const RoutesListDynamic : AppPage[] = [
       url: '/dashboard',
       iosIcon: homeOutline,
       mdIcon: homeSharp,
+    },
+    {
+      title: 'Attendance',
+      url: '/attendance',
+      iosIcon: calendarOutline,
+      mdIcon: calendarSharp,
+    },
+    {
+      title: 'Progress Card',
+      url: '/progress-card',
+      iosIcon: documentTextOutline,
+      mdIcon: documentTextSharp,
+    },
+    {
+      title: 'Subjects',
+      url: '/subjects',
+      iosIcon: schoolOutline,
+      mdIcon: schoolSharp,
+    },
+    {
+      title: 'Messages',
+      url: '/messages',
+      iosIcon: chatbubbleOutline,
+      mdIcon: chatbubbleSharp,
+    },
+    {
+      title: 'Documents',
+      url: '/documents',
+      iosIcon: documentAttachOutline,
+      mdIcon: documentAttachSharp,
     },
     {
       title: 'Students List',
@@ -42,24 +74,6 @@ export const RoutesListDynamic : AppPage[] = [
       url: '/staff-list',
       iosIcon: peopleOutline,
       mdIcon: peopleSharp,
-    },
-    {
-      title: 'Profile',
-      url: '/profile',
-      iosIcon: personOutline,
-      mdIcon: personSharp,
-    },
-    {
-      title: 'My Attendance',
-      url: '/my-attendance',
-      iosIcon: calendarOutline,
-      mdIcon: calendarSharp,
-    },
-    {
-      title: 'My Progress Card',
-      url: '/my-progress-card',
-      iosIcon: documentTextOutline,
-      mdIcon: documentTextSharp,
     },
     {
       title: 'Academic Subjects',
@@ -80,7 +94,7 @@ export const RoutesListDynamic : AppPage[] = [
       mdIcon: timeSharp,
     },
     {
-      title: 'Extra Curricular Activities / Competitions',
+      title: 'Competitions',
       url: '/extra-curricular-activities',
       iosIcon: ribbonOutline,
       mdIcon: ribbonSharp,
@@ -116,16 +130,10 @@ export const RoutesListDynamic : AppPage[] = [
       mdIcon: trophySharp,
     },
     {
-      title: 'School Wibe Posts',
+      title: 'Wibe',
       url: '/school-wibe',
       iosIcon: newspaperOutline,
       mdIcon: newspaperSharp,
-    },
-    {
-      title: 'Messages',
-      url: '/messages',
-      iosIcon: chatbubbleOutline,
-      mdIcon: chatbubbleSharp,
     },
     {
       title: 'Exam Schedules',

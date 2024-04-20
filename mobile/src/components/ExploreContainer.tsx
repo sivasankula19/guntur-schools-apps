@@ -4,7 +4,6 @@ import Dashboard from '../pages/Dashboard';
 import Attendance from '../pages/Attendance';
 import StudentList from '../pages/StudentList';
 import StaffList from '../pages/StaffList';
-import Profile from '../pages/Profile';
 import ProgressCard from '../pages/ProgressCard';
 import Subjects from '../pages/Subjects';
 import FeesDues from '../pages/FeesDues';
@@ -21,70 +20,72 @@ import ExamSchedule from '../pages/ExamSchedule';
 import SchoolAssets from '../pages/SchoolAssets';
 import Remainders from '../pages/Remainders';
 import Dairy from '../pages/Dairy';
+import AcedamicSubject from '../pages/AcedamicSubjects';
+import Documents from '../pages/Documents';
 
 interface ContainerProps {
   name: string;
 }
 
 const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
-
   useEffect(() => {
-    console.log('inside', name)
-  }, [])
- 
+    console.log('inside', name);
+  }, []);
+
   return (
     <React.Fragment>
-     <GetComponent name={name} />
+      <GetComponent name={name} />
     </React.Fragment>
   );
 };
 
-const GetComponent = ({name}:any) => {
+const GetComponent = ({ name }: any) => {
   switch (name) {
-    case "dashboard":
-      return <Dashboard />
-    case "my-attendance":
-      return <Attendance />
-    case "students-list":
-      return <StudentList />
-    case "staff-list":
-      return <StaffList />
-    case "profile":
-      return <Profile />
-    case "my-progress-card":
-      return <ProgressCard />
-    case "academic-subjects":
-      return <Subjects />
-    case "fee-structure":
-      return <FeesDues />
-    case "time-table":
-      return <TimeTable />
-    case "Gallery":
-      return <Gallery />
-    case "extra-curricular-activities":
-      return <ExCircularActivities />
-    case "about":
-      return <About />
-    case "contact-us":
-      return <ContactUs />
-    case "courses":
-      return <Courses />
-    case "achievements":
-      return <Achievements />
-    case "school-wibe":
-      return <SchoolWibe />
-    case "messages":
-      return <Messages />
-    case "exam-schedules":
-      return <ExamSchedule />
-    case "assets":
-      return <SchoolAssets />
-    case "remainders":
-      return <Remainders />
-    case "diary":
-      return <Dairy />
-
+    case 'dashboard':
+      return <Dashboard />;
+    case 'attendance':
+      return <Attendance />;
+    case 'progress-card':
+      return <ProgressCard />;
+    case 'students-list':
+      return <StudentList />;
+    case 'staff-list':
+      return <StaffList />;
+    case 'subjects':
+      return <Subjects />;
+      case 'documents':
+      return <Documents />;
+    case 'fee-structure':
+      return <FeesDues />;
+    case 'time-table':
+      return <TimeTable />;
+    case 'gallery':
+      return <Gallery />;
+    case 'extra-curricular-activities':
+      return <ExCircularActivities />;
+    case 'about':
+      return <About />;
+    case 'academic-subjects':
+      return <AcedamicSubject />;
+    case 'contact-us':
+      return <ContactUs />;
+    case 'courses':
+      return <Courses />;
+    case 'achievements':
+      return <Achievements />;
+    case 'school-wibe':
+      return <SchoolWibe />;
+    case 'messages':
+      return <Messages />;
+    case 'exam-schedules':
+      return <ExamSchedule />;
+    case 'assets':
+      return <SchoolAssets />;
+    case 'remainders':
+      return <Remainders />;
+    case 'diary':
+      return <Dairy />;
   }
-}
+};
 
 export default ExploreContainer;

@@ -4,64 +4,57 @@ import {
   IonButton,
   IonCard,
   IonCardContent,
-  IonContent,
+  IonDatetime,
+  IonDatetimeButton,
+  IonFooter,
+  IonHeader,
   IonIcon,
+  IonInput,
   IonItem,
+  IonLabel,
   IonModal,
   IonSearchbar,
+  IonSelect,
+  IonSelectOption,
   IonText,
-  createAnimation,
+  IonTextarea,
+  IonToolbar,
 } from '@ionic/react';
-import { addCircleOutline, pencilOutline, trashOutline } from 'ionicons/icons';
-import React, { useRef, useState } from 'react';
-import { useParams } from 'react-router';
+import {
+  addCircleOutline,
+  calendarClearOutline,
+  pencilOutline,
+  trashOutline,
+} from 'ionicons/icons';
+import React, { useEffect, useRef, useState } from 'react';
 import GCustomisedModal from '../components/GCustomisedModal';
+import { remainderDummyData } from '../common/utility';
 
 const Remainders: React.FC = () => {
-  const { name } = useParams<{ name: string }>();
+  const [eventDateTime, setEventDateTime] = useState<any>('');
+  const modal = useRef<HTMLIonModalElement>(null);
+  const [eventModal, setEventModal] = useState(false);
+  const [data, setData] = useState(remainderDummyData);
 
-  const [data, setData] = useState([
-    {
-      eventName: 'Quize English by S-UserName',
-      desc: 'Online quize compitation by S-UserName for the Pronounce and verbs',
-      date: '15/04/2024',
-      time: '10:10 AM',
-      status:'To Do',
-      notifyBefore: '15min',
-      isOpen:false,
-      id: 1,
-    },
-    {
-      eventName: 'Quize English by S-UserName',
-      desc: 'Online quize compitation by S-UserName for the Pronounce and verbs',
-      date: '15/04/2024',
-      time: '10:10 AM',
-      status:'To Do',
-      notifyBefore: '15min',
-      isOpen:false,
-      id: 2,
-    },
-    {
-      eventName: 'Quize English by S-UserName',
-      desc: 'Online quize compitation by S-UserName for the Pronounce and verbs',
-      date: '15/04/2024',
-      time: '10:10 AM',
-      status:'Delayed',
-      notifyBefore: '15min',
-      isOpen:false,
-      id: 3,
-    },
-    {
-      eventName: 'Quize English by S-UserName',
-      desc: 'Online quize compitation by S-UserName for the Pronounce and verbs',
-      date: '15/04/2024',
-      status:'Done',
-      time: '10:10 AM',
-      notifyBefore: '15min',
-      isOpen:false,
-      id: 4,
-    },
-  ]);
+  useEffect(() => {
+    setEventDateTime(getNextHourDateTime());
+  }, []);
+
+  function getNextHourDateTime(isCurrent: boolean = false) {
+    const now = new Date();
+
+    let nextHour = isCurrent
+      ? new Date()
+      : new Date(now.getTime() + 60 * 60 * 1000);
+    const year = nextHour.getFullYear();
+    const month = String(nextHour.getMonth() + 1).padStart(2, '0');
+    const day = String(nextHour.getDate()).padStart(2, '0');
+    const hours = String(nextHour.getHours()).padStart(2, '0');
+    const minutes = String(nextHour.getMinutes()).padStart(2, '0');
+    const seconds = String(nextHour.getSeconds()).padStart(2, '0');
+
+    return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.000Z`;
+  }
 
   return (
     <div>
@@ -74,7 +67,12 @@ const Remainders: React.FC = () => {
           <IonBreadcrumb>Remainders</IonBreadcrumb>
         </IonBreadcrumbs>
         <div>
-          <IonButton className="add_remainder_btn">
+          <IonButton
+            onClick={() => {
+              setEventModal(true);
+            }}
+            className="add_remainder_btn"
+          >
             <IonIcon icon={addCircleOutline}></IonIcon> ADD
           </IonButton>
         </div>
@@ -85,36 +83,54 @@ const Remainders: React.FC = () => {
             <IonSearchbar placeholder="Remainders"></IonSearchbar>
             {data.length ? (
               <>
-              <div className='remainders_container_scroll'>
-                {data.map((item) => (
-                  <IonCard key={item.id}>
-                    <IonCardContent className='ion_remainder_content'>
-                      <div className="g_flex item_title_time">
-                        <div className="remainder_item_title_block">
-                          <IonText className="remainder_item_title">
-                            {item.eventName}
-                          </IonText>
+                <div className="remainders_container_scroll">
+                  {data.map((item) => (
+                    <IonCard className="view_card_item" key={item.id}>
+                      <IonCardContent className="ion_remainder_content">
+                        <div className="g_flex item_title_time">
+                          <div className="remainder_item_title_block">
+                            <IonText className="remainder_item_title">
+                              {item.eventName}
+                            </IonText>
+                          </div>
+                          <div className="remainder_item_time_block">
+                            <IonText className="remainder_item_time">
+                              {item.date} - {item.time}
+                            </IonText>
+                          </div>
                         </div>
-                        <div className="remainder_item_time_block">
-                          <IonText className="remainder_item_time">
-                            {item.date} - {item.time}
-                          </IonText>
+                        <div className="g_flex item_title_time">
+                          <div className="remainder_item_title_block">
+                            <IonText
+                              className={`remainder_item_desc ${
+                                !item.isOpen && 'two_lines_ellipsis'
+                              }`}
+                            >
+                              {item.desc}
+                            </IonText>
+                          </div>
+                          <div className="remainder_item_time_block g_flex">
+                            <div
+                              className={`remainder_status g_flex g_aligncntr g_jstfy_content_cntr ${
+                                item.status == 'Delayed'
+                                  ? 'danger'
+                                  : item.status == 'Done'
+                                  ? 'orange_cls'
+                                  : 'present_recorded'
+                              }`}
+                            >
+                              {item.status}
+                            </div>
+                            <IonIcon
+                              className="edit_remainder"
+                              size="large"
+                              icon={pencilOutline}
+                            ></IonIcon>
+                          </div>
                         </div>
-                      </div>
-                      <div className="g_flex item_title_time">
-                        <div className="remainder_item_title_block">
-                          <IonText className={`remainder_item_desc ${!item.isOpen && 'two_lines_ellipsis'}`}>
-                            {item.desc}
-                          </IonText>
-                        </div>
-                        <div className="remainder_item_time_block g_flex">
-                         <div className={`remainder_status g_flex g_aligncntr g_jstfy_content_cntr ${item.status == 'Delayed' ? 'danger' : item.status == 'Done' ? 'orange_cls' : 'present_recorded' }`}>{item.status}</div>
-                         <IonIcon className='edit_remainder' size='large' icon={pencilOutline}></IonIcon>
-                        </div>
-                      </div>
-                    </IonCardContent>
-                  </IonCard>
-                ))}
+                      </IonCardContent>
+                    </IonCard>
+                  ))}
                 </div>
               </>
             ) : (
@@ -140,11 +156,95 @@ const Remainders: React.FC = () => {
           </IonCardContent>
         </IonCard>
       </div>
-      <GCustomisedModal  title="My Modal"
-          onClose={()=>{}}
-          onSave={()=>{}} >
+
+      <GCustomisedModal
+        title="My Modal"
+        isOpen={eventModal}
+        onClose={() => {
+          setEventModal(false);
+        }}
+        onSave={() => {}}
+      >
         <div>
-          <h1>hello</h1>
+          <div className="g_txt_center">
+            <IonLabel>Date & Time</IonLabel>
+          </div>
+          <IonItem className="date_time_select_item">
+            <IonIcon size="small" icon={calendarClearOutline}></IonIcon>
+            <IonDatetimeButton datetime="datetime"></IonDatetimeButton>
+            <IonModal
+              className="custome_date_time_modal"
+              ref={modal}
+              keepContentsMounted={true}
+            >
+              <IonHeader>
+                <IonToolbar>
+                  <IonText>
+                    <p>Select Date Time </p>
+                  </IonText>
+                </IonToolbar>
+              </IonHeader>
+              <IonDatetime
+                value={eventDateTime}
+                id="datetime"
+                onIonChange={(e) => {
+                  setEventDateTime(e?.detail?.value || '');
+                }}
+                min={getNextHourDateTime(true)}
+              ></IonDatetime>
+              <IonFooter>
+                <IonToolbar>
+                  <IonButton
+                    expand="block"
+                    onClick={() => {
+                      modal.current?.dismiss();
+                    }}
+                  >
+                    OK
+                  </IonButton>
+                </IonToolbar>
+              </IonFooter>
+            </IonModal>
+          </IonItem>
+          <IonItem className="custom_modal_item">
+            <IonInput
+              class="add_event_input"
+              label="Event Name"
+              labelPlacement="floating"
+              fill="solid"
+              placeholder="Event Name"
+            ></IonInput>
+          </IonItem>
+          <IonItem className="custom_modal_item">
+            <IonTextarea
+              className="cutsome_textarea"
+              label="Event Description"
+              labelPlacement="floating"
+              placeholder="Event Description"
+            ></IonTextarea>
+          </IonItem>
+          <IonItem className="custom_modal_item">
+            <IonSelect
+              className="custome_select"
+              label="Notify Me"
+              labelPlacement="floating"
+              fill="outline"
+              interface="popover"
+              onIonChange={(e) =>
+                console.log(`ionChange fired with value: ${e.detail.value}`)
+              }
+            >
+              <IonSelectOption value="15min">
+                Notify me before 15 min
+              </IonSelectOption>
+              <IonSelectOption value="30min">
+                Notify me before 15 min
+              </IonSelectOption>
+              <IonSelectOption value="1hr">
+                Notify me before 15 min
+              </IonSelectOption>
+            </IonSelect>
+          </IonItem>
         </div>
       </GCustomisedModal>
     </div>

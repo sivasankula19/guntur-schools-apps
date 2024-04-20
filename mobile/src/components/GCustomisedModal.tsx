@@ -9,6 +9,7 @@ import {
   createAnimation,
   IonCardContent,
   IonIcon,
+  IonFooter,
 } from '@ionic/react';
 import { closeOutline } from 'ionicons/icons';
 import React, { useRef } from 'react';
@@ -18,11 +19,13 @@ const GCustomisedModal: React.FC<ICustomModalProps> = ({
   onClose,
   onSave,
   children,
+  isOpen
 }) => {
   const modal = useRef<HTMLIonModalElement>(null);
 
   function dismiss() {
     modal.current?.dismiss();
+    onClose()
   }
 
   const enterAnimation = (baseEl: HTMLElement) => {
@@ -57,26 +60,31 @@ const GCustomisedModal: React.FC<ICustomModalProps> = ({
       enterAnimation={enterAnimation}
       leaveAnimation={leaveAnimation}
       backdropDismiss={false}
-      isOpen={true}
+      isOpen={isOpen}
     >
       <IonHeader>
         <IonToolbar>
-        <IonTitle>{title}</IonTitle>
+          <IonTitle>{title}</IonTitle>
           <IonButtons slot="end">
-            <IonButton onClick={onClose}>
+            <IonButton onClick={dismiss}>
               <IonIcon icon={closeOutline} slot="icon-only" />
             </IonButton>
           </IonButtons>
         </IonToolbar>
       </IonHeader>
       <IonCardContent>{children}</IonCardContent>
-      <IonToolbar>
-        <div className='g_flex g_space_evnly g_full_width'>
-        <IonButton className='gmodal-btn gmodal-cancel' onClick={onClose}>Cancel</IonButton>
-        <IonButton className='gmodal-btn gmodal-save' onClick={onSave}>Save</IonButton>
-        </div>
-       
-      </IonToolbar>
+      <IonFooter>
+        <IonToolbar>
+          <div className="g_flex g_space_btwn g_full_width">
+            <IonButton className="gmodal-btn gmodal-cancel" onClick={dismiss}>
+              Cancel
+            </IonButton>
+            <IonButton className="gmodal-btn gmodal-save" onClick={onSave}>
+              Save
+            </IonButton>
+          </div>
+        </IonToolbar>
+      </IonFooter>
     </IonModal>
   );
 };
@@ -86,6 +94,7 @@ interface ICustomModalProps {
   onClose: () => void;
   onSave: () => void;
   children: React.ReactNode;
+  isOpen:boolean
 }
 
 export default GCustomisedModal;

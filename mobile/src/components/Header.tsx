@@ -10,7 +10,7 @@ const Header: React.FC = () => {
         <IonButtons slot="start">
           <IonMenuButton />
         </IonButtons>
-        <IonTitle >GVM School</IonTitle>
+        <IonTitle  className='header_schoolname'>Government High School Madugula sov</IonTitle>
       </IonToolbar>
     </IonHeader>
   );
