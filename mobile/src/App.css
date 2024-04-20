@@ -753,6 +753,72 @@ ion-modal{
   position: relative;
 }
 
+.custom-ion-input .input-wrapper.sc-ion-input-md {
+    height:31px;
+    min-height:31px;
+}
 
+.custom-ion-input .label-text-wrapper.sc-ion-input-md {
+  margin-top:-8px;
+}
+
+.custom-ion-input .input-fill-outline.sc-ion-input-md-h {
+  min-height:40px !important;
+}
+
+.d-flex-jc-center{
+   display:flex;
+   justify-content: center;
+}
+.profile-card{
+  border: 1px solid rgb(216, 227, 235);
+    width: 90%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px 10px 5px
+}
+.profile-name{
+  font-size: 1.5rem;
+  color: #1D7AF5;
+}
+.display-data{
+  overflow: auto;
+  max-height: 40vh;
+  padding-bottom: 55px;
+}
+
+.display-data-main{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 2% 5%;
+}
+.display-data-key{
+  width: 43%;
+  font-weight: bold;
+  font-size: 14px;
+}
+.display-data-value{
+  width: 57%;
+  border: 1px solid rgb(29, 122, 245);
+  padding: 2%;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 5px;
+  color: rgb(29, 122, 245);
+}
+.bottom-button{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: fixed;
+  bottom: 6%;
+}
+.button-text{
+  width: 80%;
+  font-weight: bold;
+  text-transform: none;
+}
 
 
