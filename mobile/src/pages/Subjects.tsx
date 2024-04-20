@@ -12,7 +12,7 @@ import {
 } from '@ionic/react';
 import React, { useState } from 'react';
 import { classSubjects } from '../common/utility';
-import { starOutline } from 'ionicons/icons';
+import { calculatorOutline, starOutline } from 'ionicons/icons';
 import ProgressBar from '../components/ProgressBar';
 
 const Subjects: React.FC = () => {
@@ -71,24 +71,28 @@ const Subjects: React.FC = () => {
             <IonCard key={item.subjectCode}>
               <IonCardContent className='subject_item_card_content'>
                 <IonItem>
-                  <IonText>
-                    <h3>{item.subjectName}</h3>
-                  </IonText>
-                  <ProgressBar filled={40}></ProgressBar>
-                  <IonIcon icon={starOutline}></IonIcon>
+                  <div className='g_flex g_space_btwn g_full_width'>
+                    <IonText className='subject_text_name'>
+                      <h3>{item.subjectName}</h3>
+                    </IonText>
+                    <div className='progress_container g_flex g_align_cntr'>
+                      <ProgressBar filled={item.percentCovered}></ProgressBar>
+                    </div>
+                    <IonIcon className={`${item.isFavarouite && 'subject_selected_icon'}`} icon={starOutline}></IonIcon>
+                  </div>
+
                 </IonItem>
                 <IonItem>
                   <div className='g_flex g_space_btwn g_full_width'>
-                  <IonText>
-                    <h3>{item.subjectName}</h3>
-                  </IonText>
-                  <IonText>
-                  <a>Time Table</a>
-                  </IonText>
-                 
-                  <a>Marks</a>
+                    <IonText>
+                      <a>{item.subjectTeacher}</a>
+                    </IonText>
+                    <IonText>
+                      <a>Time Table</a>
+                    </IonText>
+                    <a>Marks</a>
+                    <IonIcon icon={calculatorOutline}></IonIcon>
                   </div>
-                  
                 </IonItem>
               </IonCardContent>
             </IonCard>

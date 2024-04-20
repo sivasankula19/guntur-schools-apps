@@ -28,7 +28,7 @@ const StudentList: React.FC = () => {
 
   return (
     <div>
-      <div className="g_flex g_space_btwn g_aligncntr bread_toggle_container">
+      <div className="g_flex g_space_btwn g_align_cntr bread_toggle_container">
         <IonBreadcrumbs>
           <IonBreadcrumb>
             <div>Home</div> <div slot="separator"></div>
@@ -114,8 +114,8 @@ const StudentList: React.FC = () => {
         {studentsDataList.map((item) => (
           <IonCard key={item.id} className="student_card">
             <IonCardContent className="card_content">
-              <div className="g_flex g_space_btwn g_aligncntr">
-                <div className="g_flex first_container g_aligncntr">
+              <div className="g_flex g_space_btwn g_align_cntr">
+                <div className="g_flex first_container g_align_cntr">
                   <div className="profile_item">
                     <img
                       className="prifile_image"

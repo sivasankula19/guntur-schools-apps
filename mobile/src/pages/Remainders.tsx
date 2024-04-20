@@ -58,7 +58,7 @@ const Remainders: React.FC = () => {
 
   return (
     <div>
-      <div className="g_flex g_space_btwn g_aligncntr bread_toggle_container">
+      <div className="g_flex g_space_btwn g_align_cntr bread_toggle_container">
         <IonBreadcrumbs>
           <IonBreadcrumb>
             <div>Home</div> <div slot="separator"></div>
@@ -111,7 +111,7 @@ const Remainders: React.FC = () => {
                           </div>
                           <div className="remainder_item_time_block g_flex">
                             <div
-                              className={`remainder_status g_flex g_aligncntr g_jstfy_content_cntr ${
+                              className={`remainder_status g_flex g_align_cntr g_jstfy_content_cntr ${
                                 item.status == 'Delayed'
                                   ? 'danger'
                                   : item.status == 'Done'

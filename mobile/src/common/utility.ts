@@ -166,7 +166,7 @@ export const classSubjects = [
     subjectCode:'TEL',
     subjectTeacher: 'SomeTeacher',
     subjectTeacherId:'gvt-t-008',
-    percentCovered:'70%',
+    percentCovered:100,
     isFavarouite:false,
   },
   {
@@ -174,15 +174,15 @@ export const classSubjects = [
     subjectCode:'ENG',
     subjectTeacher: 'SomeTeacher',
     subjectTeacherId:'gvt-t-010',
-    percentCovered:'70%',
-    isFavarouite:false,
+    percentCovered:70,
+    isFavarouite:true,
   },
   {
     subjectName: 'Hindi',
     subjectCode:'HIN',
     subjectTeacher: 'SomeTeacher',
     subjectTeacherId:'gvt-t-023',
-    percentCovered:'70%',
+    percentCovered:86,
     isFavarouite:false,
   },
   {
@@ -190,7 +190,7 @@ export const classSubjects = [
     subjectCode:'MAT',
     subjectTeacher: 'SomeTeacher',
     subjectTeacherId:'gvt-t-019',
-    percentCovered:'70%',
+    percentCovered:80,
     isFavarouite:false,
   },
   {
@@ -198,7 +198,7 @@ export const classSubjects = [
     subjectCode:'PHY',
     subjectTeacher: 'SomeTeacher',
     subjectTeacherId:'gvt-t-012',
-    percentCovered:'70%',
+    percentCovered:20,
     isFavarouite:false,
   },
   {
@@ -206,7 +206,7 @@ export const classSubjects = [
     subjectCode:'CHE',
     subjectTeacher: 'SomeTeacher',
     subjectTeacherId:'gvt-t-038',
-    percentCovered:'70%',
+    percentCovered:90,
     isFavarouite:false,
   },
   {
@@ -214,7 +214,7 @@ export const classSubjects = [
     subjectCode:'SOC',
     subjectTeacher: 'SomeTeacher',
     subjectTeacherId:'gvt-t-002',
-    percentCovered:'70%',
+    percentCovered:0,
     isFavarouite:false,
   }
 ]
