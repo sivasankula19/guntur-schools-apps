@@ -61,6 +61,7 @@ const GCustomisedModal: React.FC<ICustomModalProps> = ({
       leaveAnimation={leaveAnimation}
       backdropDismiss={false}
       isOpen={isOpen}
+      className='g_customised_modal'
     >
       <IonHeader>
         <IonToolbar>
