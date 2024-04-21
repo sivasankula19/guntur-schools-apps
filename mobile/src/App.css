@@ -9,7 +9,7 @@
 
 /* app header */
 
-.header_schoolname{
+.header_schoolname {
   padding-right: 12px;
   padding-left: 50px;
 }
@@ -23,15 +23,15 @@
 
 /* menu card */
 
-.menu_avatar{
+.menu_avatar {
   border: 1px solid;
 }
 
-.menu_user_name{
+.menu_user_name {
   margin-left: 14px;
 }
 
-.menu_user_name p{
+.menu_user_name p {
   margin-top: 0;
   margin-bottom: 14px;
 }
@@ -72,7 +72,7 @@
 }
 
 
-.g_full_width{
+.g_full_width {
   width: 100%;
 }
 
@@ -511,8 +511,8 @@ ion-toggle::part(track) {
 
 .add_remainder_btn {
   font-size: 12px;
-  --padding-top:0;
-  --padding-bottom:0;
+  --padding-top: 0;
+  --padding-bottom: 0;
 }
 
 .card_remainder {
@@ -608,15 +608,16 @@ ion-toggle::part(track) {
 .two_lines_ellipsis {
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 2; 
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
   white-space: normal;
 }
 
-.remainders_container_scroll{
+.remainders_container_scroll {
   overflow-y: auto;
   height: auto;
+
   @media (min-height: 400px) and (max-height: 700px) {
     max-height: 67vh;
   }
@@ -642,25 +643,25 @@ ion-toggle::part(track) {
   color: #FFA500;
 }
 
-.add_event_input{
+.add_event_input {
   border: 1px solid;
   border-radius: 8px;
   padding: 0 12px !important;
 }
 
-.date_time_select_item{
-  --inner-padding-end:0;
-  --padding-start:0;
+.date_time_select_item {
+  --inner-padding-end: 0;
+  --padding-start: 8px;
   margin-bottom: 12px;
 }
 
-.custom_modal_item{
-  --inner-padding-end:0;
-  --padding-start:0;
+.custom_modal_item {
+  --inner-padding-end: 0;
+  --padding-start: 0;
   margin-bottom: 12px;
 }
 
-.cutsome_textarea{
+.cutsome_textarea {
   border: 1px solid;
   border-radius: 8px;
   padding: 0 8px;
@@ -668,10 +669,10 @@ ion-toggle::part(track) {
 
 
 .custome_date_time_modal {
-  background:  rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5);
 }
 
-.view_card_item{
+.view_card_item {
   margin: 12px;
   animation: slideIn 0.8s forwards;
 }
@@ -684,48 +685,50 @@ ion-toggle::part(track) {
 
 /* ion modal */
 
-.dark ion-modal{
-  --ion-backdrop-color:#fff;
+.dark ion-modal {
+  --ion-backdrop-color: #fff;
 }
 
-ion-modal{
+.g_customised_modal {
   --height: fit-content;
-  --width:90%;
-  --border-radius:8px;
-  --max-height:80%;
+  --width: 90%;
+  --border-radius: 8px;
+  --max-height: 80%;
 }
 
-.gmodal-btn{
+.gmodal-btn {
   font-size: 12px;
   font-weight: bold;
-  width:38%;
+  width: 38%;
   height: 30px;
-  --padding-top:0px;
-  --padding-bottom:0px;
+  --padding-top: 0px;
+  --padding-bottom: 0px;
 }
 
-.gmodal-cancel{
+.gmodal-cancel {
   --background: #ffffff;
-  --color:#1D7AF5;
-  --ion-toolbar-background:none;
+  --color: #1D7AF5;
+  --ion-toolbar-background: none;
   --border-color: #1D7AF5;
   --border-style: solid;
   --border-width: 1px;
   --background-hover: #1d7bf546;
   --background-activated: #1d7bf546;
   --background-focused: #1d7bf546;
+  opacity: 1;
 
 }
 
-.gmodal-save{
-  --ion-toolbar-background:none;
+.gmodal-save {
+  --ion-toolbar-background: none;
 }
 
 
 /* Subjects */
 
-.subjects_cls_container{
+.subjects_cls_container {
   height: auto;
+
   @media (min-height: 400px) and (max-height: 700px) {
     max-height: 71vh;
   }
@@ -745,36 +748,37 @@ ion-modal{
   @media (min-height: 1201px) {
     max-height: 86vh;
   }
+
   height: auto;
   overflow-y: auto;
 }
 
-.subjects_cls_select{
- margin-right: 12px;
+.subjects_cls_select {
+  margin-right: 12px;
 }
 
-.subject_item_card_content{
+.subject_item_card_content {
   padding: 8px 0;
 }
 
-.custome_subject_item{
+.custome_subject_item {
   margin-bottom: 12px;
 }
 
-.subject_text_name{
+.subject_text_name {
   width: 36%;
 }
 
-.subject_text_name h3{
+.subject_text_name h3 {
   font-weight: bold;
   font-size: 16px;
 }
 
-.progress_container{
+.progress_container {
   width: 50%;
 }
 
-.subject_item_card_content ion-item{
+.subject_item_card_content ion-item {
   --inner-border-width: 0;
 }
 
@@ -782,18 +786,18 @@ ion-modal{
   font-size: 22px;
 }
 
-.subject_selected_icon{
+.subject_selected_icon {
   color: #ffd700;
 }
 
-.subject_item_card_content a{
+.subject_item_card_content a {
   font-size: 12px;
   text-decoration: underline;
 }
 
 /* progress bar */
 
-.progress_bar{
+.progress_bar {
   background-color: #D9D9D9;
   border-radius: 8px;
   height: 10px;
@@ -801,66 +805,77 @@ ion-modal{
   position: relative;
 }
 
-.bar{
+.bar {
   height: 100%;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
 }
 
-.full_progress_inner{
+.full_progress_inner {
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
 }
 
 
 .custom-ion-input .input-wrapper.sc-ion-input-md {
-    height:31px;
-    min-height:31px;
+  height: 31px;
+  min-height: 31px;
 }
 
 .custom-ion-input .label-text-wrapper.sc-ion-input-md {
-  margin-top:-8px;
+  margin-top: -8px;
 }
 
 .custom-ion-input .input-fill-outline.sc-ion-input-md-h {
-  min-height:40px !important;
+  min-height: 40px !important;
 }
 
-.d-flex-jc-center{
-   display:flex;
-   justify-content: center;
+.d-flex-jc-center {
+  display: flex;
+  justify-content: center;
 }
-.profile-card{
+
+.profile-card {
   border: 1px solid rgb(216, 227, 235);
-    width: 90%;
-    padding: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0px 10px 5px
+  width: 90%;
+  height: 42vh;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0px 10px 5px;
+  justify-content: space-evenly;
 }
-.profile-name{
+
+.profile-card img {
+  border-radius: 8px;
+}
+
+.profile-name {
   font-size: 1.5rem;
   color: #1D7AF5;
 }
-.display-data{
+
+.display-data {
   overflow: auto;
   max-height: 40vh;
   padding-bottom: 55px;
 }
 
-.display-data-main{
+.display-data-main {
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 2% 5%;
 }
-.display-data-key{
+
+.display-data-key {
   width: 43%;
   font-weight: bold;
   font-size: 14px;
 }
-.display-data-value{
+
+.display-data-value {
   width: 57%;
   border: 1px solid rgb(29, 122, 245);
   padding: 2%;
@@ -868,17 +883,111 @@ ion-modal{
   box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 5px;
   color: rgb(29, 122, 245);
 }
-.bottom-button{
+
+.bottom-button {
   display: flex;
   justify-content: center;
   width: 100%;
   position: fixed;
   bottom: 6%;
 }
-.button-text{
+
+.button-text {
   width: 80%;
   font-weight: bold;
   text-transform: none;
 }
+
+/* Documents Section */
+
+.documents ion-accordion-group{
+  width: 90%;
+  margin: auto;
+  text-align: center;
+}
+
+.documents {
+  animation: slideIn 0.8s forwards;
+  max-height: 82vh;
+  overflow-y: auto;
+}
+
+.documents ion-accordion {
+ border: 1px solid;
+ border-color: #1D7AF5;
+}
+
+.documents ion-item {
+  border: 1px solid;
+  border-color: #1D7AF5;
+  margin: 8px;
+  --padding-start:8px;
+  --inner-padding-end:8px;
+}
+
+.documents ion-icon {
+  color: #1D7AF5;
+ }
+
+ .documents ion-label{
+  margin-left: 8px;
+  font-weight: bold;
+ }
+
+ .document_inner_content ion-label{
+  font-weight: normal !important;
+ }
+
+ .ion-accordion-toggle-icon {
+  color: #000000 !important;
+ }
+ 
+ .document_inner_content{
+  padding: 0;
+ }
+
+ .document_inner_content ion-item {
+  border-radius: 8px;
+ }
+
+ .inside-container-block{
+  max-height: 30vh;
+  overflow-y: auto;
+ }
+ 
+.documents_file_item{
+  width: 90%;
+  margin-left: 5% !important;
+}
+
+/* Document & Image Preview */
+
+.g_customised_image_doc_preview{
+  --height: 90vh;
+  --width: 95%;
+  --border-radius: 8px;
+  --max-height: 90%;
+}
+
+.close-btn_modal{
+  width: 80%;
+}
+
+.g_customised_image_doc_preview ion-footer{
+  display: flex;
+    justify-content: center;
+    padding-bottom: 12px;
+}
+
+.g_customised_image_doc_preview ion-toolbar{
+  padding: 4px;
+}
+
+
+
+
+
+
+
 
 

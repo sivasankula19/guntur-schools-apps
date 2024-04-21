@@ -220,4 +220,106 @@ export const classSubjects = [
 ]
     
 
+export const docData = [
+  {
+    title: 'School Documents',
+    id: 'gvt/doc/scl',
+    documents: [
+      {
+        docTitle: 'School Alumini Expert Data',
+        id: 'gvt/doc/scl/0001',
+      },
+      {
+        docTitle: `School Fees Structure`,
+        id: 'gvt/doc/scl/0002',
+      },
+      {
+        docTitle: `Staff Collabirations Reports`,
+        id: 'gvt/doc/scl/0003',
+      },
+      {
+        docTitle: `MOM on Enviroment Edu.`,
+        id: 'gvt/doc/scl/0004',
+      },
+    ],
+    childrens: [],
+  },
+  {
+    title: 'Class Documents',
+    id: 'gvt/doc/cls',
+    childrens: [
+      {
+        title: '10th Class',
+        id: 'gvt/doc/cls/10-cls',
+        documents: [
+          {
+            docTitle: 'English Grammer By Siva',
+            id: 'gvt/doc/cls/10-cls/001',
+          },
+          {
+            docTitle: `Physics Law of Motion Newton's`,
+            id: 'gvt/doc/cls/10-cls/002',
+          },
+          {
+            docTitle: `10th Mathematics Previous Questions`,
+            id: 'gvt/doc/cls/10-cls/003',
+          },
+        ],
+      },
+      {
+        title: '09th Class',
+        id: 'gvt/doc/cls/09-cls',
+        documents: [
+          {
+            docTitle: 'English Grammer By Siva',
+            id: 'gvt/doc/cls/09-cls/001',
+          },
+          {
+            docTitle: `Physics Law of Motion Newton's`,
+            id: 'gvt/doc/cls/09-cls/002',
+          },
+          {
+            docTitle: `9th Mathematics Previous Questions`,
+            id: 'gvt/doc/cls/09-cls/003',
+          },
+        ],
+      },
+      {
+        title: '08th Class',
+        id: 'gvt/doc/cls/08-cls',
+        documents: [
+          {
+            docTitle: '8th English Grammer By Siva',
+            id: 'gvt/doc/cls/08-cls/001',
+          },
+        ],
+      },
+    ],
+    documents: [
+      {
+        docTitle: 'All Class Common Doc',
+        id: 'gvt/doc/cls/001',
+      },
+    ],
+  },
+  {
+    title: 'Personal Documents',
+    id: 'gvt/doc/prs',
+    childrens: [],
+    documents: [
+      {
+        docTitle: 'My attendance report 1a',
+        id: 'gvt/doc/prs/001',
+      },
+      {
+        docTitle: 'My Progress print',
+        id: 'gvt/doc/prs/002',
+      },
+    ],
+  },
+];
+
+
+
+
 

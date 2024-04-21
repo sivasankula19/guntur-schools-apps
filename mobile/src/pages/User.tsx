@@ -67,7 +67,7 @@ const UserByID: React.FC = () => {
         <div className="d-flex-jc-center">
           <IonCard className="profile-card">
             <div className="user_id profile-name">Sankula sivaiah</div>
-            <img src={personCircleOutline} height="80%" width="80%"></img>
+            <img src={'https://st3.depositphotos.com/15648834/17930/v/450/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg'} height="80%" width="80%"></img>
           </IonCard>
         </div>
         <div className="display-data">
