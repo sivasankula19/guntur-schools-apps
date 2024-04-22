@@ -3,12 +3,14 @@ import {
   IonAccordionGroup,
   IonBreadcrumb,
   IonBreadcrumbs,
+  IonButton,
   IonIcon,
   IonItem,
   IonLabel,
   IonText,
 } from '@ionic/react';
 import {
+  addCircleOutline,
   caretDownOutline,
   documentOutline,
   folderOutline,
@@ -20,11 +22,10 @@ import GImageDocPreview from '../components/GImageDocPreview';
 import { docData } from '../common/utility';
 
 const Documents: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedSrc, setSelectedSrc] = useState<any>('');
 
-  const [isOpen, setIsOpen] = useState(false)
-  const [selectedSrc , setSelectedSrc] = useState<any>('')
-
-  const accordianContent = docData
+  const accordianContent = docData;
   return (
     <div>
       <IonBreadcrumbs>
@@ -75,7 +76,7 @@ const Documents: React.FC = () => {
                                   <IonIcon icon={documentOutline}></IonIcon>
                                   <IonLabel>{innerItemDoc.docTitle}</IonLabel>
                                   <IonText>
-                                    <a onClick={()=>setIsOpen(true)}>view</a>
+                                    <a onClick={() => setIsOpen(true)}>view</a>
                                   </IonText>
                                 </IonItem>
                               ))}
@@ -101,7 +102,7 @@ const Documents: React.FC = () => {
                         <IonIcon icon={documentOutline}></IonIcon>
                         <IonLabel>{itemDoc.docTitle}</IonLabel>
                         <IonText>
-                          <a onClick={()=>setIsOpen(true)}>view</a>
+                          <a onClick={() => setIsOpen(true)}>view</a>
                         </IonText>
                       </IonItem>
                     ))}
@@ -129,12 +130,19 @@ const Documents: React.FC = () => {
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5Pxol7CM9TBMVe8l7LW-0nwsGZQiOGd48Tw&s'
         }
         title="Student Name"
-        onClose={() => {setIsOpen(false)}}
+        onClose={() => {
+          setIsOpen(false);
+        }}
         onDownload={() => {}}
         isOpen={isOpen}
       >
         <div>helo</div>
       </GImageDocPreview>
+      <div className="add_documents_btn">
+        <IonButton className="gmodal-cancel">
+          <IonIcon icon={addCircleOutline}></IonIcon> Add Doc
+        </IonButton>
+      </div>
     </div>
   );
 };

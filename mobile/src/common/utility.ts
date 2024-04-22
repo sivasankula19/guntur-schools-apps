@@ -321,5 +321,21 @@ export const docData = [
 
 
 
+export const convertToMultipleWords = (str: string) => {
+  let result = '';
+  for (let i = 0; i < str.length; i++) {
+    if (i == 0) {
+      result += str[i].toUpperCase();
+    } else {
+      if (str[i] === str[i].toUpperCase()) {
+        result += ' ';
+      }
+      result += str[i];
+    }
+  }
+  return result.trim();
+};
+
+
 
 
