@@ -54,7 +54,7 @@ const Attendance: React.FC = () => {
               setViewMode('list');
             }}
             className={`list_viwe_icon ${viewMode === 'list' && 'selected'}`}
-            size="large"
+           
             icon={listSharp}
           ></IonIcon>
           <IonIcon
@@ -62,7 +62,7 @@ const Attendance: React.FC = () => {
               setViewMode('grid');
             }}
             className={`grdi_view_icon ${viewMode === 'grid' && 'selected'}`}
-            size="large"
+         
             icon={appsSharp}
           ></IonIcon>
         </div>
@@ -107,7 +107,7 @@ const Attendance: React.FC = () => {
                       className={`${
                         item.attendanceMarked >= 1
                           ? item.am
-                            ? 'present_recorded'
+                            ? 'success'
                             : 'absent_recorded'
                           : 'attendance_not_recorded'
                       }`}
@@ -132,7 +132,7 @@ const Attendance: React.FC = () => {
                       className={`${
                         item.attendanceMarked == 2
                           ? item.pm
-                            ? 'present_recorded'
+                            ? 'success'
                             : 'absent_recorded'
                           : 'attendance_not_recorded'
                       }`}
@@ -197,7 +197,7 @@ const Attendance: React.FC = () => {
                               className={`${
                                 dayItem?.attendanceMarked >= 1
                                   ? dayItem?.am
-                                    ? 'present_recorded'
+                                    ? 'success'
                                     : 'absent_recorded'
                                   : 'attendance_not_recorded'
                               }`}
@@ -214,7 +214,7 @@ const Attendance: React.FC = () => {
                               className={`${
                                 dayItem?.attendanceMarked == 2
                                   ? dayItem?.pm
-                                    ? 'present_recorded'
+                                    ? 'success'
                                     : 'absent_recorded'
                                   : 'attendance_not_recorded'
                               }`}

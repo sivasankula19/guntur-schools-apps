@@ -10,6 +10,7 @@ import {
     IonIcon,
     IonFooter,
     IonImg,
+    IonLabel,
   } from '@ionic/react';
   import { arrowBackOutline, closeOutline, downloadOutline } from 'ionicons/icons';
   import React, { useRef } from 'react';
@@ -66,8 +67,8 @@ import {
       >
         <IonHeader>
           <IonToolbar>
-            <IonIcon  onClick={dismiss} size='large' icon={arrowBackOutline}></IonIcon>
-            <IonTitle slot='start'>{title}</IonTitle>
+            <IonIcon  onClick={dismiss} size='large'  slot='start' icon={arrowBackOutline}></IonIcon>
+            <IonLabel className='doc_preview_title' slot='start'>{title}</IonLabel>
             <IonButtons slot="end">
               <IonButton>
                 <IonIcon icon={downloadOutline} slot="icon-only" />

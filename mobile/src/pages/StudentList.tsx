@@ -11,6 +11,7 @@ import {
 } from '@ionic/react';
 import React, { useState } from 'react';
 import { studentDummyData } from '../common/utility';
+import GBreadCrumbs from '../components/GBreadCrumbs';
 
 const StudentList: React.FC = () => {
   const [isFilterEnabled, setIsFilterEnabled] = useState(true);
@@ -26,16 +27,12 @@ const StudentList: React.FC = () => {
     //  debounce function can be excuted!!! here
   };
 
+  const breadCrumbsValue = [{bName:'Home', path:'/'},{bName:'Students List', path:'/students-list'}]
+
   return (
     <div>
       <div className="g_flex g_space_btwn g_align_cntr bread_toggle_container">
-        <IonBreadcrumbs>
-          <IonBreadcrumb>
-            <div>Home</div> <div slot="separator"></div>
-          </IonBreadcrumb>
-          <div className="separator_bread">/</div>
-          <IonBreadcrumb>Students List</IonBreadcrumb>
-        </IonBreadcrumbs>
+        <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
         <div>
           <IonToggle
             className="custom-toggle"

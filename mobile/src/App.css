@@ -120,7 +120,7 @@
 }
 
 .card_content {
-  padding: 8px;
+  padding: 10px;
 }
 
 .title_name {
@@ -130,6 +130,7 @@
 
 .user_id {
   text-align: center;
+  margin-bottom: 4px;
 }
 
 .user_id_data {
@@ -322,7 +323,13 @@ ion-toggle::part(track) {
 }
 
 .list_viwe_icon {
+  font-size: 28px;
   margin-right: 12px;
+}
+
+.grdi_view_icon{
+  font-size: 22px;
+  margin-bottom: 4px;
 }
 
 .selected {
@@ -395,7 +402,7 @@ ion-toggle::part(track) {
 }
 
 
-.present_recorded {
+.success {
   color: #00FF00;
 }
 
@@ -929,6 +936,18 @@ ion-toggle::part(track) {
   color: #1D7AF5;
  }
 
+ .doc_preview_title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2; 
+  line-height: 1.2em;
+  max-height: 2.4em;
+  font-weight: 600;
+  color: #1D7AF5;
+ }
+
  .documents ion-label{
   margin-left: 8px;
   font-weight: bold;
@@ -960,6 +979,13 @@ ion-toggle::part(track) {
   margin-left: 5% !important;
 }
 
+.add_documents_btn {
+  position: absolute;
+    bottom: 44px;
+    z-index: 1;
+    right: 12px;
+}
+
 /* Document & Image Preview */
 
 .g_customised_image_doc_preview{
@@ -983,6 +1009,116 @@ ion-toggle::part(track) {
   padding: 4px;
 }
 
+
+/* Progress card */
+
+.progress_card ion-card {
+  margin: 4px 16px;
+}
+
+.progerss_student_content{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 8px;
+  justify-content: center;
+}
+
+.progress_card ion-item{
+  width: 46%;
+  --inner-border-width: 0;
+  --padding-start:8px;
+  --padding-end:0px;
+  --inner-padding-end:8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding-bottom: 4px;
+  margin: 4px;
+}
+
+.progress_card ion-item p{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1; 
+  line-height: 1.2em;
+  max-height: 1.8em;
+  font-weight: 600;
+  color: #1D7AF5;
+}
+
+.student_info_item{
+  flex-direction: column;
+}
+
+.student_info_item span {
+  font-size: 12px;
+}
+
+.student_info_item h5{
+  font-weight: 600;
+}
+
+.tabs_container_custom{
+  width: 92%;
+  margin: auto;
+}
+
+.tabs_progress_card{
+  width: 82%;
+  overflow-x: auto;
+}
+
+.tabs_progress_card ion-segment {
+  animation: slideIn 0.8s forwards;
+}
+
+.ion-segment-scroll-container {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.progress_icons_container{
+  width: 18%;
+  margin: 4px 8px 4px 12px;
+}
+
+.progress_icons_container .list_viwe_icon{
+  font-size: 28px;
+}
+
+.progress_icons_container .grdi_view_icon{
+  font-size: 22px;
+  margin-bottom: 0 !important;
+}
+
+.g_custom_tabs{
+  display: flex;
+}
+
+.g_custom_tabs button{
+  background-color: white;
+  border-right: 2px solid;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 10px 15px;
+  font-size: 14px;
+  margin-right: 10px;
+  width: fit-content;
+  max-width: 200px;
+  min-width: 100px;
+}
+
+.selected_segment_btn{
+  border-bottom: 2px solid;
+  border-bottom-color: #1D7AF5;
+  color: #1D7AF5;
+  font-weight: 600;
+}
+
+.progress_marks_view{
+  padding: 12px;
+}
 
 
 

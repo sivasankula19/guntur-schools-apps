@@ -116,7 +116,7 @@ const Remainders: React.FC = () => {
                                   ? 'danger'
                                   : item.status == 'Done'
                                   ? 'orange_cls'
-                                  : 'present_recorded'
+                                  : 'success'
                               }`}
                             >
                               {item.status}
