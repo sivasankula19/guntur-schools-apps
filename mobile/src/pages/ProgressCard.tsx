@@ -19,7 +19,7 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
-import { convertToMultipleWords } from '../common/utility';
+import { convertToMultipleWords, unitMarksData } from '../common/utility';
 import {
   appsSharp,
   gridSharp,
@@ -60,8 +60,11 @@ const ProgressCard: React.FC = () => {
   };
 
   return (
-    <div className="progress_card">
-      <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
+    <>
+      <div className='breadcrumbs_progress'>
+        <GBreadCrumbs  data={breadCrumbsValue}></GBreadCrumbs>
+      </div>
+      <div className="progress_card">
       <IonCard>
         <IonCardContent className="progerss_student_content">
           {Object.keys(studentInfo).map((key: string) => (
@@ -98,8 +101,9 @@ const ProgressCard: React.FC = () => {
           {viewMode === 'list' && (
             <>
               <div className="g_custom_tabs">
-                {tabUnitsData.map((tabItem) => (
+                {tabUnitsData.map((tabItem, index: number) => (
                   <button
+                    key={index}
                     className={`g_custom_tab ${
                       selectedTab === tabItem.id && 'selected_segment_btn'
                     }`}
@@ -141,6 +145,8 @@ const ProgressCard: React.FC = () => {
         </IonCardContent>
       </IonCard>
     </div>
+    </>
+   
   );
 };
 
@@ -157,49 +163,13 @@ const RenderSelectedTable: React.FC<IBreadCrumbsProps> = ({
 
   const columnData = [
     { name: 'Subject', field: 'subjectName' },
+    {name:'Total', field:'total'},
     { name: 'Grade', field: 'grade' },
     { name: 'Marks', field: 'marks' },
     { name: 'Remarks', field: 'remarks' },
   ];
 
-  const [unitData, setUnitData] = useState([
-    {
-      subjectName: 'Telugu',
-      grade: 'A',
-      marks: 90,
-      remarks: 'Pass',
-    },
-    {
-      subjectName: 'Englis',
-      grade: 'B',
-      marks: 70,
-      remarks: 'Pass',
-    },
-    {
-      subjectName: 'Hindi',
-      grade: 'A',
-      marks: 91,
-      remarks: 'Pass',
-    },
-    {
-      subjectName: 'Maths',
-      grade: 'A',
-      marks: 99,
-      remarks: 'Pass',
-    },
-    {
-      subjectName: 'Science',
-      grade: 'c',
-      marks: 60,
-      remarks: 'Pass',
-    },
-    {
-      subjectName: 'Social',
-      grade: 'D',
-      marks: 49,
-      remarks: 'Pass',
-    },
-  ]);
+  const [unitData, setUnitData] = useState(unitMarksData);
 
   return (
     <>
@@ -213,10 +183,12 @@ const RenderSelectedTable: React.FC<IBreadCrumbsProps> = ({
         <div className="g_flex">
           {columnData.map((headItem, hIndex) => (
             <div
+              key={hIndex}
               style={{
                 width: `${100 / columnData.length}%`,
-                borderRight:  hIndex !== columnData.length-1 ? '1px solid' : 'none',
-                height:'40px',
+                borderRight:
+                  hIndex !== columnData.length - 1 ? '1px solid' : 'none',
+                height: '40px',
               }}
               className="g_txt_center g_flex g_align_cntr g_jstfy_content_cntr"
             >
@@ -224,16 +196,22 @@ const RenderSelectedTable: React.FC<IBreadCrumbsProps> = ({
             </div>
           ))}
         </div>
-
-        {unitData.map((unitItem: any) => (
-          <div className='g_flex'>
+        {unitData.map((unitItem: any, index: number) => (
+          <div className="g_flex" key={index}>
             {columnData.map((bodyItem: any, bIndex) => (
-              <div style={{
-                width: `${100 / columnData.length}%`,
-                borderRight: bIndex !== columnData.length-1 ? '1px solid' : 'none',
-                height:'40px',
-              }}
-              className="g_txt_center g_flex g_align_cntr g_jstfy_content_cntr">{unitItem[bodyItem.field]}</div>
+              <div
+                key={bIndex}
+                style={{
+                  width: `${100 / columnData.length}%`,
+                  borderRight:
+                    bIndex !== columnData.length - 1 ? '1px solid' : 'none',
+                  color: unitItem[bodyItem.field] === 'Pass' ? 'green' : unitItem[bodyItem.field] === 'Fail' ? 'red' : '',
+                  fontWeight: bodyItem.field === 'remarks' ? 'bold' : 'normal',
+                }}
+                className="g_txt_center g_flex g_align_cntr g_jstfy_content_cntr cell_marks"
+              >
+                {unitItem[bodyItem.field]}
+              </div>
             ))}
           </div>
         ))}
