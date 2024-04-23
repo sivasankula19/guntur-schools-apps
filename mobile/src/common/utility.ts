@@ -336,6 +336,182 @@ export const convertToMultipleWords = (str: string) => {
   return result.trim();
 };
 
+export const unitMarksData = [
+  {
+    subjectName: 'Telugu',
+    grade: 'A',
+    marks: 90,
+    remarks: 'Pass',
+    total:100,
+  },
+  {
+    subjectName: 'Englis',
+    grade: 'B',
+    marks: 70,
+    remarks: 'Pass',
+    total:100,
+  },
+  {
+    subjectName: 'Hindi',
+    grade: 'A',
+    marks: 91,
+    remarks: 'Pass',
+    total:100,
+  },
+  {
+    subjectName: 'Maths',
+    grade: 'E',
+    marks: 19,
+    remarks: 'Fail',
+    total:100,
+  },
+  {
+    subjectName: 'Science',
+    grade: 'c',
+    marks: 60,
+    remarks: 'Pass',
+    total:100,
+  },
+  {
+    subjectName: 'Social',
+    grade: 'D',
+    marks: 49,
+    remarks: 'Pass',
+    total:100,
+  },
+];
+
+export const allUnitsMarks = [
+  {
+    id:'unit1',
+    title:'Unit 1',
+    conductedFor:100,
+    data:[
+      {
+        subjectName:'Telugu',
+        grad:'A',
+        marks:90,
+        remarks:'Pass'
+      },
+      {
+        subjectName: 'Englis',
+        grade: 'B',
+        marks: 70,
+        remarks: 'Pass',
+      },
+      {
+        subjectName: 'Hindi',
+        grade: 'A',
+        marks: 91,
+        remarks: 'Pass',
+      },
+      {
+        subjectName: 'Maths',
+        grade: 'E',
+        marks: 19,
+        remarks: 'Fail',
+      },
+      {
+        subjectName: 'Science',
+        grade: 'c',
+        marks: 60,
+        remarks: 'Pass',
+      },
+      {
+        subjectName: 'Social',
+        grade: 'D',
+        marks: 49,
+        remarks: 'Pass',
+      },
+    ]
+  },
+  {
+    title:'Unit 2',
+    id:'unit2',
+    data:[
+      {
+        subjectName:'Telugu',
+        grad:'A',
+        marks:90,
+        remarks:'Pass'
+      },
+      {
+        subjectName: 'Englis',
+        grade: 'B',
+        marks: 70,
+        remarks: 'Pass',
+      },
+      {
+        subjectName: 'Hindi',
+        grade: 'A',
+        marks: 91,
+        remarks: 'Pass',
+      },
+      {
+        subjectName: 'Maths',
+        grade: 'E',
+        marks: 19,
+        remarks: 'Fail',
+      },
+      {
+        subjectName: 'Science',
+        grade: 'c',
+        marks: 60,
+        remarks: 'Pass',
+      },
+      {
+        subjectName: 'Social',
+        grade: 'D',
+        marks: 49,
+        remarks: 'Pass',
+      },
+    ]
+  },
+  {
+    title:'Final',
+    id:'final',
+    data:[
+      {
+        subjectName:'Telugu',
+        grad:'A',
+        marks:90,
+        remarks:'Pass'
+      },
+      {
+        subjectName: 'Englis',
+        grade: 'B',
+        marks: 70,
+        remarks: 'Pass',
+      },
+      {
+        subjectName: 'Hindi',
+        grade: 'A',
+        marks: 91,
+        remarks: 'Pass',
+      },
+      {
+        subjectName: 'Maths',
+        grade: 'E',
+        marks: 19,
+        remarks: 'Fail',
+      },
+      {
+        subjectName: 'Science',
+        grade: 'c',
+        marks: 60,
+        remarks: 'Pass',
+      },
+      {
+        subjectName: 'Social',
+        grade: 'D',
+        marks: 49,
+        remarks: 'Pass',
+      },
+    ]
+  }
+]
+
+
 
 
 

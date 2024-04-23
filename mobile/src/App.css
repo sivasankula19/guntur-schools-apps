@@ -1016,6 +1016,13 @@ ion-toggle::part(track) {
   margin: 4px 16px;
 }
 
+.progress_card {
+  height: auto;
+  max-height: 83vh;
+  overflow-y: auto;
+  padding-bottom: 30px;
+}
+
 .progerss_student_content{
   display: flex;
   flex-wrap: wrap;
@@ -1033,6 +1040,14 @@ ion-toggle::part(track) {
   border-radius: 8px;
   padding-bottom: 4px;
   margin: 4px;
+}
+
+.dark .progress_card ion-item{
+  box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.6); 
+}
+
+.breadcrumbs_progress{
+  margin: 0 16px;
 }
 
 .progress_card ion-item p{
@@ -1120,6 +1135,18 @@ ion-toggle::part(track) {
   padding: 12px;
 }
 
+.cell_marks{
+  border-color: #000000 !important;
+  height: 40px;
+}
+
+.dark .cell_marks{
+  border-color: #ffffff !important;
+}
+
+.breadcrumb-native{
+  padding: 0;
+}
 
 
 
