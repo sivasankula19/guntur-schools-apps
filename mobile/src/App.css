@@ -1,3 +1,25 @@
+
+/* Width of the scrollbar */
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+/* Track (background) of the scrollbar */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle (thumb) of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 .custome_footer_ion {
   position: absolute;
   bottom: 0;
@@ -36,6 +58,10 @@
   margin-bottom: 14px;
 }
 
+
+.font_bld{
+  font-weight: bold;
+}
 
 
 /* Student List & Staff List css */
@@ -246,6 +272,21 @@ ion-toggle::part(track) {
 
 .filter_card_content {
   padding: 8px;
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+ion-breadcrumbs {
+  animation: slideInFromLeft 0.8s linear;
 }
 
 @keyframes slideIn {
@@ -1030,6 +1071,10 @@ ion-toggle::part(track) {
   justify-content: center;
 }
 
+.progerss_student_content ion-item {
+  animation: slideIn 0.8s forwards;
+}
+
 .progress_card ion-item{
   width: 46%;
   --inner-border-width: 0;
@@ -1147,6 +1192,43 @@ ion-toggle::part(track) {
 .breadcrumb-native{
   padding: 0;
 }
+
+.marks_colum{
+  border-bottom: 1px solid;
+  border-bottom-color: #1d7bf561;
+}
+
+.list_mark_view_container{
+  padding: 12px 0 40px 12px;
+  font-size: 0.8rem;
+}
+
+.marks_column_header{
+  background-color: #F5F5F5;
+}
+
+.dark .marks_column_header {
+  background-color: #505050;
+}
+
+.grand_marks{
+ width: 40%;
+}
+
+.exam_rank{
+  width: 40%;
+}
+
+.mark_rank_container{
+  padding: 0 12px;
+}
+
+.horizontal_marks_container{
+  width: 75%;
+  max-width: 75%;
+  overflow-x: auto;
+}
+
 
 
 

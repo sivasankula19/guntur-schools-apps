@@ -4,7 +4,7 @@ import Dashboard from '../pages/Dashboard';
 import Attendance from '../pages/Attendance';
 import StudentList from '../pages/StudentList';
 import StaffList from '../pages/StaffList';
-import ProgressCard from '../pages/ProgressCard';
+import ProgressCard from '../pages/ProgressCard/ProgressCard';
 import Subjects from '../pages/Subjects';
 import FeesDues from '../pages/FeesDues';
 import TimeTable from '../pages/TimeTable';
