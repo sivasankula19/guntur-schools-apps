@@ -1,0 +1,22 @@
+{
+  "name": "guntur-schools-be",
+  "version": "1.0.0",
+  "description": "here the node apis are will be hosted",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "be",
+    "guntur",
+    "developers"
+  ],
+  "author": "siva",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
