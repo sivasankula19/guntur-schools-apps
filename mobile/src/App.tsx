@@ -1,4 +1,5 @@
 import {
+  IonAlert,
   IonApp,
   IonRouterOutlet,
   IonSplitPane,
@@ -30,11 +31,18 @@ import './Main.css';
 import UserByID from './pages/User';
 import { useEffect, useState } from 'react';
 import './App.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { setIsUserAcknowledgedMode, setMode } from './redux/reducers/darkModeSlice';
 
 setupIonicReact();
 
 const App: React.FC = () => {
-  const [themeToggle, setThemeToggle] = useState(false);
+  const [themeToggle, setThemeToggle] = useState(true);
+  const isDarkMode = useSelector((state: any) => state?.darkMode.isDarkMode);
+  const isUserAcknowledgedMode = useSelector((state:any) => state?.darkMode.isUserAcknowledgedMode)
+  console.log('---is dark mode', isDarkMode, isUserAcknowledgedMode);
+
+  const dispatch = useDispatch();
 
   // Add or remove the "dark" class on the document body
   const toggleDarkTheme = (shouldAdd: boolean) => {
@@ -62,11 +70,34 @@ const App: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    initializeDarkTheme(themeToggle);
-  }, [themeToggle]);
+    initializeDarkTheme(isDarkMode);
+  }, [isDarkMode]);
+
+  const handleDismissAlert = (ev: any) => {
+    dispatch(setIsUserAcknowledgedMode())
+    dispatch(setMode(ev.detail.role === 'confirm'));
+  };
 
   return (
     <IonApp className="dark-theme">
+      <IonAlert
+        header="Dark Mode!"
+        backdropDismiss={false}
+        subHeader="Would you like to use Dark Mode ?"
+        message="You can customise it later also in the menu!"
+        isOpen={isUserAcknowledgedMode === false}
+        buttons={[
+          {
+            text: 'Cancel',
+            role: 'cancel',
+          },
+          {
+            text: 'OK',
+            role: 'confirm',
+          },
+        ]}
+        onDidDismiss={handleDismissAlert}
+      ></IonAlert>
       <BrowserRouter>
         <IonSplitPane contentId="main">
           <Menu />

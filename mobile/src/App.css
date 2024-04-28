@@ -29,6 +29,13 @@
   --min-height: auto;
 }
 
+/* dark mode css */
+
+.dark_mode_container{
+  margin-top: 36px;
+  padding: 0 16px;
+}
+
 /* app header */
 
 .header_schoolname {
