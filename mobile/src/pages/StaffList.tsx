@@ -2,98 +2,143 @@ import {
   IonButton,
   IonCard,
   IonCardContent,
-  IonChip,
-  IonInput,
   IonSearchbar,
+  IonSelect,
+  IonSelectOption,
+  IonToggle,
 } from '@ionic/react';
-import React from 'react';
+import React, { useState } from 'react';
+import { staffDummyArr, studentDummyData } from '../common/utility';
+import GBreadCrumbs from '../components/GBreadCrumbs';
 
 const StaffList: React.FC = () => {
-  const staffarr = [
-    {
-      Emp_name: 'Siva',
-      Emp_Image:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Line-style-icons-profile-male.svg/864px-Line-style-icons-profile-male.svg.png',
-      id: '8A001',
-      subject: '8th Class',
-      degignation: 'A Section',
-      class_List: [6, 7, 8, 10],
-    },
-    {
-      Emp_name: 'Siva1',
-      Emp_Image:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Line-style-icons-profile-male.svg/864px-Line-style-icons-profile-male.svg.png',
-      id: '8A002',
-      subject: '8th Class',
-      degignation: 'A Section',
-      class_List: [6, 7, 10],
-    },
-    {
-      Emp_name: 'Siva1',
-      Emp_Image:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Line-style-icons-profile-male.svg/864px-Line-style-icons-profile-male.svg.png',
-      id: '8A003',
-      subject: '8th Class',
-      degignation: 'A Section',
-      class_List: [6, 7, 10],
-    },
-    {
-      Emp_name: 'Siva1',
-      Emp_Image:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Line-style-icons-profile-male.svg/864px-Line-style-icons-profile-male.svg.png',
-      id: '8A004',
-      subject: '8th Class',
-      degignation: 'A Section',
-      class_List: [6, 7, 10],
-    },
-  ];
+  const [isFilterEnabled, setIsFilterEnabled] = useState(true);
+  const [search, setSearch] = useState('');
+  const staffData = staffDummyArr;
+  const handleToggleChange = (event: any) => {
+    setIsFilterEnabled(event.detail.checked);
+  };
+
+  const handleInput = (ev: any) => {
+    setSearch(ev.target.value);
+    console.log(ev?.target.value);
+    //  debounce function can be excuted!!! here
+  };
+
+  const breadCrumbsValue = [{bName:'Home', path:'/'},{bName:'Students List', path:'/students-list'}]
 
   return (
-    <>
-      <div className="g_flex g_space_btwn">
+    <div className='staff'>
+      <div className="g_flex g_space_btwn g_align_cntr bread_toggle_container">
+        <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
         <div>
-          <div>
-            <IonButton className="card_btn">Home</IonButton>
-            <span> / </span>
-            <IonButton className="card_btn">My Staff</IonButton>
-          </div>
-          <div className="g_flex">
-            <IonSearchbar></IonSearchbar>
-          </div>
-        </div>
-        <div>
-          <label>Filter</label>
-          <IonChip>on- off</IonChip>
+          <IonToggle
+            className="custom-toggle"
+            checked={isFilterEnabled}
+            onIonChange={handleToggleChange}
+          >
+            <span
+              className={`toggle-text ${
+                isFilterEnabled ? 'enabled_filter' : 'disabled_filter'
+              }`}
+            >
+              {isFilterEnabled ? 'On' : 'Off'}
+            </span>
+          </IonToggle>
         </div>
       </div>
-      <div>
-        {staffarr.map((item) => (
-          <IonCard className="student_card" key={item.id}>
-            <IonCardContent>
-              <div className="g_flex g_space_btwn">
-                <div className="g_flex first_container">
+      <div className={`${isFilterEnabled && 'filter_container'}`}>
+        {isFilterEnabled && (
+          <IonCard className="filter-card">
+            <IonCardContent className="filter_card_content">
+              <IonSearchbar
+                showClearButton="focus"
+                value={search}
+                debounce={500}
+                onIonInput={(ev) => handleInput(ev)}
+              ></IonSearchbar>
+              <div className="g_flex g_space_btwn select_conatainer">
+                <div style={{ width: '47%' }}>
+                  <IonSelect
+                    className="custome_select"
+                    multiple={true}
+                    label="Select Class"
+                    labelPlacement="floating"
+                    fill="outline"
+                    interface="popover"
+                    onIonChange={(e) =>
+                      console.log(
+                        `ionChange fired with value: ${e.detail.value}`
+                      )
+                    }
+                    onIonCancel={() => console.log('ionCancel fired')}
+                    onIonDismiss={() => console.log('ionDismiss fired')}
+                  >
+                    <IonSelectOption value="class-8">Class 8</IonSelectOption>
+                    <IonSelectOption value="class-9">Class 9</IonSelectOption>
+                    <IonSelectOption value="class-10">Class 10</IonSelectOption>
+                    <IonSelectOption value="class-0">Class 0</IonSelectOption>
+                  </IonSelect>
+                </div>
+                <div style={{ width: '47%' }}>
+                  <IonSelect
+                    multiple={true}
+                    className="custome_select"
+                    label="Select Subject"
+                    labelPlacement="floating"
+                    fill="outline"
+                    interface="popover"
+                  >
+                    <IonSelectOption value="A-Section">
+                      A Section
+                    </IonSelectOption>
+                    <IonSelectOption value="B-Section">
+                      B Section
+                    </IonSelectOption>
+                    <IonSelectOption value="C-Section">
+                      C section
+                    </IonSelectOption>
+                  </IonSelect>
+                </div>
+              </div>
+            </IonCardContent>
+          </IonCard>
+        )}
+      </div>
+      <div className={`students_cards_container ${!isFilterEnabled && 'with_filter_off'}`}>
+        {staffData.map((item) => (
+          <IonCard key={item.id} className="student_card">
+            <IonCardContent className="card_content">
+              <div className="g_flex g_space_btwn g_align_cntr">
+                <div className="g_flex first_container g_align_cntr">
                   <div className="profile_item">
                     <img
                       className="prifile_image"
-                      src={item.Emp_Image}
+                      src={item.empImage}
                       alt="profile"
                     />
                   </div>
-                  <div>
-                    <h2>{item.Emp_name}</h2>
-                    <p>{item.degignation}</p>
+                  <div className="title_designation">
+                    <h2 className="title_name">{item.empName}</h2>
+                    <p>
+                      <span>{`${item.designation}`}</span>
+                    </p>
                   </div>
                 </div>
                 <div>
-                  <h2>{item.subject}</h2>
-                  <h2>{item.class_List.join(',')}</h2>
+                  <div className="user_id">
+                    Sub : <span className="user_id_data">{item.subject}</span>
+                  </div>
+                  <div className="class_list_show">
+                    Cl : {item.classList.map((cl, index)=><span key={index}>{cl},</span>)}
+                  </div>
                 </div>
               </div>
             </IonCardContent>
           </IonCard>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

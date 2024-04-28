@@ -14,7 +14,7 @@ const Page: React.FC = () => {
     <IonPage className='my_page'>
       <Header />
       <IonContent fullscreen>
-        <ExploreContainer name={name} />
+        <ExploreContainer name={name || ''} />
       </IonContent>
       <Footer></Footer>
       {/* <div className='footer_content'>footer</div> */}

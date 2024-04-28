@@ -130,7 +130,7 @@ const RenderAllExams: React.FC<IRenderAllExams> = ({}) => {
       </div>
       <IonFooter>
         <IonToolbar>
-          <div className="g_flex g_space_btwn mark_rank_container">
+          <div className="g_flex g_space_btwn marks_all_container">
             {allUnits.map((unitItemshow: any) => (
               <div key={unitItemshow.id}>
                 <div>{unitItemshow.title}</div>
