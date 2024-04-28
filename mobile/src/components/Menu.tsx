@@ -11,21 +11,31 @@ import {
   IonMenuToggle,
   IonNote,
   IonText,
+  IonToggle,
 } from '@ionic/react';
 
 import { useLocation, useNavigate } from 'react-router-dom';
-import { bookmarkOutline } from 'ionicons/icons';
+import { bookmarkOutline, sunnyOutline } from 'ionicons/icons';
 import './Menu.css';
 import { AppPage } from '../common/common-interface';
 import { RoutesListDynamic } from '../common/common-routes-list';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setMode } from '../redux/reducers/darkModeSlice';
 
 const appPages: AppPage[] = RoutesListDynamic;
 
 const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
 const Menu: React.FC = () => {
+  const isDarkMode = useSelector((state: any) => state?.darkMode.isDarkMode);
   const location = useLocation();
   const navigate = useNavigate();
+  const dispatch =  useDispatch()
+
+  const handleToggleChange = (event: any) => {
+    dispatch(setMode(event.detail.checked))
+  };
 
   const handleNavigation = (path: string) => {
     navigate(path);
@@ -35,13 +45,13 @@ const Menu: React.FC = () => {
     <IonMenu contentId="main" type="overlay">
       <IonContent>
         <IonItem>
-          <IonAvatar className='menu_avatar'>
+          <IonAvatar className="menu_avatar">
             <img
               alt="Silhouette of a person's head"
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Line-style-icons-profile-male.svg/864px-Line-style-icons-profile-male.svg.png"
             />
           </IonAvatar>
-          <IonText className='menu_user_name'>
+          <IonText className="menu_user_name">
             <h3>{'<StudentName>'}</h3>
             <p>View Profile</p>
           </IonText>
@@ -70,6 +80,24 @@ const Menu: React.FC = () => {
             );
           })}
         </IonList>
+        <div className="g_flex dark_mode_container">
+          <div className='g_flex g_align_cntr'><IonLabel>Dark Mode</IonLabel> </div>
+          <div>
+            <IonToggle
+              className="custom-toggle"
+              checked={isDarkMode}
+              onIonChange={handleToggleChange}
+            >
+              <span
+                className={`toggle-text ${
+                  isDarkMode ? 'enabled_filter' : 'disabled_filter'
+                }`}
+              >
+                {isDarkMode ? 'On' : 'Off'}
+              </span>
+            </IonToggle>
+          </div>
+        </div>
 
         <IonList id="labels-list">
           <IonListHeader>Labels</IonListHeader>

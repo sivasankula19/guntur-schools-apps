@@ -10,14 +10,20 @@ import {
 import React, { useState } from 'react';
 import { studentDummyData } from '../common/utility';
 import GBreadCrumbs from '../components/GBreadCrumbs';
+import { useDispatch, useSelector } from 'react-redux';
+import { increment } from '../redux/reducers/counterSlice';
 
 const StudentList: React.FC = () => {
   const [isFilterEnabled, setIsFilterEnabled] = useState(true);
   const [search, setSearch] = useState('');
   const studentsDataList = studentDummyData;
+  const dispatch = useDispatch()
   const handleToggleChange = (event: any) => {
+    dispatch(increment())
     setIsFilterEnabled(event.detail.checked);
   };
+
+  const count = useSelector((state:any) => state.counter);
 
   const handleInput = (ev: any) => {
     setSearch(ev.target.value);
@@ -31,6 +37,7 @@ const StudentList: React.FC = () => {
     <div>
       <div className="g_flex g_space_btwn g_align_cntr bread_toggle_container">
         <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
+        <div>{count.value}</div>
         <div>
           <IonToggle
             className="custom-toggle"
