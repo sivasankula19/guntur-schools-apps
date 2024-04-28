@@ -13,6 +13,7 @@ import {
   personCircleOutline,
   pencil,
   calendarClearOutline,
+  expandOutline,
 } from 'ionicons/icons';
 import { useRef, useState } from 'react';
 import { useParams } from 'react-router';
@@ -20,6 +21,7 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import GCustomisedModal from '../components/GCustomisedModal';
 import { useNavigate } from 'react-router';
+import GImageDocPreview from '../components/GImageDocPreview';
 
 const userData: any = [
   { key: 'Full Name', value: 'Sivaiah Sankula' },
@@ -35,7 +37,8 @@ const UserByID: React.FC = () => {
   const [eventDateTime, setEventDateTime] = useState<any>('');
   const modal = useRef<HTMLIonModalElement>(null);
   const [eventModal, setEventModal] = useState(false);
-  const navigate=useNavigate()
+  const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
 
   function getNextHourDateTime(isCurrent: boolean = false) {
     const now = new Date();
@@ -67,7 +70,20 @@ const UserByID: React.FC = () => {
         <div className="d-flex-jc-center">
           <IonCard className="profile-card">
             <div className="user_id profile-name">Sankula sivaiah</div>
-            <img src={'https://st3.depositphotos.com/15648834/17930/v/450/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg'} height="80%" width="80%"></img>
+            <img
+              src={
+                'https://st3.depositphotos.com/15648834/17930/v/450/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg'
+              }
+              height="80%"
+              width="80%"
+            ></img>
+            <div className="icon_full_expand">
+              <IonIcon
+                onClick={() => setIsOpen(true)}
+                size="large"
+                icon={expandOutline}
+              ></IonIcon>
+            </div>
           </IonCard>
         </div>
         <div className="display-data">
@@ -111,9 +127,8 @@ const UserByID: React.FC = () => {
                   className="custom-ion-input-wrapper"
                 >
                   <IonInput
-                    style={{ minHeight: 41 }}
                     className="custom-ion-input"
-                    value={user.value}
+                    // value={user.value}
                     label={user.key}
                     labelPlacement="floating"
                     fill="outline"
@@ -125,6 +140,17 @@ const UserByID: React.FC = () => {
           </IonList>
         </GCustomisedModal>
       </IonContent>
+      <GImageDocPreview
+        src={
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5Pxol7CM9TBMVe8l7LW-0nwsGZQiOGd48Tw&s'
+        }
+        title="Student Name"
+        onClose={() => {
+          setIsOpen(false);
+        }}
+        onDownload={() => {}}
+        isOpen={isOpen}
+      ></GImageDocPreview>
       <Footer></Footer>
     </IonPage>
   );

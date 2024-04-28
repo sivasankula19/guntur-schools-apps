@@ -76,12 +76,6 @@ export const RoutesListDynamic : AppPage[] = [
       mdIcon: peopleSharp,
     },
     {
-      title: 'Academic Subjects',
-      url: '/academic-subjects',
-      iosIcon: schoolOutline,
-      mdIcon: schoolSharp,
-    },
-    {
       title: 'Fee Structure / My Dues',
       url: '/fee-structure',
       iosIcon: walletOutline,

@@ -136,7 +136,6 @@ const Documents: React.FC = () => {
         onDownload={() => {}}
         isOpen={isOpen}
       >
-        <div>helo</div>
       </GImageDocPreview>
       <div className="add_documents_btn">
         <IonButton className="gmodal-cancel">

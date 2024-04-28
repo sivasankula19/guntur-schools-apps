@@ -90,7 +90,6 @@ import {
     title: string;
     onClose: () => void;
     onDownload: () => void;
-    children: React.ReactNode;
     isOpen:boolean;
     closebtn?:boolean;
     src:any;

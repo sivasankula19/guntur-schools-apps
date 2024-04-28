@@ -66,6 +66,91 @@ export const studentDummyData =  [
       },
   ];
 
+  export const staffDummyArr = [
+    {
+      empName: 'Siva',
+      empImage:
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Line-style-icons-profile-male.svg/864px-Line-style-icons-profile-male.svg.png',
+      id: 'gvt-tcr-001',
+      subject: 'Telugu',
+      designation: 'BA Computers',
+      classList: ["6 A", "7 A", "7 B" ,"8 C", "10 C"],
+    },
+    {
+      empName: 'Siva',
+      empImage:
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Line-style-icons-profile-male.svg/864px-Line-style-icons-profile-male.svg.png',
+      id: 'gvt-tcr-002',
+      subject: 'Mathematics',
+      designation: 'BA Computers',
+      classList: ["6 A", "7 A", "7 B" ,"8 C", "10 C"],
+    },
+    {
+      empName: 'Siva',
+      empImage:
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Line-style-icons-profile-male.svg/864px-Line-style-icons-profile-male.svg.png',
+      id: 'gvt-tcr-003',
+      subject: 'Physics',
+      designation: 'BA Computers',
+      classList: ["6 A", "7 A", "7 B" ,"8 C", "10 C"],
+    },
+    {
+      empName: 'Siva',
+      empImage:
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Line-style-icons-profile-male.svg/864px-Line-style-icons-profile-male.svg.png',
+      id: 'gvt-tcr-004',
+      subject: 'Telugu',
+      designation: 'BA Computers',
+      classList: ["6 A", "7 A", "7 B" ,"8 C", "10 C"],
+    },
+    {
+      empName: 'Siva',
+      empImage:
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Line-style-icons-profile-male.svg/864px-Line-style-icons-profile-male.svg.png',
+      id: 'gvt-tcr-005',
+      subject: 'Mathematics',
+      designation: 'BA Computers',
+      classList: ["6 A", "7 A", "7 B" ,"8 C", "10 C"],
+    },
+    {
+      empName: 'Siva',
+      empImage:
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Line-style-icons-profile-male.svg/864px-Line-style-icons-profile-male.svg.png',
+      id: 'gvt-tcr-006',
+      subject: 'Physics',
+      designation: 'BA Computers',
+      classList: ["6 A", "7 A", "7 B" ,"8 C", "10 C"],
+    },
+    {
+      empName: 'Siva',
+      empImage:
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Line-style-icons-profile-male.svg/864px-Line-style-icons-profile-male.svg.png',
+      id: 'gvt-tcr-007',
+      subject: 'Telugu',
+      designation: 'BA Computers',
+      classList: ["6 A", "7 A", "7 B" ,"8 C", "10 C"],
+    },
+    {
+      empName: 'Siva',
+      empImage:
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Line-style-icons-profile-male.svg/864px-Line-style-icons-profile-male.svg.png',
+      id: 'gvt-tcr-008',
+      subject: 'Mathematics',
+      designation: 'BA Computers',
+      classList: ["6 A", "7 A", "7 B" ,"8 C", "10 C"],
+    },
+    {
+      empName: 'Siva',
+      empImage:
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Line-style-icons-profile-male.svg/864px-Line-style-icons-profile-male.svg.png',
+      id: 'gvt-tcr-009',
+      subject: 'Physics',
+      designation: 'BA Computers',
+      classList: ["6 A", "7 A", "7 B" ,"8 C", "10 C"],
+    },
+   
+  ]
+
  export const studentAttendanceCalendar = [
     { id: 1, day: 'Friday', dayShort: 'FRI',currentDay:'01', date: '3/1/2024', am: true, pm: true, isSchoolHoliday: false, attendanceMarked: 2 },
     { id: 2, day: 'Saturday', dayShort: 'SAT',currentDay:'02', date: '3/2/2024', am: true, pm: true, isSchoolHoliday: false, attendanceMarked: 2 },
@@ -168,6 +253,8 @@ export const classSubjects = [
     subjectTeacherId:'gvt-t-008',
     percentCovered:100,
     isFavarouite:false,
+    class:10,
+    section:'A',
   },
   {
     subjectName: 'English',
@@ -176,6 +263,8 @@ export const classSubjects = [
     subjectTeacherId:'gvt-t-010',
     percentCovered:70,
     isFavarouite:true,
+    class:10,
+    section:'A',
   },
   {
     subjectName: 'Hindi',
@@ -184,6 +273,8 @@ export const classSubjects = [
     subjectTeacherId:'gvt-t-023',
     percentCovered:86,
     isFavarouite:false,
+    class:10,
+    section:'A',
   },
   {
     subjectName: 'Mathematics',
@@ -192,6 +283,8 @@ export const classSubjects = [
     subjectTeacherId:'gvt-t-019',
     percentCovered:80,
     isFavarouite:false,
+    class:10,
+    section:'A',
   },
   {
     subjectName: 'Science - Physics',
@@ -200,6 +293,8 @@ export const classSubjects = [
     subjectTeacherId:'gvt-t-012',
     percentCovered:20,
     isFavarouite:false,
+    class:10,
+    section:'A',
   },
   {
     subjectName: 'Science - Chemestry',
@@ -208,6 +303,8 @@ export const classSubjects = [
     subjectTeacherId:'gvt-t-038',
     percentCovered:90,
     isFavarouite:false,
+    class:10,
+    section:'A',
   },
   {
     subjectName: 'Social',
@@ -216,6 +313,8 @@ export const classSubjects = [
     subjectTeacherId:'gvt-t-002',
     percentCovered:0,
     isFavarouite:false,
+    class:10,
+    section:'A',
   }
 ]
     

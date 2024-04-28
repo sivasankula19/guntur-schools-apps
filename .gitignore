@@ -39,3 +39,7 @@ testem.log
 Thumbs.db
 
 .nx/cache
+
+.vite
+
+vite.config\.(js|ts|mjs)\.timestamp*
