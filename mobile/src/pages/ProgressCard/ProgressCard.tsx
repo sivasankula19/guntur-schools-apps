@@ -28,7 +28,7 @@ const ProgressCard: React.FC = () => {
   ];
 
   const [selectedTab, setSelectedTab] = useState('unit1');
-  const [viewMode, setViewMode] = useState('grid');
+  const [viewMode, setViewMode] = useState('list');
 
   const studentInfo: any = {
     fullName: 'Siva S User',

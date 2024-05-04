@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import './ExploreContainer.css';
-import Dashboard from '../pages/Dashboard';
 import Attendance from '../pages/Attendance';
 import StudentList from '../pages/StudentList';
 import StaffList from '../pages/StaffList';
@@ -22,6 +21,8 @@ import Remainders from '../pages/Remainders';
 import Dairy from '../pages/Dairy';
 import AcedamicSubject from '../pages/AcedamicSubjects';
 import Documents from '../pages/Documents';
+import Dashboard from '../pages/dashboard/Dashboard';
+import Home from '../pages/Home/Home';
 
 interface ContainerProps {
   name: string;
@@ -43,6 +44,8 @@ const GetComponent = ({ name }: any) => {
   switch (name) {
     case 'dashboard':
       return <Dashboard />;
+      case 'home':
+      return <Home />;
     case 'attendance':
       return <Attendance />;
     case 'progress-card':
@@ -53,7 +56,7 @@ const GetComponent = ({ name }: any) => {
       return <StaffList />;
     case 'subjects':
       return <Subjects />;
-      case 'documents':
+    case 'documents':
       return <Documents />;
     case 'fee-structure':
       return <FeesDues />;

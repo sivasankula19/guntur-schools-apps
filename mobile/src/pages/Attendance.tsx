@@ -69,15 +69,15 @@ const Attendance: React.FC = () => {
       </div>
       <IonCard className="custome_attendance_card">
         <IonCardContent className="custome__card_attendance_container">
-          <div className="g_flex g_space_around">
-            <IonIcon size="large" icon={caretBackOutline}></IonIcon>
-            <IonIcon size="large" icon={chevronBackOutline}></IonIcon>
+          <div className="g_flex g_space_around icons_holder_attendance">
+            <IonIcon icon={caretBackOutline}></IonIcon>
+            <IonIcon icon={chevronBackOutline}></IonIcon>
             <div className="month_year_view g_flex g_space_evnly g_align_cntr">
               <IonText className="month_year">{'MAR'}</IonText>
               <IonText className="month_year">{'2024'}</IonText>
             </div>
-            <IonIcon size="large" icon={chevronForwardOutline}></IonIcon>
-            <IonIcon size="large" icon={caretForwardOutline}></IonIcon>
+            <IonIcon icon={chevronForwardOutline}></IonIcon>
+            <IonIcon icon={caretForwardOutline}></IonIcon>
           </div>
         </IonCardContent>
       </IonCard>
@@ -95,7 +95,7 @@ const Attendance: React.FC = () => {
           <div className="attendance_container_items">
             {attendanceDate.map((item) => (
               <IonItem className={`attendance_ion_item ${item.isSchoolHoliday && 'danger'} ${item.date === todayFormate && 'special_today_item'}`} key={item.id}>
-                <IonText className="row_item_quater">{item.currentDay}</IonText>
+                <IonText className="row_item_quater large_text">{item.currentDay}</IonText>
                 <IonText className="row_item_quater">{item.dayShort}</IonText>
                 <div className="row_item_quater">
                   {item.isSchoolHoliday ? (
@@ -111,7 +111,6 @@ const Attendance: React.FC = () => {
                             : 'absent_recorded'
                           : 'attendance_not_recorded'
                       }`}
-                      size="large"
                       icon={
                         item.attendanceMarked >= 1
                           ? item.am
@@ -136,7 +135,6 @@ const Attendance: React.FC = () => {
                             : 'absent_recorded'
                           : 'attendance_not_recorded'
                       }`}
-                      size="large"
                       icon={
                         item.attendanceMarked == 2
                           ? item.pm
@@ -201,7 +199,6 @@ const Attendance: React.FC = () => {
                                     : 'absent_recorded'
                                   : 'attendance_not_recorded'
                               }`}
-                              size="large"
                               icon={
                                 dayItem?.attendanceMarked >= 1
                                   ? dayItem?.am
@@ -218,7 +215,6 @@ const Attendance: React.FC = () => {
                                     : 'absent_recorded'
                                   : 'attendance_not_recorded'
                               }`}
-                              size="large"
                               icon={
                                 dayItem?.attendanceMarked == 2
                                   ? dayItem?.pm
@@ -259,8 +255,8 @@ const Attendance: React.FC = () => {
             <IonText className="summery_ion_text">A = 1</IonText>
           </IonItem>
           <div className="g_flex g_space_around g_align_cntr summery_icons_container">
-            <IonIcon size="large" icon={printSharp}></IonIcon>
-            <IonIcon size="large" icon={analyticsOutline}></IonIcon>
+            <IonIcon icon={printSharp}></IonIcon>
+            <IonIcon icon={analyticsOutline}></IonIcon>
           </div>
         </IonCardContent>
       </IonCard>

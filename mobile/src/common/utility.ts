@@ -504,6 +504,24 @@ export const allUnitsMarks = [
 ]
 
 
+export const schoolsListData = [
+  {schoolName:'Government High School Madugula', schoolId:'gvt-scl-mdgl01'},
+  {schoolName:'ZPHS School Madugula', schoolId:'zph-scl-mdgl01'},
+  {schoolName:'Government High School Gurazala oabcibecib ecwbuwebc', schoolId:'gvt-scl-grzl01'},
+  {schoolName:'ZPHS School Pulipadu', schoolId:'zph-scl-plpd01'},
+  {schoolName:'ZPHS School Daida', schoolId:'zph-scl-daida01'},
+  {schoolName:'ZPHS School RentaChinthala', schoolId:'zph-scl-rtcl01'},
+  {schoolName:'ZPHS School Piduguralla', schoolId:'zph-scl-pdgl01'},
+  {schoolName:'Little Flower En School Gurazala', schoolId:'ltl-scl-grzl01'},
+  {schoolName:'St josephs School Madugula', schoolId:'stj-scl-mdgl01'},
+  {schoolName:'ZPHS School Guntur', schoolId:'zph-scl-gntr01'},
+  {schoolName:'ZPHS School Sattenapalli', schoolId:'zph-scl-stp01'},
+  {schoolName:'ZPHS School Miryalaguda', schoolId:'zph-scl-mrlg01'},
+  {schoolName:'Sree Saradha high School Hyderabad', schoolId:'ssh-scl-grzl01'},
+  {schoolName:'ABC High School Madugula', schoolId:'abc-scl-mdgl01'},
+]
+
+
 
 
 

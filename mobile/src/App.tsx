@@ -32,15 +32,23 @@ import UserByID from './pages/User';
 import { useEffect, useState } from 'react';
 import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { setIsUserAcknowledgedMode, setMode } from './redux/reducers/darkModeSlice';
+import {
+  setIsUserAcknowledgedMode,
+  setMode,
+} from './redux/reducers/darkModeSlice';
+import SelectSchool from './pages/select-school/SelectSchool';
 
 setupIonicReact();
 
 const App: React.FC = () => {
-  const [themeToggle, setThemeToggle] = useState(true);
   const isDarkMode = useSelector((state: any) => state?.darkMode.isDarkMode);
-  const isUserAcknowledgedMode = useSelector((state:any) => state?.darkMode.isUserAcknowledgedMode)
-  console.log('---is dark mode', isDarkMode, isUserAcknowledgedMode);
+  const isUserAcknowledgedMode = useSelector(
+    (state: any) => state?.darkMode.isUserAcknowledgedMode
+  );
+  const fullstate = useSelector((state: any) => state);
+  const school = useSelector((state: any) => state.school.selectedSchool);
+  const isAuthenticated = useSelector((state:any)=> state.auth.isAuthenticated);
+  console.log(fullstate);
 
   const dispatch = useDispatch();
 
@@ -51,7 +59,6 @@ const App: React.FC = () => {
 
   // Check/uncheck the toggle and update the theme based on isDark
   const initializeDarkTheme = (isDark: boolean) => {
-    setThemeToggle(isDark);
     toggleDarkTheme(isDark);
   };
 
@@ -74,12 +81,13 @@ const App: React.FC = () => {
   }, [isDarkMode]);
 
   const handleDismissAlert = (ev: any) => {
-    dispatch(setIsUserAcknowledgedMode())
+    dispatch(setIsUserAcknowledgedMode());
     dispatch(setMode(ev.detail.role === 'confirm'));
   };
 
   return (
     <IonApp className="dark-theme">
+      {/* un comment below after development!!! */}
       <IonAlert
         header="Dark Mode!"
         backdropDismiss={false}
@@ -103,8 +111,9 @@ const App: React.FC = () => {
           <Menu />
           <IonRouterOutlet id="main">
             <Routes>
-              <Route path="/" element={<Navigate to={'/dashboard'} />}></Route>
+              <Route path="/" element={<Navigate to={school === null ? '/select-school' : isAuthenticated ? '/home' : '/dashboard'} />}></Route>
               <Route path={'/user/:id'} element={<UserByID />}></Route>
+              <Route path={'/select-school'} element={<SelectSchool />}></Route>
               <Route path="/:name" element={<Page />}></Route>
             </Routes>
           </IonRouterOutlet>
