@@ -1,4 +1,3 @@
-
 /* Width of the scrollbar */
 ::-webkit-scrollbar {
   width: 3px;
@@ -31,7 +30,7 @@
 
 /* dark mode css */
 
-.dark_mode_container{
+.dark_mode_container {
   margin-top: 36px;
   padding: 0 16px;
 }
@@ -39,8 +38,64 @@
 /* app header */
 
 .header_schoolname {
-  padding-right: 12px;
-  padding-left: 50px;
+  padding: 0;
+}
+
+.custom_header_item {
+  padding: 12px;
+  --background: #1D7AF5;
+  color: #ffffff;
+}
+
+.custom_header_item ion-icon {
+  font-size: 20px !important;
+  padding-right: 8px;
+}
+
+.custom_header_item p {
+  color: #ffffff;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  line-height: 1em;
+  max-height: 1.8em;
+  word-break: break-all;
+  font-size: 18px;
+  margin: 0;
+}
+
+.customised_menu_btns_top {
+  --background: transparent;
+  --color: transparent;
+  position: relative;
+  z-index: 999;
+}
+
+.menu_profile_conatiner {
+  width: 36px;
+  height: 36px;
+  border: 1px solid;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  z-index: 1;
+  border-radius: 36px;
+}
+
+.menu_profile_conatiner img {
+  height: 100%;
+  width: 100%;
+  border-radius: 36px;
+}
+
+.customised_toolbar_auth {
+  width: 90%;
+  margin: auto;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  --background: #1D7AF5;
 }
 
 /* All override modules */
@@ -54,6 +109,8 @@
 
 .menu_avatar {
   border: 1px solid;
+  margin-top: 0px;
+  margin-bottom: 16px;
 }
 
 .menu_user_name {
@@ -65,13 +122,117 @@
   margin-bottom: 14px;
 }
 
+.menu_user_name h3 {
+  margin-top: 0px;
+}
 
-.font_bld{
+.font_bld {
   font-weight: bold;
 }
 
+/* Select school */
+
+.select_school_page ion-card {
+  height: 90vh;
+  margin: 0;
+}
+
+.select_school_page ion-card-content {
+  padding: 0;
+  height: 100%;
+  width: 80%;
+  margin: auto;
+  padding-top: 32px;
+}
+
+.container_full_select {
+  height: 100%;
+}
+
+.g_app_logo_conatiner {
+  height: 10%;
+}
+
+.g_app_logo {
+  width: 60%;
+  height: 40px;
+  border: 1px solid;
+}
+
+.app_info_content {
+  height: 10%;
+}
+
+.app_info_content p {
+  display: flex;
+  justify-content: center;
+  color: #1D7AF5;
+  font-size: 18px;
+}
+
+.select_holder {
+  height: 66%;
+  border: 1px solid;
+}
+
+.school_list_show_container {
+  max-height: 90%;
+  overflow-y: auto;
+}
+
+.school_list_show_container ion-item {
+  border-bottom: 1px solid;
+  height: 40px !important;
+}
+
+.school_item_selected {
+  --background: #1d7bf546 !important;
+}
+
+.school_item_selected p {
+  font-weight: bold;
+}
+
+.school_list_show_container ion-item p {
+  color: #1D7AF5;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  line-height: 1.2em;
+  max-height: 1.8em;
+  word-break: break-all;
+}
+
+.school_list_show_container .first_item {
+  border-top: 1px solid;
+}
+
+.select_holder ion-searchbar {
+  padding: 0;
+}
+
+.select_btn_holder {
+  height: 14%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.select_btn_holder ion-button {
+  width: 100%;
+  --border-radius: 12px;
+}
+
+
 
 /* Student List & Staff List css */
+
+.g_height_10{
+  height: 10%;
+}
+
 .g_flex {
   display: flex;
 }
@@ -283,6 +444,7 @@ ion-toggle::part(track) {
     transform: translateX(-100%);
     opacity: 0;
   }
+
   to {
     transform: translateX(0%);
     opacity: 1;
@@ -368,13 +530,17 @@ ion-breadcrumbs {
   padding: 8px 0;
 }
 
+.icons_holder_attendance ion-icon {
+  font-size: 24px !important;
+}
+
 .list_viwe_icon {
   font-size: 28px;
   margin-right: 12px;
 }
 
-.grdi_view_icon{
-  font-size: 22px;
+.grdi_view_icon {
+  font-size: 20px;
   margin-bottom: 4px;
 }
 
@@ -393,7 +559,7 @@ ion-breadcrumbs {
 
 .month_year {
   color: black;
-  font-size: 18px !important;
+  font-size: 14px !important;
   margin: 0 !important;
   font-weight: bold !important;
 }
@@ -431,6 +597,10 @@ ion-breadcrumbs {
 
 }
 
+.attendance_container_items ion-icon {
+  font-size: 24px !important;
+}
+
 .attendance_ion_item {
   animation: slideIn 0.8s forwards;
   --inner-padding-end: 0;
@@ -444,6 +614,10 @@ ion-breadcrumbs {
   width: 25%;
   text-align: center;
   font-weight: bold;
+  font-size: 14px;
+}
+
+.large_text {
   font-size: 18px;
 }
 
@@ -471,6 +645,10 @@ ion-breadcrumbs {
   margin-left: 4%;
 }
 
+.summery_attendance_show ion-card-content {
+  padding: 0 !important;
+}
+
 .summery_text_show {
   width: 20%;
   text-align: center;
@@ -487,6 +665,10 @@ ion-breadcrumbs {
   width: 40%;
 }
 
+.summery_icons_container ion-icon {
+  font-size: 28px;
+}
+
 /* grid view */
 
 .day_list_map {
@@ -497,6 +679,14 @@ ion-breadcrumbs {
   --inner-padding-end: 0;
   border: 1px solid;
   margin-right: 2px;
+}
+
+.day_list_map ion-text {
+  font-size: 14px;
+}
+
+.day_list_map ion-icon {
+  font-size: 22px;
 }
 
 .empty_item_day {
@@ -527,6 +717,12 @@ ion-breadcrumbs {
   padding: 0 8px;
 }
 
+.custome_card_content_day_view ion-item {
+  height: 44px;
+  display: flex;
+  align-items: center;
+}
+
 .custome_card_content_day_view2 {
   padding: 8px;
 }
@@ -548,7 +744,7 @@ ion-breadcrumbs {
 }
 
 .g_small_text {
-  font-size: 10px;
+  font-size: 10px !important;
 }
 
 .danger {
@@ -951,7 +1147,7 @@ ion-breadcrumbs {
   color: rgb(29, 122, 245);
 }
 
-.dark .display-data-value{
+.dark .display-data-value {
   background-color: #000000;
 }
 
@@ -971,7 +1167,7 @@ ion-breadcrumbs {
 
 /* Documents Section */
 
-.documents ion-accordion-group{
+.documents ion-accordion-group {
   width: 90%;
   margin: auto;
   text-align: center;
@@ -984,92 +1180,92 @@ ion-breadcrumbs {
 }
 
 .documents ion-accordion {
- border: 1px solid;
- border-color: #1D7AF5;
+  border: 1px solid;
+  border-color: #1D7AF5;
 }
 
 .documents ion-item {
   border: 1px solid;
   border-color: #1D7AF5;
   margin: 8px;
-  --padding-start:8px;
-  --inner-padding-end:8px;
+  --padding-start: 8px;
+  --inner-padding-end: 8px;
 }
 
 .documents ion-icon {
   color: #1D7AF5;
- }
+}
 
- .doc_preview_title {
+.doc_preview_title {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-line-clamp: 2; 
+  -webkit-line-clamp: 2;
   line-height: 1.2em;
   max-height: 2.4em;
   font-weight: 600;
   color: #1D7AF5;
- }
+}
 
- .documents ion-label{
+.documents ion-label {
   margin-left: 8px;
   font-weight: bold;
- }
+}
 
- .document_inner_content ion-label{
+.document_inner_content ion-label {
   font-weight: normal !important;
- }
+}
 
- .ion-accordion-toggle-icon {
+.ion-accordion-toggle-icon {
   color: #000000 !important;
- }
- 
- .document_inner_content{
+}
+
+.document_inner_content {
   padding: 0;
- }
+}
 
- .document_inner_content ion-item {
+.document_inner_content ion-item {
   border-radius: 8px;
- }
+}
 
- .inside-container-block{
+.inside-container-block {
   max-height: 30vh;
   overflow-y: auto;
- }
- 
-.documents_file_item{
+}
+
+.documents_file_item {
   width: 90%;
   margin-left: 5% !important;
 }
 
 .add_documents_btn {
   position: absolute;
-    bottom: 44px;
-    z-index: 1;
-    right: 12px;
+  bottom: 44px;
+  z-index: 1;
+  right: 12px;
 }
 
 /* Document & Image Preview */
 
-.g_customised_image_doc_preview{
+.g_customised_image_doc_preview {
   --height: 90vh;
   --width: 95%;
   --border-radius: 8px;
   --max-height: 90%;
 }
 
-.close-btn_modal{
+.close-btn_modal {
   width: 80%;
 }
 
-.g_customised_image_doc_preview ion-footer{
+.g_customised_image_doc_preview ion-footer {
   display: flex;
-    justify-content: center;
-    padding-bottom: 12px;
+  justify-content: center;
+  padding-bottom: 12px;
 }
 
-.g_customised_image_doc_preview ion-toolbar{
+.g_customised_image_doc_preview ion-toolbar {
   padding: 4px;
 }
 
@@ -1087,7 +1283,7 @@ ion-breadcrumbs {
   padding-bottom: 30px;
 }
 
-.progerss_student_content{
+.progerss_student_content {
   display: flex;
   flex-wrap: wrap;
   padding: 8px;
@@ -1098,39 +1294,39 @@ ion-breadcrumbs {
   animation: slideIn 0.8s forwards;
 }
 
-.progress_card ion-item{
+.progress_card ion-item {
   width: 46%;
   --inner-border-width: 0;
-  --padding-start:8px;
-  --padding-end:0px;
-  --inner-padding-end:8px;
+  --padding-start: 8px;
+  --padding-end: 0px;
+  --inner-padding-end: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   border-radius: 8px;
   padding-bottom: 4px;
   margin: 4px;
 }
 
-.dark .progress_card ion-item{
-  box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.6); 
+.dark .progress_card ion-item {
+  box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.6);
 }
 
-.breadcrumbs_progress{
+.breadcrumbs_progress {
   margin: 0 16px 0 0;
 }
 
-.progress_card ion-item p{
+.progress_card ion-item p {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-line-clamp: 1; 
+  -webkit-line-clamp: 1;
   line-height: 1.2em;
   max-height: 1.8em;
   font-weight: 600;
   color: #1D7AF5;
 }
 
-.student_info_item{
+.student_info_item {
   flex-direction: column;
 }
 
@@ -1138,16 +1334,16 @@ ion-breadcrumbs {
   font-size: 12px;
 }
 
-.student_info_item h5{
+.student_info_item h5 {
   font-weight: 600;
 }
 
-.tabs_container_custom{
+.tabs_container_custom {
   width: 92%;
   margin: auto;
 }
 
-.tabs_progress_card{
+.tabs_progress_card {
   width: 82%;
   overflow-x: auto;
 }
@@ -1161,26 +1357,28 @@ ion-breadcrumbs {
   white-space: nowrap;
 }
 
-.progress_icons_container{
+.progress_icons_container {
   width: 18%;
   margin: 4px 8px 4px 12px;
 }
 
-.progress_icons_container .list_viwe_icon{
+.progress_icons_container .list_viwe_icon {
   font-size: 28px;
 }
 
-.progress_icons_container .grdi_view_icon{
+.progress_icons_container .grdi_view_icon {
   font-size: 22px;
   margin-bottom: 0 !important;
 }
 
-.g_custom_tabs{
+.g_custom_tabs {
+  margin-top: 10px;
   display: flex;
 }
 
-.g_custom_tabs button{
+.g_custom_tabs button {
   background-color: white;
+  color: #000000;
   border-right: 2px solid;
   border-radius: 8px;
   cursor: pointer;
@@ -1192,41 +1390,49 @@ ion-breadcrumbs {
   min-width: 100px;
 }
 
-.selected_segment_btn{
+.selected_segment_btn {
   border-bottom: 2px solid;
   border-bottom-color: #1D7AF5;
-  color: #1D7AF5;
+  color: #1D7AF5 !important;
   font-weight: 600;
 }
 
-.progress_marks_view{
+.progress_marks_view {
   padding: 12px;
 }
 
-.cell_marks{
+.progress_marks_view ion-toolbar {
+  --min-height: 36px
+}
+
+.progress_marks_view ion-title {
+  font-size: 18px;
+}
+
+.cell_marks {
   border-color: #000000 !important;
   height: 40px;
 }
 
-.dark .cell_marks{
+.dark .cell_marks {
   border-color: #ffffff !important;
 }
 
-.breadcrumb-native{
+.breadcrumb-native {
   padding: 0;
 }
 
-.marks_colum{
+.marks_colum {
   border-bottom: 1px solid;
   border-bottom-color: #1d7bf561;
 }
 
-.list_mark_view_container{
+.list_mark_view_container {
   padding: 12px 0 40px 12px;
   font-size: 0.8rem;
 }
 
-.marks_column_header{
+.marks_column_header {
   background-color: #F5F5F5;
 }
 
@@ -1234,23 +1440,23 @@ ion-breadcrumbs {
   background-color: #505050;
 }
 
-.grand_marks{
- width: 40%;
-}
-
-.exam_rank{
+.grand_marks {
   width: 40%;
 }
 
-.mark_rank_container{
+.exam_rank {
+  width: 40%;
+}
+
+.mark_rank_container {
   padding: 0 12px;
 }
 
-.marks_all_container{
+.marks_all_container {
   padding: 8px 12px;
 }
 
-.horizontal_marks_container{
+.horizontal_marks_container {
   width: 75%;
   max-width: 75%;
   overflow-x: auto;
@@ -1264,29 +1470,127 @@ ion-breadcrumbs {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-line-clamp: 1; 
+  -webkit-line-clamp: 1;
   line-height: 1.2em;
   max-height: 1.8em;
   font-weight: 600;
   color: #1D7AF5;
 }
 
-.staff .first_container{
+.staff .first_container {
   width: 55%;
   padding-right: 8px;
 }
 
 ion-input {
   min-height: 41px !important;
-  border:1px solid;
-  --padding-start:10px !important;
-  --padding-end:10px !important; 
+  border: 1px solid;
+  --padding-start: 10px !important;
+  --padding-end: 10px !important;
 }
 
-label.input-wrapper.sc-ion-input-ios{
+label.input-wrapper.sc-ion-input-ios {
   position: relative;
   top: -5px;
 }
+
+
+/* Home Pre Login Screen */
+
+.home_container {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.home_container .school_logo_image_hoem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.school_logo_image_hoem .logo_contain {
+  width: 150px;
+  /* height: 50px; */
+  padding: 12px;
+  border: 1px solid;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.g_map_school_location {
+  position: relative;
+  margin: 4px 16px 8px 16px;
+  background-color: #D9D9D9;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dark .g_map_school_location {
+  background-color: #515151;
+}
+
+.g_map_school_location .map_logo_expand {
+  position: absolute;
+  bottom: 6px;
+  right: 10px;
+}
+
+
+.home_info_continer {
+  border: 1px solid;
+  width: 90%;
+  margin: auto;
+  border-radius: 8px;
+}
+
+.home_container ion-item{
+  margin:12px 0;
+}
+
+.home_container ion-card-content {
+  padding: 0;
+}
+
+.home_container ion-card {
+  margin: 8px 16px;
+}
+
+.home_info_continer p{
+  margin: 8px 0;
+}
+
+.pre_login_btns{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pre_login_btns ion-button{
+  width: 30%;
+  height: 36px;
+}
+
+.login_form_content ion-item {
+  --inner-border-width:0;
+}
+
+.login_form_content ion-button {
+  width: 100%;
+  height: 40px;
+  --border-radius: 12px;
+}
+
+.custom_btns_item {
+  --background:inherit;
+  --inner-border-width:0;
+}
+
+
+
 
 
 

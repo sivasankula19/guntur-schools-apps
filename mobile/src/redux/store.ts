@@ -1,19 +1,23 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import counterReducer from './reducers/counterSlice'; // Import your reducer
+import counterReducer from './reducers/counterSlice';
+import schoolReducer from './reducers/schoolSlice';
 import darkModeReducer from './reducers/darkModeSlice';
+import authReducer from './reducers/authSlice';
 import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // Defaults to localStorage
 
 const persistConfig = {
   key: 'root', 
   storage,
-  whitelist: ['counter', 'darkMode'],
+  whitelist: ['counter', 'darkMode', 'auth', 'school'],
   blacklist: ['register'],
 };
 
 const rootReducer = combineReducers({
     counter: counterReducer,
     darkMode:darkModeReducer,
+    auth:authReducer,
+    school:schoolReducer
   });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
