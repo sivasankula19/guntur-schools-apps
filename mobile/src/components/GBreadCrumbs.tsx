@@ -1,15 +1,12 @@
-import { IonBreadcrumb, IonBreadcrumbs } from '@ionic/react';
-import React, {  } from 'react';
+import React from 'react';
+import GBreadCrumb from './GBreadCrumb';
 
 const GBreadCrumbs: React.FC<IBreadCrumbsProps> = ({ data }) => {
   return (
-    <IonBreadcrumbs>
+    <div className='g_flex g_breadcrumbs'>
       {data.map((breadItem, index) => (
         <React.Fragment key={index}>
-          <IonBreadcrumb>
-            <div>{breadItem.bName}</div>{' '}
-            {index !== data.length - 1 && <div slot="separator"></div>}
-          </IonBreadcrumb>
+          <GBreadCrumb bName={breadItem.bName}></GBreadCrumb>
           {index !== data.length - 1 && (
             <>
               <div className="separator_bread">/</div>
@@ -17,16 +14,15 @@ const GBreadCrumbs: React.FC<IBreadCrumbsProps> = ({ data }) => {
           )}
         </React.Fragment>
       ))}
-    </IonBreadcrumbs>
+    </div>
   );
 };
 
 interface NavigationItem {
-    bName: string;
-    path: string;
-  }
+  bName: string;
+  path: string;
+}
 interface IBreadCrumbsProps {
-
   data: NavigationItem[];
 }
 
