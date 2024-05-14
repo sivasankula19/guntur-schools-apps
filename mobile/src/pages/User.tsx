@@ -128,7 +128,6 @@ const UserByID: React.FC = () => {
                 >
                   <IonInput
                     className="custom-ion-input"
-                    // value={user.value}
                     label={user.key}
                     labelPlacement="floating"
                     fill="outline"

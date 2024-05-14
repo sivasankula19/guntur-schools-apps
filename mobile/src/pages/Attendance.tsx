@@ -26,6 +26,7 @@ import {
   studentAttendanceCalendar,
   transformListToGrid,
 } from '../common/utility';
+import GBreadCrumbs from '../components/GBreadCrumbs';
 
 const Attendance: React.FC = () => {
   const [viewMode, setViewMode] = useState('list');
@@ -38,16 +39,15 @@ const Attendance: React.FC = () => {
   const attendanceDate = studentAttendanceCalendar;
   const gridAttendace = transformListToGrid(studentAttendanceCalendar);
 
+  const breadCrumbsValue = [
+    { bName: 'Home', path: '/' },
+    { bName: 'Progress Card', path: '/progress-card' },
+  ];
+
   return (
     <div>
       <div className="g_flex g_space_btwn g_align_cntr bread_toggle_container">
-        <IonBreadcrumbs>
-          <IonBreadcrumb>
-            <div>Home</div> <div slot="separator"></div>
-          </IonBreadcrumb>
-          <div className="separator_bread">/</div>
-          <IonBreadcrumb>My Attendance</IonBreadcrumb>
-        </IonBreadcrumbs>
+       <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
         <div>
           <IonIcon
             onClick={() => {

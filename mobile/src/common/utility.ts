@@ -523,5 +523,92 @@ export const schoolsListData = [
 
 
 
+export const timeTableVal = [
+  {
+    "day": "Monday",
+    dayShort:'MON',
+    "periods": [
+      { "subject": "Math", "time": "10:00 AM - 11:00 AM", subShort:'MAT', timeStart:'10:00' },
+      { "subject": "English", "time": "11:00 AM - 12:00 PM",subShort:'ENG',timeStart:'11:00'  },
+      { "subject": "Science", "time": "12:00 PM - 1:00 PM",subShort:'SCI',timeStart:'12:00'  },
+      { "subject": "Lunch", "time": "1:00 PM - 2:00 PM",subShort:'BREAK',timeStart:'1:00'  },
+      { "subject": "Social", "time": "2:00 PM - 3:00 PM",subShort:'SOC',timeStart:'2:00'  },
+      { "subject": "Hindi", "time": "3:00 PM - 4:00 PM",subShort:'HIN' ,timeStart:'3:00' },
+      { "subject": "Telugu", "time": "4:00 PM - 5:00 PM",subShort:'TEL',timeStart:'4:00'  }
+    ]
+  },
+  {
+    "day": "Tuesday",
+    dayShort:'TUE',
+    "periods": [
+      { "subject": "Math", "time": "10:00 AM - 11:00 AM", subShort:'MAT', timeStart:'10:00' },
+      { "subject": "English", "time": "11:00 AM - 12:00 PM",subShort:'ENG',timeStart:'11:00'  },
+      { "subject": "Science", "time": "12:00 PM - 1:00 PM",subShort:'SCI',timeStart:'12:00'  },
+      { "subject": "Lunch", "time": "1:00 PM - 2:00 PM",subShort:'BREAK',timeStart:'1:00'  },
+      { "subject": "Social", "time": "2:00 PM - 3:00 PM",subShort:'SOC',timeStart:'2:00'  },
+      { "subject": "Hindi", "time": "3:00 PM - 4:00 PM",subShort:'HIN' ,timeStart:'3:00' },
+      { "subject": "Telugu", "time": "4:00 PM - 5:00 PM",subShort:'TEL',timeStart:'4:00'  }
+    ]
+  },
+  {
+    "day": "Wednesday",
+    dayShort:'WED',
+    "periods": [
+      { "subject": "Math", "time": "10:00 AM - 11:00 AM", subShort:'MAT', timeStart:'10:00' },
+      { "subject": "English", "time": "11:00 AM - 12:00 PM",subShort:'ENG',timeStart:'11:00'  },
+      { "subject": "Science", "time": "12:00 PM - 1:00 PM",subShort:'SCI',timeStart:'12:00'  },
+      { "subject": "Lunch", "time": "1:00 PM - 2:00 PM",subShort:'BREAK',timeStart:'1:00'  },
+      { "subject": "Social", "time": "2:00 PM - 3:00 PM",subShort:'SOC',timeStart:'2:00'  },
+      { "subject": "Hindi", "time": "3:00 PM - 4:00 PM",subShort:'HIN' ,timeStart:'3:00' },
+      { "subject": "Telugu", "time": "4:00 PM - 5:00 PM",subShort:'TEL',timeStart:'4:00'  }
+    ]
+  },
+  {
+    "day": "Thursday",
+    dayShort:'THU',
+    "periods": [
+      { "subject": "Math", "time": "10:00 AM - 11:00 AM", subShort:'MAT', timeStart:'10:00' },
+      { "subject": "English", "time": "11:00 AM - 12:00 PM",subShort:'ENG',timeStart:'11:00'  },
+      { "subject": "Science", "time": "12:00 PM - 1:00 PM",subShort:'SCI',timeStart:'12:00'  },
+      { "subject": "Lunch", "time": "1:00 PM - 2:00 PM",subShort:'BREAK',timeStart:'1:00'  },
+      { "subject": "Social", "time": "2:00 PM - 3:00 PM",subShort:'SOC',timeStart:'2:00'  },
+      { "subject": "Hindi", "time": "3:00 PM - 4:00 PM",subShort:'HIN' ,timeStart:'3:00' },
+      { "subject": "Telugu", "time": "4:00 PM - 5:00 PM",subShort:'TEL',timeStart:'4:00'  }
+    ]
+  },
+  {
+    "day": "Friday",
+    dayShort:'FRI',
+    "periods": [
+      { "subject": "Math", "time": "10:00 AM - 11:00 AM", subShort:'MAT', timeStart:'10:00' },
+      { "subject": "English", "time": "11:00 AM - 12:00 PM",subShort:'ENG',timeStart:'11:00'  },
+      { "subject": "Science", "time": "12:00 PM - 1:00 PM",subShort:'SCI',timeStart:'12:00'  },
+      { "subject": "Lunch", "time": "1:00 PM - 2:00 PM",subShort:'BREAK',timeStart:'1:00'  },
+      { "subject": "Social", "time": "2:00 PM - 3:00 PM",subShort:'SOC',timeStart:'2:00'  },
+      { "subject": "Hindi", "time": "3:00 PM - 4:00 PM",subShort:'HIN' ,timeStart:'3:00' },
+      { "subject": "Telugu", "time": "4:00 PM - 5:00 PM",subShort:'TEL',timeStart:'4:00'  }
+    ]
+  },
+  {
+    "day": "Saturday",
+    dayShort:'SAT',
+    "periods": [
+      { "subject": "Math", "time": "10:00 AM - 11:00 AM", subShort:'MAT', timeStart:'10:00' },
+      { "subject": "English", "time": "11:00 AM - 12:00 PM",subShort:'ENG',timeStart:'11:00'  },
+      { "subject": "Science", "time": "12:00 PM - 1:00 PM",subShort:'SCI',timeStart:'12:00'  },
+      { "subject": "Lunch", "time": "1:00 PM - 2:00 PM",subShort:'BREAK',timeStart:'1:00'  },
+      { "subject": "Social", "time": "2:00 PM - 3:00 PM",subShort:'SOC',timeStart:'2:00'  },
+      { "subject": "Hindi", "time": "3:00 PM - 4:00 PM",subShort:'HIN' ,timeStart:'3:00' },
+      { "subject": "Telugu", "time": "4:00 PM - 5:00 PM",subShort:'TEL',timeStart:'4:00'  }
+    ]
+  },
+]
+
+
+
+
+
+
+
 
 

@@ -19,7 +19,6 @@ const StudentList: React.FC = () => {
   const studentsDataList = studentDummyData;
   const dispatch = useDispatch()
   const handleToggleChange = (event: any) => {
-    dispatch(increment())
     setIsFilterEnabled(event.detail.checked);
   };
 
@@ -37,7 +36,6 @@ const StudentList: React.FC = () => {
     <div>
       <div className="g_flex g_space_btwn g_align_cntr bread_toggle_container">
         <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
-        <div>{count.value}</div>
         <div>
           <IonToggle
             className="custom-toggle"

@@ -29,6 +29,7 @@ import {
 import React, { useEffect, useRef, useState } from 'react';
 import GCustomisedModal from '../components/GCustomisedModal';
 import { remainderDummyData } from '../common/utility';
+import GBreadCrumbs from '../components/GBreadCrumbs';
 
 const Remainders: React.FC = () => {
   const [eventDateTime, setEventDateTime] = useState<any>('');
@@ -56,16 +57,12 @@ const Remainders: React.FC = () => {
     return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.000Z`;
   }
 
+  const breadCrumbsValue = [{bName:'Home', path:'/'},{bName:'Home Work', path:'/home-wark'}]
+
   return (
     <div>
       <div className="g_flex g_space_btwn g_align_cntr bread_toggle_container">
-        <IonBreadcrumbs>
-          <IonBreadcrumb>
-            <div>Home</div> <div slot="separator"></div>
-          </IonBreadcrumb>
-          <div className="separator_bread">/</div>
-          <IonBreadcrumb>Remainders</IonBreadcrumb>
-        </IonBreadcrumbs>
+       <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
         <div>
           <IonButton
             onClick={() => {

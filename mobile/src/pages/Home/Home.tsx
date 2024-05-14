@@ -71,8 +71,8 @@ const Home: React.FC = () => {
       </div>
       <div className="g_txt_center g_height_10">
         <div className="home_info_continer">
-          <p>Welecome to Government High School</p>
-          <p>Please Login</p>
+          <p>Welecome to Government High School Madugula,
+          Please Login</p>
         </div>
       </div>
       <div className="login_form_content">
@@ -83,7 +83,7 @@ const Home: React.FC = () => {
                 <IonInput
                   value={userName}
                   onIonInput={handleUserName}
-                  className="custom-ion-input"
+                  className="custom-ion-input_home"
                   label={'User ID'}
                   labelPlacement="floating"
                   fill="outline"
@@ -95,7 +95,7 @@ const Home: React.FC = () => {
                   value={password}
                   type="password"
                   onIonInput={handlePassword}
-                  className="custom-ion-input"
+                  className="custom-ion-input_home"
                   label={'Password'}
                   labelPlacement="floating"
                   fill="outline"

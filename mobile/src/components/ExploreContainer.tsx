@@ -84,7 +84,7 @@ const GetComponent = ({ name }: any) => {
       return <ExamSchedule />;
     case 'assets':
       return <SchoolAssets />;
-    case 'remainders':
+    case 'home-work':
       return <Remainders />;
     case 'diary':
       return <Dairy />;
