@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import NavChipCard from './NavChipsCard';
 import './Dashboard.css';
 import {
@@ -33,6 +33,12 @@ import { timeTableVal } from '../../common/utility';
 
 const dashboard: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [currentTime, setCurrentTime] = useState(new Date());
+  const [timeDifference, setTimeDifference] = useState(0);
+  const [timeDiffHrs, setTimeDiffHrs] = useState(0);
+  const [selectedSegment, setSelectedSegment] = useState('Today');
+  const dsbrdRef = useRef<any>(null)
+
   const chipsData = [
     { id: 1, moduleName: 'Attendance', icon: calendarOutline },
     { id: 2, moduleName: 'Progress Card', icon: documentTextOutline },
@@ -56,8 +62,6 @@ const dashboard: React.FC = () => {
     setIsOpen((prev) => !prev);
   };
 
-  const [selectedSegment, setSelectedSegment] = useState('Today');
-
   const handleSegmentChange = (value: any) => {
     setSelectedSegment(value);
   };
@@ -79,10 +83,6 @@ const dashboard: React.FC = () => {
 
   const timeArr = timeTableVal;
 
-  const [currentTime, setCurrentTime] = useState(new Date());
-  const [timeDifference, setTimeDifference] = useState(0);
-  const [timeDiffHrs, setTimeDiffHrs] = useState(0);
-
   useEffect(() => {
     calculateTimeDiffUpdateState();
     const interval = setInterval(() => {
@@ -92,12 +92,22 @@ const dashboard: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(()=>{
+    scrollToTop()
+  },[isOpen])
+
+  const scrollToTop = () => {
+    if (dsbrdRef.current) {
+      dsbrdRef.current.scrollTop = 0; 
+    }
+  };
+
   const calculateTimeDiffUpdateState = () => {
     const now = new Date();
     setCurrentTime(now);
 
     now.setHours(10);
-    now.setMinutes(45);
+    now.setMinutes(25);
     now.setSeconds(0);
 
     const targetTime = new Date(now);
@@ -115,7 +125,7 @@ const dashboard: React.FC = () => {
   };
 
   return (
-    <div>
+    <div ref={dsbrdRef}  className='dsbrd_container'>
       <div className="dsbrd">
         <NavChipCard
           isOpen={isOpen}
@@ -123,7 +133,6 @@ const dashboard: React.FC = () => {
           chips={chipsData.slice(0, isOpen ? undefined : 9)}
         ></NavChipCard>
       </div>
-
       <IonCard className="calendar_time_table">
         <IonCardContent>
           <div className="g_flex">
@@ -159,7 +168,7 @@ const dashboard: React.FC = () => {
             <div className="time_today_view">
               <div className="time_day_view_con">
                 <div
-                  style={{ top: `${14 + timeDiffHrs * 6 + timeDifference}px` }}
+                  style={{ top: `${6 + timeDiffHrs * 6 + timeDifference}px` }}
                   className="current_time_indicator"
                 ></div>
                 <IonList>
