@@ -29,6 +29,7 @@ const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
 const Menu: React.FC = () => {
   const isDarkMode = useSelector((state: any) => state?.darkMode.isDarkMode);
+  const authInfo = useSelector((state:any)=> state.auth)
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch =  useDispatch()
@@ -41,10 +42,15 @@ const Menu: React.FC = () => {
     navigate(path);
   };
 
+  const navigateProfile = () => {
+    navigate(`/user/${authInfo.user.regNumber}`)
+  }
+
   return (
     <IonMenu contentId="main" type="overlay">
       <IonContent>
-        <IonItem>
+        <IonMenuToggle autoHide={false}>
+        <IonItem className='menu_user_info' onClick={navigateProfile}>
           <IonAvatar className="menu_avatar">
             <img
               alt="Silhouette of a person's head"
@@ -52,10 +58,11 @@ const Menu: React.FC = () => {
             />
           </IonAvatar>
           <IonText className="menu_user_name">
-            <h3>{'<StudentName>'}</h3>
+            <h3>{authInfo?.user?.fullName || 'Name'}</h3>
             <p>View Profile</p>
           </IonText>
         </IonItem>
+        </IonMenuToggle>
         <IonList id="inbox-list">
           {appPages.map((appPage, index) => {
             return (

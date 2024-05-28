@@ -604,6 +604,103 @@ export const timeTableVal = [
   },
 ]
 
+export const formatDate = (date:any, time:boolean=false, full:boolean=false) => {
+  const pad = (num:any) => (num < 10 ? '0' : '') + num;
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+  const formattedHours = hours % 12 || 12;
+  
+  const day = pad(date.getDate());
+  const month = pad(date.getMonth() + 1);
+  const year = date.getFullYear();
+
+  const formattedTime = `${pad(formattedHours)}:${pad(minutes)} ${ampm}`;
+  const formattedDate = `${day}/${month}/${year}`;
+
+  return `${formattedTime} ${formattedDate}`;
+}
+
+
+export const AboutModuleData: any = [
+  {
+    id: 'mission',
+    title: 'Mission',
+    contentType: 'text',
+    content: `Pursuit of excellence in Academics Games and Sports, Co-curricular activities and in Human Values.
+    Development of Personality, instilling Qualities of self-reliance, courage, self-confidence and self-esteem.`,
+  },
+  {
+    id: 'vission',
+    title: 'Vission',
+    contentType: 'text',
+    content: `Pursuit of excellence in Academics Games and Sports, Co-curricular activities and in Human Values.
+    Development of Personality, instilling Qualities of self-reliance, courage, self-confidence and self-esteem.`,
+  },
+  {
+    id: 'established_on',
+    title: 'Established On',
+    contentType: 'text',
+    content: `1998 / date - Years of Success maintainance`,
+  },
+  {
+    id: 'location',
+    title: 'Location',
+    contentType: 'map',
+    location: `MAP - Navigate to map / address will be placed here`,
+  },
+  {
+    id: 'staff_count',
+    title: 'Staff Count',
+    contentType: 'text',
+    content: 'School staff count!',
+  },
+  {
+    id: 'students_count',
+    title: 'Students Count',
+    contentType: 'text',
+    content: 'school students count!',
+  },
+  {
+    id: 'facilities',
+    title: 'Facilities',
+    contentType: 'list',
+    listContent: [
+      'Ac ClassRooms',
+      'International Languages',
+      'Cricket Playground',
+    ],
+  },
+  {
+    id: 'achievements',
+    title: 'Achievements',
+    contentType: 'list',
+    listContent: [
+      'National Chess compititation prize',
+      'State level playings',
+    ],
+  },
+  {
+    id: 'recognosations',
+    title: 'Recognosations',
+    contentType: 'text',
+    content: 'School Recognizations!',
+  },
+  {
+    id: 'student_testimonials',
+    title: 'Student Testimonials',
+    contentType: 'desc_list',
+    listContent: [
+      {
+        desc: `Studying in This school is makes me every day proud of eduction system and each day i learning new skills and experience new way of study by practical knowledge`,
+        providebyId: 'Y248C039',
+        providedByName: 'Siva Sankula',
+      },
+    ],
+  },
+];
+
+
 
 
 

@@ -41,7 +41,7 @@ const Attendance: React.FC = () => {
 
   const breadCrumbsValue = [
     { bName: 'Home', path: '/' },
-    { bName: 'Progress Card', path: '/progress-card' },
+    { bName: 'Attendance', path: '/attendance' },
   ];
 
   return (

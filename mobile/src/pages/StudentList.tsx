@@ -12,12 +12,14 @@ import { studentDummyData } from '../common/utility';
 import GBreadCrumbs from '../components/GBreadCrumbs';
 import { useDispatch, useSelector } from 'react-redux';
 import { increment } from '../redux/reducers/counterSlice';
+import { useNavigate } from 'react-router';
 
 const StudentList: React.FC = () => {
   const [isFilterEnabled, setIsFilterEnabled] = useState(true);
   const [search, setSearch] = useState('');
   const studentsDataList = studentDummyData;
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const handleToggleChange = (event: any) => {
     setIsFilterEnabled(event.detail.checked);
   };
@@ -29,6 +31,10 @@ const StudentList: React.FC = () => {
     console.log(ev?.target.value);
     //  debounce function can be excuted!!! here
   };
+
+  const navigateToUser = (id:string) => {
+    navigate(`/user/${id}`)
+  }
 
   const breadCrumbsValue = [{bName:'Home', path:'/'},{bName:'Students List', path:'/students-list'}]
 
@@ -118,13 +124,14 @@ const StudentList: React.FC = () => {
                 <div className="g_flex first_container g_align_cntr">
                   <div className="profile_item">
                     <img
+                    onClick={()=>navigateToUser(item.id)}
                       className="prifile_image"
                       src={item.profileImage}
                       alt="profile"
                     />
                   </div>
                   <div className="title_designation">
-                    <h2 className="title_name">{item.studentName}</h2>
+                    <h2 onClick={()=>navigateToUser(item.id)} className="title_name">{item.studentName}</h2>
                     <p>
                       <span>{`${item.class} ${item.section}`}</span>
                     </p>

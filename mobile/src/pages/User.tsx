@@ -15,13 +15,15 @@ import {
   calendarClearOutline,
   expandOutline,
 } from 'ionicons/icons';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import GCustomisedModal from '../components/GCustomisedModal';
 import { useNavigate } from 'react-router';
 import GImageDocPreview from '../components/GImageDocPreview';
+import GBreadCrumbs from '../components/GBreadCrumbs';
+import { useSelector } from 'react-redux';
 
 const userData: any = [
   { key: 'Full Name', value: 'Sivaiah Sankula' },
@@ -34,6 +36,7 @@ const userData: any = [
 ];
 const UserByID: React.FC = () => {
   const { id } = useParams<{ id: string }>();
+  const authInfo = useSelector((state: any) => state.auth);
   const [eventDateTime, setEventDateTime] = useState<any>('');
   const modal = useRef<HTMLIonModalElement>(null);
   const [eventModal, setEventModal] = useState(false);
@@ -56,23 +59,28 @@ const UserByID: React.FC = () => {
     return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.000Z`;
   }
 
+  const [breadCrumbsState,setBreadCrumbsState] =useState([
+    { bName: 'Home', path: '/' },
+    { bName: 'Student', path: '/students-list' },
+  ])
+
+  useEffect(()=>{
+    if(authInfo.user.regNumber === id){
+      setBreadCrumbsState(prev => [prev[0], {bName:'My Profile', path:'/'} ])
+    }
+  },[])
+
   return (
     <IonPage className="my_page">
       <Header />
       <IonContent fullscreen>
-        <IonBreadcrumbs>
-          <IonBreadcrumb>
-            <div>Home</div> <div slot="separator"></div>
-          </IonBreadcrumb>
-          <div className="separator_bread">/</div>
-          <IonBreadcrumb>Students List - 8A001</IonBreadcrumb>
-        </IonBreadcrumbs>
+        <GBreadCrumbs data={breadCrumbsState}></GBreadCrumbs>
         <div className="d-flex-jc-center">
           <IonCard className="profile-card">
             <div className="user_id profile-name">Sankula sivaiah</div>
             <img
               src={
-                'https://st3.depositphotos.com/15648834/17930/v/450/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg'
+                'https://www.static-contents.youth4work.com/y4w/Images/Users/3126495.png?v=20180128190106'
               }
               height="80%"
               width="80%"
@@ -96,20 +104,22 @@ const UserByID: React.FC = () => {
             );
           })}
         </div>
-        <div className="bottom-button">
-          <IonButton
-            onClick={() => setEventModal(true)}
-            size="small"
-            className="button-text"
-          >
-            <IonIcon
-              slot="start"
-              icon={pencil}
-              style={{ color: 'black' }}
-            ></IonIcon>
-            Edit Profile
-          </IonButton>
-        </div>
+        {authInfo.user.regNumber === id && (
+          <div className="bottom-button">
+            <IonButton
+              onClick={() => setEventModal(true)}
+              size="small"
+              className="button-text"
+            >
+              <IonIcon
+                slot="start"
+                icon={pencil}
+                style={{ color: 'black' }}
+              ></IonIcon>
+              Edit Profile
+            </IonButton>
+          </div>
+        )}
         <GCustomisedModal
           title="Update Profile"
           isOpen={eventModal}
@@ -141,9 +151,9 @@ const UserByID: React.FC = () => {
       </IonContent>
       <GImageDocPreview
         src={
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5Pxol7CM9TBMVe8l7LW-0nwsGZQiOGd48Tw&s'
+          'https://www.static-contents.youth4work.com/y4w/Images/Users/3126495.png?v=20180128190106'
         }
-        title="Student Name"
+        title={authInfo.user.fullName || 'Student Name'}
         onClose={() => {
           setIsOpen(false);
         }}

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import NavChipCard from './NavChipsCard';
+import NavChipCard from '../../components/NavChipsCard';
 import './Dashboard.css';
 import {
   calendarOutline,
@@ -29,15 +29,15 @@ import {
   IonSegmentButton,
   IonText,
 } from '@ionic/react';
-import { timeTableVal } from '../../common/utility';
+import { formatDate, timeTableVal } from '../../common/utility';
 
 const dashboard: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [currentTime, setCurrentTime] = useState(new Date());
+  const [currentTime, setCurrentTime] = useState<any>(null);
   const [timeDifference, setTimeDifference] = useState(0);
   const [timeDiffHrs, setTimeDiffHrs] = useState(0);
   const [selectedSegment, setSelectedSegment] = useState('Today');
-  const dsbrdRef = useRef<any>(null)
+  const dsbrdRef = useRef<any>(null);
 
   const chipsData = [
     { id: 1, moduleName: 'Attendance', icon: calendarOutline },
@@ -104,7 +104,7 @@ const dashboard: React.FC = () => {
 
   const calculateTimeDiffUpdateState = () => {
     const now = new Date();
-    setCurrentTime(now);
+    setCurrentTime(formatDate(now, false, true));
 
     now.setHours(10);
     now.setMinutes(25);
@@ -159,7 +159,7 @@ const dashboard: React.FC = () => {
             <div className="custom-segment-container">
               <div className="day-time-display">
                 <IonText>
-                  <p>10:25 AM / 26/04/2024 </p>
+                  <p>{currentTime}</p>
                 </IonText>
               </div>
             </div>

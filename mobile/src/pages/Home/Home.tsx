@@ -8,9 +8,10 @@ import {
 } from '@ionic/react';
 import { expandOutline } from 'ionicons/icons';
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { authenticateUser } from '../../redux/reducers/authSlice';
 import { useNavigate } from 'react-router';
+import { setPreLoginPublicView } from '../../redux/reducers/schoolSlice';
 
 const Home: React.FC = () => {
   const preLoginBtns = [
@@ -24,6 +25,7 @@ const Home: React.FC = () => {
 
   const [userName, setUserName] = useState('Y248B039');
   const [password, setPassword] = useState('someKey@123');
+  const selectedSchool = useSelector((state:any)=>state.school.selectedSchool)
 
   const dispatch = useDispatch();
   const navigate = useNavigate()
@@ -58,6 +60,11 @@ const Home: React.FC = () => {
     setPassword(e.detail.value);
   };
 
+  const handleNavigate = (path:string, module:string) => {
+    dispatch(setPreLoginPublicView(module))
+    navigate(path)
+  }
+
   return (
     <div className="home_container">
       <div className="school_logo_image_hoem g_height_10">
@@ -71,8 +78,8 @@ const Home: React.FC = () => {
       </div>
       <div className="g_txt_center g_height_10">
         <div className="home_info_continer">
-          <p>Welecome to Government High School Madugula,
-          Please Login</p>
+          <p>Welecome to {selectedSchool?.schoolName || "SomeScl"},</p>
+          <p>Please Login</p>
         </div>
       </div>
       <div className="login_form_content">
@@ -112,7 +119,7 @@ const Home: React.FC = () => {
       <IonItem className="custom_btns_item">
         <div className="pre_login_btns">
           {preLoginBtns.map((btnItem) => (
-            <IonButton key={btnItem.name}>{btnItem.name}</IonButton>
+            <IonButton onClick={()=>handleNavigate(btnItem.redirectTo, btnItem.name)} key={btnItem.name}>{btnItem.name}</IonButton>
           ))}
         </div>
       </IonItem>
