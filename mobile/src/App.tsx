@@ -111,7 +111,7 @@ const App: React.FC = () => {
           <Menu />
           <IonRouterOutlet id="main">
             <Routes>
-              <Route path="/" element={<Navigate to={school === null ? '/select-school' : isAuthenticated ? '/home' : '/dashboard'} />}></Route>
+              <Route path="/" element={<Navigate to={school === null ? '/select-school' : isAuthenticated ? '/dashboard' : '/home'} />}></Route>
               <Route path={'/user/:id'} element={<UserByID />}></Route>
               <Route path={'/select-school'} element={<SelectSchool />}></Route>
               <Route path="/:name" element={<Page />}></Route>

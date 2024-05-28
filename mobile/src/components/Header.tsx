@@ -17,6 +17,8 @@ import { searchOutline } from 'ionicons/icons';
 import { useNavigate } from 'react-router';
 
 const Header: React.FC = () => {
+  const selectedSchool = useSelector((state:any)=>state.school.selectedSchool);
+  const authInfo = useSelector((state:any)=> state.auth)
   const isAuthenticated = useSelector(
     (state: any) => state.auth.isAuthenticated
   );
@@ -39,7 +41,7 @@ const Header: React.FC = () => {
               <img src='https://st3.depositphotos.com/15648834/17930/v/450/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg' />
             </div>
             <IonTitle className="header_schoolname">
-              Siva Sankula User 123
+              {authInfo?.user?.fullName || 'Name'}
             </IonTitle>
           </>
         ) : (
@@ -48,7 +50,7 @@ const Header: React.FC = () => {
               <div className="g_flex g_align_cntr">
                 <IonIcon icon={searchOutline}></IonIcon>
                 <IonText>
-                  <p>Government High School Madugula sov</p>
+                  <p>{selectedSchool?.schoolName}</p>
                 </IonText>
               </div>
             </IonItem>

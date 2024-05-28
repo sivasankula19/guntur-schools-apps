@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   selectedSchool: null,
-  schoolData: null, 
+  schoolData: null,
+  preLoginModule:'',
 };
 
 const schoolSlice = createSlice({
@@ -16,10 +17,13 @@ const schoolSlice = createSlice({
     setSchoolData(state, action) {
       state.schoolData = action.payload;
     },
+    setPreLoginPublicView(state, action){
+      state.preLoginModule = action.payload
+    },
   },
 });
 
-export const { setSelectedSchool, setSchoolData } = schoolSlice.actions;
+export const { setSelectedSchool, setSchoolData , setPreLoginPublicView } = schoolSlice.actions;
 export default schoolSlice.reducer;
 
 
