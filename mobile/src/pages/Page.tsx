@@ -4,6 +4,7 @@ import ExploreContainer from '../components/ExploreContainer';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import PreLoginHead from '../components/PreLoginHead';
+import PreLoginFoot from '../components/PreLoginFoot';
 
 const Page: React.FC = () => {
   const { name = '' } = useParams<{ name: string }>();
@@ -26,6 +27,7 @@ const Page: React.FC = () => {
             <div className="actual_content">
               <ExploreContainer name={name || ''} />
             </div>
+            <PreLoginFoot></PreLoginFoot>
           </div>
         ) : (
           <ExploreContainer name={name || ''} />

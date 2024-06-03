@@ -72,7 +72,7 @@ const Courses: React.FC = () => {
         <p>Courses Offered!</p>
       </IonText>
       <div>
-        <div className='course_row'>
+        <div className='course_row custom_head_courses'>
           {
             courseLabels.map((col:any)=>(<div style={{width:`${100/3}%`, border:'1px solid'}} className='course_col_head' key={col.id}>
              {col.colName}
@@ -83,7 +83,7 @@ const Courses: React.FC = () => {
           {
             courseLabels.map((col:any, index:number)=>(<div style={{width:`${100/3}%`, border:'1px solid'}} className='course_col_head' key={courseItem.id + col.id}>
              {col.col === 'courseName' ? <>{courseItem[col.col]}</> : <>
-               <IonIcon icon={courseItem[col.col] ? checkmarkCircleOutline : closeCircleOutline}></IonIcon>
+               <IonIcon className={`${courseItem[col.col] ? 'available_course' : 'unavailable_course'}`}  icon={courseItem[col.col] ? checkmarkCircleOutline : closeCircleOutline}></IonIcon>
              </>}
             </div>))
           }

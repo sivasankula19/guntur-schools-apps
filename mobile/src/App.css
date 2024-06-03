@@ -32,6 +32,17 @@
 
 }
 
+.g_text_ellipses {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  line-height: 1em;
+  max-height: 1.8em;
+  word-break: break-all;
+}
+
 .footer_container h6{
   font-size: 18px;
   text-align: center;
@@ -93,7 +104,7 @@
   color: #000000;
 }
 
-.poweredby_container h4{
+.dark .poweredby_container h4{
   color: #ffffff;
 }
 
@@ -382,6 +393,23 @@ ion-header {
 
 .g_height_10 {
   height: 10%;
+}
+
+.custom_g_height_10{
+  height: 12%;
+  @media (min-height: 400px) and (max-height: 700px) {
+    height: 10%;
+  }
+
+  @media (min-height: 701px) and (max-height: 800px) {
+    height: 14%;
+  }
+  @media (min-height: 801px) and (max-height: 900px) {
+    height: 16%;
+  }
+  @media (min-height: 901px) and (max-height: 1400px) {
+    height: 18%;
+  }
 }
 
 .g_height45{
@@ -677,7 +705,7 @@ ion-breadcrumbs {
 .custome_select::part(icon) {
   color: #000000;
   opacity: 1;
-  width: 26px;
+  width: 20px;
 }
 
 .dark .custome_select::part(icon) {
@@ -1380,7 +1408,7 @@ ion-breadcrumbs {
   border-color: #1D7AF5;
   margin: 8px;
   --padding-start: 8px;
-  --inner-padding-end: 8px;
+  --inner-padding-end: 12px;
 }
 
 .documents ion-icon {
@@ -1397,6 +1425,7 @@ ion-breadcrumbs {
   max-height: 2.4em;
   font-weight: 600;
   color: #1D7AF5;
+  margin-left: 6px;
 }
 
 .documents ion-label {
@@ -1673,12 +1702,18 @@ ion-breadcrumbs {
   padding-right: 8px;
 }
 
+.ios .custom-ion-input_home {
+  border: 1px solid;
+  border-radius: 8px;
+}
+
 .custom-ion-input_home {
   margin-top: 4px;
   min-height: 46px !important;
   --padding-start: 10px !important;
   --padding-end: 10px !important;
 }
+
 
 label.input-wrapper.sc-ion-input-ios {
   position: relative;
@@ -1803,6 +1838,10 @@ label.input-wrapper.sc-ion-input-ios {
   justify-content: center;
 }
 
+.dark .prelogin_head {
+  background-color: #3f3f3f;
+}
+
 .back_btns_holder{
   width: 100%;
   padding: 6px 12px 6px 6px;
@@ -1836,9 +1875,18 @@ label.input-wrapper.sc-ion-input-ios {
   background-color: #D9D9D9;
 }
 
+.about_container{
+  margin-bottom: 100px;
+}
+
 .about_container ion-text h5{
   color: #1D7AF5;
   font-weight: bold;
+  font-size: 16px;
+}
+
+.about_container ion-text p{
+  font-size: 14px;
 }
 
 
@@ -1851,8 +1899,12 @@ label.input-wrapper.sc-ion-input-ios {
 
 .course_row{
   width: 100%;
-  height: 40px;
+  height: 46px;
   display: flex;
+}
+
+.custom_head_courses{
+  background-color: #F5F5F5;
 }
 
 .course_col_head{
@@ -1866,6 +1918,229 @@ label.input-wrapper.sc-ion-input-ios {
 .course_row ion-icon{
   font-size: 26px;
 }
+
+.course_row .available_course{
+  color: #00FF00;
+}
+
+.course_row .unavailable_course{
+  color: #FF0000;
+}
+
+.pre_footer{
+  display: flex;
+  position: absolute;
+  bottom: 50px;
+  height: 40px;
+  justify-content: center;
+  width: 100%;
+}
+
+.pre_footer ion-button {
+  border: 1px solid;
+  border-color: #1D7AF5;
+  height: 40px;
+  width: 80%;
+  border-radius: 12px;
+  --border-radius:12px;
+  --background:white;
+  background-color: transparent;
+  color: #1D7AF5;
+  font-size: 18px;
+}
+
+
+/* Contact us page */
+.contact_field {
+  margin: 12px 0;
+}
+
+.contact_field ion-textarea{
+  min-height: 100px !important;
+}
+
+.principal{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.principal_contact{
+  width: 100%;
+  border: 1px solid;
+  border-color: #1D7AF5;
+  min-height: 100px;
+  margin: 10px;
+  padding: 12px;
+}
+
+.principal_contact .profile_img{
+  width: 40px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.principal_contact .profile_img img{
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+}
+
+.principal_contact .name_designation{
+  margin-left: 10px;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: calc(100% - 60px);
+}
+
+.principal_contact .name_designation h4{
+  margin: 0 0 2px 0;
+  color: #1D7AF5;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+
+.principal_contact .name_designation p{
+  margin: 0 0 2px 0;
+  font-size: 14px;
+}
+
+.contact_me {
+  margin-top: 12px;
+}
+
+.contact_me .left{
+  display: flex;
+  align-items: center;
+}
+
+.contact_me ion-text a{
+  width: 100%;
+  color: #000000;
+}
+
+.dark .contact_me ion-text a{
+  color: #ffffff;
+}
+
+.contact_me .left ion-icon{
+  font-size: 26px;
+  color: #1D7AF5;
+  margin: 0 6px;
+}
+
+.contact_me .right ion-icon{
+  font-size: 20px;
+  color: #1D7AF5;
+  margin-right: 12px;
+}
+
+.loc_design{
+  margin-top: 12px;
+
+}
+
+.loc_design .left{
+  width: 50%;
+  border-right: 1px solid;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+}
+
+.loc_design ion-icon{
+  font-size: 26px;
+  margin-right: 8px;
+  color: #1D7AF5;
+}
+
+.loc_design .right{
+  width: 50%;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+}
+
+.loc_design p{
+  margin: 6px;
+}
+
+.contact_location ion-text h5{
+  font-size: 16px;
+  color: #1D7AF5;
+  font-weight: 600;
+}
+
+.contact_location .location_map{
+ width: 100%;
+ height: 210px;
+ background-color: #D9D9D9;
+ border: 1px solid;
+ border-color: #1D7AF5;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ position: relative;
+}
+
+.contact_location .location_map .full_view{
+  position: absolute;
+  bottom: 10px;
+  right: 16px;
+}
+
+.contact_location .location_map .full_view ion-icon{
+  font-size: 28px;
+}
+
+.contact_address ion-text h5{
+  font-size: 16px;
+  color: #1D7AF5;
+  font-weight: 600;
+}
+
+.contact_address ion-text p{
+  font-size: 14px;
+}
+
+.contact_address .full_add{
+  padding: 0 12px 12px 12px;
+}
+
+.contact_mbl_eml{
+  min-height: 100px;
+  border: 1px solid;
+  border-color: #1D7AF5;
+  padding: 12px;
+  margin: 12px;
+  margin-bottom: 100px;
+}
+
+.contact_mbl_eml ion-text h6{
+  font-weight: 600;
+  color: #1D7AF5;
+  font-size: 14px;
+}
+
+.contact_mbl_eml ion-text p{
+  font-size: 14px;
+}
+
+.contact_mbl_eml ion-text a{
+  font-size: 14px;
+  text-decoration: underline;
+  color: #000000;
+}
+
+.dark .contact_mbl_eml ion-text a{
+  color: #ffffff;
+}
+
+
 
 
 
