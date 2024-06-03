@@ -6,42 +6,45 @@ import { useNavigate } from 'react-router';
 import { setPreLoginPublicView } from '../redux/reducers/schoolSlice';
 
 const PreLoginHead: React.FC = () => {
-  const selectedView = useSelector((state:any)=> state.school.preLoginModule)
+  const selectedView = useSelector((state: any) => state.school.preLoginModule)
   console.log(selectedView)
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const preLoginBtns = [
-    { name: 'About', redirectTo: '/about' , id:'About'},
-    { name: 'Courses', redirectTo: '/courses', id:'Courses' },
-    { name: 'Contact-Us', redirectTo: '/contact-us', id:'ContactUs' },
-    { name: 'Achievement', redirectTo: '/achievements' ,id:'Achievement'},
-    { name: 'Gallery', redirectTo: '/gallery' ,id:'Gallery'},
-    { name: 'Ex-Circular', redirectTo: '/ex-circular',id:'ExCircular' },
+    { name: 'About', redirectTo: '/about', id: 'About' },
+    { name: 'Courses', redirectTo: '/courses', id: 'Courses' },
+    { name: 'Contact-Us', redirectTo: '/contact-us', id: 'ContactUs' },
+    { name: 'Achievement', redirectTo: '/achievements', id: 'Achievement' },
+    { name: 'Gallery', redirectTo: '/gallery', id: 'Gallery' },
+    { name: 'Ex-Circular', redirectTo: '/ex-circular', id: 'ExCircular' },
   ];
 
 
   const btnsScrollRef = useRef<any>(null)
 
-  const handleToolBtns = (btnInfo:any) => {
+  const handleToolBtns = (btnInfo: any) => {
     dispatch(setPreLoginPublicView(btnInfo.name));
     navigate(btnInfo.redirectTo);
   }
 
-  useEffect(()=>{
-    if (selectedView && btnsScrollRef.current) {
-      const container = btnsScrollRef.current;
-      const selectedButton = container.querySelector(`.${selectedView}`);
-      
-      if (selectedButton) {
-        const containerRect = container.getBoundingClientRect();
-        const buttonRect = selectedButton.getBoundingClientRect();
-        // const scrollLeft = buttonRect.left - containerRect.left + container.scrollLeft;
-        // console.log(scrollLeft)
-        const scrollLeft = buttonRect.left - containerRect.left + container.scrollLeft;
-        container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+  useEffect(() => {
+    setTimeout(() => {
+      if (selectedView && btnsScrollRef.current) {
+        const container = btnsScrollRef.current;
+        const selectedButton = container.querySelector(`.${selectedView}`);
+
+        if (selectedButton) {
+          const containerRect = container.getBoundingClientRect();
+          const buttonRect = selectedButton.getBoundingClientRect();
+          // const scrollLeft = buttonRect.left - containerRect.left + container.scrollLeft;
+          // console.log(scrollLeft)
+          const scrollLeft = buttonRect.left - containerRect.left + container.scrollLeft;
+          container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+        }
       }
-    }
-  },[selectedView])
+    }, 1);
+
+  }, [selectedView])
 
   return (
     <div className="prelogin_head">
@@ -49,7 +52,7 @@ const PreLoginHead: React.FC = () => {
         <IonIcon size="large" icon={arrowBackOutline}></IonIcon>
         <div className="btns_scroll" ref={btnsScrollRef}>
           {
-            preLoginBtns.map((btn)=>(<IonButton className={`${btn.name} ${selectedView === btn.name ? 'selected':''}`} onClick={()=>handleToolBtns(btn)} key={btn.redirectTo}>{btn.name}</IonButton>))
+            preLoginBtns.map((btn) => (<IonButton className={`${btn.name} ${selectedView === btn.name ? 'selected' : ''}`} onClick={() => handleToolBtns(btn)} key={btn.redirectTo}>{btn.name}</IonButton>))
           }
         </div>
       </div>

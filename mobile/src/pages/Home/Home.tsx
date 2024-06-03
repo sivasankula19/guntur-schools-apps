@@ -17,7 +17,7 @@ const Home: React.FC = () => {
   const preLoginBtns = [
     { name: 'About', redirectTo: '/about' },
     { name: 'Courses', redirectTo: '/courses' },
-    { name: 'Contact Us', redirectTo: '/contact-us' },
+    { name: 'Contact-Us', redirectTo: '/contact-us' },
     { name: 'Achievement', redirectTo: '/achievements' },
     { name: 'Gallery', redirectTo: '/gallery' },
     { name: 'Ex-Circular', redirectTo: '/ex-circular' },
@@ -67,7 +67,7 @@ const Home: React.FC = () => {
 
   return (
     <div className="home_container">
-      <div className="school_logo_image_hoem g_height_10">
+      <div className="school_logo_image_hoem custom_g_height_10">
         <div className="logo_contain">School Logo</div>
       </div>
       <div className="g_map_school_location">
@@ -76,7 +76,7 @@ const Home: React.FC = () => {
           <IonIcon icon={expandOutline}></IonIcon>
         </div>
       </div>
-      <div className="g_txt_center g_height_10">
+      <div className="g_txt_center custom_g_height_10 g_flex g_align_cntr">
         <div className="home_info_continer">
           <p>Welecome to {selectedSchool?.schoolName || "SomeScl"},</p>
           <p>Please Login</p>

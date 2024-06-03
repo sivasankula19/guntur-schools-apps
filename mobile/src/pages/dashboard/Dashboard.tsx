@@ -79,7 +79,53 @@ const dashboard: React.FC = () => {
     '05:00 PM',
     '06:00 PM',
     '07:00 PM',
+    '08:00 PM',
+    '09:00 PM',
+    '10:00 PM',
+    '11:00 PM',
   ];
+
+  const fullAbs = [{
+    shortName:'MAT',
+    fullName:'Mathematics',
+    id:'01'
+  },{
+    shortName:'ENG',
+    fullName:'English',
+    id:'02'
+  },{
+    shortName:'TEL',
+    fullName:'Telugu',
+    id:'03'
+  },{
+    shortName:'HIN',
+    fullName:'Hindi',
+    id:'04'
+  },{
+    shortName:'SOC',
+    fullName:'Social',
+    id:'05'
+  },{
+    shortName:'SCI-P',
+    fullName:'Physical Science',
+    id:'06'
+  },{
+    shortName:'SCI-C',
+    fullName:'Chemical Science',
+    id:'07'
+  },{
+    shortName:'PT',
+    fullName:'Games',
+    id:'08'
+  },{
+    shortName:'LIB',
+    fullName:'Library',
+    id:'09'
+  },{
+    shortName:'LIB-C',
+    fullName:'Computer Library',
+    id:'07'
+  },]
 
   const timeArr = timeTableVal;
 
@@ -105,10 +151,10 @@ const dashboard: React.FC = () => {
   const calculateTimeDiffUpdateState = () => {
     const now = new Date();
     setCurrentTime(formatDate(now, false, true));
-
-    now.setHours(10);
-    now.setMinutes(25);
-    now.setSeconds(0);
+    
+    // now.setHours(8);
+    // now.setMinutes(0);
+    // now.setSeconds(0);
 
     const targetTime = new Date(now);
     targetTime.setHours(8);
@@ -249,6 +295,13 @@ const dashboard: React.FC = () => {
                       ))}
                     </div>
                   ))}
+              </div>
+              <div className='shorthand_names'>
+                {fullAbs.map((item) => (
+                  <div key={item.id} className='short_item'>
+                    {item.shortName} - {item.fullName}
+                  </div>
+                ))}
               </div>
             </>
           )}
