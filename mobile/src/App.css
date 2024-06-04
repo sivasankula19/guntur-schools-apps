@@ -1709,7 +1709,7 @@ ion-breadcrumbs {
 
 .custom-ion-input_home {
   margin-top: 4px;
-  min-height: 46px !important;
+  min-height: 50px !important;
   --padding-start: 10px !important;
   --padding-end: 10px !important;
 }
@@ -1723,99 +1723,122 @@ label.input-wrapper.sc-ion-input-ios {
 
 /* Home Pre Login Screen */
 
-.home_container {
-  height: 100%;
-  overflow-y: auto;
+.home{
+  height:calc(100% - 32px);
+  text-align: center;
 }
 
-.home_container .school_logo_image_hoem {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.school_logo_image_hoem .logo_contain {
-  width: 150px;
-  /* height: 50px; */
-  padding: 12px;
-  border: 1px solid;
-  border-radius: 4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.g_map_school_location {
-  position: relative;
-  margin: 4px 16px 8px 16px;
-  background-color: #D9D9D9;
-  height: 20%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.dark .g_map_school_location {
-  background-color: #515151;
-}
-
-.g_map_school_location .map_logo_expand {
-  position: absolute;
-  bottom: 6px;
-  right: 10px;
-}
-
-
-.home_info_continer {
-  border: 1px solid;
-  width: 90%;
+.home .logo{
+  height: 50px;
+  width: 40%;
   margin: auto;
-  border-radius: 8px;
+  margin-bottom: 12px;
+  background-color: #D9D9D9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.home_container ion-item {
+.home ion-item {
   margin: 12px 0;
+  --inner-border-width: 0;
+
 }
 
-.home_container ion-card-content {
+.home ion-card-content {
   padding: 0;
+  padding-top: 12px;
 }
 
-.home_container ion-card {
-  margin: 8px 16px;
+.home ion-card {
+  margin: 16px;
 }
 
-.home_info_continer p {
-  margin: 8px 0;
+.home ion-card ion-button {
+  width: 100%;
+  height: 50px;
+  --border-radius: 12px;
+  font-size: 16px;
+  margin-top: 6px;
 }
 
-.pre_login_btns {
+.home .location_cntl{
+  display: flex;
+  position: absolute;
+  bottom: 50px;
+  height: 50px;
+  margin: auto;
+  justify-content: center;
+  width: 100%;
+  padding: 0 12px;
+}
+
+.location_cntl .location{
+  width: 100%;
+  background-color: #d9d9d9;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.location_cntl ion-icon{
+  position: absolute;
+  right: 24px;
+  font-size: 26px;
+  top: 12px;
+}
+
+.pre_login_btns{
+  max-height: 44%;
+  overflow-y: auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  margin-bottom: 100px;
 }
 
-.pre_login_btns ion-button {
-  width: 31%;
-  font-size: 12px;
-  height: 36px;
+.pre_login_btns .chip_btn{
+  width: 33%;
+  height: 110px;
 }
 
-.login_form_content ion-item {
-  --inner-border-width: 0;
+.chip_btn ion-button{
+  height: 80%;
+  width: 80%;
+  --background:transparent;
+  background-color: transparent;
+  border: 1px solid;
+  border-color: #1D7AF5;
+  color: #000000;
+  --background-activated: #d6d6d6;
+  --background-focused: #d6d6d6;
+  --background-hover: #d6d6d6;
+  margin: 0;
+  border-radius: 8px;
+  --border-radius:8px;
 }
 
-.login_form_content ion-button {
+.dark .chip_btn ion-button{
+  color: #ffffff;
+  --background-activated: #3b3b3b;
+  --background-focused: #3b3b3b;
+  --background-hover: #3b3b3b;
+}
+
+
+.chip_btn ion-button ion-icon{
+  font-size: 28px;
+}
+
+.chip_btn ion-button div{
   width: 100%;
-  height: 40px;
-  --border-radius: 12px;
 }
 
-.custom_btns_item {
-  --inner-padding-end: 8px;
-  --padding-start: 8px;
-  --background: inherit;
-  --inner-border-width: 0;
+.chip_btn ion-button p {
+  margin: 0;
+  width: 100%;
+  margin-top: 8px;
+  font-size: 12px;
 }
 
 /* About CSS */
@@ -1905,6 +1928,10 @@ label.input-wrapper.sc-ion-input-ios {
 
 .custom_head_courses{
   background-color: #F5F5F5;
+}
+
+.dark .custom_head_courses{
+  background-color: #3b3b3b;
 }
 
 .course_col_head{

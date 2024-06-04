@@ -39,6 +39,15 @@ const About: React.FC = () => {
               <a>{item.location}</a>
             </>
           )}
+          {item.contentType === 'list' && (
+            <>
+              <ul>
+                {item.listContent.map((lItem:any, index:number)=>(<li key={index}>
+                  {lItem}
+                </li>))}
+              </ul>
+            </>
+          )}
         </div>
       ))}
     </div>
