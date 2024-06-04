@@ -27,6 +27,10 @@ const PreLoginHead: React.FC = () => {
     navigate(btnInfo.redirectTo);
   }
 
+  const navigateBack = () => {
+    navigate('/home')
+  }
+
   useEffect(() => {
     setTimeout(() => {
       if (selectedView && btnsScrollRef.current) {
@@ -49,7 +53,7 @@ const PreLoginHead: React.FC = () => {
   return (
     <div className="prelogin_head">
       <div className="back_btns_holder">
-        <IonIcon size="large" icon={arrowBackOutline}></IonIcon>
+        <IonIcon onClick={navigateBack} size="large" icon={arrowBackOutline}></IonIcon>
         <div className="btns_scroll" ref={btnsScrollRef}>
           {
             preLoginBtns.map((btn) => (<IonButton className={`${btn.name} ${selectedView === btn.name ? 'selected' : ''}`} onClick={() => handleToolBtns(btn)} key={btn.redirectTo}>{btn.name}</IonButton>))
