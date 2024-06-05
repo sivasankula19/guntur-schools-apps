@@ -63,7 +63,7 @@ const Home: React.FC = () => {
   { id: 3, moduleName: 'Contact Us', icon: callOutline, redirectTo: '/contact-us' },
   { id: 4, moduleName: 'Achievements', icon: trophyOutline, redirectTo: '/achievements' },
   { id: 5, moduleName: 'Gallery', icon: imageOutline,redirectTo: '/gallery'  },
-  { id: 6, moduleName: 'Wibe', icon: newspaperOutline, redirectTo: '/ex-circular' },]
+  { id: 6, moduleName: 'Ex-Circular', icon: newspaperOutline, redirectTo: '/ex-circular' },]
 
   const preLoginBtns = [
     { name: 'About', redirectTo: '/about' },

@@ -40,22 +40,22 @@ const dashboard: React.FC = () => {
   const dsbrdRef = useRef<any>(null);
 
   const chipsData = [
-    { id: 1, moduleName: 'Attendance', icon: calendarOutline },
-    { id: 2, moduleName: 'Progress Card', icon: documentTextOutline },
-    { id: 3, moduleName: 'Home Work', icon: documentsOutline },
-    { id: 4, moduleName: 'My Subjects', icon: schoolOutline },
-    { id: 5, moduleName: 'Messages', icon: chatboxOutline },
-    { id: 6, moduleName: 'Documents', icon: documentOutline },
-    { id: 7, moduleName: 'My Staff', icon: peopleOutline },
-    { id: 8, moduleName: 'My Friends', icon: peopleOutline },
-    { id: 9, moduleName: 'Time Table', icon: timeOutline },
-    { id: 10, moduleName: 'Wibe', icon: newspaperOutline },
-    { id: 11, moduleName: 'My Dues', icon: walletOutline },
-    { id: 12, moduleName: 'Ex Circ.', icon: ribbonOutline },
-    { id: 13, moduleName: 'Gallery', icon: imageOutline },
-    { id: 14, moduleName: 'Achievements', icon: trophyOutline },
-    { id: 15, moduleName: 'Contact Us', icon: callOutline },
-    { id: 16, moduleName: 'About', icon: informationCircleOutline },
+    { id: 1, moduleName: 'Attendance', icon: calendarOutline , redirectTo:'/attendance'},
+    { id: 2, moduleName: 'Progress Card', icon: documentTextOutline, redirectTo:'/progress-card' },
+    { id: 3, moduleName: 'Home Work', icon: documentsOutline, redirectTo:'/home-work' },
+    { id: 4, moduleName: 'My Subjects', icon: schoolOutline, redirectTo:'/subjects' },
+    { id: 5, moduleName: 'Messages', icon: chatboxOutline, redirectTo:'/messages' },
+    { id: 6, moduleName: 'Documents', icon: documentOutline, redirectTo:'/documents' },
+    { id: 7, moduleName: 'My Staff', icon: peopleOutline, redirectTo:'/staff-list' },
+    { id: 8, moduleName: 'My Friends', icon: peopleOutline, redirectTo:'/students-list' },
+    { id: 9, moduleName: 'Time Table', icon: timeOutline, redirectTo:'/time-table' },
+    { id: 10, moduleName: 'Wibe', icon: newspaperOutline, redirectTo:'/school-wibe' },
+    { id: 11, moduleName: 'My Dues', icon: walletOutline, redirectTo:'/fee-structure' },
+    { id: 12, moduleName: 'Ex-Circular', icon: ribbonOutline, redirectTo:'/ex-circular' },
+    { id: 13, moduleName: 'Gallery', icon: imageOutline, redirectTo:'/gallery' },
+    { id: 14, moduleName: 'Achievements', icon: trophyOutline, redirectTo:'/achievements' },
+    { id: 15, moduleName: 'Contact Us', icon: callOutline, redirectTo:'/contact-us' },
+    { id: 16, moduleName: 'About', icon: informationCircleOutline, redirectTo:'/about' },
   ];
 
   const handleViewMode = () => {

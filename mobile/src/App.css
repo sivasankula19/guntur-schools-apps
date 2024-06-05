@@ -689,7 +689,6 @@ ion-breadcrumbs {
 .custome_select {
   --padding-start: 10px;
   --padding-end: 8px;
-
   --border-radius: 12px;
   font-size: 14px;
   max-width: 100%;
@@ -1024,7 +1023,7 @@ ion-breadcrumbs {
 
 .remainder_item_title {
   font-size: 14px;
-  font-weight: bold;
+  font-weight: 600;
   color: #1D7AF5;
 }
 
@@ -1052,7 +1051,7 @@ ion-breadcrumbs {
   width: 70%;
   max-width: 80px;
   max-height: 30px;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .edit_remainder {
@@ -1063,6 +1062,7 @@ ion-breadcrumbs {
 
 .remainder_item_desc {
   font-size: 12px;
+  font-weight: 500;
 }
 
 .two_lines_ellipsis {
@@ -1119,6 +1119,8 @@ ion-breadcrumbs {
   --inner-padding-end: 0;
   --padding-start: 0;
   margin-bottom: 12px;
+  padding-top: 2px;
+  --background:transparent;
 }
 
 .cutsome_textarea {
@@ -1876,6 +1878,7 @@ label.input-wrapper.sc-ion-input-ios {
   width: 100%;
   overflow-x: auto;
   display: flex;
+  margin-left: 6px;
 }
 
 .back_btns_holder .btns_scroll ion-button{
@@ -2292,8 +2295,45 @@ label.input-wrapper.sc-ion-input-ios {
   font-size: 28px;
 }
 
+/* Ex circular */
 
+.ex_circular ion-card ion-text h1{
+  color: #1D7AF5;
+  font-size: 16px;
+  font-weight: 600;
+}
 
+.ex_circular .eve_list{
+  max-height: 90%;
+  overflow-y: auto;
+}
+
+.ex_circular .event_desc{
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Change this to 3 for three lines */
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+.ex_circular ion-card ion-button{
+  --border-radius: 8px;
+    --background: white;
+    color: black;
+    --border: 1px solid #1D7AF5;
+    border: 1px solid #1D7AF5;
+    border-radius: 8px;
+    font-size: 12px;
+    margin-left: 6px;
+    height: 30px;
+    min-height: 20px;
+}
+
+.ex_circular .dates_eves{
+  margin-top: 12px;
+  margin-bottom: 6px;
+}
 
 
 
