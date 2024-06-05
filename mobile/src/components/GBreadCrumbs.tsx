@@ -6,7 +6,7 @@ const GBreadCrumbs: React.FC<IBreadCrumbsProps> = ({ data }) => {
     <div className='g_flex g_breadcrumbs'>
       {data.map((breadItem, index) => (
         <React.Fragment key={index}>
-          <GBreadCrumb bName={breadItem.bName}></GBreadCrumb>
+          <GBreadCrumb path={breadItem.path} bName={breadItem.bName}></GBreadCrumb>
           {index !== data.length - 1 && (
             <>
               <div className="separator_bread">/</div>

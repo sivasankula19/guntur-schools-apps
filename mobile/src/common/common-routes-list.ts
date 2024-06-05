@@ -84,8 +84,8 @@ export const RoutesListDynamic : AppPage[] = [
       mdIcon: timeSharp,
     },
     {
-      title: 'Competitions',
-      url: '/extra-curricular-activities',
+      title: 'Ex-Circular',
+      url: '/ex-circular',
       iosIcon: ribbonOutline,
       mdIcon: ribbonSharp,
     },

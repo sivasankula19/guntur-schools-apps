@@ -64,7 +64,7 @@ const GetComponent = ({ name }: any) => {
       return <TimeTable />;
     case 'gallery':
       return <Gallery />;
-    case 'extra-curricular-activities':
+    case 'ex-circular':
       return <ExCircularActivities />;
     case 'about':
       return <About />;

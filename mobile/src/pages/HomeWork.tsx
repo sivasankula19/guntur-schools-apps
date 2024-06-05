@@ -55,7 +55,7 @@ const Remainders: React.FC = () => {
     return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.000Z`;
   }
 
-  const breadCrumbsValue = [{bName:'Home', path:'/'},{bName:'Home Work', path:'/home-wark'}]
+  const breadCrumbsValue = [{bName:'Home', path:'/'},{bName:'Home Work', path:'/home-work'}]
 
   return (
     <div>

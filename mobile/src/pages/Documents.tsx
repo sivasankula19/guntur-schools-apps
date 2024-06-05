@@ -20,21 +20,17 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router';
 import GImageDocPreview from '../components/GImageDocPreview';
 import { docData } from '../common/utility';
+import GBreadCrumbs from '../components/GBreadCrumbs';
 
 const Documents: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedSrc, setSelectedSrc] = useState<any>('');
 
   const accordianContent = docData;
+  const breadCrumbsValue = [{bName:'Home', path:'/'},{bName:'Documents', path:'/documents'}]
   return (
     <div>
-      <IonBreadcrumbs>
-        <IonBreadcrumb>
-          <div>Home</div> <div slot="separator"></div>
-        </IonBreadcrumb>
-        <div className="separator_bread">/</div>
-        <IonBreadcrumb>Documents</IonBreadcrumb>
-      </IonBreadcrumbs>
+      <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
       <div className="documents">
         <IonAccordionGroup>
           {accordianContent.map((item) => (
