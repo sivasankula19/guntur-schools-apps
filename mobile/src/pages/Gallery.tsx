@@ -102,7 +102,7 @@ const Gallery: React.FC = () => {
             </div>
           </div>
           <div className='dots_imgs'>
-            {selectedClsImgs.map((clImag, index) => (<span key={clImag.id} className={`dot ${index === currentImg && 'selected_dot'}`}></span>))}
+            {selectedClsImgs.map((clImag, index) => (<span key={clImag.id} className={`dot ${index === currentImg ? 'selected_dot' : ''}`}></span>))}
           </div>
         </>) : (<>
           <div className='no_imgs'>

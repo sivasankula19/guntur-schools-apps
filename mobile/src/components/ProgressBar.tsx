@@ -9,7 +9,7 @@ const ProgressBar:  React.FC<IProgressBarProps> = ({
   }) => {
   return (
     <div className='progress_bar'>
-        <div className={`bar ${filled==100 && 'full_progress_inner'}`} style={{backgroundColor:color, width:`${filled}%`}}></div>
+        <div className={`bar ${filled==100 ? 'full_progress_inner' : ''}`} style={{backgroundColor:color, width:`${filled}%`}}></div>
     </div>
   );
 };

@@ -4,6 +4,7 @@ import {
   IonCardContent,
   IonContent,
   IonHeader,
+  IonIcon,
   IonItem,
   IonList,
   IonPage,
@@ -17,6 +18,7 @@ import Footer from '../../components/Footer';
 import { schoolsListData } from '../../common/utility';
 import { useDispatch } from 'react-redux';
 import { setSelectedSchool } from '../../redux/reducers/schoolSlice';
+import { closeCircleOutline, cropOutline } from 'ionicons/icons';
 
 interface ISchoolObj {
   schoolId: string;
@@ -35,7 +37,11 @@ const SelectSchool: React.FC = () => {
   const navigate = useNavigate();
 
   const handleSelectedSchool = (selectedScl: ISchoolObj) => {
+    if(selectedSchoolVal?.schoolId === selectedScl.schoolId){
+      setSelectedSchoolVal(null)
+    } else {
     setSelectedSchoolVal(selectedScl);
+    }
   };
 
   const handleProceed = () => {
@@ -69,15 +75,21 @@ const SelectSchool: React.FC = () => {
                       {schoolsList.map((schoolItem, index) => (
                         <IonItem
                           onClick={() => handleSelectedSchool(schoolItem)}
-                          className={`${index === 0 && 'first_item'} ${
+                          className={`${index === 0 ? 'first_item' : ''} ${
                             selectedSchoolVal?.schoolId ===
-                              schoolItem.schoolId && 'school_item_selected'
+                              schoolItem.schoolId ? 'school_item_selected' : ''
                           }`}
                           key={schoolItem.schoolId}
                         >
-                          <IonText>
+                          <div className='select_an_item'>
+                          <IonText className={`${selectedSchoolVal?.schoolId === schoolItem.schoolId ? 'is_icon_present' : ''}`}>
                             <p>{schoolItem.schoolName}</p>
                           </IonText>
+                          {selectedSchoolVal && selectedSchoolVal.schoolId === schoolItem.schoolId && <>
+                            <IonIcon icon={closeCircleOutline}></IonIcon>
+                          </>}
+                          </div>
+                       
                         </IonItem>
                       ))}
                     </IonList>

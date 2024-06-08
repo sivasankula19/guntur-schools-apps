@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import NavChipCard from '../../components/NavChipsCard';
+import { isPlatform } from '@ionic/react';
 import './Dashboard.css';
 import {
+  bookOutline,
   calendarOutline,
   callOutline,
   chatboxOutline,
@@ -38,6 +40,8 @@ const dashboard: React.FC = () => {
   const [timeDiffHrs, setTimeDiffHrs] = useState(0);
   const [selectedSegment, setSelectedSegment] = useState('Today');
   const dsbrdRef = useRef<any>(null);
+  const isMobile = isPlatform('android');
+  console.log('us', isMobile)
 
   const chipsData = [
     { id: 1, moduleName: 'Attendance', icon: calendarOutline , redirectTo:'/attendance'},
@@ -56,6 +60,7 @@ const dashboard: React.FC = () => {
     { id: 14, moduleName: 'Achievements', icon: trophyOutline, redirectTo:'/achievements' },
     { id: 15, moduleName: 'Contact Us', icon: callOutline, redirectTo:'/contact-us' },
     { id: 16, moduleName: 'About', icon: informationCircleOutline, redirectTo:'/about' },
+    { id: 17, moduleName: 'Home Work', icon: bookOutline, redirectTo:'/home-work' },
   ];
 
   const handleViewMode = () => {
@@ -152,8 +157,8 @@ const dashboard: React.FC = () => {
     const now = new Date();
     setCurrentTime(formatDate(now, false, true));
     
-    // now.setHours(8);
-    // now.setMinutes(0);
+    // now.setHours(15);
+    // now.setMinutes(34);
     // now.setSeconds(0);
 
     const targetTime = new Date(now);
@@ -214,7 +219,7 @@ const dashboard: React.FC = () => {
             <div className="time_today_view">
               <div className="time_day_view_con">
                 <div
-                  style={{ top: `${6 + timeDiffHrs * 6 + timeDifference}px` }}
+                  style={{ top: `${6 + timeDiffHrs * 6 + timeDifference + (isPlatform('android') ? 8 : 0)}px` }}
                   className="current_time_indicator"
                 ></div>
                 <IonList>

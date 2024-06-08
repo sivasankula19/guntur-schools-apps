@@ -37,7 +37,7 @@ const NavChipCard: React.FC<PropsWithChildren<{ chips: Chip[], isOpen: boolean, 
 
   return (
     <IonCard>
-      <IonCardContent className={`${chips.length === 0 && 'no_items_scrollled'}`}>
+      <IonCardContent className={`${chips.length === 0 ? 'no_items_scrollled' : ''}`}>
         <div className="nav_chip_container">
           {displayedChips.map((chip, index) => (
             <div key={chip.id} className='item_container_chips'>
@@ -52,7 +52,7 @@ const NavChipCard: React.FC<PropsWithChildren<{ chips: Chip[], isOpen: boolean, 
             </div>
           ))}
         </div>
-        <div onClick={handleView} className={`expand_chevron_icon ${chips.length === 0 && ''}`}>
+        <div onClick={handleView} className={`expand_chevron_icon ${chips.length === 0 ? '' :''}`}>
           <IonIcon icon={isOpen ? chevronUpCircleOutline : chevronDownCircleOutline}></IonIcon>
         </div>
       </IonCardContent>

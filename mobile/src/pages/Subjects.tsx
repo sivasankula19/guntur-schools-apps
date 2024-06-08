@@ -116,7 +116,7 @@ const Subjects: React.FC = () => {
                     </div>
                     <IonIcon
                       className={`${
-                        item.isFavarouite && 'subject_selected_icon'
+                        item.isFavarouite ? 'subject_selected_icon' : ''
                       }`}
                       icon={starOutline}
                     ></IonIcon>
