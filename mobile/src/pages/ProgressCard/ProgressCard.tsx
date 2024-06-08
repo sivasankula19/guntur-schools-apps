@@ -97,7 +97,7 @@ const ProgressCard: React.FC = () => {
                     <button
                       key={index}
                       className={`g_custom_tab ${
-                        selectedTab === tabItem.id && 'selected_segment_btn'
+                        selectedTab === tabItem.id ? 'selected_segment_btn' : ''
                       }`}
                       name={tabItem.id}
                       onClick={handleTabChange}

@@ -47,7 +47,7 @@ const StaffList: React.FC = () => {
           </IonToggle>
         </div>
       </div>
-      <div className={`${isFilterEnabled && 'filter_container'}`}>
+      <div className={`${isFilterEnabled ? 'filter_container' : ''}`}>
         {isFilterEnabled && (
           <IonCard className="filter-card">
             <IonCardContent className="filter_card_content">
@@ -105,7 +105,7 @@ const StaffList: React.FC = () => {
           </IonCard>
         )}
       </div>
-      <div className={`students_cards_container ${!isFilterEnabled && 'with_filter_off'}`}>
+      <div className={`students_cards_container ${!isFilterEnabled ? 'with_filter_off' : ''}`}>
         {staffData.map((item) => (
           <IonCard key={item.id} className="student_card">
             <IonCardContent className="card_content">

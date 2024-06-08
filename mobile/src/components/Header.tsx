@@ -15,9 +15,11 @@ import {
 import { useSelector } from 'react-redux';
 import { searchOutline } from 'ionicons/icons';
 import { useNavigate } from 'react-router';
+import { isPlatform } from '@ionic/react';
 
 const Header: React.FC = () => {
   const selectedSchool = useSelector((state:any)=>state.school.selectedSchool);
+  const isMobile = isPlatform('desktop');
   const authInfo = useSelector((state:any)=> state.auth)
   const isAuthenticated = useSelector(
     (state: any) => state.auth.isAuthenticated
@@ -31,7 +33,7 @@ const Header: React.FC = () => {
 
   return (
     <IonHeader>
-      <IonToolbar className={`${isAuthenticated && 'customised_toolbar_auth'} `}>
+      <IonToolbar className={`${isAuthenticated ? 'customised_toolbar_auth' : ''} `}>
         {isAuthenticated ? (
           <>
             <IonButtons slot="start">
@@ -40,7 +42,7 @@ const Header: React.FC = () => {
             <div className='menu_profile_conatiner'>
               <img src='https://st3.depositphotos.com/15648834/17930/v/450/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg' />
             </div>
-            <IonTitle className="header_schoolname">
+            <IonTitle className={`${isPlatform('desktop') ? 'web_scl' : ''} header_schoolname`}>
               {authInfo?.user?.fullName || 'Name'}
             </IonTitle>
           </>

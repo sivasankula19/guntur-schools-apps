@@ -174,8 +174,11 @@ ion-header {
   color: white;
   padding: 0;
   font-size: 18px;
-  /* padding-left: 50px; */
   text-align: start;
+}
+
+.web_scl{
+  padding-left: 50px;
 }
 
 .custom_header_item {
@@ -338,14 +341,44 @@ ion-header {
 }
 
 .school_list_show_container {
-  max-height: 90%;
+  max-height: 80%;
   overflow-y: auto;
 }
 
 .school_list_show_container ion-item {
   border-bottom: 1px solid;
   height: 40px !important;
+  border-radius: 8px;
+  border: 1px solid;
+  width: 90%;
+  margin: auto;
+  margin-top: 4px;
+  --inner-padding-end:8px;
+  --inner-padding-start:8px;
+  --padding-start:0;
 }
+
+.school_list_show_container ion-item .select_an_item{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: -4px;
+  height: 40px;
+  align-items: center;
+}
+
+.school_list_show_container ion-item .select_an_item ion-icon{
+  font-size: 18px;
+}
+
+.school_list_show_container ion-item .select_an_item ion-text{
+  width: 100%;
+}
+
+.school_list_show_container ion-item .select_an_item .is_icon_present{
+  width: 90%;
+}
+
 
 .school_item_selected {
   --background: #1d7bf546 !important;
@@ -373,6 +406,9 @@ ion-header {
 
 .select_holder ion-searchbar {
   padding: 0;
+  width: 90%;
+  margin: 8px auto;
+  --border-radius:8px;
 }
 
 .select_btn_holder {
@@ -383,7 +419,10 @@ ion-header {
 }
 
 .select_btn_holder ion-button {
-  width: 100%;
+  min-height: 36px;
+  height: 36px;
+  width: 90%;
+  margin: auto;
   --border-radius: 12px;
 }
 
@@ -948,9 +987,10 @@ ion-breadcrumbs {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   height: 12vh;
   width: 100%;
+  padding: 8px 0;
 }
 
 .g_small_text {
@@ -1107,6 +1147,7 @@ ion-breadcrumbs {
   border: 1px solid;
   border-radius: 8px;
   padding: 0 12px !important;
+  --background:transparent !important;
 }
 
 .date_time_select_item {
@@ -1136,7 +1177,7 @@ ion-breadcrumbs {
 
 .view_card_item {
   margin: 12px;
-  animation: slideIn 0.8s forwards;
+  /* animation: slideIn 0.8s forwards; */
 }
 
 .dark .view_card_item {
@@ -1888,6 +1929,9 @@ label.input-wrapper.sc-ion-input-ios {
   color: #000000;
   padding-left: 3px;
   padding-right: 3px;
+  --background-hover: #a7caf8;
+  --background-activated: #a7caf8;
+  --background-focused: #a7caf8;
 }
 
 .back_btns_holder .btns_scroll .selected{
@@ -2334,6 +2378,64 @@ label.input-wrapper.sc-ion-input-ios {
   margin-top: 12px;
   margin-bottom: 6px;
 }
+
+/* Achievements */
+
+.achievements{
+  margin-top: 16px;
+}
+
+.achievements ion-accordion{
+  border: 1px solid;
+  border-color: #1D7AF5;
+}
+
+.achieve_doc{
+  padding: 0 16px;
+}
+
+.achieve_table_data{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.achieve_table_data .row{
+  height: 60px;
+  border: 1px solid;
+  border-bottom: none;
+  display: flex;
+}
+
+.achieve_table_data .last_row{
+  border-bottom: 1px solid;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.achieve_table_data .first_row{
+  background: #d9d9d9;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+}
+
+.achieve_table_data .col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  border-right: 1px solid;
+  padding: 4px;
+}
+
+.achieve_table_data .col ion-text{
+  width: 100%;
+  font-size: 12px;
+}
+
+.achieve_no_data {
+  --background: transparent;
+}
+
 
 
 

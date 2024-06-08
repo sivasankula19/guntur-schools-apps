@@ -116,7 +116,7 @@ const StudentList: React.FC = () => {
           </IonCard>
         )}
       </div>
-      <div className={`students_cards_container ${!isFilterEnabled && 'with_filter_off'}`}>
+      <div className={`students_cards_container ${!isFilterEnabled ? 'with_filter_off' : ''}`}>
         {studentsDataList.map((item) => (
           <IonCard key={item.id} className="student_card">
             <IonCardContent className="card_content">

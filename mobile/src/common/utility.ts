@@ -185,6 +185,33 @@ export const studentDummyData =  [
     { id: 31, day: 'Sunday', dayShort: 'SUN',currentDay:'31', date: '3/31/2024', am: false, pm: false, isSchoolHoliday: true, attendanceMarked: 0 }
   ];
 
+  export const getDatesForMonth = (month:number, year:number) => {
+    console.log('date', month, year)
+    const dates = [];
+    let date = new Date(year, month - 1, 1);
+    while (date.getMonth() === month - 1) {
+      const dayFull = date.toLocaleString('en-US', { weekday: 'long' });
+      const dayShort = date.toLocaleString('en-US', { weekday: 'short' }).toUpperCase();
+      const fullDate = `${String(date.getDate()).padStart(2, '0')}/${String(month).padStart(2, '0')}/${year}`;
+      const formattedDate = `${month}/${date.getDate()}/${year}`;
+      dates.push({
+        id:date.getDate(),
+        fullDate,
+        date: formattedDate,
+        day: dayFull,
+        dayShort: dayShort,
+        currentDay:date.getDate(),
+        am:false,
+        pm:false,
+        isSchoolHoliday: dayShort==='SUN',
+        attendanceMarked:0
+      });
+      date.setDate(date.getDate() + 1);
+    }
+    
+    return dates;
+  };
+
  export const transformListToGrid = (data:any) => {
   // debugger
     let currentMain = 0;
