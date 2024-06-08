@@ -6,6 +6,7 @@ import {
   IonIcon,
   IonItem,
   IonText,
+  isPlatform,
 } from '@ionic/react';
 import {
   appsSharp,
@@ -20,7 +21,7 @@ import {
   printSharp,
   analyticsOutline,
 } from 'ionicons/icons';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   getDatesForMonth,
   studentAttendanceCalendar,
@@ -34,6 +35,8 @@ const Attendance: React.FC = () => {
   const [currentMY, setCurrentMY] = useState<any>({ month: todayDate.getMonth() + 1, year: todayDate.getFullYear() });
   const [attendanceDate, setAttendanceDate] = useState<any>([]);
   const [gridAttendance, setGridAttendance] = useState<any>([]);
+  const containerRef = useRef<any>(null);
+  let isInitialLoad = true;
 
   const todayFormate = `${todayDate.getMonth() + 1}/${todayDate.getDate()}/${todayDate.getFullYear()}`;
   // const gridAttendance = transformListToGrid(studentAttendanceCalendar);
@@ -44,11 +47,24 @@ const Attendance: React.FC = () => {
   const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 
   useEffect(() => {
-    console.log('state', currentMY);
     if(viewMode === 'list'){
     setAttendanceDate(getDatesForMonth(currentMY.month, currentMY.year));
     } else {
       setGridAttendance(transformListToGrid(getDatesForMonth(currentMY.month, currentMY.year)))
+    }
+
+    const scrollTimeOut = setTimeout(() => {
+      if (containerRef.current) {
+        const scrollPosition = (todayDate.getDate() - 1) * (isPlatform('ios') ? 44 : 48);
+        containerRef.current.scrollTo({
+          top:currentMY.month === todayDate.getMonth() + 1 && currentMY.year === todayDate.getFullYear() ? scrollPosition : 0,
+          behavior: 'smooth',
+        });
+      }
+    }, 500);
+
+    return () => {
+      clearTimeout(scrollTimeOut)
     }
   }, [currentMY]);
 
@@ -125,7 +141,7 @@ const Attendance: React.FC = () => {
               ))}
             </IonCardContent>
           </IonCard>
-          <div className="attendance_container_items">
+          <div className="attendance_container_items" ref={containerRef}>
             {attendanceDate && attendanceDate.map((item: any, index: number) => (
               <IonItem className={`attendance_ion_item ${item.isSchoolHoliday ? 'danger' : ''} ${item.date === todayFormate ? 'special_today_item' : ''}`} key={index}>
                 <IonText className="row_item_quater large_text">{item.currentDay}</IonText>
@@ -187,7 +203,7 @@ const Attendance: React.FC = () => {
               {['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'].map(
                 (dayName) => (
                   <IonItem
-                    key={dayName}
+                  key={`grids-${dayName}`}
                     className="day_list_map ion-text-center"
                   >
                     <IonText className="ion_text_day_view">{dayName}</IonText>
@@ -199,13 +215,13 @@ const Attendance: React.FC = () => {
           <div className="attendance_container_items">
             {gridAttendance.map((gridItem: any, index: number) => (
               <IonCard
-                key={index}
+                key={`grid-${index}`}
                 className="custome_attendance_card2"
               >
                 <IonCardContent className="g_flex g_align_cntr custome_card_content_day_view2">
                   {gridItem.map((dayItem: any, subIndex: number) => (
                     <IonItem
-                      key={dayItem?.id || subIndex}
+                    key={`dayItem--${Math.random()}`}
                       className={`day_list_map update_ion_item ion-text-center ${dayItem == null
                         ? 'empty_item_day'
                         : dayItem?.isSchoolHoliday

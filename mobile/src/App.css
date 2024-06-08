@@ -126,11 +126,11 @@
 }
 
 .tool_bar_container ion-icon {
-  font-size: 24px;
+  font-size: 28px;
 }
 
 .ios ion-header{
-  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
 }
 
 ion-header {
@@ -822,7 +822,7 @@ ion-breadcrumbs {
 .attendance_container_items {
   height: auto;
   overflow-y: auto;
-  padding-bottom: 100px;
+  padding-bottom: 60px;
 
   @media (min-height: 400px) and (max-height: 700px) {
     max-height: 63vh;
@@ -2031,6 +2031,10 @@ label.input-wrapper.sc-ion-input-ios {
 
 .contact_field ion-textarea{
   min-height: 100px !important;
+  border: 0.55px solid;
+  --padding-start: 8px;
+    --padding-end: 8px;
+    border-radius:8px;
 }
 
 .principal{
@@ -2435,6 +2439,197 @@ label.input-wrapper.sc-ion-input-ios {
 .achieve_no_data {
   --background: transparent;
 }
+
+/* messages */
+
+.messages .toggle_io{
+  margin: 8px 16px;
+}
+
+
+
+
+
+
+/* Chat Screen */
+
+.chat_screen{
+  height: calc(100% - 40px);
+}
+
+.chat_container{
+  height: calc(100% - 44px);
+}
+
+.chat_container ion-card-content{
+  padding: 0;
+  height: 100%;
+}
+
+.chat_container ion-card{
+  margin: 12px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  height: calc(100% - 20px);
+}
+
+.chat_container ion-card ion-toolbar{
+  --background:#F5F5F5;
+  height: 50px;
+}
+
+.dark .chat_container ion-card ion-toolbar{
+  --background:#333333;
+}
+
+.chat_container .custom_chat_tool{
+  padding-left: 8px;
+  height: 100%;
+  align-items: center;
+  width: 100%;
+}
+
+.chat_container .custom_chat_tool .text_img{
+  width: calc(100% - 40px);
+}
+
+.chat_container .custom_chat_tool ion-icon{
+  font-size: 32px;
+}
+
+.chat_container .custom_chat_tool .chat_profile_icon{
+  width: 36px;
+  height: 36px;
+  border-radius: 36px;
+  border: 1px solid;
+  margin-left: 4px;
+}
+
+.chat_container .custom_chat_tool .chat_profile_icon img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.chat_container .msgs_holder{
+  height: calc(100% - 50px);
+}
+
+.chat_container .custom_chat_tool .name_designation{
+  padding: 0 12px;
+  width: calc(100% - 40px);
+}
+
+.chat_container .custom_chat_tool .name_designation ion-text{
+  width: 100%;
+}
+
+.chat_container .custom_chat_tool .name_designation ion-text h2{
+  color: #1D7AF5;
+  font-weight: 600;
+}
+
+.msgs_holder .type_msg{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 12px 10px 12px;
+  height: 60px;
+  background:#F5F5F5;
+}
+
+.dark .msgs_holder .type_msg {
+  background: #333333;
+}
+
+.msgs_holder .type_msg .send_icon{
+  position: absolute;
+  height: 30px;
+  top: 18px;
+  right: 22px;
+}
+
+.msgs_holder .type_msg .send_icon ion-icon{
+  font-size: 24px;
+  color: #1D7AF5;
+}
+
+
+.msgs_holder .type_msg input{
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  border: 1px solid;
+  border-color: #1D7AF5;
+  color: #1D7AF5;
+  padding: 0 46px 0 12px;
+  font-size: 14px;
+}
+
+.msgs_holder .type_msg input:focus {
+  border-color: #006eff;
+  outline: none;
+}
+
+.msgs_holder .type_msg input::placeholder {
+  color: #1D7AF5;
+}
+
+.msgs_holder .msgs_scroll{
+  height: calc(100% - 60px);
+  overflow-y: auto;
+  margin: 10px;
+  padding-bottom: 30px;
+}
+
+.msgs_scroll .txt_msg_receive_sent {
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+}
+
+.msgs_scroll .received{
+  justify-content: flex-start;
+}
+
+.msgs_scroll .sent{
+  justify-content: flex-end;
+}
+
+.msgs_scroll .msg_blk{
+  border: 1px solid;
+  width: fit-content;
+  border-color: #1D7AF5;
+  border-radius: 8px;
+  min-height: 40px;
+  max-width: 60%;
+  padding: 8px 12px 4px 12px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dark .msgs_scroll .msg_blk{
+  box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.3);
+}
+
+.msgs_scroll .msg_blk ion-text p{
+  font-size: 16px;
+  line-height: 1rem;
+  padding: 0;
+}
+
+.msgs_scroll .msg_blk span{
+  font-size: 12px;
+  line-height: 1rem;
+}
+
+.msg_blk .time_msg{
+  text-align: end;
+  line-height: 0.5rem;
+}
+
+
+
+
 
 
 

@@ -37,6 +37,7 @@ import {
   setMode,
 } from './redux/reducers/darkModeSlice';
 import SelectSchool from './pages/select-school/SelectSchool';
+import ChatScreen from './pages/messages/ChatScreen';
 
 setupIonicReact();
 
@@ -113,6 +114,7 @@ const App: React.FC = () => {
             <Routes>
               <Route path="/" element={<Navigate to={school === null ? '/select-school' : isAuthenticated ? '/dashboard' : '/home'} />}></Route>
               <Route path={'/user/:id'} element={<UserByID />}></Route>
+              <Route path={'/messages/:id'} element={<ChatScreen></ChatScreen>}></Route>
               <Route path={'/select-school'} element={<SelectSchool />}></Route>
               <Route path="/:name" element={<Page />}></Route>
             </Routes>
