@@ -1,5 +1,3 @@
-// Header.tsx
-
 import React from 'react';
 import {
   IonHeader,
@@ -8,7 +6,6 @@ import {
   IonButtons,
   IonMenuButton,
   IonItem,
-  IonSearchbar,
   IonIcon,
   IonText,
 } from '@ionic/react';
@@ -17,30 +14,32 @@ import { searchOutline } from 'ionicons/icons';
 import { useNavigate } from 'react-router';
 import { isPlatform } from '@ionic/react';
 
-const Header: React.FC = () => {
-  const selectedSchool = useSelector((state:any)=>state.school.selectedSchool);
+const Header: React.FC = React.memo(() => {
+  const selectedSchool = useSelector((state: any) => state.school.selectedSchool);
   const isMobile = isPlatform('desktop');
-  const authInfo = useSelector((state:any)=> state.auth)
-  const isAuthenticated = useSelector(
-    (state: any) => state.auth.isAuthenticated
-  );
-  const navigate = useNavigate()
+  const authInfo = useSelector((state: any) => state.auth);
+  const isAuthenticated = useSelector((state: any) => state.auth.isAuthenticated);
+  const navigate = useNavigate();
+
   console.log('is auth', isAuthenticated);
 
   const handleSearchBack = () => {
-    navigate('/select-school')
-  }
+    navigate('/select-school');
+  };
 
   return (
     <IonHeader>
-      <IonToolbar className={`${isAuthenticated ? 'customised_toolbar_auth' : ''} `}>
+      <IonToolbar className={`${isAuthenticated ? 'customised_toolbar_auth' : ''}`}>
         {isAuthenticated ? (
           <>
             <IonButtons slot="start">
-              <IonMenuButton className='customised_menu_btns_top' />
+              <IonMenuButton className="customised_menu_btns_top" />
             </IonButtons>
-            <div className='menu_profile_conatiner'>
-              <img src='https://st3.depositphotos.com/15648834/17930/v/450/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg' />
+            <div className="menu_profile_conatiner">
+              <img
+                src="https://st3.depositphotos.com/15648834/17930/v/450/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+                alt="Profile"
+              />
             </div>
             <IonTitle className={`${isPlatform('desktop') ? 'web_scl' : ''} header_schoolname`}>
               {authInfo?.user?.fullName || 'Name'}
@@ -50,7 +49,7 @@ const Header: React.FC = () => {
           <>
             <IonItem onClick={handleSearchBack} className="custom_header_item">
               <div className="g_flex g_align_cntr">
-                <IonIcon icon={searchOutline}></IonIcon>
+                <IonIcon icon={searchOutline} />
                 <IonText>
                   <p>{selectedSchool?.schoolName}</p>
                 </IonText>
@@ -61,6 +60,6 @@ const Header: React.FC = () => {
       </IonToolbar>
     </IonHeader>
   );
-};
+});
 
 export default Header;
