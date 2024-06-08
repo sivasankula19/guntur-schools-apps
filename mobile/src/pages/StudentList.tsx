@@ -29,14 +29,14 @@ const StudentList: React.FC = () => {
   const handleInput = (ev: any) => {
     setSearch(ev.target.value);
     console.log(ev?.target.value);
-    //  debounce function can be excuted!!! here
+    //  debounce function can be executed!!! here
   };
 
   const navigateToUser = (id:string) => {
     navigate(`/user/${id}`)
   }
 
-  const breadCrumbsValue = [{bName:'Home', path:'/'},{bName:'Students List', path:'/students-list'}]
+  const breadCrumbsValue = [{bName:'Home', path:'/'},{bName:'Students List', path:'/students-list'}];
 
   return (
     <div>

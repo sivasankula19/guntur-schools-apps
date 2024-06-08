@@ -14,7 +14,7 @@ import ContactUs from '../pages/ContactUs';
 import Courses from '../pages/Courses';
 import Achievements from '../pages/Achievements';
 import SchoolWibe from '../pages/SchoolWibe';
-import Messages from '../pages/Messages';
+import Messages from '../pages/messages/Messages';
 import ExamSchedule from '../pages/ExamSchedule';
 import SchoolAssets from '../pages/SchoolAssets';
 import Remainders from '../pages/HomeWork';
