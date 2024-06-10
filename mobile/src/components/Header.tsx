@@ -21,8 +21,6 @@ const Header: React.FC = React.memo(() => {
   const isAuthenticated = useSelector((state: any) => state.auth.isAuthenticated);
   const navigate = useNavigate();
 
-  console.log('is auth', isAuthenticated);
-
   const handleSearchBack = () => {
     navigate('/select-school');
   };

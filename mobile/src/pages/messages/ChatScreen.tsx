@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { IonCard, IonCardContent, IonContent, IonIcon, IonImg, IonInput, IonItem, IonPage, IonText, IonTitle, IonToggle, IonToolbar } from '@ionic/react';
@@ -7,7 +7,8 @@ import Footer from '../../components/Footer';
 import { arrowBackOutline, banSharp, send } from 'ionicons/icons';
 
 const ChatScreen: React.FC = () => {
-  const { name } = useParams<{ name: string }>();
+  const { id } = useParams<{ id:string}>();
+  const [msgDataResponse, setMsgDataResponse] = useState<any>([])
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
@@ -49,6 +50,12 @@ const ChatScreen: React.FC = () => {
     navigate('/messages')
   }
 
+  useEffect(()=>{
+    if(id !== 'Y24C8A019'){
+      setMsgDataResponse(msgData)
+    }
+  },[])
+
   return (
     <IonPage className="my_page">
       <Header />
@@ -78,14 +85,14 @@ const ChatScreen: React.FC = () => {
                 </IonToolbar>
                 <div className="msgs_holder">
                   <div className="msgs_scroll">
-                    {!msgData.length ? (
-                      msgData.map((msg) => (
+                    {msgDataResponse.length ? (
+                      msgDataResponse.map((msg:any) => (
                         <div className={`txt_msg_receive_sent ${msg.sent ? 'received' : 'sent'}`} key={msg.id}>
-                          <div className="msg_blk">
+                          <div className={`msg_blk ${msg.msgText.length < 10 ? 'g_flex' : ''}`}>
                             <IonText>
                               <p>{msg.msgText}</p>
                             </IonText>
-                            <div className="time_msg">
+                            <div className={`time_msg ${msg.msgText.length < 10 ? 'custom_time_msg' : ''}`}>
                               <span>{new Date(msg.time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
                             </div>
                           </div>

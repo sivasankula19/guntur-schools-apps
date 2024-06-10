@@ -4,9 +4,11 @@ import {
   IonRouterOutlet,
   IonSplitPane,
   setupIonicReact,
+  useIonRouter,
 } from '@ionic/react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Menu from './components/Menu';
+import { App as CapacitorApp } from '@capacitor/app';
 import Page from './pages/Page';
 
 /* Core CSS required for Ionic components to work properly */
@@ -50,6 +52,7 @@ const App: React.FC = () => {
   const school = useSelector((state: any) => state.school.selectedSchool);
   const isAuthenticated = useSelector((state:any)=> state.auth.isAuthenticated);
   console.log(fullstate);
+  const ionRouter = useIonRouter();
 
   const dispatch = useDispatch();
 
@@ -85,6 +88,28 @@ const App: React.FC = () => {
     dispatch(setIsUserAcknowledgedMode());
     dispatch(setMode(ev.detail.role === 'confirm'));
   };
+
+  useEffect(() => {
+    const handleBackButton = (ev: any) => {
+      ev.detail.register(10, (processNextHandler:any) => {
+        console.log('Handler was called!');
+        processNextHandler();
+      });
+      ev.detail.register(-1, () => {
+        if (!ionRouter.canGoBack()) {
+          CapacitorApp.exitApp();
+        } else {
+          ionRouter.goBack();
+        }
+      });
+    };
+
+    document.addEventListener('ionBackButton', handleBackButton);
+
+    return () => {
+      document.removeEventListener('ionBackButton', handleBackButton);
+    };
+  }, [ionRouter]);
 
   return (
     <IonApp className="dark-theme">

@@ -30,7 +30,6 @@ interface ContainerProps {
 
 const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
   useEffect(() => {
-    console.log('inside', name);
   }, []);
 
   return (
