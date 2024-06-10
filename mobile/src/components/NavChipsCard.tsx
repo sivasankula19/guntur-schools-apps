@@ -27,13 +27,14 @@ const NavChipCard: React.FC<PropsWithChildren<{ chips: Chip[], isOpen: boolean, 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const publicModules = ["About", "Courses","Contact-Us","Achievements","Gallery","Ex-Circular"]
+
   const handleNavigate = (path: string, moduleName:string) => {
-    if(moduleName in publicModules)
+    if(publicModules.includes(moduleName))
       dispatch(setPreLoginPublicView(moduleName))
     navigate(path)
   }
 
-  const publicModules = ["About", "Courses","Contact Us","Achievements","Gallery","Ex-Circular"]
 
   return (
     <IonCard>

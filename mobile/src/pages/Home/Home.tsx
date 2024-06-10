@@ -53,14 +53,14 @@ const Home: React.FC = () => {
     setPassword(e.detail.value);
   };
 
-  const handleNavigate = (path: string, module: string) => {
-    dispatch(setPreLoginPublicView(module))
+  const handleNavigate = (path: string, moduleName: string) => {
+    dispatch(setPreLoginPublicView(moduleName))
     navigate(path)
   }
 
   const preLoginModules = [{ id: 1, moduleName: 'About', icon: informationCircleOutline,redirectTo: '/about' },
   { id: 2, moduleName: 'Courses', icon: schoolOutline ,redirectTo: '/courses'},
-  { id: 3, moduleName: 'Contact Us', icon: callOutline, redirectTo: '/contact-us' },
+  { id: 3, moduleName: 'Contact-Us', icon: callOutline, redirectTo: '/contact-us' },
   { id: 4, moduleName: 'Achievements', icon: trophyOutline, redirectTo: '/achievements' },
   { id: 5, moduleName: 'Gallery', icon: imageOutline,redirectTo: '/gallery'  },
   { id: 6, moduleName: 'Ex-Circular', icon: newspaperOutline, redirectTo: '/ex-circular' },]

@@ -41,26 +41,25 @@ const dashboard: React.FC = () => {
   const [selectedSegment, setSelectedSegment] = useState('Today');
   const dsbrdRef = useRef<any>(null);
   const isMobile = isPlatform('android');
-  console.log('us', isMobile)
 
   const chipsData = [
-    { id: 1, moduleName: 'Attendance', icon: calendarOutline , redirectTo:'/attendance'},
-    { id: 2, moduleName: 'Progress Card', icon: documentTextOutline, redirectTo:'/progress-card' },
-    { id: 3, moduleName: 'Home Work', icon: documentsOutline, redirectTo:'/home-work' },
-    { id: 4, moduleName: 'My Subjects', icon: schoolOutline, redirectTo:'/subjects' },
-    { id: 5, moduleName: 'Messages', icon: chatboxOutline, redirectTo:'/messages' },
-    { id: 6, moduleName: 'Documents', icon: documentOutline, redirectTo:'/documents' },
-    { id: 7, moduleName: 'My Staff', icon: peopleOutline, redirectTo:'/staff-list' },
-    { id: 8, moduleName: 'My Friends', icon: peopleOutline, redirectTo:'/students-list' },
-    { id: 9, moduleName: 'Time Table', icon: timeOutline, redirectTo:'/time-table' },
-    { id: 10, moduleName: 'Wibe', icon: newspaperOutline, redirectTo:'/school-wibe' },
-    { id: 11, moduleName: 'My Dues', icon: walletOutline, redirectTo:'/fee-structure' },
-    { id: 12, moduleName: 'Ex-Circular', icon: ribbonOutline, redirectTo:'/ex-circular' },
-    { id: 13, moduleName: 'Gallery', icon: imageOutline, redirectTo:'/gallery' },
-    { id: 14, moduleName: 'Achievements', icon: trophyOutline, redirectTo:'/achievements' },
-    { id: 15, moduleName: 'Contact Us', icon: callOutline, redirectTo:'/contact-us' },
-    { id: 16, moduleName: 'About', icon: informationCircleOutline, redirectTo:'/about' },
-    { id: 17, moduleName: 'Home Work', icon: bookOutline, redirectTo:'/home-work' },
+    { id: 1, moduleName: 'Attendance', icon: calendarOutline, redirectTo: '/attendance' },
+    { id: 2, moduleName: 'Progress Card', icon: documentTextOutline, redirectTo: '/progress-card' },
+    { id: 3, moduleName: 'Home Work', icon: documentsOutline, redirectTo: '/home-work' },
+    { id: 4, moduleName: 'My Subjects', icon: schoolOutline, redirectTo: '/subjects' },
+    { id: 5, moduleName: 'Messages', icon: chatboxOutline, redirectTo: '/messages' },
+    { id: 6, moduleName: 'Documents', icon: documentOutline, redirectTo: '/documents' },
+    { id: 7, moduleName: 'My Staff', icon: peopleOutline, redirectTo: '/staff-list' },
+    { id: 8, moduleName: 'My Friends', icon: peopleOutline, redirectTo: '/students-list' },
+    { id: 9, moduleName: 'Time Table', icon: timeOutline, redirectTo: '/time-table' },
+    { id: 10, moduleName: 'Wibe', icon: newspaperOutline, redirectTo: '/school-wibe' },
+    { id: 11, moduleName: 'My Dues', icon: walletOutline, redirectTo: '/fee-structure' },
+    { id: 12, moduleName: 'Ex-Circular', icon: ribbonOutline, redirectTo: '/ex-circular' },
+    { id: 13, moduleName: 'Gallery', icon: imageOutline, redirectTo: '/gallery' },
+    { id: 14, moduleName: 'Achievements', icon: trophyOutline, redirectTo: '/achievements' },
+    { id: 15, moduleName: 'Contact Us', icon: callOutline, redirectTo: '/contact-us' },
+    { id: 16, moduleName: 'About', icon: informationCircleOutline, redirectTo: '/about' },
+    { id: 17, moduleName: 'Home Work', icon: bookOutline, redirectTo: '/home-work' },
   ];
 
   const handleViewMode = () => {
@@ -91,45 +90,45 @@ const dashboard: React.FC = () => {
   ];
 
   const fullAbs = [{
-    shortName:'MAT',
-    fullName:'Mathematics',
-    id:'01'
-  },{
-    shortName:'ENG',
-    fullName:'English',
-    id:'02'
-  },{
-    shortName:'TEL',
-    fullName:'Telugu',
-    id:'03'
-  },{
-    shortName:'HIN',
-    fullName:'Hindi',
-    id:'04'
-  },{
-    shortName:'SOC',
-    fullName:'Social',
-    id:'05'
-  },{
-    shortName:'SCI-P',
-    fullName:'Physical Science',
-    id:'06'
-  },{
-    shortName:'SCI-C',
-    fullName:'Chemical Science',
-    id:'07'
-  },{
-    shortName:'PT',
-    fullName:'Games',
-    id:'08'
-  },{
-    shortName:'LIB',
-    fullName:'Library',
-    id:'09'
-  },{
-    shortName:'LIB-C',
-    fullName:'Computer Library',
-    id:'07'
+    shortName: 'MAT',
+    fullName: 'Mathematics',
+    id: '01'
+  }, {
+    shortName: 'ENG',
+    fullName: 'English',
+    id: '02'
+  }, {
+    shortName: 'TEL',
+    fullName: 'Telugu',
+    id: '03'
+  }, {
+    shortName: 'HIN',
+    fullName: 'Hindi',
+    id: '04'
+  }, {
+    shortName: 'SOC',
+    fullName: 'Social',
+    id: '05'
+  }, {
+    shortName: 'SCI-P',
+    fullName: 'Physical Science',
+    id: '06'
+  }, {
+    shortName: 'SCI-C',
+    fullName: 'Chemical Science',
+    id: '07'
+  }, {
+    shortName: 'PT',
+    fullName: 'Games',
+    id: '08'
+  }, {
+    shortName: 'LIB',
+    fullName: 'Library',
+    id: '09'
+  }, {
+    shortName: 'LIB-C',
+    fullName: 'Computer Library',
+    id: '07'
   },]
 
   const timeArr = timeTableVal;
@@ -143,20 +142,20 @@ const dashboard: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     scrollToTop()
-  },[isOpen])
+  }, [isOpen])
 
   const scrollToTop = () => {
     if (dsbrdRef.current) {
-      dsbrdRef.current.scrollTop = 0; 
+      dsbrdRef.current.scrollTop = 0;
     }
   };
 
   const calculateTimeDiffUpdateState = () => {
     const now = new Date();
     setCurrentTime(formatDate(now, false, true));
-    
+
     // now.setHours(15);
     // now.setMinutes(34);
     // now.setSeconds(0);
@@ -176,7 +175,7 @@ const dashboard: React.FC = () => {
   };
 
   return (
-    <div ref={dsbrdRef}  className='dsbrd_container'>
+    <div ref={dsbrdRef} className='dsbrd_container'>
       <div className="dsbrd">
         <NavChipCard
           isOpen={isOpen}
@@ -190,17 +189,15 @@ const dashboard: React.FC = () => {
             <div className="custom-segment-container">
               <div className="custom-segment">
                 <button
-                  className={`segment-button ${
-                    selectedSegment === 'Today' ? 'active' : ''
-                  }`}
+                  className={`segment-button left ${selectedSegment === 'Today' ? 'active' : ''
+                    }`}
                   onClick={() => handleSegmentChange('Today')}
                 >
                   Today
                 </button>
                 <button
-                  className={`segment-button ${
-                    selectedSegment === 'Week' ? 'active' : ''
-                  }`}
+                  className={`segment-button right ${selectedSegment === 'Week' ? 'active' : ''
+                    }`}
                   onClick={() => handleSegmentChange('Week')}
                 >
                   Week
@@ -224,7 +221,7 @@ const dashboard: React.FC = () => {
                 ></div>
                 <IonList>
                   {timeDisplay.map((time) => (
-                    <IonItem key={time}>
+                    <IonItem key={`time${time}`}>
                       <div>{time}</div>
                     </IonItem>
                   ))}
@@ -253,7 +250,7 @@ const dashboard: React.FC = () => {
                         style={{
                           width: `${100 / timeArr.length}%`,
                         }}
-                        key={day.day}
+                        key={`day${day.day}`}
                       >
                         {day.dayShort}
                       </div>
@@ -262,7 +259,7 @@ const dashboard: React.FC = () => {
                 </div>
                 {timeArr.length &&
                   timeArr[0]?.periods.map((time, indx) => (
-                    <div className="g_flex" key={indx}>
+                    <div className="g_flex" key={`${indx}in`}>
                       <div
                         className="time_item_week"
                         style={{
@@ -283,13 +280,13 @@ const dashboard: React.FC = () => {
                               ? '4px'
                               : 'none',
                         }}
-                        key={time.timeStart}
+                        key={`${time.timeStart}time_start`}
                       >
                         {time.timeStart}
                       </div>
                       {timeArr.map((tItem, ind) => (
                         <div
-                          key={tItem.day}
+                          key={`${tItem.day}tItem`}
                           className="g_flex g_align_cntr g_jstfy_content_cntr"
                           style={{
                             width: `${100 / 7}%`,
@@ -303,7 +300,7 @@ const dashboard: React.FC = () => {
               </div>
               <div className='shorthand_names'>
                 {fullAbs.map((item) => (
-                  <div key={item.id} className='short_item'>
+                  <div key={`${item.id}short`} className='short_item'>
                     {item.shortName} - {item.fullName}
                   </div>
                 ))}

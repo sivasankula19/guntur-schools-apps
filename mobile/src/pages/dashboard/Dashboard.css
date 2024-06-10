@@ -34,6 +34,7 @@
     height: 80px;
     --inner-padding-end: 8px;
     --padding-start: 8px;
+    cursor: pointer;
 }
 
 .dsbrd ion-item .chip_item_data {
@@ -75,6 +76,7 @@
     width: 100%;
     box-shadow: 0px -3px 6px rgba(0, 0, 0, 0.1);
     padding: 6px 0;
+    cursor: pointer;
 }
 
 .expand_chevron_icon ion-icon {
@@ -89,6 +91,16 @@
 .custom-segment {
     display: flex;
     width: 90%;
+}
+
+.custom-segment .left{
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.custom-segment .right{
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
 }
 
 .segment-button {
@@ -115,6 +127,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 4px;
 }
 
 .calendar_time_table {
@@ -163,6 +176,7 @@
     color: #1D7AF5;
     font-weight: bold;
     font-size: 14px;
+    cursor: text;
 }
 
 .time_today_view {

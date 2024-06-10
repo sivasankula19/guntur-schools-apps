@@ -17,7 +17,7 @@ const PreLoginHead: React.FC = () => {
     { name: 'About', redirectTo: '/about', id: 'About', path:'about' },
     { name: 'Courses', redirectTo: '/courses', id: 'Courses', path:'courses' },
     { name: 'Contact-Us', redirectTo: '/contact-us', id: 'ContactUs', path:'contact-us' },
-    { name: 'Achievement', redirectTo: '/achievements', id: 'Achievement', path:'achievements' },
+    { name: 'Achievements', redirectTo: '/achievements', id: 'Achievement', path:'achievements' },
     { name: 'Gallery', redirectTo: '/gallery', id: 'Gallery',path:'gallery'  },
     { name: 'Ex-Circular', redirectTo: '/ex-circular', id: 'ExCircular', path:'ex-circular' },
   ];
