@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
-import { IonCard, IonCardContent, IonContent, IonIcon, IonImg, IonInput, IonItem, IonPage, IonText, IonTitle, IonToggle, IonToolbar } from '@ionic/react';
+import { IonCard, IonCardContent, IonContent, IonIcon, IonImg, IonInput, IonItem, IonPage, IonPopover, IonText, IonTitle, IonToggle, IonToolbar } from '@ionic/react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import { arrowBackOutline, banSharp, send } from 'ionicons/icons';
+import { arrowBackOutline, banSharp, ellipsisVerticalOutline, send } from 'ionicons/icons';
+import { msgDummyData } from '../../common/utility';
 
 const ChatScreen: React.FC = () => {
   const { id } = useParams<{ id:string}>();
@@ -19,22 +20,7 @@ const ChatScreen: React.FC = () => {
   ];
 
 
-  const msgData = [
-    { id: '1', msgText: 'Hello', time: '2024-06-08T16:21:35.559Z', sent: true },
-    { id: '2', msgText: 'hi', time: '2024-06-08T16:28:00.559Z', sent: false },
-    { id: '3', msgText: 'How are you!.', time: '2024-06-08T17:30:45.559Z', sent: true },
-    { id: '4', msgText: 'And wru', time: '2024-06-08T17:30:55.559Z', sent: true },
-    { id: '5', msgText: 'at Madugula, cmng to hyd today evng', time: '2024-06-08T17:39:02.559Z', sent: false },
-    { id: '6', msgText: 'haaa', time: '2024-06-08T17:28:00.559Z', sent: false },
-    { id: '7', msgText: 'Hoo kkkk.', time: '2024-06-08T17:33:45.559Z', sent: false },
-    { id: '8', msgText: 'what is special', time: '2024-06-08T17:30:55.559Z', sent: true },
-    { id: '9', msgText: 'at evng', time: '2024-06-08T20:39:02.559Z', sent: false },
-    { id: '10', msgText: 'at evng', time: '2024-06-08T20:39:02.559Z', sent: false },
-    { id: '11', msgText: 'at evng', time: '2024-06-08T20:39:02.559Z', sent: true },
-    { id: '12', msgText: 'at evng', time: '2024-06-08T20:39:02.559Z', sent: false },
-    { id: '13', msgText: 'at evng', time: '2024-06-08T20:39:02.559Z', sent: true }
-  ];
-
+  const msgData:any = msgDummyData
   const handleMsgChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setMessage(e.target.value);
   };
@@ -81,6 +67,15 @@ const ChatScreen: React.FC = () => {
                         </IonText>
                       </div>
                     </div>
+                    <IonIcon id='three_dots_action' className='three_dots_chat' icon={ellipsisVerticalOutline} />
+                    <IonPopover trigger="three_dots_action" triggerAction="click">
+                      <IonContent class="ion-padding">
+                        <div>
+                          <p>Hello</p>
+                          <p>Hiii</p>
+                        </div>
+                      </IonContent>
+                    </IonPopover>
                   </div>
                 </IonToolbar>
                 <div className="msgs_holder">

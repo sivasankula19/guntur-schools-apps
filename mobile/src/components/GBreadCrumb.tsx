@@ -9,7 +9,7 @@ const GBreadCrumb: React.FC<IBreadCrumbProps> = ({ bName,path, isLast }) => {
     navigate(route);
   }
   return (
-    <div className="g_bread" onClick={()=> {handleNavigate(path)}}>
+    <div className={`g_bread ${isLast ? 'g_bread_last' : ''}`} onClick={()=> {handleNavigate(path)}}>
       <IonText>
         <p>{bName}</p>
       </IonText>

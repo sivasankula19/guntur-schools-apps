@@ -36,7 +36,7 @@ const Subjects: React.FC = () => {
   const breadCrumbsValue = [{bName:'Home', path:'/'},{bName:'Subjects', path:'/subjects'}]
 
   return (
-    <div>
+    <div className='subjects'>
        <div className="g_flex g_space_btwn g_align_cntr bread_toggle_container">
         <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
         <div>
@@ -55,7 +55,7 @@ const Subjects: React.FC = () => {
           </IonToggle>
         </div>
       </div>
-      <IonItem className="">
+      <IonItem className="custom_sub_item">
         <IonSelect
           className="custome_select subjects_cls_select"
           multiple={true}
@@ -93,7 +93,7 @@ const Subjects: React.FC = () => {
           <IonSelectOption value="class-0">Class 0</IonSelectOption>
         </IonSelect>
       </IonItem>
-      <IonItem className="custome_subject_item">
+      <IonItem className="custom_sub_item">
         <IonSearchbar
           showClearButton="focus"
           value={search}
