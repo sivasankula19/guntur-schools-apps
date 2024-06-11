@@ -186,7 +186,6 @@ export const studentDummyData =  [
   ];
 
   export const getDatesForMonth = (month:number, year:number) => {
-    console.log('date', month, year)
     const dates = [];
     let date = new Date(year, month - 1, 1);
     while (date.getMonth() === month - 1) {
@@ -726,6 +725,225 @@ export const AboutModuleData: any = [
     ],
   },
 ];
+
+
+export const chatContactList = [
+  {
+    id: 'Y24C8A019',
+    isStaff: false,
+    name: 'Siva Sankula',
+    lastMsg: 'message text will be place there tap to see',
+    msgSeen: false,
+    lastMsgReceived: '2024-06-10T13:47:41.373Z',
+    profile:
+      'https://www.static-contents.youth4work.com/y4w/Images/Users/3126495.png?v=20180128190106',
+  },
+  {
+    id: 'Y24C8A020',
+    isStaff: false,
+    name: 'Siva',
+    lastMsg: 'message text will be place there tap to see',
+    msgSeen: false,
+    lastMsgReceived: '2024-06-10T13:47:41.373Z',
+    profile:
+      'https://www.static-contents.youth4work.com/y4w/Images/Users/3126495.png?v=20180128190106',
+  },
+  {
+    id: 'Y24C8A021',
+    isStaff: false,
+    name: 'Minoosh Reddy',
+    lastMsg: 'message text will be place there tap to see',
+    msgSeen: false,
+    lastMsgReceived: '2024-06-10T13:47:41.373Z',
+    profile:
+      'https://www.static-contents.youth4work.com/y4w/Images/Users/3126495.png?v=20180128190106',
+  },
+  {
+    id: 'Y24C8A022',
+    isStaff: false,
+    name: 'Minoo',
+    lastMsg: 'message text will be place there tap to see',
+    msgSeen: false,
+    lastMsgReceived: '2024-06-10T13:47:41.373Z',
+    profile:
+      'https://www.static-contents.youth4work.com/y4w/Images/Users/3126495.png?v=20180128190106',
+  },
+  {
+    id: 'Y24C8A023',
+    isStaff: false,
+    name: 'Dev Qumar',
+    lastMsg: 'message text will be place there tap to see',
+    msgSeen: false,
+    lastMsgReceived: '2024-06-10T13:47:41.373Z',
+    profile:
+      'https://www.static-contents.youth4work.com/y4w/Images/Users/3126495.png?v=20180128190106',
+  },
+  {
+    id: 'Y24C8A024',
+    isStaff: false,
+    name: 'Deva',
+    lastMsg: 'message text will be place there tap to see',
+    msgSeen: false,
+    lastMsgReceived: '2024-06-10T13:47:41.373Z',
+    profile:
+      'https://www.static-contents.youth4work.com/y4w/Images/Users/3126495.png?v=20180128190106',
+  },
+  {
+    id: 'Y24C8A025',
+    isStaff: false,
+    name: 'NARRA DEVA',
+    lastMsg: 'message text will be place there tap to see',
+    msgSeen: false,
+    lastMsgReceived: '2024-06-10T13:47:41.373Z',
+    profile:
+      'https://www.static-contents.youth4work.com/y4w/Images/Users/3126495.png?v=20180128190106',
+  },
+  {
+    id: 'Y24C8A026',
+    isStaff: false,
+    name: 'SP',
+    lastMsg: 'message text will be place there tap to see',
+    msgSeen: false,
+    lastMsgReceived: '2024-06-10T13:47:41.373Z',
+    profile:
+      'https://www.static-contents.youth4work.com/y4w/Images/Users/3126495.png?v=20180128190106',
+  },
+  {
+    id: 'Y24C8A027',
+    isStaff: false,
+    name: 'SSankula',
+    lastMsg: 'message text will be place there tap to see',
+    msgSeen: false,
+    lastMsgReceived: '2024-06-10T13:47:41.373Z',
+    profile:
+      'https://www.static-contents.youth4work.com/y4w/Images/Users/3126495.png?v=20180128190106',
+  },
+  {
+    id: 'Y24C8A028',
+    isStaff: false,
+    name: 'DNarra',
+    lastMsg: 'message text will be place there tap to see',
+    msgSeen: false,
+    lastMsgReceived: '2024-06-10T13:47:41.373Z',
+    profile:
+      'https://www.static-contents.youth4work.com/y4w/Images/Users/3126495.png?v=20180128190106',
+  },
+  {
+    id: 'Y24C8A029',
+    isStaff: false,
+    name: 'MKallam',
+    lastMsg: 'message text will be place there tap to see',
+    msgSeen: false,
+    lastMsgReceived: '2024-06-10T13:47:41.373Z',
+    profile:
+      'https://www.static-contents.youth4work.com/y4w/Images/Users/3126495.png?v=20180128190106',
+  },
+];
+
+export const msgDummyData =  [
+  { id: '1', msgText: 'Hello', time: '2024-06-08T16:21:35.559Z', sent: true },
+  { id: '2', msgText: 'hi', time: '2024-06-08T16:28:00.559Z', sent: false },
+  { id: '3', msgText: 'How are you!.', time: '2024-06-08T17:30:45.559Z', sent: true },
+  { id: '4', msgText: 'And wru', time: '2024-06-08T17:30:55.559Z', sent: true },
+  { id: '5', msgText: 'at Madugula, cmng to hyd today evng', time: '2024-06-08T17:39:02.559Z', sent: false },
+  { id: '6', msgText: 'haaa', time: '2024-06-08T17:28:00.559Z', sent: false },
+  { id: '7', msgText: 'Hoo kkkk.', time: '2024-06-08T17:33:45.559Z', sent: false },
+  { id: '8', msgText: 'what is special', time: '2024-06-08T17:30:55.559Z', sent: true },
+  { id: '9', msgText: 'at evng', time: '2024-06-08T20:39:02.559Z', sent: false },
+  { id: '10', msgText: 'at evng', time: '2024-06-08T20:39:02.559Z', sent: false },
+  { id: '11', msgText: 'at evng', time: '2024-06-08T20:39:02.559Z', sent: true },
+  { id: '12', msgText: 'at evng', time: '2024-06-08T20:39:02.559Z', sent: false },
+  { id: '13', msgText: 'at evng', time: '2024-06-08T20:39:02.559Z', sent: true }
+];
+
+
+export const wibePostsData =  [
+  {
+    postId: '1',
+    type:'general',
+    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScdghPiqLqXeAyx-jeDgZXPIQFtRnJGUrVew&s',
+    postName: 'New Building',
+    isVideo: false,
+    videoData: '',
+    postedBy: {
+      name: 'Siva Sankula',
+      designation: '8th Class',
+      id: 'Y24C8A019',
+      role: 'student',
+    },
+    postedOn: '2024-06-11T08:51:20.690Z',
+    postDes:
+      'We are proudly anouncing that we are extending our school environment by building new building for the 9th and 10th grade students',
+    likes: '20',
+    comments: [
+      {
+        commentedBy: {
+          name: 'Siva Sankula',
+          designation: '8th Class',
+          id: 'Y24C8A019',
+          role: 'student',
+        },
+        comment: 'All the best!',
+        likes: '3',
+      },
+    ],
+    shares: 2,
+  },
+  {
+    postId: '2',
+    type:'announcements',
+    img: '',
+    postName: 'Bharath Bundh! School closes till 20th',
+    isVideo: false,
+    videoData: '',
+    postedBy: {
+      name: 'Principal GHMS school',
+      designation: 'Principal',
+      id: 'GHMS02',
+      role: 'admin',
+    },
+    postedOn: '2024-06-11T08:51:20.690Z',
+    postDes:
+      'We are proudly anouncing that we are extending our school environment by building new building for the 9th and 10th grade students',
+    likes: '0',
+    comments: [
+      
+    ],
+    shares: 0,
+  },
+  {
+    postId: '3',
+    type:'birthdays',
+    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScdghPiqLqXeAyx-jeDgZXPIQFtRnJGUrVew&s',
+    postName: 'Happy Birthday <Student Name>',
+    isVideo: false,
+    videoData: '',
+    postedBy: {
+      name: 'Government High School',
+      designation: 'Admin School / GHSM01',
+      id: 'GHSM01',
+      role: 'superadmin',
+    },
+    postedOn: '2024-06-11T08:51:20.690Z',
+    postDes:
+      'Wishing a very happy birthday to our <grade class student> <student Name>  ',
+    likes: '20',
+    comments: [
+      {
+        commentedBy: {
+          name: 'Siva Sankula',
+          designation: '8th Class',
+          id: 'Y24C8A019',
+          role: 'student',
+        },
+        comment: 'All the best!',
+        likes: '3',
+      },
+    ],
+    shares: 2,
+  },
+];
+
 
 
 

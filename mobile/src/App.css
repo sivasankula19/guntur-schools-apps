@@ -494,6 +494,10 @@ ion-header {
   width: 100%;
 }
 
+.g_half_width{
+  width: 50%;
+}
+
 .first_container {
   width: 65%;
 }
@@ -614,6 +618,9 @@ ion-breadcrumb {
   line-height: 22px;
   background: #ffffff;
   cursor: pointer;
+}
+.g_bread_last{
+  cursor: not-allowed;
 }
 
 .dark .g_bread{
@@ -797,11 +804,13 @@ ion-breadcrumbs {
 .list_viwe_icon {
   font-size: 28px;
   margin-right: 12px;
+  cursor: pointer;
 }
 
 .grdi_view_icon {
   font-size: 20px;
   margin-bottom: 4px;
+  cursor: pointer;
 }
 
 .selected {
@@ -1243,33 +1252,23 @@ ion-breadcrumbs {
 
 /* Subjects */
 
+.subjects{
+  height: calc(100% - 42px);
+}
+
+.subjects .custom_sub_item {
+  --background:transparent;
+  --inner-border-width:0;
+}
+
 .subjects_cls_container {
-  height: auto;
-  animation: slideIn 0.8s forwards;
-
-  @media (min-height: 400px) and (max-height: 700px) {
-    max-height: 63vh;
-  }
-
-  @media (min-height: 701px) and (max-height: 800px) {
-    max-height: 66vh;
-  }
-
-  @media (min-height: 801px) and (max-height: 1000px) {
-    max-height: 70vh;
-  }
-
-  @media (min-height: 1001px) and (max-height: 1200px) {
-    max-height: 72vh;
-  }
-
-  @media (min-height: 1201px) {
-    max-height: 78vh;
-  }
-
-  height: auto;
+  height: calc(100% - 150px);
   overflow-y: auto;
   padding-bottom: 30px;
+}
+
+.subjects_cls_container ion-card {
+  margin: 12px;
 }
 
 .subjects_cls_select {
@@ -1280,9 +1279,6 @@ ion-breadcrumbs {
   padding: 8px 0;
 }
 
-.custome_subject_item {
-  margin-bottom: 12px;
-}
 
 .subject_text_name {
   width: 36%;
@@ -2547,6 +2543,7 @@ label.input-wrapper.sc-ion-input-ios {
   border: 1px solid;
   border-color: #1D7AF5;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .messages .select_chat .chat_list .profile img{
@@ -2555,6 +2552,16 @@ label.input-wrapper.sc-ion-input-ios {
   border-radius: 40px;
 }
 
+.chat_list .no_msgs_users{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.no_msgs_users ion-icon{
+  font-size: 50px;
+}
 
 
 
@@ -2597,11 +2604,16 @@ label.input-wrapper.sc-ion-input-ios {
 }
 
 .chat_container .custom_chat_tool .text_img{
-  width: calc(100% - 40px);
+  width: calc(100% - 66px);
 }
 
 .chat_container .custom_chat_tool ion-icon{
   font-size: 32px;
+  cursor: pointer;
+}
+
+.chat_container .custom_chat_tool .three_dots_chat{
+  font-size: 28px;
 }
 
 .chat_container .custom_chat_tool .chat_profile_icon{
@@ -2762,13 +2774,169 @@ label.input-wrapper.sc-ion-input-ios {
   font-size: 50px;
 }
 
+/* School wibe */
+
+.scl_wibe{
+  height: calc(100% - 43px);
+}
+
+.scl_wibe .toggle_io{
+  margin: 8px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.scl_wibe .custom_msg_card {
+  animation: slideInFromLeft 0.8s linear;
+  margin: 0 12px 8px 12px;
+}
+
+.custom_msg_card ion-searchbar{
+  padding: 0;
+  width: 96%;
+}
+
+.date_select_wibe{
+  height: 40px;
+  width: 96%;
+  border-radius: 8px;
+}
+
+.date_wibe_container{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.scl_wibe .custom_msg_content{
+  padding: 8px;
+}
+
+.scl_wibe .custom_sub_item {
+  --background:transparent;
+  --inner-border-width:0;
+}
+
+.custom_sub_item .first_select{
+  padding-right: 2%;
+}
+
+.custom_sub_item .second_select{
+  padding-left: 2%;
+}
+
+.wibe_posts ion-card-content{
+  padding: 0;
+}
+
+.wibe_posts .header_post{
+  background: #F5F5F5;
+  padding: 8px;
+}
+
+.dark .wibe_posts .header_post {
+  background-color: #3d3d3d;
+}
+
+.filter_enable_posts{
+  height: calc(100% - 174px);
+}
+
+.wibe_posts {
+  overflow-y: auto;
+  background: #ffffff;
+}
+
+.dark .wibe_posts{
+  background-color: #000000;
+}
+
+.filter_disabled_posts{
+  height: calc(100% - 46px);
+}
+
+.wibe_posts .profile_name{
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: calc(100% - 104px);
+}
+
+.wibe_posts .wibe_profile{
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  border: 1px solid;
+}
+
+.wibe_posts .wibe_profile img {
+  width: 100%;
+  height: 100%;
+  border-radius: 36px;
+}
+
+.wibe_posts .post_title_wrap{
+  padding-left: 12px;
+  width: calc(100% - 40px);
+}
+
+.post_title_wrap h4{
+  font-size: 16px;
+}
+
+.post_title_wrap p{
+  font-size: 12px;
+}
+
+.posted_on_time{
+  margin-bottom: 16px;
+}
+
+.posted_on_time span{
+  font-size: 10px;
+}
+
+.content_post{
+  min-height: 100px;
+  padding: 12px;
+}
+
+.content_post h2{
+  margin-bottom: 8px;
+  color: #1D7AF5;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.content_post p{
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.content_post img {
+  min-height: 235px;
+  width: 100%;
+}
 
 
+.footer_post{
+  padding: 4px 30px;
+  background: #F5F5F5;
+}
 
+.dark .footer_post {
+  background: #3d3d3d;
+}
 
+.footer_post ion-icon {
+  font-size: 24px;
+}
 
-
-
+.footer_post p{
+  font-size: 10px;
+  line-height: 10px;
+}
 
 
 

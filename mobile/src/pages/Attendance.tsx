@@ -47,15 +47,6 @@ const Attendance: React.FC = () => {
   const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/todos',{
-      method:'GET',
-    }).then((res)=>{
-      res.json().then((response)=>{
-        console.log(response)
-      })
-    }).catch((err)=>{
-      console.log(err)
-    })
     if(viewMode === 'list'){
     setAttendanceDate(getDatesForMonth(currentMY.month, currentMY.year));
     } else {
