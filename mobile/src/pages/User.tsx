@@ -60,7 +60,7 @@ const UserByID: React.FC = () => {
   }
 
   const [breadCrumbsState,setBreadCrumbsState] =useState([
-    { bName: 'Home', path: '/' },
+    { bName: 'Home', path: '/dashboard' },
     { bName: 'Student', path: '/students-list' },
   ])
 

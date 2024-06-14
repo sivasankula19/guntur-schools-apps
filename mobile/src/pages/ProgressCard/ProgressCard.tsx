@@ -23,7 +23,7 @@ const ProgressCard: React.FC = () => {
   const { name } = useParams<{ name: string }>();
 
   const breadCrumbsValue = [
-    { bName: 'Home', path: '/' },
+    { bName: 'Home', path: '/dashboard' },
     { bName: 'Progress Card', path: '/progress-card' },
   ];
 

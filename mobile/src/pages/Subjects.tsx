@@ -33,7 +33,7 @@ const Subjects: React.FC = () => {
     setIsFilterEnabled(event.detail.checked);
   };
   
-  const breadCrumbsValue = [{bName:'Home', path:'/'},{bName:'Subjects', path:'/subjects'}]
+  const breadCrumbsValue = [{bName:'Home', path:'/dashboard'},{bName:'Subjects', path:'/subjects'}]
 
   return (
     <div className='subjects'>

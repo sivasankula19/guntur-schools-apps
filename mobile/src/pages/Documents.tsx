@@ -27,7 +27,7 @@ const Documents: React.FC = () => {
   const [selectedSrc, setSelectedSrc] = useState<any>('');
 
   const accordianContent = docData;
-  const breadCrumbsValue = [{bName:'Home', path:'/'},{bName:'Documents', path:'/documents'}]
+  const breadCrumbsValue = [{bName:'Home', path:'/dashboard'},{bName:'Documents', path:'/documents'}]
   return (
     <div>
       <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
