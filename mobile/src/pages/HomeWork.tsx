@@ -75,7 +75,9 @@ const Remainders: React.FC = () => {
       <div>
         <IonCard className="card_remainder">
           <IonCardContent class="ion_card_content_remainders">
+          <div style={{position:'relative',zIndex:999}}>
             <IonSearchbar placeholder="Remainders"></IonSearchbar>
+          </div>
             {data.length ? (
               <>
                 <div className="remainders_container_scroll">

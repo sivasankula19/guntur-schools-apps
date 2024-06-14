@@ -45,7 +45,7 @@ const dashboard: React.FC = () => {
   const chipsData = [
     { id: 1, moduleName: 'Attendance', icon: calendarOutline, redirectTo: '/attendance' },
     { id: 2, moduleName: 'Progress Card', icon: documentTextOutline, redirectTo: '/progress-card' },
-    { id: 3, moduleName: 'Home Work', icon: documentsOutline, redirectTo: '/home-work' },
+    { id: 3, moduleName: 'Home Work', icon: bookOutline, redirectTo: '/home-work' },
     { id: 4, moduleName: 'My Subjects', icon: schoolOutline, redirectTo: '/subjects' },
     { id: 5, moduleName: 'Messages', icon: chatboxOutline, redirectTo: '/messages' },
     { id: 6, moduleName: 'Documents', icon: documentOutline, redirectTo: '/documents' },
@@ -57,9 +57,8 @@ const dashboard: React.FC = () => {
     { id: 12, moduleName: 'Ex-Circular', icon: ribbonOutline, redirectTo: '/ex-circular' },
     { id: 13, moduleName: 'Gallery', icon: imageOutline, redirectTo: '/gallery' },
     { id: 14, moduleName: 'Achievements', icon: trophyOutline, redirectTo: '/achievements' },
-    { id: 15, moduleName: 'Contact Us', icon: callOutline, redirectTo: '/contact-us' },
+    { id: 15, moduleName: 'Contact-Us', icon: callOutline, redirectTo: '/contact-us' },
     { id: 16, moduleName: 'About', icon: informationCircleOutline, redirectTo: '/about' },
-    { id: 17, moduleName: 'Home Work', icon: bookOutline, redirectTo: '/home-work' },
   ];
 
   const handleViewMode = () => {
@@ -128,7 +127,7 @@ const dashboard: React.FC = () => {
   }, {
     shortName: 'LIB-C',
     fullName: 'Computer Library',
-    id: '07'
+    id: '10'
   },]
 
   const timeArr = timeTableVal;

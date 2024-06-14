@@ -95,7 +95,7 @@ const Attendance: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className='attendance'>
       <div className="g_flex g_space_btwn g_align_cntr bread_toggle_container">
         <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
         <div>

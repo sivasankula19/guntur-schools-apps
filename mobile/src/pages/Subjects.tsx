@@ -55,7 +55,7 @@ const Subjects: React.FC = () => {
           </IonToggle>
         </div>
       </div>
-      <IonItem className="custom_sub_item">
+      {/* <IonItem className="custom_sub_item">
         <IonSelect
           className="custome_select subjects_cls_select"
           multiple={true}
@@ -92,7 +92,7 @@ const Subjects: React.FC = () => {
           <IonSelectOption value="class-10">Class 10</IonSelectOption>
           <IonSelectOption value="class-0">Class 0</IonSelectOption>
         </IonSelect>
-      </IonItem>
+      </IonItem> */}
       <IonItem className="custom_sub_item">
         <IonSearchbar
           showClearButton="focus"
@@ -130,7 +130,9 @@ const Subjects: React.FC = () => {
                     <IonText>
                       <a>Time Table</a>
                     </IonText>
-                    <a>Marks</a>
+                    <IonText>
+                      <a>Marks</a>
+                    </IonText>
                     <IonText>
                       <p>{item.class} - {item.section}</p>
                     </IonText>
