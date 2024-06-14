@@ -36,7 +36,7 @@ const StudentList: React.FC = () => {
     navigate(`/user/${id}`)
   }
 
-  const breadCrumbsValue = [{bName:'Home', path:'/'},{bName:'Students List', path:'/students-list'}];
+  const breadCrumbsValue = [{bName:'Home', path:'/dashboard'},{bName:'Students List', path:'/students-list'}];
 
   return (
     <div>

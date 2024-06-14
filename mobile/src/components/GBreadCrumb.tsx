@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router';
 const GBreadCrumb: React.FC<IBreadCrumbProps> = ({ bName,path, isLast }) => {
   const navigate = useNavigate();
   const handleNavigate = (route:string) => {
+    console.log('route', route)
     if(!isLast)
     navigate(route);
   }

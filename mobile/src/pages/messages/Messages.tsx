@@ -12,7 +12,7 @@ const Messages: React.FC = () => {
   const navigate = useNavigate();
   const [search, setSearch] = useState('');
 
-  const breadCrumbsValue = [{ bName: 'Home', path: '/' }, { bName: 'Messages', path: '/messages' }];
+  const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Messages', path: '/messages' }];
 
   const handleToggleChange = (event: any) => {
     setIsFilterEnabled(event.detail.checked);

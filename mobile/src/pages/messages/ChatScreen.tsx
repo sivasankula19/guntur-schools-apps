@@ -14,7 +14,7 @@ const ChatScreen: React.FC = () => {
   const navigate = useNavigate();
 
   const breadCrumbsValue = [
-    { bName: 'Home', path: '/' },
+    { bName: 'Home', path: '/dashboard' },
     { bName: 'Messages', path: '/messages' },
     { bName: 'Chat Screen', path: '/messages' }
   ];

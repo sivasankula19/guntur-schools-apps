@@ -25,7 +25,7 @@ const StaffList: React.FC = () => {
     //  debounce function can be excuted!!! here
   };
 
-  const breadCrumbsValue = [{bName:'Home', path:'/'},{bName:'Staff List', path:'/staff-list'}]
+  const breadCrumbsValue = [{bName:'Home', path:'/dashboard'},{bName:'Staff List', path:'/staff-list'}]
 
   return (
     <div className='staff'>

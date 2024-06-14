@@ -41,7 +41,7 @@ const Attendance: React.FC = () => {
   const todayFormate = `${todayDate.getMonth() + 1}/${todayDate.getDate()}/${todayDate.getFullYear()}`;
   // const gridAttendance = transformListToGrid(studentAttendanceCalendar);
   const breadCrumbsValue = [
-    { bName: 'Home', path: '/' },
+    { bName: 'Home', path: '/dashboard' },
     { bName: 'Attendance', path: '/attendance' },
   ];
   const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];

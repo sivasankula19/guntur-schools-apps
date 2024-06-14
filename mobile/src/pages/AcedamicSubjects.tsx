@@ -5,6 +5,8 @@ import { useParams } from 'react-router';
 const AcedamicSubject: React.FC = () => {
   const { name } = useParams<{ name: string }>();
 
+  const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Acedamic Subjects', path: '/' }];
+
   return (
     <div>
       <IonBreadcrumbs>

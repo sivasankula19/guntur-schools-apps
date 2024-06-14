@@ -10,7 +10,7 @@ const SchoolWibe: React.FC = () => {
   const [isFilterEnabled, setIsFilterEnabled] = useState(false);
   const [search, setSearch] = useState('');
 
-  const breadCrumbsValue = [{ bName: 'Home', path: '/' }, { bName: 'Wibe', path: '/school-wibe' }];
+  const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Wibe', path: '/school-wibe' }];
 
   const handleToggleChange = (event: any) => {
     setIsFilterEnabled(event.detail.checked);
