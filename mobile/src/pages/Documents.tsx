@@ -135,7 +135,7 @@ const Documents: React.FC = () => {
       </GImageDocPreview>
       <div className="add_documents_btn">
         <IonButton className="gmodal-cancel">
-          <IonIcon icon={addCircleOutline}></IonIcon> Add Doc
+          <IonIcon icon={addCircleOutline}></IonIcon> Add Personal Doc's
         </IonButton>
       </div>
     </div>

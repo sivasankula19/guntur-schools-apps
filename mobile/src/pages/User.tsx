@@ -86,9 +86,11 @@ const UserByID: React.FC = () => {
               width="80%"
             ></img>
             <div className="icon_full_expand">
+              {authInfo.user.regNumber === id && (
+                <IonIcon icon={pencil}></IonIcon>
+              )}
               <IonIcon
                 onClick={() => setIsOpen(true)}
-                size="large"
                 icon={expandOutline}
               ></IonIcon>
             </div>
@@ -114,7 +116,6 @@ const UserByID: React.FC = () => {
               <IonIcon
                 slot="start"
                 icon={pencil}
-                style={{ color: 'black' }}
               ></IonIcon>
               Edit Profile
             </IonButton>

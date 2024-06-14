@@ -26,7 +26,7 @@ const Header: React.FC = React.memo(() => {
   };
 
   return (
-    <IonHeader>
+    <IonHeader className={`${isAuthenticated ? 'customised_head_auth' : ''}`}>
       <IonToolbar className={`${isAuthenticated ? 'customised_toolbar_auth' : ''}`}>
         {isAuthenticated ? (
           <>
