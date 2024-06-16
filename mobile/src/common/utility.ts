@@ -870,6 +870,7 @@ export const wibePostsData =  [
       designation: '8th Class',
       id: 'Y24C8A019',
       role: 'student',
+      profileImg:'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
     },
     postedOn: '2024-06-11T08:51:20.690Z',
     postDes:
@@ -901,6 +902,7 @@ export const wibePostsData =  [
       designation: 'Principal',
       id: 'GHMS02',
       role: 'admin',
+      profileImg:'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
     },
     postedOn: '2024-06-11T08:51:20.690Z',
     postDes:
@@ -923,6 +925,7 @@ export const wibePostsData =  [
       designation: 'Admin School / GHSM01',
       id: 'GHSM01',
       role: 'superadmin',
+      profileImg:'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
     },
     postedOn: '2024-06-11T08:51:20.690Z',
     postDes:

@@ -8,6 +8,7 @@ import {
   IonButton,
   IonIcon,
   IonList,
+  IonCardContent,
 } from '@ionic/react';
 import {
   personCircleOutline,
@@ -59,53 +60,57 @@ const UserByID: React.FC = () => {
     return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.000Z`;
   }
 
-  const [breadCrumbsState,setBreadCrumbsState] =useState([
+  const [breadCrumbsState, setBreadCrumbsState] = useState([
     { bName: 'Home', path: '/dashboard' },
     { bName: 'Student', path: '/students-list' },
   ])
 
-  useEffect(()=>{
-    if(authInfo.user.regNumber === id){
-      setBreadCrumbsState(prev => [prev[0], {bName:'My Profile', path:'/'} ])
+  useEffect(() => {
+    if (authInfo.user.regNumber === id) {
+      setBreadCrumbsState(prev => [prev[0], { bName: 'My Profile', path: '/' }])
     }
-  },[])
+  }, [])
 
   return (
     <IonPage className="my_page">
       <Header />
       <IonContent fullscreen>
-        <GBreadCrumbs data={breadCrumbsState}></GBreadCrumbs>
-        <div className="d-flex-jc-center">
-          <IonCard className="profile-card">
-            <div className="user_id profile-name">Sankula sivaiah</div>
-            <img
-              src={
-                'https://www.static-contents.youth4work.com/y4w/Images/Users/3126495.png?v=20180128190106'
-              }
-              height="80%"
-              width="80%"
-            ></img>
-            <div className="icon_full_expand">
-              {authInfo.user.regNumber === id && (
-                <IonIcon icon={pencil}></IonIcon>
-              )}
-              <IonIcon
-                onClick={() => setIsOpen(true)}
-                icon={expandOutline}
-              ></IonIcon>
-            </div>
-          </IonCard>
-        </div>
-        <div className="display-data">
-          {userData.map((user: any, index: number) => {
-            return (
-              <div className="display-data-main" key={index}>
-                <div className="display-data-key">{user.key}</div>
-                <div className="display-data-value">{user.value}</div>
+        <div className='user_page'>
+          <GBreadCrumbs data={breadCrumbsState}></GBreadCrumbs>
+          <div className="d-flex-jc-center">
+            <IonCard className="profile-card">
+              <img
+                src={
+                  'https://avatars.githubusercontent.com/u/93701195?s=60&v=4'
+                }
+                height="80%"
+                width="80%"
+              ></img>
+              <div className="icon_full_expand icon_pencil_user">
+                {authInfo.user.regNumber === id && (
+                  <IonIcon icon={pencil}></IonIcon>
+                )}
               </div>
-            );
-          })}
+              <div className="icon_full_expand">
+                <IonIcon
+                  onClick={() => setIsOpen(true)}
+                  icon={expandOutline}
+                ></IonIcon>
+              </div>
+            </IonCard>
+          </div>
+          <div className="display-data">
+            {userData.map((user: any, index: number) => {
+              return (
+                <div className="display-data-main" key={index}>
+                  <div className="display-data-key">{user.key}</div>
+                  <div className="display-data-value">{user.value}</div>
+                </div>
+              );
+            })}
+          </div>
         </div>
+
         {authInfo.user.regNumber === id && (
           <div className="bottom-button">
             <IonButton
@@ -127,14 +132,13 @@ const UserByID: React.FC = () => {
           onClose={() => {
             setEventModal(false);
           }}
-          onSave={() => {}}
+          onSave={() => { }}
         >
-          <IonList>
+          <IonList className='custom_user_list'>
             {userData.map((user: any, index: number) => {
               return (
                 <div
                   key={index}
-                  style={{ paddingBottom: '2%' }}
                   className="custom-ion-input-wrapper"
                 >
                   <IonInput
@@ -158,7 +162,7 @@ const UserByID: React.FC = () => {
         onClose={() => {
           setIsOpen(false);
         }}
-        onDownload={() => {}}
+        onDownload={() => { }}
         isOpen={isOpen}
       ></GImageDocPreview>
       <Footer></Footer>

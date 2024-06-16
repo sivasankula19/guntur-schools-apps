@@ -167,6 +167,18 @@ ion-header {
 
 /* app header */
 
+.header_caret{
+  padding-right: 12px;
+}
+
+.header_caret ion-icon{
+  font-size: 24px;
+}
+
+.ios .header_caret{
+  justify-content: flex-end;
+}
+
 .ios .header_schoolname{
   padding-left: 50px;
 }
@@ -175,6 +187,7 @@ ion-header {
   color: white;
   padding: 0;
   font-size: 18px;
+  font-weight: 500;
   text-align: start;
 }
 
@@ -241,9 +254,9 @@ ion-header {
 }
 
 .ios .menu_profile_conatiner{
-  height: 30px;
-  width: 30px;
-  top: 8px;
+  height: 36px;
+  width: 36px;
+  top: 4px;
 }
 
 .menu_profile_conatiner {
@@ -274,6 +287,13 @@ ion-header {
 .customised_head_auth{
   display: flex;
   justify-content: center;
+}
+
+.ios .customised_head_auth ion-toolbar{
+  height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .profile_menu{
@@ -537,6 +557,10 @@ ion-header {
 
 .g_txt_center {
   text-align: center;
+}
+
+.g_flex_end{
+  justify-content: flex-end;
 }
 
 
@@ -861,7 +885,6 @@ ion-breadcrumbs {
 
 .month_year_view {
   width: 40%;
-  border: 1px solid #1D7AF5;
   cursor: text;
 }
 
@@ -1290,6 +1313,9 @@ ion-breadcrumbs {
 .subjects_cls_container {
   height: calc(100% - 100px);
   overflow-y: auto;
+}
+
+.subjects_cls_container ion-list{
   padding-bottom: 30px;
 }
 
@@ -1362,15 +1388,22 @@ ion-breadcrumbs {
 
 .custom-ion-input {
   min-height: 41px !important;
-  border: 1px solid;
+  /* border: 1px solid; */
+  border-radius: 8px;
   --padding-start: 10px !important;
   --padding-end: 10px !important;
 }
 
+.ios .custom-ion-input{
+  border: 1px solid;
+}
 
-.custom-ion-input .input-wrapper.sc-ion-input-md {
-  height: 31px;
-  min-height: 31px;
+.custom-ion-input-wrapper{
+  margin: 12px 0;
+}
+
+.custom_user_list{
+  background: transparent;
 }
 
 .custom-ion-input .label-text-wrapper.sc-ion-input-md {
@@ -1384,24 +1417,25 @@ ion-breadcrumbs {
 .d-flex-jc-center {
   display: flex;
   justify-content: center;
+  height: 30%;
 }
 
 .profile-card {
   border: 1px solid rgb(216, 227, 235);
   width: 90%;
-  height: 42vh;
+  height: 100%;
   padding: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0px 10px 5px;
-  justify-content: space-evenly;
+  margin: 0 10px;
+  justify-content: center;
 }
 
 .profile-card .icon_full_expand {
   text-align: end;
   position: relative;
-  top: -20px;
+  top: -6px;
   height: 0px;
   display: flex;
   justify-content: end;
@@ -1409,9 +1443,18 @@ ion-breadcrumbs {
   padding-right: 2px;
 }
 
+.icon_pencil_user{
+  top: -90% !important;
+}
+
 .profile-card .icon_full_expand ion-icon{
   font-size: 24px;
   margin: 0 4px;
+  color: #000000;
+}
+
+.dark .profile-card .icon_full_expand ion-icon{
+  color: #ffffff;
 }
 
 .profile-card img {
@@ -1424,9 +1467,9 @@ ion-breadcrumbs {
 }
 
 .display-data {
+  height: calc(66% - 50px);
   overflow: auto;
-  max-height: 40vh;
-  padding-bottom: 85px;
+  padding-bottom: 48px;
 }
 
 .display-data-main {
@@ -1471,6 +1514,7 @@ ion-breadcrumbs {
 .button-text {
   width: 80%;
   font-weight: bold;
+  height: 40px;
   text-transform: none;
 }
 
@@ -2748,6 +2792,7 @@ label.input-wrapper.sc-ion-input-ios {
   color: #1D7AF5;
   padding: 0 46px 0 12px;
   font-size: 14px;
+  background: #ffffff;
 }
 
 .dark .msgs_holder .type_msg input{
@@ -2999,7 +3044,12 @@ label.input-wrapper.sc-ion-input-ios {
   line-height: 10px;
 }
 
+/* user page */
 
+.user_page{
+  overflow: hidden;
+  height: 100%;
+}
 
 
 
