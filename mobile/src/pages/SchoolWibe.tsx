@@ -127,7 +127,7 @@ const SchoolWibe: React.FC = () => {
                     <div
                       className='wibe_profile'>
                       <img
-                        src={item.img}
+                        src={item?.postedBy?.profileImg}
                       />
                     </div>
                     <div

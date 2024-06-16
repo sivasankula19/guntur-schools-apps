@@ -10,7 +10,7 @@ import {
   IonText,
 } from '@ionic/react';
 import { useSelector } from 'react-redux';
-import { searchOutline } from 'ionicons/icons';
+import { caretDownOutline, searchOutline } from 'ionicons/icons';
 import { useNavigate } from 'react-router';
 import { isPlatform } from '@ionic/react';
 
@@ -35,13 +35,19 @@ const Header: React.FC = React.memo(() => {
             </IonButtons>
             <div className="menu_profile_conatiner">
               <img
-                src="https://st3.depositphotos.com/15648834/17930/v/450/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+                src="https://avatars.githubusercontent.com/u/93701195?s=60&v=4"
                 alt="Profile"
               />
             </div>
-            <IonTitle className={`${isPlatform('desktop') ? 'web_scl' : ''} header_schoolname`}>
+            {/* <IonTitle className={`${isPlatform('desktop') ? 'web_scl' : ''} header_schoolname`}>
               {authInfo?.user?.fullName || 'Name'}
-            </IonTitle>
+            </IonTitle> */}
+            <div className='g_flex header_caret'>
+              <IonTitle className={`${isPlatform('desktop') ? 'web_scl' : ''} header_schoolname`}>
+                {authInfo?.user?.fullName || 'Name'}
+              </IonTitle>
+              <IonIcon icon={caretDownOutline}></IonIcon>
+            </div>
           </>
         ) : (
           <>
