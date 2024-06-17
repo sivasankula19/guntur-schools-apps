@@ -1,251 +1,138 @@
-import {
-  IonButton,
-  IonCard,
-  IonCardContent,
-  IonDatetime,
-  IonDatetimeButton,
-  IonFooter,
-  IonHeader,
-  IonIcon,
-  IonInput,
-  IonItem,
-  IonLabel,
-  IonModal,
-  IonSearchbar,
-  IonSelect,
-  IonSelectOption,
-  IonText,
-  IonTextarea,
-  IonToolbar,
-} from '@ionic/react';
-import {
-  addCircleOutline,
-  calendarClearOutline,
-  pencilOutline,
-  trashOutline,
-} from 'ionicons/icons';
 import React, { useEffect, useRef, useState } from 'react';
-import GCustomisedModal from '../components/GCustomisedModal';
-import { remainderDummyData } from '../common/utility';
 import GBreadCrumbs from '../components/GBreadCrumbs';
+import { IonCard, IonCardContent, IonIcon, IonSearchbar, IonSelect, IonSelectOption, IonText } from '@ionic/react';
+import { formatDate, homeWorkDataBe } from '../common/utility';
+import { attachOutline, banOutline } from 'ionicons/icons';
+const HomeWork: React.FC = () => {
 
-const Remainders: React.FC = () => {
-  const [eventDateTime, setEventDateTime] = useState<any>('');
-  const modal = useRef<HTMLIonModalElement>(null);
-  const [eventModal, setEventModal] = useState(false);
-  const [data, setData] = useState(remainderDummyData);
+  const [homeWorkData, setHomeWorkData] = useState<any>([])
+
+  const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Home Work', path: '/home-work' }]
 
   useEffect(() => {
-    setEventDateTime(getNextHourDateTime());
-  }, []);
+    setHomeWorkData(homeWorkDataBe.map((i) => ({ ...i, isFullView: false })))
+  }, [])
 
-  function getNextHourDateTime(isCurrent: boolean = false) {
-    const now = new Date();
 
-    let nextHour = isCurrent
-      ? new Date()
-      : new Date(now.getTime() + 60 * 60 * 1000);
-    const year = nextHour.getFullYear();
-    const month = String(nextHour.getMonth() + 1).padStart(2, '0');
-    const day = String(nextHour.getDate()).padStart(2, '0');
-    const hours = String(nextHour.getHours()).padStart(2, '0');
-    const minutes = String(nextHour.getMinutes()).padStart(2, '0');
-    const seconds = String(nextHour.getSeconds()).padStart(2, '0');
-
-    return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.000Z`;
+  const handleFullView = (id:string) => {
+    setHomeWorkData((prev:any)=>(prev.map((prvItem:any)=>{
+      if(prvItem.id === id)
+        return {...prvItem, isFullView: !prvItem.isFullView}
+      return ({...prvItem, isFullView: false})
+    })))
   }
 
-  const breadCrumbsValue = [{bName:'Home', path:'/dashboard'},{bName:'Home Work', path:'/home-work'}]
-
   return (
-    <div>
-      <div className="g_flex g_space_btwn g_align_cntr bread_toggle_container">
-       <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
-        <div>
-          <IonButton
-            onClick={() => {
-              setEventModal(true);
-            }}
-            className="add_remainder_btn"
-          >
-            <IonIcon icon={addCircleOutline}></IonIcon> ADD
-          </IonButton>
-        </div>
-      </div>
-      <div>
-        <IonCard className="card_remainder">
-          <IonCardContent class="ion_card_content_remainders">
-          <div style={{position:'relative',zIndex:999}}>
-            <IonSearchbar placeholder="Remainders"></IonSearchbar>
-          </div>
-            {data.length ? (
-              <>
-                <div className="remainders_container_scroll">
-                  {data.map((item) => (
-                    <IonCard className="view_card_item" key={item.id}>
-                      <IonCardContent className="ion_remainder_content">
-                        <div className="g_flex item_title_time">
-                          <div className="remainder_item_title_block">
-                            <IonText className="remainder_item_title">
-                              {item.eventName}
-                            </IonText>
-                          </div>
-                          <div className="remainder_item_time_block">
-                            <IonText className="remainder_item_time">
-                              {item.date} - {item.time}
-                            </IonText>
-                          </div>
-                        </div>
-                        <div className="g_flex item_title_time">
-                          <div className="remainder_item_title_block">
-                            <IonText
-                              className={`remainder_item_desc ${
-                                !item.isOpen && 'two_lines_ellipsis'
-                              }`}
-                            >
-                              {item.desc}
-                            </IonText>
-                          </div>
-                          <div className="remainder_item_time_block g_flex">
-                            <div
-                              className={`remainder_status g_flex g_align_cntr g_jstfy_content_cntr ${
-                                item.status == 'Delayed'
-                                  ? 'danger'
-                                  : item.status == 'Done'
-                                  ? 'orange_cls'
-                                  : 'success'
-                              }`}
-                            >
-                              {item.status}
-                            </div>
-                            <IonIcon
-                              className="edit_remainder"
-                              size="large"
-                              icon={pencilOutline}
-                            ></IonIcon>
-                          </div>
-                        </div>
-                      </IonCardContent>
-                    </IonCard>
-                  ))}
-                </div>
-              </>
-            ) : (
-              <>
-                <IonItem className="no_records_remainder">
-                  <div className="trash_icon_remainder">
-                    <IonIcon size="large" icon={trashOutline}></IonIcon>
-                  </div>
-                </IonItem>
-                <IonItem className="no_records_remainder">
-                  <div className="g_flex g_flex_direction_clm no_records_remainder_text">
-                    <IonText>No Records Found</IonText>
-                    <IonText>Please Add Remaindes!</IonText>
-                  </div>
-                </IonItem>
-                <div className="g_flex g_jstfy_content_cntr add_remainder_btn_container">
-                  <IonButton className="btn_remainders">
-                    Add Remainder
-                  </IonButton>
-                </div>
-              </>
-            )}
-          </IonCardContent>
-        </IonCard>
-      </div>
-
-      <GCustomisedModal
-        title="My Modal"
-        isOpen={eventModal}
-        onClose={() => {
-          setEventModal(false);
-        }}
-        onSave={() => {}}
-      >
-        <div>
-          <div className="g_txt_center">
-            <IonLabel>Date & Time</IonLabel>
-          </div>
-          <IonItem className="date_time_select_item">
-            <IonIcon size="small" icon={calendarClearOutline}></IonIcon>
-            <IonDatetimeButton datetime="datetime"></IonDatetimeButton>
-            <IonModal
-              className="custome_date_time_modal"
-              ref={modal}
-              keepContentsMounted={true}
-            >
-              <IonHeader>
-                <IonToolbar>
-                  <IonText>
-                    <p>Select Date Time </p>
-                  </IonText>
-                </IonToolbar>
-              </IonHeader>
-              <IonDatetime
-                value={eventDateTime}
-                id="datetime"
-                onIonChange={(e) => {
-                  setEventDateTime(e?.detail?.value || '');
-                }}
-                min={getNextHourDateTime(true)}
-              ></IonDatetime>
-              <IonFooter>
-                <IonToolbar>
-                  <IonButton
-                    expand="block"
-                    onClick={() => {
-                      modal.current?.dismiss();
-                    }}
-                  >
-                    OK
-                  </IonButton>
-                </IonToolbar>
-              </IonFooter>
-            </IonModal>
-          </IonItem>
-          <IonItem className="custom_modal_item">
-            <IonInput
-              class="add_event_input"
-              label="Event Name"
-              labelPlacement="floating"
-              fill="solid"
-              placeholder="Event Name"
-            ></IonInput>
-          </IonItem>
-          <IonItem className="custom_modal_item">
-            <IonTextarea
-              className="cutsome_textarea"
-              label="Event Description"
-              labelPlacement="floating"
-              placeholder="Event Description"
-            ></IonTextarea>
-          </IonItem>
-          <IonItem className="custom_modal_item">
+    <div className='g_full_height'>
+      <GBreadCrumbs data={breadCrumbsValue} />
+      <div className='home_work'>
+        <IonSearchbar placeholder='Search subject or Task name'></IonSearchbar>
+        <div className="g_flex g_space_btwn select_conatainer">
+          <div style={{ width: '47%' }}>
             <IonSelect
               className="custome_select"
-              label="Notify Me"
+              multiple={true}
+              label="Select Class"
               labelPlacement="floating"
               fill="outline"
               interface="popover"
               onIonChange={(e) =>
-                console.log(`ionChange fired with value: ${e.detail.value}`)
+                console.log(
+                  `ionChange fired with value: ${e.detail.value}`
+                )
               }
+              onIonCancel={() => console.log('ionCancel fired')}
+              onIonDismiss={() => console.log('ionDismiss fired')}
             >
-              <IonSelectOption value="15min">
-                Notify me before 15 min
+              <IonSelectOption value="class-8">Class 8</IonSelectOption>
+              <IonSelectOption value="class-9">Class 9</IonSelectOption>
+              <IonSelectOption value="class-10">Class 10</IonSelectOption>
+              <IonSelectOption value="class-0">Class 0</IonSelectOption>
+            </IonSelect>
+          </div>
+          <div style={{ width: '47%' }}>
+            <IonSelect
+              multiple={true}
+              className="custome_select"
+              label="Select Section"
+              labelPlacement="floating"
+              fill="outline"
+              interface="popover"
+            >
+              <IonSelectOption value="A-Section">
+                A Section
               </IonSelectOption>
-              <IonSelectOption value="30min">
-                Notify me before 15 min
+              <IonSelectOption value="B-Section">
+                B Section
               </IonSelectOption>
-              <IonSelectOption value="1hr">
-                Notify me before 15 min
+              <IonSelectOption value="C-Section">
+                C section
               </IonSelectOption>
             </IonSelect>
-          </IonItem>
+          </div>
         </div>
-      </GCustomisedModal>
+        <div className='home_work_container'>
+          {homeWorkData.map((item: any) => (<IonCard key={item.id}>
+            <IonCardContent>
+              <div className='g_flex time_title'>
+                <div className='home_task_title'>
+                  <IonText>
+                    <h2 className={`${!item.isFullView && 'two_lines_ellipsis'}`}>{item.taskName}</h2>
+                  </IonText>
+                </div>
+                <div className='home_task_time'>
+                  <IonText>
+                    <span>{formatDate(new Date(item.taskTime), true)}</span>
+                  </IonText>
+                </div>
+              </div>
+              <div className='home_task_desc'>
+                <IonText>
+                  <p className={`${!item.isFullView && 'three_line_ellipse'}`}>{item.taskDesc}</p>
+                </IonText>
+              </div>
+              {item.isFullView && (
+                <div className='home_attachments'>
+                  <div className='g_flex g_align_cntr attach_icon_home'>
+                    <IonIcon icon={attachOutline}></IonIcon>
+                    <IonText>
+                      <h4>Attachments</h4>
+                    </IonText>
+                  </div>
+                  {
+                    item?.attachments?.length ? <>
+                      <div>
+                          hello swipe here!
+                      </div>
+                    </> : <>
+                      <div className='no_attachments'>
+                        <IonIcon icon={banOutline}></IonIcon>
+                        <IonText>
+                          <p> No Attachments !</p>
+                        </IonText>
+                      </div>
+                    </>
+                  }
+                </div>
+              )}
+              <div className='g_flex g_space_btwn text_show_more'>
+                <div>
+                  <IonText>
+                    <p>Subject Name</p>
+                  </IonText>
+                </div>
+                <div>
+                  <IonText>
+                    <a onClick={()=>handleFullView(item.id)}>{item.isFullView ? 'View Less' : 'View More'}</a>
+                  </IonText>
+                </div>
+              </div>
+            </IonCardContent>
+          </IonCard>))}
+        </div>
+      </div>
     </div>
   );
 };
 
-export default Remainders;
+export default HomeWork;

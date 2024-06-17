@@ -8,9 +8,7 @@ import { setPreLoginPublicView } from '../redux/reducers/schoolSlice';
 const PreLoginHead: React.FC = () => {
   const isAuthenticated = useSelector((state:any)=>state.auth.isAuthenticated)
   const { name } = useParams<{ name: string }>();
-  console.log('name', name)
   const selectedView = useSelector((state: any) => state.school.preLoginModule)
-  console.log(selectedView)
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const preLoginBtns = [
@@ -23,7 +21,7 @@ const PreLoginHead: React.FC = () => {
   ];
 
 
-  const btnsScrollRef = useRef<any>(null)
+  const btnsScrollRef = useRef<any>(null);
 
   const handleToolBtns = (btnInfo: any) => {
     dispatch(setPreLoginPublicView(btnInfo.name));

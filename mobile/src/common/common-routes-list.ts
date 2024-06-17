@@ -78,10 +78,10 @@ export const RoutesListDynamic : AppPage[] = [
       mdIcon: walletSharp,
     },
     {
-      title: 'Time Table',
-      url: '/time-table',
-      iosIcon: timeOutline,
-      mdIcon: timeSharp,
+      title: 'Calendar',
+      url: '/calendar',
+      iosIcon: calendarOutline,
+      mdIcon: calendarSharp,
     },
     {
       title: 'Ex-Circular',

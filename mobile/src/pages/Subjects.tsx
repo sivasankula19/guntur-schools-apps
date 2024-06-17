@@ -55,44 +55,6 @@ const Subjects: React.FC = () => {
           </IonToggle>
         </div>
       </div>
-      {/* <IonItem className="custom_sub_item">
-        <IonSelect
-          className="custome_select subjects_cls_select"
-          multiple={true}
-          label="Select Class"
-          labelPlacement="floating"
-          fill="outline"
-          interface="popover"
-          onIonChange={(e) =>
-            console.log(`ionChange fired with value: ${e.detail.value}`)
-          }
-          onIonCancel={() => console.log('ionCancel fired')}
-          onIonDismiss={() => console.log('ionDismiss fired')}
-        >
-          <IonSelectOption value="class-8">Class 8</IonSelectOption>
-          <IonSelectOption value="class-9">Class 9</IonSelectOption>
-          <IonSelectOption value="class-10">Class 10</IonSelectOption>
-          <IonSelectOption value="class-0">Class 0</IonSelectOption>
-        </IonSelect>
-        <IonSelect
-          className="custome_select"
-          multiple={true}
-          label="Select Class"
-          labelPlacement="floating"
-          fill="outline"
-          interface="popover"
-          onIonChange={(e) =>
-            console.log(`ionChange fired with value: ${e.detail.value}`)
-          }
-          onIonCancel={() => console.log('ionCancel fired')}
-          onIonDismiss={() => console.log('ionDismiss fired')}
-        >
-          <IonSelectOption value="class-8">Class 8</IonSelectOption>
-          <IonSelectOption value="class-9">Class 9</IonSelectOption>
-          <IonSelectOption value="class-10">Class 10</IonSelectOption>
-          <IonSelectOption value="class-0">Class 0</IonSelectOption>
-        </IonSelect>
-      </IonItem> */}
       <IonItem className="custom_sub_item">
         <IonSearchbar
           showClearButton="focus"

@@ -8,6 +8,9 @@ import {
   IonItem,
   IonIcon,
   IonText,
+  IonButton,
+  IonPopover,
+  IonContent,
 } from '@ionic/react';
 import { useSelector } from 'react-redux';
 import { caretDownOutline, searchOutline } from 'ionicons/icons';
@@ -46,7 +49,12 @@ const Header: React.FC = React.memo(() => {
               <IonTitle className={`${isPlatform('desktop') ? 'web_scl' : ''} header_schoolname`}>
                 {authInfo?.user?.fullName || 'Name'}
               </IonTitle>
-              <IonIcon icon={caretDownOutline}></IonIcon>
+
+              <IonButton fill="clear" id="click-trigger"><IonIcon slot="icon-only" icon={caretDownOutline}></IonIcon></IonButton>
+              <IonPopover trigger="click-trigger" triggerAction="click">
+                <IonContent class="ion-padding">Hello World!</IonContent>
+              </IonPopover>
+
             </div>
           </>
         ) : (

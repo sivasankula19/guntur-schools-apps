@@ -2,7 +2,7 @@ import { IonFooter, IonHeader, IonTitle, IonToolbar } from '@ionic/react';
 import { useEffect, useRef, useState } from 'react';
 import { allUnitsMarks, unitMarksData } from '../../common/utility';
 
-const RenderAllExams: React.FC<IRenderAllExams> = ({}) => {
+const RenderAllExams: React.FC<IRenderAllExams> = ({ }) => {
   const subjects = [
     { subjectId: 'tel', subjectName: 'Telugu' },
     { subjectId: 'eng', subjectName: 'English' },
@@ -60,20 +60,18 @@ const RenderAllExams: React.FC<IRenderAllExams> = ({}) => {
                 <div
                   key={unitItem.id}
                   style={{
-                    minWidth: `${
-                     ( parentContainerRef.current.offsetWidth) +
-                       ( allUnits.length <=
-                      3
+                    minWidth: `${(parentContainerRef.current.offsetWidth) +
+                      (allUnits.length <=
+                        3
                         ? 0
                         : 10)
-                    }px`,
-                    width: `${
-                     ( parentContainerRef.current.offsetWidth) +
-                      (  allUnits.length <=
-                      3
+                      }px`,
+                    width: `${(parentContainerRef.current.offsetWidth) +
+                      (allUnits.length <=
+                        3
                         ? 0
                         : 10)
-                    }px`,
+                      }px`,
                     borderRight:
                       index !== allUnits.length - 1 ? '1px solid' : 'none',
                     height: '40px',
@@ -89,20 +87,18 @@ const RenderAllExams: React.FC<IRenderAllExams> = ({}) => {
                 <div
                   key={unitItemsub.id}
                   style={{
-                    minWidth: `${
-                     ( parentContainerRef.current.offsetWidth) +
-                       ( allUnits.length <=
-                      3
+                    minWidth: `${(parentContainerRef.current.offsetWidth) +
+                      (allUnits.length <=
+                        3
                         ? 0
                         : 10)
-                    }px`,
-                    width: `${
-                     ( parentContainerRef.current.offsetWidth) +
-                        (allUnits.length <=
-                      3
+                      }px`,
+                    width: `${(parentContainerRef.current.offsetWidth) +
+                      (allUnits.length <=
+                        3
                         ? 0
                         : 10)
-                    }px`,
+                      }px`,
                     borderRight:
                       index !== allUnits.length - 1 ? '1px solid' : 'none',
                   }}
@@ -110,9 +106,11 @@ const RenderAllExams: React.FC<IRenderAllExams> = ({}) => {
                   {subjects.map((subjectItem: any) => (
                     <div
                       key={subjectItem.subjectId}
-                      style={{ minHeight: '40px', color: unitItemsub['data']?.find(
-                        (i: any) => i.subjectName === subjectItem.subjectName
-                      )?.remarks === 'Fail' ? '#FF0000' : '' }}
+                      style={{
+                        minHeight: '40px', color: unitItemsub['data']?.find(
+                          (i: any) => i.subjectName === subjectItem.subjectName
+                        )?.remarks === 'Fail' ? '#FF0000' : ''
+                      }}
                       className="g_txt_center g_flex g_align_cntr g_jstfy_content_cntr"
                     >
                       {
@@ -131,12 +129,22 @@ const RenderAllExams: React.FC<IRenderAllExams> = ({}) => {
       <IonFooter>
         <IonToolbar>
           <div className="g_flex g_space_btwn marks_all_container">
-            {allUnits.map((unitItemshow: any) => (
-              <div key={unitItemshow.id}>
-                <div>{unitItemshow.title}</div>
-                <div>{unitItemshow.conductedFor}</div>
+            <div style={{ width: '25%' }}>
+            <div>Exam</div>
+            <div>Total</div>
+            </div>
+            <div style={{ width: '75%',overflowX:'auto'}}>
+              <div style={{ display: 'flex' }}>
+                {allUnits.map((unitItemshow: any) => (
+                  <div style={{width:'80px', minWidth:'80px'}} key={unitItemshow.id}>
+                    <div>{unitItemshow.title}</div>
+                    <div>{unitItemshow.conductedFor}</div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+
+
           </div>
         </IonToolbar>
       </IonFooter>
@@ -144,6 +152,6 @@ const RenderAllExams: React.FC<IRenderAllExams> = ({}) => {
   );
 };
 
-interface IRenderAllExams {}
+interface IRenderAllExams { }
 
 export default RenderAllExams;

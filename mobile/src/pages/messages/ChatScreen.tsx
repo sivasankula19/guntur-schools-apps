@@ -45,7 +45,7 @@ const ChatScreen: React.FC = () => {
   return (
     <IonPage className="my_page">
       <Header />
-      <IonContent fullscreen>
+      <IonContent class='custom_content_view' fullscreen>
         <div className="chat_screen">
           <GBreadCrumbs data={breadCrumbsValue} />
           <div className="chat_container">
@@ -127,7 +127,7 @@ const ChatScreen: React.FC = () => {
           </div>
         </div>
       </IonContent>
-      <Footer />
+      {/* <Footer /> */}
     </IonPage>
   );
 };

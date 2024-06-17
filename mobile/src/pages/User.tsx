@@ -74,7 +74,7 @@ const UserByID: React.FC = () => {
   return (
     <IonPage className="my_page">
       <Header />
-      <IonContent fullscreen>
+      <IonContent class='custom_content_view' fullscreen>
         <div className='user_page'>
           <GBreadCrumbs data={breadCrumbsState}></GBreadCrumbs>
           <div className="d-flex-jc-center">

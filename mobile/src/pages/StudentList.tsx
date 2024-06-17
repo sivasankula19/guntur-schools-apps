@@ -39,7 +39,7 @@ const StudentList: React.FC = () => {
   const breadCrumbsValue = [{bName:'Home', path:'/dashboard'},{bName:'Students List', path:'/students-list'}];
 
   return (
-    <div>
+    <div className='g_full_height'>
       <div className="g_flex g_space_btwn g_align_cntr bread_toggle_container">
         <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
         <div>
