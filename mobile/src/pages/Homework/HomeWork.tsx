@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
-import GBreadCrumbs from '../components/GBreadCrumbs';
+import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { IonCard, IonCardContent, IonIcon, IonSearchbar, IonSelect, IonSelectOption, IonText } from '@ionic/react';
-import { formatDate, homeWorkDataBe } from '../common/utility';
-import { attachOutline, banOutline } from 'ionicons/icons';
+import { formatDate, homeWorkDataBe } from '../../common/utility';
+import { attachOutline, banOutline, expandOutline } from 'ionicons/icons';
+import SwapableImages from './SwapableImges';
 const HomeWork: React.FC = () => {
 
   const [homeWorkData, setHomeWorkData] = useState<any>([])
@@ -93,16 +94,19 @@ const HomeWork: React.FC = () => {
               </div>
               {item.isFullView && (
                 <div className='home_attachments'>
-                  <div className='g_flex g_align_cntr attach_icon_home'>
+                  <div className='g_flex g_align_cntr g_space_btwn attach_icon_home'>
+                    <div className='g_flex g_align_cntr'>
                     <IonIcon icon={attachOutline}></IonIcon>
                     <IonText>
                       <h4>Attachments</h4>
                     </IonText>
+                    </div>
+                    <IonIcon icon={expandOutline}></IonIcon>
                   </div>
                   {
                     item?.attachments?.length ? <>
                       <div>
-                          hello swipe here!
+                          <SwapableImages images={item.attachments}></SwapableImages>
                       </div>
                     </> : <>
                       <div className='no_attachments'>

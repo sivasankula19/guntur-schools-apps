@@ -247,10 +247,9 @@ export const studentDummyData =  [
         profile:''
       },
       attachments:[
-        {
-          id:'1a',
-          img:'',
-        }
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4V8KKozejQPGQqAwVpafSFMzGNadgZy-_jg&s',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE4Y1tnrrvIBk7OTyXyNeBtwv130_sscs3wg&s',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLHw1dRH8otuXmFkKqV_2lp9Im0oR9obYOsg&s',
       ]
     },
     {
@@ -270,7 +269,6 @@ export const studentDummyData =  [
         profile:''
       },
       attachments:[
-        
       ]
     },
     {
@@ -290,10 +288,6 @@ export const studentDummyData =  [
         profile:''
       },
       attachments:[
-        {
-          id:'1a',
-          img:'',
-        }
       ]
     },
     {
@@ -313,10 +307,6 @@ export const studentDummyData =  [
         profile:''
       },
       attachments:[
-        {
-          id:'1a',
-          img:'',
-        }
       ]
     }
   ]
