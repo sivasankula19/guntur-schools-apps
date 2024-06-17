@@ -35,6 +35,11 @@
     --inner-padding-end: 8px;
     --padding-start: 8px;
     cursor: pointer;
+    --background:#ffffff;
+}
+
+.dark .dsbrd ion-item {
+    --background:#000000;
 }
 
 .dsbrd ion-item .chip_item_data {
@@ -171,6 +176,13 @@
     align-items: center;
     border-color: #1D7AF5;
     border-radius: 4px;
+    --background:#ffffff;
+    background: #ffffff;
+}
+
+.dark .time_today_view ion-item {
+    --background:#000000;
+    background: #000000;
 }
 
 .time_day_view_con {
@@ -228,6 +240,7 @@
     min-width: 100px;
     margin-right: 10px;
     border:1px solid;
+    border-radius: 12px;
     display: flex;
     justify-content: center;
     align-items: center;

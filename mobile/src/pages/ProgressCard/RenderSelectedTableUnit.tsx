@@ -21,7 +21,7 @@ import { unitMarksData } from "../../common/utility";
       // make sure previous response data if exists dont call another api untill there was a change in that back response
       setUnitData(unitMarksData.map(marksObj => {
         const randomMarks = Math.floor(Math.random() * 101);
-        return {...marksObj, marks:randomMarks, remarks:randomMarks >= 9 ? 'Pass' : 'Fail'}
+        return {...marksObj, marks:randomMarks, remarks:randomMarks >= 36 ? 'Pass' : 'Fail'}
       }))
     }, [selectedTab]);
   

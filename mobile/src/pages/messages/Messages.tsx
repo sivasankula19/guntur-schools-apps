@@ -24,7 +24,6 @@ const Messages: React.FC = () => {
 
   const handleInput = (ev: any) => {
     setSearch(ev.target.value);
-    console.log(ev?.target.value);
     setChatListData(chatContactList.filter((chatContact)=> ((chatContact.name).toLowerCase().includes((ev.target.value).toLowerCase())) || ev.target.value == ''))
     //  debounce function can be executed!!! here i.e api
   };
@@ -98,7 +97,7 @@ const Messages: React.FC = () => {
                 <div>
                   <IonIcon icon={banSharp}></IonIcon>
                   <IonText>
-                    <h1>No Messages Yet!</h1>
+                    <h1>{search.length ? `No chats with name "${search}"` : "No Messages Yet!"} </h1>
                   </IonText>
                   <IonText>
                     <p>

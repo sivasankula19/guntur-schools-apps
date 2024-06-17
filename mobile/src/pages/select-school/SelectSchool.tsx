@@ -51,7 +51,7 @@ const SelectSchool: React.FC = () => {
 
   return (
     <IonPage className="my_page">
-      <IonContent fullscreen>
+      <IonContent class='custom_content_view' fullscreen>
         <div className="select_school_page">
           <IonCard>
             <IonCardContent>

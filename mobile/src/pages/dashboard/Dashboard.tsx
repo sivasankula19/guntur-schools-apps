@@ -51,7 +51,7 @@ const dashboard: React.FC = () => {
     { id: 6, moduleName: 'Documents', icon: documentOutline, redirectTo: '/documents' },
     { id: 7, moduleName: 'My Staff', icon: peopleOutline, redirectTo: '/staff-list' },
     { id: 8, moduleName: 'My Friends', icon: peopleOutline, redirectTo: '/students-list' },
-    { id: 9, moduleName: 'Time Table', icon: timeOutline, redirectTo: '/time-table' },
+    { id: 9, moduleName: 'Calendar', icon: calendarOutline, redirectTo: '/calendar' },
     { id: 10, moduleName: 'Wibe', icon: newspaperOutline, redirectTo: '/school-wibe' },
     { id: 11, moduleName: 'My Dues', icon: walletOutline, redirectTo: '/fee-structure' },
     { id: 12, moduleName: 'Ex-Circular', icon: ribbonOutline, redirectTo: '/ex-circular' },

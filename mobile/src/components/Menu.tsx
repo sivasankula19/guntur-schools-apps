@@ -2,33 +2,30 @@ import {
   IonAvatar,
   IonContent,
   IonIcon,
-  IonImg,
   IonItem,
   IonLabel,
   IonList,
-  IonListHeader,
   IonMenu,
   IonMenuToggle,
-  IonNote,
   IonText,
   IonToggle,
 } from '@ionic/react';
 
 import { useLocation, useNavigate } from 'react-router-dom';
-import { bookmarkOutline, sunnyOutline } from 'ionicons/icons';
 import './Menu.css';
 import { AppPage } from '../common/common-interface';
 import { RoutesListDynamic } from '../common/common-routes-list';
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setMode } from '../redux/reducers/darkModeSlice';
+import { useEffect } from 'react';
+import { setPreLoginPublicView } from '../redux/reducers/schoolSlice';
 
 const appPages: AppPage[] = RoutesListDynamic;
 
-const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 const Menu: React.FC = () => {
   const isDarkMode = useSelector((state: any) => state?.darkMode.isDarkMode);
-  const authInfo = useSelector((state: any) => state.auth)
+  const authInfo = useSelector((state: any) => state.auth);
+  const authUserId = useSelector((state: any) => state?.auth?.user?.regNumber);
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch()
@@ -37,7 +34,12 @@ const Menu: React.FC = () => {
     dispatch(setMode(event.detail.checked))
   };
 
+  const publicModules = [{module:'About', path:'about'}, {module:'Courses', path:'courses'},  {module:"Contact-Us", path:"contact-us"},  {module:'Achievements', path:'achievements'},  {module:'Gallery', path:'gallery'},  {module:'Ex-Circular', path:'ex-circular'},]
+
   const handleNavigation = (path: string) => {
+    const selectedPath = publicModules.find(pathItem => pathItem.path === path.slice(1));
+    if(selectedPath)
+      dispatch(setPreLoginPublicView(selectedPath.module))
     navigate(path);
   };
 
@@ -53,7 +55,7 @@ const Menu: React.FC = () => {
             <IonMenuToggle autoHide={false}>
               <IonItem className='menu_user_info' onClick={navigateProfile}>
                 <div className='g_flex'>
-                  <IonAvatar className="menu_avatar">
+                  <IonAvatar className={`menu_avatar ${location.pathname.includes(authUserId)? 'active_img' : ''}`}>
                     <img
                       alt="Silhouette of a person's head"
                       src="https://avatars.githubusercontent.com/u/93701195?s=60&v=4"
@@ -61,7 +63,7 @@ const Menu: React.FC = () => {
                   </IonAvatar>
                   <IonText className="menu_user_name">
                     <h3>{authInfo?.user?.fullName || 'Name'}</h3>
-                    <p>View Profile</p>
+                    <p className={`${location.pathname.includes(authUserId)? 'active_txt' : ''}`}>View Profile</p>
                   </IonText>
                 </div>
               </IonItem>
@@ -73,7 +75,7 @@ const Menu: React.FC = () => {
                 return (
                   <IonMenuToggle key={index} autoHide={false}>
                     <IonItem
-                      className={`${location.pathname === appPage.url ? 'selected' : ''}`}
+                      className={`${location.pathname === appPage.url ? 'selected selected_app' : ''}`}
                       lines="none"
                       onClick={() => handleNavigation(appPage.url)}
                       detail={false}

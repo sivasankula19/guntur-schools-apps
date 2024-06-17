@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router';
 import GBreadCrumbs from '../components/GBreadCrumbs';
 import { IonCard, IonCardContent, IonDatetimeButton, IonDatetime, IonItem, IonLabel, IonSearchbar, IonSelect, IonSelectOption, IonToggle, IonModal, IonText, IonIcon } from '@ionic/react';
-import { wibePostsData } from '../common/utility';
+import { formatDate, wibePostsData } from '../common/utility';
 import { chatboxOutline, heartOutline, shareSocialOutline } from 'ionicons/icons';
 
 const SchoolWibe: React.FC = () => {
@@ -20,21 +20,7 @@ const SchoolWibe: React.FC = () => {
     console.log(ev?.target.value);
     //  debounce function can be excuted!!! here
   }
-  function formatDate(isoDate: any) {
-    const date = new Date(isoDate);
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const year = date.getFullYear();
-    let hours = date.getHours();
-    const minutes = String(date.getMinutes()).padStart(2, '0');
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-    hours = hours % 12;
-    hours = hours ? hours : 12;
-    const formattedHours = String(hours).padStart(2, '0');
-    const formattedDate = `${day}/${month}/${year} ${formattedHours}:${minutes} ${ampm}`;
-
-    return formattedDate;
-  }
+ 
   const postsData = wibePostsData
 
   return (
@@ -147,7 +133,7 @@ const SchoolWibe: React.FC = () => {
                   <div className='posted_on_time'>
                     <IonText>
                       <span>
-                        {formatDate(item.postedOn)}
+                        {formatDate(new Date(item.postedOn), true)}
                       </span>
                     </IonText>
                   </div>

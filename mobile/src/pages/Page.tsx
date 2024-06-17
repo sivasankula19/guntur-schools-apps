@@ -20,7 +20,7 @@ const Page: React.FC = () => {
   return (
     <IonPage className="my_page">
       <Header />
-      <IonContent fullscreen>
+      <IonContent class='custom_content_view' fullscreen>
         {preLoginModules.includes(name) ? (
           <div className="prelogin_container">
             <PreLoginHead></PreLoginHead>

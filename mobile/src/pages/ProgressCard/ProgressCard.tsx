@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
 import {
@@ -21,6 +21,7 @@ import RenderAllExams from './RenderAllExams';
 
 const ProgressCard: React.FC = () => {
   const { name } = useParams<{ name: string }>();
+  const unitsScrollRef = useRef<any>(null);
 
   const breadCrumbsValue = [
     { bName: 'Home', path: '/dashboard' },
@@ -28,7 +29,7 @@ const ProgressCard: React.FC = () => {
   ];
 
   const [selectedTab, setSelectedTab] = useState('unit1');
-  const [viewMode, setViewMode] = useState('list');
+  const [viewMode, setViewMode] = useState('grid');
 
   const studentInfo: any = {
     fullName: 'Siva S User',
@@ -38,6 +39,23 @@ const ProgressCard: React.FC = () => {
     classOfStudy: '8 Class - A Section',
     signOn: false,
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (selectedTab && unitsScrollRef.current) {
+        const container = unitsScrollRef.current;
+        const selectedButton = container.querySelector(`.${selectedTab}`);
+
+        if (selectedButton) {
+          const containerRect = container.getBoundingClientRect();
+          const buttonRect = selectedButton.getBoundingClientRect();
+          const scrollLeft = buttonRect.left - containerRect.left + container.scrollLeft;
+          container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+        }
+      }
+    }, 1);
+
+  }, [selectedTab, viewMode])
 
   const tabUnitsData = [
     { id: 'unit1', title: 'Unit 1' },
@@ -89,14 +107,14 @@ const ProgressCard: React.FC = () => {
         </IonCard>
 
         <div className="g_flex tabs_container_custom">
-          <div className="tabs_progress_card">
+          <div className="tabs_progress_card"  ref={unitsScrollRef}>
             {viewMode === 'list' && (
               <>
                 <div className="g_custom_tabs">
                   {tabUnitsData.map((tabItem, index: number) => (
                     <button
                       key={index}
-                      className={`g_custom_tab ${
+                      className={`${tabItem.id} g_custom_tab ${
                         selectedTab === tabItem.id ? 'selected_segment_btn' : ''
                       }`}
                       name={tabItem.id}

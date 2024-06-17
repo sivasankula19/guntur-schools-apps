@@ -228,48 +228,99 @@ export const studentDummyData =  [
 
   }
 
-export const remainderDummyData = [
-  {
-    eventName: 'Quize English by S-UserName',
-    desc: 'Online quize compitation by S-UserName for the Pronounce and verbs',
-    date: '15/04/2024',
-    time: '10:10 AM',
-    status: 'To Do',
-    notifyBefore: '15min',
-    isOpen: false,
-    id: 1,
-  },
-  {
-    eventName: 'Quize English by S-UserName',
-    desc: 'Online quize compitation by S-UserName for the Pronounce and verbs',
-    date: '15/04/2024',
-    time: '10:10 AM',
-    status: 'To Do',
-    notifyBefore: '15min',
-    isOpen: false,
-    id: 2,
-  },
-  {
-    eventName: 'Quize English by S-UserName',
-    desc: 'Online quize compitation by S-UserName for the Pronounce and verbs',
-    date: '15/04/2024',
-    time: '10:10 AM',
-    status: 'Delayed',
-    notifyBefore: '15min',
-    isOpen: false,
-    id: 3,
-  },
-  {
-    eventName: 'Quize English by S-UserName',
-    desc: 'Online quize compitation by S-UserName for the Pronounce and verbs',
-    date: '15/04/2024',
-    status: 'Done',
-    time: '10:10 AM',
-    notifyBefore: '15min',
-    isOpen: false,
-    id: 4,
-  },
-]
+
+  export const homeWorkDataBe = [
+    {
+      id:1,
+      taskName:'Mathematics trignometrics sums and example questions for each topic ecj tpic when it si aru dcnc hbcs dn wchb wcdopwec wb',
+      taskDesc:'page no 213 in the mathematics text book please follow the examples and write for remaining sums by own and each sum carries 2 marks as internal assessment',
+      taskTime:'2024-06-17T10:15:44.021Z',
+      taskDue:'2024-06-17T10:15:44.021Z',
+      subject:{
+        subjectName:'Mathematics',
+        subjectId:'SUB-mtm-10-1',
+      },
+      uploadedBy:{
+        userId:'GHSM-t-005',
+        userName:'Siva Sankula',
+        designation:'M Sc , Phd maths',
+        profile:''
+      },
+      attachments:[
+        {
+          id:'1a',
+          img:'',
+        }
+      ]
+    },
+    {
+      id:2,
+      taskName:'Mathematics trignometrics sums and example questions for each topic',
+      taskDesc:'page no 213 in the mathematics text book please follow the examples and write for remaining sums by own and each sum carries 2 marks as internal assessment',
+      taskTime:'2024-06-17T10:15:44.021Z',
+      taskDue:'2024-06-17T10:15:44.021Z',
+      subject:{
+        subjectName:'Mathematics',
+        subjectId:'SUB-mtm-10-1',
+      },
+      uploadedBy:{
+        userId:'GHSM-t-005',
+        userName:'Siva Sankula',
+        designation:'M Sc , Phd maths',
+        profile:''
+      },
+      attachments:[
+        
+      ]
+    },
+    {
+      id:3,
+      taskName:'Mathematics trignometrics sums and example questions for each topic',
+      taskDesc:'page no 213 in the mathematics text book please follow the examples and write for remaining sums by own and each sum carries 2 marks as internal assessment',
+      taskTime:'2024-06-17T10:15:44.021Z',
+      taskDue:'2024-06-17T10:15:44.021Z',
+      subject:{
+        subjectName:'Mathematics',
+        subjectId:'SUB-mtm-10-1',
+      },
+      uploadedBy:{
+        userId:'GHSM-t-005',
+        userName:'Siva Sankula',
+        designation:'M Sc , Phd maths',
+        profile:''
+      },
+      attachments:[
+        {
+          id:'1a',
+          img:'',
+        }
+      ]
+    },
+    {
+      id:4,
+      taskName:'Mathematics trignometrics sums and example questions for each topic',
+      taskDesc:'page no 213 in the mathematics text book please follow the examples and write for remaining sums by own and each sum carries 2 marks as internal assessment',
+      taskTime:'2024-06-17T10:15:44.021Z',
+      taskDue:'2024-06-17T10:15:44.021Z',
+      subject:{
+        subjectName:'Mathematics',
+        subjectId:'SUB-mtm-10-1',
+      },
+      uploadedBy:{
+        userId:'GHSM-t-005',
+        userName:'Siva Sankula',
+        designation:'M Sc , Phd maths',
+        profile:''
+      },
+      attachments:[
+        {
+          id:'1a',
+          img:'',
+        }
+      ]
+    }
+  ]
+
 
 export const classSubjects = [
   {
@@ -644,7 +695,10 @@ export const formatDate = (date:any, time:boolean=false, full:boolean=false) => 
   const formattedTime = `${pad(formattedHours)}:${pad(minutes)} ${ampm}`;
   const formattedDate = `${day}/${month}/${year}`;
 
-  return `${formattedTime} ${formattedDate}`;
+  if(time)
+    return `${formattedDate} ${formattedTime}`
+
+  return `${formattedTime} - ${formattedDate}`;
 }
 
 
@@ -916,7 +970,7 @@ export const wibePostsData =  [
   {
     postId: '3',
     type:'birthdays',
-    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScdghPiqLqXeAyx-jeDgZXPIQFtRnJGUrVew&s',
+    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDEC_wwwUWXI6Pj_RtnK3o3s_E_pJMC3Mmww&s',
     postName: 'Happy Birthday <Student Name>',
     isVideo: false,
     videoData: '',

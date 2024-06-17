@@ -17,7 +17,7 @@ import SchoolWibe from '../pages/SchoolWibe';
 import Messages from '../pages/messages/Messages';
 import ExamSchedule from '../pages/ExamSchedule';
 import SchoolAssets from '../pages/SchoolAssets';
-import Remainders from '../pages/HomeWork';
+import HomeWork from '../pages/HomeWork';
 import Dairy from '../pages/Dairy';
 import AcedamicSubject from '../pages/AcedamicSubjects';
 import Documents from '../pages/Documents';
@@ -43,7 +43,7 @@ const GetComponent = ({ name }: any) => {
   switch (name) {
     case 'dashboard':
       return <Dashboard />;
-      case 'home':
+    case 'home':
       return <Home />;
     case 'attendance':
       return <Attendance />;
@@ -59,7 +59,7 @@ const GetComponent = ({ name }: any) => {
       return <Documents />;
     case 'fee-structure':
       return <FeesDues />;
-    case 'time-table':
+    case 'calendar':
       return <TimeTable />;
     case 'gallery':
       return <Gallery />;
@@ -84,7 +84,7 @@ const GetComponent = ({ name }: any) => {
     case 'assets':
       return <SchoolAssets />;
     case 'home-work':
-      return <Remainders />;
+      return <HomeWork />;
     case 'diary':
       return <Dairy />;
   }
