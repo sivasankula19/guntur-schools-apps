@@ -6,7 +6,7 @@ import {
   setupIonicReact,
   useIonRouter,
 } from '@ionic/react';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import Menu from './components/Menu';
 import { App as CapacitorApp } from '@capacitor/app';
 import Page from './pages/Page';
@@ -55,6 +55,7 @@ const App: React.FC = () => {
   const ionRouter = useIonRouter();
 
   const dispatch = useDispatch();
+  // const navigate = useNavigate()
 
   // Add or remove the "dark" class on the document body
   const toggleDarkTheme = (shouldAdd: boolean) => {
@@ -91,11 +92,14 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const handleBackButton = (ev: any) => {
-      ev.detail.register(10, (processNextHandler:any) => {
-        console.log('Handler was called!');
+      ev.detail.register(10, (processNextHandler: any) => {
+        alert('event - 10 alert')
+        console.log('Handler with priority 10 was called!');
         processNextHandler();
       });
+
       ev.detail.register(-1, () => {
+        alert('eve with priority one!!!')
         if (!ionRouter.canGoBack()) {
           CapacitorApp.exitApp();
         } else {
@@ -110,6 +114,20 @@ const App: React.FC = () => {
       document.removeEventListener('ionBackButton', handleBackButton);
     };
   }, [ionRouter]);
+
+  useEffect(()=>{
+    CapacitorApp.addListener('backButton', ({ canGoBack }) => {
+      alert('with capacitor!!..')
+      if(canGoBack){
+        alert('inside'+canGoBack)
+        ionRouter.goBack();
+        // navigate('/dashboard');
+      } else{
+        alert('not can goback!!!')
+        CapacitorApp.exitApp();
+      }
+    });
+  },[])
 
   return (
     <IonApp className="dark-theme">
