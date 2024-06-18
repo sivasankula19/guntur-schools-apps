@@ -666,7 +666,8 @@ ion-header {
 }
 
 .title_designation {
-  margin-left: 10px;
+  width: calc(100% - 52px);
+  padding-left: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -1243,6 +1244,7 @@ ion-breadcrumbs {
 }
 
 .subject_item_card_content a {
+  color: #1D7AF5;
   font-size: 12px;
   text-decoration: underline;
   cursor: pointer;
@@ -3043,6 +3045,10 @@ label.input-wrapper.sc-ion-input-ios {
 .home_attachments .no_attachments ion-icon{
   font-size: 32px;
   margin-bottom: 12px;
+}
+
+.text_show_more{
+  margin-top: 12px;
 }
 
 .text_show_more ion-text p{

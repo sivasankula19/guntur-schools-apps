@@ -5,7 +5,7 @@ import { IonHeader, IonToolbar, IonTitle, IonButtons, IonMenuButton } from '@ion
 
 const ProgressBar:  React.FC<IProgressBarProps> = ({
     filled=0,
-    color='#00FF00'
+    color='#1D7AF5'
   }) => {
   return (
     <div className='progress_bar'>
