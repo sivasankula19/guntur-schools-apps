@@ -687,8 +687,21 @@ export const formatDate = (date:any, time:boolean=false, full:boolean=false) => 
 
   if(time)
     return `${formattedDate} ${formattedTime}`
+  if(full)
+    return `${formattedTime} - ${formattedDate}`;
+  return `${formattedDate}`
+}
 
-  return `${formattedTime} - ${formattedDate}`;
+
+export const formatTime = (date:any) => {
+  const pad = (num:any) => (num < 10 ? '0' : '') + num;
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+  const formattedHours = hours % 12 || 12;
+  const formattedTime = `${pad(formattedHours)}:${pad(minutes)} ${ampm}`;
+
+  return `${formattedTime}`;
 }
 
 

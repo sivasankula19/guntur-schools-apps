@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router';
 import GBreadCrumbs from '../components/GBreadCrumbs';
 import { IonCard, IonCardContent, IonDatetimeButton, IonDatetime, IonItem, IonLabel, IonSearchbar, IonSelect, IonSelectOption, IonToggle, IonModal, IonText, IonIcon } from '@ionic/react';
-import { formatDate, wibePostsData } from '../common/utility';
+import { formatDate, formatTime, wibePostsData } from '../common/utility';
 import { chatboxOutline, heartOutline, shareSocialOutline } from 'ionicons/icons';
 
 const SchoolWibe: React.FC = () => {
@@ -132,9 +132,14 @@ const SchoolWibe: React.FC = () => {
                   </div>
                   <div className='posted_on_time'>
                     <IonText>
-                      <span>
-                        {formatDate(new Date(item.postedOn), true)}
-                      </span>
+                      <p>
+                        {formatDate(new Date(item.postedOn))}
+                      </p>
+                    </IonText>
+                    <IonText>
+                      <p>
+                        {formatTime(new Date(item.postedOn))}
+                      </p>
                     </IonText>
                   </div>
                 </div>

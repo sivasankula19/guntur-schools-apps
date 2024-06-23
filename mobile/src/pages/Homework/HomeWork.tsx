@@ -52,24 +52,7 @@ const HomeWork: React.FC = () => {
             </IonSelect>
           </div>
           <div style={{ width: '47%' }}>
-            <IonSelect
-              multiple={true}
-              className="custome_select"
-              label="Select Section"
-              labelPlacement="floating"
-              fill="outline"
-              interface="popover"
-            >
-              <IonSelectOption value="A-Section">
-                A Section
-              </IonSelectOption>
-              <IonSelectOption value="B-Section">
-                B Section
-              </IonSelectOption>
-              <IonSelectOption value="C-Section">
-                C section
-              </IonSelectOption>
-            </IonSelect>
+            <input className='custom_homework_date' type='date' />
           </div>
         </div>
         <div className='home_work_container'>

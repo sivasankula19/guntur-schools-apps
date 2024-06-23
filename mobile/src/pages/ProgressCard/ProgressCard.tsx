@@ -29,7 +29,7 @@ const ProgressCard: React.FC = () => {
   ];
 
   const [selectedTab, setSelectedTab] = useState('unit1');
-  const [viewMode, setViewMode] = useState('grid');
+  const [viewMode, setViewMode] = useState('list');
 
   const studentInfo: any = {
     fullName: 'Siva S User',
@@ -56,6 +56,10 @@ const ProgressCard: React.FC = () => {
     }, 1);
 
   }, [selectedTab, viewMode])
+
+  useEffect(()=>{
+    setSelectedTab('unit1')
+  },[viewMode])
 
   const tabUnitsData = [
     { id: 'unit1', title: 'Unit 1' },

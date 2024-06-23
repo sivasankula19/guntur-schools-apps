@@ -666,7 +666,8 @@ ion-header {
 }
 
 .title_designation {
-  margin-left: 10px;
+  width: calc(100% - 52px);
+  padding-left: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -1243,6 +1244,7 @@ ion-breadcrumbs {
 }
 
 .subject_item_card_content a {
+  color: #1D7AF5;
   font-size: 12px;
   text-decoration: underline;
   cursor: pointer;
@@ -1404,25 +1406,49 @@ ion-breadcrumbs {
   text-transform: none;
 }
 
-/* Documents Section */
+/* Exam Schedule */
 
+.exam_schedule{
+  height: calc(100% - 36px);
+}
+
+.exam_schedule ion-label{
+  color: #1D7AF5 !important;
+}
+
+.exam_schedule .exam-time-table .date_item{
+  width: 100%;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.exam_schedule .exam-time-table .date_item p{
+  margin: 0;
+}
+
+
+
+/* Documents Section */
+.exam_schedule ion-accordion-group,
 .documents ion-accordion-group {
   width: 90%;
   margin: auto;
   text-align: center;
 }
 
-.documents {
+.documents, .exam_schedule{
   animation: slideIn 0.8s forwards;
-  max-height: 82vh;
+  height: calc(100% - 100px);
   overflow-y: auto;
 }
 
+.exam_schedule ion-accordion,
 .documents ion-accordion {
   border: 1px solid;
   border-color: #1D7AF5;
 }
 
+.exam_schedule ion-item,
 .documents ion-item {
   border: 1px solid;
   border-color: #1D7AF5;
@@ -1431,6 +1457,7 @@ ion-breadcrumbs {
   --inner-padding-end: 12px;
 }
 
+.exam_schedule ion-icon,
 .documents ion-icon {
   color: #1D7AF5;
 }
@@ -1448,6 +1475,7 @@ ion-breadcrumbs {
   margin-left: 6px;
 }
 
+.exam_schedule ion-label,
 .documents ion-label {
   margin-left: 8px;
   font-weight: bold;
@@ -1605,6 +1633,7 @@ ion-breadcrumbs {
 .tabs_container_custom {
   width: 92%;
   margin: auto;
+  height: 46px;
 }
 
 .tabs_progress_card {
@@ -1640,6 +1669,7 @@ ion-breadcrumbs {
 .g_custom_tabs {
   margin-top: 10px;
   display: flex;
+  animation: slideInFromLeft 0.8s linear;
 }
 
 .g_custom_tabs button {
@@ -1813,7 +1843,7 @@ label.input-wrapper.sc-ion-input-ios {
 
 .home ion-card ion-button {
   width: 100%;
-  height: 50px;
+  height: 40px;
   --border-radius: 12px;
   font-size: 16px;
   margin-top: 6px;
@@ -2366,6 +2396,14 @@ label.input-wrapper.sc-ion-input-ios {
 
 /* Ex circular */
 
+.ex_circular ion-card{
+  margin: 12px 0;
+}
+
+.ex_circular ion-card-content{
+  padding: 12px;
+}
+
 .ex_circular ion-card ion-text h1{
   color: #1D7AF5;
   font-size: 16px;
@@ -2623,6 +2661,43 @@ label.input-wrapper.sc-ion-input-ios {
   font-size: 28px;
 }
 
+.popover_actions ion-icon {
+  font-size: 22px;
+  margin-right: 8px;
+}
+
+.custom-popover {
+  --min-width: 300px;
+  --max-width: 400px;
+}
+
+.popover_actions ion-label{
+  font-size: 12px;
+}
+
+.popover_actions ion-item{
+  --inner-padding-end: 8px;
+  --padding-start: 8px;
+  --inner-border-width:0;
+  border-bottom: 1px solid;
+  border-color:#006eff;
+  --color:#000000;
+}
+
+.popover_actions ion-item ion-label{
+  --color:#000000;
+}
+
+.popover_actions .first_action_item{
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.popover_actions .last_action_item{
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
 .chat_container .custom_chat_tool .chat_profile_icon{
   width: 36px;
   height: 36px;
@@ -2872,7 +2947,7 @@ label.input-wrapper.sc-ion-input-ios {
   display: flex;
   align-items: center;
   height: 100%;
-  width: calc(100% - 104px);
+  width: calc(100% - 54px);
 }
 
 .wibe_posts .wibe_profile{
@@ -2901,12 +2976,9 @@ label.input-wrapper.sc-ion-input-ios {
   font-size: 12px;
 }
 
-.posted_on_time{
-  margin-bottom: 16px;
-}
-
-.posted_on_time span{
+.posted_on_time p{
   font-size: 10px;
+  text-align: center;
 }
 
 .content_post{
@@ -2966,6 +3038,14 @@ label.input-wrapper.sc-ion-input-ios {
   border-radius: 8px;
   border-color: #1D7AF5;
   padding: 8px;
+}
+
+.custom_homework_date{
+  height: 100%;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid;
+  background: transparent;
 }
 
 .ios .home_work{
@@ -3043,6 +3123,10 @@ label.input-wrapper.sc-ion-input-ios {
 .home_attachments .no_attachments ion-icon{
   font-size: 32px;
   margin-bottom: 12px;
+}
+
+.text_show_more{
+  margin-top: 12px;
 }
 
 .text_show_more ion-text p{
