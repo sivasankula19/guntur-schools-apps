@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
-import { IonCard, IonCardContent, IonContent, IonIcon, IonImg, IonInput, IonItem, IonPage, IonPopover, IonText, IonTitle, IonToggle, IonToolbar } from '@ionic/react';
+import { IonCard, IonCardContent, IonContent, IonIcon, IonImg, IonInput, IonItem, IonLabel, IonPage, IonPopover, IonText, IonTitle, IonToggle, IonToolbar } from '@ionic/react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import { arrowBackOutline, banSharp, ellipsisVerticalOutline, send } from 'ionicons/icons';
+import { arrowBackOutline, banSharp, closeOutline, colorFillOutline, ellipsisVerticalOutline, notifications, searchCircle, searchOutline, send } from 'ionicons/icons';
 import { msgDummyData } from '../../common/utility';
 
 const ChatScreen: React.FC = () => {
-  const { id } = useParams<{ id:string}>();
+  const { id } = useParams<{ id: string }>();
   const [msgDataResponse, setMsgDataResponse] = useState<any>([])
   const [message, setMessage] = useState('');
+  const [openPopover, setOpenPopover] = useState(false);
   const navigate = useNavigate();
 
   const breadCrumbsValue = [
@@ -20,7 +21,7 @@ const ChatScreen: React.FC = () => {
   ];
 
 
-  const msgData:any = msgDummyData
+  const msgData: any = msgDummyData
   const handleMsgChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setMessage(e.target.value);
   };
@@ -36,11 +37,11 @@ const ChatScreen: React.FC = () => {
     navigate('/messages')
   }
 
-  useEffect(()=>{
-    if(id !== 'Y24C8A019'){
+  useEffect(() => {
+    if (id !== 'Y24C8A019') {
       setMsgDataResponse(msgData)
     }
-  },[])
+  }, [])
 
   return (
     <IonPage className="my_page">
@@ -68,11 +69,25 @@ const ChatScreen: React.FC = () => {
                       </div>
                     </div>
                     <IonIcon id='three_dots_action' className='three_dots_chat' icon={ellipsisVerticalOutline} />
-                    <IonPopover trigger="three_dots_action" triggerAction="click">
+                    <IonPopover isOpen={openPopover} className="custom-popover" trigger="three_dots_action" triggerAction="click">
                       <IonContent class="ion-padding">
-                        <div>
-                          <p>Hello</p>
-                          <p>Hiii</p>
+                        <div className='popover_actions'>
+                          <IonItem className='first_action_item'>
+                            <IonIcon icon={searchOutline}></IonIcon>
+                            <IonLabel>Search In Convo!</IonLabel>
+                          </IonItem>
+                          <IonItem>
+                            <IonIcon icon={closeOutline}></IonIcon>
+                            <IonLabel>Clear Chat</IonLabel>
+                          </IonItem>
+                          <IonItem>
+                            <IonIcon icon={notifications}></IonIcon>
+                            <IonLabel>Notifications</IonLabel>
+                          </IonItem>
+                          <IonItem className='last_action_item'>
+                            <IonIcon icon={colorFillOutline}></IonIcon>
+                            <IonLabel>Background Color / Image</IonLabel>
+                          </IonItem>
                         </div>
                       </IonContent>
                     </IonPopover>
@@ -81,7 +96,7 @@ const ChatScreen: React.FC = () => {
                 <div className="msgs_holder">
                   <div className="msgs_scroll">
                     {msgDataResponse.length ? (
-                      msgDataResponse.map((msg:any) => (
+                      msgDataResponse.map((msg: any) => (
                         <div className={`txt_msg_receive_sent ${msg.sent ? 'received' : 'sent'}`} key={msg.id}>
                           <div className={`msg_blk ${msg.msgText.length < 10 ? 'g_flex' : ''}`}>
                             <IonText>

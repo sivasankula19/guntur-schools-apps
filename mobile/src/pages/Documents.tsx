@@ -29,7 +29,7 @@ const Documents: React.FC = () => {
   const accordianContent = docData;
   const breadCrumbsValue = [{bName:'Home', path:'/dashboard'},{bName:'Documents', path:'/documents'}]
   return (
-    <div>
+    <div className='g_full_height'>
       <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
       <div className="documents">
         <IonAccordionGroup>

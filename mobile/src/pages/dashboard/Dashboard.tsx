@@ -53,12 +53,13 @@ const dashboard: React.FC = () => {
     { id: 8, moduleName: 'My Friends', icon: peopleOutline, redirectTo: '/students-list' },
     { id: 9, moduleName: 'Calendar', icon: calendarOutline, redirectTo: '/calendar' },
     { id: 10, moduleName: 'Wibe', icon: newspaperOutline, redirectTo: '/school-wibe' },
-    { id: 11, moduleName: 'My Dues', icon: walletOutline, redirectTo: '/fee-structure' },
-    { id: 12, moduleName: 'Ex-Circular', icon: ribbonOutline, redirectTo: '/ex-circular' },
-    { id: 13, moduleName: 'Gallery', icon: imageOutline, redirectTo: '/gallery' },
-    { id: 14, moduleName: 'Achievements', icon: trophyOutline, redirectTo: '/achievements' },
-    { id: 15, moduleName: 'Contact-Us', icon: callOutline, redirectTo: '/contact-us' },
-    { id: 16, moduleName: 'About', icon: informationCircleOutline, redirectTo: '/about' },
+    { id: 11, moduleName: 'Exam Schedules', icon: calendarOutline, redirectTo: '/exam-schedules' },
+    { id: 12, moduleName: 'My Dues', icon: walletOutline, redirectTo: '/fee-structure' },
+    { id: 13, moduleName: 'Ex-Circular', icon: ribbonOutline, redirectTo: '/ex-circular' },
+    { id: 14, moduleName: 'Gallery', icon: imageOutline, redirectTo: '/gallery' },
+    { id: 15, moduleName: 'Achievements', icon: trophyOutline, redirectTo: '/achievements' },
+    { id: 16, moduleName: 'Contact-Us', icon: callOutline, redirectTo: '/contact-us' },
+    { id: 17, moduleName: 'About', icon: informationCircleOutline, redirectTo: '/about' },
   ];
 
   const handleViewMode = () => {

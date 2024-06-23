@@ -57,6 +57,10 @@ const ProgressCard: React.FC = () => {
 
   }, [selectedTab, viewMode])
 
+  useEffect(()=>{
+    setSelectedTab('unit1')
+  },[viewMode])
+
   const tabUnitsData = [
     { id: 'unit1', title: 'Unit 1' },
     { id: 'unit2', title: 'Unit 2' },
