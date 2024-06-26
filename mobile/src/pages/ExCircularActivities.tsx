@@ -23,7 +23,7 @@ const ExCircularActivities: React.FC = () => {
           eveLevel: 'School Level',
           fromDate: '01/04/2024',
           toDate: '01/04/2024',
-          desc:'',
+          desc:'event s = goingt gto be a goood and eadvanced trends adn any oen can paryicipae yjrnc presents to be an good',
           isAvailable: false,
         }
       ]
@@ -37,7 +37,7 @@ const ExCircularActivities: React.FC = () => {
           eveLevel: 'School Level',
           fromDate: '10/06/2024',
           toDate: '12/06/2024',
-          desc:'',
+          desc:'event s = goingt gto be a goood and eadvanced trends adn any oen can paryicipae yjrnc presents to be an good',
           isAvailable: true,
         },
         {
@@ -46,7 +46,7 @@ const ExCircularActivities: React.FC = () => {
           eveLevel: 'School Level',
           fromDate: '01/04/2024',
           toDate: '01/04/2024',
-          desc:'',
+          desc:'event s = goingt gto be a goood and eadvanced trends adn any oen can paryicipae yjrnc presents to be an good',
           isAvailable: false,
         }
       ]
@@ -83,7 +83,7 @@ const ExCircularActivities: React.FC = () => {
                       </IonText>
                     </div>
                     <div>
-                      <IonButton>Participate</IonButton>
+                      {/* <IonButton>Participate</IonButton> */}
                     </div>
                   </div>
                   <div className='g_flex g_space_btwn dates_eves'>

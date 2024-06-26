@@ -4,6 +4,7 @@ import { isPlatform } from '@ionic/react';
 import './Dashboard.css';
 import {
   bookOutline,
+  businessOutline,
   calendarOutline,
   callOutline,
   chatboxOutline,
@@ -55,11 +56,12 @@ const dashboard: React.FC = () => {
     { id: 10, moduleName: 'Wibe', icon: newspaperOutline, redirectTo: '/school-wibe' },
     { id: 11, moduleName: 'Exam Schedules', icon: calendarOutline, redirectTo: '/exam-schedules' },
     { id: 12, moduleName: 'My Dues', icon: walletOutline, redirectTo: '/fee-structure' },
-    { id: 13, moduleName: 'Ex-Circular', icon: ribbonOutline, redirectTo: '/ex-circular' },
-    { id: 14, moduleName: 'Gallery', icon: imageOutline, redirectTo: '/gallery' },
-    { id: 15, moduleName: 'Achievements', icon: trophyOutline, redirectTo: '/achievements' },
-    { id: 16, moduleName: 'Contact-Us', icon: callOutline, redirectTo: '/contact-us' },
-    { id: 17, moduleName: 'About', icon: informationCircleOutline, redirectTo: '/about' },
+    { id: 13, moduleName: 'Assets', icon:businessOutline, redirectTo:'/assets'},
+    { id: 14, moduleName: 'Ex-Circular', icon: ribbonOutline, redirectTo: '/ex-circular' },
+    { id: 15, moduleName: 'Gallery', icon: imageOutline, redirectTo: '/gallery' },
+    { id: 16, moduleName: 'Achievements', icon: trophyOutline, redirectTo: '/achievements' },
+    { id: 17, moduleName: 'Contact-Us', icon: callOutline, redirectTo: '/contact-us' },
+    { id: 18, moduleName: 'About', icon: informationCircleOutline, redirectTo: '/about' },
   ];
 
   const handleViewMode = () => {

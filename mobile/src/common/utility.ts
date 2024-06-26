@@ -672,6 +672,8 @@ export const timeTableVal = [
 ]
 
 export const formatDate = (date:any, time:boolean=false, full:boolean=false) => {
+  if(typeof date === 'string')
+    date = new Date(date)
   const pad = (num:any) => (num < 10 ? '0' : '') + num;
   const hours = date.getHours();
   const minutes = date.getMinutes();
@@ -1003,6 +1005,150 @@ export const wibePostsData =  [
     shares: 2,
   },
 ];
+
+export const examScedulesData =  [
+  {
+    id: 1,
+    examName: 'Unit 1',
+    date: '2024-06-19T19:03:51.500Z',
+    isDateConfirmed: false,
+    tentativeMsg: 'Those dates are tentative only may be subjected to be changed in further changes by principal/admin in advanced notified by corresponding to students on what user specifies as the post data and it can be edited to that user>',
+    isError: false,
+    isWar: true,
+    subjects: [
+      {
+        subjectId: 'GH-Sub-10/1',
+        subjectName: 'Telugu',
+        date: '2024-06-19T19:03:51.500Z',
+        slot: "PM",
+      },
+      {
+        subjectId: 'GH-Sub-10/2',
+        subjectName: 'English',
+        date: '2024-06-20T19:03:51.500Z',
+        slot: "PM",
+      },
+      {
+        subjectId: 'GH-Sub-10/3',
+        subjectName: 'Hind',
+        date: '2024-06-21T19:03:51.500Z',
+        slot: "PM",
+      },
+      {
+        subjectId: 'GH-Sub-10/4',
+        subjectName: 'Mathematics',
+        date: '2024-06-22T19:03:51.500Z',
+        slot: "PM",
+      },
+      {
+        subjectId: 'GH-Sub-10/5',
+        subjectName: 'Science',
+        date: '2024-06-23T19:03:51.500Z',
+        slot: "PM",
+      },
+      {
+        subjectId: 'GH-Sub-10/6',
+        subjectName: 'Social',
+        date: '2024-06-24T19:03:51.500Z',
+        slot: "PM",
+      },
+    ]
+  },
+  {
+    id: 3,
+    examName: 'Mid Term Examinations',
+    date: '2024-09-19T19:03:51.500Z',
+    isDateConfirmed: false,
+    tentativeMsg: 'Those dates are tentative only may be subjected to be changed in further changes by principal/admin in advanced notified by corresponding to students on what user specifies as the post data and it can be edited to that user>',
+    isError: false,
+    isWar: true,
+    subjects: [
+      {
+        subjectId: 'GH-Sub-10/1',
+        subjectName: 'Telugu',
+        date: '2024-06-19T19:03:51.500Z',
+        slot: 'AM',
+      },
+      {
+        subjectId: 'GH-Sub-10/2',
+        subjectName: 'English',
+        date: '2024-06-20T19:03:51.500Z',
+        slot: 'AM',
+      },
+      {
+        subjectId: 'GH-Sub-10/3',
+        subjectName: 'Hind',
+        date: '2024-06-21T19:03:51.500Z',
+        slot: 'AM',
+      },
+      {
+        subjectId: 'GH-Sub-10/4',
+        subjectName: 'Mathematics',
+        date: '2024-06-22T19:03:51.500Z',
+        slot: 'AM',
+      },
+      {
+        subjectId: 'GH-Sub-10/5',
+        subjectName: 'Science',
+        date: '2024-06-23T19:03:51.500Z',
+        slot: 'AM',
+      },
+      {
+        subjectId: 'GH-Sub-10/6',
+        subjectName: 'Social',
+        date: '2024-06-24T19:03:51.500Z',
+        slot: 'AM',
+      },
+    ]
+  },
+  {
+    id: 2,
+    examName: 'Unit 2',
+    date: '2024-09-19T19:03:51.500Z',
+    isDateConfirmed: false,
+    tentativeMsg: 'Those dates are tentative only may be subjected to be changed in further changes by principal/admin in advanced notified by corresponding to students on what user specifies as the post data and it can be edited to that user>',
+    isError: false,
+    isWar: true,
+    subjects: [
+      {
+        subjectId: 'GH-Sub-10/1',
+        subjectName: 'Telugu',
+        date: '2024-06-19T19:03:51.500Z',
+        slot: 'AM',
+      },
+      {
+        subjectId: 'GH-Sub-10/2',
+        subjectName: 'English',
+        date: '2024-06-20T19:03:51.500Z',
+        slot: 'AM',
+      },
+      {
+        subjectId: 'GH-Sub-10/3',
+        subjectName: 'Hind',
+        date: '2024-06-21T19:03:51.500Z',
+        slot: 'AM',
+      },
+      {
+        subjectId: 'GH-Sub-10/4',
+        subjectName: 'Mathematics',
+        date: '2024-06-22T19:03:51.500Z',
+        slot: 'AM',
+      },
+      {
+        subjectId: 'GH-Sub-10/5',
+        subjectName: 'Science',
+        date: '2024-06-23T19:03:51.500Z',
+        slot: 'AM',
+      },
+      {
+        subjectId: 'GH-Sub-10/6',
+        subjectName: 'Social',
+        date: '2024-06-24T19:03:51.500Z',
+        slot: 'AM',
+      },
+    ]
+  },
+]
 
 
 

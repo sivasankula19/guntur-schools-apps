@@ -20,10 +20,15 @@ import {
   thumbsUpOutline,
   thumbsUpSharp,
 } from 'ionicons/icons';
+import { useLocation, useParams } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   const modal = useRef<HTMLIonModalElement>(null);
   const [isOpen, setIsOpen] = useState(false);
+  const { name } = useParams<{ name: string }>();
+
+  const locat = useLocation();
+  console.log('name', locat)
 
   const iconsList = [
     { name: 'Settings', icon: settingsOutline, path: '/settings' },
