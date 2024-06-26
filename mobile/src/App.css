@@ -532,6 +532,10 @@ ion-header {
 
 /* Student List & Staff List css */
 
+.g_fontwht_600{
+  font-weight: 600;
+}
+
 .g_height_10 {
   height: 10%;
 }
@@ -1420,11 +1424,75 @@ ion-breadcrumbs {
   width: 100%;
   text-align: center;
   border-radius: 8px;
+  --min-height:30px;
 }
 
 .exam_schedule .exam-time-table .date_item p{
   margin: 0;
+  font-size: 14px;
 }
+
+.unit_test_table{
+  margin-bottom: 18px;
+}
+
+.unit_test_table .row{
+  height: 40px;
+  margin: 0 8px;
+  border-bottom: 0.6px solid;
+  border-color:#93c0fc;
+}
+
+.unit_test_table .row_body{
+  background-color: #ffffff;
+  font-size: 12px;
+}
+
+.unit_test_table .row_head{
+  background-color: #F5F5F5;
+  font-size: 14px;
+}
+
+.dark .unit_test_table .row_body{
+  background-color: #000000;
+}
+
+.dark .unit_test_table .row_head{
+  background-color: #505050;
+}
+
+
+.unit_test_table .row .cell{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.unit_test_table .row .bordered_cell{
+  border-right: 1px solid;
+  border-left: 1px solid;
+}
+
+.user_ack_text{
+  margin-bottom: 18px;
+}
+
+.user_ack_text p{
+  margin: 0;
+  text-align: left;
+}
+
+.user_ack_text ion-icon{
+  font-size: 22px;
+  margin-left: 10px;
+  color: orange !important;
+}
+
+.user_ack_text .ack_desc{
+  width: calc(100% - 36px);
+}
+
+
 
 
 
@@ -3150,8 +3218,83 @@ label.input-wrapper.sc-ion-input-ios {
   color: #1D7AF5;
 }
 
+/* Fees Dues */
 
+.fees_due{
+  height: 100%;
+}
 
+.fees_year_select{
+  margin: 12px 0;
+  width: 60%;
+}
+
+.fees_card_holder{
+  height: calc(100% - 160px);
+  overflow-y: auto;
+}
+
+.fees_card_holder ion-card {
+  margin-top: 0;
+}
+
+.fees_card_holder ion-card-content{
+  padding:8px;
+}
+
+.fees_card_holder ion-card .selected_year_show{
+  height: 40px;
+  border: 1px solid;
+  border-color: #1D7AF5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45%;
+  border-radius: 8px;
+  margin: 8px 0 12px 0;
+}
+
+.selected_year_show p{
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.fees_card_holder .student_info ion-label{
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.fees_card_holder .student_info h4{
+  font-weight: 600;
+  font-size: 16px;
+  color: #1D7AF5;
+}
+
+.fees_card_holder .student_info {
+  margin-bottom: 12px;
+}
+
+.fees_card_holder .fees_term_item{
+  margin: 12px;
+}
+
+.fees_card_holder .fees_term_item ion-icon{
+  font-size: 22px;
+  margin-left: 8px;
+}
+
+.fees_card_holder .term_info h2{
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.fees_card_holder .term_details{
+  border: 1px solid;
+  border-color: #1D7AF5;
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+}
 
 
 
