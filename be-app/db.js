@@ -5,12 +5,7 @@ async function connectDB() {
 
   try {
     const url = "mongodb+srv://manishagolla3:Z8wM3veFT176TAQw@cluster0.la2zt6o.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-    await mongoose.connect(url , {
-      // useUnifiedTopology: true,
-      // useNewUrlParser: true,
-      // useCreateIndex: true, //make this true
-      // autoIndex: true, //make this also true
-  });
+    await mongoose.connect(url);
     console.log(`Database connected`);
 
     const dbConnection = mongoose.connection;
