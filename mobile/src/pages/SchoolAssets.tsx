@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router';
 import GBreadCrumbs from '../components/GBreadCrumbs';
 import { IonAccordion, IonAccordionGroup, IonIcon, IonItem, IonLabel, IonText } from '@ionic/react';
-import { caretDownOutline, folderOutline, readerOutline, warning,addCircleOutline } from 'ionicons/icons';
+import { caretDownOutline, folderOutline, warning,addCircleOutline } from 'ionicons/icons';
 import { schoolAssetsData } from '../common/utility';
 
 const SchoolAssets: React.FC = () => {
