@@ -12,6 +12,7 @@ const SchoolAssets: React.FC = () => {
 
   const renderSubtypes=(subType:any)=>{
       return (
+        
       <div slot="content" className='sub-type-parent'>
          {subType?.map((subtype:any,index:number)=>{
           return (
