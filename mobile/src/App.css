@@ -3296,19 +3296,51 @@ label.input-wrapper.sc-ion-input-ios {
   border-radius: 12px;
 }
 
+.ownschool-main{
+  height:40px;
+}
+.ownschool {
+  border:#1D7AF5 solid 2px;
+  border-radius:8px;
+  color:#1D7AF5;
+  display: flex;
+  justify-content: center;
+  padding: 5px 0px 5px 0px;
+}
 
+.reg-req-cb {
+    background-color: rgb(29, 122, 245);
+    width: 95%;
+    height: 40px;
+    color: white;
+    border-radius: 12px;
+}
 
+.g-fontweight-100 {
+  font-weight: 100;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+.g-fontweight-200 {
+  font-weight: 200;
+}
+.g-fontweight-100 {
+  font-weight: 300;
+}
+.g-fontweight-400 {
+  font-weight: 400;
+}
+.g-fontweight-500 {
+  font-weight: 500;
+}
+.g-fontweight-600 {
+  font-weight: 600;
+}
+.g-fontweight-700 {
+  font-weight: 700;
+}
+.g-fontsize-14 {
+  font-size: 14px;
+}
+.g-fontsize-18 {
+  font-size: 18px;
+}
