@@ -1150,6 +1150,63 @@ export const examScedulesData =  [
   },
 ]
 
+export const schoolAssetsData = [
+  {
+    category:'Building and Facilities',
+    id:1,
+    assets:[
+      {
+      name:'Classrooms',
+      types:['General','Art Classrooms','Specialized Classrooms']
+     },
+     {
+      name:'Sports Facilities',
+      types:['Cricket','Carroms','Chess']
+     },
+     {
+      name:'Libraries',
+      types:['General','Novels','Historical','Fictional Stories']
+     },
+     {
+      name:'Laboratories',
+      types:['Chemictry','Physics']
+     },
+     {
+      name:'Auditoriums and Theaters',
+      types:[]
+     },
+     {
+      name:'Cafeteria and Dining Areas',
+      types:[]
+     },
+     {
+      name:'Restrooms and Changing Rooms',
+      types:[]
+     },
+    ]
+  },
+  {
+    category:'Equipment',
+    id:2,
+    assets:[]
+  },
+  {
+    category:'Digital Assets',
+    id:3,
+    assets:[]
+  },
+  {
+    category:'Human Resources',
+    id:4,
+    assets:[]
+  },
+  {
+    category:'Furniture',
+    id:5,
+    assets:[]
+  },
+]
+
 
 
 

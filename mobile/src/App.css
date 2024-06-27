@@ -3344,3 +3344,81 @@ label.input-wrapper.sc-ion-input-ios {
 .g-fontsize-18 {
   font-size: 18px;
 }
+
+.g-fontsize-16 {
+  font-size: 16px;
+}
+
+/* Assets */
+
+.school-assets{
+  height: calc(100% - 36px);
+}
+
+.main-ion-label{
+  color: #1D7AF5 !important;
+}
+
+
+.school-assets ion-accordion-group {
+  width: 90%;
+  margin: auto;
+  text-align: center;
+}
+
+.school-assets{
+  animation: slideIn 0.8s forwards;
+  height: calc(100% - 100px);
+  overflow-y: auto;
+}
+
+.school-assets ion-accordion {
+  border: 1px solid;
+  border-color: #1D7AF5;
+}
+
+.school-assets ion-item {
+  border-color: #1D7AF5;
+  margin: 5px;
+  --padding-start: 8px;
+  --inner-padding-end: 12px;
+}
+
+.school-assets ion-icon {
+  color: #1D7AF5;
+}
+
+.border-none {
+  border:none !important
+}
+
+.sub-type-parent{
+  text-align: left;
+  margin-left: 10%;
+}
+
+.sub-type{
+  padding: 5px;
+  border: 2px solid rgb(29, 122, 245);
+  margin: 2px;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.school-assets-category{
+  padding: 5px;
+  background-color: rgb(29, 122, 245);
+  border-radius: 10px;
+}
+
+.ml-6{
+  margin-left: 6px;
+}
+
+.section-expandable .section-expandable-icon:after {
+  content: "\f067";
+}
+
+.section-expandable.is--open .section-expandable-icon:after {
+     content: "\f068" !important;
+}
