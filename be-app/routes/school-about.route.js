@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { createSchoolAbout , getSchoolAbout, createTestinomals} = require('../../controllers/about/school-about.controller');
+const { createSchoolAbout , getSchoolAbout, createTestinomals} = require('../controllers/school-about.controller');
 
 //POST route to create a new SchoolAbout entry with schoolId in the URL
 router.post('/:schoolId/about/create', createSchoolAbout);

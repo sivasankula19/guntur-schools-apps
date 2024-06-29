@@ -1,4 +1,4 @@
-const School = require('../models/about/school.model');
+const School = require('../models/school.model');
 
 const createSchool = async (req, res) => {
     console.log("req", req.body)

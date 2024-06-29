@@ -1,4 +1,4 @@
-const Courses = require('../../models/courses/courses.model')
+const schoolAbout = require('../models/school-about.model')
 const mongoose = require('mongoose');
 
 const db = mongoose.connection
@@ -14,8 +14,10 @@ const db = mongoose.connection
     });
 
     try {
-      await Courses.insertMany(courses)
-      res.status(200).json({ message: 'Courses saved successfully', courses });
+       await schoolAbout.updateOne({ schoolId }, { $push: { courses: { $each: courses } } });
+      const data = await schoolAbout.find({schoolId})
+      const couresesData = data[0].courses
+      res.status(200).json({ message: 'Courses saved successfully', couresesData });
     } catch (err) {
       res.status(500).json({ error: err.message });
     }
@@ -24,8 +26,10 @@ const db = mongoose.connection
   const getCourses = async(req,res) => {
     const { schoolId } = req.params;
     try{
-      const coursesList = await Courses.find({schoolId})
-      return res.status(200).json(coursesList)
+      const data = await schoolAbout.find({schoolId})
+      const courses = data[0].courses
+      console.log("data", data)
+      return res.status(200).json(courses)
     } catch(err){
       res.status(500).json({error : err.message})
     }

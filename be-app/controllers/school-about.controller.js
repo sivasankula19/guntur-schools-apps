@@ -1,20 +1,18 @@
 
 
-const School = require('../../models/about/school.model');
-const SchoolAbout = require('../../models/about/school-about.model');
+const School = require('../models/school.model');
+const SchoolAbout = require('../models/school-about.model');
 
 // Controller function to create and update a new SchoolAbout entry
 const createSchoolAbout = async (req, res) => {
   const { schoolId } = req.params;
   const about  = req.body;
-  console.log("about", about)
-
   try {
    // Use findOneAndUpdate with upsert option
-   const options = { new: true, upsert: true, useFindAndModify: false };
+   const options = { new: true, upsert: true};
    const updatedSchoolAbout = await SchoolAbout.findOneAndUpdate(
        { schoolId }, // Filter
-       about, // Update
+       {schoolAbout :about}, // Update
        options // Options
    );
 
@@ -29,13 +27,13 @@ const getSchoolAbout = async (req, res) => {
   const { schoolId } = req.params;
   try {
     // Query the database for the SchoolAbout document with the given schoolId
-    const schoolAbout = await SchoolAbout.findOne({ schoolId });
+    const about = await SchoolAbout.findOne({ schoolId });
 
-    if (!schoolAbout) {
+    if (!about) {
         return res.status(404).json({ message: 'SchoolAbout not found' });
     }
 
-    res.status(200).json(schoolAbout);
+    res.status(200).json(about);
 } catch (error) {
     res.status(500).json({ message: 'Server Error', error });
 }
@@ -45,19 +43,20 @@ const createTestinomals = async(req,res) => {
  
     const { schoolId } = req.params;
     const newTestimonial = req.body;
+    console.log("new testinomals", newTestimonial)
   
     try {
-      const schoolAbout = await SchoolAbout.findOneAndUpdate(
+      const about = await SchoolAbout.findOneAndUpdate(
         { schoolId },
-        { $push: { studentTestinomals: newTestimonial } },
-        { new: true, useFindAndModify: false }
+        { $push: { "schoolAbout.studentTestinomals": newTestimonial } },
+        { new: true, upsert: true }
       );
   
-      if (!schoolAbout) {
+      if (!about) {
         return res.status(404).send('School not found');
       }
   
-      res.status(201).send(newTestimonial);
+      res.status(201).send(about);
     } catch (error) {
       res.status(500).send(error.message);
     }
