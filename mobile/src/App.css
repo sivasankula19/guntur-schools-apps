@@ -3379,7 +3379,6 @@ label.input-wrapper.sc-ion-input-ios {
 
 .school-assets ion-item {
   border-color: #1D7AF5;
-  margin: 5px;
   --padding-start: 8px;
   --inner-padding-end: 12px;
 }
@@ -3400,7 +3399,7 @@ label.input-wrapper.sc-ion-input-ios {
 .sub-type{
   padding: 5px;
   border: 2px solid rgb(29, 122, 245);
-  margin: 2px;
+  margin: 4px;
   display: inline-block;
   border-radius: 4px;
 }
@@ -3413,12 +3412,4 @@ label.input-wrapper.sc-ion-input-ios {
 
 .ml-6{
   margin-left: 6px;
-}
-
-.section-expandable .section-expandable-icon:after {
-  content: "\f067";
-}
-
-.section-expandable.is--open .section-expandable-icon:after {
-     content: "\f068" !important;
 }
