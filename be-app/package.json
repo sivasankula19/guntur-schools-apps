@@ -1,22 +1,23 @@
 {
-  "name": "guntur-schools-be",
+  "name": "node-js-2024",
   "version": "1.0.0",
-  "description": "here the node apis are will be hosted",
+  "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index.js",
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "be",
-    "guntur",
-    "developers"
-  ],
-  "author": "siva",
+  "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "mongodb": "^6.7.0",
+    "mongoose": "^8.4.1",
+    "twilio": "^5.1.1",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.3"
   }
 }
