@@ -1,5 +1,14 @@
 const School = require('../models/school.model');
 
+const getSchools= async(req,res)=>{
+  try {
+    const data= await School.find()
+    res.status(200).send(data)
+  } catch (err) {
+    res.status(400).send({ message: err.message  })
+  }
+}
+
 const createSchool = async (req, res) => {
     console.log("req", req.body)
     const { name } = req.body;
@@ -14,4 +23,4 @@ const createSchool = async (req, res) => {
     }
   };
 
-  module.exports = {createSchool}
+  module.exports = {createSchool,getSchools}
