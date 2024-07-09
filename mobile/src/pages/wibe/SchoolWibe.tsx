@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router';
-import GBreadCrumbs from '../components/GBreadCrumbs';
+import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { IonCard, IonCardContent, IonDatetimeButton, IonDatetime, IonItem, IonLabel, IonSearchbar, IonSelect, IonSelectOption, IonToggle, IonModal, IonText, IonIcon } from '@ionic/react';
-import { formatDate, formatTime, wibePostsData } from '../common/utility';
+import { formatDate, formatTime, wibePostsData } from '../../common/utility';
 import { chatboxOutline, heartOutline, shareSocialOutline } from 'ionicons/icons';
+import WibeLikes from './WibeLikes';
+import WibeComments from './WibeComments';
 
 const SchoolWibe: React.FC = () => {
   const { name } = useParams<{ name: string }>();
   const [isFilterEnabled, setIsFilterEnabled] = useState(false);
   const [search, setSearch] = useState('');
+  const [isOpenLikes, setIsOpenLikes] = useState<boolean>(false);
+  const [isOpenComments, setIsOpenComments] = useState<boolean>(false);
+  const [data, setData] = useState({});
 
   const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Wibe', path: '/school-wibe' }];
 
@@ -22,6 +27,24 @@ const SchoolWibe: React.FC = () => {
   }
  
   const postsData = wibePostsData
+
+  const handleClickOnLikes=(LikesData:any)=>{
+    console.log("likes data",LikesData)
+    setData(()=>LikesData)
+    setIsOpenLikes(()=>true)
+  }
+
+  const handleClickOnComments=(CommentsData:any)=>{
+    console.log("comments data",CommentsData)
+    setData(()=>CommentsData)
+    setIsOpenComments(()=>true)
+  }
+
+
+  const resetOpenCallback=(value:boolean)=>{
+        setIsOpenLikes(()=>value)
+        setIsOpenComments(()=>value)
+  }
 
   return (
     <div className='scl_wibe'>
@@ -163,13 +186,13 @@ const SchoolWibe: React.FC = () => {
               </div>
               <div className='footer_post'>
                 <div className='g_flex g_space_btwn'>
-                  <div className='g_txt_center'>
+                  <div className='g_txt_center' onClick={()=>handleClickOnLikes(item)}>
                     <IonIcon icon={heartOutline}></IonIcon>
                     <IonText>
                       <p>{item.likes} Likes</p>
                     </IonText>
                   </div>
-                  <div className='g_txt_center'>
+                  <div className='g_txt_center' onClick={()=>{handleClickOnComments(item)}}>
                     <IonIcon icon={chatboxOutline}></IonIcon>
                     <IonText>
                       <p>{item.comments.length} Comments</p>
@@ -188,6 +211,9 @@ const SchoolWibe: React.FC = () => {
           </IonCard>
         ))}
       </div>
+      <WibeLikes isopenlikes={isOpenLikes} data={data} resetOpenCallback={resetOpenCallback} />
+      <WibeComments isopencomments={isOpenComments} data={data} resetOpenCallback={resetOpenCallback} />
+
     </div>
   );
 };
