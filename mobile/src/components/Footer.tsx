@@ -32,7 +32,6 @@ const Footer: React.FC = () => {
 
   const location = useLocation();
 
-  console.log("location",location)
 
 
   const iconsList = [

@@ -48,10 +48,9 @@ const App: React.FC = () => {
   const isUserAcknowledgedMode = useSelector(
     (state: any) => state?.darkMode.isUserAcknowledgedMode
   );
-  const fullstate = useSelector((state: any) => state);
+  // const fullstate = useSelector((state: any) => state);
   const school = useSelector((state: any) => state.school.selectedSchool);
   const isAuthenticated = useSelector((state:any)=> state.auth.isAuthenticated);
-  console.log(fullstate);
   const ionRouter = useIonRouter();
 
   const dispatch = useDispatch();
