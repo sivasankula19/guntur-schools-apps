@@ -29,13 +29,11 @@ const SchoolWibe: React.FC = () => {
   const postsData = wibePostsData
 
   const handleClickOnLikes=(LikesData:any)=>{
-    console.log("likes data",LikesData)
     setData(()=>LikesData)
     setIsOpenLikes(()=>true)
   }
 
   const handleClickOnComments=(CommentsData:any)=>{
-    console.log("comments data",CommentsData)
     setData(()=>CommentsData)
     setIsOpenComments(()=>true)
   }
