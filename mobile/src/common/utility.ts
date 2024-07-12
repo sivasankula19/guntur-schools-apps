@@ -935,6 +935,102 @@ export const wibePostsData =  [
     postDes:
       'We are proudly anouncing that we are extending our school environment by building new building for the 9th and 10th grade students',
     likes: '20',
+    likesData : [
+      {
+        liked_by:'Siva',
+        designation:'Admin',
+        user_id:'Y24ADMIN',
+        time:'2015-02-20T09:29:31.238Z',
+        img: 'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
+
+      },
+      {
+        liked_by:'Minoosh',
+        designation:'Manager',
+        user_id:'Y24MNG',
+        time:'2015-02-22T23:29:31.238Z',
+        img: 'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
+
+      },
+      {
+        liked_by:'Deva',
+        designation:'English teacher',
+        user_id:'Y24EN',
+        time:'2015-09-21T01:29:31.238Z',
+        img: 'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
+
+      },
+      {
+        liked_by:'Anu',
+        designation:'student',
+        user_id:'Y248A21',
+        time:'2015-09-21T01:29:31.238Z',
+        img: 'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
+      },
+      {
+        liked_by:'Pria',
+        designation:'student',
+        user_id:'Y248A25',
+        time:'2015-09-21T01:29:31.238Z',
+        img: 'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
+      },
+      {
+        liked_by:'Ayaan',
+        designation:'student',
+        user_id:'Y248B112',
+        time:'2015-09-21T01:29:31.238Z',
+        img: 'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
+      },
+      {
+        liked_by:'Anshu',
+        designation:'English teacher',
+        user_id:'Y24EN',
+        time:'2015-09-21T01:29:31.238Z',
+        img: 'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
+      },
+      {
+        liked_by:'Chinnu',
+        designation:'student',
+        user_id:'Y247C150',
+        time:'2015-09-21T01:29:31.238Z',
+        img: 'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
+      },
+      {
+        liked_by:'Anu',
+        designation:'student',
+        user_id:'Y248A21',
+        time:'2015-09-21T01:29:31.238Z',
+        img: 'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
+      },
+      {
+        liked_by:'Pria',
+        designation:'student',
+        user_id:'Y248A25',
+        time:'2015-09-21T01:29:31.238Z',
+        img: 'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
+      },
+      {
+        liked_by:'Ayaan',
+        designation:'student',
+        user_id:'Y248B112',
+        time:'2015-09-21T01:29:31.238Z',
+        img: 'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
+      },
+      {
+        liked_by:'Anshu',
+        designation:'English teacher',
+        user_id:'Y24EN',
+        time:'2015-09-21T01:29:31.238Z',
+        img: 'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
+      },
+      {
+        liked_by:'Chinnu',
+        designation:'student',
+        user_id:'Y247C150',
+        time:'2015-09-21T01:29:31.238Z',
+        img: 'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
+      }
+    ],
     comments: [
       {
         commentedBy: {
@@ -942,6 +1038,81 @@ export const wibePostsData =  [
           designation: '8th Class',
           id: 'Y24C8A019',
           role: 'student',
+          time:'2015-09-21T01:29:31.238Z',
+          img: 'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
+        },
+        comment: 'All the best!',
+        likes: '3',
+        replies:[],
+      },
+      {
+        commentedBy: {
+          name: 'Siva Sankula',
+          designation: '8th Class',
+          id: 'Y24C8A019',
+          role: 'student',
+          time:'2015-09-21T01:29:31.238Z',
+          img: 'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
+        },
+        comment: 'Thank you for the new building for sports. we always wanted to have a seperate area for sports. Finally we got it. Thank you',
+        likes: '3',
+      },
+      {
+        commentedBy: {
+          name: 'Siva Sankula',
+          designation: '8th Class',
+          id: 'Y24C8A019',
+          role: 'student',
+          time:'2015-09-21T01:29:31.238Z',
+          img: 'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
+        },
+        comment: 'All the best!',
+        likes: '3',
+      },
+      {
+        commentedBy: {
+          name: 'Siva Sankula',
+          designation: '8th Class',
+          id: 'Y24C8A019',
+          role: 'student',
+          time:'2015-09-21T01:29:31.238Z',
+          img: 'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
+        },
+        comment: 'All the best!',
+        likes: '3',
+      },
+      {
+        commentedBy: {
+          name: 'Siva Sankula',
+          designation: '8th Class',
+          id: 'Y24C8A019',
+          role: 'student',
+          time:'2015-09-21T01:29:31.238Z',
+          img: 'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
+        },
+        comment: 'All the best!',
+        likes: '3',
+      },
+      {
+        commentedBy: {
+          name: 'Siva Sankula',
+          designation: '8th Class',
+          id: 'Y24C8A019',
+          role: 'student',
+          time:'2015-09-21T01:29:31.238Z',
+          img: 'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
+        },
+        comment: 'All the best!',
+        likes: '3',
+      },
+      {
+        commentedBy: {
+          name: 'Siva Sankula',
+          designation: '8th Class',
+          id: 'Y24C8A019',
+          role: 'student',
+          time:'2015-09-21T01:29:31.238Z',
+          img: 'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
         },
         comment: 'All the best!',
         likes: '3',
@@ -967,6 +1138,7 @@ export const wibePostsData =  [
     postDes:
       'We are proudly anouncing that we are extending our school environment by building new building for the 9th and 10th grade students',
     likes: '0',
+    likesData: [],
     comments: [
       
     ],
@@ -990,6 +1162,43 @@ export const wibePostsData =  [
     postDes:
       'Wishing a very happy birthday to our <grade class student> <student Name>  ',
     likes: '20',
+    likesData : [
+      {
+        liked_by:'Anu',
+        designation:'student',
+        user_id:'Y248A21',
+        time:'2015-09-21T01:29:31.238Z',
+        img: 'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
+      },
+      {
+        liked_by:'Pria',
+        designation:'student',
+        user_id:'Y248A25',
+        time:'2015-09-21T01:29:31.238Z',
+        img: 'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
+      },
+      {
+        liked_by:'Ayaan',
+        designation:'student',
+        user_id:'Y248B112',
+        time:'2015-09-21T01:29:31.238Z',
+        img: 'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
+      },
+      {
+        liked_by:'Anshu',
+        designation:'English teacher',
+        user_id:'Y24EN',
+        time:'2015-09-21T01:29:31.238Z',
+        img: 'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
+      },
+      {
+        liked_by:'Chinnu',
+        designation:'student',
+        user_id:'Y247C150',
+        time:'2015-09-21T01:29:31.238Z',
+        img: 'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
+      }
+    ],
     comments: [
       {
         commentedBy: {
@@ -1206,14 +1415,3 @@ export const schoolAssetsData = [
     assets:[]
   },
 ]
-
-
-
-
-
-
-
-
-
-
-
