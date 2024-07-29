@@ -29,7 +29,7 @@ const Home: React.FC = () => {
     // perform login API call fetch the user auth token
     const payload = {
       token: 'someTokenValue',
-      role: 'Student',
+      role: 'SuperAdmin', // SuperAdmin , Teacher, Student
       user: {
         fullName: 'Siva Sankula',
         classOfStudy: '8th Class',

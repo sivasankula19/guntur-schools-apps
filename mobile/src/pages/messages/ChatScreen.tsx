@@ -142,7 +142,6 @@ const ChatScreen: React.FC = () => {
           </div>
         </div>
       </IonContent>
-      {/* <Footer /> */}
     </IonPage>
   );
 };

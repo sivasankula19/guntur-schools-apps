@@ -5,9 +5,11 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import PreLoginHead from '../components/PreLoginHead';
 import PreLoginFoot from '../components/PreLoginFoot';
+import { useSelector } from 'react-redux';
 
 const Page: React.FC = () => {
   const { name = '' } = useParams<{ name: string }>();
+  const role = useSelector((state:any)=> state.auth.role) || 'Student';
   const preLoginModules = [
     'about',
     'courses',
@@ -27,7 +29,9 @@ const Page: React.FC = () => {
             <div className="actual_content">
               <ExploreContainer name={name || ''} />
             </div>
-            <PreLoginFoot></PreLoginFoot>
+            {
+              role === 'Student' && (<PreLoginFoot></PreLoginFoot>)
+            }
           </div>
         ) : (
           <ExploreContainer name={name || ''} />

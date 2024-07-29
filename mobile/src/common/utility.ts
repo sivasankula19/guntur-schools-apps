@@ -4,7 +4,7 @@ export const studentDummyData =  [
     {
       studentName: 'Sankula Siva',
       profileImage:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Line-style-icons-profile-male.svg/864px-Line-style-icons-profile-male.svg.png',
+        'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
       id: '8A001',
       class: '8th Class',
       section: 'A Section',
@@ -13,7 +13,7 @@ export const studentDummyData =  [
     {
       studentName: 'Siva Sankula',
       profileImage:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Line-style-icons-profile-male.svg/864px-Line-style-icons-profile-male.svg.png',
+        'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
       id: '8A002',
       class: '8th Class',
       section: 'A Section',
@@ -22,7 +22,7 @@ export const studentDummyData =  [
     {
       studentName: 'Sankula',
       profileImage:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Line-style-icons-profile-male.svg/864px-Line-style-icons-profile-male.svg.png',
+        'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
       id: '8A003',
       class: '8th Class',
       section: 'A Section',
@@ -31,7 +31,7 @@ export const studentDummyData =  [
     {
       studentName: 'Siva',
       profileImage:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Line-style-icons-profile-male.svg/864px-Line-style-icons-profile-male.svg.png',
+        'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
       id: '8A004',
       class: '8th Class',
       section: 'A Section',
@@ -40,7 +40,7 @@ export const studentDummyData =  [
     {
       studentName: 'Siva',
       profileImage:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Line-style-icons-profile-male.svg/864px-Line-style-icons-profile-male.svg.png',
+        'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
       id: '8A005',
       class: '8th Class',
       section: 'A Section',
@@ -49,7 +49,7 @@ export const studentDummyData =  [
     {
         studentName: 'Siva',
         profileImage:
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Line-style-icons-profile-male.svg/864px-Line-style-icons-profile-male.svg.png',
+          'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
         id: '8A006',
         class: '8th Class',
         section: 'A Section',
@@ -58,7 +58,7 @@ export const studentDummyData =  [
       {
         studentName: 'Siva',
         profileImage:
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Line-style-icons-profile-male.svg/864px-Line-style-icons-profile-male.svg.png',
+          'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
         id: '8A007',
         class: '8th Class',
         section: 'A Section',
@@ -70,7 +70,7 @@ export const studentDummyData =  [
     {
       empName: 'Siva',
       empImage:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Line-style-icons-profile-male.svg/864px-Line-style-icons-profile-male.svg.png',
+        'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
       id: 'gvt-tcr-001',
       subject: 'Telugu',
       designation: 'BA Computers',
@@ -79,7 +79,7 @@ export const studentDummyData =  [
     {
       empName: 'Siva',
       empImage:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Line-style-icons-profile-male.svg/864px-Line-style-icons-profile-male.svg.png',
+        'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
       id: 'gvt-tcr-002',
       subject: 'Mathematics',
       designation: 'BA Computers',
@@ -88,7 +88,7 @@ export const studentDummyData =  [
     {
       empName: 'Siva',
       empImage:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Line-style-icons-profile-male.svg/864px-Line-style-icons-profile-male.svg.png',
+        'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
       id: 'gvt-tcr-003',
       subject: 'Physics',
       designation: 'BA Computers',
@@ -97,7 +97,7 @@ export const studentDummyData =  [
     {
       empName: 'Siva',
       empImage:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Line-style-icons-profile-male.svg/864px-Line-style-icons-profile-male.svg.png',
+        'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
       id: 'gvt-tcr-004',
       subject: 'Telugu',
       designation: 'BA Computers',
@@ -106,7 +106,7 @@ export const studentDummyData =  [
     {
       empName: 'Siva',
       empImage:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Line-style-icons-profile-male.svg/864px-Line-style-icons-profile-male.svg.png',
+        'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
       id: 'gvt-tcr-005',
       subject: 'Mathematics',
       designation: 'BA Computers',
@@ -115,7 +115,7 @@ export const studentDummyData =  [
     {
       empName: 'Siva',
       empImage:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Line-style-icons-profile-male.svg/864px-Line-style-icons-profile-male.svg.png',
+        'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
       id: 'gvt-tcr-006',
       subject: 'Physics',
       designation: 'BA Computers',
@@ -124,7 +124,7 @@ export const studentDummyData =  [
     {
       empName: 'Siva',
       empImage:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Line-style-icons-profile-male.svg/864px-Line-style-icons-profile-male.svg.png',
+        'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
       id: 'gvt-tcr-007',
       subject: 'Telugu',
       designation: 'BA Computers',
@@ -133,7 +133,7 @@ export const studentDummyData =  [
     {
       empName: 'Siva',
       empImage:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Line-style-icons-profile-male.svg/864px-Line-style-icons-profile-male.svg.png',
+        'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
       id: 'gvt-tcr-008',
       subject: 'Mathematics',
       designation: 'BA Computers',
@@ -142,7 +142,7 @@ export const studentDummyData =  [
     {
       empName: 'Siva',
       empImage:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Line-style-icons-profile-male.svg/864px-Line-style-icons-profile-male.svg.png',
+        'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
       id: 'gvt-tcr-009',
       subject: 'Physics',
       designation: 'BA Computers',

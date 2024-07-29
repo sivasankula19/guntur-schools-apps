@@ -18,8 +18,8 @@ const StudentList: React.FC = () => {
   const [isFilterEnabled, setIsFilterEnabled] = useState(true);
   const [search, setSearch] = useState('');
   const studentsDataList = studentDummyData;
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleToggleChange = (event: any) => {
     setIsFilterEnabled(event.detail.checked);
   };

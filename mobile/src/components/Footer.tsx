@@ -28,12 +28,7 @@ import { useLocation, useParams } from 'react-router-dom';
 const Footer: React.FC = () => {
   const modal = useRef<HTMLIonModalElement>(null);
   const [isOpen, setIsOpen] = useState(false);
-  const { name } = useParams<{ name: string }>();
-
-  const location = useLocation();
-
-
-
+    
   const iconsList = [
     { name: 'Settings', icon: settingsOutline, path: '/settings' },
     { name: 'Reset Password', icon: keyOutline, path: '/reset-password' },
