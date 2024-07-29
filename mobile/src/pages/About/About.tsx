@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router';
-import PreLoginHead from '../../components/PreLoginHead';
 import { IonText } from '@ionic/react';
 import { AboutModuleData } from '../../common/utility';
 
 const About: React.FC = () => {
-  const { name } = useParams<{ name: string }>();
-  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {

@@ -23,12 +23,14 @@ import AcedamicSubject from '../pages/AcedamicSubjects';
 import Documents from '../pages/Documents';
 import Dashboard from '../pages/dashboard/Dashboard';
 import Home from '../pages/Home/Home';
+import { useSelector } from 'react-redux';
 
 interface ContainerProps {
   name: string;
 }
 
 const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
+  const isStudent = useSelector((state:any)=>state.auth.role) === 'Student'
   useEffect(() => {
   }, []);
 

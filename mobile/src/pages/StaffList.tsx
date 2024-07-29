@@ -10,11 +10,13 @@ import {
 import React, { useState } from 'react';
 import { staffDummyArr, studentDummyData } from '../common/utility';
 import GBreadCrumbs from '../components/GBreadCrumbs';
+import { useNavigate } from 'react-router';
 
 const StaffList: React.FC = () => {
   const [isFilterEnabled, setIsFilterEnabled] = useState(true);
   const [search, setSearch] = useState('');
   const staffData = staffDummyArr;
+  const navigate = useNavigate();
   const handleToggleChange = (event: any) => {
     setIsFilterEnabled(event.detail.checked);
   };
@@ -24,6 +26,10 @@ const StaffList: React.FC = () => {
     console.log(ev?.target.value);
     //  debounce function can be excuted!!! here
   };
+
+  const navigateToUser = (id:string) => {
+    navigate(`/user/${id}`)
+  }
 
   const breadCrumbsValue = [{bName:'Home', path:'/dashboard'},{bName:'Staff List', path:'/staff-list'}]
 
@@ -116,10 +122,11 @@ const StaffList: React.FC = () => {
                       className="prifile_image"
                       src={item.empImage}
                       alt="profile"
+                      onClick={()=>navigateToUser(item.id)}
                     />
                   </div>
                   <div className="title_designation">
-                    <h2 className="title_name">{item.empName}</h2>
+                    <h2 onClick={()=>navigateToUser(item.id)} className="title_name">{item.empName}</h2>
                     <p>
                       <span>{`${item.designation}`}</span>
                     </p>
