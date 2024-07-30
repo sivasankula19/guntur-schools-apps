@@ -11,7 +11,6 @@ import ExCircularActivities from '../pages/ExCircularActivities';
 import Gallery from '../pages/Gallery';
 import About from '../pages/About/About';
 import ContactUs from '../pages/ContactUs';
-import Courses from '../pages/Courses';
 import Achievements from '../pages/Achievements';
 import SchoolWibe from '../pages/wibe/SchoolWibe';
 import Messages from '../pages/messages/Messages';
@@ -24,13 +23,15 @@ import Documents from '../pages/Documents';
 import Dashboard from '../pages/dashboard/Dashboard';
 import Home from '../pages/Home/Home';
 import { useSelector } from 'react-redux';
+import AboutSuperAdmin from '../pages/About/AboutSuperAdmin';
+import Courses from '../pages/Courses/Courses';
+import { CoursesSuperAdmin } from '../pages/Courses/CoursesSuperAdmin';
 
 interface ContainerProps {
   name: string;
 }
 
 const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
-  const isStudent = useSelector((state:any)=>state.auth.role) === 'Student'
   useEffect(() => {
   }, []);
 
@@ -42,6 +43,7 @@ const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
 };
 
 const GetComponent = ({ name }: any) => {
+  const isStudent = useSelector((state:any)=>state.auth.role) === 'Student'
   switch (name) {
     case 'dashboard':
       return <Dashboard />;
@@ -68,13 +70,13 @@ const GetComponent = ({ name }: any) => {
     case 'ex-circular':
       return <ExCircularActivities />;
     case 'about':
-      return <About />;
+      return isStudent ? <About /> : <AboutSuperAdmin />;
     case 'academic-subjects':
       return <AcedamicSubject />;
     case 'contact-us':
       return <ContactUs />;
     case 'courses':
-      return <Courses />;
+      return isStudent ? <Courses /> : <CoursesSuperAdmin />;
     case 'achievements':
       return <Achievements />;
     case 'school-wibe':

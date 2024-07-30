@@ -1,6 +1,5 @@
 import React from 'react';
 import { useParams } from 'react-router';
-import PreLoginHead from '../components/PreLoginHead';
 import { IonIcon, IonText } from '@ionic/react';
 import { checkmarkCircleOutline, closeCircleOutline } from 'ionicons/icons';
 
