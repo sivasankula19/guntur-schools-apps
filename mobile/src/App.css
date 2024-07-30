@@ -577,6 +577,21 @@ ion-header {
   justify-content: space-evenly;
 }
 
+.height-px-40{
+  height: 40px;
+}
+
+.dot-8{
+  width: 8px;
+  height: 8px;
+  border-radius: 8px;
+  background-color: #000000;
+}
+
+.dark .dot-8{
+  background-color: #ffffff;
+}
+
 .g_txt_center {
   text-align: center;
 }
@@ -585,9 +600,16 @@ ion-header {
   justify-content: flex-end;
 }
 
+.pb-px-200{
+  padding-bottom: 200px;
+}
 
 .g_full_width {
-  width: 100%;
+  width: 100% !important;
+}
+
+.width-80{
+  width: 80% !important;
 }
 
 .g_full_height{
@@ -2020,6 +2042,11 @@ label.input-wrapper.sc-ion-input-ios {
   height: calc(100% - 60px);
   overflow-y: auto;
   padding: 0 12px;
+  background: #ffffff;
+}
+
+.dark .actual_content{
+  background: #000000;
 }
 
 .prelogin_head{
@@ -2065,7 +2092,7 @@ label.input-wrapper.sc-ion-input-ios {
   font-weight: bold;
 }
 
-.back_btns_holder ion-icon{
+.pre_login_actions{
   font-size: 26px;
   margin: 0 8px;
 }
@@ -2094,6 +2121,64 @@ label.input-wrapper.sc-ion-input-ios {
   font-size: 14px;
 }
 
+.school_name_sa{
+  text-align: center;
+}
+
+.school_name_sa ion-text p{
+  color:#1D7AF5;
+  font-weight: 600;
+}
+
+.scl_banner{
+  background-color:#F5F5F5;
+  height: 210px;
+}
+
+.sa_field {
+  padding-top: 12px;
+}
+
+.sa_field ion-label{
+  font-size: 18px;
+  font-weight: 600;
+  color: #1D7AF5;
+}
+
+.sa_field ion-item{
+  --inner-padding-end:0;
+  --padding-start:0;
+  --inner-border-width:0;
+}
+
+.sa_field ion-textarea,.sa_field ion-input {
+  border:1px solid;
+  border-radius:8px;
+  padding:8px !important;
+  margin:8px 0;
+  --padding-top:2px;
+}
+
+.sa_field input {
+  height: 40px;
+  width: 70%;
+  border: 1px solid;
+  border-radius: 8px;
+  padding: 2px 8px;
+}
+
+.sa_field ion-button{
+  height: 34px;
+}
+
+.about_text ion-text p{
+  margin-left: 8px;
+}
+
+.remove_about ion-icon {
+  font-size: 24px;
+  margin-right: 16px;
+}
 
 /* courses css */
 
@@ -2158,6 +2243,67 @@ label.input-wrapper.sc-ion-input-ios {
   font-size: 18px;
 }
 
+.add_course_sa .add_section {
+  color: #1D7AF5;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.view_course_sa .view_section{
+  color: #1D7AF5;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.add_course_sa input {
+  height: 40px;
+  width: 100%;
+  border-radius: 8px;
+  outline: none;
+  border: 1px solid;
+  border-color: #1D7AF5;
+  margin-bottom: 8px;
+  padding-left: 8px;
+}
+
+.add_course_sa ion-select{
+  width: 90%;
+  outline: none;
+  border-radius: 8px;
+  --border-color:#1D7AF5;
+}
+
+.add_course_sa ion-button{
+  --border-radius:8px;
+  --border-width:1px;
+  --border-color:#1D7AF5;
+  height: 40px;
+}
+
+.no_courses_icon{
+  font-size: 48px;
+}
+
+.course_sa_item{
+  border: 1px solid;
+  border-color: #006eff;
+  margin-bottom: 8px;
+  border-radius: 8px;
+}
+
+.course_sa_item .course_title_txt{
+  width: 60%;
+  padding-left: 8px;
+}
+
+.course_sa_item .course_title_txt p{
+  font-weight: 600;
+  
+}
+
+.course_sa_item .course_medium_txt{
+  width: 10%;
+}
 
 /* Contact us page */
 .contact_field {

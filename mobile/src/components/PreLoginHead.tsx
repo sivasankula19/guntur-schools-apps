@@ -58,8 +58,8 @@ const PreLoginHead: React.FC = () => {
         </div>
         {
           isAuthenticated && role === 'SuperAdmin' && (<div className='g_flex'>
-            <IonIcon icon={closeCircleOutline}></IonIcon>
-            <IonIcon icon={saveOutline}></IonIcon>
+            <IonIcon className='pre_login_actions' icon={closeCircleOutline}></IonIcon>
+            <IonIcon className='pre_login_actions' icon={saveOutline}></IonIcon>
           </div>) 
         }
       </div>
