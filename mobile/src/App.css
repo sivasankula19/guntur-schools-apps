@@ -1210,6 +1210,77 @@ ion-breadcrumbs {
 
 }
 
+.add-doc-button {
+  --background: #ffffff;
+  --color: #1D7AF5;
+  --ion-toolbar-background: none;
+  --border-color: #1D7AF5;
+  --border-style: solid;
+  --border-width: 1px;
+  --background-hover: #1d7bf546;
+  --background-activated: #1d7bf546;
+  --background-focused: #1d7bf546;
+  opacity: 1;
+  min-height:auto;
+  height:4vh !important ;
+  margin-bottom: 1vh;
+}
+
+.doc_location{
+  border:1px solid #000000;
+  padding:5px;
+  border-radius: 8px;
+  width:26vw;
+  height:4.2vh;
+  background-color: #D9D9D9;
+}
+.doc_location_current{
+  border:1px solid  #1D7AF5;
+  padding:5px;
+  border-radius: 8px;
+  width:26vw;
+  height:4.2vh;
+}
+.doc_loc_select{
+    width: 81.7vw;
+    height: 4vh;
+    border-radius: 8px;
+    border: 1px solid #000000;
+    margin: 2vh 0px 0px 0px;
+    padding-left: 5px;
+}
+
+.doc_loc_input{
+  width: 81.7vw;
+  height: 4vh;
+  border-radius: 8px;
+  border: 1px solid #000000;
+  margin: 2vh 0px 0px 0px;
+  padding-left: 5px
+}
+
+.save_btn{
+  width:31vw;
+  height:4vh;
+  border-radius: 12px;
+  color:white;
+  background-color:#1D7AF5 ;
+
+}
+
+.cancel_btn{
+  width:31vw;
+  height:4vh;
+  border-radius: 12px;
+  border:1px solid #1D7AF5;
+  color:#1D7AF5;
+}
+
+.cicle-icon{
+  margin-bottom: 15px;
+  margin-left: 12px;
+}
+
 .gmodal-save {
   --ion-toolbar-background: none;
 }
@@ -1613,10 +1684,19 @@ ion-breadcrumbs {
 }
 
 .add_documents_btn {
-  position: absolute;
+  /* position: absolute; */
   bottom: 44px;
   z-index: 1;
   right: 12px;
+}
+
+.documents-custom-popover {
+  width:90vw;
+  position: fixed !important;  /* Ensure the popover is fixed */
+  top: 50% !important;         /* Center vertically */
+  left: 50% !important;        /* Center horizontally */
+  transform: translate(-50%, -50%) !important; /* Center alignment */
+  height:45vh;
 }
 
 /* Document & Image Preview */
@@ -3623,6 +3703,11 @@ label.input-wrapper.sc-ion-input-ios {
 .ml3{
   margin-left:3px;
 }
+
+.mt2{
+  margin-top: 2vh;
+}
+
 .wibe-profile{
     height: 30px;
     width: 30px;
