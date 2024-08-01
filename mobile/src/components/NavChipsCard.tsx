@@ -6,7 +6,7 @@ import {
   IonLabel,
   IonIcon,
 } from '@ionic/react';
-import { chevronDownCircle, chevronDownCircleOutline, chevronUpCircle, chevronUpCircleOutline, expandOutline, headset } from 'ionicons/icons';
+import {  chevronDownCircleOutline, chevronUpCircleOutline } from 'ionicons/icons';
 import { useNavigate } from 'react-router';
 import { setPreLoginPublicView } from '../redux/reducers/schoolSlice';
 import { useDispatch } from 'react-redux';
@@ -32,9 +32,8 @@ const NavChipCard: React.FC<PropsWithChildren<{ chips: Chip[], isOpen: boolean, 
   const handleNavigate = (path: string, moduleName:string) => {
     if(publicModules.includes(moduleName))
       dispatch(setPreLoginPublicView(moduleName))
-    navigate(path)
+    navigate(path);
   }
-
 
   return (
     <IonCard>
@@ -47,7 +46,7 @@ const NavChipCard: React.FC<PropsWithChildren<{ chips: Chip[], isOpen: boolean, 
                   <div className="g_flex g_align_cntr g_jstfy_content_cntr">
                     <IonIcon icon={chip.icon} />
                   </div>
-                  <IonLabel>{chip.moduleName}</IonLabel>
+                  <IonLabel className='font-12'>{chip.moduleName}</IonLabel>
                 </div>
               </IonItem>
             </div>

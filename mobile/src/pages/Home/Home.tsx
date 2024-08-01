@@ -16,8 +16,8 @@ import { useNavigate } from 'react-router';
 import { setPreLoginPublicView } from '../../redux/reducers/schoolSlice';
 
 const Home: React.FC = () => {
-  const [userName, setUserName] = useState('Y248B039');
-  const [password, setPassword] = useState('someKey@123');
+  const [userName, setUserName] = useState('7995954105');
+  const [password, setPassword] = useState('SuperAdmin@123');
   const selectedSchool = useSelector((state: any) => state.school.selectedSchool)
 
   const dispatch = useDispatch();

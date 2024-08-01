@@ -534,6 +534,62 @@ ion-header {
 }
 
 
+.m-top-10{
+  margin-top: 10px;
+}
+
+.m-bottom-10{
+  margin-bottom: 10px;
+}
+
+.m-v-10{
+  margin: 10px 0;
+}
+
+.m-h-10{
+  margin: 0 10px;
+}
+
+.m-10{
+  margin: 10px;
+}
+
+.m-top-12{
+  margin-top: 12px;
+}
+
+.m-bottom-12{
+  margin-bottom: 12px;
+}
+
+.m-v-12{
+  margin: 12px 0;
+}
+
+.m-h-12{
+  margin: 0 12px;
+}
+
+.m-12{
+  margin: 12px;
+}
+
+.font-10{
+  font-size: 10px !important;
+}
+
+.font-12{
+  font-size: 12px !important;
+}
+
+.font-14{
+  font-size: 14px !important;
+}
+
+.font-16{
+  font-size: 16px !important;
+}
+
 
 /* Student List & Staff List css */
 
@@ -2583,6 +2639,42 @@ label.input-wrapper.sc-ion-input-ios {
 }
 
 
+.contact_us_sa .sub_heading{
+  font-size: 16px;
+  color: #1D7AF5;
+  font-weight: 600;
+  margin: 8px 0;
+}
+
+.field{
+  position: relative;
+  display: flex;
+}
+
+.field ion-icon{
+  position: absolute;
+  right: 15px;
+  top: 18px;
+  font-size: 22px;
+  color: #1D7AF5;
+  font-weight: bold;
+}
+
+.ios .contact_us_sa ion-input {
+  border: 1px solid;
+  border-radius: 8px;
+  padding: 0 20px 0 8px !important;
+}
+
+.contact_us_sa .google_location{
+  width: 80%;
+  height: 200px;
+  border: 1px solid;
+  border-radius: 8px;
+}
+
+
+
 /* gallery */
 
 .gallery{
@@ -3761,4 +3853,12 @@ label.input-wrapper.sc-ion-input-ios {
     height: 15px;
     width: 15px;
     color: #1D7AF5;
+}
+
+.width-30{
+  width: 30%;
+}
+
+.width-70{
+  width: 70%;
 }
