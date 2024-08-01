@@ -21,6 +21,7 @@ import { useParams } from 'react-router';
 import GImageDocPreview from '../components/GImageDocPreview';
 import { docData } from '../common/utility';
 import GBreadCrumbs from '../components/GBreadCrumbs';
+import AddDoc from '../common/common-add-doc';
 
 const Documents: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -65,6 +66,7 @@ const Documents: React.FC = () => {
                           {innerItem.documents.length ? (
                             <>
                               {innerItem.documents.map((innerItemDoc) => (
+                                <>
                                 <IonItem
                                   className="documents_file_item"
                                   key={innerItemDoc.id}
@@ -74,7 +76,9 @@ const Documents: React.FC = () => {
                                   <IonText>
                                     <a onClick={() => setIsOpen(true)}>view</a>
                                   </IonText>
-                                </IonItem>
+
+                                 </IonItem>
+                                </>
                               ))}
                             </>
                           ) : (
@@ -86,6 +90,7 @@ const Documents: React.FC = () => {
                               </IonItem>
                             </>
                           )}
+                          <AddDoc title={item.title} subtitle={innerItem.title} />
                         </div>
                       </IonAccordion>
                     ))}
@@ -94,6 +99,7 @@ const Documents: React.FC = () => {
                 {item.documents.length ? (
                   <>
                     {item.documents.map((itemDoc) => (
+                      <>
                       <IonItem className="documents_file_item" key={itemDoc.id}>
                         <IonIcon icon={documentOutline}></IonIcon>
                         <IonLabel>{itemDoc.docTitle}</IonLabel>
@@ -101,6 +107,7 @@ const Documents: React.FC = () => {
                           <a onClick={() => setIsOpen(true)}>view</a>
                         </IonText>
                       </IonItem>
+                      </>
                     ))}
                   </>
                 ) : (
@@ -116,27 +123,11 @@ const Documents: React.FC = () => {
                     )}
                   </>
                 )}
+                <AddDoc title={item.title} subtitle={''} />
               </div>
             </IonAccordion>
           ))}
         </IonAccordionGroup>
-      </div>
-      <GImageDocPreview
-        src={
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5Pxol7CM9TBMVe8l7LW-0nwsGZQiOGd48Tw&s'
-        }
-        title="Student Name"
-        onClose={() => {
-          setIsOpen(false);
-        }}
-        onDownload={() => {}}
-        isOpen={isOpen}
-      >
-      </GImageDocPreview>
-      <div className="add_documents_btn">
-        <IonButton className="gmodal-cancel">
-          <IonIcon icon={addCircleOutline}></IonIcon> Add Personal Doc's
-        </IonButton>
       </div>
     </div>
   );
