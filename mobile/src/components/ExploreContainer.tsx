@@ -10,7 +10,7 @@ import TimeTable from '../pages/TimeTable';
 import ExCircularActivities from '../pages/ExCircularActivities';
 import Gallery from '../pages/Gallery';
 import About from '../pages/About/About';
-import ContactUs from '../pages/ContactUs';
+import ContactUs from '../pages/ContactUs/ContactUs';
 import Achievements from '../pages/Achievements';
 import SchoolWibe from '../pages/wibe/SchoolWibe';
 import Messages from '../pages/messages/Messages';
@@ -26,6 +26,8 @@ import { useSelector } from 'react-redux';
 import AboutSuperAdmin from '../pages/About/AboutSuperAdmin';
 import Courses from '../pages/Courses/Courses';
 import { CoursesSuperAdmin } from '../pages/Courses/CoursesSuperAdmin';
+import { DashboardSA } from '../pages/dashboard/DashboardSA';
+import ContactUsSa from '../pages/ContactUs/ContactUsSa';
 
 interface ContainerProps {
   name: string;
@@ -43,10 +45,10 @@ const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
 };
 
 const GetComponent = ({ name }: any) => {
-  const isStudent = useSelector((state:any)=>state.auth.role) === 'Student'
+  const isStudent = useSelector((state:any)=>state.auth.role) === 'Student' || useSelector((state:any)=>state.auth.role) === '';
   switch (name) {
     case 'dashboard':
-      return <Dashboard />;
+      return isStudent ? <Dashboard /> : <DashboardSA />;
     case 'home':
       return <Home />;
     case 'attendance':
@@ -74,7 +76,7 @@ const GetComponent = ({ name }: any) => {
     case 'academic-subjects':
       return <AcedamicSubject />;
     case 'contact-us':
-      return <ContactUs />;
+      return isStudent ? <ContactUs /> : <ContactUsSa />;
     case 'courses':
       return isStudent ? <Courses /> : <CoursesSuperAdmin />;
     case 'achievements':

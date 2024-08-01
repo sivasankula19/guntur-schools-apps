@@ -58,6 +58,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     -webkit-line-clamp: 1;
+    line-clamp: 1;
     line-height: 1em;
     max-height: 1.8em;
     word-break: break-all;
@@ -252,3 +253,49 @@
     flex-shrink: 0;
     padding: 0 12px;
 }
+
+.dashboard_sa{
+    height: 100%;
+}
+
+.dashboard_sa .resources_text h1{
+    font-size: 16px;
+}
+
+.dashboard_sa ion-card{
+    margin: 0;
+    animation: slideIn 0.8s forwards;
+}
+
+.dashboard_sa .resource_content{
+    padding: 8px;
+}
+
+.dashboard_sa .btns_resources button{
+    min-height: 40px;
+    border: 1px solid;
+    border-color: #1D7AF5;
+    background: #ffffff;
+    border-radius: 12px;
+    margin: 0 14px;
+    padding: 8px;
+    width: auto;
+    color: #1D7AF5;
+}
+
+.dashboard_sa .btns_resources button:active{
+    background-color: #b7d6ff;
+}
+
+.dark .dashboard_sa .btns_resources button{
+    background: #000000;
+}
+
+.dasbrd_sa{
+    position: absolute;
+}
+
+.analytics_container{
+    height: calc(100% - 102px);
+}
+
