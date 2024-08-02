@@ -68,7 +68,7 @@ const GetComponent = ({ name }: any) => {
     case 'calendar':
       return <TimeTable />;
     case 'gallery':
-      return <Gallery />;
+      return <Gallery isStudent={isStudent}/>;
     case 'ex-circular':
       return <ExCircularActivities />;
     case 'about':

@@ -1,27 +1,44 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useParams } from 'react-router';
-import { IonIcon, IonSelect, IonSelectOption, IonText } from '@ionic/react';
-import { arrowBackCircleOutline, arrowForwardCircleOutline, expandOutline } from 'ionicons/icons';
+import { IonButton, IonIcon, IonImg, IonInput, IonSelect, IonSelectOption, IonText } from '@ionic/react';
+import { arrowBackCircleOutline, arrowForwardCircleOutline, cloudUploadOutline, expandOutline, locationOutline } from 'ionicons/icons';
 
-const Gallery: React.FC = () => {
+const Gallery: any = (props: any) => {
+  const { isStudent } = props
+  console.log('isStudent', isStudent)
   const { name } = useParams<{ name: string }>();
   const [currentImg, setCurrentImg] = useState(0)
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleButtonClick = (e:any) => {
+    e.stopPropagation();
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      console.log('Selected file:', file.name);
+    }
+  };
 
   const schlImages = [
-    { id: '1', uploadedBy: 'Siva', uploadedById: 'Y248C039', path: '', imageUrl: '' },
-    { id: '2', uploadedBy: 'Siva', uploadedById: 'Y248C039', path: '', imageUrl: '' },
-    { id: '3', uploadedBy: 'Siva', uploadedById: 'Y248C039', path: '', imageUrl: '' },
-    { id: '4', uploadedBy: 'Siva', uploadedById: 'Y248C039', path: '', imageUrl: '' },
-    { id: '5', uploadedBy: 'Siva', uploadedById: 'Y248C039', path: '', imageUrl: '' },
-    { id: '6', uploadedBy: 'Siva', uploadedById: 'Y248C039', path: '', imageUrl: '' },
+    { id: '1', uploadedBy: 'Siva', uploadedById: 'Y248C039', path: '', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVJTEfzUvcFC7PHZQYOriegYSD4h7Fk_6zGQ&s' },
+    { id: '2', uploadedBy: 'Siva', uploadedById: 'Y248C039', path: '', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVJTEfzUvcFC7PHZQYOriegYSD4h7Fk_6zGQ&s' },
+    { id: '3', uploadedBy: 'Siva', uploadedById: 'Y248C039', path: '', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVJTEfzUvcFC7PHZQYOriegYSD4h7Fk_6zGQ&s' },
+    { id: '4', uploadedBy: 'Siva', uploadedById: 'Y248C039', path: '', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVJTEfzUvcFC7PHZQYOriegYSD4h7Fk_6zGQ&s' },
+    { id: '5', uploadedBy: 'Siva', uploadedById: 'Y248C039', path: '', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVJTEfzUvcFC7PHZQYOriegYSD4h7Fk_6zGQ&s' },
+    { id: '6', uploadedBy: 'Siva', uploadedById: 'Y248C039', path: '', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVJTEfzUvcFC7PHZQYOriegYSD4h7Fk_6zGQ&s' },
   ]
   const selectedClsImgs = [
-    { id: '1', uploadedBy: 'Siva', uploadedById: 'Y248C039', path: '', imageUrl: '' },
-    { id: '2', uploadedBy: 'Siva', uploadedById: 'Y248C039', path: '', imageUrl: '' },
-    { id: '3', uploadedBy: 'Siva', uploadedById: 'Y248C039', path: '', imageUrl: '' },
-    { id: '4', uploadedBy: 'Siva', uploadedById: 'Y248C039', path: '', imageUrl: '' },
-    { id: '5', uploadedBy: 'Siva', uploadedById: 'Y248C039', path: '', imageUrl: '' },
-    { id: '6', uploadedBy: 'Siva', uploadedById: 'Y248C039', path: '', imageUrl: '' },
+    { id: '1', uploadedBy: 'Siva', uploadedById: 'Y248C039', path: '', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVJTEfzUvcFC7PHZQYOriegYSD4h7Fk_6zGQ&s' },
+    { id: '2', uploadedBy: 'Siva', uploadedById: 'Y248C039', path: '', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVJTEfzUvcFC7PHZQYOriegYSD4h7Fk_6zGQ&s' },
+    { id: '3', uploadedBy: 'Siva', uploadedById: 'Y248C039', path: '', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVJTEfzUvcFC7PHZQYOriegYSD4h7Fk_6zGQ&s' },
+    { id: '4', uploadedBy: 'Siva', uploadedById: 'Y248C039', path: '', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVJTEfzUvcFC7PHZQYOriegYSD4h7Fk_6zGQ&s' },
+    { id: '5', uploadedBy: 'Siva', uploadedById: 'Y248C039', path: '', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVJTEfzUvcFC7PHZQYOriegYSD4h7Fk_6zGQ&s' },
+    { id: '6', uploadedBy: 'Siva', uploadedById: 'Y248C039', path: '', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVJTEfzUvcFC7PHZQYOriegYSD4h7Fk_6zGQ&s' },
   ]
   return (
     <div className='gallery'>
@@ -31,14 +48,31 @@ const Gallery: React.FC = () => {
       <div className='scl_imgs'>
         {schlImages.slice(0, 4).map((sclImg, index) => (<div key={sclImg.id} className='img_item'>
           {(index < 3 || schlImages.length <= 4) ? (<>
-            <div>image rplc</div>
+            <div><IonImg src={sclImg.imageUrl} /></div>
           </>) : (<>
             <IonText>
-              <h1>+ {schlImages.length - 4}</h1>
+              <IonImg src={schlImages[4].imageUrl} />
+              <div className='tex_number_images'>
+                <h1>+ {schlImages.length - 4}</h1>
+              </div>
             </IonText>
           </>)}
         </div>))}
       </div>
+      {!isStudent && <div onClick={handleButtonClick} className="custom-file-input">
+        <input
+          type="file"
+          ref={fileInputRef}
+          className="file-input"
+          onChange={handleFileChange}
+        />
+        <div className='field width-100 file-label'>
+          <IonInput label="Upload School Image" readonly labelPlacement="floating" fill="outline" placeholder="jpg or png"></IonInput>
+          <IonIcon icon={cloudUploadOutline}></IonIcon>
+        </div>
+        <div onClick={handleButtonClick} className='custom_place_val'></div>
+      </div>}
+
       <div className='g_flex g_space_btwn'>
         <div style={{ width: '30%' }}>
           <IonSelect
@@ -90,7 +124,7 @@ const Gallery: React.FC = () => {
         {selectedClsImgs.length ? (<>
           <div className='cls_imgs_container'>
             <div className='g_flex g_align_cntr g_jstfy_content_cntr actual_image'>
-              image
+              <IonImg src={selectedClsImgs[0].imageUrl} />
             </div>
             <div className='img_title_ex'>
               <IonText><h4>Image Title</h4></IonText>
@@ -115,6 +149,19 @@ const Gallery: React.FC = () => {
           </div>
         </>)}
       </div>
+      {!isStudent && <div className="custom-file-input">
+        <input
+          type="file"
+          ref={fileInputRef}
+          className="file-input"
+          onChange={handleFileChange}
+        />
+        <div className='field width-100 file-label'>
+          <IonInput label="Upload Year - Class - Section image" readonly labelPlacement="floating" fill="outline" placeholder="jpg or png"></IonInput>
+          <IonIcon icon={cloudUploadOutline}></IonIcon>
+        </div>
+        <div onClick={handleButtonClick} className='custom_place_val'></div>
+      </div>}
     </div>
   );
 };
