@@ -590,6 +590,14 @@ ion-header {
   font-size: 16px !important;
 }
 
+.font-600{
+  font-weight: 600;
+}
+
+.color-app{
+  color: #1D7AF5;
+}
+
 
 /* Student List & Staff List css */
 
@@ -3923,3 +3931,167 @@ label.input-wrapper.sc-ion-input-ios {
 .width-70{
   width: 70%;
 }
+
+.time_table_sa{
+  height: calc(100% - 40px);
+  background: #ffffff;
+}
+
+.dark .time_table_sa{
+  background: #000000;
+}
+
+.time_table_sa .scroll_container{
+  display: flex;
+  width: 100%;
+  height: 60px;
+  margin-bottom: 6px;
+  border: 1px solid;
+  border-color: #1D7AF5;
+  overflow-x: auto;
+  overflow-y: hidden;
+  align-items: center;
+}
+
+.time_table_sa .scroll_container .scroll_item{
+  height: 40px;
+  width: auto;  
+  border: 1px solid;
+  border-color: #1D7AF5;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 8px;
+  padding: 0 10px;
+  border-radius: 8px;
+}
+
+.time_table_sa .scroll_container .scroll_item ion-text p{
+  font-size: 16px;
+  font-weight: 600;
+  color: #1D7AF5;
+}
+
+.time_table_sa .scroll_container .selected{
+  background-color: #1D7AF5;
+}
+
+.time_table_sa .scroll_container .selected ion-text p{
+  color: #ffffff;
+}
+
+.time_table_sa .save_icon{
+  font-size: 32px;
+}
+
+.table_view .time_container{
+  width: 120px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.table_view .time_container .time_item{
+  width: 100%;
+  min-height: 40px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.table_view .time_container .time_item p{
+  margin: 0;
+  font-size: 14px;
+}
+
+.table_view .time_container .items_hold{
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 5px;
+  border: 1px solid;
+  border-color: #1D7AF5;
+  border-right: 1px solid lightgray;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  height: 61px;
+  display: flex;
+}
+
+.table_view .periods_container{
+  width: calc(100% - 120px);
+  min-height: 40px;
+  overflow-x: auto;
+  display: flex;
+}
+
+.table_view .periods_container .scroll_view{
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+  border-color: #1D7AF5;
+  border-left: 1px solid lightgray;
+  margin-bottom: 8px;
+}
+
+.elements_holder{
+  width: auto;
+}
+
+.table_view .periods_container .scroll_view .items_hold {
+  width: 120px;
+  padding: 5px 8px;
+  border-right: 1px solid;
+  border-color: lightgray;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.table_view .periods_container .scroll_view .scroll_item {
+  width: 100%;
+  min-height: 40px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.table_view .periods_container .scroll_view .head_scroll_item{
+  border: 1px solid;
+  border-color: #1D7AF5;
+  height: 40px;
+}
+
+.table_scrollable{
+  border: 1px solid;
+  height: calc(100% - 100px);
+  overflow-y: auto;
+}
+
+.add_time_blck{
+  border: 1px solid;
+  border-color: #1D7AF5;
+  border-radius: 4px;
+  min-height: 40px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.period_time_modal{
+  --width:80%;
+  width: 100%;
+}
+
+
+
+
+
+

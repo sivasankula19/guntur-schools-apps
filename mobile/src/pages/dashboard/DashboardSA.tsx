@@ -42,6 +42,7 @@ export const DashboardSA = () => {
         {id:19, moduleName:'Courses', icon:bookOutline, redirectTo:'/courses'}
     ];
     const chipsDataPrivate = [
+        // { id: 1, moduleName: 'Class Time Table', icon: calendarOutline, redirectTo: '/timetable' },
         { id: 1, moduleName: 'Attendance', icon: calendarOutline, redirectTo: '/attendance' },
         { id: 2, moduleName: 'Progress Card', icon: documentTextOutline, redirectTo: '/progress-card' },
         { id: 3, moduleName: 'Home Work', icon: bookOutline, redirectTo: '/home-work' },
