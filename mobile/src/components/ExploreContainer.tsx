@@ -6,7 +6,7 @@ import StaffList from '../pages/StaffList';
 import ProgressCard from '../pages/ProgressCard/ProgressCard';
 import Subjects from '../pages/Subjects';
 import FeesDues from '../pages/FeesDues';
-import TimeTable from '../pages/TimeTable';
+import TimeTable from '../pages/TimeTable/TimeTable';
 import ExCircularActivities from '../pages/ExCircularActivities';
 import Gallery from '../pages/Gallery';
 import About from '../pages/About/About';
@@ -28,6 +28,9 @@ import Courses from '../pages/Courses/Courses';
 import { CoursesSuperAdmin } from '../pages/Courses/CoursesSuperAdmin';
 import { DashboardSA } from '../pages/dashboard/DashboardSA';
 import ContactUsSa from '../pages/ContactUs/ContactUsSa';
+import TimeTableSA from '../pages/TimeTable/TimeTableSA';
+import Calendar from '../pages/Calendar/Calendar';
+import CalendarSA from '../pages/Calendar/CalendarSA';
 
 interface ContainerProps {
   name: string;
@@ -66,9 +69,11 @@ const GetComponent = ({ name }: any) => {
     case 'fee-structure':
       return <FeesDues />;
     case 'calendar':
-      return <TimeTable />;
+      return isStudent ? <Calendar /> : <CalendarSA />;
+    case 'time-table':
+      return isStudent ? <TimeTable /> : <TimeTableSA />;
     case 'gallery':
-      return <Gallery />;
+      return <Gallery isStudent={isStudent}/>;
     case 'ex-circular':
       return <ExCircularActivities />;
     case 'about':

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router';
-import GBreadCrumbs from '../components/GBreadCrumbs';
+import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { IonCard, IonCardContent, IonIcon, IonText } from '@ionic/react';
 import { listSharp, appsSharp } from 'ionicons/icons';
-import { transformListToGrid, getDatesForMonth } from '../common/utility';
+import { transformListToGrid, getDatesForMonth } from '../../common/utility';
 
 const TimeTable: React.FC = () => {
   const { name } = useParams<{ name: string }>();

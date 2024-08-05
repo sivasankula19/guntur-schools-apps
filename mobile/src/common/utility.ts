@@ -1415,3 +1415,200 @@ export const schoolAssetsData = [
     assets:[]
   },
 ]
+
+export const periodsListData =[
+  {
+      "id": "day_id01",
+      "fromTime": "08:00 AM",
+      "toTime": "09:00 PM",
+      "periods": [
+          {
+              "day": "Monday",
+              "dayShort": "MON",
+              "id": "monday_01",
+              "selectedSubjectId": "",
+              "staffId": "",
+              "subjectInfo": {
+                  "subjectName": "",
+                  "subjectId": ""
+              },
+              "staffInfo": {
+                  "staffName": "",
+                  "staffId": ""
+              }
+          },
+          {
+              "day": "Tuesday",
+              "dayShort": "TUE",
+              "id": "tuesday_01",
+              "selectedSubjectId": "",
+              "staffId": "",
+              "subjectInfo": {
+                  "subjectName": "",
+                  "subjectId": ""
+              },
+              "staffInfo": {
+                  "staffName": "",
+                  "staffId": ""
+              }
+          },
+          {
+              "day": "Wednesday",
+              "dayShort": "WED",
+              "id": "wednesday_01",
+              "selectedSubjectId": "",
+              "staffId": "",
+              "subjectInfo": {
+                  "subjectName": "",
+                  "subjectId": ""
+              },
+              "staffInfo": {
+                  "staffName": "",
+                  "staffId": ""
+              }
+          },
+          {
+              "day": "Thursday",
+              "dayShort": "THU",
+              "id": "thursday_01",
+              "selectedSubjectId": "",
+              "staffId": "",
+              "subjectInfo": {
+                  "subjectName": "",
+                  "subjectId": ""
+              },
+              "staffInfo": {
+                  "staffName": "",
+                  "staffId": ""
+              }
+          },
+          {
+              "day": "Friday",
+              "dayShort": "FRI",
+              "id": "friday_01",
+              "selectedSubjectId": "",
+              "staffId": "",
+              "subjectInfo": {
+                  "subjectName": "",
+                  "subjectId": ""
+              },
+              "staffInfo": {
+                  "staffName": "",
+                  "staffId": ""
+              }
+          },
+          {
+              "day": "Saturday",
+              "dayShort": "SAT",
+              "id": "saturday_01",
+              "selectedSubjectId": "",
+              "staffId": "",
+              "subjectInfo": {
+                  "subjectName": "",
+                  "subjectId": ""
+              },
+              "staffInfo": {
+                  "staffName": "",
+                  "staffId": ""
+              }
+          },
+      ]
+  },
+  {
+      "id": "day_id02",
+      "fromTime": "09:00 AM",
+      "toTime": "10:00 AM",
+      "periods": [
+          {
+              "day": "Monday",
+              "dayShort": "MON",
+              "id": "monday_02",
+              "selectedSubjectId": "",
+              "staffId": "",
+              "subjectInfo": {
+                  "subjectName": "",
+                  "subjectId": ""
+              },
+              "staffInfo": {
+                  "staffName": "",
+                  "staffId": ""
+              }
+          },
+          {
+              "day": "Tuesday",
+              "dayShort": "TUE",
+              "id": "tuesday_02",
+              "selectedSubjectId": "",
+              "staffId": "",
+              "subjectInfo": {
+                  "subjectName": "",
+                  "subjectId": ""
+              },
+              "staffInfo": {
+                  "staffName": "",
+                  "staffId": ""
+              }
+          },
+          {
+              "day": "Wednesday",
+              "dayShort": "WED",
+              "id": "wednesday_02",
+              "selectedSubjectId": "",
+              "staffId": "",
+              "subjectInfo": {
+                  "subjectName": "",
+                  "subjectId": ""
+              },
+              "staffInfo": {
+                  "staffName": "",
+                  "staffId": ""
+              }
+          },
+          {
+              "day": "Thursday",
+              "dayShort": "THU",
+              "id": "thursday_02",
+              "selectedSubjectId": "",
+              "staffId": "",
+              "subjectInfo": {
+                  "subjectName": "",
+                  "subjectId": ""
+              },
+              "staffInfo": {
+                  "staffName": "",
+                  "staffId": ""
+              }
+          },
+          {
+              "day": "Friday",
+              "dayShort": "FRI",
+              "id": "friday_02",
+              "selectedSubjectId": "",
+              "staffId": "",
+              "subjectInfo": {
+                  "subjectName": "",
+                  "subjectId": ""
+              },
+              "staffInfo": {
+                  "staffName": "",
+                  "staffId": ""
+              }
+          },
+          {
+              "day": "Saturday",
+              "dayShort": "SAT",
+              "id": "saturday_02",
+              "selectedSubjectId": "",
+              "staffId": "",
+              "subjectInfo": {
+                  "subjectName": "",
+                  "subjectId": ""
+              },
+              "staffInfo": {
+                  "staffName": "",
+                  "staffId": ""
+              }
+          },
+      ]
+  },
+]
