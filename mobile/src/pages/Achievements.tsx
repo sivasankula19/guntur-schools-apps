@@ -178,7 +178,7 @@ const Achievements: React.FC = () => {
                 >
                   {options.map((option:any)=>{
                     return(
-                      <IonSelectOption value={option.value}>{option.key}</IonSelectOption>
+                      <IonSelectOption key={option.key} value={option.value}>{option.key}</IonSelectOption>
                     )
                   })}
             </IonSelect>

@@ -84,10 +84,10 @@ const AddDoc: React.FC<IProps> = ({ title, subtitle }) => {
               </IonSelect>
             </div>
             <div className='field m-bottom-10'>
-                <IonInput label="Line Number 2" labelPlacement="floating" fill="outline" placeholder="Line Number 2"></IonInput>
+              <IonInput label="Line Number 2" labelPlacement="floating" fill="outline" placeholder="Line Number 2"></IonInput>
             </div>
             <div className='field m-bottom-10'>
-                <IonInput label="Line Number 2" labelPlacement="floating" fill="outline" placeholder="Line Number 2"></IonInput>
+              <IonInput label="Line Number 2" labelPlacement="floating" fill="outline" placeholder="Line Number 2"></IonInput>
             </div>
           </div>
         </div>
