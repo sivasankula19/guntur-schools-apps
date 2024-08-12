@@ -13,10 +13,10 @@ import {
   IonToggle,
 } from '@ionic/react';
 import React, { useState } from 'react';
-import { classSubjects } from '../common/utility';
+import { classSubjects } from '../../common/utility';
 import { calculatorOutline, starOutline } from 'ionicons/icons';
-import ProgressBar from '../components/ProgressBar';
-import GBreadCrumbs from '../components/GBreadCrumbs';
+import ProgressBar from '../../components/ProgressBar';
+import GBreadCrumbs from '../../components/GBreadCrumbs';
 
 const Subjects: React.FC = () => {
   const [data, setData] = useState(classSubjects);

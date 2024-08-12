@@ -1,9 +1,9 @@
-import { IonContent, IonPage } from '@ionic/react'
-import React, { useEffect } from 'react'
-import { Outlet, useLocation } from 'react-router'
-import Header from './Header'
-import Footer from './Footer'
-import PreLoginContent from './PreLoginContent'
+import { IonContent, IonPage } from '@ionic/react';
+import React, { useEffect } from 'react';
+import { Outlet, useLocation } from 'react-router';
+import Header from './Header';
+import Footer from './Footer';
+import PreLoginContent from './PreLoginContent';
 
 function Layout() {
   const location = useLocation();
@@ -15,26 +15,26 @@ function Layout() {
     '/gallery',
     '/ex-circular',
   ];
-  useEffect(() => {
-    console.log('entered layout', location)
-  }, [location])
+
   return (
     <IonPage className="my_page">
       <Header />
-      <IonContent class='custom_content_view' fullscreen>
-        {
-          preLoginModules.includes(location.pathname) ? <>
+      <IonContent class="custom_content_view" fullscreen>
+        {preLoginModules.includes(location.pathname) ? (
+          <>
             <PreLoginContent>
               <Outlet />
             </PreLoginContent>
-          </> : <>
+          </>
+        ) : (
+          <>
             <Outlet />
           </>
-        }
+        )}
       </IonContent>
-      <Footer></Footer>
+      {!location.pathname.includes('/messages/') && <Footer></Footer>}
     </IonPage>
-  )
+  );
 }
 
-export default Layout
+export default Layout;
