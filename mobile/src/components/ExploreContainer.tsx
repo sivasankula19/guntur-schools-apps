@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './ExploreContainer.css';
-import Attendance from '../pages/Attendance';
+import Attendance from '../pages/Attendance/Attendance';
 import StudentList from '../pages/StudentList';
 import StaffList from '../pages/StaffList';
 import ProgressCard from '../pages/ProgressCard/ProgressCard';
@@ -31,31 +31,34 @@ import ContactUsSa from '../pages/ContactUs/ContactUsSa';
 import TimeTableSA from '../pages/TimeTable/TimeTableSA';
 import Calendar from '../pages/Calendar/Calendar';
 import CalendarSA from '../pages/Calendar/CalendarSA';
+import AttendanceClassSelect from '../pages/Attendance/AttendanceClassSelect';
+import AttendanceContainer from '../pages/Attendance/AttendanceContainer';
 
 interface ContainerProps {
   name: string;
 }
 
 const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
+  const isStudent = useSelector((state:any)=>state.auth.role) === 'Student' || useSelector((state:any)=>state.auth.role) === '';
   useEffect(() => {
   }, []);
 
   return (
     <React.Fragment>
-      <GetComponent name={name} />
+      <GetComponent name={name} isStudent={isStudent}/>
     </React.Fragment>
   );
 };
 
-const GetComponent = ({ name }: any) => {
-  const isStudent = useSelector((state:any)=>state.auth.role) === 'Student' || useSelector((state:any)=>state.auth.role) === '';
+const GetComponent = ({ name, isStudent }: any) => {
+ 
   switch (name) {
     case 'dashboard':
       return isStudent ? <Dashboard /> : <DashboardSA />;
     case 'home':
       return <Home />;
     case 'attendance':
-      return <Attendance />;
+      return isStudent ? <Attendance editable={false} /> : <AttendanceContainer />;
     case 'progress-card':
       return <ProgressCard />;
     case 'students-list':

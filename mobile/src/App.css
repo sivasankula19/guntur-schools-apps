@@ -1237,6 +1237,12 @@ ion-breadcrumbs {
   box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.2);
 }
 
+.attendance_sa {
+  height: calc(100% - 40px);
+}
+
+
+
 
 /* ion modal */
 
@@ -2299,6 +2305,10 @@ label.input-wrapper.sc-ion-input-ios {
   height: 210px;
 }
 
+.dark .scl_banner {
+  background-color: #282828;
+}
+
 .sa_field {
   padding-top: 12px;
 }
@@ -2329,6 +2339,11 @@ label.input-wrapper.sc-ion-input-ios {
   border: 1px solid;
   border-radius: 8px;
   padding: 2px 8px;
+  background: #ffffff;
+}
+
+.dark .sa_field input{
+  background: #000000;
 }
 
 .sa_field ion-button{
@@ -2428,6 +2443,12 @@ label.input-wrapper.sc-ion-input-ios {
   border-color: #1D7AF5;
   margin-bottom: 8px;
   padding-left: 8px;
+  color: #000000;
+}
+
+.dark .add_course_sa input {
+  background: #000000;
+  color: #ffffff;
 }
 
 .add_course_sa ion-select{
@@ -3020,9 +3041,7 @@ label.input-wrapper.sc-ion-input-ios {
 }
 
 .achieve_popup{
-  min-height: 4vh !important;
   margin-bottom: 1vw;
-  border:1px solid #1D7AF5 !important;
 }
 
 .input-with-icon {
@@ -4090,7 +4109,6 @@ label.input-wrapper.sc-ion-input-ios {
 }
 
 .table_scrollable{
-  border: 1px solid;
   height: calc(100% - 100px);
   overflow-y: auto;
 }

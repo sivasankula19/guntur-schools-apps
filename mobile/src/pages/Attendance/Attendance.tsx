@@ -26,10 +26,10 @@ import {
   getDatesForMonth,
   studentAttendanceCalendar,
   transformListToGrid,
-} from '../common/utility';
-import GBreadCrumbs from '../components/GBreadCrumbs';
+} from '../../common/utility';
+import GBreadCrumbs from '../../components/GBreadCrumbs';
 
-const Attendance: React.FC = () => {
+const Attendance = ({editable = false}:any) => {
   const [viewMode, setViewMode] = useState('list');
   const todayDate = new Date();
   const [currentMY, setCurrentMY] = useState<any>({ month: todayDate.getMonth() + 1, year: todayDate.getFullYear() });
@@ -47,6 +47,7 @@ const Attendance: React.FC = () => {
   const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 
   useEffect(() => {
+
     if(viewMode === 'list'){
     setAttendanceDate(getDatesForMonth(currentMY.month, currentMY.year));
     } else {

@@ -9,7 +9,7 @@ import {
   IonText,
 } from '@ionic/react';
 import { callOutline, expandOutline, imageOutline, informationCircleOutline, informationOutline, newspaperOutline, schoolOutline, trophyOutline } from 'ionicons/icons';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { authenticateUser } from '../../redux/reducers/authSlice';
 import { useNavigate } from 'react-router';

@@ -299,3 +299,13 @@
     height: calc(100% - 102px);
 }
 
+.analytics_holder_ds{
+    width: 80%;
+    margin: auto;
+    height: 200px;
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}

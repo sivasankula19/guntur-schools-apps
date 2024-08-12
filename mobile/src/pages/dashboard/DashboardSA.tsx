@@ -33,7 +33,7 @@ export const DashboardSA = () => {
         }
     }
 
-    const chipsDataPublic = [
+    const chipsDataPrivate = [
         { id: 14, moduleName: 'Ex-Circular', icon: ribbonOutline, redirectTo: '/ex-circular' },
         { id: 15, moduleName: 'Gallery', icon: imageOutline, redirectTo: '/gallery' },
         { id: 16, moduleName: 'Achievements', icon: trophyOutline, redirectTo: '/achievements' },
@@ -41,7 +41,7 @@ export const DashboardSA = () => {
         { id: 18, moduleName: 'About', icon: informationCircleOutline, redirectTo: '/about' },
         {id:19, moduleName:'Courses', icon:bookOutline, redirectTo:'/courses'}
     ];
-    const chipsDataPrivate = [
+    const chipsDataPublic = [
         // { id: 1, moduleName: 'Class Time Table', icon: calendarOutline, redirectTo: '/timetable' },
         { id: 1, moduleName: 'Attendance', icon: calendarOutline, redirectTo: '/attendance' },
         { id: 2, moduleName: 'Progress Card', icon: documentTextOutline, redirectTo: '/progress-card' },
@@ -85,7 +85,7 @@ export const DashboardSA = () => {
                 </div>)
             }
             <div onClick={handleModule} className='analytics_container'>
-                <div className='g_full_height g_txt_center'>
+                <div className='g_full_height g_txt_center analytics_holder_ds'>
                     Analytics Here!
                 </div>
             </div>

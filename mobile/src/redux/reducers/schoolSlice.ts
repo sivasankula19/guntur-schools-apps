@@ -4,6 +4,9 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   selectedSchool: null,
   schoolData: null,
+  preLoginModulesList: [
+    "About", "Courses", "Contact-Us", ""
+  ],
   preLoginModule:'',
 };
 
