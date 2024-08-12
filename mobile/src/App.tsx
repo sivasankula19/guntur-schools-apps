@@ -45,7 +45,7 @@ import Dashboard from './pages/dashboard/Dashboard';
 import Home from './pages/Home/Home';
 import Attendance from './pages/Attendance/Attendance';
 import ProgressCard from './pages/ProgressCard/ProgressCard';
-import Subjects from './pages/Subjects';
+import Subjects from './pages/Subjects/Subjects';
 import StaffList from './pages/StaffList';
 import StudentList from './pages/StudentList';
 import Documents from './pages/Documents';
@@ -73,6 +73,7 @@ import TimeTableSA from './pages/TimeTable/TimeTableSA';
 import CalendarSA from './pages/Calendar/CalendarSA';
 import { DashboardSA } from './pages/dashboard/DashboardSA';
 import AttendanceContainer from './pages/Attendance/AttendanceContainer';
+import SubjectsSA from './pages/Subjects/SubjectsSA';
 
 setupIonicReact();
 
@@ -175,7 +176,7 @@ const App: React.FC = () => {
                 <Route path='/calendar' element={isStudent ? <Calendar /> : <CalendarSA />} />
                 <Route path='/students-list' element={<StudentList />} />
                 <Route path='/staff-list' element={<StaffList />} />
-                <Route path='/subjects' element={<Subjects />} />
+                <Route path='/subjects' element={isStudent ? <Subjects /> : <SubjectsSA />} />
                 <Route path='/school-wibe' element={<SchoolWibe />} />
                 <Route path='/documents' element={<Documents />} />
                 <Route path={'/user/:id'} element={<UserByID />} />

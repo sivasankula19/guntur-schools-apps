@@ -1,8 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router';
-import PreLoginHead from '../components/PreLoginHead';
 import { IonButton, IonCard, IonCardContent, IonIcon, IonInput, IonSelect, IonSelectOption, IonText, IonTextarea } from '@ionic/react';
-import { clipboardOutline, copyOutline, expandOutline, locationOutline, mailOutline, phonePortraitOutline, schoolOutline } from 'ionicons/icons';
+import { copyOutline, expandOutline, locationOutline, mailOutline, phonePortraitOutline, schoolOutline } from 'ionicons/icons';
 
 const ContactUs: React.FC = () => {
   const { name } = useParams<{ name: string }>();
