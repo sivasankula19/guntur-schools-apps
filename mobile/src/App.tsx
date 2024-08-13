@@ -62,7 +62,7 @@ import About from './pages/About/About';
 import ExCircularActivities from './pages/ExCircularActivities';
 import Dairy from './pages/Dairy';
 import HomeWork from './pages/Homework/HomeWork';
-import SchoolAssets from './pages/SchoolAssets';
+import SchoolAssets from './pages/SchoolAssets/SchoolAssets';
 import ExamSchedule from './pages/ExamSchedule';
 import Messages from './pages/messages/Messages';
 import PageNotFound from './pages/PageNotFound';
@@ -74,6 +74,7 @@ import CalendarSA from './pages/Calendar/CalendarSA';
 import { DashboardSA } from './pages/dashboard/DashboardSA';
 import AttendanceContainer from './pages/Attendance/AttendanceContainer';
 import SubjectsSA from './pages/Subjects/SubjectsSA';
+import SchoolAssetsSA from './pages/SchoolAssets/SchoolAssetsSA';
 
 setupIonicReact();
 
@@ -194,7 +195,7 @@ const App: React.FC = () => {
                 <Route path='/contact-us' element={isStudent ? <ContactUs /> : <ContactUsSa />} />
                 <Route path='/courses' element={isStudent ? <Courses /> : <CoursesSuperAdmin />} />
                 <Route path='/achievements' element={<Achievements />} />
-                <Route path='/assets' element={<SchoolAssets />} />
+                <Route path='/assets' element={isStudent ? <SchoolAssets /> : <SchoolAssetsSA />} />
               </Route>
               <Route path={'/select-school'} element={<SelectSchool />} />
               <Route path='*' element={<PageNotFound />} />

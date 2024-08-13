@@ -1359,7 +1359,7 @@ export const examScedulesData =  [
   },
 ]
 
-export const schoolAssetsData = [
+export const schoolAssetsDataDummy = [
   {
     category:'Building and Facilities',
     id:1,
@@ -1397,7 +1397,16 @@ export const schoolAssetsData = [
   {
     category:'Equipment',
     id:2,
-    assets:[]
+    assets:[
+      {
+        name:'Sports',
+        types:['TT','Football','Cricket Bats']
+       },
+       {
+        name:'Study',
+        types:['Mobiles','Labs','Laptops']
+       },
+    ]
   },
   {
     category:'Digital Assets',

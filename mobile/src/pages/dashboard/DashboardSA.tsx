@@ -69,8 +69,8 @@ export const DashboardSA = () => {
                             </IonText>
                         </div>
                         <div className='g_flex width-70 btns_resources'>
-                            <button name='privateModule' id='privateModule' onClick={handleModule}>Public Modules</button>
-                            <button name='publicModule' id='publicModule' onClick={handleModule}>Private Modules</button>
+                            <button className={`${moduleSelected === 'privateModule' ? 'selected_module_btn' : ''}`} name='privateModule' id='privateModule' onClick={handleModule}>Public Modules</button>
+                            <button className={`${moduleSelected === 'publicModule' ? 'selected_module_btn' : ''}`} name='publicModule' id='publicModule' onClick={handleModule}>Private Modules</button>
                         </div>
                     </div>
                 </IonCardContent>
