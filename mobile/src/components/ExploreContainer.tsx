@@ -15,7 +15,7 @@ import Achievements from '../pages/Achievements';
 import SchoolWibe from '../pages/wibe/SchoolWibe';
 import Messages from '../pages/messages/Messages';
 import ExamSchedule from '../pages/ExamSchedule';
-import SchoolAssets from '../pages/SchoolAssets';
+import SchoolAssets from '../pages/SchoolAssets/SchoolAssets';
 import HomeWork from '../pages/Homework/HomeWork';
 import Dairy from '../pages/Dairy';
 import AcedamicSubject from '../pages/AcedamicSubjects';

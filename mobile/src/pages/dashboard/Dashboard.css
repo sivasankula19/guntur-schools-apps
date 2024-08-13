@@ -274,13 +274,13 @@
 .dashboard_sa .btns_resources button{
     min-height: 40px;
     border: 1px solid;
-    border-color: #1D7AF5;
     background: #ffffff;
+    border-color: #000000;
     border-radius: 12px;
     margin: 0 14px;
     padding: 8px;
     width: auto;
-    color: #1D7AF5;
+    color: #000000;
 }
 
 .dashboard_sa .btns_resources button:active{
@@ -289,6 +289,13 @@
 
 .dark .dashboard_sa .btns_resources button{
     background: #000000;
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+.selected_module_btn{
+    color: #1D7AF5 !important;
+    border-color: #1D7AF5 !important;
 }
 
 .dasbrd_sa{
