@@ -3585,8 +3585,26 @@ label.input-wrapper.sc-ion-input-ios {
 
 /* Home work */
 
+.add_homework{
+  --background: #ffffff;
+  --color: #1D7AF5;
+  --border-color: #1D7AF5;
+  --border-style: solid;
+  --border-width: 1px;
+  --background-hover: none;
+  --background-activated: none;
+  --background-focused: none;
+  opacity: 1;
+  min-height:auto;
+  height:4vh !important ;
+  margin-bottom: 1vh;
+  text-transform: none;
+  width:90%;
+  border-radius: 12px;
+}
+
 .home_work{
-  margin: 8px;
+  margin: 15px;
   border: 1px solid;
   height: calc(100% - 92px);
   border-radius: 8px;
