@@ -80,7 +80,7 @@ const IonInputUI=(label:string,value:string,ph:string,endIcon?:any,type?:any)=>{
 }
 
 const IonTextAreaUI=(label:string,value:string,ph:string,endIcon?:any,type?:any)=>{
-  return(
+  return( 
       <div className='input-with-icon'>
           <IonTextarea
               value={homework[value]}
