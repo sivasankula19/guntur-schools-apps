@@ -80,7 +80,8 @@ setupIonicReact();
 
 const App: React.FC = () => {
   const isDarkMode = useSelector((state: any) => state?.darkMode.isDarkMode);
-  const isStudent = useSelector((state: any) => state.auth.role) === 'Student' || useSelector((state: any) => state.auth.role) === '';
+  const [role, setRole] = useState('Student')
+  const currentRole = useSelector((state: any) => state.auth.role);
   const isUserAcknowledgedMode = useSelector(
     (state: any) => state?.darkMode.isUserAcknowledgedMode
   );
@@ -140,6 +141,11 @@ const App: React.FC = () => {
     };
   }, [ionRouter]);
 
+  useEffect(()=>{
+    if(currentRole)
+      setRole(currentRole)
+  },[currentRole])
+
   return (
     <IonApp className="dark-theme">
       {/* un comment below after development!!! */}
@@ -169,15 +175,15 @@ const App: React.FC = () => {
               <Route path='/' element={<Layout />}>
                 <Route path="/" element={<Navigate to={school === null ? '/select-school' : isAuthenticated ? '/dashboard' : '/home'} />}></Route>
                 <Route path='/home' element={<Home />} />
-                <Route path='/dashboard' element={isStudent ? <Dashboard /> : <DashboardSA />} />
-                <Route path='/attendance' element={isStudent ? <Attendance /> : <AttendanceContainer />} />
+                <Route path='/dashboard' element={role === 'Student' ? <Dashboard /> : <DashboardSA />} />
+                <Route path='/attendance' element={role === 'Student' ? <Attendance /> : <AttendanceContainer />} />
                 <Route path='/attendance:id' element={<Attendance />} />
                 <Route path='/progress-card' element={<ProgressCard />} />
-                <Route path='/time-table' element={isStudent ? <TimeTable /> : <TimeTableSA />} />
-                <Route path='/calendar' element={isStudent ? <Calendar /> : <CalendarSA />} />
+                <Route path='/time-table' element={role === 'Student' ? <TimeTable /> : <TimeTableSA />} />
+                <Route path='/calendar' element={role === 'Student' ? <Calendar /> : <CalendarSA />} />
                 <Route path='/students-list' element={<StudentList />} />
                 <Route path='/staff-list' element={<StaffList />} />
-                <Route path='/subjects' element={isStudent ? <Subjects /> : <SubjectsSA />} />
+                <Route path='/subjects' element={role === 'Student' ? <Subjects /> : <SubjectsSA />} />
                 <Route path='/school-wibe' element={<SchoolWibe />} />
                 <Route path='/documents' element={<Documents />} />
                 <Route path={'/user/:id'} element={<UserByID />} />
@@ -190,12 +196,12 @@ const App: React.FC = () => {
 
                 <Route path='/gallery' element={<Gallery />} />
                 <Route path='/ex-circular' element={<ExCircularActivities />} />
-                <Route path='/about' element={isStudent ? <About /> : <AboutSuperAdmin />} />
+                <Route path='/about' element={role === 'Student' ? <About /> : <AboutSuperAdmin />} />
                 <Route path='/academic-subjects' element={<AcedamicSubject />} />
-                <Route path='/contact-us' element={isStudent ? <ContactUs /> : <ContactUsSa />} />
-                <Route path='/courses' element={isStudent ? <Courses /> : <CoursesSuperAdmin />} />
+                <Route path='/contact-us' element={role === 'Student' ? <ContactUs /> : <ContactUsSa />} />
+                <Route path='/courses' element={role === 'Student' ? <Courses /> : <CoursesSuperAdmin />} />
                 <Route path='/achievements' element={<Achievements />} />
-                <Route path='/assets' element={isStudent ? <SchoolAssets /> : <SchoolAssetsSA />} />
+                <Route path='/assets' element={role === 'Student' ? <SchoolAssets /> : <SchoolAssetsSA />} />
               </Route>
               <Route path={'/select-school'} element={<SelectSchool />} />
               <Route path='*' element={<PageNotFound />} />

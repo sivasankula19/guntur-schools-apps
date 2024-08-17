@@ -24,6 +24,7 @@ const appPages: AppPage[] = RoutesListDynamic;
 
 const Menu: React.FC = () => {
   const isDarkMode = useSelector((state: any) => state?.darkMode.isDarkMode);
+  const isAuthenticated = useSelector((state:any) => state.auth.isAuthenticated)
   const authInfo = useSelector((state: any) => state.auth);
   const authUserId = useSelector((state: any) => state?.auth?.user?.regNumber);
   const location = useLocation();
@@ -51,7 +52,9 @@ const Menu: React.FC = () => {
     <IonMenu contentId="main" type="overlay">
       <IonContent className='custom_side_content'>
         <div className='side_menu_container'>
-          <div className='profile_menu'>
+          {
+          isAuthenticated ? <>
+            <div className='profile_menu'>
             <IonMenuToggle autoHide={false}>
               <IonItem className='menu_user_info' onClick={navigateProfile}>
                 <div className='g_flex'>
@@ -112,6 +115,11 @@ const Menu: React.FC = () => {
               </div>
             </div>
           </div>
+          </> : <>
+          Not Auth
+          </>
+          }
+        
         </div>
       </IonContent>
     </IonMenu>

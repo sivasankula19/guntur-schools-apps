@@ -16,7 +16,7 @@ import { useNavigate } from 'react-router';
 import { setPreLoginPublicView } from '../../redux/reducers/schoolSlice';
 
 const Home: React.FC = () => {
-  const [userName, setUserName] = useState('7995954105');
+  const [userName, setUserName] = useState('superAdmin');
   const [password, setPassword] = useState('SuperAdmin@123');
   const selectedSchool = useSelector((state: any) => state.school.selectedSchool)
 
@@ -29,7 +29,8 @@ const Home: React.FC = () => {
     // perform login API call fetch the user auth token
     const payload = {
       token: 'someTokenValue',
-      role: 'SuperAdmin', // SuperAdmin , Teacher, Student
+      // role: 'SuperAdmin', // SuperAdmin , Teacher, Student
+      role: userName === 'superAdmin' ? 'SuperAdmin' : userName === 'teacher' ? 'Teacher' : 'Student',
       user: {
         fullName: 'Siva Sankula',
         classOfStudy: '8th Class',

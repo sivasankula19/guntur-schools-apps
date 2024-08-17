@@ -76,7 +76,7 @@ const GCustomisedModal: React.FC<ICustomModalProps> = ({
       <IonCardContent>{children}</IonCardContent>
       <IonFooter>
         <IonToolbar>
-          <div className="g_flex g_space_btwn g_full_width">
+          <div className="g_flex g_space_btwn g_full_width g_custome_padding_h12">
             <IonButton className="gmodal-btn gmodal-cancel" onClick={dismiss}>
               Cancel
             </IonButton>
