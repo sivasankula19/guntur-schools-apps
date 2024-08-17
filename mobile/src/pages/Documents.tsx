@@ -1,23 +1,23 @@
 import {
   IonAccordion,
   IonAccordionGroup,
-  IonBreadcrumb,
-  IonBreadcrumbs,
-  IonButton,
+  IonContent,
   IonIcon,
   IonItem,
   IonLabel,
+  IonPopover,
   IonText,
 } from '@ionic/react';
 import {
-  addCircleOutline,
   caretDownOutline,
+  createOutline,
   documentOutline,
+  ellipsisVerticalOutline,
   folderOutline,
-  triangleOutline,
+  moveOutline,
+  trashOutline,
 } from 'ionicons/icons';
 import React, { useState } from 'react';
-import { useParams } from 'react-router';
 import GImageDocPreview from '../components/GImageDocPreview';
 import { docData } from '../common/utility';
 import GBreadCrumbs from '../components/GBreadCrumbs';
@@ -28,7 +28,7 @@ const Documents: React.FC = () => {
   const [selectedSrc, setSelectedSrc] = useState<any>('');
 
   const accordianContent = docData;
-  const breadCrumbsValue = [{bName:'Home', path:'/dashboard'},{bName:'Documents', path:'/documents'}]
+  const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Documents', path: '/documents' }]
   return (
     <div className='g_full_height'>
       <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
@@ -44,6 +44,22 @@ const Documents: React.FC = () => {
               <IonItem slot="header" color="light">
                 <IonIcon icon={folderOutline}></IonIcon>{' '}
                 <IonLabel>{item.title}</IonLabel>
+                <IonIcon id={`menu-item-doc-folder${item.id}`} icon={ellipsisVerticalOutline}></IonIcon>
+                <IonPopover size="auto" trigger={`menu-item-doc-folder${item.id}`} triggerAction="click">
+                  <IonContent class="ion-padding">
+                    <div className='popover_actions'>
+                      <IonItem><div className='g_custom_title_pop'>Actions For {item.title}</div></IonItem>
+                      <IonItem className='first_action_item'>
+                        <IonIcon icon={createOutline}></IonIcon>
+                        <IonLabel>Disable Edit</IonLabel>
+                      </IonItem>
+                      <IonItem>
+                        <IonIcon icon={moveOutline}></IonIcon>
+                        <IonLabel>Move Folder</IonLabel>
+                      </IonItem>
+                    </div>
+                  </IonContent>
+                </IonPopover>
               </IonItem>
               <div className="document_inner_content" slot="content">
                 {item.childrens.length >= 1 && (
@@ -58,6 +74,22 @@ const Documents: React.FC = () => {
                         <IonItem slot="header" color="light">
                           <IonIcon icon={folderOutline}></IonIcon>{' '}
                           <IonLabel>{innerItem.title}</IonLabel>
+                          <IonIcon id={`menu-item-sub-doc-folder${innerItem.id}`} icon={ellipsisVerticalOutline}></IonIcon>
+                          <IonPopover size="auto" trigger={`menu-item-sub-doc-folder${innerItem.id}`} triggerAction="click">
+                            <IonContent class="ion-padding">
+                              <div className='popover_actions'>
+                                <div className='g_custom_title_pop'>Actions For {innerItem.title}</div>
+                                <IonItem className='first_action_item'>
+                                  <IonIcon icon={createOutline}></IonIcon>
+                                  <IonLabel>Disable Edit</IonLabel>
+                                </IonItem>
+                                <IonItem>
+                                  <IonIcon icon={moveOutline}></IonIcon>
+                                  <IonLabel>Move Folder</IonLabel>
+                                </IonItem>
+                              </div>
+                            </IonContent>
+                          </IonPopover>
                         </IonItem>
                         <div
                           className="document_inner_content inside-container-block"
@@ -67,17 +99,36 @@ const Documents: React.FC = () => {
                             <>
                               {innerItem.documents.map((innerItemDoc, idxIn) => (
                                 <React.Fragment key={idxIn}>
-                                <IonItem
-                                  className="documents_file_item"
-                                  key={innerItemDoc.id}
-                                >
-                                  <IonIcon icon={documentOutline}></IonIcon>
-                                  <IonLabel>{innerItemDoc.docTitle}</IonLabel>
-                                  <IonText>
-                                    <a onClick={() => setIsOpen(true)}>view</a>
-                                  </IonText>
-
-                                 </IonItem>
+                                  <IonItem
+                                    className="documents_file_item"
+                                    key={innerItemDoc.id}
+                                  >
+                                    <IonIcon icon={documentOutline}></IonIcon>
+                                    <IonLabel>{innerItemDoc.docTitle}</IonLabel>
+                                    <IonIcon id={`menu-item-sub-doc-file${innerItemDoc.id}`} icon={ellipsisVerticalOutline}></IonIcon>
+                                    <IonPopover size="auto" trigger={`menu-item-sub-doc-file${innerItemDoc.id}`} triggerAction="click">
+                                      <IonContent class="ion-padding">
+                                        <div className='popover_actions'>
+                                          <div className='g_custom_title_pop'>Actions For {innerItemDoc.docTitle}</div>
+                                          <IonItem className='first_action_item'>
+                                            <IonIcon icon={createOutline}></IonIcon>
+                                            <IonLabel>Disable Edit</IonLabel>
+                                          </IonItem>
+                                          <IonItem>
+                                            <IonIcon icon={moveOutline}></IonIcon>
+                                            <IonLabel>Move Folder</IonLabel>
+                                          </IonItem>
+                                          <IonItem>
+                                            <IonIcon icon={trashOutline}></IonIcon>
+                                            <IonLabel>Delete</IonLabel>
+                                          </IonItem>
+                                        </div>
+                                      </IonContent>
+                                    </IonPopover>
+                                    <IonText>
+                                      <a onClick={() => setIsOpen(true)}>view</a>
+                                    </IonText>
+                                  </IonItem>
                                 </React.Fragment>
                               ))}
                             </>
@@ -100,13 +151,33 @@ const Documents: React.FC = () => {
                   <>
                     {item.documents.map((itemDoc, idx) => (
                       <React.Fragment key={idx}>
-                      <IonItem className="documents_file_item" key={itemDoc.id}>
-                        <IonIcon icon={documentOutline}></IonIcon>
-                        <IonLabel>{itemDoc.docTitle}</IonLabel>
-                        <IonText>
-                          <a onClick={() => setIsOpen(true)}>view</a>
-                        </IonText>
-                      </IonItem>
+                        <IonItem className="documents_file_item" key={itemDoc.id}>
+                          <IonIcon icon={documentOutline}></IonIcon>
+                          <IonLabel>{itemDoc.docTitle}</IonLabel>
+                          <IonIcon id={`menu-item-sub-doc-file${itemDoc.id}`} icon={ellipsisVerticalOutline}></IonIcon>
+                          <IonPopover size="auto" trigger={`menu-item-sub-doc-file${itemDoc.id}`} triggerAction="click">
+                            <IonContent class="ion-padding">
+                              <div className='popover_actions'>
+                                <div className='g_custom_title_pop'>Actions For {itemDoc.docTitle}</div>
+                                <IonItem className='first_action_item'>
+                                  <IonIcon icon={createOutline}></IonIcon>
+                                  <IonLabel>Disable Edit</IonLabel>
+                                </IonItem>
+                                <IonItem>
+                                  <IonIcon icon={moveOutline}></IonIcon>
+                                  <IonLabel>Move Folder</IonLabel>
+                                </IonItem>
+                                <IonItem>
+                                  <IonIcon icon={trashOutline}></IonIcon>
+                                  <IonLabel>Delete</IonLabel>
+                                </IonItem>
+                              </div>
+                            </IonContent>
+                          </IonPopover>
+                          <IonText>
+                            <a onClick={() => setIsOpen(true)}>view</a>
+                          </IonText>
+                        </IonItem>
                       </React.Fragment>
                     ))}
                   </>
@@ -137,7 +208,7 @@ const Documents: React.FC = () => {
         onClose={() => {
           setIsOpen(false);
         }}
-        onDownload={() => {}}
+        onDownload={() => { }}
         isOpen={isOpen}
       >
       </GImageDocPreview>
