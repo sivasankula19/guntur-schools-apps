@@ -72,9 +72,10 @@ import { CoursesSuperAdmin } from './pages/Courses/CoursesSuperAdmin';
 import TimeTableSA from './pages/TimeTable/TimeTableSA';
 import CalendarSA from './pages/Calendar/CalendarSA';
 import { DashboardSA } from './pages/dashboard/DashboardSA';
-import AttendanceContainer from './pages/Attendance/AttendanceContainer';
 import SubjectsSA from './pages/Subjects/SubjectsSA';
 import SchoolAssetsSA from './pages/SchoolAssets/SchoolAssetsSA';
+import AttendanceByClass from './pages/Attendance/AttendanceByClass';
+import AttendanceByStudent from './pages/Attendance/AttendanceByStudent';
 
 setupIonicReact();
 
@@ -176,7 +177,9 @@ const App: React.FC = () => {
                 <Route path="/" element={<Navigate to={school === null ? '/select-school' : isAuthenticated ? '/dashboard' : '/home'} />}></Route>
                 <Route path='/home' element={<Home />} />
                 <Route path='/dashboard' element={role === 'Student' ? <Dashboard /> : <DashboardSA />} />
-                <Route path='/attendance' element={role === 'Student' ? <Attendance /> : <AttendanceContainer />} />
+                <Route path='/attendance' element={<Attendance /> } />
+                <Route path='/attendance-by-class' element={<AttendanceByClass />}/>
+                <Route path='/attendance-by-student' element={<AttendanceByStudent />} />
                 <Route path='/attendance:id' element={<Attendance />} />
                 <Route path='/progress-card' element={<ProgressCard />} />
                 <Route path='/time-table' element={role === 'Student' ? <TimeTable /> : <TimeTableSA />} />
