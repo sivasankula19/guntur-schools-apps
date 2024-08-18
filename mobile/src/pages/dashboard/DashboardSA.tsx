@@ -42,20 +42,20 @@ export const DashboardSA = () => {
         {id:19, moduleName:'Courses', icon:bookOutline, redirectTo:'/courses'}
     ];
     const chipsDataPublic = [
-        // { id: 1, moduleName: 'Class Time Table', icon: calendarOutline, redirectTo: '/timetable' },
-        { id: 1, moduleName: 'Attendance', icon: calendarOutline, redirectTo: '/attendance' },
-        { id: 2, moduleName: 'Progress Card', icon: documentTextOutline, redirectTo: '/progress-card' },
-        { id: 3, moduleName: 'Home Work', icon: bookOutline, redirectTo: '/home-work' },
-        { id: 4, moduleName: 'My Subjects', icon: schoolOutline, redirectTo: '/subjects' },
-        { id: 5, moduleName: 'Messages', icon: chatboxOutline, redirectTo: '/messages' },
-        { id: 6, moduleName: 'Documents', icon: documentOutline, redirectTo: '/documents' },
-        { id: 7, moduleName: 'My Staff', icon: peopleOutline, redirectTo: '/staff-list' },
-        { id: 8, moduleName: 'My Friends', icon: peopleOutline, redirectTo: '/students-list' },
-        { id: 9, moduleName: 'Calendar', icon: calendarOutline, redirectTo: '/calendar' },
-        { id: 10, moduleName: 'Wibe', icon: newspaperOutline, redirectTo: '/school-wibe' },
-        { id: 11, moduleName: 'Exam Schedules', icon: calendarOutline, redirectTo: '/exam-schedules' },
-        { id: 12, moduleName: 'My Dues', icon: walletOutline, redirectTo: '/fee-structure' },
-        { id: 13, moduleName: 'Assets', icon: businessOutline, redirectTo: '/assets' },
+        { id: 1, moduleName: 'Class Attendance', icon: calendarOutline, redirectTo: '/attendance-by-class' },
+        { id: 2, moduleName: 'Student Attendance', icon: calendarOutline, redirectTo: '/attendance-by-student' },
+        { id: 3, moduleName: 'Progress Card', icon: documentTextOutline, redirectTo: '/progress-card' },
+        { id: 4, moduleName: 'Home Work', icon: bookOutline, redirectTo: '/home-work' },
+        { id: 5, moduleName: 'My Subjects', icon: schoolOutline, redirectTo: '/subjects' },
+        { id: 6, moduleName: 'Messages', icon: chatboxOutline, redirectTo: '/messages' },
+        { id: 7, moduleName: 'Documents', icon: documentOutline, redirectTo: '/documents' },
+        { id: 8, moduleName: 'My Staff', icon: peopleOutline, redirectTo: '/staff-list' },
+        { id: 9, moduleName: 'My Friends', icon: peopleOutline, redirectTo: '/students-list' },
+        { id: 10, moduleName: 'Calendar', icon: calendarOutline, redirectTo: '/calendar' },
+        { id: 11, moduleName: 'Wibe', icon: newspaperOutline, redirectTo: '/school-wibe' },
+        { id: 12, moduleName: 'Exam Schedules', icon: calendarOutline, redirectTo: '/exam-schedules' },
+        { id: 13, moduleName: 'My Dues', icon: walletOutline, redirectTo: '/fee-structure' },
+        { id: 14, moduleName: 'Assets', icon: businessOutline, redirectTo: '/assets' },
     ];
 
     return (

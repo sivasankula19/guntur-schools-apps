@@ -613,6 +613,26 @@ ion-header {
   font-weight: 600;
 }
 
+.g-font-18{
+  font-size: 18px;
+}
+
+.g-font-16{
+  font-size: 16px;
+}
+
+.g-font-14{
+  font-size: 14px;
+}
+
+.g-font-12{
+  font-size: 12px;
+}
+
+.g-font-10{
+  font-size: 10px;
+}
+
 .g_height_10 {
   height: 10%;
 }
@@ -1254,7 +1274,88 @@ ion-breadcrumbs {
   height: calc(100% - 40px);
 }
 
+.calendar-view-cls{
+  margin-top: 30px;
+}
 
+.calendar-view-cls ion-icon{
+  font-size: 30px;
+}
+
+.calendar-view-cls .month_year_view{
+  border: 1px solid;
+  border-color: #1D7AF5;
+  border-radius: 4px;
+  height: 40px;
+}
+
+.calendar-view-cls ion-card{
+  margin: 0;
+}
+
+.calendar-view-cls ion-card-content{
+  padding: 0;
+}
+
+.calendar-view-cls .row-item {
+  margin: 12px 0;
+}
+
+.day-list{
+  align-items: center;
+  height: 40px;
+  border: 1px solid;
+  border-color: #1D7AF5;
+  border-radius: 4px;
+}
+
+.day-list-map{
+  width: 14%;
+  margin-right: 2px;
+}
+
+.day-list-map .day-item-display{
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: 1px solid;
+  border-radius: 4px;
+  background: #F5F5F5;
+}
+
+.day-list-map .today-selected{
+  border-color: #1D7AF5 !important;
+  background: #1D7AF5;
+  color: #ffffff;
+}
+
+.day-list-map .att-marked{
+  border-color: #00FF00;
+}
+
+.day-list-map .scl-holiday{
+  border-color: #ff0000;
+}
+
+.attendance_sa .continue-btn{
+  margin-top: 20px;
+}
+
+.attendance_sa .continue-btn ion-button{
+  text-transform: capitalize;
+}
+
+.attendance_sa .custom-month-select{
+  margin: 0;
+}
+
+.attendance_sa .scroll-class-att {
+  height: calc(100% - 46px);
+  overflow-y: auto;
+}
 
 
 /* ion modal */

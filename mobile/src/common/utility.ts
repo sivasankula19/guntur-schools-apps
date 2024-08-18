@@ -1621,3 +1621,19 @@ export const periodsListData =[
       ]
   },
 ]
+
+export const classListDummy = [
+  { id:'1', className:'10th Class', classId:'10-cls'},
+  { id:'2', className:'9th Class', classId:'9-cls'},
+  { id:'3', className:'8th Class', classId:'8-cls'},
+  { id:'4', className:'7th Class', classId:'7-cls'},
+  { id:'5', className:'6th Class', classId:'6-cls'},
+]
+
+export const sectionListDummy = [
+  { id:'1', sectionName:'A Section', sectionId:'a-section'},
+  { id:'2', sectionName:'B Section', sectionId:'b-section'},
+  { id:'3', sectionName:'C Section', sectionId:'c-section'}
+]
+
+
