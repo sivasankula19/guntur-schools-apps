@@ -673,6 +673,14 @@ ion-header {
   height: 40px;
 }
 
+.br-8{
+  border-radius: 8px;
+}
+
+.br-ion-8{
+  --border-radius:8px;
+}
+
 .dot-8{
   width: 8px;
   height: 8px;
@@ -685,7 +693,11 @@ ion-header {
 }
 
 .g_txt_center {
-  text-align: center;
+  text-align: center !important;
+}
+
+.g_txt_start {
+  text-align: start !important;
 }
 
 .g_flex_end{
@@ -709,6 +721,26 @@ ion-header {
   width: 80% !important;
 }
 
+.width-70 {
+  width: 70%;
+}
+
+.width-60 {
+  width: 60%;
+}
+
+.width-40 {
+  width: 40%;
+}
+
+.width-30 {
+  width: 30%;
+}
+
+.width-20 {
+  width: 20%;
+}
+
 .g_full_height{
   height: 100%;
 }
@@ -719,6 +751,10 @@ ion-header {
 
 .first_container {
   width: 65%;
+}
+
+.attendance_sa .first_container {
+  width: 50%;
 }
 
 .dark .student_card {
@@ -821,6 +857,8 @@ ion-breadcrumb {
 
 .g_bread{
   width: auto;
+  max-width: 150px;
+  min-width: 60px;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
   font-size: 12px;
   border-radius: 8px;
@@ -829,6 +867,9 @@ ion-breadcrumb {
   line-height: 22px;
   background: #ffffff;
   cursor: pointer;
+  @media (min-width: 768px) {
+    max-width: auto;
+   }
 }
 .g_bread_last{
   cursor: not-allowed;
@@ -845,6 +886,14 @@ ion-breadcrumb {
 .g_bread p{
   font-size: 14px;
   margin: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  max-height: 2.4em;
+  word-break: break-all;
 }
 
 .separator_bread {
@@ -1275,7 +1324,7 @@ ion-breadcrumbs {
 }
 
 .calendar-view-cls{
-  margin-top: 30px;
+  margin-top: 50px;
 }
 
 .calendar-view-cls ion-icon{
@@ -1326,9 +1375,13 @@ ion-breadcrumbs {
   background: #F5F5F5;
 }
 
+.dark .day-list-map .day-item-display{
+  background: #1a1a1a;
+}
+
 .day-list-map .today-selected{
   border-color: #1D7AF5 !important;
-  background: #1D7AF5;
+  background: #1D7AF5 !important;
   color: #ffffff;
 }
 
@@ -1357,6 +1410,19 @@ ion-breadcrumbs {
   overflow-y: auto;
 }
 
+.back-save-icons{
+  display: flex;
+  justify-content: space-between;
+}
+
+.back-save-icons ion-icon{
+  font-size: 32px;
+}
+
+.cl-students-list{
+  height: calc(100% - 140px);
+  overflow-y: auto;
+}
 
 /* ion modal */
 

@@ -3,6 +3,7 @@ import GBreadCrumbs from '../../components/GBreadCrumbs'
 import { IonButton, IonCard, IonCardContent, IonIcon, IonItem, IonSelect, IonSelectOption, IonText } from '@ionic/react';
 import { caretBackOutline, caretForwardOutline, chevronBackOutline, chevronForwardOutline } from 'ionicons/icons';
 import { classListDummy, getDatesForMonth, sectionListDummy, transformListToGrid } from '../../common/utility';
+import { useLocation, useNavigate } from 'react-router';
 
 function AttendanceByClass() {
     const todayDate = new Date();
@@ -13,13 +14,16 @@ function AttendanceByClass() {
     const [selectedSection, setSelectedSection] = useState<string>('');
     const [classList, setClassList] = useState<any>([]);
     const [sectionList, setSectionList] = useState<any>([]);
-    const [selectedDate, setSelectedDate] = useState<string>(todayFormate)
+    const [selectedDate, setSelectedDate] = useState<string>(todayFormate);
+    const location = useLocation();
 
     const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
     const breadCrumbsValue = [
         { bName: 'Home', path: '/dashboard' },
-        { bName: 'Class Attendance', path: '/attendance' },
+        { bName: 'Class Attendance', path: '/attendance-by-class' },
     ];
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         setClassList(classListDummy);
@@ -33,9 +37,15 @@ function AttendanceByClass() {
 
     useEffect(() => {
 
-    }, [selectedClass, selectedSection])
+    }, [selectedClass, selectedSection]);
 
-    console.log('=', gridAttendance, todayFormate);
+    useEffect(()=>{
+        if(location.state){
+            setSelectedClass(location.state.classId);
+            setSelectedSection(location.state.sectionId);
+            setSelectedDate(location.state.selectedDate);
+        }
+    },[location.state])
 
     const handleDateSelected = (day:string) => {
         setSelectedDate(day)
@@ -47,6 +57,11 @@ function AttendanceByClass() {
         } else if (e.target.id === 'section_select') {
             setSelectedSection(e.detail.value);
         }
+    }
+
+    const handleContinue = () => {
+        const urlEncoded = encodeURIComponent(`${selectedClass}&&${selectedSection}&&${selectedDate}`)
+        navigate('/attendance-by-class/' + urlEncoded)
     }
 
     return (
@@ -142,7 +157,7 @@ function AttendanceByClass() {
                     </IonCard>
                 </div>
                 <div className='continue-btn'>
-                    <IonButton fill="outline" expand="block" disabled={(selectedClass === '' || selectedSection === '')}>Continue With {`${selectedClass} - ${selectedSection}`} </IonButton>
+                    <IonButton onClick={handleContinue} fill="outline" expand="block" disabled={(selectedClass === '' || selectedSection === '')}>Continue With {`${selectedClass} - ${selectedSection}`} </IonButton>
                 </div>
             </div>
         </div>
