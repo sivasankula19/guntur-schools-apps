@@ -21,7 +21,7 @@ import {
 } from 'ionicons/icons';
 
 export const DashboardSA = () => {
-    const [moduleSelected, setModuleSelected] = useState('');
+    const [moduleSelected, setModuleSelected] = useState('publicModule');
 
     const handleModule = (e: any) => {
         let value = e?.target?.name || ''

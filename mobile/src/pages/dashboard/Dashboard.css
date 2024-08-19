@@ -104,6 +104,14 @@
     width: 90%;
 }
 
+.custom-day-slot{
+    width: 30%;
+}
+
+.custom-day-slot .custom-segment {
+    width: 100%;
+}
+
 .custom-segment .left{
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;

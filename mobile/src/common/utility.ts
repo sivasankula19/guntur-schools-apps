@@ -1636,4 +1636,19 @@ export const sectionListDummy = [
   { id:'3', sectionName:'C Section', sectionId:'c-section'}
 ]
 
+export const classStudentsDateAttendance = [
+  {id:1,studentName:'Siva Sankula sankla dnd', regNumber:'Y240004', profileImage:'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',am:'Y',pm:''},
+  {id:2,studentName:'Siva S', regNumber:'Y240005', profileImage:'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',am:'Y',pm:''},
+  {id:3,studentName:'Deva N', regNumber:'Y240006', profileImage:'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',am:'Y',pm:''},
+  {id:4,studentName:'Minoosh', regNumber:'Y240007', profileImage:'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',am:'Y',pm:''},
+  {id:5,studentName:'Kallam M', regNumber:'Y240008', profileImage:'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',am:'Y',pm:''},
+  {id:6,studentName:'Narra D', regNumber:'Y240009', profileImage:'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',am:'Y',pm:''},
+  {id:7,studentName:'Sankula S', regNumber:'Y240010', profileImage:'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',am:'Y',pm:''},
+  {id:8,studentName:'Siva', regNumber:'Y240011', profileImage:'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',am:'Y',pm:''},
+  {id:9,studentName:'Hello', regNumber:'Y240012', profileImage:'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',am:'Y',pm:''},
+  {id:10,studentName:'Sankula S', regNumber:'Y240013', profileImage:'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',am:'Y',pm:''},
+  {id:11,studentName:'user name', regNumber:'Y240014', profileImage:'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',am:'Y',pm:''},
+  {id:12,studentName:'Siva Sankula', regNumber:'Y240015', profileImage:'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',am:'Y',pm:''},
+]
+
 

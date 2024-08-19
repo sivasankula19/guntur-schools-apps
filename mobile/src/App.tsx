@@ -76,6 +76,7 @@ import SubjectsSA from './pages/Subjects/SubjectsSA';
 import SchoolAssetsSA from './pages/SchoolAssets/SchoolAssetsSA';
 import AttendanceByClass from './pages/Attendance/AttendanceByClass';
 import AttendanceByStudent from './pages/Attendance/AttendanceByStudent';
+import AttendanceClassView from './pages/Attendance/AttendanceClassView';
 
 setupIonicReact();
 
@@ -120,27 +121,27 @@ const App: React.FC = () => {
     dispatch(setMode(ev.detail.role === 'confirm'));
   };
 
-  useEffect(() => {
-    const handleBackButton = (ev: any) => {
-      ev.detail.register(10, (processNextHandler: any) => {
-        console.log('Handler was called!');
-        processNextHandler();
-      });
-      ev.detail.register(-1, () => {
-        if (!ionRouter.canGoBack()) {
-          CapacitorApp.exitApp();
-        } else {
-          ionRouter.goBack();
-        }
-      });
-    };
+  // useEffect(() => {
+  //   const handleBackButton = (ev: any) => {
+  //     ev.detail.register(10, (processNextHandler: any) => {
+  //       console.log('Handler was called!');
+  //       processNextHandler();
+  //     });
+  //     ev.detail.register(-1, () => {
+  //       if (!ionRouter.canGoBack()) {
+  //         CapacitorApp.exitApp();
+  //       } else {
+  //         ionRouter.goBack();
+  //       }
+  //     });
+  //   };
 
-    document.addEventListener('ionBackButton', handleBackButton);
+  //   document.addEventListener('ionBackButton', handleBackButton);
 
-    return () => {
-      document.removeEventListener('ionBackButton', handleBackButton);
-    };
-  }, [ionRouter]);
+  //   return () => {
+  //     document.removeEventListener('ionBackButton', handleBackButton);
+  //   };
+  // }, [ionRouter]);
 
   useEffect(()=>{
     if(currentRole)
@@ -179,6 +180,7 @@ const App: React.FC = () => {
                 <Route path='/dashboard' element={role === 'Student' ? <Dashboard /> : <DashboardSA />} />
                 <Route path='/attendance' element={<Attendance /> } />
                 <Route path='/attendance-by-class' element={<AttendanceByClass />}/>
+                <Route path='/attendance-by-class/:routeInfo' element={<AttendanceClassView />}/>
                 <Route path='/attendance-by-student' element={<AttendanceByStudent />} />
                 <Route path='/attendance:id' element={<Attendance />} />
                 <Route path='/progress-card' element={<ProgressCard />} />
