@@ -71,13 +71,13 @@ function AttendanceByClass() {
                 <IonCard className="custom-month-select">
                     <IonCardContent className="custome__card_attendance_container">
                         <div className="g_flex g_space_btwn icons_holder_attendance p-h-10">
-                            <IonIcon icon={caretBackOutline}></IonIcon>
+                            <IonIcon icon={chevronBackOutline}></IonIcon>
                             <div className="month_year_view g_flex g_space_evnly g_align_cntr">
                                 <IonText className="month_year">{todayDate.getDate()}</IonText>
                                 <IonText className="month_year">{todayDate.getMonth()}</IonText>
                                 <IonText className="month_year">{todayDate.getFullYear()}</IonText>
                             </div>
-                            <IonIcon icon={caretForwardOutline}></IonIcon>
+                            <IonIcon icon={chevronForwardOutline}></IonIcon>
                         </div>
                     </IonCardContent>
                 </IonCard>
