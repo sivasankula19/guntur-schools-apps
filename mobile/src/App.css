@@ -543,6 +543,10 @@ ion-header {
   margin-bottom: 10px;
 }
 
+.m-r-18 {
+  margin-right: 18px;
+}
+
 .m-v-10 {
   margin: 10px 0;
 }
@@ -576,6 +580,10 @@ ion-header {
 }
 
 .p-12 {
+  padding: 12px;
+}
+
+.p-10 {
   padding: 12px;
 }
 
@@ -1431,7 +1439,7 @@ ion-breadcrumbs {
   margin-top: 20px;
 }
 
-.attendance_sa .continue-btn ion-button {
+.attendance_sa .continue-btn ion-button , .g_txt_cap {
   text-transform: capitalize;
 }
 
@@ -1553,6 +1561,26 @@ ion-breadcrumbs {
 
 .dark .g_customised_modal {
   --background: #000000;
+}
+
+.g_customised_modal .toolbar-title, .g_customised_modal .title-default{
+  text-align: center;
+  text-transform: capitalize;
+  color: #1D7AF5;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.g_customised_modal ion-range {
+  padding: 0;
+  --bar-background: #bde0fe;
+  --bar-background-active: #1D7AF5;
+  --bar-height: 8px;
+  --bar-border-radius: 8px;
+  --knob-background: #1D7AF5;
+  --knob-size: 30px;
+  --pin-background: #1D7AF5;
+  --pin-color: #fff;
 }
 
 .g_custome_padding_h12 {
@@ -1680,11 +1708,16 @@ ion-breadcrumbs {
   overflow-y: auto;
 }
 
-.subjects_cls_container ion-list {
+.subjects_cls_container-edit{
+  height: calc(100% - 120px);
+  overflow-y: auto;
+}
+
+.subjects_cls_container ion-list, .subjects_cls_container-edit ion-list {
   padding-bottom: 30px;
 }
 
-.subjects_cls_container ion-card {
+.subjects_cls_container ion-card, .subjects_cls_container-edit ion-card {
   margin: 12px;
 }
 
