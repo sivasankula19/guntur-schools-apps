@@ -6,10 +6,10 @@ import {
   setupIonicReact,
   useIonRouter,
 } from '@ionic/react';
+
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Menu from './components/Menu';
 import { App as CapacitorApp } from '@capacitor/app';
-import Page from './pages/Page';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -78,7 +78,11 @@ import AttendanceByClass from './pages/Attendance/AttendanceByClass';
 import AttendanceByStudent from './pages/Attendance/AttendanceByStudent';
 import AttendanceClassView from './pages/Attendance/AttendanceClassView';
 
-setupIonicReact();
+setupIonicReact({
+  animated:true,
+  hardwareBackButton:true,
+  experimentalCloseWatcher:true,
+});
 
 const App: React.FC = () => {
   const isDarkMode = useSelector((state: any) => state?.darkMode.isDarkMode);
@@ -121,27 +125,27 @@ const App: React.FC = () => {
     dispatch(setMode(ev.detail.role === 'confirm'));
   };
 
-  // useEffect(() => {
-  //   const handleBackButton = (ev: any) => {
-  //     ev.detail.register(10, (processNextHandler: any) => {
-  //       console.log('Handler was called!');
-  //       processNextHandler();
-  //     });
-  //     ev.detail.register(-1, () => {
-  //       if (!ionRouter.canGoBack()) {
-  //         CapacitorApp.exitApp();
-  //       } else {
-  //         ionRouter.goBack();
-  //       }
-  //     });
-  //   };
+  useEffect(() => {
+    const handleBackButton = (ev: any) => {
+      ev.detail.register(10, (processNextHandler: any) => {
+        console.log('Handler was called!');
+        processNextHandler();
+      });
+      ev.detail.register(-1, () => {
+        if (!ionRouter.canGoBack()) {
+          CapacitorApp.exitApp();
+        } else {
+          ionRouter.goBack();
+        }
+      });
+    };
 
-  //   document.addEventListener('ionBackButton', handleBackButton);
+    document.addEventListener('ionBackButton', handleBackButton);
 
-  //   return () => {
-  //     document.removeEventListener('ionBackButton', handleBackButton);
-  //   };
-  // }, [ionRouter]);
+    return () => {
+      document.removeEventListener('ionBackButton', handleBackButton);
+    };
+  }, [ionRouter]);
 
   useEffect(()=>{
     if(currentRole)
