@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const SchoolAbout = require('../models/school-about.model');
 
 const createCompetition = async (req, res) => {
@@ -11,15 +10,26 @@ const createCompetition = async (req, res) => {
     }
 
     try {
+        const updateQuery = {
+            $addToSet: { [`competitions.${category}`]: competitionsObj }
+        };
+        // const updateQuery = { $push: { [`competitions.${category}`]: competitionsObj } };
+        // const setOnInitialCategory = { $setOnInsert: { [`competitions.${category}`]: [] } };
 
-        const updateQuery = { $push : {[`competitions.${category}`]: competitionsObj  } };
-        const setOnInitialCategory = {$setOnInsert : {[`competitions.${category}`] : []}};
         const competition = await SchoolAbout.findOneAndUpdate(
-            {schoolId},
-            {...updateQuery , ...setOnInitialCategory},
+            { schoolId },
+            updateQuery,
+            // {...updateQuery , ...setOnInitialCategory},
             { new: true, upsert: true }
 
         )
+
+        // const competition = await SchoolAbout.findOneAndUpdate(
+        //     { schoolId },
+        //     { ...updateQuery, ...setOnInitialCategory },
+        //     { new: true, upsert: true }
+
+        // )
         return res.status(201).json(competition)
 
         //commited for future use
@@ -48,4 +58,18 @@ const createCompetition = async (req, res) => {
 
 }
 
-module.exports = { createCompetition }
+const getCompetitions = async (req, res) => {
+    const { schoolId } = req.params;
+    if (!schoolId) {
+        return res.status(404).send('School not found');
+    }
+
+    try {
+        const competitions = await SchoolAbout.findOne({ schoolId })
+        return res.status(201).json(competitions?.competitions)
+    } catch (err) {
+        return res.status(500).json({ message: err.message })
+    }
+}
+
+module.exports = { createCompetition, getCompetitions }

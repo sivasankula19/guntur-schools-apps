@@ -1,7 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const { createCompetition } = require('../controllers/competitions.controller')
+const { createCompetition, getCompetitions } = require('../controllers/competitions.controller')
 
-router.post('/:schoolId/createCompetitions', createCompetition)
+router.post('/:schoolId/createCompetitions', createCompetition);
+router.get('/:schoolId/getCompetitions', getCompetitions)
 
 module.exports = router

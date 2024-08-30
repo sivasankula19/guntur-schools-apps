@@ -121,12 +121,17 @@ const schoolAboutSchema = new mongoose.Schema({
     isEm: Boolean,
     isTm: Boolean
   }],
+  // competitions: {
+  //   type: Map,
+  //   of: [{
+  //     eventName: String,
+  //     category: String
+  //   }],
+  //   default: {}
+  // },
+
   competitions: {
-    type: Map,
-    of: [{
-      eventName: String,
-      category: String
-    }],
+    type: Object,
     default: {}
   },
 
@@ -134,6 +139,11 @@ const schoolAboutSchema = new mongoose.Schema({
     type: Object,
     default: {}
   }
+
+  // achievements: {
+  //   type: Object,
+  //   default: {}
+  // }
 
   // achievements: {
   //   type : Map,

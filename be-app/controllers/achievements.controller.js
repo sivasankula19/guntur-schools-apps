@@ -4,7 +4,7 @@ const SchoolAbout = require('../models/school-about.model');
 const createAchievement = async (req, res) => {
     const { schoolId } = req.params;
     const AchievementsObj = req.body
-    const { category , subCategory} = req.body;
+    const { category, subCategory } = req.body;
 
     if (!schoolId) {
         return res.status(404).send('School not found');
@@ -14,12 +14,12 @@ const createAchievement = async (req, res) => {
 
         const updateQuery = {
             $addToSet: { [`achievements.${category}.${subCategory}`]: AchievementsObj }
-          };
+        };
 
         // const updateQuery = { $push : {[`achievements.${category}.${subCategory}`]: AchievementsObj  } };
         // const setOnInitialCategory = {$setOnInsert : {[`competitions.${category}.${subCategory}`] : []}};
         const achievement = await SchoolAbout.findOneAndUpdate(
-            {schoolId},
+            { schoolId },
             updateQuery,
             // {...updateQuery , ...setOnInitialCategory},
             { new: true, upsert: true }
@@ -84,4 +84,17 @@ const createAchievement = async (req, res) => {
 
 }
 
-module.exports = { createAchievement }
+const getAchievement = async (req, res) => {
+    const { schoolId } = req.params;
+    if (!schoolId) {
+        return res.status(404).send('School not found');
+    }
+
+    try {
+        const achievement = await SchoolAbout.findOne({ schoolId })
+        return res.status(201).json(achievement?.achievements)
+    } catch (err) {
+        return res.status(500).json({ message: err.message })
+    }
+}
+module.exports = { createAchievement, getAchievement }
