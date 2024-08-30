@@ -1653,11 +1653,11 @@ export const classStudentsDateAttendance = [
 
 export const searchStudentsData = [
   {id:1, studentName:'Siva Sankula', regNumber:'GHMS00019',className:'8th Class', sectionName:'B Section'},
-  {id:2, studentName:'Siva Sankula', regNumber:'GHMS00020',className:'8th Class', sectionName:'B Section'},
-  {id:3, studentName:'Siva Sankula ufv sxguvdebx jwec igb', regNumber:'GHMS00021',className:'8th Class', sectionName:'B Section'},
-  {id:4, studentName:'Siva Sankula', regNumber:'GHMS00022',className:'8th Class', sectionName:'B Section'},
-  {id:5, studentName:'Siva Sankula', regNumber:'GHMS00023',className:'8th Class', sectionName:'B Section'},
-  {id:6, studentName:'Siva Sankula', regNumber:'GHMS00034',className:'8th Class', sectionName:'B Section'},
+  {id:2, studentName:'Narra Dev Qumar', regNumber:'GHMS00020',className:'8th Class', sectionName:'B Section'},
+  {id:3, studentName:'Sankula', regNumber:'GHMS00021',className:'8th Class', sectionName:'B Section'},
+  {id:4, studentName:'Kallam Minoosh', regNumber:'GHMS00022',className:'8th Class', sectionName:'B Section'},
+  {id:5, studentName:'Siva Krishna', regNumber:'GHMS00023',className:'8th Class', sectionName:'B Section'},
+  {id:6, studentName:'Sankula Krishna Sankula', regNumber:'GHMS00034',className:'8th Class', sectionName:'B Section'},
   {id:7, studentName:'Siva Sankula', regNumber:'GHMS00144',className:'8th Class', sectionName:'B Section'},
   {id:8, studentName:'Siva Sankula', regNumber:'GHMS000129',className:'8th Class', sectionName:'B Section'},
   {id:9, studentName:'Siva Sankula', regNumber:'GHMS000111',className:'8th Class', sectionName:'B Section'},

@@ -8,7 +8,13 @@ import { getDatesForMonth, searchStudentsData, transformListToGrid } from '../..
 function AttendanceByStudent() {
     const [viewMode, setViewMode] = useState('list');
     const [searchResult, setSearchResult] = useState<any>([]);
-    const [selectedStudentId, setSelectedStudentId] = useState<string>("GHMS000120");
+    const [selectedStudent, setSelectedStudent] = useState<any>({
+        "id": 2,
+        "studentName": "Siva Sankula",
+        "regNumber": "GHMS00020",
+        "className": "8th Class",
+        "sectionName": "B Section"
+    });
     const [isOpenStudentCard, setIsOpenStudentCard] = useState<boolean>(false);
     const [isOpenMonthYearCard, setIsOpenMonthYearCard] = useState<boolean>(false);
     const todayDate = new Date();
@@ -52,7 +58,7 @@ function AttendanceByStudent() {
         return () => {
             clearTimeout(scrollTimeOut)
         }
-    }, [currentMY]);
+    }, [currentMY, viewMode]);
 
 
     const breadCrumbsValue = [
@@ -68,14 +74,49 @@ function AttendanceByStudent() {
         // save api
     }
 
-    const handlePopOverClose = () => {
-        setIsOpenStudentCard(false)
+    const handlePopOverClose = (e: any) => {
+        if (e.target.id === 'student-list-select') {
+            setIsOpenStudentCard(false);
+        } else {
+            setIsOpenMonthYearCard(false);
+        }
     }
 
     const handleScreenClick = (e: any) => {
         setIsOpenStudentCard((studentsDetailsRef && studentsDetailsRef.current?.contains(e.target)) || (studentsDisplayRef && studentsDisplayRef?.current?.contains(e.target)));
         setIsOpenMonthYearCard((monthYearDetailsRef && monthYearDetailsRef.current?.contains(e.target)) || (monthYearDisplayRef && monthYearDisplayRef.current?.contains(e.target)));
     }
+
+    const handleStudentChange = (student: any) => {
+        setSelectedStudent(student)
+    }
+
+    const handlePopOverSaveClose = (e:any) => {
+        if(e.target?.id === 'save-student-picker') {
+        } else {
+            // to do -actions according to save
+        }
+    }
+
+    const handleMonthYearSelect = (data:any, isMonth:boolean) => {
+        setCurrentMY({month: isMonth ? data.monthId : currentMY.month, year: isMonth ? currentMY.year : data})
+    }
+
+    const calendarMonths = [
+        { month: 'Jan', monthId: '1', monthFull: 'JANUARY' },
+        { month: 'Feb', monthId: '2', monthFull: 'FEBRUARY' },
+        { month: 'Mar', monthId: '3', monthFull: 'MARCH' },
+        { month: 'Apr', monthId: '4', monthFull: 'APRIL' },
+        { month: 'May', monthId: '5', monthFull: 'MAY' },
+        { month: 'Jun', monthId: '6', monthFull: 'JUNE' },
+        { month: 'Jul', monthId: '7', monthFull: 'JULY' },
+        { month: 'Aug', monthId: '8', monthFull: 'AUGUST' },
+        { month: 'Sep', monthId: '9', monthFull: 'SEPTEMBER' },
+        { month: 'Oct', monthId: '10', monthFull: 'OCTOBER' },
+        { month: 'Nov', monthId: '11', monthFull: 'NOVEMBER' },
+        { month: 'Dec', monthId: '12', monthFull: 'DECEMBER' }
+      ];
+      
 
     return (
         <div className='attendance_sa'>
@@ -142,9 +183,12 @@ function AttendanceByStudent() {
                     <IonCardContent className='padding-0'>
                         <div className='back-save-icons g_align_cntr'>
                             <IonIcon icon={chevronBackOutline}></IonIcon>
-                            <div className='g_flex p-h-10 username-holder' ref={studentsDisplayRef}>
+                            <div className='g_flex p-h-10 username-holder m-width-60' ref={studentsDisplayRef}>
+                                <IonLabel class='g_text_ellipses'>
+                                    {selectedStudent.studentName}
+                                </IonLabel>
                                 <IonLabel>
-                                    Siva Sankula (GHMD0019)
+                                    ({selectedStudent.regNumber})
                                 </IonLabel>
                                 <IonIcon icon={caretDownOutline}></IonIcon>
                             </div>
@@ -162,7 +206,7 @@ function AttendanceByStudent() {
                                     </div>
                                     <div className='users-list-dis'>
                                         {searchResult.map((student: any) => (
-                                            <div key={student.id} className={`student-search-card${student.regNumber === selectedStudentId ? ' selected-card' : ''}`}>
+                                            <div key={student.id} onClick={() => handleStudentChange(student)} className={`student-search-card${student.regNumber === selectedStudent.regNumber ? ' selected-card' : ''}`}>
                                                 <div className='width-65 student-name'><p className='g_text_ellipses'>{student.studentName}</p></div>
                                                 <div className='width-35 student-id-cls'>
                                                     <div><p className='g_text_ellipses font-500'>{student.regNumber}</p></div>
@@ -172,7 +216,7 @@ function AttendanceByStudent() {
                                         ))}
                                     </div>
                                     <div className='m-top-10'>
-                                        <IonButton fill="outline" expand="block" onClick={handlePopOverClose}>Close</IonButton>
+                                        <IonButton id='student-list-select' fill="outline" expand="block" onClick={handlePopOverClose}>Close</IonButton>
                                     </div>
                                 </div>
                             </IonCardContent>
@@ -184,7 +228,7 @@ function AttendanceByStudent() {
                             <IonIcon icon={chevronBackOutline}></IonIcon>
                             <div className='g_flex p-h-10 username-holder' ref={monthYearDetailsRef}>
                                 <IonLabel>
-                                    MARCH 2024
+                                    {calendarMonths[currentMY.month-1].monthFull} {currentMY.year}
                                 </IonLabel>
                             </div>
                             <IonIcon icon={chevronForwardOutline}></IonIcon>
@@ -195,13 +239,20 @@ function AttendanceByStudent() {
                     isOpenMonthYearCard && (
                         <IonCard ref={monthYearDisplayRef} className='student-picker'>
                             <IonCardContent>
-                                <div className='g_flex'>
-                                    <div className='g_half_width g_txt_center'>
-                                        <div>hlo</div>
+                                <div className='g_flex' >
+                                    <div className='g_half_width g_txt_center g_full_height'>
+                                        <div className='g_full_height month-date-dis  o-flow-y'>
+                                            {calendarMonths.map((m, mIndex) => (<div onClick={()=>handleMonthYearSelect(m, true)} className={`height-px-40 month-year-item ${currentMY.month-1 === mIndex ? 'selected-month-year' : ''}`} key={mIndex}>{m.monthFull}</div>))}
+                                        </div>
                                     </div>
                                     <div className='g_half_width g_txt_center'>
-                                        <div>jhi</div>
+                                        <div className='g_full_height month-date-dis  o-flow-y'>
+                                            {[2024, 2023, 2022, 2021, 2020, 2019].map((y, yIndex) => (<div onClick={()=>handleMonthYearSelect(y,false)} className={`height-px-40 month-year-item ${currentMY.year === y ? 'selected-month-year' : ''}`} key={yIndex}>{y}</div>))}
+                                        </div>
                                     </div>
+                                </div>
+                                <div className='m-top-10'>
+                                    <IonButton id='save-student-picker' fill="outline" expand="block" onClick={handlePopOverClose}>Close</IonButton>
                                 </div>
                             </IonCardContent>
                         </IonCard>)
@@ -274,7 +325,7 @@ function AttendanceByStudent() {
                                 )}
                             </IonCardContent>
                         </IonCard>
-                        <div className="attendance_container_items">
+                        <div className="attendance_container_items-edit">
                             {gridAttendance.map((gridItem: any, index: number) => (
                                 <IonCard
                                     key={`grid-${index}`}
