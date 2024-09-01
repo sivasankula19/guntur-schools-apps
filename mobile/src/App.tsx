@@ -78,6 +78,7 @@ import AttendanceByClass from './pages/Attendance/AttendanceByClass';
 import AttendanceByStudent from './pages/Attendance/AttendanceByStudent';
 import AttendanceClassView from './pages/Attendance/AttendanceClassView';
 import SchoolClasses from './pages/Class-Sections/SchoolClasses';
+import SchoolSections from './pages/Class-Sections/SchoolSections';
 
 setupIonicReact({
   animated:true,
@@ -204,6 +205,7 @@ const App: React.FC = () => {
                 <Route path='/home-work' element={<HomeWork />} />
                 <Route path='/diary' element={<Dairy />} />
                 <Route path='/school-classes' element={<SchoolClasses />} />
+                <Route path='/school-sections' element={<SchoolSections />} />
 
                 <Route path='/gallery' element={<Gallery />} />
                 <Route path='/ex-circular' element={<ExCircularActivities />} />

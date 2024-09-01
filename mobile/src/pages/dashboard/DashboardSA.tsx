@@ -1,4 +1,4 @@
-import { IonButton, IonCard, IonCardContent, IonFooter, IonItem, IonText } from '@ionic/react';
+import {  IonCard, IonCardContent, IonText } from '@ionic/react';
 import React, { useState } from 'react'
 import NavChipCard from '../../components/NavChipsCard';
 import './Dashboard.css';
@@ -8,6 +8,7 @@ import {
     calendarOutline,
     callOutline,
     chatboxOutline,
+    cubeOutline,
     documentOutline,
     documentTextOutline,
     gridOutline,
@@ -46,18 +47,19 @@ export const DashboardSA = () => {
         { id: 1, moduleName: 'Class Attendance', icon: calendarOutline, redirectTo: '/attendance-by-class' },
         { id: 2, moduleName: 'Student Attendance', icon: calendarOutline, redirectTo: '/attendance-by-student' },
         { id: 3, moduleName: 'Progress Card', icon: documentTextOutline, redirectTo: '/progress-card' },
-        { id: 4, moduleName: 'Classes', icon: gridOutline, redirectTo: '/school-classes' },
-        { id: 5, moduleName: 'Home Work', icon: bookOutline, redirectTo: '/home-work' },
-        { id: 6, moduleName: 'My Subjects', icon: schoolOutline, redirectTo: '/subjects' },
-        { id: 7, moduleName: 'Messages', icon: chatboxOutline, redirectTo: '/messages' },
-        { id: 8, moduleName: 'Documents', icon: documentOutline, redirectTo: '/documents' },
-        { id: 9, moduleName: 'My Staff', icon: peopleOutline, redirectTo: '/staff-list' },
-        { id: 10, moduleName: 'My Friends', icon: peopleOutline, redirectTo: '/students-list' },
-        { id: 11, moduleName: 'Calendar', icon: calendarOutline, redirectTo: '/calendar' },
-        { id: 12, moduleName: 'Wibe', icon: newspaperOutline, redirectTo: '/school-wibe' },
-        { id: 13, moduleName: 'Exam Schedules', icon: calendarOutline, redirectTo: '/exam-schedules' },
-        { id: 14, moduleName: 'My Dues', icon: walletOutline, redirectTo: '/fee-structure' },
-        { id: 15, moduleName: 'Assets', icon: businessOutline, redirectTo: '/assets' },
+        { id: 4, moduleName: 'Sections', icon: cubeOutline, redirectTo: '/school-sections' },
+        { id: 5, moduleName: 'Classes', icon: gridOutline, redirectTo: '/school-classes' },
+        { id: 6, moduleName: 'My Staff', icon: peopleOutline, redirectTo: '/staff-list' },
+        { id: 7, moduleName: 'My Friends', icon: peopleOutline, redirectTo: '/students-list' },
+        { id: 8, moduleName: 'Home Work', icon: bookOutline, redirectTo: '/home-work' },
+        { id: 9, moduleName: 'My Subjects', icon: schoolOutline, redirectTo: '/subjects' },
+        { id: 10, moduleName: 'Messages', icon: chatboxOutline, redirectTo: '/messages' },
+        { id: 11, moduleName: 'Documents', icon: documentOutline, redirectTo: '/documents' },
+        { id: 12, moduleName: 'Calendar', icon: calendarOutline, redirectTo: '/calendar' },
+        { id: 13, moduleName: 'Wibe', icon: newspaperOutline, redirectTo: '/school-wibe' },
+        { id: 14, moduleName: 'Exam Schedules', icon: calendarOutline, redirectTo: '/exam-schedules' },
+        { id: 15, moduleName: 'My Dues', icon: walletOutline, redirectTo: '/fee-structure' },
+        { id: 16, moduleName: 'Assets', icon: businessOutline, redirectTo: '/assets' },
     ];
 
     return (

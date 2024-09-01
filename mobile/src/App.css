@@ -547,6 +547,10 @@ ion-header {
   margin-bottom: 10px;
 }
 
+.m-left-10{
+  margin-left: 10px;
+}
+
 .m-r-18 {
   margin-right: 18px;
 }
@@ -4736,6 +4740,7 @@ label.input-wrapper.sc-ion-input-ios {
   margin-right: 4px;
   flex-shrink: 0;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 .selected-bg-w-b {
@@ -4750,11 +4755,18 @@ label.input-wrapper.sc-ion-input-ios {
 }
 
 .custom-class-card{
+  border-bottom: 5px solid;
+  border-color: #1D7AF5;
   margin: 16px 0 !important;
+}
+
+.custom-class-card-selected{
+  border-bottom: 1px solid;
 }
 
 .custom-class-card a{
   color: #000000;
+  cursor: pointer;
   text-decoration: underline;
 }
 
@@ -4771,6 +4783,7 @@ label.input-wrapper.sc-ion-input-ios {
 
 .close-section-icon ion-icon{
   font-size: 20px;
+  cursor: pointer;
 }
 
 .two-select-field{
@@ -4782,6 +4795,36 @@ label.input-wrapper.sc-ion-input-ios {
   font-size: 32px;
   margin-right: 8px;
   color: #1D7AF5;
+  cursor: pointer;
 }
+
+.disabled-edit{
+  color: lightgray !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

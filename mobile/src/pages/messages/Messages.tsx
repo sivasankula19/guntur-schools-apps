@@ -23,13 +23,13 @@ const Messages: React.FC = () => {
 
   const handleInput = (ev: any) => {
     setSearch(ev.target.value);
-    setChatListData(chatContactList.filter((chatContact)=> ((chatContact.name).toLowerCase().includes((ev.target.value).toLowerCase())) || ev.target.value == ''))
+    setChatListData(chatContactList.filter((chatContact) => ((chatContact.name).toLowerCase().includes((ev.target.value).toLowerCase())) || ev.target.value == ''))
     //  debounce function can be executed!!! here i.e api
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     setChatListData(chatContactList)
-  },[])
+  }, [])
 
   return (
     <div className='messages'>
@@ -59,7 +59,7 @@ const Messages: React.FC = () => {
                 showClearButton="focus"
                 value={search}
                 debounce={500}
-                onIonInput={(ev) => handleInput(ev)}></IonSearchbar>
+                onIonInput={handleInput}></IonSearchbar>
             </IonCardContent>
           </IonCard>
         </div>
