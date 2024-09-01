@@ -77,6 +77,7 @@ import SchoolAssetsSA from './pages/SchoolAssets/SchoolAssetsSA';
 import AttendanceByClass from './pages/Attendance/AttendanceByClass';
 import AttendanceByStudent from './pages/Attendance/AttendanceByStudent';
 import AttendanceClassView from './pages/Attendance/AttendanceClassView';
+import SchoolClasses from './pages/Class-Sections/SchoolClasses';
 
 setupIonicReact({
   animated:true,
@@ -202,6 +203,7 @@ const App: React.FC = () => {
                 <Route path='/exam-schedules' element={<ExamSchedule />} />
                 <Route path='/home-work' element={<HomeWork />} />
                 <Route path='/diary' element={<Dairy />} />
+                <Route path='/school-classes' element={<SchoolClasses />} />
 
                 <Route path='/gallery' element={<Gallery />} />
                 <Route path='/ex-circular' element={<ExCircularActivities />} />
