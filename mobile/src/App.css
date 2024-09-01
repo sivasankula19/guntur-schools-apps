@@ -539,6 +539,10 @@ ion-header {
   margin-top: 10px;
 }
 
+.m-top-12 {
+  margin-top: 12px;
+}
+
 .m-bottom-10 {
   margin-bottom: 10px;
 }
@@ -591,6 +595,10 @@ ion-header {
   padding: 0 10px;
 }
 
+.p-h-16 {
+  padding: 0 16px;
+}
+
 .p-r-10{
   padding-right: 10px;
 }
@@ -619,12 +627,20 @@ ion-header {
   font-size: 16px !important;
 }
 
+.font-24{
+  font-size: 24px;
+}
+
 .font-600 {
   font-weight: 600;
 }
 
 .font-500{
   font-weight: 500;
+}
+
+.font-bold{
+  font-weight: bold;
 }
 
 .color-app {
@@ -717,6 +733,23 @@ ion-header {
 .br-ion-8 {
   --border-radius: 8px;
 }
+
+.br-10 {
+  border-radius: 10px;
+}
+
+.br-ion-10 {
+  --border-radius: 10px;
+}
+
+.br-12 {
+  border-radius: 12px;
+}
+
+.br-ion-12 {
+  --border-radius: 12px;
+}
+
 
 .dot-8 {
   width: 8px;
@@ -846,6 +879,10 @@ ion-header {
   border: 1px solid #1D7AF5;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
   animation: slideIn 0.8s forwards;
+}
+
+.animation-none{
+  animation: none !important;
 }
 
 .dark .student_card {
@@ -4639,3 +4676,112 @@ label.input-wrapper.sc-ion-input-ios {
   border-color: #1D7AF5;
   border-radius: 4px;
 }
+
+/* Classes SA */
+
+.school-classes{
+  height: 100%;
+}
+
+.cls-container-view{
+  height: calc(100% - 82px);
+}
+
+.school-class-list{
+  height: calc(100% - 50px);
+  overflow-y: auto;
+}
+
+.school-classes .sec-add-show{
+  width: 100%;
+  display: flex;
+}
+
+.school-classes .sec-add-show ion-icon{
+  font-size: 32px;
+  margin-top: 12px;
+  margin-left: 4px;
+  color: #1D7AF5;
+}
+
+.school-classes .section-show-con {
+  margin-top: 12px;
+  display: flex;
+  width: calc(100% - 0);
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.school-classes .nav-ele-show-con {
+  margin-top: 12px;
+  display: flex;
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  overflow-y: hidden;
+  flex-wrap: nowrap;
+}
+
+.school-classes .section-show-ele {
+  width: auto;
+  min-width: 60px;
+  max-width: 200px;
+  padding: 8px 12px;
+  height: 30px;
+  border: 1px solid;
+  border-color: #1D7AF5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 4px;
+  flex-shrink: 0;
+  border-radius: 8px;
+}
+
+.selected-bg-w-b {
+  background: #1D7AF5;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+
+.school-classes .section-show-ele p {
+  font-size: 10px;
+}
+
+.custom-class-card{
+  margin: 16px 0 !important;
+}
+
+.custom-class-card a{
+  color: #000000;
+  text-decoration: underline;
+}
+
+.dark .custom-class-card a{
+  color: #ffffff;
+}
+
+.close-section-icon{
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.close-section-icon ion-icon{
+  font-size: 20px;
+}
+
+.two-select-field{
+  margin-right: 8px;
+  width: calc(50% - 15px);
+}
+
+.add-sec-circle{
+  font-size: 32px;
+  margin-right: 8px;
+  color: #1D7AF5;
+}
+
+
