@@ -32,12 +32,12 @@ const Subjects: React.FC = () => {
   const handleToggleChange = (event: any) => {
     setIsFilterEnabled(event.detail.checked);
   };
-  
-  const breadCrumbsValue = [{bName:'Home', path:'/dashboard'},{bName:'Subjects', path:'/subjects'}]
+
+  const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Subjects', path: '/subjects' }]
 
   return (
     <div className='subjects'>
-       <div className="g_flex g_space_btwn g_align_cntr bread_toggle_container">
+      <div className="g_flex g_space_btwn g_align_cntr bread_toggle_container">
         <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
         <div>
           <IonToggle
@@ -46,9 +46,8 @@ const Subjects: React.FC = () => {
             onIonChange={handleToggleChange}
           >
             <span
-              className={`toggle-text ${
-                isFilterEnabled ? 'enabled_filter' : 'disabled_filter'
-              }`}
+              className={`toggle-text ${isFilterEnabled ? 'enabled_filter' : 'disabled_filter'
+                }`}
             >
               {isFilterEnabled ? 'On' : 'Off'}
             </span>
@@ -60,7 +59,7 @@ const Subjects: React.FC = () => {
           showClearButton="focus"
           value={search}
           debounce={500}
-          onIonInput={(ev) => handleInput(ev)}
+          onIonInput={handleInput}
         ></IonSearchbar>
       </IonItem>
       <div className="subjects_cls_container">
@@ -77,9 +76,8 @@ const Subjects: React.FC = () => {
                       <ProgressBar filled={item.percentCovered}></ProgressBar>
                     </div>
                     <IonIcon
-                      className={`${
-                        item.isFavarouite ? 'subject_selected_icon' : ''
-                      }`}
+                      className={`${item.isFavarouite ? 'subject_selected_icon' : ''
+                        }`}
                       icon={starOutline}
                     ></IonIcon>
                   </div>

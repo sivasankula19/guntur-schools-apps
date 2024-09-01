@@ -88,10 +88,10 @@ function SchoolClasses() {
     <div className='school-classes'>
       <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
       <div className='p-h-16 cls-container-view'>
-        <IonButton className='br-ion-12 m-top-12' onClick={handleAdd} fill="outline" expand="block">Add Class</IonButton>
+        <IonButton className='br-ion-12 m-top-12 g_txt_cap' onClick={handleAdd} fill="outline" expand="block">Add Class</IonButton>
         <div className='school-class-list'>
           {classListDataApi.map((item) => (
-            <IonCard key={item.id} className="student_card animation-none custom-class-card">
+            <IonCard key={item.id} className={`student_card animation-none custom-class-card ${currentSelected === item.id ? 'custom-class-card-selected' : ''}`}>
               <IonCardContent className="card_content">
                 <div className="g_flex g_space_btwn g_align_cntr">
                   <div className="g_flex width-70 g_align_cntr">
@@ -150,7 +150,6 @@ function SchoolClasses() {
           {formValue.linkedSections.map((secItem) => (<div className='m-bottom-10 g_flex'>
             <IonSelect
               className="custome_select two-select-field"
-              multiple
               label="Section Name"
               labelPlacement="floating"
               fill="outline"
@@ -164,7 +163,6 @@ function SchoolClasses() {
             </IonSelect>
             <IonSelect
               className="custome_select two-select-field"
-              multiple
               label="Class Staff Name"
               labelPlacement="floating"
               fill="outline"

@@ -12,7 +12,7 @@ import {
   IonText,
   IonToolbar,
 } from '@ionic/react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import Footer from '../../components/Footer';
 import { schoolsListData } from '../../common/utility';
@@ -27,8 +27,8 @@ interface ISchoolObj {
 
 const SelectSchool: React.FC = () => {
   const { name } = useParams<{ name: string }>();
-
-  const [schoolsList, setSchoolsList] = useState<ISchoolObj[]>(schoolsListData);
+  const [search, setSearch] = useState('');
+  const [schoolsList, setSchoolsList] = useState<ISchoolObj[]>([]);
   const [selectedSchoolVal, setSelectedSchoolVal] = useState<ISchoolObj | null>(
     null
   );
@@ -37,10 +37,10 @@ const SelectSchool: React.FC = () => {
   const navigate = useNavigate();
 
   const handleSelectedSchool = (selectedScl: ISchoolObj) => {
-    if(selectedSchoolVal?.schoolId === selectedScl.schoolId){
+    if (selectedSchoolVal?.schoolId === selectedScl.schoolId) {
       setSelectedSchoolVal(null)
     } else {
-    setSelectedSchoolVal(selectedScl);
+      setSelectedSchoolVal(selectedScl);
     }
   };
 
@@ -48,6 +48,17 @@ const SelectSchool: React.FC = () => {
     dispatch(setSelectedSchool(selectedSchoolVal));
     navigate('/home');
   };
+
+  const handleInput = (ev: any) => {
+    setSearch(ev.target.value);
+    setSchoolsList(schoolsListData.filter((school) => ((school.schoolName).toLowerCase().includes((ev.target.value).toLowerCase())) || ev.target.value == ''))
+    //  debounce function can be executed!!! here i.e api
+  };
+
+  useEffect(() => {
+    setSchoolsList(schoolsListData)
+  }, [])
+
 
   return (
     <IonPage className="my_page">
@@ -69,27 +80,30 @@ const SelectSchool: React.FC = () => {
                     placeholder="Please Search School"
                     animated={true}
                     color="primary"
+                    showClearButton="focus"
+                    value={search}
+                    debounce={500}
+                    onIonInput={handleInput}
                   ></IonSearchbar>
                   <div className="school_list_show_container">
                     <IonList>
                       {schoolsList.map((schoolItem, index) => (
                         <IonItem
                           onClick={() => handleSelectedSchool(schoolItem)}
-                          className={`${index === 0 ? 'first_item' : ''} ${
-                            selectedSchoolVal?.schoolId ===
+                          className={`${index === 0 ? 'first_item' : ''} ${selectedSchoolVal?.schoolId ===
                               schoolItem.schoolId ? 'school_item_selected' : ''
-                          }`}
+                            }`}
                           key={schoolItem.schoolId}
                         >
                           <div className='select_an_item'>
-                          <IonText className={`${selectedSchoolVal?.schoolId === schoolItem.schoolId ? 'is_icon_present' : ''}`}>
-                            <p>{schoolItem.schoolName}</p>
-                          </IonText>
-                          {selectedSchoolVal && selectedSchoolVal.schoolId === schoolItem.schoolId && <>
-                            <IonIcon icon={closeCircleOutline}></IonIcon>
-                          </>}
+                            <IonText className={`${selectedSchoolVal?.schoolId === schoolItem.schoolId ? 'is_icon_present' : ''}`}>
+                              <p>{schoolItem.schoolName}</p>
+                            </IonText>
+                            {selectedSchoolVal && selectedSchoolVal.schoolId === schoolItem.schoolId && <>
+                              <IonIcon icon={closeCircleOutline}></IonIcon>
+                            </>}
                           </div>
-                       
+
                         </IonItem>
                       ))}
                     </IonList>

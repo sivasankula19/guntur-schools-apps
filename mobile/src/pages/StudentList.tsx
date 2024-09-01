@@ -24,7 +24,7 @@ const StudentList: React.FC = () => {
     setIsFilterEnabled(event.detail.checked);
   };
 
-  const count = useSelector((state:any) => state.counter);
+  const count = useSelector((state: any) => state.counter);
 
   const handleInput = (ev: any) => {
     setSearch(ev.target.value);
@@ -32,11 +32,11 @@ const StudentList: React.FC = () => {
     //  debounce function can be executed!!! here
   };
 
-  const navigateToUser = (id:string) => {
+  const navigateToUser = (id: string) => {
     navigate(`/user/${id}`)
   }
 
-  const breadCrumbsValue = [{bName:'Home', path:'/dashboard'},{bName:'Students List', path:'/students-list'}];
+  const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Students List', path: '/students-list' }];
 
   return (
     <div className='g_full_height'>
@@ -49,9 +49,8 @@ const StudentList: React.FC = () => {
             onIonChange={handleToggleChange}
           >
             <span
-              className={`toggle-text ${
-                isFilterEnabled ? 'enabled_filter' : 'disabled_filter'
-              }`}
+              className={`toggle-text ${isFilterEnabled ? 'enabled_filter' : 'disabled_filter'
+                }`}
             >
               {isFilterEnabled ? 'On' : 'Off'}
             </span>
@@ -66,7 +65,7 @@ const StudentList: React.FC = () => {
                 showClearButton="focus"
                 value={search}
                 debounce={500}
-                onIonInput={(ev) => handleInput(ev)}
+                onIonInput={handleInput}
               ></IonSearchbar>
               <div className="g_flex g_space_btwn select_conatainer">
                 <div style={{ width: '47%' }}>
@@ -124,14 +123,14 @@ const StudentList: React.FC = () => {
                 <div className="g_flex first_container g_align_cntr">
                   <div className="profile_item">
                     <img
-                    onClick={()=>navigateToUser(item.id)}
+                      onClick={() => navigateToUser(item.id)}
                       className="prifile_image"
                       src={item.profileImage}
                       alt="profile"
                     />
                   </div>
                   <div className="title_designation">
-                    <h2 onClick={()=>navigateToUser(item.id)} className="title_name">{item.studentName}</h2>
+                    <h2 onClick={() => navigateToUser(item.id)} className="title_name">{item.studentName}</h2>
                     <p>
                       <span>{`${item.class} ${item.section}`}</span>
                     </p>

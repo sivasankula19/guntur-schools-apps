@@ -27,6 +27,7 @@ function AttendanceByStudent() {
     const monthYearDetailsRef = useRef<any>();
     const monthYearDisplayRef = useRef<any>();
     const containerRef = useRef<any>(null);
+    const [search, setSearch] = useState('');
 
     const todayFormate = `${todayDate.getMonth() + 1}/${todayDate.getDate()}/${todayDate.getFullYear()}`;
 
@@ -91,15 +92,15 @@ function AttendanceByStudent() {
         setSelectedStudent(student)
     }
 
-    const handlePopOverSaveClose = (e:any) => {
-        if(e.target?.id === 'save-student-picker') {
+    const handlePopOverSaveClose = (e: any) => {
+        if (e.target?.id === 'save-student-picker') {
         } else {
             // to do -actions according to save
         }
     }
 
-    const handleMonthYearSelect = (data:any, isMonth:boolean) => {
-        setCurrentMY({month: isMonth ? data.monthId : currentMY.month, year: isMonth ? currentMY.year : data})
+    const handleMonthYearSelect = (data: any, isMonth: boolean) => {
+        setCurrentMY({ month: isMonth ? data.monthId : currentMY.month, year: isMonth ? currentMY.year : data })
     }
 
     const calendarMonths = [
@@ -115,8 +116,13 @@ function AttendanceByStudent() {
         { month: 'Oct', monthId: '10', monthFull: 'OCTOBER' },
         { month: 'Nov', monthId: '11', monthFull: 'NOVEMBER' },
         { month: 'Dec', monthId: '12', monthFull: 'DECEMBER' }
-      ];
-      
+    ];
+
+    const handleInput = (ev: any) => {
+        setSearch(ev.detail.value);
+        setSearchResult(searchStudentsData.filter((item: any) => ((item.studentName).toLowerCase().includes((ev.detail.value).toLowerCase())) || ev.detail.value == ''))
+        //  debounce function can be executed!!! here i.e api
+    };
 
     return (
         <div className='attendance_sa'>
@@ -202,7 +208,10 @@ function AttendanceByStudent() {
                             <IonCardContent>
                                 <div>
                                     <div className='m-bottom-10'>
-                                        <IonSearchbar placeholder='Search A Student Name / Id' />
+                                        <IonSearchbar placeholder='Search A Student Name / Id' showClearButton="focus"
+                                            value={search}
+                                            debounce={500}
+                                            onIonInput={handleInput}></IonSearchbar>
                                     </div>
                                     <div className='users-list-dis'>
                                         {searchResult.map((student: any) => (
@@ -228,7 +237,7 @@ function AttendanceByStudent() {
                             <IonIcon icon={chevronBackOutline}></IonIcon>
                             <div className='g_flex p-h-10 username-holder' ref={monthYearDetailsRef}>
                                 <IonLabel>
-                                    {calendarMonths[currentMY.month-1].monthFull} {currentMY.year}
+                                    {calendarMonths[currentMY.month - 1].monthFull} {currentMY.year}
                                 </IonLabel>
                             </div>
                             <IonIcon icon={chevronForwardOutline}></IonIcon>
@@ -242,12 +251,12 @@ function AttendanceByStudent() {
                                 <div className='g_flex' >
                                     <div className='g_half_width g_txt_center g_full_height'>
                                         <div className='g_full_height month-date-dis  o-flow-y'>
-                                            {calendarMonths.map((m, mIndex) => (<div onClick={()=>handleMonthYearSelect(m, true)} className={`height-px-40 month-year-item ${currentMY.month-1 === mIndex ? 'selected-month-year' : ''}`} key={mIndex}>{m.monthFull}</div>))}
+                                            {calendarMonths.map((m, mIndex) => (<div onClick={() => handleMonthYearSelect(m, true)} className={`height-px-40 month-year-item ${currentMY.month - 1 === mIndex ? 'selected-month-year' : ''}`} key={mIndex}>{m.monthFull}</div>))}
                                         </div>
                                     </div>
                                     <div className='g_half_width g_txt_center'>
                                         <div className='g_full_height month-date-dis  o-flow-y'>
-                                            {[2024, 2023, 2022, 2021, 2020, 2019].map((y, yIndex) => (<div onClick={()=>handleMonthYearSelect(y,false)} className={`height-px-40 month-year-item ${currentMY.year === y ? 'selected-month-year' : ''}`} key={yIndex}>{y}</div>))}
+                                            {[2024, 2023, 2022, 2021, 2020, 2019].map((y, yIndex) => (<div onClick={() => handleMonthYearSelect(y, false)} className={`height-px-40 month-year-item ${currentMY.year === y ? 'selected-month-year' : ''}`} key={yIndex}>{y}</div>))}
                                         </div>
                                     </div>
                                 </div>

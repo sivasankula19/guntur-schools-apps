@@ -27,11 +27,11 @@ const StaffList: React.FC = () => {
     //  debounce function can be excuted!!! here
   };
 
-  const navigateToUser = (id:string) => {
+  const navigateToUser = (id: string) => {
     navigate(`/user/${id}`)
   }
 
-  const breadCrumbsValue = [{bName:'Home', path:'/dashboard'},{bName:'Staff List', path:'/staff-list'}]
+  const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Staff List', path: '/staff-list' }]
 
   return (
     <div className='staff g_full_height'>
@@ -44,9 +44,8 @@ const StaffList: React.FC = () => {
             onIonChange={handleToggleChange}
           >
             <span
-              className={`toggle-text ${
-                isFilterEnabled ? 'enabled_filter' : 'disabled_filter'
-              }`}
+              className={`toggle-text ${isFilterEnabled ? 'enabled_filter' : 'disabled_filter'
+                }`}
             >
               {isFilterEnabled ? 'On' : 'Off'}
             </span>
@@ -61,7 +60,7 @@ const StaffList: React.FC = () => {
                 showClearButton="focus"
                 value={search}
                 debounce={500}
-                onIonInput={(ev) => handleInput(ev)}
+                onIonInput={handleInput}
               ></IonSearchbar>
               <div className="g_flex g_space_btwn select_conatainer">
                 <div style={{ width: '47%' }}>
@@ -122,11 +121,11 @@ const StaffList: React.FC = () => {
                       className="prifile_image"
                       src={item.empImage}
                       alt="profile"
-                      onClick={()=>navigateToUser(item.id)}
+                      onClick={() => navigateToUser(item.id)}
                     />
                   </div>
                   <div className="title_designation">
-                    <h2 onClick={()=>navigateToUser(item.id)} className="title_name">{item.empName}</h2>
+                    <h2 onClick={() => navigateToUser(item.id)} className="title_name">{item.empName}</h2>
                     <p>
                       <span>{`${item.designation}`}</span>
                     </p>
@@ -137,7 +136,7 @@ const StaffList: React.FC = () => {
                     Sub : <span className="user_id_data">{item.subject}</span>
                   </div>
                   <div className="class_list_show">
-                    Cl : {item.classList.map((cl, index)=><span key={index}>{cl},</span>)}
+                    Cl : {item.classList.map((cl, index) => <span key={index}>{cl},</span>)}
                   </div>
                 </div>
               </div>
