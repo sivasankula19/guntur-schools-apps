@@ -16,33 +16,52 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 import GCustomisedModal from '../../components/GCustomisedModal';
 
+interface IStaffForm {
+    staffFirstName: string,
+    staffLastName: string,
+    position: string,
+    designation: string,
+    mobileNumber: string,
+    emailAddress: string,
+    gender: string,
+    staffId: string,
+    defaultPassword?: string,
+}
+
 const StaffListSA: React.FC = () => {
     const [isFilterEnabled, setIsFilterEnabled] = useState(true);
     const [isAddClassModal, setIsAddClassModal] = useState<boolean>(false);
     const [search, setSearch] = useState('');
     const [currentSelected, setCurrentSelected] = useState<string>('');
-    const formInitialVal = {
-        className: '',
+    const [isEdit, setIsEdit] = useState<boolean>(false);
+    const formInitialVal: IStaffForm = {
+        staffFirstName: '',
+        staffLastName: '',
+        position: '',
+        designation: '',
+        mobileNumber: '',
+        emailAddress: '',
+        gender: '',
+        staffId: '',
+        defaultPassword: '',
     }
-    const [formValue, setFormValue] = useState<any>(formInitialVal);
+    const [formValue, setFormValue] = useState<IStaffForm>(formInitialVal);
     const staffData = staffDummyArr;
-    const stdData = [{
-        studentName: 'Sankula Siva', profileImage:
-            'https://avatars.githubusercontent.com/u/93701195?s=60&v=4', id: '8A001',
-        class: '8th Class',
-        section: 'A Section',
-    }]
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const handleToggleChange = (event: any) => {
         setIsFilterEnabled(event.detail.checked);
     };
 
-    const handleInput = (ev: any) => {
+    const handleSearchInput = (ev: any) => {
         setSearch(ev.target.value);
         console.log(ev?.target.value);
         //  debounce function can be executed!!! here
     };
+
+    const handleInput = (e: any) => {
+        setFormValue((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+    }
 
     const navigateToUser = (id: string) => {
         navigate(`/user/${id}`)
@@ -66,7 +85,18 @@ const StaffListSA: React.FC = () => {
         setCurrentSelected(id)
     }
 
-    const handleEditClass = (info: any) => {
+    const handleEditClass = (item: any) => {
+        setFormValue({
+            staffFirstName: item.firstName,
+            staffLastName: item.lastName,
+            position: item.position,
+            designation: item.designationId,
+            mobileNumber: item.mobile,
+            emailAddress: item.email,
+            gender: item.gender,
+            staffId: item.id,
+        });
+        setIsEdit(true);
         setIsAddClassModal(true);
     }
 
@@ -75,11 +105,15 @@ const StaffListSA: React.FC = () => {
     }
 
     const handleModelClose = () => {
+        if (isEdit) {
+            setIsEdit(false);
+        }
         setIsAddClassModal(false);
     }
 
     const handleSubmit = () => {
         // submit actions
+        console.log(formValue)
     }
 
 
@@ -113,7 +147,7 @@ const StaffListSA: React.FC = () => {
                                 showClearButton="focus"
                                 value={search}
                                 debounce={500}
-                                onIonInput={handleInput}
+                                onIonInput={handleSearchInput}
                             ></IonSearchbar>
                             <div className="g_flex g_space_btwn select_conatainer">
                                 <div style={{ width: '47%' }}>
@@ -171,7 +205,7 @@ const StaffListSA: React.FC = () => {
                                         />
                                     </div>
                                     <div className="title_designation">
-                                        <h2 onClick={() => navigateToUser(item.id)} className="title_name g_text_ellipses">{item.id}</h2>
+                                        <h2 onClick={() => navigateToUser(item.id)} className="title_name g_text_ellipses">{item.firstName} {item.lastName}</h2>
                                         <p>
                                             <span>{`${item.designation}`}</span>
                                         </p>
@@ -198,19 +232,82 @@ const StaffListSA: React.FC = () => {
                 ))}
             </div>
             <GCustomisedModal
-                title={`Add Class`}
+                title={`Add Employee`}
                 isOpen={isAddClassModal}
                 onClose={handleModelClose}
                 onSave={handleSubmit}
             >
-                <div>
-                    <div className='field m-bottom-10'>
-                        <IonInput value={formValue.className} onIonChange={handleInput} name='className' label="Class Name" labelPlacement="floating" fill="outline" placeholder="Subject Name"></IonInput>
-                    </div>
-                    <div className='field m-bottom-10'>
-                        <IonInput value={formValue.classIconValue} onIonChange={handleInput} name='classIconValue' label="Class Icon Value" labelPlacement="floating" fill="outline" placeholder="Ex. 10"></IonInput>
-                    </div>
+                <div className='field m-bottom-10'>
+                    <IonInput value={formValue.staffFirstName} onIonChange={handleInput} name='staffFirstName' label="Staff First Name" labelPlacement="floating" fill="outline" placeholder="First Name"></IonInput>
                 </div>
+                <div className='field m-bottom-10'>
+                    <IonInput value={formValue.staffLastName} onIonChange={handleInput} name='staffLastName' label="Staff Last Name" labelPlacement="floating" fill="outline" placeholder="Last Name"></IonInput>
+                </div>
+                <div className='field m-bottom-10'>
+                    <IonSelect
+                        className="custome_select"
+                        label="Position"
+                        labelPlacement="floating"
+                        fill="outline"
+                        name='position'
+                        value={formValue.position}
+                        onIonChange={handleInput}
+                        interface="popover"
+                    >
+                        <IonSelectOption value="--">Default Section</IonSelectOption>
+                        <IonSelectOption value="teaching">Teaching</IonSelectOption>
+                        <IonSelectOption value="non-teaching">Non Teaching</IonSelectOption>
+                        <IonSelectOption value="operations">Operations</IonSelectOption>
+                    </IonSelect>
+                </div>
+                <div className='field m-bottom-10'>
+                    <IonSelect
+                        className="custome_select"
+                        label="Designation"
+                        labelPlacement="floating"
+                        fill="outline"
+                        name='designation'
+                        value={formValue.designation}
+                        interface="popover"
+                        onIonChange={handleInput}
+                    >
+                        <IonSelectOption value="--">Default Section</IonSelectOption>
+                        <IonSelectOption value="mcom">Mcom</IonSelectOption>
+                        <IonSelectOption value="btech">B.Tech</IonSelectOption>
+                        <IonSelectOption value="mba">MBA</IonSelectOption>
+                    </IonSelect>
+                </div>
+                <div className='field m-bottom-10'>
+                    <IonInput value={formValue.mobileNumber} onIonChange={handleInput} name='mobileNumber' label="Mobile Number" labelPlacement="floating" fill="outline" placeholder="+91 9876543210"></IonInput>
+                </div>
+                <div className='field m-bottom-10'>
+                    <IonInput value={formValue.emailAddress} onIonChange={handleInput} name='emailAddress' label="Email Address" labelPlacement="floating" fill="outline" placeholder="test@gmail.com"></IonInput>
+                </div>
+                <div className='field m-bottom-10'>
+                    <IonSelect
+                        className="custome_select"
+                        label="Gender"
+                        labelPlacement="floating"
+                        fill="outline"
+                        name='gender'
+                        value={formValue.gender}
+                        interface="popover"
+                        onIonChange={handleInput}
+                    >
+                        <IonSelectOption value="--">Default Section</IonSelectOption>
+                        <IonSelectOption value="gen-male">Male</IonSelectOption>
+                        <IonSelectOption value="gen-female">Female</IonSelectOption>
+                        <IonSelectOption value="gen-trans">Trans</IonSelectOption>
+                    </IonSelect>
+                </div>
+                <div className='field m-bottom-10'>
+                    <IonInput value={formValue.staffId} onIonChange={handleInput} name='staffId' label="Generated Staff ID" labelPlacement="floating" fill="outline" placeholder="Staff Registration ID"></IonInput>
+                </div>
+                {!isEdit && (
+                    <div className='field m-bottom-10'>
+                        <IonInput value={formValue.defaultPassword} onIonChange={handleInput} name='defaultPassword' label="Default Password" labelPlacement="floating" fill="outline" placeholder="Default User Password"></IonInput>
+                    </div>
+                )}
             </GCustomisedModal>
         </div>
     );
