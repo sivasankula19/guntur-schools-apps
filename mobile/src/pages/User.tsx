@@ -1,25 +1,16 @@
 import {
-  IonContent,
-  IonPage,
-  IonBreadcrumb,
-  IonBreadcrumbs,
   IonCard,
   IonInput,
   IonButton,
   IonIcon,
   IonList,
-  IonCardContent,
 } from '@ionic/react';
 import {
-  personCircleOutline,
   pencil,
-  calendarClearOutline,
   expandOutline,
 } from 'ionicons/icons';
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
 import GCustomisedModal from '../components/GCustomisedModal';
 import { useNavigate } from 'react-router';
 import GImageDocPreview from '../components/GImageDocPreview';

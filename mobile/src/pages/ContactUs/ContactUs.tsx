@@ -1,10 +1,8 @@
 import React from 'react';
-import { useParams } from 'react-router';
 import { IonButton, IonCard, IonCardContent, IonIcon, IonInput, IonSelect, IonSelectOption, IonText, IonTextarea } from '@ionic/react';
 import { copyOutline, expandOutline, locationOutline, mailOutline, phonePortraitOutline, schoolOutline } from 'ionicons/icons';
 
 const ContactUs: React.FC = () => {
-  const { name } = useParams<{ name: string }>();
 
   return (
     <div>

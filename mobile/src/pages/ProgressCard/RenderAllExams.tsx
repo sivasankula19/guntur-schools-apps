@@ -1,6 +1,6 @@
-import { IonFooter, IonHeader, IonTitle, IonToolbar } from '@ionic/react';
+import { IonFooter, IonHeader, IonToolbar } from '@ionic/react';
 import { useEffect, useRef, useState } from 'react';
-import { allUnitsMarks, unitMarksData } from '../../common/utility';
+import { allUnitsMarks } from '../../common/utility';
 
 const RenderAllExams: React.FC<IRenderAllExams> = ({ }) => {
   const subjects = [

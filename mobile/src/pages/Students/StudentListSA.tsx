@@ -12,7 +12,7 @@ import {
 import React, { useState } from 'react';
 import { studentDummyData } from '../../common/utility';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import GCustomisedModal from '../../components/GCustomisedModal';
 

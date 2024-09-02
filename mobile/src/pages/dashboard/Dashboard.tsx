@@ -10,15 +10,12 @@ import {
   chatboxOutline,
   documentOutline,
   documentTextOutline,
-  documentsOutline,
-  homeOutline,
   imageOutline,
   informationCircleOutline,
   newspaperOutline,
   peopleOutline,
   ribbonOutline,
   schoolOutline,
-  timeOutline,
   trophyOutline,
   walletOutline,
 } from 'ionicons/icons';
@@ -26,10 +23,7 @@ import {
   IonCard,
   IonCardContent,
   IonItem,
-  IonLabel,
   IonList,
-  IonSegment,
-  IonSegmentButton,
   IonText,
 } from '@ionic/react';
 import { formatDate, timeTableVal } from '../../common/utility';
@@ -41,7 +35,6 @@ const dashboard: React.FC = () => {
   const [timeDiffHrs, setTimeDiffHrs] = useState(0);
   const [selectedSegment, setSelectedSegment] = useState('Today');
   const dsbrdRef = useRef<any>(null);
-  const isMobile = isPlatform('android');
 
   const chipsData = [
     { id: 1, moduleName: 'Attendance', icon: calendarOutline, redirectTo: '/attendance' },

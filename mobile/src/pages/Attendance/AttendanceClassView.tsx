@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import GBreadCrumbs from '../../components/GBreadCrumbs'
-import { useLocation, useNavigate, useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { IonButton, IonCard, IonCardContent, IonIcon, IonLabel, IonSelect, IonSelectOption, IonText } from '@ionic/react';
 import { arrowBackOutline, saveOutline } from 'ionicons/icons';
 import { classStudentsDateAttendance } from '../../common/utility';

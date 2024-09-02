@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { IonButton, IonCard, IonCardContent, IonIcon, IonInput, IonLabel, IonSelect, IonSelectOption, IonText } from '@ionic/react';
 import GCustomisedModal from '../../components/GCustomisedModal';
-import { addCircleOutline, closeCircleOutline, removeCircleOutline } from 'ionicons/icons';
+import { addCircleOutline, closeCircleOutline } from 'ionicons/icons';
 import { useNavigate } from 'react-router';
 
 function SchoolClasses() {

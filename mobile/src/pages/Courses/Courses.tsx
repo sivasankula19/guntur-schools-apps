@@ -1,10 +1,8 @@
 import React from 'react';
-import { useParams } from 'react-router';
 import { IonIcon, IonText } from '@ionic/react';
 import { checkmarkCircleOutline, closeCircleOutline } from 'ionicons/icons';
 
 const Courses: React.FC = () => {
-  const { name } = useParams<{ name: string }>();
 
   const courseLabels = [{
     id:'course',

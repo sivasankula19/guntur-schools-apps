@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
-import { IonCard, IonCardContent, IonContent, IonIcon, IonImg, IonInput, IonItem, IonLabel, IonPage, IonPopover, IonText, IonTitle, IonToggle, IonToolbar } from '@ionic/react';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
-import { arrowBackOutline, banSharp, closeOutline, colorFillOutline, ellipsisVerticalOutline, notifications, searchCircle, searchOutline, send } from 'ionicons/icons';
+import { IonCard, IonCardContent, IonContent, IonIcon, IonItem, IonLabel, IonPopover, IonText, IonToolbar } from '@ionic/react';
+import { arrowBackOutline, banSharp, closeOutline, colorFillOutline, ellipsisVerticalOutline, notifications, searchOutline, send } from 'ionicons/icons';
 import { msgDummyData } from '../../common/utility';
 
 const ChatScreen: React.FC = () => {

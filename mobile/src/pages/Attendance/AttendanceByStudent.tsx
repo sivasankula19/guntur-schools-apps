@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import GBreadCrumbs from '../../components/GBreadCrumbs'
-import { IonButton, IonCard, IonCardContent, IonIcon, IonItem, IonLabel, IonPicker, IonSearchbar, IonSelect, IonSelectOption, IonText, isPlatform, } from '@ionic/react';
-import { analyticsOutline, appsSharp, arrowBackOutline, caretDownOutline, checkmarkCircleOutline, chevronBackOutline, chevronForwardOutline, closeCircleOutline, listSharp, printSharp, removeOutline, saveOutline, searchOutline } from 'ionicons/icons';
+import { IonButton, IonCard, IonCardContent, IonIcon, IonItem, IonLabel, IonSearchbar, IonSelect, IonSelectOption, IonText, isPlatform, } from '@ionic/react';
+import { analyticsOutline, appsSharp, arrowBackOutline, caretDownOutline, checkmarkCircleOutline, chevronBackOutline, chevronForwardOutline, closeCircleOutline, listSharp, printSharp, removeOutline, saveOutline } from 'ionicons/icons';
 import { useNavigate } from 'react-router';
 import { getDatesForMonth, searchStudentsData, transformListToGrid } from '../../common/utility';
 
@@ -10,7 +10,7 @@ function AttendanceByStudent() {
     const [searchResult, setSearchResult] = useState<any>([]);
     const [selectedStudent, setSelectedStudent] = useState<any>({
         "id": 2,
-        "studentName": "Siva Sankula",
+        "studentName": "Narra Dev Qumar",
         "regNumber": "GHMS00020",
         "className": "8th Class",
         "sectionName": "B Section"
@@ -40,7 +40,6 @@ function AttendanceByStudent() {
     }, []);
 
     useEffect(() => {
-
         if (viewMode === 'list') {
             setAttendanceDate(getDatesForMonth(currentMY.month, currentMY.year));
         } else {
@@ -91,14 +90,7 @@ function AttendanceByStudent() {
     const handleStudentChange = (student: any) => {
         setSelectedStudent(student)
     }
-
-    const handlePopOverSaveClose = (e: any) => {
-        if (e.target?.id === 'save-student-picker') {
-        } else {
-            // to do -actions according to save
-        }
-    }
-
+    
     const handleMonthYearSelect = (data: any, isMonth: boolean) => {
         setCurrentMY({ month: isMonth ? data.monthId : currentMY.month, year: isMonth ? currentMY.year : data })
     }

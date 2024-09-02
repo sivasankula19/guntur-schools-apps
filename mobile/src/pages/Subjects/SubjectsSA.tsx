@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
 import {
   IonButton,
   IonCard,
   IonCardContent,
-  IonIcon,
   IonInput,
   IonItem,
   IonList,
@@ -24,10 +23,10 @@ function SubjectsSA() {
   const [selectedSec, setSelectedSec] = useState<string>('');
   const [editableItem, setEditableItem] = useState<any>(null);
   const formInitialVal = {
-    subjectName:'',
-    subjectStaffName:'',
+    subjectName: '',
+    subjectStaffName: '',
     percentCovered: 24,
-    subjectDefaultMarks:'100'
+    subjectDefaultMarks: '100'
   }
   const [formValue, setFormValue] = useState(formInitialVal)
   const breadCrumbsValue = [
@@ -39,11 +38,11 @@ function SubjectsSA() {
     setIsModelOpen(true);
   }
 
-  const handleFormEdit = (item:any) => {
+  const handleFormEdit = (item: any) => {
     setEditableItem(item)
     setFormValue({
-      subjectName:item.subjectName,
-      subjectDefaultMarks:item.marks || 100,
+      subjectName: item.subjectName,
+      subjectDefaultMarks: item.marks || 100,
       subjectStaffName: item.staffName,
       percentCovered: item.percentCovered
     })
@@ -51,7 +50,7 @@ function SubjectsSA() {
   }
 
   const handleSubmit = () => {
-    if(editableItem){
+    if (editableItem) {
       // edit api for editableItem
     } else {
       // add for New
@@ -59,7 +58,7 @@ function SubjectsSA() {
     console.log('form', formValue);
 
     // success call
-    if(editableItem){
+    if (editableItem) {
       setEditableItem(null);
     }
     setFormValue(formInitialVal);
@@ -67,14 +66,14 @@ function SubjectsSA() {
 
   const handleModelClose = () => {
     setIsModelOpen(false);
-    if(editableItem){
+    if (editableItem) {
       setEditableItem(null);
     }
     setFormValue(formInitialVal);
   }
 
-  const handleInput = (e:any) => {
-    setFormValue((prev)=>({...prev, [e.target.name]:e.target.value}))
+  const handleInput = (e: any) => {
+    setFormValue((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
   return (
@@ -133,7 +132,7 @@ function SubjectsSA() {
                     <div className="progress_container g_flex g_align_cntr">
                       <ProgressBar filled={item.percentCovered}></ProgressBar>
                     </div>
-                    <IonText onClick={()=>handleFormEdit(item)}>Edit</IonText>
+                    <IonText onClick={() => handleFormEdit(item)}>Edit</IonText>
                   </div>
                 </IonItem>
                 <IonItem>
@@ -173,11 +172,11 @@ function SubjectsSA() {
             <IonInput value={formValue.subjectStaffName} onIonChange={handleInput} name='subjectStaffName' label="Subject Staff Name" labelPlacement="floating" fill="outline" placeholder="Subject Staff Name"></IonInput>
           </div>
           <div className='field m-bottom-10 m-r-18'>
-          <IonRange value={formValue.percentCovered} pin={true} onIonChange={handleInput} name='percentCovered'>
-            <div slot='label'>
-              Percentage Covered:
-            </div>
-          </IonRange>
+            <IonRange value={formValue.percentCovered} pin={true} onIonChange={handleInput} name='percentCovered'>
+              <div slot='label'>
+                Percentage Covered:
+              </div>
+            </IonRange>
           </div>
           <div className='field m-bottom-10'>
             <IonInput value={formValue.subjectDefaultMarks} onIonChange={handleInput} name='subjectDefaultMarks' label="Subject Marks Default" labelPlacement="floating" fill="outline" placeholder="Ex. 100"></IonInput>

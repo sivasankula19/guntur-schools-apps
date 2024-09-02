@@ -25,8 +25,6 @@ import AddDoc from '../components/AddDocByRole';
 
 const Documents: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedSrc, setSelectedSrc] = useState<any>('');
-
   const accordianContent = docData;
   const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Documents', path: '/documents' }]
   return (

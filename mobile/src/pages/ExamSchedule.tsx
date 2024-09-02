@@ -1,13 +1,10 @@
 import React from 'react';
-import { useParams } from 'react-router';
 import GBreadCrumbs from '../components/GBreadCrumbs';
 import { IonAccordion, IonAccordionGroup, IonIcon, IonItem, IonLabel, IonText } from '@ionic/react';
-import { caretDownOutline, folderOutline, readerOutline, warning } from 'ionicons/icons';
+import { caretDownOutline, readerOutline, warning } from 'ionicons/icons';
 import { examScedulesData, formatDate } from '../common/utility';
 
 const ExamSchedule: React.FC = () => {
-  const { name } = useParams<{ name: string }>();
-
   const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Exam Schedules', path: '/exam-schedules' }];
   const examScheduleJson = examScedulesData
 
