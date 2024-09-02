@@ -1,14 +1,14 @@
 import React from 'react';
 import { useParams } from 'react-router';
-import GBreadCrumbs from '../components/GBreadCrumbs';
+import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { IonCard, IonCardContent, IonIcon, IonItem, IonLabel, IonSelect, IonSelectOption, IonText } from '@ionic/react';
 import { addCircleOutline, checkmarkCircleOutline, closeCircleOutline, removeCircleOutline } from 'ionicons/icons';
-import { formatDate } from '../common/utility';
+import { formatDate } from '../../common/utility';
 
-const FeesDues: React.FC = () => {
+const FeesDuesSA: React.FC = () => {
   const { name } = useParams<{ name: string }>();
 
-  const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'fee Structure', path: '/fee-structure' }];
+  const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Fee Structure', path: '/fee-structure' }];
 
   const feesPaidTerms = [
     {
@@ -92,7 +92,7 @@ const FeesDues: React.FC = () => {
           <IonSelect
             className="custome_select"
             label="Select Reason"
-            labelPlacement="floating"
+            // labelPlacement="floating"
             fill="outline"
             value={'2024-2025'}
             interface="popover"
@@ -103,9 +103,66 @@ const FeesDues: React.FC = () => {
             }
           >
             <IonSelectOption value="2024-2025">2024-2025</IonSelectOption>
-            <IonSelectOption value="2023-2024">2024-2025</IonSelectOption>
-            <IonSelectOption value="2022-2023">2024-2025</IonSelectOption>
-            <IonSelectOption value="2021-2022">2024-2025</IonSelectOption>
+            <IonSelectOption value="2023-2024">2023-2024</IonSelectOption>
+            <IonSelectOption value="2022-2023">2022-2023</IonSelectOption>
+            <IonSelectOption value="2021-2022">2021-2022</IonSelectOption>
+          </IonSelect>
+        </div>
+      </div>
+      <div className='g_flex g_space_btwn ml-6'>
+            <IonSelect
+              className="custome_select custom_select_height custom_select_width ml-6"
+              label="Select Class"
+              fill="outline"
+              value={'9'}
+              interface="popover"
+              onIonChange={(e) =>
+                console.log(
+                  `ionChange fired with value: ${e.detail.value}`
+                )
+              }
+            >
+              <IonSelectOption value="7">7th class</IonSelectOption>
+              <IonSelectOption value="8">8th class</IonSelectOption>
+              <IonSelectOption value="9">9th class</IonSelectOption>
+              <IonSelectOption value="10">10th class</IonSelectOption>
+            </IonSelect>
+          <IonSelect
+            className="custome_select custom_select_height custom_select_width "
+            label="Select Section"
+            fill="outline"
+            value={'A'}
+            interface="popover"
+            onIonChange={(e) =>
+              console.log(
+                `ionChange fired with value: ${e.detail.value}`
+              )
+            }
+          >
+            <IonSelectOption value="A">A section</IonSelectOption>
+            <IonSelectOption value="B">B section</IonSelectOption>
+            <IonSelectOption value="C">C section</IonSelectOption>
+          </IonSelect>
+      </div>
+      <div className='g_flex g_jstfy_content_cntr'>
+        <div className='fees_year_select'>
+          <IonSelect
+            className="custome_select"
+            label="Select Student"
+            // labelPlacement="floating"
+            fill="outline"
+            value={'y179a10'}
+            interface="popover"
+            onIonChange={(e) =>
+              console.log(
+                `ionChange fired with value: ${e.detail.value}`
+              )
+            }
+          >
+            <IonSelectOption value="y179a10">siva</IonSelectOption>
+            <IonSelectOption value="y179a12">deva</IonSelectOption>
+            <IonSelectOption value="y179a16">minoosh</IonSelectOption>
+            <IonSelectOption value="y179a19">mani</IonSelectOption>
           </IonSelect>
         </div>
       </div>
@@ -113,11 +170,11 @@ const FeesDues: React.FC = () => {
         <IonCard>
           <IonCardContent>
             <div className='g_flex g_jstfy_content_cntr'>
-              <div className='selected_year_show'><p>2024-2025</p></div>
+              <div className='selected_year_show'><p>20000</p></div>
             </div>
             <div className='g_flex student_info'>
               <div className='g_half_width'>
-                <IonLabel>Full Name</IonLabel>
+                <IonLabel>Full Name sa</IonLabel>
                 <IonText>
                   <h4>{"<Student Name>"}</h4>
                 </IonText>
@@ -209,4 +266,4 @@ const FeesDues: React.FC = () => {
   );
 };
 
-export default FeesDues;
+export default FeesDuesSA;

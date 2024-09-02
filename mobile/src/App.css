@@ -1061,6 +1061,13 @@ ion-breadcrumbs {
   color: #ffffff;
 }
 
+.custom_select_height{
+  height:3% !important;
+}
+
+.custom_select_width{
+  width:45% !important;
+}
 
 /* Attendance css */
 
@@ -4099,6 +4106,20 @@ label.input-wrapper.sc-ion-input-ios {
 }
 
 .selected_year_show p {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.term_fee{
+  height: 40px;
+  border: 1px solid;
+  border-color: #1D7AF5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35%;
+  border-radius: 8px;
+  margin: 8px 0 12px 0;
   font-weight: 600;
   font-size: 14px;
 }

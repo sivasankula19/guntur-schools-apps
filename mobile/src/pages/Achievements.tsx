@@ -220,7 +220,6 @@ const Achievements: React.FC = () => {
           onSave={onSave}
         >
            <div>
-              {/* <h1 className="g-fontweight-600 g-fontsize-18 text-color-blue g_flex g_jstfy_content_cntr">Add New Document</h1> */}
               <div className="g_flex g_space_btwn">
               </div>
               {IonSelectUI('Category','category',[{'key':'Class','value':'class'},{'key':'School','value':'school'},{'key':'Student','value':'student'}])}

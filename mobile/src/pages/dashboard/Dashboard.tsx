@@ -33,6 +33,8 @@ import {
   IonText,
 } from '@ionic/react';
 import { formatDate, timeTableVal } from '../../common/utility';
+import { useDispatch } from 'react-redux';
+import { setIsDashboardRoute } from '../../redux/reducers/routesSlice';
 
 const dashboard: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,6 +44,7 @@ const dashboard: React.FC = () => {
   const [selectedSegment, setSelectedSegment] = useState('Today');
   const dsbrdRef = useRef<any>(null);
   const isMobile = isPlatform('android');
+  const dispatch = useDispatch();
 
   const chipsData = [
     { id: 1, moduleName: 'Attendance', icon: calendarOutline, redirectTo: '/attendance' },
@@ -175,6 +178,13 @@ const dashboard: React.FC = () => {
     setTimeDiffHrs(diffHrs);
     setTimeDifference(differenceInMinutes);
   };
+
+  useEffect(() => {
+    dispatch(setIsDashboardRoute(true));
+    return () => {
+      dispatch(setIsDashboardRoute(false));
+    };
+  }, []);
 
   return (
     <div ref={dsbrdRef} className='dsbrd_container'>

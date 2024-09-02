@@ -5,6 +5,7 @@ import darkModeReducer from './reducers/darkModeSlice';
 import authReducer from './reducers/authSlice';
 import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // Defaults to localStorage
+import routesSlice from './reducers/routesSlice';
 
 const persistConfig = {
   key: 'root', 
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
     counter: counterReducer,
     darkMode:darkModeReducer,
     auth:authReducer,
-    school:schoolReducer
+    school:schoolReducer,
+    routes:routesSlice
   });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

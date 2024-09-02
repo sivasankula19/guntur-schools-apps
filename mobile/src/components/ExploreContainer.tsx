@@ -5,7 +5,7 @@ import StudentList from '../pages/StudentList';
 import StaffList from '../pages/StaffList';
 import ProgressCard from '../pages/ProgressCard/ProgressCard';
 import Subjects from '../pages/Subjects/Subjects';
-import FeesDues from '../pages/FeesDues';
+// import FeesDues from '../pages/FeesDues';
 import TimeTable from '../pages/TimeTable/TimeTable';
 import ExCircularActivities from '../pages/ExCircularActivities';
 import Gallery from '../pages/Gallery';
@@ -31,8 +31,11 @@ import ContactUsSa from '../pages/ContactUs/ContactUsSa';
 import TimeTableSA from '../pages/TimeTable/TimeTableSA';
 import Calendar from '../pages/Calendar/Calendar';
 import CalendarSA from '../pages/Calendar/CalendarSA';
-import AttendanceClassSelect from '../pages/Attendance/AttendanceClassSelect';
-import AttendanceContainer from '../pages/Attendance/AttendanceContainer';
+import FeesDues from '../pages/Fees/FeesDues';
+import FeesDuesSA from '../pages/Fees/FeesDuesSA';
+// import AttendanceClassSelect from '../pages/Attendance/AttendanceClassSelect';
+// import AttendanceContainer from '../pages/Attendance/AttendanceContainer';
+
 
 interface ContainerProps {
   name: string;
@@ -57,8 +60,8 @@ const GetComponent = ({ name, isStudent }: any) => {
       return isStudent ? <Dashboard /> : <DashboardSA />;
     case 'home':
       return <Home />;
-    case 'attendance':
-      return isStudent ? <Attendance editable={false} /> : <AttendanceContainer />;
+    // case 'attendance':
+    //   return isStudent ? <Attendance editable={false} /> : <AttendanceContainer />;
     case 'progress-card':
       return <ProgressCard />;
     case 'students-list':
@@ -70,7 +73,7 @@ const GetComponent = ({ name, isStudent }: any) => {
     case 'documents':
       return <Documents />;
     case 'fee-structure':
-      return <FeesDues />;
+      return isStudent ? <FeesDues /> : <FeesDuesSA />;
     case 'calendar':
       return isStudent ? <Calendar /> : <CalendarSA />;
     case 'time-table':

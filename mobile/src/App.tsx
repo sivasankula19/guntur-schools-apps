@@ -49,7 +49,8 @@ import Subjects from './pages/Subjects/Subjects';
 import StaffList from './pages/StaffList';
 import StudentList from './pages/StudentList';
 import Documents from './pages/Documents';
-import FeesDues from './pages/FeesDues';
+import FeesDues from './pages/Fees/FeesDues';
+import FeesDuesSA from './pages/Fees/FeesDuesSA';
 import Calendar from './pages/Calendar/Calendar';
 import TimeTable from './pages/TimeTable/TimeTable';
 import Gallery from './pages/Gallery';
@@ -78,19 +79,24 @@ import AttendanceByClass from './pages/Attendance/AttendanceByClass';
 import AttendanceByStudent from './pages/Attendance/AttendanceByStudent';
 import AttendanceClassView from './pages/Attendance/AttendanceClassView';
 
-setupIonicReact();
+setupIonicReact({
+  animated:true,
+  hardwareBackButton:true,
+  experimentalCloseWatcher:true,
+});
 
 const App: React.FC = () => {
   const isDarkMode = useSelector((state: any) => state?.darkMode.isDarkMode);
-  const [role, setRole] = useState('Student')
+  const isDashboardActive = useSelector((state:any)=> state?.routes?.isDashboardRoute);
+  const [role, setRole] = useState('Student');
   const currentRole = useSelector((state: any) => state.auth.role);
   const isUserAcknowledgedMode = useSelector(
     (state: any) => state?.darkMode.isUserAcknowledgedMode
   );
-  // const fullstate = useSelector((state: any) => state);
+  const fullstate = useSelector((state: any) => state);
   const school = useSelector((state: any) => state.school.selectedSchool);
   const isAuthenticated = useSelector((state: any) => state.auth.isAuthenticated);
-  // console.log(fullstate)
+  console.log(fullstate)
   // const preLoginModules = useSelector((state:any) => state.)
   const ionRouter = useIonRouter();
 
@@ -121,27 +127,28 @@ const App: React.FC = () => {
     dispatch(setMode(ev.detail.role === 'confirm'));
   };
 
-  // useEffect(() => {
-  //   const handleBackButton = (ev: any) => {
-  //     ev.detail.register(10, (processNextHandler: any) => {
-  //       console.log('Handler was called!');
-  //       processNextHandler();
-  //     });
-  //     ev.detail.register(-1, () => {
-  //       if (!ionRouter.canGoBack()) {
-  //         CapacitorApp.exitApp();
-  //       } else {
-  //         ionRouter.goBack();
-  //       }
-  //     });
-  //   };
+  useEffect(() => {
+    const handleBackButton = (ev: any) => {
+      ev.detail.register(-1, () => {
+        if(isDashboardActive){
+          CapacitorApp.exitApp();
+        }
+        else{
+          if (!ionRouter.canGoBack()) {
+            CapacitorApp.exitApp();
+          } else {
+            ionRouter.goBack();
+          }
+        }
+      });
+    };
 
-  //   document.addEventListener('ionBackButton', handleBackButton);
+    document.addEventListener('ionBackButton', handleBackButton);
 
-  //   return () => {
-  //     document.removeEventListener('ionBackButton', handleBackButton);
-  //   };
-  // }, [ionRouter]);
+    return () => {
+      document.removeEventListener('ionBackButton', handleBackButton);
+    };
+  }, [ionRouter]);
 
   useEffect(()=>{
     if(currentRole)
@@ -194,7 +201,8 @@ const App: React.FC = () => {
                 <Route path={'/user/:id'} element={<UserByID />} />
                 <Route path='/messages' element={<Messages />} />
                 <Route path={'/messages/:id'} element={<ChatScreen></ChatScreen>} />
-                <Route path='/fee-structure' element={<FeesDues />} />
+                {/* <Route path='/fee-structure' element={<FeesDues />} /> */}
+                <Route path='/fee-structure' element={role === 'Student' ? <FeesDues /> : <FeesDuesSA /> } />
                 <Route path='/exam-schedules' element={<ExamSchedule />} />
                 <Route path='/home-work' element={<HomeWork />} />
                 <Route path='/diary' element={<Dairy />} />
