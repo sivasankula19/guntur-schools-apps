@@ -81,6 +81,7 @@ import SchoolClasses from './pages/Class-Sections/SchoolClasses';
 import SchoolSections from './pages/Class-Sections/SchoolSections';
 import StudentListSA from './pages/Students/StudentListSA';
 import StaffListSA from './pages/Staff/StaffListSA';
+import ProgressCardSA from './pages/ProgressCard/ProgressCardSA';
 
 setupIonicReact({
   animated: true,
@@ -191,7 +192,7 @@ const App: React.FC = () => {
                 <Route path='/attendance-by-class/:routeInfo' element={<AttendanceClassView />} /> //SA
                 <Route path='/attendance-by-student' element={<AttendanceByStudent />} /> //SA
                 <Route path='/attendance:id' element={<Attendance />} />
-                <Route path='/progress-card' element={<ProgressCard />} /> //student
+                <Route path='/progress-card' element={role === 'Student' ? <ProgressCard /> : <ProgressCardSA />} /> //both
                 <Route path='/time-table' element={role === 'Student' ? <TimeTable /> : <TimeTableSA />} /> //both
                 <Route path='/calendar' element={role === 'Student' ? <Calendar /> : <CalendarSA />} /> //both
                 <Route path='/students-list' element={role === 'Student' ? <StudentList /> : <StudentListSA />} />

@@ -1,5 +1,5 @@
-import { IonButton, IonIcon, IonInput, IonItem, IonLabel, IonText, IonTextarea } from "@ionic/react"
-import { addCircleOutline, removeCircle, removeCircleOutline } from "ionicons/icons"
+import { IonButton, IonIcon, IonItem, IonLabel, IonText, IonTextarea } from "@ionic/react"
+import { addCircleOutline, removeCircleOutline } from "ionicons/icons"
 import React, { useEffect, useState } from "react"
 
 const AboutSuperAdmin: React.FC = () => {

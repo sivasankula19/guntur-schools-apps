@@ -17,11 +17,7 @@ function AttendanceByClass() {
     const [selectedDate, setSelectedDate] = useState<string>(todayFormate);
     const location = useLocation();
 
-    const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-    const breadCrumbsValue = [
-        { bName: 'Home', path: '/dashboard' },
-        { bName: 'Class Attendance', path: '/attendance-by-class' },
-    ];
+    const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Class Attendance', path: '/attendance-by-class' },];
 
     const navigate = useNavigate();
 
@@ -39,15 +35,15 @@ function AttendanceByClass() {
 
     }, [selectedClass, selectedSection]);
 
-    useEffect(()=>{
-        if(location.state){
+    useEffect(() => {
+        if (location.state) {
             setSelectedClass(location.state.classId);
             setSelectedSection(location.state.sectionId);
             setSelectedDate(location.state.selectedDate);
         }
-    },[location.state])
+    }, [location.state])
 
-    const handleDateSelected = (day:string) => {
+    const handleDateSelected = (day: string) => {
         setSelectedDate(day)
     }
 
@@ -147,7 +143,7 @@ function AttendanceByClass() {
                                     key={`grids-data-${index}`} className="g_flex row-item">
                                     {gridItem.map((dayItem: any, subIndex: number) => (<div
                                         key={`days-${subIndex}`} className="day-list-map g_flex g_align_cntr g_jstfy_content_cntr">
-                                        <div id={dayItem?.date} onClick={()=>handleDateSelected(dayItem.date)} className={`day-item-display${dayItem?.date === selectedDate ? ' today-selected' : ''}${dayItem?.attendanceMarked >= 1 ? ' att-marked' : ''}${dayItem?.isSchoolHoliday ? ' scl-holiday' : ''}`}>
+                                        <div id={dayItem?.date} onClick={() => handleDateSelected(dayItem.date)} className={`day-item-display${dayItem?.date === selectedDate ? ' today-selected' : ''}${dayItem?.attendanceMarked >= 1 ? ' att-marked' : ''}${dayItem?.isSchoolHoliday ? ' scl-holiday' : ''}`}>
                                             <IonText className="ion_text_day_view">{dayItem?.currentDay}</IonText>
                                         </div>
                                     </div>))}

@@ -1,20 +1,16 @@
 import {
-  IonBreadcrumb,
-  IonBreadcrumbs,
   IonCard,
   IonCardContent,
   IonIcon,
   IonItem,
   IonList,
   IonSearchbar,
-  IonSelect,
-  IonSelectOption,
   IonText,
   IonToggle,
 } from '@ionic/react';
 import React, { useState } from 'react';
 import { classSubjects } from '../../common/utility';
-import { calculatorOutline, starOutline } from 'ionicons/icons';
+import { starOutline } from 'ionicons/icons';
 import ProgressBar from '../../components/ProgressBar';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
 

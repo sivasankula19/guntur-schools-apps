@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router';
+import {  useNavigate } from 'react-router';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { IonButton, IonCard, IonCardContent, IonIcon, IonItem, IonSearchbar, IonText, IonToggle } from '@ionic/react';
 import { banSharp } from 'ionicons/icons';
 import { chatContactList } from '../../common/utility';
 
 const Messages: React.FC = () => {
-  const { name } = useParams<{ name: string }>();
   const [isFilterEnabled, setIsFilterEnabled] = useState(true);
   const [chatListData, setChatListData] = useState<any>([])
   const navigate = useNavigate();

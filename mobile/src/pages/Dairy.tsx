@@ -1,11 +1,14 @@
 import React from 'react';
-import { useParams } from 'react-router';
+import GBreadCrumbs from '../components/GBreadCrumbs';
 
 const Dairy: React.FC = () => {
-  const { name } = useParams<{ name: string }>();
+
+  const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Dairy', path: '/dairy' }];
 
   return (
-    <div>{"Dairy"}= {name}</div>
+    <div>
+      <GBreadCrumbs data={breadCrumbsValue} />
+    </div>
   );
 };
 

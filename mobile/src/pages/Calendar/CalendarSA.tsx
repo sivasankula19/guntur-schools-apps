@@ -1,8 +1,13 @@
 import React from 'react'
+import GBreadCrumbs from '../../components/GBreadCrumbs'
 
 const CalendarSA = () => {
+  const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' },{ bName: 'Calendar', path: '/calendar' },];
+
   return (
-    <div>CalendarSA</div>
+    <div>
+      <GBreadCrumbs data={breadCrumbsValue}/>
+    </div>
   )
 }
 

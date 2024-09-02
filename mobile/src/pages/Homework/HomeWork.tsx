@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { IonButton, IonCard, IonCardContent, IonIcon, IonInput, IonSearchbar, IonSelect, IonSelectOption, IonText, IonTextarea } from '@ionic/react';
 import { formatDate, homeWorkDataBe } from '../../common/utility';
-import { attachOutline, banOutline, expandOutline,addOutline, cloudUpload } from 'ionicons/icons';
+import { attachOutline, banOutline, expandOutline, cloudUpload } from 'ionicons/icons';
 import SwapableImages from './SwapableImges';
 import { useSelector } from 'react-redux';
 import GCustomisedModal from '../../components/GCustomisedModal';

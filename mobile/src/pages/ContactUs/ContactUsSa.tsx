@@ -1,4 +1,4 @@
-import { IonIcon, IonInput, IonItem, IonLabel, IonText } from '@ionic/react'
+import { IonIcon, IonInput, IonLabel, IonText } from '@ionic/react'
 import { bookOutline, callOutline, locationOutline, mailOpenOutline } from 'ionicons/icons'
 import React from 'react'
 

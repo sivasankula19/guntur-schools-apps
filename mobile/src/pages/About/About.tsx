@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { IonText } from '@ionic/react';
 import { AboutModuleData } from '../../common/utility';
-import PreLoginContent from '../../components/PreLoginContent';
 
 const About: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);

@@ -5,12 +5,11 @@ import {
   IonIcon,
   IonInput,
   IonItem,
-  IonLabel,
   IonText,
 } from '@ionic/react';
 import { callOutline, expandOutline, imageOutline, informationCircleOutline, informationOutline, newspaperOutline, schoolOutline, trophyOutline } from 'ionicons/icons';
 import React, { useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { authenticateUser } from '../../redux/reducers/authSlice';
 import { useNavigate } from 'react-router';
 import { setPreLoginPublicView } from '../../redux/reducers/schoolSlice';
@@ -18,7 +17,6 @@ import { setPreLoginPublicView } from '../../redux/reducers/schoolSlice';
 const Home: React.FC = () => {
   const [userName, setUserName] = useState('superAdmin');
   const [password, setPassword] = useState('SuperAdmin@123');
-  const selectedSchool = useSelector((state: any) => state.school.selectedSchool);
   const userNameRef = useRef<HTMLIonInputElement>(null);
 
   const dispatch = useDispatch();
@@ -66,16 +64,7 @@ const Home: React.FC = () => {
   { id: 4, moduleName: 'Achievements', icon: trophyOutline, redirectTo: '/achievements' },
   { id: 5, moduleName: 'Gallery', icon: imageOutline, redirectTo: '/gallery' },
   { id: 6, moduleName: 'Ex-Circular', icon: newspaperOutline, redirectTo: '/ex-circular' },]
-
-  const preLoginBtns = [
-    { name: 'About', redirectTo: '/about' },
-    { name: 'Courses', redirectTo: '/courses' },
-    { name: 'Contact-Us', redirectTo: '/contact-us' },
-    { name: 'Achievement', redirectTo: '/achievements' },
-    { name: 'Gallery', redirectTo: '/gallery' },
-    { name: 'Ex-Circular', redirectTo: '/ex-circular' },
-  ];
-
+  
   useEffect(() => {
     setTimeout(() => {
       if (userNameRef && userNameRef.current) {

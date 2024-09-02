@@ -551,6 +551,9 @@ ion-header {
   margin-left: 10px;
 }
 
+.m-left-20 {
+  margin-left: 20px;
+}
 .m-r-18 {
   margin-right: 18px;
 }
@@ -2282,9 +2285,21 @@ ion-breadcrumbs {
 
 .progress_card {
   height: auto;
-  max-height: 82vh;
+  height: calc(100% - 84px);
   overflow-y: auto;
   padding-bottom: 30px;
+}
+
+.custom-progress-card {
+  height: calc(100% - 140px);
+}
+
+.custom-btn-progress{
+  margin: 6px 0;
+}
+
+.custom-btn-progress ion-icon{
+  font-size: 22px;
 }
 
 .progerss_student_content {

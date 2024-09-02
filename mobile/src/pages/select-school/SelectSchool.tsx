@@ -3,22 +3,20 @@ import {
   IonCard,
   IonCardContent,
   IonContent,
-  IonHeader,
   IonIcon,
   IonItem,
   IonList,
   IonPage,
   IonSearchbar,
   IonText,
-  IonToolbar,
 } from '@ionic/react';
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router';
+import { useNavigate } from 'react-router';
 import Footer from '../../components/Footer';
 import { schoolsListData } from '../../common/utility';
 import { useDispatch } from 'react-redux';
 import { setSelectedSchool } from '../../redux/reducers/schoolSlice';
-import { closeCircleOutline, cropOutline } from 'ionicons/icons';
+import { closeCircleOutline } from 'ionicons/icons';
 
 interface ISchoolObj {
   schoolId: string;
@@ -26,7 +24,6 @@ interface ISchoolObj {
 }
 
 const SelectSchool: React.FC = () => {
-  const { name } = useParams<{ name: string }>();
   const [search, setSearch] = useState('');
   const [schoolsList, setSchoolsList] = useState<ISchoolObj[]>([]);
   const [selectedSchoolVal, setSelectedSchoolVal] = useState<ISchoolObj | null>(
@@ -91,7 +88,7 @@ const SelectSchool: React.FC = () => {
                         <IonItem
                           onClick={() => handleSelectedSchool(schoolItem)}
                           className={`${index === 0 ? 'first_item' : ''} ${selectedSchoolVal?.schoolId ===
-                              schoolItem.schoolId ? 'school_item_selected' : ''
+                            schoolItem.schoolId ? 'school_item_selected' : ''
                             }`}
                           key={schoolItem.schoolId}
                         >

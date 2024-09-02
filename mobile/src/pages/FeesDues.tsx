@@ -1,12 +1,10 @@
 import React from 'react';
-import { useParams } from 'react-router';
 import GBreadCrumbs from '../components/GBreadCrumbs';
 import { IonCard, IonCardContent, IonIcon, IonItem, IonLabel, IonSelect, IonSelectOption, IonText } from '@ionic/react';
 import { addCircleOutline, checkmarkCircleOutline, closeCircleOutline, removeCircleOutline } from 'ionicons/icons';
 import { formatDate } from '../common/utility';
 
 const FeesDues: React.FC = () => {
-  const { name } = useParams<{ name: string }>();
 
   const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'fee Structure', path: '/fee-structure' }];
 
