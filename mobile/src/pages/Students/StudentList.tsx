@@ -8,10 +8,9 @@ import {
   IonToggle,
 } from '@ionic/react';
 import React, { useState } from 'react';
-import { studentDummyData } from '../common/utility';
-import GBreadCrumbs from '../components/GBreadCrumbs';
+import { studentDummyData } from '../../common/utility';
+import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { useDispatch, useSelector } from 'react-redux';
-import { increment } from '../redux/reducers/counterSlice';
 import { useNavigate } from 'react-router';
 
 const StudentList: React.FC = () => {

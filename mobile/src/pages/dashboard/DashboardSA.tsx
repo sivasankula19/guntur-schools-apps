@@ -1,4 +1,4 @@
-import {  IonCard, IonCardContent, IonText } from '@ionic/react';
+import { IonCard, IonCardContent, IonText } from '@ionic/react';
 import React, { useState } from 'react'
 import NavChipCard from '../../components/NavChipsCard';
 import './Dashboard.css';
@@ -41,18 +41,18 @@ export const DashboardSA = () => {
         { id: 16, moduleName: 'Achievements', icon: trophyOutline, redirectTo: '/achievements' },
         { id: 17, moduleName: 'Contact-Us', icon: callOutline, redirectTo: '/contact-us' },
         { id: 18, moduleName: 'About', icon: informationCircleOutline, redirectTo: '/about' },
-        {id:19, moduleName:'Courses', icon:bookOutline, redirectTo:'/courses'}
+        { id: 19, moduleName: 'Courses', icon: bookOutline, redirectTo: '/courses' }
     ];
     const chipsDataPublic = [
-        { id: 1, moduleName: 'Class Attendance', icon: calendarOutline, redirectTo: '/attendance-by-class' },
-        { id: 2, moduleName: 'Student Attendance', icon: calendarOutline, redirectTo: '/attendance-by-student' },
-        { id: 3, moduleName: 'Progress Card', icon: documentTextOutline, redirectTo: '/progress-card' },
-        { id: 4, moduleName: 'Sections', icon: cubeOutline, redirectTo: '/school-sections' },
-        { id: 5, moduleName: 'Classes', icon: gridOutline, redirectTo: '/school-classes' },
-        { id: 6, moduleName: 'My Staff', icon: peopleOutline, redirectTo: '/staff-list' },
-        { id: 7, moduleName: 'My Friends', icon: peopleOutline, redirectTo: '/students-list' },
-        { id: 8, moduleName: 'Home Work', icon: bookOutline, redirectTo: '/home-work' },
-        { id: 9, moduleName: 'My Subjects', icon: schoolOutline, redirectTo: '/subjects' },
+        { id: 1, moduleName: 'Staff', icon: peopleOutline, redirectTo: '/staff-list' },
+        { id: 2, moduleName: 'Students', icon: peopleOutline, redirectTo: '/students-list' },
+        { id: 3, moduleName: 'Sections', icon: cubeOutline, redirectTo: '/school-sections' },
+        { id: 4, moduleName: 'Classes', icon: gridOutline, redirectTo: '/school-classes' },
+        { id: 5, moduleName: 'Class Attendance', icon: calendarOutline, redirectTo: '/attendance-by-class' },
+        { id: 6, moduleName: 'Student Attendance', icon: calendarOutline, redirectTo: '/attendance-by-student' },
+        { id: 7, moduleName: 'Progress Cards', icon: documentTextOutline, redirectTo: '/progress-card' },
+        { id: 8, moduleName: 'Home Works', icon: bookOutline, redirectTo: '/home-work' },
+        { id: 9, moduleName: 'Class Subjects', icon: schoolOutline, redirectTo: '/subjects' },
         { id: 10, moduleName: 'Messages', icon: chatboxOutline, redirectTo: '/messages' },
         { id: 11, moduleName: 'Documents', icon: documentOutline, redirectTo: '/documents' },
         { id: 12, moduleName: 'Calendar', icon: calendarOutline, redirectTo: '/calendar' },

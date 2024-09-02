@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router';
 function SchoolClasses() {
   const [isAddClassModal, setIsAddClassModal] = useState<boolean>(false);
   const [currentSelected, setCurrentSelected] = useState<number>(999);
-  const [currentSelectedSec, setCurrentSelectedSec] = useState<string>('')
+  const [currentSelectedSec, setCurrentSelectedSec] = useState<string>('');
   const formInitialVal = {
     className: '',
     classStaffName: '',
@@ -147,7 +147,7 @@ function SchoolClasses() {
           <div className='field m-bottom-10'>
             <IonInput value={formValue.className} onIonChange={handleInput} name='className' label="Class Name" labelPlacement="floating" fill="outline" placeholder="Subject Name"></IonInput>
           </div>
-          {formValue.linkedSections.map((secItem) => (<div className='m-bottom-10 g_flex'>
+          {formValue.linkedSections.map((secItem, indexSec) => (<div key={indexSec} className='m-bottom-10 g_flex'>
             <IonSelect
               className="custome_select two-select-field"
               label="Section Name"

@@ -48,7 +48,7 @@
   text-overflow: ellipsis;
   -webkit-line-clamp: 1;
   line-clamp: 1;
-  line-height: 1em;
+  line-height: 1.2em;
   max-height: 1.8em;
   word-break: break-all;
 }
@@ -885,6 +885,10 @@ ion-header {
   animation: slideIn 0.8s forwards;
 }
 
+.student_card .edit-a-student {
+  margin-left: 8px;
+}
+
 .animation-none{
   animation: none !important;
 }
@@ -1067,7 +1071,7 @@ ion-toggle::part(track) {
 }
 
 .filter-card {
-  animation: slideIn 0.5s forwards;
+  /* animation: slideIn 0.5s forwards; */
   margin: 2px 12px;
 }
 
@@ -4696,17 +4700,17 @@ label.input-wrapper.sc-ion-input-ios {
   overflow-y: auto;
 }
 
-.school-classes .sec-add-show{
+.sec-add-show{
   width: 100%;
   display: flex;
 }
 
-.school-classes .sec-add-show ion-icon{
+/* .sec-add-show ion-icon{
   font-size: 32px;
   margin-top: 12px;
   margin-left: 4px;
   color: #1D7AF5;
-}
+} */
 
 .school-classes .section-show-con {
   margin-top: 12px;
@@ -4716,7 +4720,7 @@ label.input-wrapper.sc-ion-input-ios {
   overflow-y: hidden;
 }
 
-.school-classes .nav-ele-show-con {
+.nav-ele-show-con {
   margin-top: 12px;
   display: flex;
   width: 100%;
@@ -4726,7 +4730,7 @@ label.input-wrapper.sc-ion-input-ios {
   flex-wrap: nowrap;
 }
 
-.school-classes .section-show-ele {
+.section-show-ele {
   width: auto;
   min-width: 60px;
   max-width: 200px;
@@ -4800,6 +4804,10 @@ label.input-wrapper.sc-ion-input-ios {
 
 .disabled-edit{
   color: lightgray !important;
+}
+
+.add-employee-student{
+  margin: 12px;
 }
 
 
