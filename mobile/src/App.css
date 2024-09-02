@@ -1656,8 +1656,16 @@ ion-breadcrumbs {
   --height: fit-content;
   --width: 90%;
   --border-radius: 8px;
-  --max-height: 80%;
   --background: #ffffff;
+}
+
+.custom-modal-container-view{
+  height: 100vh;
+}
+
+.g_customised_modal .modal-child-con{
+  height: calc(100% - 112px);
+  overflow-y: auto;
 }
 
 .dark .g_customised_modal {
