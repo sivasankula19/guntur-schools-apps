@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router';
+import {  useNavigate } from 'react-router';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { IonButton, IonCard, IonCardContent, IonIcon, IonItem, IonSearchbar, IonText, IonToggle } from '@ionic/react';
 import { banSharp } from 'ionicons/icons';
 import { chatContactList } from '../../common/utility';
 
 const Messages: React.FC = () => {
-  const { name } = useParams<{ name: string }>();
   const [isFilterEnabled, setIsFilterEnabled] = useState(true);
   const [chatListData, setChatListData] = useState<any>([])
   const navigate = useNavigate();
@@ -23,13 +22,13 @@ const Messages: React.FC = () => {
 
   const handleInput = (ev: any) => {
     setSearch(ev.target.value);
-    setChatListData(chatContactList.filter((chatContact)=> ((chatContact.name).toLowerCase().includes((ev.target.value).toLowerCase())) || ev.target.value == ''))
+    setChatListData(chatContactList.filter((chatContact) => ((chatContact.name).toLowerCase().includes((ev.target.value).toLowerCase())) || ev.target.value == ''))
     //  debounce function can be executed!!! here i.e api
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     setChatListData(chatContactList)
-  },[])
+  }, [])
 
   return (
     <div className='messages'>
@@ -59,7 +58,7 @@ const Messages: React.FC = () => {
                 showClearButton="focus"
                 value={search}
                 debounce={500}
-                onIonInput={(ev) => handleInput(ev)}></IonSearchbar>
+                onIonInput={handleInput}></IonSearchbar>
             </IonCardContent>
           </IonCard>
         </div>

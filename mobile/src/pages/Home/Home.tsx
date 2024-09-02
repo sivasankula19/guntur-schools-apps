@@ -5,12 +5,11 @@ import {
   IonIcon,
   IonInput,
   IonItem,
-  IonLabel,
   IonText,
 } from '@ionic/react';
 import { callOutline, expandOutline, imageOutline, informationCircleOutline, informationOutline, newspaperOutline, schoolOutline, trophyOutline } from 'ionicons/icons';
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { authenticateUser } from '../../redux/reducers/authSlice';
 import { useNavigate } from 'react-router';
 import { setPreLoginPublicView } from '../../redux/reducers/schoolSlice';
@@ -18,7 +17,7 @@ import { setPreLoginPublicView } from '../../redux/reducers/schoolSlice';
 const Home: React.FC = () => {
   const [userName, setUserName] = useState('superAdmin');
   const [password, setPassword] = useState('SuperAdmin@123');
-  const selectedSchool = useSelector((state: any) => state.school.selectedSchool)
+  const userNameRef = useRef<HTMLIonInputElement>(null);
 
   const dispatch = useDispatch();
   const navigate = useNavigate()
@@ -59,21 +58,21 @@ const Home: React.FC = () => {
     navigate(path)
   }
 
-  const preLoginModules = [{ id: 1, moduleName: 'About', icon: informationCircleOutline,redirectTo: '/about' },
-  { id: 2, moduleName: 'Courses', icon: schoolOutline ,redirectTo: '/courses'},
+  const preLoginModules = [{ id: 1, moduleName: 'About', icon: informationCircleOutline, redirectTo: '/about' },
+  { id: 2, moduleName: 'Courses', icon: schoolOutline, redirectTo: '/courses' },
   { id: 3, moduleName: 'Contact-Us', icon: callOutline, redirectTo: '/contact-us' },
   { id: 4, moduleName: 'Achievements', icon: trophyOutline, redirectTo: '/achievements' },
-  { id: 5, moduleName: 'Gallery', icon: imageOutline,redirectTo: '/gallery'  },
+  { id: 5, moduleName: 'Gallery', icon: imageOutline, redirectTo: '/gallery' },
   { id: 6, moduleName: 'Ex-Circular', icon: newspaperOutline, redirectTo: '/ex-circular' },]
+  
+  useEffect(() => {
+    setTimeout(() => {
+      if (userNameRef && userNameRef.current) {
+        userNameRef.current.setFocus();
+      }
+    }, 0)
+  }, [userNameRef])
 
-  const preLoginBtns = [
-    { name: 'About', redirectTo: '/about' },
-    { name: 'Courses', redirectTo: '/courses' },
-    { name: 'Contact-Us', redirectTo: '/contact-us' },
-    { name: 'Achievement', redirectTo: '/achievements' },
-    { name: 'Gallery', redirectTo: '/gallery' },
-    { name: 'Ex-Circular', redirectTo: '/ex-circular' },
-  ];
   return (
     <div className='home'>
       <IonCard>
@@ -83,6 +82,7 @@ const Home: React.FC = () => {
             <IonItem>
               <IonInput
                 value={userName}
+                ref={userNameRef}
                 onIonInput={handleUserName}
                 className="custom-ion-input_home"
                 label={'User ID'}
@@ -112,7 +112,7 @@ const Home: React.FC = () => {
       <div className='pre_login_btns'>
         {preLoginModules.map((chip, index) => (
           <div key={chip.id} className='chip_btn'>
-            <IonButton  onClick={()=>handleNavigate(chip.redirectTo,chip.moduleName)}>
+            <IonButton onClick={() => handleNavigate(chip.redirectTo, chip.moduleName)}>
               <div><IonIcon icon={chip.icon}></IonIcon>
                 <div ><IonText><p className='g_text_ellipses'>{chip.moduleName}</p></IonText></div>
               </div>

@@ -25,8 +25,6 @@ import AddDoc from '../components/AddDocByRole';
 
 const Documents: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedSrc, setSelectedSrc] = useState<any>('');
-
   const accordianContent = docData;
   const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Documents', path: '/documents' }]
   return (
@@ -48,7 +46,7 @@ const Documents: React.FC = () => {
                 <IonPopover size="auto" trigger={`menu-item-doc-folder${item.id}`} triggerAction="click">
                   <IonContent class="ion-padding">
                     <div className='popover_actions'>
-                      <IonItem><div className='g_custom_title_pop'>Actions For {item.title}</div></IonItem>
+                      <div className='g_custom_title_pop'><IonText><p className='g_text_ellipses p-r-10 p-l-10'>Actions For {item.title}</p></IonText></div>
                       <IonItem className='first_action_item'>
                         <IonIcon icon={createOutline}></IonIcon>
                         <IonLabel>Disable Edit</IonLabel>
@@ -78,7 +76,7 @@ const Documents: React.FC = () => {
                           <IonPopover size="auto" trigger={`menu-item-sub-doc-folder${innerItem.id}`} triggerAction="click">
                             <IonContent class="ion-padding">
                               <div className='popover_actions'>
-                                <div className='g_custom_title_pop'>Actions For {innerItem.title}</div>
+                                <div className='g_custom_title_pop'><IonText><p className='g_text_ellipses p-r-10 p-l-10'>Actions For {innerItem.title}</p></IonText></div>
                                 <IonItem className='first_action_item'>
                                   <IonIcon icon={createOutline}></IonIcon>
                                   <IonLabel>Disable Edit</IonLabel>
@@ -109,7 +107,7 @@ const Documents: React.FC = () => {
                                     <IonPopover size="auto" trigger={`menu-item-sub-doc-file${innerItemDoc.id}`} triggerAction="click">
                                       <IonContent class="ion-padding">
                                         <div className='popover_actions'>
-                                          <div className='g_custom_title_pop'>Actions For {innerItemDoc.docTitle}</div>
+                                          <div className='g_custom_title_pop'><IonText><p className='g_text_ellipses p-r-10 p-l-10'>Actions For {innerItemDoc.docTitle}</p></IonText></div>
                                           <IonItem className='first_action_item'>
                                             <IonIcon icon={createOutline}></IonIcon>
                                             <IonLabel>Disable Edit</IonLabel>
@@ -158,7 +156,7 @@ const Documents: React.FC = () => {
                           <IonPopover size="auto" trigger={`menu-item-sub-doc-file${itemDoc.id}`} triggerAction="click">
                             <IonContent class="ion-padding">
                               <div className='popover_actions'>
-                                <div className='g_custom_title_pop'>Actions For {itemDoc.docTitle}</div>
+                                <div className='g_custom_title_pop'><IonText><p className='g_text_ellipses p-r-10 p-l-10'>Actions For {itemDoc.docTitle}</p></IonText></div>
                                 <IonItem className='first_action_item'>
                                   <IonIcon icon={createOutline}></IonIcon>
                                   <IonLabel>Disable Edit</IonLabel>

@@ -19,7 +19,8 @@ const GCustomisedModal: React.FC<ICustomModalProps> = ({
   onClose,
   onSave,
   children,
-  isOpen
+  isOpen,
+  styles
 }) => {
   const modal = useRef<HTMLIonModalElement>(null);
 
@@ -63,6 +64,7 @@ const GCustomisedModal: React.FC<ICustomModalProps> = ({
       isOpen={isOpen}
       className='g_customised_modal'
     >
+      <div style={{maxHeight:styles?.maxHeight || '60vh'}} className='custom-modal-container-view'>
       <IonHeader>
         <IonToolbar>
           <IonTitle>{title}</IonTitle>
@@ -73,7 +75,7 @@ const GCustomisedModal: React.FC<ICustomModalProps> = ({
           </IonButtons>
         </IonToolbar>
       </IonHeader>
-      <IonCardContent>{children}</IonCardContent>
+      <div className='modal-child-con'><IonCardContent>{children}</IonCardContent></div>
       <IonFooter>
         <IonToolbar>
           <div className="g_flex g_space_btwn g_full_width g_custome_padding_h12">
@@ -86,6 +88,8 @@ const GCustomisedModal: React.FC<ICustomModalProps> = ({
           </div>
         </IonToolbar>
       </IonFooter>
+      </div>
+     
     </IonModal>
   );
 };
@@ -95,7 +99,8 @@ interface ICustomModalProps {
   onClose: () => void;
   onSave: () => void;
   children: React.ReactNode;
-  isOpen:boolean
+  isOpen:boolean;
+  styles?: React.CSSProperties
 }
 
 export default GCustomisedModal;

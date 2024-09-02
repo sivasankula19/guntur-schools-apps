@@ -1,6 +1,4 @@
 import {
-  IonBreadcrumb,
-  IonBreadcrumbs,
   IonCard,
   IonCardContent,
   IonIcon,
@@ -24,32 +22,27 @@ import {
 import React, { useEffect, useRef, useState } from 'react';
 import {
   getDatesForMonth,
-  studentAttendanceCalendar,
   transformListToGrid,
 } from '../../common/utility';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
 
-const Attendance = ({editable = false}:any) => {
+const Attendance = () => {
   const [viewMode, setViewMode] = useState('list');
   const todayDate = new Date();
   const [currentMY, setCurrentMY] = useState<any>({ month: todayDate.getMonth() + 1, year: todayDate.getFullYear() });
   const [attendanceDate, setAttendanceDate] = useState<any>([]);
   const [gridAttendance, setGridAttendance] = useState<any>([]);
   const containerRef = useRef<any>(null);
-  let isInitialLoad = true;
 
   const todayFormate = `${todayDate.getMonth() + 1}/${todayDate.getDate()}/${todayDate.getFullYear()}`;
   // const gridAttendance = transformListToGrid(studentAttendanceCalendar);
-  const breadCrumbsValue = [
-    { bName: 'Home', path: '/dashboard' },
-    { bName: 'Attendance', path: '/attendance' },
-  ];
+  const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' },{ bName: 'Attendance', path: '/attendance' },];
   const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 
   useEffect(() => {
 
-    if(viewMode === 'list'){
-    setAttendanceDate(getDatesForMonth(currentMY.month, currentMY.year));
+    if (viewMode === 'list') {
+      setAttendanceDate(getDatesForMonth(currentMY.month, currentMY.year));
     } else {
       setGridAttendance(transformListToGrid(getDatesForMonth(currentMY.month, currentMY.year)))
     }
@@ -58,7 +51,7 @@ const Attendance = ({editable = false}:any) => {
       if (containerRef.current) {
         const scrollPosition = (todayDate.getDate() - 1) * (isPlatform('ios') ? 44 : 48);
         containerRef.current.scrollTo({
-          top:currentMY.month === todayDate.getMonth() + 1 && currentMY.year === todayDate.getFullYear() ? scrollPosition : 0,
+          top: currentMY.month === todayDate.getMonth() + 1 && currentMY.year === todayDate.getFullYear() ? scrollPosition : 0,
           behavior: 'smooth',
         });
       }
@@ -204,7 +197,7 @@ const Attendance = ({editable = false}:any) => {
               {['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'].map(
                 (dayName) => (
                   <IonItem
-                  key={`grids-${dayName}`}
+                    key={`grids-${dayName}`}
                     className="day_list_map ion-text-center"
                   >
                     <IonText className="ion_text_day_view">{dayName}</IonText>
@@ -222,7 +215,7 @@ const Attendance = ({editable = false}:any) => {
                 <IonCardContent className="g_flex g_align_cntr custome_card_content_day_view2">
                   {gridItem.map((dayItem: any, subIndex: number) => (
                     <IonItem
-                    key={`dayItem--${Math.random()}`}
+                      key={`dayItem--${Math.random()}`}
                       className={`day_list_map update_ion_item ion-text-center ${dayItem == null
                         ? 'empty_item_day'
                         : dayItem?.isSchoolHoliday

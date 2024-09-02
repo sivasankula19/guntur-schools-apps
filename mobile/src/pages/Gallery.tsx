@@ -1,16 +1,13 @@
 import React, { useRef, useState } from 'react';
-import { useParams } from 'react-router';
-import { IonButton, IonIcon, IonImg, IonInput, IonSelect, IonSelectOption, IonText } from '@ionic/react';
+import { IonIcon, IonImg, IonInput, IonSelect, IonSelectOption, IonText } from '@ionic/react';
 import { arrowBackCircleOutline, arrowForwardCircleOutline, cloudUploadOutline, expandOutline, locationOutline } from 'ionicons/icons';
 
 const Gallery: any = (props: any) => {
   const { isStudent } = props
-  console.log('isStudent', isStudent)
-  const { name } = useParams<{ name: string }>();
   const [currentImg, setCurrentImg] = useState(0)
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleButtonClick = (e:any) => {
+  const handleButtonClick = (e: any) => {
     e.stopPropagation();
     if (fileInputRef.current) {
       fileInputRef.current.click();

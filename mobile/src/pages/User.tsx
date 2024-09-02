@@ -1,25 +1,16 @@
 import {
-  IonContent,
-  IonPage,
-  IonBreadcrumb,
-  IonBreadcrumbs,
   IonCard,
   IonInput,
   IonButton,
   IonIcon,
   IonList,
-  IonCardContent,
 } from '@ionic/react';
 import {
-  personCircleOutline,
   pencil,
-  calendarClearOutline,
   expandOutline,
 } from 'ionicons/icons';
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
 import GCustomisedModal from '../components/GCustomisedModal';
 import { useNavigate } from 'react-router';
 import GImageDocPreview from '../components/GImageDocPreview';
@@ -38,122 +29,99 @@ const userData: any = [
 const UserByID: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const authInfo = useSelector((state: any) => state.auth);
-  const [eventDateTime, setEventDateTime] = useState<any>('');
-  const modal = useRef<HTMLIonModalElement>(null);
   const [eventModal, setEventModal] = useState(false);
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
-  function getNextHourDateTime(isCurrent: boolean = false) {
-    const now = new Date();
-
-    let nextHour = isCurrent
-      ? new Date()
-      : new Date(now.getTime() + 60 * 60 * 1000);
-    const year = nextHour.getFullYear();
-    const month = String(nextHour.getMonth() + 1).padStart(2, '0');
-    const day = String(nextHour.getDate()).padStart(2, '0');
-    const hours = String(nextHour.getHours()).padStart(2, '0');
-    const minutes = String(nextHour.getMinutes()).padStart(2, '0');
-    const seconds = String(nextHour.getSeconds()).padStart(2, '0');
-
-    return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.000Z`;
-  }
-
   const [breadCrumbsState, setBreadCrumbsState] = useState([
     { bName: 'Home', path: '/dashboard' },
-    { bName: 'Student', path: '/students-list' },
+    { bName: '', path: '/students-list' },
   ])
 
   useEffect(() => {
-    if (authInfo.user.regNumber === id) {
-      setBreadCrumbsState(prev => [prev[0], { bName: 'My Profile', path: '/' }])
-    }
-  }, [])
+    setBreadCrumbsState(prev => [prev[0], { bName: authInfo.user.regNumber === id ? 'My Profile' : `USER - ${id}`, path: '/' }])
+  }, [id])
 
   return (
-    <IonPage className="my_page">
-      <Header />
-      <IonContent class='custom_content_view' fullscreen>
-        <div className='user_page'>
-          <GBreadCrumbs data={breadCrumbsState}></GBreadCrumbs>
-          <div className="d-flex-jc-center">
-            <IonCard className="profile-card">
-              <img
-                src={
-                  'https://avatars.githubusercontent.com/u/93701195?s=60&v=4'
-                }
-                height="80%"
-                width="80%"
-              ></img>
-              <div className="icon_full_expand icon_pencil_user">
-                {authInfo.user.regNumber === id && (
-                  <IonIcon icon={pencil}></IonIcon>
-                )}
-              </div>
-              <div className="icon_full_expand">
-                <IonIcon
-                  onClick={() => setIsOpen(true)}
-                  icon={expandOutline}
-                ></IonIcon>
-              </div>
-            </IonCard>
-          </div>
-          <div className="display-data">
-            {userData.map((user: any, index: number) => {
-              return (
-                <div className="display-data-main" key={index}>
-                  <div className="display-data-key">{user.key}</div>
-                  <div className="display-data-value">{user.value}</div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {authInfo.user.regNumber === id && (
-          <div className="bottom-button">
-            <IonButton
-              onClick={() => setEventModal(true)}
-              size="small"
-              className="button-text"
-            >
+    <>
+      <div className='user_page'>
+        <GBreadCrumbs data={breadCrumbsState}></GBreadCrumbs>
+        <div className="d-flex-jc-center">
+          <IonCard className="profile-card">
+            <img
+              src={
+                'https://avatars.githubusercontent.com/u/93701195?s=60&v=4'
+              }
+              height="80%"
+              width="80%"
+            ></img>
+            <div className="icon_full_expand icon_pencil_user">
+              {authInfo.user.regNumber === id && (
+                <IonIcon icon={pencil}></IonIcon>
+              )}
+            </div>
+            <div className="icon_full_expand">
               <IonIcon
-                slot="start"
-                icon={pencil}
+                onClick={() => setIsOpen(true)}
+                icon={expandOutline}
               ></IonIcon>
-              Edit Profile
-            </IonButton>
-          </div>
-        )}
-        <GCustomisedModal
-          title="Update Profile"
-          isOpen={eventModal}
-          onClose={() => {
-            setEventModal(false);
-          }}
-          onSave={() => { }}
-        >
-          <IonList className='custom_user_list'>
-            {userData.map((user: any, index: number) => {
-              return (
-                <div
-                  key={index}
-                  className="custom-ion-input-wrapper"
-                >
-                  <IonInput
-                    className="custom-ion-input"
-                    label={user.key}
-                    labelPlacement="floating"
-                    fill="outline"
-                    placeholder={`Enter ${user.key}`}
-                  ></IonInput>
-                </div>
-              );
-            })}
-          </IonList>
-        </GCustomisedModal>
-      </IonContent>
+            </div>
+          </IonCard>
+        </div>
+        <div className="display-data">
+          {userData.map((user: any, index: number) => {
+            return (
+              <div className="display-data-main" key={index}>
+                <div className="display-data-key">{user.key}</div>
+                <div className="display-data-value">{user.value}</div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {authInfo.user.regNumber === id && (
+        <div className="bottom-button">
+          <IonButton
+            onClick={() => setEventModal(true)}
+            size="small"
+            className="button-text"
+          >
+            <IonIcon
+              slot="start"
+              icon={pencil}
+            ></IonIcon>
+            Edit Profile
+          </IonButton>
+        </div>
+      )}
+      <GCustomisedModal
+        title="Update Profile"
+        isOpen={eventModal}
+        onClose={() => {
+          setEventModal(false);
+        }}
+        onSave={() => { }}
+      >
+        <IonList className='custom_user_list'>
+          {userData.map((user: any, index: number) => {
+            return (
+              <div
+                key={index}
+                className="custom-ion-input-wrapper"
+              >
+                <IonInput
+                  className="custom-ion-input"
+                  label={user.key}
+                  labelPlacement="floating"
+                  fill="outline"
+                  placeholder={`Enter ${user.key}`}
+                ></IonInput>
+              </div>
+            );
+          })}
+        </IonList>
+      </GCustomisedModal>
       <GImageDocPreview
         src={
           'https://www.static-contents.youth4work.com/y4w/Images/Users/3126495.png?v=20180128190106'
@@ -165,9 +133,7 @@ const UserByID: React.FC = () => {
         onDownload={() => { }}
         isOpen={isOpen}
       ></GImageDocPreview>
-      <Footer></Footer>
-    </IonPage>
-  );
+    </>);
 };
 
 export default UserByID;

@@ -6,10 +6,10 @@ import {
   setupIonicReact,
   useIonRouter,
 } from '@ionic/react';
+
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Menu from './components/Menu';
 import { App as CapacitorApp } from '@capacitor/app';
-import Page from './pages/Page';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -46,8 +46,8 @@ import Home from './pages/Home/Home';
 import Attendance from './pages/Attendance/Attendance';
 import ProgressCard from './pages/ProgressCard/ProgressCard';
 import Subjects from './pages/Subjects/Subjects';
-import StaffList from './pages/StaffList';
-import StudentList from './pages/StudentList';
+import StaffList from './pages/Staff/StaffList';
+import StudentList from './pages/Students/StudentList';
 import Documents from './pages/Documents';
 import FeesDues from './pages/Fees/FeesDues';
 import FeesDuesSA from './pages/Fees/FeesDuesSA';
@@ -78,6 +78,11 @@ import SchoolAssetsSA from './pages/SchoolAssets/SchoolAssetsSA';
 import AttendanceByClass from './pages/Attendance/AttendanceByClass';
 import AttendanceByStudent from './pages/Attendance/AttendanceByStudent';
 import AttendanceClassView from './pages/Attendance/AttendanceClassView';
+import SchoolClasses from './pages/Class-Sections/SchoolClasses';
+import SchoolSections from './pages/Class-Sections/SchoolSections';
+import StudentListSA from './pages/Students/StudentListSA';
+import StaffListSA from './pages/Staff/StaffListSA';
+import ProgressCardSA from './pages/ProgressCard/ProgressCardSA';
 
 setupIonicReact({
   animated:true,
@@ -150,10 +155,10 @@ const App: React.FC = () => {
     };
   }, [ionRouter]);
 
-  useEffect(()=>{
-    if(currentRole)
+  useEffect(() => {
+    if (currentRole)
       setRole(currentRole)
-  },[currentRole])
+  }, [currentRole])
 
   return (
     <IonApp className="dark-theme">
@@ -184,17 +189,17 @@ const App: React.FC = () => {
               <Route path='/' element={<Layout />}>
                 <Route path="/" element={<Navigate to={school === null ? '/select-school' : isAuthenticated ? '/dashboard' : '/home'} />}></Route>
                 <Route path='/home' element={<Home />} />
-                <Route path='/dashboard' element={role === 'Student' ? <Dashboard /> : <DashboardSA />} />
-                <Route path='/attendance' element={<Attendance /> } />
-                <Route path='/attendance-by-class' element={<AttendanceByClass />}/>
-                <Route path='/attendance-by-class/:routeInfo' element={<AttendanceClassView />}/>
-                <Route path='/attendance-by-student' element={<AttendanceByStudent />} />
+                <Route path='/dashboard' element={role === 'Student' ? <Dashboard /> : <DashboardSA />} /> //both
+                <Route path='/attendance' element={<Attendance />} /> //students
+                <Route path='/attendance-by-class' element={<AttendanceByClass />} /> //SA
+                <Route path='/attendance-by-class/:routeInfo' element={<AttendanceClassView />} /> //SA
+                <Route path='/attendance-by-student' element={<AttendanceByStudent />} /> //SA
                 <Route path='/attendance:id' element={<Attendance />} />
-                <Route path='/progress-card' element={<ProgressCard />} />
-                <Route path='/time-table' element={role === 'Student' ? <TimeTable /> : <TimeTableSA />} />
-                <Route path='/calendar' element={role === 'Student' ? <Calendar /> : <CalendarSA />} />
-                <Route path='/students-list' element={<StudentList />} />
-                <Route path='/staff-list' element={<StaffList />} />
+                <Route path='/progress-card' element={role === 'Student' ? <ProgressCard /> : <ProgressCardSA />} /> //both
+                <Route path='/time-table' element={role === 'Student' ? <TimeTable /> : <TimeTableSA />} /> //both
+                <Route path='/calendar' element={role === 'Student' ? <Calendar /> : <CalendarSA />} /> //both
+                <Route path='/students-list' element={role === 'Student' ? <StudentList /> : <StudentListSA />} />
+                <Route path='/staff-list' element={role === 'student' ? <StaffList /> : <StaffListSA />} />
                 <Route path='/subjects' element={role === 'Student' ? <Subjects /> : <SubjectsSA />} />
                 <Route path='/school-wibe' element={<SchoolWibe />} />
                 <Route path='/documents' element={<Documents />} />
@@ -206,6 +211,8 @@ const App: React.FC = () => {
                 <Route path='/exam-schedules' element={<ExamSchedule />} />
                 <Route path='/home-work' element={<HomeWork />} />
                 <Route path='/diary' element={<Dairy />} />
+                <Route path='/school-classes' element={<SchoolClasses />} />
+                <Route path='/school-sections' element={<SchoolSections />} />
 
                 <Route path='/gallery' element={<Gallery />} />
                 <Route path='/ex-circular' element={<ExCircularActivities />} />

@@ -1,30 +1,25 @@
-import {
-  IonButton,
-  IonCard,
-  IonCardContent,
-  IonFooter,
-  IonItem,
-  IonText,
-} from '@ionic/react';
-import React, { useEffect, useState } from 'react';
+import { IonCard, IonCardContent, IonText } from '@ionic/react';
+import React, { useEffect, useState } from 'react'
 import NavChipCard from '../../components/NavChipsCard';
 import './Dashboard.css';
 import {
-  bookOutline,
-  businessOutline,
-  calendarOutline,
-  callOutline,
-  chatboxOutline,
-  documentOutline,
-  documentTextOutline,
-  imageOutline,
-  informationCircleOutline,
-  newspaperOutline,
-  peopleOutline,
-  ribbonOutline,
-  schoolOutline,
-  trophyOutline,
-  walletOutline,
+    bookOutline,
+    businessOutline,
+    calendarOutline,
+    callOutline,
+    chatboxOutline,
+    cubeOutline,
+    documentOutline,
+    documentTextOutline,
+    gridOutline,
+    imageOutline,
+    informationCircleOutline,
+    newspaperOutline,
+    peopleOutline,
+    ribbonOutline,
+    schoolOutline,
+    trophyOutline,
+    walletOutline,
 } from 'ionicons/icons';
 import { setIsDashboardRoute } from '../../redux/reducers/routesSlice';
 import { useDispatch } from 'react-redux';
@@ -43,130 +38,32 @@ export const DashboardSA = () => {
     }
   };
 
-  const chipsDataPrivate = [
-    {
-      id: 14,
-      moduleName: 'Ex-Circular',
-      icon: ribbonOutline,
-      redirectTo: '/ex-circular',
-    },
-    {
-      id: 15,
-      moduleName: 'Gallery',
-      icon: imageOutline,
-      redirectTo: '/gallery',
-    },
-    {
-      id: 16,
-      moduleName: 'Achievements',
-      icon: trophyOutline,
-      redirectTo: '/achievements',
-    },
-    {
-      id: 17,
-      moduleName: 'Contact-Us',
-      icon: callOutline,
-      redirectTo: '/contact-us',
-    },
-    {
-      id: 18,
-      moduleName: 'About',
-      icon: informationCircleOutline,
-      redirectTo: '/about',
-    },
-    {
-      id: 19,
-      moduleName: 'Courses',
-      icon: bookOutline,
-      redirectTo: '/courses',
-    },
-  ];
-  const chipsDataPublic = [
-    {
-      id: 1,
-      moduleName: 'Class Attendance',
-      icon: calendarOutline,
-      redirectTo: '/attendance-by-class',
-    },
-    {
-      id: 2,
-      moduleName: 'Student Attendance',
-      icon: calendarOutline,
-      redirectTo: '/attendance-by-student',
-    },
-    {
-      id: 3,
-      moduleName: 'Progress Card',
-      icon: documentTextOutline,
-      redirectTo: '/progress-card',
-    },
-    {
-      id: 4,
-      moduleName: 'Home Work',
-      icon: bookOutline,
-      redirectTo: '/home-work',
-    },
-    {
-      id: 5,
-      moduleName: 'My Subjects',
-      icon: schoolOutline,
-      redirectTo: '/subjects',
-    },
-    {
-      id: 6,
-      moduleName: 'Messages',
-      icon: chatboxOutline,
-      redirectTo: '/messages',
-    },
-    {
-      id: 7,
-      moduleName: 'Documents',
-      icon: documentOutline,
-      redirectTo: '/documents',
-    },
-    {
-      id: 8,
-      moduleName: 'My Staff',
-      icon: peopleOutline,
-      redirectTo: '/staff-list',
-    },
-    {
-      id: 9,
-      moduleName: 'My Friends',
-      icon: peopleOutline,
-      redirectTo: '/students-list',
-    },
-    {
-      id: 10,
-      moduleName: 'Calendar',
-      icon: calendarOutline,
-      redirectTo: '/calendar',
-    },
-    {
-      id: 11,
-      moduleName: 'Wibe',
-      icon: newspaperOutline,
-      redirectTo: '/school-wibe',
-    },
-    {
-      id: 12,
-      moduleName: 'Exam Schedules',
-      icon: calendarOutline,
-      redirectTo: '/exam-schedules',
-    },
-    {
-      id: 13,
-      moduleName: 'My Dues',
-      icon: walletOutline,
-      redirectTo: '/fee-structure',
-    },
-    {
-      id: 14,
-      moduleName: 'Assets',
-      icon: businessOutline,
-      redirectTo: '/assets',
-    },
-  ];
+    const chipsDataPrivate = [
+        { id: 14, moduleName: 'Ex-Circular', icon: ribbonOutline, redirectTo: '/ex-circular' },
+        { id: 15, moduleName: 'Gallery', icon: imageOutline, redirectTo: '/gallery' },
+        { id: 16, moduleName: 'Achievements', icon: trophyOutline, redirectTo: '/achievements' },
+        { id: 17, moduleName: 'Contact-Us', icon: callOutline, redirectTo: '/contact-us' },
+        { id: 18, moduleName: 'About', icon: informationCircleOutline, redirectTo: '/about' },
+        { id: 19, moduleName: 'Courses', icon: bookOutline, redirectTo: '/courses' }
+    ];
+    const chipsDataPublic = [
+        { id: 1, moduleName: 'Staff', icon: peopleOutline, redirectTo: '/staff-list' },
+        { id: 2, moduleName: 'Students', icon: peopleOutline, redirectTo: '/students-list' },
+        { id: 3, moduleName: 'Sections', icon: cubeOutline, redirectTo: '/school-sections' },
+        { id: 4, moduleName: 'Classes', icon: gridOutline, redirectTo: '/school-classes' },
+        { id: 5, moduleName: 'Class Attendance', icon: calendarOutline, redirectTo: '/attendance-by-class' },
+        { id: 6, moduleName: 'Student Attendance', icon: calendarOutline, redirectTo: '/attendance-by-student' },
+        { id: 7, moduleName: 'Progress Cards', icon: documentTextOutline, redirectTo: '/progress-card' },
+        { id: 8, moduleName: 'Home Works', icon: bookOutline, redirectTo: '/home-work' },
+        { id: 9, moduleName: 'Class Subjects', icon: schoolOutline, redirectTo: '/subjects' },
+        { id: 10, moduleName: 'Messages', icon: chatboxOutline, redirectTo: '/messages' },
+        { id: 11, moduleName: 'Documents', icon: documentOutline, redirectTo: '/documents' },
+        { id: 12, moduleName: 'Calendar', icon: calendarOutline, redirectTo: '/calendar' },
+        { id: 13, moduleName: 'Wibe', icon: newspaperOutline, redirectTo: '/school-wibe' },
+        { id: 14, moduleName: 'Exam Schedules', icon: calendarOutline, redirectTo: '/exam-schedules' },
+        { id: 15, moduleName: 'My Dues', icon: walletOutline, redirectTo: '/fee-structure' },
+        { id: 16, moduleName: 'Assets', icon: businessOutline, redirectTo: '/assets' },
+    ];
 
   useEffect(() => {
     dispatch(setIsDashboardRoute(true));

@@ -8,10 +8,9 @@ import {
   IonLabel,
   IonSelect,
   IonSelectOption,
-  IonTab,
   IonText,
 } from '@ionic/react';
-import { addOutline, cloudUpload, location, alertCircleOutline, caretDownOutline, folderOutline } from 'ionicons/icons';
+import { addOutline, cloudUpload, location, alertCircleOutline, caretDownOutline } from 'ionicons/icons';
 import React, { useState } from 'react';
 import GCustomisedModal from '../components/GCustomisedModal';
 import { useSelector } from 'react-redux';

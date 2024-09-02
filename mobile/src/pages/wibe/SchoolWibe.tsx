@@ -25,23 +25,23 @@ const SchoolWibe: React.FC = () => {
     console.log(ev?.target.value);
     //  debounce function can be excuted!!! here
   }
- 
+
   const postsData = wibePostsData
 
-  const handleClickOnLikes=(LikesData:any)=>{
-    setData(()=>LikesData)
-    setIsOpenLikes(()=>true)
+  const handleClickOnLikes = (LikesData: any) => {
+    setData(() => LikesData)
+    setIsOpenLikes(() => true)
   }
 
-  const handleClickOnComments=(CommentsData:any)=>{
-    setData(()=>CommentsData)
-    setIsOpenComments(()=>true)
+  const handleClickOnComments = (CommentsData: any) => {
+    setData(() => CommentsData)
+    setIsOpenComments(() => true)
   }
 
 
-  const resetOpenCallback=(value:boolean)=>{
-        setIsOpenLikes(()=>value)
-        setIsOpenComments(()=>value)
+  const resetOpenCallback = (value: boolean) => {
+    setIsOpenLikes(() => value)
+    setIsOpenComments(() => value)
   }
 
   return (
@@ -73,7 +73,7 @@ const SchoolWibe: React.FC = () => {
                   showClearButton="focus"
                   value={search}
                   debounce={500}
-                  onIonInput={(ev) => handleInput(ev)}
+                  onIonInput={handleInput}
                 ></IonSearchbar>
               </div>
               <div className='g_half_width date_wibe_container'>
@@ -173,8 +173,8 @@ const SchoolWibe: React.FC = () => {
                 </div>
                 {item.img && <>
                   <div>
-                  <img src={item.img} />
-                </div>
+                    <img src={item.img} />
+                  </div>
                 </>}
                 <div>
                   <IonText>
@@ -184,13 +184,13 @@ const SchoolWibe: React.FC = () => {
               </div>
               <div className='footer_post'>
                 <div className='g_flex g_space_btwn'>
-                  <div className='g_txt_center' onClick={()=>handleClickOnLikes(item)}>
+                  <div className='g_txt_center' onClick={() => handleClickOnLikes(item)}>
                     <IonIcon icon={heartOutline}></IonIcon>
                     <IonText>
                       <p>{item.likes} Likes</p>
                     </IonText>
                   </div>
-                  <div className='g_txt_center' onClick={()=>{handleClickOnComments(item)}}>
+                  <div className='g_txt_center' onClick={() => { handleClickOnComments(item) }}>
                     <IonIcon icon={chatboxOutline}></IonIcon>
                     <IonText>
                       <p>{item.comments.length} Comments</p>
