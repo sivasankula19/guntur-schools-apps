@@ -8,8 +8,8 @@ import {
   IonToggle,
 } from '@ionic/react';
 import React, { useState } from 'react';
-import { staffDummyArr, studentDummyData } from '../common/utility';
-import GBreadCrumbs from '../components/GBreadCrumbs';
+import { staffDummyArr } from '../../common/utility';
+import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { useNavigate } from 'react-router';
 
 const StaffList: React.FC = () => {

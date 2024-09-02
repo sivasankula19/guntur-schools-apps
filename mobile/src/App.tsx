@@ -46,8 +46,8 @@ import Home from './pages/Home/Home';
 import Attendance from './pages/Attendance/Attendance';
 import ProgressCard from './pages/ProgressCard/ProgressCard';
 import Subjects from './pages/Subjects/Subjects';
-import StaffList from './pages/StaffList';
-import StudentList from './pages/StudentList';
+import StaffList from './pages/Staff/StaffList';
+import StudentList from './pages/Students/StudentList';
 import Documents from './pages/Documents';
 import FeesDues from './pages/FeesDues';
 import Calendar from './pages/Calendar/Calendar';
@@ -79,11 +79,13 @@ import AttendanceByStudent from './pages/Attendance/AttendanceByStudent';
 import AttendanceClassView from './pages/Attendance/AttendanceClassView';
 import SchoolClasses from './pages/Class-Sections/SchoolClasses';
 import SchoolSections from './pages/Class-Sections/SchoolSections';
+import StudentListSA from './pages/Students/StudentListSA';
+import StaffListSA from './pages/Staff/StaffListSA';
 
 setupIonicReact({
-  animated:true,
-  hardwareBackButton:true,
-  experimentalCloseWatcher:true,
+  animated: true,
+  hardwareBackButton: true,
+  experimentalCloseWatcher: true,
 });
 
 const App: React.FC = () => {
@@ -149,10 +151,10 @@ const App: React.FC = () => {
     };
   }, [ionRouter]);
 
-  useEffect(()=>{
-    if(currentRole)
+  useEffect(() => {
+    if (currentRole)
       setRole(currentRole)
-  },[currentRole])
+  }, [currentRole])
 
   return (
     <IonApp className="dark-theme">
@@ -183,17 +185,17 @@ const App: React.FC = () => {
               <Route path='/' element={<Layout />}>
                 <Route path="/" element={<Navigate to={school === null ? '/select-school' : isAuthenticated ? '/dashboard' : '/home'} />}></Route>
                 <Route path='/home' element={<Home />} />
-                <Route path='/dashboard' element={role === 'Student' ? <Dashboard /> : <DashboardSA />} />
-                <Route path='/attendance' element={<Attendance /> } />
-                <Route path='/attendance-by-class' element={<AttendanceByClass />}/>
-                <Route path='/attendance-by-class/:routeInfo' element={<AttendanceClassView />}/>
-                <Route path='/attendance-by-student' element={<AttendanceByStudent />} />
+                <Route path='/dashboard' element={role === 'Student' ? <Dashboard /> : <DashboardSA />} /> //both
+                <Route path='/attendance' element={<Attendance />} /> //students
+                <Route path='/attendance-by-class' element={<AttendanceByClass />} /> //SA
+                <Route path='/attendance-by-class/:routeInfo' element={<AttendanceClassView />} /> //SA
+                <Route path='/attendance-by-student' element={<AttendanceByStudent />} /> //SA
                 <Route path='/attendance:id' element={<Attendance />} />
-                <Route path='/progress-card' element={<ProgressCard />} />
-                <Route path='/time-table' element={role === 'Student' ? <TimeTable /> : <TimeTableSA />} />
-                <Route path='/calendar' element={role === 'Student' ? <Calendar /> : <CalendarSA />} />
-                <Route path='/students-list' element={<StudentList />} />
-                <Route path='/staff-list' element={<StaffList />} />
+                <Route path='/progress-card' element={<ProgressCard />} /> //student
+                <Route path='/time-table' element={role === 'Student' ? <TimeTable /> : <TimeTableSA />} /> //both
+                <Route path='/calendar' element={role === 'Student' ? <Calendar /> : <CalendarSA />} /> //both
+                <Route path='/students-list' element={role === 'Student' ? <StudentList /> : <StudentListSA />} />
+                <Route path='/staff-list' element={role === 'student' ? <StaffList /> : <StaffListSA />} />
                 <Route path='/subjects' element={role === 'Student' ? <Subjects /> : <SubjectsSA />} />
                 <Route path='/school-wibe' element={<SchoolWibe />} />
                 <Route path='/documents' element={<Documents />} />
