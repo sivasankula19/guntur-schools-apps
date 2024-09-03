@@ -134,15 +134,7 @@ const IonTextAreaUI=(label:string,value:string,ph:string,endIcon?:any,type?:any)
               label="Select Class"
               labelPlacement="floating"
               fill="outline"
-              interface="popover"
-              onIonChange={(e) =>
-                console.log(
-                  `ionChange fired with value: ${e.detail.value}`
-                )
-              }
-              onIonCancel={() => console.log('ionCancel fired')}
-              onIonDismiss={() => console.log('ionDismiss fired')}
-            >
+              interface="popover">
               <IonSelectOption value="class-8">Class 8</IonSelectOption>
               <IonSelectOption value="class-9">Class 9</IonSelectOption>
               <IonSelectOption value="class-10">Class 10</IonSelectOption>

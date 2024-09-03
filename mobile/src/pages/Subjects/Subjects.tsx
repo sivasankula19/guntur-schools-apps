@@ -21,7 +21,6 @@ const Subjects: React.FC = () => {
 
   const handleInput = (ev: any) => {
     setSearch(ev.target.value);
-    console.log(ev?.target.value);
     //  debounce function can be excuted!!! here
   };
 

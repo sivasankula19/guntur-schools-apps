@@ -95,13 +95,7 @@ const FeesDuesSA: React.FC = () => {
             // labelPlacement="floating"
             fill="outline"
             value={'2024-2025'}
-            interface="popover"
-            onIonChange={(e) =>
-              console.log(
-                `ionChange fired with value: ${e.detail.value}`
-              )
-            }
-          >
+            interface="popover">
             <IonSelectOption value="2024-2025">2024-2025</IonSelectOption>
             <IonSelectOption value="2023-2024">2023-2024</IonSelectOption>
             <IonSelectOption value="2022-2023">2022-2023</IonSelectOption>
@@ -115,13 +109,7 @@ const FeesDuesSA: React.FC = () => {
               label="Select Class"
               fill="outline"
               value={'9'}
-              interface="popover"
-              onIonChange={(e) =>
-                console.log(
-                  `ionChange fired with value: ${e.detail.value}`
-                )
-              }
-            >
+              interface="popover">
               <IonSelectOption value="7">7th class</IonSelectOption>
               <IonSelectOption value="8">8th class</IonSelectOption>
               <IonSelectOption value="9">9th class</IonSelectOption>
@@ -132,13 +120,7 @@ const FeesDuesSA: React.FC = () => {
             label="Select Section"
             fill="outline"
             value={'A'}
-            interface="popover"
-            onIonChange={(e) =>
-              console.log(
-                `ionChange fired with value: ${e.detail.value}`
-              )
-            }
-          >
+            interface="popover">
             <IonSelectOption value="A">A section</IonSelectOption>
             <IonSelectOption value="B">B section</IonSelectOption>
             <IonSelectOption value="C">C section</IonSelectOption>
@@ -152,13 +134,7 @@ const FeesDuesSA: React.FC = () => {
             // labelPlacement="floating"
             fill="outline"
             value={'y179a10'}
-            interface="popover"
-            onIonChange={(e) =>
-              console.log(
-                `ionChange fired with value: ${e.detail.value}`
-              )
-            }
-          >
+            interface="popover">
             <IonSelectOption value="y179a10">siva</IonSelectOption>
             <IonSelectOption value="y179a12">deva</IonSelectOption>
             <IonSelectOption value="y179a16">minoosh</IonSelectOption>

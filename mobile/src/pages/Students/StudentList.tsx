@@ -27,7 +27,6 @@ const StudentList: React.FC = () => {
 
   const handleInput = (ev: any) => {
     setSearch(ev.target.value);
-    console.log(ev?.target.value);
     //  debounce function can be executed!!! here
   };
 
@@ -75,13 +74,6 @@ const StudentList: React.FC = () => {
                     labelPlacement="floating"
                     fill="outline"
                     interface="popover"
-                    onIonChange={(e) =>
-                      console.log(
-                        `ionChange fired with value: ${e.detail.value}`
-                      )
-                    }
-                    onIonCancel={() => console.log('ionCancel fired')}
-                    onIonDismiss={() => console.log('ionDismiss fired')}
                   >
                     <IonSelectOption value="class-8">Class 8</IonSelectOption>
                     <IonSelectOption value="class-9">Class 9</IonSelectOption>

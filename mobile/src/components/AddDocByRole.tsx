@@ -22,7 +22,6 @@ interface IProps {
   subtitle?: string;
 }
 const AddDoc: React.FC<IProps> = ({ title, subtitle }) => {
-  // console.log("common-add-doc",title,subtitle)
   const [isOpen, setIsOpen] = useState(false);
   const popover = useRef<HTMLIonPopoverElement>(null);
   const [popoverOpen, setPopoverOpen] = useState(false);

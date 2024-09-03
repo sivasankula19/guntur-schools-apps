@@ -55,13 +55,7 @@ export const CoursesSuperAdmin = () => {
                             label="Select Medium"
                             labelPlacement="floating"
                             fill="outline"
-                            interface="popover"
-                            onIonChange={(e) =>
-                                console.log(
-                                    `ionChange fired with value: ${e.detail.value}`
-                                )
-                            }
-                        >
+                            interface="popover">
                             <IonSelectOption value="Telugu">Telugu Medium</IonSelectOption>
                             <IonSelectOption value="English">English Medium</IonSelectOption>
                         </IonSelect></div>

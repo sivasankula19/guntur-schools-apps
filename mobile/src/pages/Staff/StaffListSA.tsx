@@ -55,7 +55,6 @@ const StaffListSA: React.FC = () => {
 
     const handleSearchInput = (ev: any) => {
         setSearch(ev.target.value);
-        console.log(ev?.target.value);
         //  debounce function can be executed!!! here
     };
 

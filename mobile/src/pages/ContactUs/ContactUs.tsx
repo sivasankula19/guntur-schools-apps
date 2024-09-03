@@ -133,13 +133,7 @@ const ContactUs: React.FC = () => {
                 label="Select Reason"
                 labelPlacement="floating"
                 fill="outline"
-                interface="popover"
-                onIonChange={(e) =>
-                  console.log(
-                    `ionChange fired with value: ${e.detail.value}`
-                  )
-                }
-              >
+                interface="popover">
                 <IonSelectOption value="admission">Admission</IonSelectOption>
                 <IonSelectOption value="exams">Exams</IonSelectOption>
                 <IonSelectOption value="games">Games</IonSelectOption>

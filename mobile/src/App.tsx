@@ -83,6 +83,7 @@ import SchoolSections from './pages/Class-Sections/SchoolSections';
 import StudentListSA from './pages/Students/StudentListSA';
 import StaffListSA from './pages/Staff/StaffListSA';
 import ProgressCardSA from './pages/ProgressCard/ProgressCardSA';
+import BackButtonHandler from './components/BackButtonHandler';
 
 setupIonicReact({
   animated:true,
@@ -98,10 +99,10 @@ const App: React.FC = () => {
   const isUserAcknowledgedMode = useSelector(
     (state: any) => state?.darkMode.isUserAcknowledgedMode
   );
-  const fullstate = useSelector((state: any) => state);
+  // const fullstate = useSelector((state: any) => state);
   const school = useSelector((state: any) => state.school.selectedSchool);
   const isAuthenticated = useSelector((state: any) => state.auth.isAuthenticated);
-  console.log(fullstate)
+  // console.log(fullstate)
   // const preLoginModules = useSelector((state:any) => state.)
   const ionRouter = useIonRouter();
 
@@ -132,28 +133,28 @@ const App: React.FC = () => {
     dispatch(setMode(ev.detail.role === 'confirm'));
   };
 
-  useEffect(() => {
-    const handleBackButton = (ev: any) => {
-      ev.detail.register(-1, () => {
-        if(isDashboardActive){
-          CapacitorApp.exitApp();
-        }
-        else{
-          if (!ionRouter.canGoBack()) {
-            CapacitorApp.exitApp();
-          } else {
-            ionRouter.goBack();
-          }
-        }
-      });
-    };
+  // useEffect(() => {
+  //   const handleBackButton = (ev: any) => {
+  //     ev.detail.register(-1, () => {
+  //       if(isDashboardActive){
+  //         CapacitorApp.exitApp();
+  //       }
+  //       else{
+  //         if (!ionRouter.canGoBack()) {
+  //           CapacitorApp.exitApp();
+  //         } else {
+  //           ionRouter.goBack();
+  //         }
+  //       }
+  //     });
+  //   };
 
-    document.addEventListener('ionBackButton', handleBackButton);
+  //   document.addEventListener('ionBackButton', handleBackButton);
 
-    return () => {
-      document.removeEventListener('ionBackButton', handleBackButton);
-    };
-  }, [ionRouter]);
+  //   return () => {
+  //     document.removeEventListener('ionBackButton', handleBackButton);
+  //   };
+  // }, [ionRouter]);
 
   useEffect(() => {
     if (currentRole)
@@ -183,6 +184,7 @@ const App: React.FC = () => {
       ></IonAlert>
       <BrowserRouter>
         <IonSplitPane contentId="main">
+          <BackButtonHandler ionRouter={ionRouter} />
           <Menu />
           <IonRouterOutlet id="main">
             <Routes>

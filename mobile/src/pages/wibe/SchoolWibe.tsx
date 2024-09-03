@@ -22,7 +22,6 @@ const SchoolWibe: React.FC = () => {
   };
   const handleInput = (ev: any) => {
     setSearch(ev.target.value);
-    console.log(ev?.target.value);
     //  debounce function can be excuted!!! here
   }
 
@@ -89,9 +88,6 @@ const SchoolWibe: React.FC = () => {
                   labelPlacement="floating"
                   fill="outline"
                   interface="popover"
-                  onIonChange={(e) =>
-                    console.log(`ionChange fired with value: ${e.detail.value}`)
-                  }
                 >
                   <IonSelectOption value="class-8">Class 8</IonSelectOption>
                   <IonSelectOption value="class-9">Class 9</IonSelectOption>
@@ -107,9 +103,6 @@ const SchoolWibe: React.FC = () => {
                   labelPlacement="floating"
                   fill="outline"
                   interface="popover"
-                  onIonChange={(e) =>
-                    console.log(`ionChange fired with value: ${e.detail.value}`)
-                  }
                 >
                   <IonSelectOption value="class-8">Class 8</IonSelectOption>
                   <IonSelectOption value="class-9">Class 9</IonSelectOption>
