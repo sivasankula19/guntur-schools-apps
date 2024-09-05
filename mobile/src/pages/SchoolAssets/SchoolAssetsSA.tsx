@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import GBreadCrumbs from '../../components/GBreadCrumbs'
-import { IonAccordion, IonAccordionGroup, IonIcon, IonItem, IonLabel } from '@ionic/react';
+import { IonAccordion, IonAccordionGroup, IonIcon, IonInput, IonItem, IonLabel } from '@ionic/react';
 import { caretDownCircleOutline, caretDownOutline, saveOutline } from 'ionicons/icons';
 import { schoolAssetsDataDummy } from '../../common/utility';
 
@@ -32,12 +32,12 @@ function SchoolAssetsSA() {
                             <IonItem slot="header" color="light">
                                 <IonLabel className="main-ion-label g-fontweight-600">{item.category}</IonLabel>
                             </IonItem>
-                            {item?.assets?.length && <RenderCategories item={item} />}
+                            {<RenderCategories item={item} />}
                         </IonAccordion>
                     ))}
                 </IonAccordionGroup>
             </div>
-            <div className='add_assets_cnt'>
+            <div className='add_assets_cnt p-h-12'>
                 <div className='input_btn_assets g_flex g_space_btwn'>
                     <input placeholder='Add new category' /> <button>Add</button>
                 </div>
@@ -65,27 +65,38 @@ const RenderCategories = ({ item }: any) => {
                                 <div className="school-assets-category"></div>
                                 <IonLabel className="g-fontweight-400 g-fontsize-14 ml-6">{asset.name}</IonLabel>
                             </IonItem>
-                            {asset.types?.length && <RenderSubtypes subType={asset.types} />}
+                            {asset.types?.length && <>
+                                <RenderSubtypes subType={asset.types} />
+                            </>}
                         </IonAccordion>
                     ))}
                 </IonAccordionGroup>
             </div>
-            <div>hello</div>
+            <div className='add_assets_cnt p-h-12'>
+                <div className='input_btn_assets g_flex g_space_btwn'>
+                    <input placeholder='Add Subcategory' /> <button>Add</button>
+                </div>
+            </div>
         </div>
     )
 }
 
 const RenderSubtypes = ({ subType }: any) => {
     return (
-      <div slot="content" className='sub-type-parent'>
-        {subType?.map((subtype: any, index: number) => {
-          return (
-            <div key={index} className="g-fontweight-400 g-fontsize-14 sub-type">{subtype}</div>
-          )
-        })}
-      </div>
+        <div slot="content" className='sub-type-parent'>
+            {subType?.map((subtype: any, index: number) => {
+                return (
+                    <div key={index} className="g-fontweight-400 g-fontsize-14 sub-type">{subtype}</div>
+                )
+            })}
+            <div className='add_assets_cnt'>
+                <div className='input_btn_assets g_flex g_space_btwn'>
+                    <input placeholder='Add Label' /> <button>Add</button>
+                </div>
+            </div>
+        </div>
     )
-  }
+}
 
 
 export default SchoolAssetsSA

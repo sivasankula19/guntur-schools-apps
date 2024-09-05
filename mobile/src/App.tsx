@@ -7,7 +7,7 @@ import {
   useIonRouter,
 } from '@ionic/react';
 
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import Menu from './components/Menu';
 import { App as CapacitorApp } from '@capacitor/app';
 
@@ -82,6 +82,7 @@ import SchoolSections from './pages/Class-Sections/SchoolSections';
 import StudentListSA from './pages/Students/StudentListSA';
 import StaffListSA from './pages/Staff/StaffListSA';
 import ProgressCardSA from './pages/ProgressCard/ProgressCardSA';
+import ProgressCardSubjectAdd from './pages/ProgressCard/ProgressCardSubjectAdd';
 
 setupIonicReact({
   animated: true,
@@ -134,6 +135,7 @@ const App: React.FC = () => {
     const handleBackButton = (ev: any) => {
       ev.detail.register(10, (processNextHandler: any) => {
         console.log('Handler was called!');
+        // get the modal active state via store, if any active then close that modal and don't call processNextHandler 
         processNextHandler();
       });
       ev.detail.register(-1, () => {
@@ -193,6 +195,7 @@ const App: React.FC = () => {
                 <Route path='/attendance-by-student' element={<AttendanceByStudent />} /> //SA
                 <Route path='/attendance:id' element={<Attendance />} />
                 <Route path='/progress-card' element={role === 'Student' ? <ProgressCard /> : <ProgressCardSA />} /> //both
+                <Route path='/progress-card-class-subject' element={<ProgressCardSubjectAdd />} />
                 <Route path='/time-table' element={role === 'Student' ? <TimeTable /> : <TimeTableSA />} /> //both
                 <Route path='/calendar' element={role === 'Student' ? <Calendar /> : <CalendarSA />} /> //both
                 <Route path='/students-list' element={role === 'Student' ? <StudentList /> : <StudentListSA />} />

@@ -51,6 +51,7 @@ export const DashboardSA = () => {
         { id: 5, moduleName: 'Class Attendance', icon: calendarOutline, redirectTo: '/attendance-by-class' },
         { id: 6, moduleName: 'Student Attendance', icon: calendarOutline, redirectTo: '/attendance-by-student' },
         { id: 7, moduleName: 'Progress Cards', icon: documentTextOutline, redirectTo: '/progress-card' },
+        { id: 99, moduleName: 'Subject Progress Card', icon: documentTextOutline, redirectTo: '/progress-card-class-subject' },
         { id: 8, moduleName: 'Home Works', icon: bookOutline, redirectTo: '/home-work' },
         { id: 9, moduleName: 'Class Subjects', icon: schoolOutline, redirectTo: '/subjects' },
         { id: 10, moduleName: 'Messages', icon: chatboxOutline, redirectTo: '/messages' },

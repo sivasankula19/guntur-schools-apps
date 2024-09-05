@@ -17,10 +17,11 @@ import {
     saveOutline,
     settingsOutline,
 } from 'ionicons/icons';
-import RenderSelectedTableUnit from './RenderSelectedTableUnit';
-import RenderAllExams from './RenderAllExams';
-import StudentInfoProCard from './StudentInfoProCard';
+
 import { searchStudentsData } from '../../common/utility';
+import RenderSelectedTableUnit from '../../components/RenderSelectedTableUnit';
+import RenderAllExams from '../../components/RenderAllExams';
+import StudentInfoProCard from '../../components/StudentInfoProCard';
 
 const ProgressCardSA: React.FC = () => {
     const [isOpenStudentCard, setIsOpenStudentCard] = useState<boolean>(false);

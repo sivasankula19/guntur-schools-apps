@@ -1,7 +1,7 @@
 /* Width of the scrollbar */
 ::-webkit-scrollbar {
-  width: 3px;
-  height: 3px;
+  width: 1px;
+  height: 1px;
 }
 
 /* Track (background) of the scrollbar */
@@ -551,6 +551,18 @@ ion-header {
   margin-left: 10px;
 }
 
+.m-right-10{
+  margin-right: 10px;
+}
+
+.m-left-6{
+  margin-left: 6px;
+}
+
+.m-right-6{
+  margin-right: 6px;
+}
+
 .m-left-20 {
   margin-left: 20px;
 }
@@ -596,6 +608,10 @@ ion-header {
 
 .p-10 {
   padding: 12px;
+}
+
+.p-h-12{
+  padding: 0 12px;
 }
 
 .p-h-10 {
@@ -1576,6 +1592,7 @@ ion-breadcrumbs {
   width: calc(100% - 20px);
   margin: 0;
   margin-top: -10px;
+  animation: slideIn 0.8s forwards;
 }
 
 .student-picker ion-card-content{
@@ -2437,6 +2454,55 @@ ion-breadcrumbs {
 .progress_marks_view ion-title {
   font-size: 18px;
 }
+
+.progress-default-marks{
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progress-default-marks input {
+  border: 1px solid;
+  height: 36px;
+  border-radius: 8px;
+  max-width: 100px;
+  margin-left: 26px;
+  padding: 4px 8px;
+}
+
+.progress-default-marks ion-icon{
+  font-size: 32px;
+}
+
+.progress-hold{
+  height: calc(100% - 60px);
+}
+
+.progress-add-con{
+  height: calc(100% - 200px) !important;
+  overflow-y: auto;
+}
+
+.marks-progress-icon{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 46%;
+}
+
+.marks-progress-icon input{
+  border: 1px solid;
+  height: 36px;
+  border-radius: 8px;
+  max-width: 100px;
+  padding: 4px 8px;
+}
+
+.marks-progress-icon ion-icon{
+  font-size: 20px;
+}
+
 
 .cell_marks {
   border-color: #000000 !important;
@@ -4350,7 +4416,7 @@ label.input-wrapper.sc-ion-input-ios {
 
 
 .school-assets ion-accordion-group {
-  width: 90%;
+  width: 95%;
   margin: auto;
   text-align: center;
 }
@@ -4419,7 +4485,6 @@ label.input-wrapper.sc-ion-input-ios {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 12px;
 }
 
 .input_btn_assets {
@@ -4455,6 +4520,10 @@ label.input-wrapper.sc-ion-input-ios {
 
 .input_btn_assets button:active {
   background-color: #004297;
+}
+
+.add-assets-in-holder {
+  padding: 12px;
 }
 
 .ml-6 {
