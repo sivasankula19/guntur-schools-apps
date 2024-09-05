@@ -10,16 +10,16 @@ import {
   appsSharp,
   listSharp,
 } from 'ionicons/icons';
-import RenderSelectedTableUnit from './RenderSelectedTableUnit';
-import RenderAllExams from './RenderAllExams';
-import StudentInfoProCard from './StudentInfoProCard';
+import StudentInfoProCard from '../../components/StudentInfoProCard';
+import RenderSelectedTableUnit from '../../components/RenderSelectedTableUnit';
+import RenderAllExams from '../../components/RenderAllExams';
 
 const ProgressCard: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState('unit1');
   const [viewMode, setViewMode] = useState('list');
 
   const unitsScrollRef = useRef<any>(null);
-  const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' },{ bName: 'Progress Card', path: '/progress-card' },];
+  const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Progress Card', path: '/progress-card' },];
 
   const studentInfo: any = {
     fullName: 'Siva S User',

@@ -1,6 +1,6 @@
 import { IonFooter, IonHeader, IonToolbar } from '@ionic/react';
 import { useEffect, useRef, useState } from 'react';
-import { allUnitsMarks } from '../../common/utility';
+import { allUnitsMarks } from '../common/utility';
 
 const RenderAllExams: React.FC<IRenderAllExams> = ({ }) => {
   const subjects = [
@@ -130,13 +130,13 @@ const RenderAllExams: React.FC<IRenderAllExams> = ({ }) => {
         <IonToolbar>
           <div className="g_flex g_space_btwn marks_all_container">
             <div style={{ width: '25%' }}>
-            <div>Exam</div>
-            <div>Total</div>
+              <div>Exam</div>
+              <div>Total</div>
             </div>
-            <div style={{ width: '75%',overflowX:'auto'}}>
+            <div style={{ width: '75%', overflowX: 'auto' }}>
               <div style={{ display: 'flex' }}>
                 {allUnits.map((unitItemshow: any) => (
-                  <div style={{width:'80px', minWidth:'80px'}} key={unitItemshow.id}>
+                  <div style={{ width: '80px', minWidth: '80px' }} key={unitItemshow.id}>
                     <div>{unitItemshow.title}</div>
                     <div>{unitItemshow.conductedFor}</div>
                   </div>

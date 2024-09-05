@@ -28,10 +28,22 @@ function AttendanceByStudent() {
     const monthYearDisplayRef = useRef<any>();
     const containerRef = useRef<any>(null);
     const [search, setSearch] = useState('');
+    const [yearCalculatedData, setYearCalculatedData] = useState<number[]>([])
 
     const todayFormate = `${todayDate.getMonth() + 1}/${todayDate.getDate()}/${todayDate.getFullYear()}`;
 
     useEffect(() => {
+        const currentYear = todayDate.getFullYear();
+        const currentMonth = todayDate.getMonth();
+        let calculatedYears:number[] = [currentYear]
+        if(currentMonth >= 5){
+            calculatedYears.push(currentYear + 1);
+        }
+        if(currentMonth <= 5){
+            calculatedYears.unshift(currentYear - 1);
+        }
+        setYearCalculatedData(calculatedYears)
+        console.log(currentMonth, currentYear, calculatedYears);
         setSearchResult(searchStudentsData);
         window.addEventListener('click', handleScreenClick);
         return () => {
@@ -115,6 +127,8 @@ function AttendanceByStudent() {
         setSearchResult(searchStudentsData.filter((item: any) => ((item.studentName).toLowerCase().includes((ev.detail.value).toLowerCase())) || ev.detail.value == ''))
         //  debounce function can be executed!!! here i.e api
     };
+
+    
 
     return (
         <div className='attendance_sa'>
@@ -248,7 +262,7 @@ function AttendanceByStudent() {
                                     </div>
                                     <div className='g_half_width g_txt_center'>
                                         <div className='g_full_height month-date-dis  o-flow-y'>
-                                            {[2024, 2023, 2022, 2021, 2020, 2019].map((y, yIndex) => (<div onClick={() => handleMonthYearSelect(y, false)} className={`height-px-40 month-year-item ${currentMY.year === y ? 'selected-month-year' : ''}`} key={yIndex}>{y}</div>))}
+                                            {yearCalculatedData.map((y, yIndex) => (<div onClick={() => handleMonthYearSelect(y, false)} className={`height-px-40 month-year-item ${currentMY.year === y ? 'selected-month-year' : ''}`} key={yIndex}>{y}</div>))}
                                         </div>
                                     </div>
                                 </div>

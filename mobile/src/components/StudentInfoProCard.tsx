@@ -1,6 +1,6 @@
 import { IonCard, IonCardContent, IonItem, IonText } from '@ionic/react'
 import React from 'react'
-import { convertToMultipleWords } from '../../common/utility'
+import { convertToMultipleWords } from '../common/utility'
 
 function StudentInfoProCard({studentInfo}:any) {
   return (

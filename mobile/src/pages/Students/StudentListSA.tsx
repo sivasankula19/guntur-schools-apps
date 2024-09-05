@@ -200,7 +200,7 @@ const StudentListSA: React.FC = () => {
                     </IonCard>
                 )}
             </div>
-            <div className={`students_cards_container p-h-16 ${!isFilterEnabled ? 'with_filter_off' : ''}`}>
+            <div className={`students_cards_container p-h-10 ${!isFilterEnabled ? 'with_filter_off' : ''}`}>
                 {studentsDataList.map((item) => (
                     <IonCard key={item.id} className={`student_card animation-none custom-class-card ${currentSelected === item.id ? 'custom-class-card-selected' : ''}`}>
                         <IonCardContent className="card_content">
