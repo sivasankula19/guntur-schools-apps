@@ -166,7 +166,7 @@ const Achievements: React.FC = () => {
   const IonSelectUI=(label:string,value:string,options:any)=>{
       return(
             <IonSelect
-                className="custome_select achieve_popup"
+                className="custom-select achieve_popup"
                 multiple={false}
                 label={label}
                 labelPlacement="floating"

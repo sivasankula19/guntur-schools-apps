@@ -1755,6 +1755,19 @@ export const sectionListDummy = [
   { id:'3', sectionName:'C Section', sectionId:'c-section'}
 ]
 
+export const examinationListDummy = [
+  {id:1, examName:'Unit Test 1', examid:'scl-ex-unit1'},
+  {id:2, examName:'Unit Test 2', examid:'scl-ex-unit2'},
+  {id:3, examName:'Mid Term', examid:'scl-ex-mid'},
+  {id:4, examName:'Final Test', examid:'scl-ex-final'},
+]
+
+export const genderListDummy = [
+  {id:'male', label:'Male'},
+  {id:'female', label:'Female'},
+  {id:'trans', label:'Trans'},
+]
+
 export const classStudentsDateAttendance = [
   {id:1,studentName:'Siva Sankula sankla dnd', regNumber:'Y240004', profileImage:'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',am:'Y',pm:''},
   {id:2,studentName:'Siva S', regNumber:'Y240005', profileImage:'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',am:'Y',pm:''},

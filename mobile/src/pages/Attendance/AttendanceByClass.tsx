@@ -4,6 +4,7 @@ import { IonButton, IonCard, IonCardContent, IonIcon, IonItem, IonSelect, IonSel
 import { caretBackOutline, caretForwardOutline, chevronBackOutline, chevronForwardOutline } from 'ionicons/icons';
 import { classListDummy, getDatesForMonth, sectionListDummy, transformListToGrid } from '../../common/utility';
 import { useLocation, useNavigate } from 'react-router';
+import CustomSelectDrop from '../../components/CustomSelectDrop';
 
 function AttendanceByClass() {
     const todayDate = new Date();
@@ -16,6 +17,10 @@ function AttendanceByClass() {
     const [sectionList, setSectionList] = useState<any>([]);
     const [selectedDate, setSelectedDate] = useState<string>(todayFormate);
     const location = useLocation();
+    const [filterValues, setFilterValue] = useState({
+        classId: '',
+        sectionId: '',
+    });
 
     const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Class Attendance', path: '/attendance-by-class' },];
 
@@ -60,6 +65,15 @@ function AttendanceByClass() {
         navigate('/attendance-by-class/' + urlEncoded)
     }
 
+
+    const classDummyData = classListDummy.map(i => ({ id: i.classId, label: i.className }));
+    const sectionDummyData = sectionListDummy.map(i => ({ id: i.sectionId, label: i.sectionName }));
+
+    const handleChangeSelect = (e: any) => {
+        setFilterValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    }
+
+
     return (
         <div className='attendance_sa'>
             <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
@@ -82,36 +96,14 @@ function AttendanceByClass() {
                 </IonText>
                 <div className="g_flex g_space_btwn select_conatainer">
                     <div style={{ width: '47%' }}>
-                        <IonSelect
-                            className="custome_select"
-                            label="Select Class"
-                            labelPlacement="floating"
-                            fill="outline"
-                            id='class_select'
-                            interface="popover"
-                            value={selectedClass}
-                            onIonChange={handleChange}
-                        >
-                            {classList.map((clOp: any) => (
-                                <IonSelectOption key={clOp.id} value={clOp.classId}>{clOp.className}</IonSelectOption>
-                            ))}
-                        </IonSelect>
+                        <CustomSelectDrop options={classDummyData} name='classId'
+                            value={filterValues.classId} label="Select Class"
+                            handleOnChange={handleChangeSelect} classNames='custom-select' />
                     </div>
                     <div style={{ width: '47%' }}>
-                        <IonSelect
-                            className="custome_select"
-                            label="Select Section"
-                            labelPlacement="floating"
-                            id='section_select'
-                            fill="outline"
-                            interface="popover"
-                            value={selectedSection}
-                            onIonChange={handleChange}
-                        >
-                            {sectionList.map((scOp: any) => (
-                                <IonSelectOption key={scOp.id} value={scOp.sectionId}>{scOp.sectionName}</IonSelectOption>
-                            ))}
-                        </IonSelect>
+                        <CustomSelectDrop options={sectionDummyData} name='sectionId'
+                            value={filterValues.sectionId} label="Select Section"
+                            handleOnChange={handleChangeSelect} classNames='custom-select' />
                     </div>
                 </div>
                 <div className='calendar-view-cls'>

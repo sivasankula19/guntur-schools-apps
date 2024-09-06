@@ -12,9 +12,10 @@ import {
   IonSelectOption,
   IonText,
 } from '@ionic/react';
-import { classSubjects } from '../../common/utility';
+import { classListDummy, classSubjects, sectionListDummy } from '../../common/utility';
 import ProgressBar from '../../components/ProgressBar';
 import GCustomisedModal from '../../components/GCustomisedModal';
+import CustomSelectDrop from '../../components/CustomSelectDrop';
 
 function SubjectsSA() {
   const [data, setData] = useState(classSubjects);
@@ -22,6 +23,10 @@ function SubjectsSA() {
   const [selectedClass, setSelectedClass] = useState<string>('');
   const [selectedSec, setSelectedSec] = useState<string>('');
   const [editableItem, setEditableItem] = useState<any>(null);
+  const [filterValues, setFilterValue] = useState({
+    classId: '',
+    sectionId: '',
+  });
   const formInitialVal = {
     subjectName: '',
     subjectStaffName: '',
@@ -76,6 +81,13 @@ function SubjectsSA() {
     setFormValue((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
+  const classDummyData = classListDummy.map(i => ({ id: i.classId, label: i.className }));
+  const sectionDummyData = sectionListDummy.map(i => ({ id: i.sectionId, label: i.sectionName }));
+
+  const handleChange = (e: any) => {
+    setFilterValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }
+
   return (
     <div className="subjects">
       <div className="g_flex g_space_btwn g_align_cntr bread_toggle_container">
@@ -83,37 +95,14 @@ function SubjectsSA() {
       </div>
       <div className="p-h-10 g_flex g_space_btwn select_conatainer">
         <div style={{ width: '47%' }}>
-          <IonSelect
-            className="custome_select"
-            label="Select Class"
-            labelPlacement="floating"
-            fill="outline"
-            interface="popover"
-          >
-            <IonSelectOption value="class-8">Class 8</IonSelectOption>
-            <IonSelectOption value="class-9">Class 9</IonSelectOption>
-            <IonSelectOption value="class-10">Class 10</IonSelectOption>
-            <IonSelectOption value="class-0">Class 0</IonSelectOption>
-          </IonSelect>
+          <CustomSelectDrop options={classDummyData} name='classId'
+            value={filterValues.classId} label="Select Class"
+            handleOnChange={handleChange} classNames='custom-select' />
         </div>
         <div style={{ width: '47%' }}>
-          <IonSelect
-            className="custome_select"
-            label="Select Section"
-            labelPlacement="floating"
-            fill="outline"
-            interface="popover"
-          >
-            <IonSelectOption value="A-Section">
-              A Section
-            </IonSelectOption>
-            <IonSelectOption value="B-Section">
-              B Section
-            </IonSelectOption>
-            <IonSelectOption value="C-Section">
-              C section
-            </IonSelectOption>
-          </IonSelect>
+          <CustomSelectDrop options={sectionDummyData} name='sectionId'
+            value={filterValues.sectionId} label="Select Section"
+            handleOnChange={handleChange} classNames='custom-select' />
         </div>
       </div>
       <div className='p-10'>

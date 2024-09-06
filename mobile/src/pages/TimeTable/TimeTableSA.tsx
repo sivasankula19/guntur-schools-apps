@@ -176,11 +176,11 @@ const TimeTableSA: React.FC = () => {
                                                         <div key={cur.id} className='items_hold'>
                                                             <div className='scroll_item'>
                                                                 <IonSelect
-                                                                    className='custome_select'
+                                                                    className='custom-select'
                                                                     label='Subject'
                                                                     labelPlacement='floating'
                                                                     fill='outline'
-                                                                    interface='alert'
+                                                                    interface='action-sheet'
                                                                 >
                                                                     <IonSelectOption value='class-8'>Maths</IonSelectOption>
                                                                     <IonSelectOption value='class-9'>Science</IonSelectOption>

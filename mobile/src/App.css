@@ -1134,7 +1134,7 @@ ion-breadcrumbs {
 }
 
 
-.custome_select {
+.custom-select {
   --padding-start: 10px;
   --padding-end: 8px;
   --border-radius: 12px;
@@ -1145,18 +1145,18 @@ ion-breadcrumbs {
   --border-radius: 8px;
 }
 
-.ios .custome_select {
+.ios .custom-select {
   border: 1px solid;
   border-radius: 12px;
 }
 
-.custome_select::part(icon) {
+.custom-select::part(icon) {
   color: #000000;
   opacity: 1;
   width: 20px;
 }
 
-.dark .custome_select::part(icon) {
+.dark .custom-select::part(icon) {
   color: #ffffff;
 }
 
@@ -2500,7 +2500,7 @@ ion-breadcrumbs {
 }
 
 .marks-progress-icon ion-icon{
-  font-size: 20px;
+  font-size: 26px;
 }
 
 
@@ -3971,6 +3971,8 @@ label.input-wrapper.sc-ion-input-ios {
   height: 40px;
   width: 96%;
   border-radius: 8px;
+  border: 0.5px solid;
+  padding: 4px 8px;
 }
 
 .dark .date_select_wibe {

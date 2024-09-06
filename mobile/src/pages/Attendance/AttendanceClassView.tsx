@@ -100,7 +100,7 @@ function AttendanceClassView() {
                     <div className='g_flex width-60 g_align_cntr g_space_btwn'>
                         <div style={{ width: '60%' }}>
                             <IonSelect
-                                className="custome_select"
+                                className="custom-select"
                                 label="Default Status"
                                 labelPlacement="floating"
                                 fill="outline"
@@ -143,7 +143,7 @@ function AttendanceClassView() {
                                         <div className='g_flex g_half_width'>
                                             <div style={{ width: '50%', paddingRight: '4px' }}>
                                                 <IonSelect
-                                                    className="custome_select"
+                                                    className="custom-select"
                                                     label="Status"
                                                     labelPlacement="floating"
                                                     fill="outline"
@@ -159,7 +159,7 @@ function AttendanceClassView() {
                                             </div>
                                             <div style={{ width: '50%', paddingLeft: '4px' }}>
                                                 <IonSelect
-                                                    className="custome_select"
+                                                    className="custom-select"
                                                     label="Status"
                                                     labelPlacement="floating"
                                                     fill="outline"

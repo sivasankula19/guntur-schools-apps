@@ -149,7 +149,7 @@ function SchoolClasses() {
           </div>
           {formValue.linkedSections.map((secItem, indexSec) => (<div key={indexSec} className='m-bottom-10 g_flex'>
             <IonSelect
-              className="custome_select two-select-field"
+              className="custom-select two-select-field"
               label="Section Name"
               labelPlacement="floating"
               fill="outline"
@@ -162,7 +162,7 @@ function SchoolClasses() {
               <IonSelectOption value="mdgl-sec-c">C Section</IonSelectOption>
             </IonSelect>
             <IonSelect
-              className="custome_select two-select-field"
+              className="custom-select two-select-field"
               label="Class Staff Name"
               labelPlacement="floating"
               fill="outline"

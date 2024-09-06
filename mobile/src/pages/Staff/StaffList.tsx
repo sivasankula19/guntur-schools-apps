@@ -7,12 +7,17 @@ import {
   IonToggle,
 } from '@ionic/react';
 import React, { useState } from 'react';
-import { staffDummyArr } from '../../common/utility';
+import { classListDummy, sectionListDummy, staffDummyArr } from '../../common/utility';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { useNavigate } from 'react-router';
+import CustomSelectDrop from '../../components/CustomSelectDrop';
 
 const StaffList: React.FC = () => {
   const [isFilterEnabled, setIsFilterEnabled] = useState(true);
+  const [filterValues, setFilterValue] = useState({
+    classId: '',
+    sectionId: '',
+  });
   const [search, setSearch] = useState('');
   const staffData = staffDummyArr;
   const navigate = useNavigate();
@@ -31,6 +36,13 @@ const StaffList: React.FC = () => {
   }
 
   const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Staff List', path: '/staff-list' }]
+
+  const classDummyData = classListDummy.map(i => ({ id: i.classId, label: i.className }));
+  const sectionDummyData = sectionListDummy.map(i => ({ id: i.sectionId, label: i.sectionName }));
+
+  const handleChange = (e: any) => {
+    setFilterValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }
 
   return (
     <div className='staff g_full_height'>
@@ -63,46 +75,14 @@ const StaffList: React.FC = () => {
               ></IonSearchbar>
               <div className="g_flex g_space_btwn select_conatainer">
                 <div style={{ width: '47%' }}>
-                  <IonSelect
-                    className="custome_select"
-                    multiple={true}
-                    label="Select Class"
-                    labelPlacement="floating"
-                    fill="outline"
-                    interface="popover"
-                    onIonChange={(e) =>
-                      console.log(
-                        `ionChange fired with value: ${e.detail.value}`
-                      )
-                    }
-                    onIonCancel={() => console.log('ionCancel fired')}
-                    onIonDismiss={() => console.log('ionDismiss fired')}
-                  >
-                    <IonSelectOption value="class-8">Class 8</IonSelectOption>
-                    <IonSelectOption value="class-9">Class 9</IonSelectOption>
-                    <IonSelectOption value="class-10">Class 10</IonSelectOption>
-                    <IonSelectOption value="class-0">Class 0</IonSelectOption>
-                  </IonSelect>
+                  <CustomSelectDrop options={classDummyData} name='classId'
+                    value={filterValues.classId} label="Select Class"
+                    handleOnChange={handleChange} classNames='custom-select' />
                 </div>
                 <div style={{ width: '47%' }}>
-                  <IonSelect
-                    multiple={true}
-                    className="custome_select"
-                    label="Select Subject"
-                    labelPlacement="floating"
-                    fill="outline"
-                    interface="popover"
-                  >
-                    <IonSelectOption value="A-Section">
-                      A Section
-                    </IonSelectOption>
-                    <IonSelectOption value="B-Section">
-                      B Section
-                    </IonSelectOption>
-                    <IonSelectOption value="C-Section">
-                      C section
-                    </IonSelectOption>
-                  </IonSelect>
+                  <CustomSelectDrop options={sectionDummyData} name='sectionId'
+                    value={filterValues.sectionId} label="Select Section"
+                    handleOnChange={handleChange} classNames='custom-select' />
                 </div>
               </div>
             </IonCardContent>

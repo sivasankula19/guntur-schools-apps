@@ -43,7 +43,7 @@ const HomeWork: React.FC = () => {
   const IonSelectUI=(label:string,value:string,options:any)=>{
     return(
           <IonSelect
-              className="custome_select achieve_popup"
+              className="custom-select achieve_popup"
               multiple={false}
               label={label}
               labelPlacement="floating"
@@ -129,7 +129,7 @@ const IonTextAreaUI=(label:string,value:string,ph:string,endIcon?:any,type?:any)
         <div className="g_flex g_space_btwn select_conatainer">
           <div style={{ width: '47%' }}>
             <IonSelect
-              className="custome_select"
+              className="custom-select"
               multiple={true}
               label="Select Class"
               labelPlacement="floating"

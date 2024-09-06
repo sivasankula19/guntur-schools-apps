@@ -1,13 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { IonCard, IonCardContent, IonIcon, IonLabel, IonSelect, IonSelectOption } from '@ionic/react';
 import { checkmarkCircleOutline, saveOutline } from 'ionicons/icons';
-import { studentDummyData } from '../../common/utility';
+import { classListDummy, classSubjects, examinationListDummy, sectionListDummy, studentDummyData } from '../../common/utility';
+import CustomSelectDrop from '../../components/CustomSelectDrop';
 
 function ProgressCardSubjectAdd() {
+    const [filterValues, setFilterValue] = useState({
+        classId: '',
+        sectionId: '',
+        subjectId: '',
+        examinationId: ''
+    });
     const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Subject Progress Card', path: '/progress-card' },];
 
-    const studentsListForClass = studentDummyData
+    const studentsListForClass = studentDummyData;
+    const classDummyData = classListDummy.map(i => ({ id: i.classId, label: i.className }));
+    const sectionDummyData = sectionListDummy.map(i => ({ id: i.sectionId, label: i.sectionName }));
+    const subjectsDummyData = classSubjects.map(i => ({ id: i.subjectCode, label: i.subjectName }));
+    const examinationDummyData = examinationListDummy.map(i => ({ id: i.examid, label: i.examName }));
+
+    const handleChange = (e: any) => {
+        setFilterValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    }
 
     return (
         <div className='g_full_height'>
@@ -15,72 +30,26 @@ function ProgressCardSubjectAdd() {
             <div className='p-h-10 progress-hold'>
                 <div className='g_flex g_space_btwn m-top-12 '>
                     <div className='m-right-6 width-50'>
-                        <IonSelect
-                            className="custome_select"
-                            label="Select Class"
-                            labelPlacement="floating"
-                            fill="outline"
-                            interface="popover"
-                        >
-                            <IonSelectOption value="class-8">Class 8</IonSelectOption>
-                            <IonSelectOption value="class-9">Class 9</IonSelectOption>
-                            <IonSelectOption value="class-10">Class 10</IonSelectOption>
-                            <IonSelectOption value="class-0">Class 0</IonSelectOption>
-                        </IonSelect>
+                        <CustomSelectDrop options={classDummyData} name='classId'
+                            value={filterValues.classId} label="Select Class"
+                            handleOnChange={handleChange} classNames='custom-select' />
                     </div>
                     <div className='m-left-6 width-50'>
-                        <IonSelect
-                            className="custome_select"
-                            label="Select Section"
-                            labelPlacement="floating"
-                            fill="outline"
-                            interface="popover"
-                        >
-                            <IonSelectOption value="A-Section">
-                                A Section
-                            </IonSelectOption>
-                            <IonSelectOption value="B-Section">
-                                B Section
-                            </IonSelectOption>
-                            <IonSelectOption value="C-Section">
-                                C section
-                            </IonSelectOption>
-                        </IonSelect>
+                        <CustomSelectDrop options={sectionDummyData} name='sectionId'
+                            value={filterValues.sectionId} label="Select Section"
+                            handleOnChange={handleChange} classNames='custom-select' />
                     </div>
                 </div>
                 <div className='g_flex g_space_btwn m-top-10 '>
                     <div className='m-right-6 width-50'>
-                        <IonSelect
-                            className="custome_select"
-                            label="Examination"
-                            labelPlacement="floating"
-                            fill="outline"
-                            interface="popover"
-                        >
-                            <IonSelectOption value="class-8">Class 8</IonSelectOption>
-                            <IonSelectOption value="class-9">Class 9</IonSelectOption>
-                            <IonSelectOption value="class-10">Class 10</IonSelectOption>
-                            <IonSelectOption value="class-0">Class 0</IonSelectOption>
-                        </IonSelect>
+                        <CustomSelectDrop options={examinationDummyData} name='examinationId'
+                            value={filterValues.examinationId} label="Examination"
+                            handleOnChange={handleChange} classNames='custom-select' />
                     </div>
                     <div className='m-left-6 width-50'>
-                        <IonSelect
-                            className="custome_select"
-                            label="Subject"
-                            labelPlacement="floating"
-                            fill="outline"
-                            interface="popover"
-                        >
-                            <IonSelectOption value="A-Section">
-                                A Section
-                            </IonSelectOption>
-                            <IonSelectOption value="B-Section">
-                                B Section
-                            </IonSelectOption>
-                            <IonSelectOption value="C-Section">
-                                C section
-                            </IonSelectOption>
-                        </IonSelect>
+                        <CustomSelectDrop options={subjectsDummyData} name='subjectId'
+                            value={filterValues.subjectId} label="Subject"
+                            handleOnChange={handleChange} classNames='custom-select' />
                     </div>
                 </div>
                 <div>
@@ -113,9 +82,9 @@ function ProgressCardSubjectAdd() {
                                         </div>
                                     </div>
                                     <div className='marks-progress-icon'>
-                                       <input placeholder='Accrued Marks'/>
-                                       <IonLabel>Status</IonLabel>
-                                       <IonIcon icon={checkmarkCircleOutline}></IonIcon>
+                                        <input placeholder='Accrued Marks' />
+                                        <IonLabel>Status</IonLabel>
+                                        <IonIcon icon={checkmarkCircleOutline}></IonIcon>
                                     </div>
                                 </div>
                             </IonCardContent>
