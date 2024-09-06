@@ -88,7 +88,7 @@ const FeesDues: React.FC = () => {
       <div className='g_flex g_jstfy_content_cntr'>
         <div className='fees_year_select'>
           <IonSelect
-            className="custome_select"
+            className="custom-select"
             label="Select Reason"
             labelPlacement="floating"
             fill="outline"

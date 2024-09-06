@@ -73,7 +73,7 @@ const Gallery: any = (props: any) => {
       <div className='g_flex g_space_btwn'>
         <div style={{ width: '30%' }}>
           <IonSelect
-            className="custome_select"
+            className="custom-select"
             multiple={true}
             label="Class"
             labelPlacement="floating"
@@ -88,7 +88,7 @@ const Gallery: any = (props: any) => {
         </div>
         <div style={{ width: '30%' }}>
           <IonSelect
-            className="custome_select"
+            className="custom-select"
             multiple={true}
             label="Section"
             labelPlacement="floating"
@@ -103,7 +103,7 @@ const Gallery: any = (props: any) => {
         </div>
         <div style={{ width: '30%' }}>
           <IonSelect
-            className="custome_select"
+            className="custom-select"
             multiple={true}
             label="Year"
             labelPlacement="floating"

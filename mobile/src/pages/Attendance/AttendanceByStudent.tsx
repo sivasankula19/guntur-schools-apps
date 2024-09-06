@@ -3,7 +3,8 @@ import GBreadCrumbs from '../../components/GBreadCrumbs'
 import { IonButton, IonCard, IonCardContent, IonIcon, IonItem, IonLabel, IonSearchbar, IonSelect, IonSelectOption, IonText, isPlatform, } from '@ionic/react';
 import { analyticsOutline, appsSharp, arrowBackOutline, caretDownOutline, checkmarkCircleOutline, chevronBackOutline, chevronForwardOutline, closeCircleOutline, listSharp, printSharp, removeOutline, saveOutline } from 'ionicons/icons';
 import { useNavigate } from 'react-router';
-import { getDatesForMonth, searchStudentsData, transformListToGrid } from '../../common/utility';
+import { classListDummy, getDatesForMonth, searchStudentsData, sectionListDummy, transformListToGrid } from '../../common/utility';
+import CustomSelectDrop from '../../components/CustomSelectDrop';
 
 function AttendanceByStudent() {
     const [viewMode, setViewMode] = useState('list');
@@ -28,7 +29,11 @@ function AttendanceByStudent() {
     const monthYearDisplayRef = useRef<any>();
     const containerRef = useRef<any>(null);
     const [search, setSearch] = useState('');
-    const [yearCalculatedData, setYearCalculatedData] = useState<number[]>([])
+    const [yearCalculatedData, setYearCalculatedData] = useState<number[]>([]);
+    const [filterValues, setFilterValue] = useState({
+        classId: '',
+        sectionId: '',
+      });
 
     const todayFormate = `${todayDate.getMonth() + 1}/${todayDate.getDate()}/${todayDate.getFullYear()}`;
 
@@ -128,7 +133,12 @@ function AttendanceByStudent() {
         //  debounce function can be executed!!! here i.e api
     };
 
-    
+    const classDummyData = classListDummy.map(i => ({ id: i.classId, label: i.className }));
+    const sectionDummyData = sectionListDummy.map(i => ({ id: i.sectionId, label: i.sectionName }));
+  
+    const handleChange = (e: any) => {
+      setFilterValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    }
 
     return (
         <div className='attendance_sa'>
@@ -155,39 +165,16 @@ function AttendanceByStudent() {
                 <div className='back-save-icons g_align_cntr m-top-10'>
                     <IonIcon onClick={handleBack} icon={arrowBackOutline}></IonIcon>
                     <div className='g_flex width-80 g_space_btwn'>
-                        <div style={{ width: '47%' }}>
-                            <IonSelect
-                                className="custome_select"
-                                label="Select Class"
-                                labelPlacement="floating"
-                                fill="outline"
-                                interface="popover"
-                            >
-                                <IonSelectOption value="class-8">Class 8</IonSelectOption>
-                                <IonSelectOption value="class-9">Class 9</IonSelectOption>
-                                <IonSelectOption value="class-10">Class 10</IonSelectOption>
-                                <IonSelectOption value="class-0">Class 0</IonSelectOption>
-                            </IonSelect>
-                        </div>
-                        <div style={{ width: '47%' }}>
-                            <IonSelect
-                                className="custome_select"
-                                label="Select Section"
-                                labelPlacement="floating"
-                                fill="outline"
-                                interface="popover"
-                            >
-                                <IonSelectOption value="A-Section">
-                                    A Section
-                                </IonSelectOption>
-                                <IonSelectOption value="B-Section">
-                                    B Section
-                                </IonSelectOption>
-                                <IonSelectOption value="C-Section">
-                                    C section
-                                </IonSelectOption>
-                            </IonSelect>
-                        </div>
+                    <div style={{ width: '47%' }}>
+                  <CustomSelectDrop options={classDummyData} name='classId'
+                    value={filterValues.classId} label="Select Class"
+                    handleOnChange={handleChange} classNames='custom-select' />
+                </div>
+                <div style={{ width: '47%' }}>
+                  <CustomSelectDrop options={sectionDummyData} name='sectionId'
+                    value={filterValues.sectionId} label="Select Section"
+                    handleOnChange={handleChange} classNames='custom-select' />
+                </div>
                     </div>
                     <IonIcon onClick={handleSave} icon={saveOutline}></IonIcon>
                 </div>
@@ -293,7 +280,7 @@ function AttendanceByStudent() {
                                     <div className='row_item_quater p-h-10 g_flex g_jstfy_content_cntr g_align_cntr'>
                                         <IonSelect
                                             style={{ border: '1px solid', borderRadius: '8px', borderColor: '#1D7AF5' }}
-                                            className="custome_select"
+                                            className="custom-select"
                                             id='class_select'
                                             interface="popover"
                                             value={"--"}
@@ -308,7 +295,7 @@ function AttendanceByStudent() {
                                     <div className='row_item_quater p-h-10'>
                                         <IonSelect
                                             style={{ border: '1px solid', borderRadius: '8px', borderColor: '#1D7AF5' }}
-                                            className="custome_select"
+                                            className="custom-select"
                                             id='class_select'
                                             interface="popover"
                                             value={"--"}

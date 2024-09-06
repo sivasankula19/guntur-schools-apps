@@ -203,7 +203,7 @@
 //             </IonItem>
 //             <IonItem className="custom_modal_item">
 //               <IonSelect
-//                 className="custome_select"
+//                 className="custom-select"
 //                 label="Notify Me"
 //                 labelPlacement="floating"
 //                 fill="outline"

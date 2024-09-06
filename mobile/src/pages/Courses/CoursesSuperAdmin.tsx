@@ -50,17 +50,12 @@ export const CoursesSuperAdmin = () => {
                 <div className='g_flex'>
                     <div className='width-80'>
                         <IonSelect
-                            className="custome_select"
+                            className="custom-select"
                             multiple={true}
                             label="Select Medium"
                             labelPlacement="floating"
                             fill="outline"
                             interface="popover"
-                            onIonChange={(e) =>
-                                console.log(
-                                    `ionChange fired with value: ${e.detail.value}`
-                                )
-                            }
                         >
                             <IonSelectOption value="Telugu">Telugu Medium</IonSelectOption>
                             <IonSelectOption value="English">English Medium</IonSelectOption>

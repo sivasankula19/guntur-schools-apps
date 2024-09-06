@@ -129,7 +129,7 @@ const ContactUs: React.FC = () => {
             </div>
             <div className='contact_field'>
               <IonSelect
-                className="custome_select"
+                className="custom-select"
                 label="Select Reason"
                 labelPlacement="floating"
                 fill="outline"

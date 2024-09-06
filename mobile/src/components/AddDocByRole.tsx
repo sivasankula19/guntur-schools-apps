@@ -14,8 +14,9 @@ import {
 } from 'ionicons/icons';
 import React, { useRef, useState } from 'react';
 import GImageDocPreview from './GImageDocPreview';
-import { docData } from '../common/utility';
+import { classListDummy, docData } from '../common/utility';
 import GCustomisedModal from './GCustomisedModal';
+import CustomSelectDrop from './CustomSelectDrop';
 
 interface IProps {
   title?: string;
@@ -34,6 +35,8 @@ const AddDoc: React.FC<IProps> = ({ title, subtitle }) => {
   const onSave = () => {
     console.log("clicked on save")
   }
+
+  const classDummyData = classListDummy.map(i => ({ id: i.classId, label: i.className }));
 
   return (
     <>
@@ -69,19 +72,9 @@ const AddDoc: React.FC<IProps> = ({ title, subtitle }) => {
           </div>
           <div className='add_doc_sa'>
             <div className='field'>
-              <IonSelect
-                className="custome_select"
-                multiple={false}
-                label="Select Class"
-                labelPlacement="floating"
-                fill="outline"
-                interface="popover"
-              >
-                <IonSelectOption value="class-8">Class 8</IonSelectOption>
-                <IonSelectOption value="class-9">Class 9</IonSelectOption>
-                <IonSelectOption value="class-10">Class 10</IonSelectOption>
-                <IonSelectOption value="class-0">Class 0</IonSelectOption>
-              </IonSelect>
+            <CustomSelectDrop options={classDummyData} name='classId'
+                    value={''} label="Select Class"
+                    handleOnChange={()=>{}} classNames='custom-select' />
             </div>
             <div className='field m-bottom-10'>
               <IonInput label="Line Number 2" labelPlacement="floating" fill="outline" placeholder="Line Number 2"></IonInput>

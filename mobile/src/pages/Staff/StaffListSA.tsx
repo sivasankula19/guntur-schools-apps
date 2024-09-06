@@ -10,11 +10,12 @@ import {
     IonToggle,
 } from '@ionic/react';
 import React, { useState } from 'react';
-import { staffDummyArr } from '../../common/utility';
+import { classListDummy, genderListDummy, sectionListDummy, staffDummyArr } from '../../common/utility';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import GCustomisedModal from '../../components/GCustomisedModal';
+import CustomSelectDrop from '../../components/CustomSelectDrop';
 
 interface IStaffForm {
     staffFirstName: string,
@@ -46,6 +47,10 @@ const StaffListSA: React.FC = () => {
         defaultPassword: '',
     }
     const [formValue, setFormValue] = useState<IStaffForm>(formInitialVal);
+    const [filterValues, setFilterValue] = useState({
+        classId: '',
+        sectionId: '',
+    });
     const staffData = staffDummyArr;
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -116,6 +121,24 @@ const StaffListSA: React.FC = () => {
         console.log(formValue)
     }
 
+    const classDummyData = classListDummy.map(i => ({ id: i.classId, label: i.className }));
+    const sectionDummyData = sectionListDummy.map(i => ({ id: i.sectionId, label: i.sectionName }));
+    const genderDummyData = genderListDummy;
+    const designationDummyData = [{ id: 'mba', label: 'MBA' },
+    { id: 'btech', label: 'B.Tech' },
+    { id: 'mca', label: 'MCA' },
+    { id: 'phd-maths', label: 'Maths PHD' },
+    ]
+
+    const positionDummyData = [{ id: 'teaching', label: 'Teaching' },
+    { id: 'non-teaching', label: 'Non Teaching' },
+    { id: 'admin-staff', label: 'Admin Staff' },
+    { id: 'technical', label: 'Technical' },
+    ]
+
+    const handleChange = (e: any) => {
+        setFilterValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    }
 
     return (
         <div className='g_full_height'>
@@ -151,39 +174,14 @@ const StaffListSA: React.FC = () => {
                             ></IonSearchbar>
                             <div className="g_flex g_space_btwn select_conatainer">
                                 <div style={{ width: '47%' }}>
-                                    <IonSelect
-                                        className="custome_select"
-                                        multiple={true}
-                                        label="Select Class"
-                                        labelPlacement="floating"
-                                        fill="outline"
-                                        interface="popover"
-                                    >
-                                        <IonSelectOption value="class-8">Class 8</IonSelectOption>
-                                        <IonSelectOption value="class-9">Class 9</IonSelectOption>
-                                        <IonSelectOption value="class-10">Class 10</IonSelectOption>
-                                        <IonSelectOption value="class-0">Class 0</IonSelectOption>
-                                    </IonSelect>
+                                    <CustomSelectDrop options={classDummyData} name='classId'
+                                        value={filterValues.classId} label="Select Class"
+                                        handleOnChange={handleChange} classNames='custom-select' />
                                 </div>
                                 <div style={{ width: '47%' }}>
-                                    <IonSelect
-                                        multiple={true}
-                                        className="custome_select"
-                                        label="Select Section"
-                                        labelPlacement="floating"
-                                        fill="outline"
-                                        interface="popover"
-                                    >
-                                        <IonSelectOption value="A-Section">
-                                            A Section
-                                        </IonSelectOption>
-                                        <IonSelectOption value="B-Section">
-                                            B Section
-                                        </IonSelectOption>
-                                        <IonSelectOption value="C-Section">
-                                            C section
-                                        </IonSelectOption>
-                                    </IonSelect>
+                                    <CustomSelectDrop options={sectionDummyData} name='sectionId'
+                                        value={filterValues.sectionId} label="Select Section"
+                                        handleOnChange={handleChange} classNames='custom-select' />
                                 </div>
                             </div>
                         </IonCardContent>
@@ -244,38 +242,14 @@ const StaffListSA: React.FC = () => {
                     <IonInput value={formValue.staffLastName} onIonChange={handleInput} name='staffLastName' label="Staff Last Name" labelPlacement="floating" fill="outline" placeholder="Last Name"></IonInput>
                 </div>
                 <div className='field m-bottom-10'>
-                    <IonSelect
-                        className="custome_select"
-                        label="Position"
-                        labelPlacement="floating"
-                        fill="outline"
-                        name='position'
-                        value={formValue.position}
-                        onIonChange={handleInput}
-                        interface="popover"
-                    >
-                        <IonSelectOption value="--">Default Section</IonSelectOption>
-                        <IonSelectOption value="teaching">Teaching</IonSelectOption>
-                        <IonSelectOption value="non-teaching">Non Teaching</IonSelectOption>
-                        <IonSelectOption value="operations">Operations</IonSelectOption>
-                    </IonSelect>
+                    <CustomSelectDrop options={positionDummyData} name='position'
+                        value={formValue.position} label="Position"
+                        handleOnChange={handleInput} classNames='custom-select' />
                 </div>
                 <div className='field m-bottom-10'>
-                    <IonSelect
-                        className="custome_select"
-                        label="Designation"
-                        labelPlacement="floating"
-                        fill="outline"
-                        name='designation'
-                        value={formValue.designation}
-                        interface="popover"
-                        onIonChange={handleInput}
-                    >
-                        <IonSelectOption value="--">Default Section</IonSelectOption>
-                        <IonSelectOption value="mcom">Mcom</IonSelectOption>
-                        <IonSelectOption value="btech">B.Tech</IonSelectOption>
-                        <IonSelectOption value="mba">MBA</IonSelectOption>
-                    </IonSelect>
+                    <CustomSelectDrop options={designationDummyData} name='designation'
+                        value={formValue.designation} label="Designation"
+                        handleOnChange={handleInput} classNames='custom-select' />
                 </div>
                 <div className='field m-bottom-10'>
                     <IonInput value={formValue.mobileNumber} onIonChange={handleInput} name='mobileNumber' label="Mobile Number" labelPlacement="floating" fill="outline" placeholder="+91 9876543210"></IonInput>
@@ -284,21 +258,9 @@ const StaffListSA: React.FC = () => {
                     <IonInput value={formValue.emailAddress} onIonChange={handleInput} name='emailAddress' label="Email Address" labelPlacement="floating" fill="outline" placeholder="test@gmail.com"></IonInput>
                 </div>
                 <div className='field m-bottom-10'>
-                    <IonSelect
-                        className="custome_select"
-                        label="Gender"
-                        labelPlacement="floating"
-                        fill="outline"
-                        name='gender'
-                        value={formValue.gender}
-                        interface="popover"
-                        onIonChange={handleInput}
-                    >
-                        <IonSelectOption value="--">Default Section</IonSelectOption>
-                        <IonSelectOption value="gen-male">Male</IonSelectOption>
-                        <IonSelectOption value="gen-female">Female</IonSelectOption>
-                        <IonSelectOption value="gen-trans">Trans</IonSelectOption>
-                    </IonSelect>
+                    <CustomSelectDrop options={genderDummyData} name='gender'
+                        value={formValue.gender} label="Gender"
+                        handleOnChange={handleInput} classNames='custom-select' />
                 </div>
                 <div className='field m-bottom-10'>
                     <IonInput value={formValue.staffId} onIonChange={handleInput} name='staffId' label="Generated Staff ID" labelPlacement="floating" fill="outline" placeholder="Staff Registration ID"></IonInput>

@@ -2,18 +2,22 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { IonCard, IonCardContent, IonDatetimeButton, IonDatetime, IonItem, IonLabel, IonSearchbar, IonSelect, IonSelectOption, IonToggle, IonModal, IonText, IonIcon } from '@ionic/react';
-import { formatDate, formatTime, wibePostsData } from '../../common/utility';
+import { classListDummy, formatDate, formatTime, sectionListDummy, wibePostsData } from '../../common/utility';
 import { chatboxOutline, heartOutline, shareSocialOutline } from 'ionicons/icons';
 import WibeLikes from './WibeLikes';
 import WibeComments from './WibeComments';
+import CustomSelectDrop from '../../components/CustomSelectDrop';
 
 const SchoolWibe: React.FC = () => {
-  const { name } = useParams<{ name: string }>();
   const [isFilterEnabled, setIsFilterEnabled] = useState(false);
   const [search, setSearch] = useState('');
   const [isOpenLikes, setIsOpenLikes] = useState<boolean>(false);
   const [isOpenComments, setIsOpenComments] = useState<boolean>(false);
   const [data, setData] = useState({});
+  const [filterValues, setFilterValue] = useState({
+    classId: '',
+    sectionId: '',
+  });
 
   const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Wibe', path: '/school-wibe' }];
 
@@ -42,6 +46,13 @@ const SchoolWibe: React.FC = () => {
   const resetOpenCallback = (value: boolean) => {
     setIsOpenLikes(() => value)
     setIsOpenComments(() => value)
+  }
+
+  const classDummyData = classListDummy.map(i => ({ id: i.classId, label: i.className }));
+  const sectionDummyData = sectionListDummy.map(i => ({ id: i.sectionId, label: i.sectionName }));
+
+  const handleChange = (e: any) => {
+    setFilterValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
   return (
@@ -81,41 +92,15 @@ const SchoolWibe: React.FC = () => {
               </div>
             </IonItem>
             <IonItem className="custom_sub_item">
-              <div className='g_half_width first_select'>
-                <IonSelect
-                  className="custome_select subjects_cls_select"
-                  multiple={true}
-                  label="Select Class"
-                  labelPlacement="floating"
-                  fill="outline"
-                  interface="popover"
-                  onIonChange={(e) =>
-                    console.log(`ionChange fired with value: ${e.detail.value}`)
-                  }
-                >
-                  <IonSelectOption value="class-8">Class 8</IonSelectOption>
-                  <IonSelectOption value="class-9">Class 9</IonSelectOption>
-                  <IonSelectOption value="class-10">Class 10</IonSelectOption>
-                  <IonSelectOption value="class-0">Class 0</IonSelectOption>
-                </IonSelect>
+              <div className='g_half_width first_select m-top-10'>
+                <CustomSelectDrop options={classDummyData} name='classId'
+                  value={filterValues.classId} label="Select Class"
+                  handleOnChange={handleChange} classNames='custom-select subjects_cls_select' />
               </div>
-              <div className='g_half_width second_select'>
-                <IonSelect
-                  className="custome_select"
-                  multiple={true}
-                  label="Select Class"
-                  labelPlacement="floating"
-                  fill="outline"
-                  interface="popover"
-                  onIonChange={(e) =>
-                    console.log(`ionChange fired with value: ${e.detail.value}`)
-                  }
-                >
-                  <IonSelectOption value="class-8">Class 8</IonSelectOption>
-                  <IonSelectOption value="class-9">Class 9</IonSelectOption>
-                  <IonSelectOption value="class-10">Class 10</IonSelectOption>
-                  <IonSelectOption value="class-0">Class 0</IonSelectOption>
-                </IonSelect>
+              <div className='g_half_width second_select m-top-10'>
+                <CustomSelectDrop options={sectionDummyData} name='sectionId'
+                  value={filterValues.sectionId} label="Select Section"
+                  handleOnChange={handleChange} classNames='custom-select' />
               </div>
 
             </IonItem>
