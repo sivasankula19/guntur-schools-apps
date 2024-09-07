@@ -63,7 +63,7 @@ import {
         leaveAnimation={leaveAnimation}
         backdropDismiss={false}
         isOpen={isOpen}
-        className='g_customised_image_doc_preview'
+        className='g-customized-image-doc-preview'
       >
         <IonHeader>
           <IonToolbar>
@@ -80,7 +80,7 @@ import {
             <IonImg src={src}></IonImg>
         </IonCardContent>
         <IonFooter>
-            <IonButton className='gmodal-cancel close-btn_modal' onClick={dismiss}>Close</IonButton>
+            <IonButton className='g-modal-cancel close-btn_modal' onClick={dismiss}>Close</IonButton>
         </IonFooter>
       </IonModal>
     );

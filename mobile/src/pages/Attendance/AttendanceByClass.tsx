@@ -4,7 +4,7 @@ import { IonButton, IonCard, IonCardContent, IonIcon, IonItem, IonSelect, IonSel
 import { caretBackOutline, caretForwardOutline, chevronBackOutline, chevronForwardOutline } from 'ionicons/icons';
 import { classListDummy, getDatesForMonth, sectionListDummy, transformListToGrid } from '../../common/utility';
 import { useLocation, useNavigate } from 'react-router';
-import CustomSelectDrop from '../../components/CustomSelectDrop';
+import GCustomSelectDrop from '../../components/GCustomSelectDrop';
 
 function AttendanceByClass() {
     const todayDate = new Date();
@@ -79,10 +79,10 @@ function AttendanceByClass() {
             <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
             <div className='p-h-10 scroll-class-att'>
                 <IonCard className="custom-month-select">
-                    <IonCardContent className="custome__card_attendance_container">
-                        <div className="g_flex g_space_btwn icons_holder_attendance p-h-10">
+                    <IonCardContent className="custom-card-attendance-container">
+                        <div className="g_flex g-space-between icons_holder_attendance p-h-10">
                             <IonIcon icon={chevronBackOutline}></IonIcon>
-                            <div className="month_year_view g_flex g_space_evnly g_align_cntr">
+                            <div className="month_year_view g_flex g-space-evenly g-align-center">
                                 <IonText className="month_year">{todayDate.getDate()}</IonText>
                                 <IonText className="month_year">{todayDate.getMonth()}</IonText>
                                 <IonText className="month_year">{todayDate.getFullYear()}</IonText>
@@ -94,22 +94,22 @@ function AttendanceByClass() {
                 <IonText>
                     <p className='g-font-18'>Add / Edit Attendance For</p>
                 </IonText>
-                <div className="g_flex g_space_btwn select_conatainer">
+                <div className="g_flex g-space-between select-container">
                     <div style={{ width: '47%' }}>
-                        <CustomSelectDrop options={classDummyData} name='classId'
+                        <GCustomSelectDrop options={classDummyData} name='classId'
                             value={filterValues.classId} label="Select Class"
                             handleOnChange={handleChangeSelect} classNames='custom-select' />
                     </div>
                     <div style={{ width: '47%' }}>
-                        <CustomSelectDrop options={sectionDummyData} name='sectionId'
+                        <GCustomSelectDrop options={sectionDummyData} name='sectionId'
                             value={filterValues.sectionId} label="Select Section"
                             handleOnChange={handleChangeSelect} classNames='custom-select' />
                     </div>
                 </div>
                 <div className='calendar-view-cls'>
-                    <div className='g_flex g_space_around g_align_cntr'>
+                    <div className='g_flex g-space-around g-align-center'>
                         <IonIcon icon={caretBackOutline}></IonIcon>
-                        <div className="month_year_view g_flex g_space_evnly g_align_cntr ">
+                        <div className="month_year_view g_flex g-space-evenly g-align-center ">
                             <IonText className="month_year">6th</IonText>
                             <IonText className="month_year">March</IonText>
                             <IonText className="month_year">2024</IonText>
@@ -134,7 +134,7 @@ function AttendanceByClass() {
                                 {gridAttendance.map((gridItem: any, index: number) => (<div
                                     key={`grids-data-${index}`} className="g_flex row-item">
                                     {gridItem.map((dayItem: any, subIndex: number) => (<div
-                                        key={`days-${subIndex}`} className="day-list-map g_flex g_align_cntr g_jstfy_content_cntr">
+                                        key={`days-${subIndex}`} className="day-list-map g_flex g-align-center g-justify-center">
                                         <div id={dayItem?.date} onClick={() => handleDateSelected(dayItem.date)} className={`day-item-display${dayItem?.date === selectedDate ? ' today-selected' : ''}${dayItem?.attendanceMarked >= 1 ? ' att-marked' : ''}${dayItem?.isSchoolHoliday ? ' scl-holiday' : ''}`}>
                                             <IonText className="ion_text_day_view">{dayItem?.currentDay}</IonText>
                                         </div>

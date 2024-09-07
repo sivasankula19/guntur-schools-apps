@@ -85,7 +85,7 @@ const FeesDues: React.FC = () => {
   return (
     <div className='fees_due'>
       <GBreadCrumbs data={breadCrumbsValue} />
-      <div className='g_flex g_jstfy_content_cntr'>
+      <div className='g_flex g-justify-center'>
         <div className='fees_year_select'>
           <IonSelect
             className="custom-select"
@@ -110,7 +110,7 @@ const FeesDues: React.FC = () => {
       <div className='fees_card_holder'>
         <IonCard>
           <IonCardContent>
-            <div className='g_flex g_jstfy_content_cntr'>
+            <div className='g_flex g-justify-center'>
               <div className='selected_year_show'><p>2024-2025</p></div>
             </div>
             <div className='g_flex student_info'>
@@ -141,7 +141,7 @@ const FeesDues: React.FC = () => {
                 </IonText>
               </div>
             </div>
-            <div className='g_flex g_space_btwn'>
+            <div className='g_flex g-space-between'>
               <div>
                 <IonLabel>Academic Fees</IonLabel>
               </div>
@@ -151,7 +151,7 @@ const FeesDues: React.FC = () => {
                 </IonText>
               </div>
             </div>
-            <div className='g_flex g_space_btwn'>
+            <div className='g_flex g-space-between'>
               <div>
                 <IonLabel>Remaining Fees</IonLabel>
               </div>
@@ -164,15 +164,15 @@ const FeesDues: React.FC = () => {
             <div>
               {
                 feesPaidTerms.map((feesItem:any) => (
-                  <div className='g_flex g_space_btwn fees_term_item' key={feesItem.id}>
+                  <div className='g_flex g-space-between fees_term_item' key={feesItem.id}>
                     <div className='term_details'>
-                      <div className='g_flex g_space_btwn term_info'>
+                      <div className='g_flex g-space-between term_info'>
                         <IonText>
                           <h2>{feesItem.term}</h2>
                         </IonText>
                         <div className='g_flex'>
                           <IonText>
-                            <p className='g_fontwht_600'>$ {feesItem.amountToBePaid}</p>
+                            <p className='g_font-weight_600'>$ {feesItem.amountToBePaid}</p>
                           </IonText>
                           <IonIcon icon={feesItem.termDue === 0 ? checkmarkCircleOutline : closeCircleOutline}></IonIcon>
                         </div>
@@ -180,7 +180,7 @@ const FeesDues: React.FC = () => {
                       {
                         feesItem.isOpen && (<>
                           {loopItems.map((paidInfo:any, index) => (
-                            <div key={index} className='g_flex g_space_btwn'>
+                            <div key={index} className='g_flex g-space-between'>
                               <IonText>
                                 <p>{paidInfo.name}</p>
                               </IonText>
@@ -192,7 +192,7 @@ const FeesDues: React.FC = () => {
                         </>)
                       }
                     </div>
-                    <div className='term_expand g_flex g_align_cntr'>
+                    <div className='term_expand g_flex g-align-center'>
                       <IonIcon icon={feesItem.isOpen ? removeCircleOutline : addCircleOutline}></IonIcon>
                     </div>
                   </div>

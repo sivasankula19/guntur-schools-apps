@@ -6,7 +6,7 @@ import { classListDummy, formatDate, formatTime, sectionListDummy, vibePostsData
 import { chatboxOutline, cloudUploadOutline, heartOutline, imageOutline, shareSocialOutline } from 'ionicons/icons';
 import VibeLikes from './VibeLikes';
 import VibeComments from './VibeComments';
-import CustomSelectDrop from '../../components/CustomSelectDrop';
+import GCustomSelectDrop from '../../components/GCustomSelectDrop';
 import { useSelector } from 'react-redux';
 import CustomizedModal from '../../components/GCustomizedModal';
 
@@ -39,6 +39,12 @@ const SchoolVibe: React.FC = () => {
   const handleToggleChange = (event: any) => {
     setIsFilterEnabled(event.detail.checked);
   };
+
+  const handleAddToggleChange = (event: any) => {
+    console.log(event.target.name, event.detail.checked)
+    setFilterValue((prev) => ({ ...prev, [event.target.name]: event.detail.checked }));
+  };
+
   const handleInput = (ev: any) => {
     setSearch(ev.target.value);
     console.log(ev?.target.value);
@@ -112,7 +118,7 @@ const SchoolVibe: React.FC = () => {
         </IonButton>
       </div>)}
       <div className='scl_vibe'>
-        <div className='g_flex g_space_btwn'>
+        <div className='g_flex g-space-between'>
           <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
           <div className='toggle_io'>
             <IonLabel>Filter</IonLabel>
@@ -148,12 +154,12 @@ const SchoolVibe: React.FC = () => {
               </IonItem>
               <IonItem className="custom_sub_item">
                 <div className='g_half_width first_select m-top-10'>
-                  <CustomSelectDrop options={classDummyData} name='classId'
+                  <GCustomSelectDrop options={classDummyData} name='classId'
                     value={filterValues.classId} label="Select Class"
                     handleOnChange={handleChange} classNames='custom-select subjects_cls_select' />
                 </div>
                 <div className='g_half_width second_select m-top-10'>
-                  <CustomSelectDrop options={sectionDummyData} name='sectionId'
+                  <GCustomSelectDrop options={sectionDummyData} name='sectionId'
                     value={filterValues.sectionId} label="Select Section"
                     handleOnChange={handleChange} classNames='custom-select' />
                 </div>
@@ -168,7 +174,7 @@ const SchoolVibe: React.FC = () => {
             <IonCard key={item.postId}>
               <IonCardContent>
                 <div className='header_post'>
-                  <div className='g_flex g_align_cntr g_full_width'>
+                  <div className='g_flex g-align-center g_full_width'>
                     <div
                       className='profile_name'>
                       <div
@@ -223,7 +229,7 @@ const SchoolVibe: React.FC = () => {
                   </div>
                 </div>
                 <div className='footer_post'>
-                  <div className='g_flex g_space_btwn'>
+                  <div className='g_flex g-space-between'>
                     <div className='g_txt_center' onClick={() => handleClickOnLikes(item)}>
                       <IonIcon icon={heartOutline}></IonIcon>
                       <IonText>
@@ -256,7 +262,7 @@ const SchoolVibe: React.FC = () => {
           isOpen={isAddVibe}
           onClose={handleModelClose}
           onSave={handleSubmit}
-        styles={{maxHeight:'50vh'}}
+          styles={{ maxHeight: '60vh' }}
         >
           <div className='post-add-modal'>
             <div className='m-bottom-10'>
@@ -284,6 +290,32 @@ const SchoolVibe: React.FC = () => {
             </div>
             <div className='field m-bottom-10'>
               <IonTextarea value={formValue.postDesc} autoGrow={true} rows={4} onIonChange={handleInput} name='postDesc' label="Post Description" labelPlacement="floating" fill="outline" placeholder="description..."></IonTextarea>
+            </div>
+            <div className='m-bottom-10 toggle_io g_flex'>
+              <IonLabel>Enabled Likes ? </IonLabel>
+              <IonToggle
+                className="custom-toggle"
+                name='isEnabledLikes'
+                checked={formValue.isEnabledLikes}
+                onIonChange={handleAddToggleChange}
+              >
+                <span className={`toggle-text ${formValue.isEnabledLikes ? 'enabled_filter' : 'disabled_filter'}`}>
+                  {formValue.isEnabledLikes ? 'On' : 'Off'}
+                </span>
+              </IonToggle>
+            </div>
+            <div className='m-bottom-10 toggle_io g_flex'>
+              <IonLabel>Enabled Comments ? </IonLabel>
+              <IonToggle
+                className="custom-toggle"
+                name='isEnabledComments'
+                checked={formValue.isEnabledComments}
+                onIonChange={handleAddToggleChange}
+              >
+                <span className={`toggle-text ${formValue.isEnabledComments ? 'enabled_filter' : 'disabled_filter'}`}>
+                  {formValue.isEnabledComments ? 'On' : 'Off'}
+                </span>
+              </IonToggle>
             </div>
           </div>
         </CustomizedModal>

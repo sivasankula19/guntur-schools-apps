@@ -13,11 +13,13 @@ interface ICustomSelectDropProps {
     handleOnChange: (e:any) => void,
     options: { id: string | number, label: string | number }[]
     removeDefault?:boolean
+    multiple?:boolean
 }
 
-function CustomSelectDrop({ classNames = '',
+function GCustomSelectDrop({ classNames = '',
     id = '',
     labelPlacement = 'floating',
+    multiple=false,
     fill = 'outline',
     label = "Select",
     ionInterface = 'popover',
@@ -31,6 +33,7 @@ function CustomSelectDrop({ classNames = '',
         <IonSelect
             className={classNames}
             label={label}
+            multiple={multiple}
             labelPlacement={labelPlacement}
             fill={fill}
             id={id}
@@ -49,4 +52,4 @@ function CustomSelectDrop({ classNames = '',
 
 // options should [{id:'', label:''}]
 
-export default CustomSelectDrop
+export default GCustomSelectDrop

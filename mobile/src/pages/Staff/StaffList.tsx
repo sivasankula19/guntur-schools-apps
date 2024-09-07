@@ -10,7 +10,7 @@ import React, { useState } from 'react';
 import { classListDummy, sectionListDummy, staffDummyArr } from '../../common/utility';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { useNavigate } from 'react-router';
-import CustomSelectDrop from '../../components/CustomSelectDrop';
+import GCustomSelectDrop from '../../components/GCustomSelectDrop';
 
 const StaffList: React.FC = () => {
   const [isFilterEnabled, setIsFilterEnabled] = useState(true);
@@ -46,7 +46,7 @@ const StaffList: React.FC = () => {
 
   return (
     <div className='staff g_full_height'>
-      <div className="g_flex g_space_btwn g_align_cntr bread_toggle_container">
+      <div className="g_flex g-space-between g-align-center bread_toggle_container">
         <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
         <div>
           <IonToggle
@@ -73,14 +73,14 @@ const StaffList: React.FC = () => {
                 debounce={500}
                 onIonInput={handleInput}
               ></IonSearchbar>
-              <div className="g_flex g_space_btwn select_conatainer">
+              <div className="g_flex g-space-between select-container">
                 <div style={{ width: '47%' }}>
-                  <CustomSelectDrop options={classDummyData} name='classId'
+                  <GCustomSelectDrop options={classDummyData} name='classId'
                     value={filterValues.classId} label="Select Class"
                     handleOnChange={handleChange} classNames='custom-select' />
                 </div>
                 <div style={{ width: '47%' }}>
-                  <CustomSelectDrop options={sectionDummyData} name='sectionId'
+                  <GCustomSelectDrop options={sectionDummyData} name='sectionId'
                     value={filterValues.sectionId} label="Select Section"
                     handleOnChange={handleChange} classNames='custom-select' />
                 </div>
@@ -93,11 +93,11 @@ const StaffList: React.FC = () => {
         {staffData.map((item) => (
           <IonCard key={item.id} className="student_card">
             <IonCardContent className="card_content">
-              <div className="g_flex g_space_btwn g_align_cntr">
-                <div className="g_flex first_container g_align_cntr">
+              <div className="g_flex g-space-between g-align-center">
+                <div className="g_flex first_container g-align-center">
                   <div className="profile_item">
                     <img
-                      className="prifile_image"
+                      className="profile-image"
                       src={item.empImage}
                       alt="profile"
                       onClick={() => navigateToUser(item.id)}

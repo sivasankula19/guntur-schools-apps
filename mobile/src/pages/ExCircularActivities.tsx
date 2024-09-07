@@ -68,7 +68,7 @@ const ExCircularActivities: React.FC = () => {
             <div className='eve_list'>
               {categoryItem.data.map((eveItem) => (<IonCard key={eveItem.id}>
                 <IonCardContent>
-                  <div className='g_flex g_space_btwn'>
+                  <div className='g_flex g-space-between'>
                     <div>
                       <IonText><h1>{eveItem.eveName}</h1></IonText>
                     </div>
@@ -76,7 +76,7 @@ const ExCircularActivities: React.FC = () => {
                       <IonText><p>{eveItem.eveLevel}</p></IonText>
                     </div>
                   </div>
-                  <div className='g_flex g_space_btwn'>
+                  <div className='g_flex g-space-between'>
                     <div>
                       <IonText>
                         <p className='event_desc'>{eveItem.desc}</p>
@@ -86,7 +86,7 @@ const ExCircularActivities: React.FC = () => {
                       {/* <IonButton>Participate</IonButton> */}
                     </div>
                   </div>
-                  <div className='g_flex g_space_btwn dates_eves'>
+                  <div className='g_flex g-space-between dates_eves'>
                     <div>{eveItem.fromDate}</div>
                     <div>{eveItem.toDate}</div>
                     <div><IonText><a>View More</a></IonText></div>

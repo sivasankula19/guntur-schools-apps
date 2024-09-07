@@ -4,7 +4,7 @@ import { IonButton, IonCard, IonCardContent, IonIcon, IonItem, IonLabel, IonSear
 import { analyticsOutline, appsSharp, arrowBackOutline, caretDownOutline, checkmarkCircleOutline, chevronBackOutline, chevronForwardOutline, closeCircleOutline, listSharp, printSharp, removeOutline, saveOutline } from 'ionicons/icons';
 import { useNavigate } from 'react-router';
 import { classListDummy, getDatesForMonth, searchStudentsData, sectionListDummy, transformListToGrid } from '../../common/utility';
-import CustomSelectDrop from '../../components/CustomSelectDrop';
+import GCustomSelectDrop from '../../components/GCustomSelectDrop';
 
 function AttendanceByStudent() {
     const [viewMode, setViewMode] = useState('list');
@@ -142,36 +142,36 @@ function AttendanceByStudent() {
 
     return (
         <div className='attendance_sa'>
-            <div className='g_flex g_space_btwn g_align_cntr bread_toggle_container'>
+            <div className='g_flex g-space-between g-align-center bread_toggle_container'>
                 <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
                 <div>
                     <IonIcon
                         onClick={() => {
                             setViewMode('list');
                         }}
-                        className={`list_viwe_icon ${viewMode === 'list' ? 'selected' : ''}`}
+                        className={`list-view-icon ${viewMode === 'list' ? 'selected' : ''}`}
                         icon={listSharp}
                     ></IonIcon>
                     <IonIcon
                         onClick={() => {
                             setViewMode('grid');
                         }}
-                        className={`grdi_view_icon ${viewMode === 'grid' ? 'selected' : ''}`}
+                        className={`grid-view-icon ${viewMode === 'grid' ? 'selected' : ''}`}
                         icon={appsSharp}
                     ></IonIcon>
                 </div>
             </div>
             <div className='p-h-10 position-relative'>
-                <div className='back-save-icons g_align_cntr m-top-10'>
+                <div className='back-save-icons g-align-center m-top-10'>
                     <IonIcon onClick={handleBack} icon={arrowBackOutline}></IonIcon>
-                    <div className='g_flex width-80 g_space_btwn'>
+                    <div className='g_flex width-80 g-space-between'>
                     <div style={{ width: '47%' }}>
-                  <CustomSelectDrop options={classDummyData} name='classId'
+                  <GCustomSelectDrop options={classDummyData} name='classId'
                     value={filterValues.classId} label="Select Class"
                     handleOnChange={handleChange} classNames='custom-select' />
                 </div>
                 <div style={{ width: '47%' }}>
-                  <CustomSelectDrop options={sectionDummyData} name='sectionId'
+                  <GCustomSelectDrop options={sectionDummyData} name='sectionId'
                     value={filterValues.sectionId} label="Select Section"
                     handleOnChange={handleChange} classNames='custom-select' />
                 </div>
@@ -180,7 +180,7 @@ function AttendanceByStudent() {
                 </div>
                 <IonCard className='custom-att-card'>
                     <IonCardContent className='padding-0'>
-                        <div className='back-save-icons g_align_cntr'>
+                        <div className='back-save-icons g-align-center'>
                             <IonIcon icon={chevronBackOutline}></IonIcon>
                             <div className='g_flex p-h-10 username-holder m-width-60' ref={studentsDisplayRef}>
                                 <IonLabel class='g_text_ellipses'>
@@ -226,7 +226,7 @@ function AttendanceByStudent() {
                 }
                 <IonCard className='custom-att-card'>
                     <IonCardContent className='padding-0'>
-                        <div className='back-save-icons g_align_cntr'>
+                        <div className='back-save-icons g-align-center'>
                             <IonIcon icon={chevronBackOutline}></IonIcon>
                             <div className='g_flex p-h-10 username-holder' ref={monthYearDetailsRef}>
                                 <IonLabel>
@@ -263,10 +263,10 @@ function AttendanceByStudent() {
             <div className='p-h-10 attendance-edit-controller'>
                 {viewMode === 'list' ? (
                     <>
-                        <IonCard className="custome_attendance_card">
-                            <IonCardContent className="g_flex g_space_around g_align_cntr custome__card_attendance_container">
+                        <IonCard className="custom-attendance-card">
+                            <IonCardContent className="g_flex g-space-around g-align-center custom-card-attendance-container">
                                 {['Date', 'Day', 'AM', 'PM'].map((iView) => (
-                                    <IonText key={iView} className="calendar_label_view row_item_quater">
+                                    <IonText key={iView} className="calendar_label_view row-item-quarter">
                                         {iView}
                                     </IonText>
                                 ))}
@@ -275,9 +275,9 @@ function AttendanceByStudent() {
                         <div className="attendance_container_items-edit" ref={containerRef}>
                             {attendanceDate && attendanceDate.map((item: any, index: number) => (
                                 <IonItem className={`attendance_ion_item ${item.isSchoolHoliday ? 'danger' : ''} ${item.date === todayFormate ? 'special_today_item' : ''}`} key={index}>
-                                    <IonText className="row_item_quater large_text">{item.currentDay}</IonText>
-                                    <IonText className="row_item_quater">{item.dayShort}</IonText>
-                                    <div className='row_item_quater p-h-10 g_flex g_jstfy_content_cntr g_align_cntr'>
+                                    <IonText className="row-item-quarter large_text">{item.currentDay}</IonText>
+                                    <IonText className="row-item-quarter">{item.dayShort}</IonText>
+                                    <div className='row-item-quarter p-h-10 g_flex g-justify-center g-align-center'>
                                         <IonSelect
                                             style={{ border: '1px solid', borderRadius: '8px', borderColor: '#1D7AF5' }}
                                             className="custom-select"
@@ -292,7 +292,7 @@ function AttendanceByStudent() {
                                             <IonSelectOption value={"absent"}>Absent</IonSelectOption>
                                         </IonSelect>
                                     </div>
-                                    <div className='row_item_quater p-h-10'>
+                                    <div className='row-item-quarter p-h-10'>
                                         <IonSelect
                                             style={{ border: '1px solid', borderRadius: '8px', borderColor: '#1D7AF5' }}
                                             className="custom-select"
@@ -313,8 +313,8 @@ function AttendanceByStudent() {
                     </>
                 ) : (
                     <>
-                        <IonCard className="custome_attendance_card">
-                            <IonCardContent className="g_flex g_align_cntr custome_card_content_day_view">
+                        <IonCard className="custom-attendance-card">
+                            <IonCardContent className="g_flex g-align-center custom-card-content-day-view">
                                 {['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'].map(
                                     (dayName) => (
                                         <IonItem
@@ -331,9 +331,9 @@ function AttendanceByStudent() {
                             {gridAttendance.map((gridItem: any, index: number) => (
                                 <IonCard
                                     key={`grid-${index}`}
-                                    className="custome_attendance_card2"
+                                    className="custom-attendance-card2"
                                 >
-                                    <IonCardContent className="g_flex g_align_cntr custome_card_content_day_view2">
+                                    <IonCardContent className="g_flex g-align-center custom-card-content-day-view2">
                                         {gridItem.map((dayItem: any, subIndex: number) => (
                                             <IonItem
                                                 key={`dayItem--${Math.random()}`}
@@ -342,8 +342,8 @@ function AttendanceByStudent() {
                                                     : dayItem?.isSchoolHoliday
                                                         ? 'holiday_day_calendar'
                                                         : dayItem?.attendanceMarked == 0
-                                                            ? 'non_taked_atendance'
-                                                            : 'defaut_attendance_taken'
+                                                            ? 'non-taken-attendance'
+                                                            : 'default-attendance-taken'
                                                     }`}
                                             >
                                                 <div className="chip_item_grid">
@@ -404,7 +404,7 @@ function AttendanceByStudent() {
                 )}
             </div>
             <IonCard className="summery_attendance_show">
-                <IonCardContent className="custome__card_attendance_container g_flex">
+                <IonCardContent className="custom-card-attendance-container g_flex">
                     <IonItem className="summery_text_show">
                         <IonText className="summery_ion_text">WD = 9</IonText>
                     </IonItem>
@@ -414,7 +414,7 @@ function AttendanceByStudent() {
                     <IonItem className="summery_text_show">
                         <IonText className="summery_ion_text">A = 1</IonText>
                     </IonItem>
-                    <div className="g_flex g_space_around g_align_cntr summery_icons_container">
+                    <div className="g_flex g-space-around g-align-center summery_icons_container">
                         <IonIcon icon={printSharp}></IonIcon>
                         <IonIcon icon={analyticsOutline}></IonIcon>
                     </div>

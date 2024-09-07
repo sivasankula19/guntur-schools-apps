@@ -62,7 +62,7 @@ import ExCircularActivities from './pages/ExCircularActivities';
 import Dairy from './pages/Dairy';
 import HomeWork from './pages/Homework/HomeWork';
 import SchoolAssets from './pages/SchoolAssets/SchoolAssets';
-import ExamSchedule from './pages/ExamSchedule';
+import ExamSchedule from './pages/ExamSchedule/ExamSchedule';
 import Messages from './pages/messages/Messages';
 import PageNotFound from './pages/PageNotFound';
 import AboutSuperAdmin from './pages/About/AboutSuperAdmin';
@@ -83,6 +83,7 @@ import StaffListSA from './pages/Staff/StaffListSA';
 import ProgressCardSA from './pages/ProgressCard/ProgressCardSA';
 import ProgressCardSubjectAdd from './pages/ProgressCard/ProgressCardSubjectAdd';
 import AcademicSubject from './pages/AcademicSubject';
+import ExamScheduleSA from './pages/ExamSchedule/ExamScheduleSA';
 
 setupIonicReact({
   animated: true,
@@ -199,7 +200,7 @@ const App: React.FC = () => {
                 <Route path='/time-table' element={role === 'Student' ? <TimeTable /> : <TimeTableSA />} /> //both
                 <Route path='/calendar' element={role === 'Student' ? <Calendar /> : <CalendarSA />} /> //both
                 <Route path='/students-list' element={role === 'Student' ? <StudentList /> : <StudentListSA />} />
-                <Route path='/staff-list' element={role === 'student' ? <StaffList /> : <StaffListSA />} />
+                <Route path='/staff-list' element={role === 'Student' ? <StaffList /> : <StaffListSA />} />
                 <Route path='/subjects' element={role === 'Student' ? <Subjects /> : <SubjectsSA />} />
                 <Route path='/school-vibe' element={<SchoolVibe />} />
                 <Route path='/documents' element={<Documents />} />
@@ -207,12 +208,12 @@ const App: React.FC = () => {
                 <Route path='/messages' element={<Messages />} />
                 <Route path={'/messages/:id'} element={<ChatScreen></ChatScreen>} />
                 <Route path='/fee-structure' element={<FeesDues />} />
-                <Route path='/exam-schedules' element={<ExamSchedule />} />
+                <Route path='/exam-schedules' element={role === 'Student' ? <ExamSchedule /> : <ExamScheduleSA />} />
                 <Route path='/home-work' element={<HomeWork />} />
                 <Route path='/diary' element={<Dairy />} />
                 <Route path='/school-classes' element={<SchoolClasses />} />
                 <Route path='/school-sections' element={<SchoolSections />} />
-
+                {/* public modules! */}
                 <Route path='/gallery' element={<Gallery />} />
                 <Route path='/ex-circular' element={<ExCircularActivities />} />
                 <Route path='/about' element={role === 'Student' ? <About /> : <AboutSuperAdmin />} />

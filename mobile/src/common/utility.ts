@@ -1334,7 +1334,7 @@ export const vibePostsData =  [
   },
 ];
 
-export const examScedulesData =  [
+export const examSchedulesData =  [
   {
     id: 1,
     examName: 'Unit 1',

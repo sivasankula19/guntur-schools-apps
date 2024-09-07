@@ -29,24 +29,24 @@ const Header: React.FC = React.memo(() => {
   };
 
   return (
-    <IonHeader className={`${isAuthenticated ? 'customised_head_auth' : ''}`}>
-      <IonToolbar className={`${isAuthenticated ? 'customised_toolbar_auth' : ''}`}>
+    <IonHeader className={`${isAuthenticated ? 'customized-head-auth' : ''}`}>
+      <IonToolbar className={`${isAuthenticated ? 'customized-toolbar-auth' : ''}`}>
         {isAuthenticated ? (
           <>
             <IonButtons slot="start">
-              <IonMenuButton className="customised_menu_btns_top" />
+              <IonMenuButton className="customized-menu-btns-top" />
             </IonButtons>
-            <div className="menu_profile_conatiner">
+            <div className="menu-profile-container">
               <img
                 src="https://avatars.githubusercontent.com/u/93701195?s=60&v=4"
                 alt="Profile"
               />
             </div>
-            {/* <IonTitle className={`${isPlatform('desktop') ? 'web_scl' : ''} header_schoolname`}>
+            {/* <IonTitle className={`${isPlatform('desktop') ? 'web_scl' : ''} header-school-name`}>
               {authInfo?.user?.fullName || 'Name'}
             </IonTitle> */}
             <div className='g_flex header_caret'>
-              <IonTitle className={`${isPlatform('desktop') ? 'web_scl' : ''} header_schoolname`}>
+              <IonTitle className={`${isPlatform('desktop') ? 'web_scl' : ''} header-school-name`}>
                 {authInfo?.user?.fullName || 'Name'}
               </IonTitle>
 
@@ -60,7 +60,7 @@ const Header: React.FC = React.memo(() => {
         ) : (
           <>
             <IonItem onClick={handleSearchBack} className="custom_header_item">
-              <div className="g_flex g_align_cntr">
+              <div className="g_flex g-align-center">
                 <IonIcon icon={searchOutline} />
                 <IonText>
                   <p>{selectedSchool?.schoolName}</p>

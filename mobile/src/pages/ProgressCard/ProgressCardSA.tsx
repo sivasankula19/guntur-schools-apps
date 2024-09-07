@@ -120,7 +120,7 @@ const ProgressCardSA: React.FC = () => {
             <div className='p-h-10'>
                 <IonCard className='custom-att-card'>
                     <IonCardContent className='padding-0'>
-                        <div className='back-save-icons g_align_cntr'>
+                        <div className='back-save-icons g-align-center'>
                             <IonIcon icon={chevronBackOutline}></IonIcon>
                             <div className='g_flex p-h-10 username-holder m-width-60' ref={studentsDisplayRef}>
                                 <IonLabel class='g_text_ellipses'>
@@ -167,7 +167,7 @@ const ProgressCardSA: React.FC = () => {
             </div>
             <div className="progress_card custom-progress-card">
                 <StudentInfoProCard studentInfo={studentInfo} />
-                <div className='g_flex g_align_cntr g_space_btwn p-h-16 custom-btn-progress'>
+                <div className='g_flex g-align-center g-space-between p-h-16 custom-btn-progress'>
                     <div className='g_flex'>
                         <IonButton className='br-ion-12 g_txt_cap' fill="outline">Notify Parent</IonButton>
                         <IonButton className='br-ion-12 g_txt_cap' fill="outline">Edit Report</IonButton>
@@ -197,19 +197,19 @@ const ProgressCardSA: React.FC = () => {
                             </>
                         )}
                     </div>
-                    <div className="g_flex g_align_cntr progress_icons_container">
+                    <div className="g_flex g-align-center progress_icons_container">
                         <IonIcon
                             onClick={() => {
                                 setViewMode('list');
                             }}
-                            className={`list_viwe_icon ${viewMode === 'list' && 'selected'}`}
+                            className={`list-view-icon ${viewMode === 'list' && 'selected'}`}
                             icon={listSharp}
                         ></IonIcon>
                         <IonIcon
                             onClick={() => {
                                 setViewMode('grid');
                             }}
-                            className={`grdi_view_icon ${viewMode === 'grid' && 'selected'}`}
+                            className={`grid-view-icon ${viewMode === 'grid' && 'selected'}`}
                             icon={appsSharp}
                         ></IonIcon>
                     </div>

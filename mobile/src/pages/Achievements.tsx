@@ -205,7 +205,7 @@ const Achievements: React.FC = () => {
   return (
     <div className="achievements">
       {!isStudent &&
-      <div className='g_flex g_align_cntr g_jstfy_content_cntr'>
+      <div className='g_flex g-align-center g-justify-center'>
           <IonButton onClick={openPopover} className="add_achievement">
             <IonIcon icon={addOutline}></IonIcon> Add
           </IonButton>
@@ -219,8 +219,8 @@ const Achievements: React.FC = () => {
           onSave={onSave}
         >
            <div>
-              {/* <h1 className="g-fontweight-600 g-fontsize-18 text-color-blue g_flex g_jstfy_content_cntr">Add New Document</h1> */}
-              <div className="g_flex g_space_btwn">
+              {/* <h1 className="g-font-weight-600 g-font-size-18 text-color-blue g_flex g-justify-center">Add New Document</h1> */}
+              <div className="g_flex g-space-between">
               </div>
               {IonSelectUI('Category','category',[{'key':'Class','value':'class'},{'key':'School','value':'school'},{'key':'Student','value':'student'}])}
               {IonInputUI('Achievement','achievement_name','Achievement Name')}              
@@ -234,7 +234,7 @@ const Achievements: React.FC = () => {
              </div>
 
         </CustomizedModal>
-      <div className='school_achieve_title g_flex g_align_cntr g_jstfy_content_cntr text-color-blue g-fontweight-600 g-fontsize-16'>
+      <div className='school_achieve_title g_flex g-align-center g-justify-center text-color-blue g-font-weight-600 g-font-size-16'>
         School Achievements
       </div>
 

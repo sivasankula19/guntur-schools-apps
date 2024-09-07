@@ -44,7 +44,7 @@ const RenderSelectedTableUnit: React.FC<IRenderSelectedTableUnitProps> = ({
                   hIndex !== columnData.length - 1 ? '1px solid' : 'none',
                 height: '40px',
               }}
-              className="g_txt_center g_flex g_align_cntr g_jstfy_content_cntr"
+              className="g_txt_center g_flex g-align-center g-justify-center"
             >
               {headItem.name}
             </div>
@@ -62,7 +62,7 @@ const RenderSelectedTableUnit: React.FC<IRenderSelectedTableUnitProps> = ({
                   color: unitItem[bodyItem.field] === 'Pass' ? '#00FF00' : unitItem[bodyItem.field] === 'Fail' ? '#FF0000' : '',
                   fontWeight: bodyItem.field === 'remarks' ? 'bold' : 'normal',
                 }}
-                className="g_txt_center g_flex g_align_cntr g_jstfy_content_cntr cell_marks"
+                className="g_txt_center g_flex g-align-center g-justify-center cell_marks"
               >
                 {unitItem[bodyItem.field] != null ? unitItem[bodyItem.field] : '--'}
               </div>
@@ -72,12 +72,12 @@ const RenderSelectedTableUnit: React.FC<IRenderSelectedTableUnitProps> = ({
       </div>
       <IonFooter>
         <IonToolbar>
-          <div className='g_flex g_space_btwn mark_rank_container'>
-            <div className='g_flex g_space_btwn grand_marks'>
+          <div className='g_flex g-space-between mark_rank_container'>
+            <div className='g_flex g-space-between grand_marks'>
               <p className='font_bld'>Grand Total</p>
               <p>{`${unitData.reduce((acc: any, curr: any) => acc + (curr.marks || 0), 0)}`}</p>
             </div>
-            <div className='g_flex g_space_btwn exam_rank'>
+            <div className='g_flex g-space-between exam_rank'>
               <p className='font_bld'>Exam Rank</p>
               <p>3 Rd</p>
             </div>

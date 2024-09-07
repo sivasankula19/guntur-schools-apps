@@ -28,7 +28,7 @@ import { useLocation, useParams } from 'react-router-dom';
 const Footer: React.FC = () => {
   const modal = useRef<HTMLIonModalElement>(null);
   const [isOpen, setIsOpen] = useState(false);
-    
+
   const iconsList = [
     { name: 'Settings', icon: settingsOutline, path: '/settings' },
     { name: 'Reset Password', icon: keyOutline, path: '/reset-password' },
@@ -40,86 +40,86 @@ const Footer: React.FC = () => {
     },
   ];
 
-  const poweredBy=()=>{
-     return (
-      <div className="poweredby_container">
-          <IonText>
-            <h4>Powered By</h4>
-          </IonText>
-          <div className="g_flex">
-            <div className="logo">logo</div>
-            <div>Title</div>
-          </div>
-          <div>
-            <a>Privacy & Polacy</a>
-            <a>WebSite</a>
-          </div>
+  const poweredBy = () => {
+    return (
+      <div className="powered-by-container">
+        <IonText>
+          <h4>Powered By</h4>
+        </IonText>
+        <div className="g_flex">
+          <div className="logo">logo</div>
+          <div>Title</div>
         </div>
-     )
+        <div>
+          <a>Privacy & Polacy</a>
+          <a>WebSite</a>
+        </div>
+      </div>
+    )
   }
 
-  const handleRegisterSchool=(registerType:string)=>{
+  const handleRegisterSchool = (registerType: string) => {
     console.log(registerType)
-    switch(registerType){
+    switch (registerType) {
       case 'Register': // navigate to register page
-      break;
+        break;
       case 'Register Call Back': // navigate to register call back
-      break;
+        break;
       default:
     }
   }
 
-  const columnUI=(columnName:string)=>{
-    return(
-      <IonCol size="6" className='ownschool-main' >
-        <div className='ownschool g-fontweight-400 g-fontsize-14'>{columnName}</div>
+  const columnUI = (columnName: string) => {
+    return (
+      <IonCol size="6" className='own-school-main' >
+        <div className='own-school g-font-weight-400 g-font-size-14'>{columnName}</div>
       </IonCol>
     )
   }
 
-  const rowUI=(firstEle:string,secondEle:string)=>{
+  const rowUI = (firstEle: string, secondEle: string) => {
     return (
       <IonRow>
         {columnUI(firstEle)}
         {columnUI(secondEle)}
-    </IonRow>
+      </IonRow>
     )
   }
 
-  const ownSchoolUI=()=>{
-       return (
-        <IonContent className="ion-padding footer_container">
+  const ownSchoolUI = () => {
+    return (
+      <IonContent className="ion-padding footer_container">
         <IonText>
-          <h6 className='g-fontweight-600'>Own a school ?</h6>
+          <h6 className='g-font-weight-600'>Own a school ?</h6>
         </IonText>
+        <div >
+          <p className='g-font-weight-500 g-font-size-14'>
+            Register With Us And Get
+          </p>
           <div >
-            <p className='g-fontweight-500 g-fontsize-14'>
-              Register With Us And Get
-            </p>
-            <div >
-                <IonGrid style={{marginBottom:10}}>
-                  {rowUI('Unlimited Cloud Storage','Interactive Learning')}
-                  {rowUI('Accessibility','Attendance Management')}
-                  {rowUI('Focusing Individually','Time Efficiency')}
-                </IonGrid>
-            </div>
-            <div className="g_flex g_jstfy_content_cntr">
-              <button className='reg-req-cb g-fontweight-600 g-fontsize-18' onClick={()=>handleRegisterSchool('Register')}>Register</button>
-            </div>
-            <p className='g-fontweight-500'>Request Call Back</p>
-            <div className="g_flex g_jstfy_content_cntr">
-              <button className='reg-req-cb g-fontweight-600 g-fontsize-18' onClick={()=>handleRegisterSchool('Register Call Back')}>Request Call Back</button>
-            </div>
+            <IonGrid style={{ marginBottom: 10 }}>
+              {rowUI('Unlimited Cloud Storage', 'Interactive Learning')}
+              {rowUI('Accessibility', 'Attendance Management')}
+              {rowUI('Focusing Individually', 'Time Efficiency')}
+            </IonGrid>
           </div>
-        
+          <div className="g_flex g-justify-center">
+            <button className='reg-req-cb g-font-weight-600 g-font-size-18' onClick={() => handleRegisterSchool('Register')}>Register</button>
+          </div>
+          <p className='g-font-weight-500'>Request Call Back</p>
+          <div className="g_flex g-justify-center">
+            <button className='reg-req-cb g-font-weight-600 g-font-size-18' onClick={() => handleRegisterSchool('Register Call Back')}>Request Call Back</button>
+          </div>
+        </div>
+
         {poweredBy()}
       </IonContent>
-       )
+    )
   }
 
-  const defaultUI=()=>{
-       return (
-        <IonContent className="ion-padding footer_container">
+  const defaultUI = () => {
+    return (
+      <IonContent className="ion-padding footer_container">
         <IonText>
           <h6>Government High School Madugula </h6>
         </IonText>
@@ -153,21 +153,21 @@ const Footer: React.FC = () => {
         <div>
           <IonItemDivider></IonItemDivider>
         </div>
-        <div className="g_flex g_space_btwn">
+        <div className="g_flex g-space-between">
           {iconsList.map((item) => (
             <IonIcon key={item.name} icon={item.icon}></IonIcon>
           ))}
         </div>
         {poweredBy()}
       </IonContent>
-       )
+    )
   }
 
 
   return (
     <IonFooter className="custome_footer_ion">
       {/* <div style={{position:'absolute', bottom:'0', zIndex:999, background:'red', width:'100%'}}>hello</div> */}
-      <IonToolbar onClick={()=>setIsOpen(true)} className="g_txt_center tool_bar_container">
+      <IonToolbar onClick={() => setIsOpen(true)} className="g_txt_center tool-bar-container">
         <IonIcon icon={caretUpCircleOutline}></IonIcon>
       </IonToolbar>
       <IonModal
@@ -177,9 +177,9 @@ const Footer: React.FC = () => {
         initialBreakpoint={0.6}
         breakpoints={[0, 0.6, 0.85]}
       >
-        {location.pathname==='/select-school' ?
+        {location.pathname === '/select-school' ?
           ownSchoolUI()
-         : 
+          :
           defaultUI()
         }
       </IonModal>

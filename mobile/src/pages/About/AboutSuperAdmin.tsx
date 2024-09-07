@@ -51,7 +51,7 @@ const AboutSuperAdmin: React.FC = () => {
                 </IonText>
             </div>
             <div>
-                <div className="scl_banner g_flex g_align_cntr g_jstfy_content_cntr">
+                <div className="scl_banner g_flex g-align-center g-justify-center">
                     <div>
                         <input name="shool_logo" id="school_logo" type="file" placeholder="Please upload image" />
                         <div className="g_txt_center">School Logo</div>
@@ -112,7 +112,7 @@ const AboutSuperAdmin: React.FC = () => {
                 <IonLabel>Facilities</IonLabel>
                 <RenderLoopItems data={aboutModuleData.facilities || []} />
                 <IonItem>
-                    <div className="g_flex g_space_btwn g_full_width">
+                    <div className="g_flex g-space-between g_full_width">
                         <div className="width-80">
                             <input className="g_full_width" placeholder="Add Facilities Here!." />
                         </div>
@@ -128,7 +128,7 @@ const AboutSuperAdmin: React.FC = () => {
                 <IonLabel>Achievements</IonLabel>
                 <RenderLoopItems data={aboutModuleData.achievements || []} />
                 <IonItem>
-                    <div className="g_flex g_space_btwn g_full_width">
+                    <div className="g_flex g-space-between g_full_width">
                         <div className="width-80">
                             <input className="g_full_width" placeholder="Add Achievements Here!." />
                         </div>
@@ -159,14 +159,14 @@ const AboutSuperAdmin: React.FC = () => {
 
 const RenderLoopItems = ({ data = [] }: any) => {
     return (
-        data.length ? data.map((dataItem: string) => (<div key={Math.random().toLocaleString()} className="g_flex g_space_btwn">
-            <div className="g_flex height-px-40 g_align_cntr about_text">
+        data.length ? data.map((dataItem: string) => (<div key={Math.random().toLocaleString()} className="g_flex g-space-between">
+            <div className="g_flex height-px-40 g-align-center about_text">
                 <div className="dot-8"></div>
                 <IonText>
                     <p>{dataItem}</p>
                 </IonText>
             </div>
-            <div className="g_flex height-px-40 g_align_cntr remove_about">
+            <div className="g_flex height-px-40 g-align-center remove_about">
                 <IonIcon icon={removeCircleOutline}></IonIcon>
             </div>
         </div>)) : <></>
