@@ -40,7 +40,7 @@ const SchoolAssets: React.FC = () => {
                 toggleIconSlot="end"
               >
                 <IonItem slot="header" color="light">
-                  <IonLabel className="main-ion-label g-fontweight-600">{item.category}</IonLabel>
+                  <IonLabel className="main-ion-label g-font-weight-600">{item.category}</IonLabel>
                 </IonItem>
                 {item?.assets?.length && <RenderCategories item={item} />}
               </IonAccordion>
@@ -68,7 +68,7 @@ const RenderCategories = ({ item }: any) => {
             >
               <IonItem slot="header" color="light" className="border-none">
                 <div className="school-assets-category"></div>
-                <IonLabel className="g-fontweight-400 g-fontsize-14 ml-6">{asset.name}</IonLabel>
+                <IonLabel className="g-font-weight-400 g-font-size-14 ml-6">{asset.name}</IonLabel>
               </IonItem>
               {asset.types?.length && <RenderSubtypes subType={asset.types} />}
             </IonAccordion>
@@ -84,7 +84,7 @@ const RenderSubtypes = ({ subType }: any) => {
     <div slot="content" className='sub-type-parent'>
       {subType?.map((subtype: any, index: number) => {
         return (
-          <div key={index} className="g-fontweight-400 g-fontsize-14 sub-type">{subtype}</div>
+          <div key={index} className="g-font-weight-400 g-font-size-14 sub-type">{subtype}</div>
         )
       })}
     </div>

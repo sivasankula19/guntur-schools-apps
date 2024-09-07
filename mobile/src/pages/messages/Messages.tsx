@@ -32,7 +32,7 @@ const Messages: React.FC = () => {
 
   return (
     <div className='messages'>
-      <div className='g_flex g_space_btwn'>
+      <div className='g_flex g-space-between'>
         <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
         <div className='toggle_io'>
           <IonToggle
@@ -68,13 +68,13 @@ const Messages: React.FC = () => {
               {
                 chatListData.map((chat: any) => (<IonItem onClick={() => handleUserChat(chat.id)} className='chat_item' key={chat.id}>
                   <div className='g_full_width'>
-                    <div className='g_flex g_align_cntr'>
+                    <div className='g_flex g-align-center'>
                       <div className='profile'>
                         <img src={chat.profile} />
                       </div>
                       <div className='name_last_msg'>
-                        <div className='g_flex g_space_btwn'>
-                          <IonText className='title_chat'>
+                        <div className='g_flex g-space-between'>
+                          <IonText className='width-80'>
                             <h2 className='g_text_ellipses'>{chat.name}</h2>
                           </IonText>
                           <IonText>

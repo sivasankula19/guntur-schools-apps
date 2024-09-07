@@ -40,7 +40,7 @@ const RenderAllExams: React.FC<IRenderAllExams> = ({ }) => {
           >
             <div
               style={{ minHeight: '40px' }}
-              className="g_txt_center g_flex g_align_cntr g_jstfy_content_cntr marks_column_header"
+              className="g_txt_center g_flex g-align-center g-justify-center marks_column_header"
             >
               {'Subject'}
             </div>
@@ -48,13 +48,13 @@ const RenderAllExams: React.FC<IRenderAllExams> = ({ }) => {
               <div
                 key={subjectItem.subjectId}
                 style={{ minHeight: '40px' }}
-                className="g_txt_center g_flex g_align_cntr g_jstfy_content_cntr"
+                className="g_txt_center g_flex g-align-center g-justify-center"
               >
                 {subjectItem.subjectName}
               </div>
             ))}
           </div>
-          <div className="horizontal_marks_container g_flex g_flex_direction_clm">
+          <div className="horizontal_marks_container g_flex g-flex-direction-clm">
             <div className="g_flex">
               {allUnits.map((unitItem: any, index: number) => (
                 <div
@@ -76,7 +76,7 @@ const RenderAllExams: React.FC<IRenderAllExams> = ({ }) => {
                       index !== allUnits.length - 1 ? '1px solid' : 'none',
                     height: '40px',
                   }}
-                  className="g_txt_center g_flex g_align_cntr g_jstfy_content_cntr marks_column_header"
+                  className="g_txt_center g_flex g-align-center g-justify-center marks_column_header"
                 >
                   {unitItem.title}
                 </div>
@@ -111,7 +111,7 @@ const RenderAllExams: React.FC<IRenderAllExams> = ({ }) => {
                           (i: any) => i.subjectName === subjectItem.subjectName
                         )?.remarks === 'Fail' ? '#FF0000' : ''
                       }}
-                      className="g_txt_center g_flex g_align_cntr g_jstfy_content_cntr"
+                      className="g_txt_center g_flex g-align-center g-justify-center"
                     >
                       {
                         unitItemsub['data']?.find(
@@ -128,7 +128,7 @@ const RenderAllExams: React.FC<IRenderAllExams> = ({ }) => {
       </div>
       <IonFooter>
         <IonToolbar>
-          <div className="g_flex g_space_btwn marks_all_container">
+          <div className="g_flex g-space-between marks_all_container">
             <div style={{ width: '25%' }}>
               <div>Exam</div>
               <div>Total</div>

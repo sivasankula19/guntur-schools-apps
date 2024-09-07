@@ -3,7 +3,7 @@ import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { IonCard, IonCardContent, IonIcon, IonLabel, IonSelect, IonSelectOption } from '@ionic/react';
 import { checkmarkCircleOutline, saveOutline } from 'ionicons/icons';
 import { classListDummy, classSubjects, examinationListDummy, sectionListDummy, studentDummyData } from '../../common/utility';
-import CustomSelectDrop from '../../components/CustomSelectDrop';
+import GCustomSelectDrop from '../../components/GCustomSelectDrop';
 
 function ProgressCardSubjectAdd() {
     const [filterValues, setFilterValue] = useState({
@@ -28,33 +28,33 @@ function ProgressCardSubjectAdd() {
         <div className='g_full_height'>
             <GBreadCrumbs data={breadCrumbsValue} />
             <div className='p-h-10 progress-hold'>
-                <div className='g_flex g_space_btwn m-top-12 '>
+                <div className='g_flex g-space-between m-top-12 '>
                     <div className='m-right-6 width-50'>
-                        <CustomSelectDrop options={classDummyData} name='classId'
+                        <GCustomSelectDrop options={classDummyData} name='classId'
                             value={filterValues.classId} label="Select Class"
                             handleOnChange={handleChange} classNames='custom-select' />
                     </div>
                     <div className='m-left-6 width-50'>
-                        <CustomSelectDrop options={sectionDummyData} name='sectionId'
+                        <GCustomSelectDrop options={sectionDummyData} name='sectionId'
                             value={filterValues.sectionId} label="Select Section"
                             handleOnChange={handleChange} classNames='custom-select' />
                     </div>
                 </div>
-                <div className='g_flex g_space_btwn m-top-10 '>
+                <div className='g_flex g-space-between m-top-10 '>
                     <div className='m-right-6 width-50'>
-                        <CustomSelectDrop options={examinationDummyData} name='examinationId'
+                        <GCustomSelectDrop options={examinationDummyData} name='examinationId'
                             value={filterValues.examinationId} label="Examination"
                             handleOnChange={handleChange} classNames='custom-select' />
                     </div>
                     <div className='m-left-6 width-50'>
-                        <CustomSelectDrop options={subjectsDummyData} name='subjectId'
+                        <GCustomSelectDrop options={subjectsDummyData} name='subjectId'
                             value={filterValues.subjectId} label="Subject"
                             handleOnChange={handleChange} classNames='custom-select' />
                     </div>
                 </div>
                 <div>
                     <div className='progress-default-marks'>
-                        <div className='g_flex g_align_cntr'>
+                        <div className='g_flex g-align-center'>
                             <IonLabel>{"Default Pass Marks : "}</IonLabel>
                             <input placeholder='Marks' />
                         </div>
@@ -65,11 +65,11 @@ function ProgressCardSubjectAdd() {
                     {studentsListForClass.map((item) => (
                         <IonCard key={item.id} className={`student_card animation-none custom-class-card`}>
                             <IonCardContent className="card_content">
-                                <div className="g_flex g_space_btwn g_align_cntr">
-                                    <div className="g_flex width-50 g_align_cntr">
+                                <div className="g_flex g-space-between g-align-center">
+                                    <div className="g_flex width-50 g-align-center">
                                         <div className="profile_item">
                                             <img
-                                                className="prifile_image"
+                                                className="profile-image"
                                                 src={item.profileImage}
                                                 alt="profile"
                                             />

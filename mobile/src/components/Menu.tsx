@@ -97,8 +97,8 @@ const Menu: React.FC = () => {
             </IonList>
           </div>
           <div className='menu_dark_mode_holder'>
-            <div className="g_flex dark_mode_container">
-              <div className='g_flex g_align_cntr'><IonLabel>Dark Mode</IonLabel> </div>
+            <div className="g_flex dark-mode-container">
+              <div className='g_flex g-align-center'><IonLabel>Dark Mode</IonLabel> </div>
               <div>
                 <IonToggle
                   className="custom-toggle"

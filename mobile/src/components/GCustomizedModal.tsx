@@ -62,7 +62,7 @@ const CustomizedModal: React.FC<ICustomModalProps> = ({
       leaveAnimation={leaveAnimation}
       backdropDismiss={false}
       isOpen={isOpen}
-      className='g_customised_modal'
+      className='g-customized-modal'
     >
       <div style={{maxHeight:styles?.maxHeight || '60vh'}} className='custom-modal-container-view'>
       <IonHeader>
@@ -78,11 +78,11 @@ const CustomizedModal: React.FC<ICustomModalProps> = ({
       <div className='modal-child-con'><IonCardContent>{children}</IonCardContent></div>
       <IonFooter>
         <IonToolbar>
-          <div className="g_flex g_space_btwn g_full_width g_custome_padding_h12">
-            <IonButton className="gmodal-btn gmodal-cancel" onClick={dismiss}>
+          <div className="g_flex g-space-between g_full_width g-custom-padding-h12">
+            <IonButton className="g-modal-btn g-modal-cancel" onClick={dismiss}>
               Cancel
             </IonButton>
-            <IonButton className="gmodal-btn gmodal-save" onClick={onSave}>
+            <IonButton className="g-modal-btn g-modal-save" onClick={onSave}>
               Save
             </IonButton>
           </div>

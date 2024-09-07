@@ -15,7 +15,7 @@ import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import CustomizedModal from '../../components/GCustomizedModal';
-import CustomSelectDrop from '../../components/CustomSelectDrop';
+import GCustomSelectDrop from '../../components/GCustomSelectDrop';
 
 interface IStaffForm {
     staffFirstName: string,
@@ -142,7 +142,7 @@ const StaffListSA: React.FC = () => {
 
     return (
         <div className='g_full_height'>
-            <div className="g_flex g_space_btwn g_align_cntr bread_toggle_container">
+            <div className="g_flex g-space-between g-align-center bread_toggle_container">
                 <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
                 <div>
                     <IonToggle
@@ -172,14 +172,14 @@ const StaffListSA: React.FC = () => {
                                 debounce={500}
                                 onIonInput={handleSearchInput}
                             ></IonSearchbar>
-                            <div className="g_flex g_space_btwn select_conatainer">
+                            <div className="g_flex g-space-between select-container">
                                 <div style={{ width: '47%' }}>
-                                    <CustomSelectDrop options={classDummyData} name='classId'
+                                    <GCustomSelectDrop options={classDummyData} name='classId'
                                         value={filterValues.classId} label="Select Class"
                                         handleOnChange={handleChange} classNames='custom-select' />
                                 </div>
                                 <div style={{ width: '47%' }}>
-                                    <CustomSelectDrop options={sectionDummyData} name='sectionId'
+                                    <GCustomSelectDrop options={sectionDummyData} name='sectionId'
                                         value={filterValues.sectionId} label="Select Section"
                                         handleOnChange={handleChange} classNames='custom-select' />
                                 </div>
@@ -192,12 +192,12 @@ const StaffListSA: React.FC = () => {
                 {staffData.map((item) => (
                     <IonCard key={item.id} className={`student_card animation-none custom-class-card ${currentSelected === item.id ? 'custom-class-card-selected' : ''}`}>
                         <IonCardContent className="card_content">
-                            <div className="g_flex g_space_btwn g_align_cntr">
-                                <div className="g_flex first_container width-65 g_align_cntr">
+                            <div className="g_flex g-space-between g-align-center">
+                                <div className="g_flex first_container width-65 g-align-center">
                                     <div className="profile_item">
                                         <img
                                             onClick={() => navigateToUser(item.id)}
-                                            className="prifile_image"
+                                            className="profile-image"
                                             src={item.empImage}
                                             alt="profile"
                                         />
@@ -242,12 +242,12 @@ const StaffListSA: React.FC = () => {
                     <IonInput value={formValue.staffLastName} onIonChange={handleInput} name='staffLastName' label="Staff Last Name" labelPlacement="floating" fill="outline" placeholder="Last Name"></IonInput>
                 </div>
                 <div className='field m-bottom-10'>
-                    <CustomSelectDrop options={positionDummyData} name='position'
+                    <GCustomSelectDrop options={positionDummyData} name='position'
                         value={formValue.position} label="Position"
                         handleOnChange={handleInput} classNames='custom-select' />
                 </div>
                 <div className='field m-bottom-10'>
-                    <CustomSelectDrop options={designationDummyData} name='designation'
+                    <GCustomSelectDrop options={designationDummyData} name='designation'
                         value={formValue.designation} label="Designation"
                         handleOnChange={handleInput} classNames='custom-select' />
                 </div>
@@ -258,7 +258,7 @@ const StaffListSA: React.FC = () => {
                     <IonInput value={formValue.emailAddress} onIonChange={handleInput} name='emailAddress' label="Email Address" labelPlacement="floating" fill="outline" placeholder="test@gmail.com"></IonInput>
                 </div>
                 <div className='field m-bottom-10'>
-                    <CustomSelectDrop options={genderDummyData} name='gender'
+                    <GCustomSelectDrop options={genderDummyData} name='gender'
                         value={formValue.gender} label="Gender"
                         handleOnChange={handleInput} classNames='custom-select' />
                 </div>

@@ -90,14 +90,14 @@ const Attendance = () => {
 
   return (
     <div className='attendance'>
-      <div className="g_flex g_space_btwn g_align_cntr bread_toggle_container">
+      <div className="g_flex g-space-between g-align-center bread_toggle_container">
         <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
         <div>
           <IonIcon
             onClick={() => {
               setViewMode('list');
             }}
-            className={`list_viwe_icon ${viewMode === 'list' ? 'selected' : ''}`}
+            className={`list-view-icon ${viewMode === 'list' ? 'selected' : ''}`}
             icon={listSharp}
           ></IonIcon>
           <IonIcon
@@ -105,17 +105,17 @@ const Attendance = () => {
               setGridAttendance(transformListToGrid(getDatesForMonth(currentMY.month, currentMY.year)))
               setViewMode('grid');
             }}
-            className={`grdi_view_icon ${viewMode === 'grid' ? 'selected' : ''}`}
+            className={`grid-view-icon ${viewMode === 'grid' ? 'selected' : ''}`}
             icon={appsSharp}
           ></IonIcon>
         </div>
       </div>
-      <IonCard className="custome_attendance_card">
-        <IonCardContent className="custome__card_attendance_container">
-          <div className="g_flex g_space_around icons_holder_attendance">
+      <IonCard className="custom-attendance-card">
+        <IonCardContent className="custom-card-attendance-container">
+          <div className="g_flex g-space-around icons_holder_attendance">
             <IonIcon onClick={() => handleDateChange('previousYear')} icon={caretBackOutline}></IonIcon>
             <IonIcon onClick={() => handleDateChange('previousMonth')} icon={chevronBackOutline}></IonIcon>
-            <div className="month_year_view g_flex g_space_evnly g_align_cntr">
+            <div className="month_year_view g_flex g-space-evenly g-align-center">
               <IonText className="month_year">{months[currentMY.month - 1]}</IonText>
               <IonText className="month_year">{currentMY.year}</IonText>
             </div>
@@ -126,10 +126,10 @@ const Attendance = () => {
       </IonCard>
       {viewMode === 'list' ? (
         <>
-          <IonCard className="custome_attendance_card">
-            <IonCardContent className="g_flex g_space_around g_align_cntr custome__card_attendance_container">
+          <IonCard className="custom-attendance-card">
+            <IonCardContent className="g_flex g-space-around g-align-center custom-card-attendance-container">
               {['Date', 'Day', 'AM', 'PM'].map((iView) => (
-                <IonText key={iView} className="calendar_label_view row_item_quater">
+                <IonText key={iView} className="calendar_label_view row-item-quarter">
                   {iView}
                 </IonText>
               ))}
@@ -138,9 +138,9 @@ const Attendance = () => {
           <div className="attendance_container_items" ref={containerRef}>
             {attendanceDate && attendanceDate.map((item: any, index: number) => (
               <IonItem className={`attendance_ion_item ${item.isSchoolHoliday ? 'danger' : ''} ${item.date === todayFormate ? 'special_today_item' : ''}`} key={index}>
-                <IonText className="row_item_quater large_text">{item.currentDay}</IonText>
-                <IonText className="row_item_quater">{item.dayShort}</IonText>
-                <div className="row_item_quater">
+                <IonText className="row-item-quarter large_text">{item.currentDay}</IonText>
+                <IonText className="row-item-quarter">{item.dayShort}</IonText>
+                <div className="row-item-quarter">
                   {item.isSchoolHoliday ? (
                     <>
                       <IonText>NA</IonText>
@@ -163,7 +163,7 @@ const Attendance = () => {
                     ></IonIcon>
                   )}
                 </div>
-                <div className="row_item_quater">
+                <div className="row-item-quarter">
                   {item.isSchoolHoliday ? (
                     <>
                       <IonText>NA</IonText>
@@ -192,8 +192,8 @@ const Attendance = () => {
         </>
       ) : (
         <>
-          <IonCard className="custome_attendance_card">
-            <IonCardContent className="g_flex g_align_cntr custome_card_content_day_view">
+          <IonCard className="custom-attendance-card">
+            <IonCardContent className="g_flex g-align-center custom-card-content-day-view">
               {['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'].map(
                 (dayName) => (
                   <IonItem
@@ -210,9 +210,9 @@ const Attendance = () => {
             {gridAttendance.map((gridItem: any, index: number) => (
               <IonCard
                 key={`grid-${index}`}
-                className="custome_attendance_card2"
+                className="custom-attendance-card2"
               >
-                <IonCardContent className="g_flex g_align_cntr custome_card_content_day_view2">
+                <IonCardContent className="g_flex g-align-center custom-card-content-day-view2">
                   {gridItem.map((dayItem: any, subIndex: number) => (
                     <IonItem
                       key={`dayItem--${Math.random()}`}
@@ -221,8 +221,8 @@ const Attendance = () => {
                         : dayItem?.isSchoolHoliday
                           ? 'holiday_day_calendar'
                           : dayItem?.attendanceMarked == 0
-                            ? 'non_taked_atendance'
-                            : 'defaut_attendance_taken'
+                            ? 'non-taken-attendance'
+                            : 'default-attendance-taken'
                         }`}
                     >
                       <div className="chip_item_grid">
@@ -282,7 +282,7 @@ const Attendance = () => {
         </>
       )}
       <IonCard className="summery_attendance_show">
-        <IonCardContent className="custome__card_attendance_container g_flex">
+        <IonCardContent className="custom-card-attendance-container g_flex">
           <IonItem className="summery_text_show">
             <IonText className="summery_ion_text">WD = 9</IonText>
           </IonItem>
@@ -292,7 +292,7 @@ const Attendance = () => {
           <IonItem className="summery_text_show">
             <IonText className="summery_ion_text">A = 1</IonText>
           </IonItem>
-          <div className="g_flex g_space_around g_align_cntr summery_icons_container">
+          <div className="g_flex g-space-around g-align-center summery_icons_container">
             <IonIcon icon={printSharp}></IonIcon>
             <IonIcon icon={analyticsOutline}></IonIcon>
           </div>

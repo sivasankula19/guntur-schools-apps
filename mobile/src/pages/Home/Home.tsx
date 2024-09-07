@@ -109,7 +109,7 @@ const Home: React.FC = () => {
           </form>
         </IonCardContent>
       </IonCard>
-      <div className='pre_login_btns'>
+      <div className='pre-login-btn'>
         {preLoginModules.map((chip, index) => (
           <div key={chip.id} className='chip_btn'>
             <IonButton onClick={() => handleNavigate(chip.redirectTo, chip.moduleName)}>
@@ -120,7 +120,7 @@ const Home: React.FC = () => {
           </div>
         ))}
       </div>
-      <div className='location_cntl'>
+      <div className='location-control'>
         <div className='location'>
           <div><IonText>Google Map</IonText></div>
         </div>

@@ -90,19 +90,19 @@ const ProgressCard: React.FC = () => {
               </>
             )}
           </div>
-          <div className="g_flex g_align_cntr progress_icons_container">
+          <div className="g_flex g-align-center progress_icons_container">
             <IonIcon
               onClick={() => {
                 setViewMode('list');
               }}
-              className={`list_viwe_icon ${viewMode === 'list' && 'selected'}`}
+              className={`list-view-icon ${viewMode === 'list' && 'selected'}`}
               icon={listSharp}
             ></IonIcon>
             <IonIcon
               onClick={() => {
                 setViewMode('grid');
               }}
-              className={`grdi_view_icon ${viewMode === 'grid' && 'selected'}`}
+              className={`grid-view-icon ${viewMode === 'grid' && 'selected'}`}
               icon={appsSharp}
             ></IonIcon>
           </div>

@@ -34,7 +34,7 @@ const dashboard: React.FC = () => {
   const [timeDifference, setTimeDifference] = useState(0);
   const [timeDiffHrs, setTimeDiffHrs] = useState(0);
   const [selectedSegment, setSelectedSegment] = useState('Today');
-  const dsbrdRef = useRef<any>(null);
+  const dashboardRef = useRef<any>(null);
 
   const chipsData = [
     { id: 1, moduleName: 'Attendance', icon: calendarOutline, redirectTo: '/attendance' },
@@ -142,8 +142,8 @@ const dashboard: React.FC = () => {
   }, [isOpen])
 
   const scrollToTop = () => {
-    if (dsbrdRef.current) {
-      dsbrdRef.current.scrollTop = 0;
+    if (dashboardRef.current) {
+      dashboardRef.current.scrollTop = 0;
     }
   };
 
@@ -170,15 +170,15 @@ const dashboard: React.FC = () => {
   };
 
   return (
-    <div ref={dsbrdRef} className='dsbrd_container'>
-      <div className="dsbrd">
+    <div ref={dashboardRef} className='dashboard-container'>
+      <div className="dashboard">
         <NavChipCard
           isOpen={isOpen}
           handleView={handleViewMode}
           chips={chipsData.slice(0, isOpen ? undefined : 9)}
         ></NavChipCard>
       </div>
-      <IonCard className="calendar_time_table">
+      <IonCard className="calendar-time-table">
         <IonCardContent>
           <div className="g_flex">
             <div className="custom-segment-container">
@@ -208,11 +208,11 @@ const dashboard: React.FC = () => {
             </div>
           </div>
           {selectedSegment === 'Today' ? (
-            <div className="time_today_view">
+            <div className="time-table-view">
               <div className="time_day_view_con">
                 <div
                   style={{ top: `${6 + timeDiffHrs * 6 + timeDifference + (isPlatform('android') ? 8 : 0)}px` }}
-                  className="current_time_indicator"
+                  className="current-time-indicator"
                 ></div>
                 <IonList>
                   {timeDisplay.map((time) => (
@@ -225,23 +225,23 @@ const dashboard: React.FC = () => {
             </div>
           ) : (
             <>
-              <div className="week_view_conatainer">
+              <div className="week-view-container">
                 <div className="g_flex">
                   <div
-                    className="g_height45"
+                    className="g-height-45"
                     style={{
                       width: `${100 / 7}%`,
                     }}
                   ></div>
                   <div
-                    className="g_flex g_height45 day_display_item"
+                    className="g_flex g-height-45 day_display_item"
                     style={{
                       width: `${(100 / 7) * 6}%`,
                     }}
                   >
                     {timeArr.map((day) => (
                       <div
-                        className="g_flex g_align_cntr g_jstfy_content_cntr"
+                        className="g_flex g-align-center g-justify-center"
                         style={{
                           width: `${100 / timeArr.length}%`,
                         }}
@@ -282,7 +282,7 @@ const dashboard: React.FC = () => {
                       {timeArr.map((tItem, ind) => (
                         <div
                           key={`${tItem.day}tItem`}
-                          className="g_flex g_align_cntr g_jstfy_content_cntr"
+                          className="g_flex g-align-center g-justify-center"
                           style={{
                             width: `${100 / 7}%`,
                           }}

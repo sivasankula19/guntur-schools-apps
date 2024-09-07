@@ -5,7 +5,7 @@ import { convertToMultipleWords } from '../common/utility'
 function StudentInfoProCard({studentInfo}:any) {
   return (
     <IonCard>
-    <IonCardContent className="progerss_student_content">
+    <IonCardContent className="progress_student_content">
       {Object.keys(studentInfo).map((key: string) => (
         <IonItem key={key}>
           <div className="g_flex student_info_item">

@@ -48,10 +48,10 @@ const PreLoginHead: React.FC = () => {
   }, [selectedView])
 
   return (
-    <div className="prelogin_head">
-      <div className="back_btns_holder">
+    <div className="pre-login-head">
+      <div className="back-btn-holder">
         <IonIcon onClick={navigateBack} size="large" icon={arrowBackOutline}></IonIcon>
-        <div className="btns_scroll" ref={btnsScrollRef}>
+        <div className="btn-scroll" ref={btnsScrollRef}>
           {
             preLoginBtns.filter((item) => isAuthenticated ? location.pathname.includes(item.path) : true).map((btn) => (<IonButton className={`${btn.name} ${selectedView === btn.name ? 'selected' : ''}`} onClick={() => handleToolBtns(btn)} key={btn.redirectTo}>{btn.name}</IonButton>))
           }

@@ -14,7 +14,7 @@ function SchoolAssetsSA() {
 
     return (
         <div className='g_full_height school_assets_sa'>
-            <div className='g_flex g_space_btwn'>
+            <div className='g_flex g-space-between'>
                 <GBreadCrumbs data={breadCrumbsValue} />
                 <div className='save_icon'>
                     <IonIcon icon={saveOutline}></IonIcon>
@@ -30,7 +30,7 @@ function SchoolAssetsSA() {
                             toggleIconSlot="end"
                         >
                             <IonItem slot="header" color="light">
-                                <IonLabel className="main-ion-label g-fontweight-600">{item.category}</IonLabel>
+                                <IonLabel className="main-ion-label g-font-weight-600">{item.category}</IonLabel>
                             </IonItem>
                             {<RenderCategories item={item} />}
                         </IonAccordion>
@@ -38,7 +38,7 @@ function SchoolAssetsSA() {
                 </IonAccordionGroup>
             </div>
             <div className='add_assets_cnt p-h-12'>
-                <div className='input_btn_assets g_flex g_space_btwn'>
+                <div className='input_btn_assets g_flex g-space-between'>
                     <input placeholder='Add new category' /> <button>Add</button>
                 </div>
             </div>
@@ -63,7 +63,7 @@ const RenderCategories = ({ item }: any) => {
                         >
                             <IonItem slot="header" color="light" className="border-none">
                                 <div className="school-assets-category"></div>
-                                <IonLabel className="g-fontweight-400 g-fontsize-14 ml-6">{asset.name}</IonLabel>
+                                <IonLabel className="g-font-weight-400 g-font-size-14 ml-6">{asset.name}</IonLabel>
                             </IonItem>
                             {asset.types?.length && <>
                                 <RenderSubtypes subType={asset.types} />
@@ -73,7 +73,7 @@ const RenderCategories = ({ item }: any) => {
                 </IonAccordionGroup>
             </div>
             <div className='add_assets_cnt p-h-12'>
-                <div className='input_btn_assets g_flex g_space_btwn'>
+                <div className='input_btn_assets g_flex g-space-between'>
                     <input placeholder='Add Subcategory' /> <button>Add</button>
                 </div>
             </div>
@@ -86,11 +86,11 @@ const RenderSubtypes = ({ subType }: any) => {
         <div slot="content" className='sub-type-parent'>
             {subType?.map((subtype: any, index: number) => {
                 return (
-                    <div key={index} className="g-fontweight-400 g-fontsize-14 sub-type">{subtype}</div>
+                    <div key={index} className="g-font-weight-400 g-font-size-14 sub-type">{subtype}</div>
                 )
             })}
             <div className='add_assets_cnt'>
-                <div className='input_btn_assets g_flex g_space_btwn'>
+                <div className='input_btn_assets g_flex g-space-between'>
                     <input placeholder='Add Label' /> <button>Add</button>
                 </div>
             </div>

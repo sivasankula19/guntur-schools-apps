@@ -62,9 +62,9 @@ function SchoolSections() {
                     {sectionsListDataApi.map((item) => (
                         <IonCard key={item.id} className="student_card animation-none custom-class-card">
                             <IonCardContent className="card_content">
-                                <div className="g_flex g_space_btwn g_align_cntr">
-                                    <div className="g_flex width-70 g_align_cntr">
-                                        <div className="profile_item g_flex g_align_cntr g_jstfy_content_cntr font-600 font-24">
+                                <div className="g_flex g-space-between g-align-center">
+                                    <div className="g_flex width-70 g-align-center">
+                                        <div className="profile_item g_flex g-align-center g-justify-center font-600 font-24">
                                             {item.SectionIcon}
                                         </div>
                                         <div className="title_designation">
@@ -99,7 +99,7 @@ function SchoolSections() {
                     <div className='field m-bottom-10'>
                         <IonInput value={formValue.className} onIonChange={handleInput} name='className' label="Class Name" labelPlacement="floating" fill="outline" placeholder="Subject Name"></IonInput>
                     </div>
-                    <div className='m-bottom-10 m-left-10 g_flex g_space_btwn'>
+                    <div className='m-bottom-10 m-left-10 g_flex g-space-between'>
                         <IonLabel>{"Add More Sections"}</IonLabel>
                         <IonIcon className='add-sec-circle' icon={addCircleOutline}></IonIcon>
                     </div>

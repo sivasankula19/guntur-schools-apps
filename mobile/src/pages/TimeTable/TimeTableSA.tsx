@@ -135,7 +135,7 @@ const TimeTableSA: React.FC = () => {
                 <div className='m-h-12'>
                     {selectedClass && selectedSection ? (
                         <>
-                            <div className='g_flex g_align_cntr g_space_btwn'>
+                            <div className='g_flex g-align-center g-space-between'>
                                 <IonText>
                                     <p className='font-16 color-app font-600'>
                                         Time Table For {selectedClass ? classList.find((i) => i.classId === selectedClass)?.className : ''}{' '}
@@ -200,11 +200,11 @@ const TimeTableSA: React.FC = () => {
                     )}
                 </div>
             </div>
-            <div className='add_time_blck'>
+            <div className='add-time-block'>
                 <div className='g_flex'>
                     <div className='g_flex'>
                         <IonDatetimeButton datetime='fromDatetime'></IonDatetimeButton>
-                        <IonModal className='custome_date_time_modal period_time_modal' ref={fromModal} keepContentsMounted={true}>
+                        <IonModal className='custom-date-time-modal period_time_modal' ref={fromModal} keepContentsMounted={true}>
                             <IonHeader>
                                 <IonToolbar className='g_txt_center'>
                                     <IonText>
@@ -240,7 +240,7 @@ const TimeTableSA: React.FC = () => {
                     </div>
                     <div className='g_flex'>
                         <IonDatetimeButton datetime='toDatetime'></IonDatetimeButton>
-                        <IonModal className='custome_date_time_modal period_time_modal' ref={toModal} keepContentsMounted={true}>
+                        <IonModal className='custom-date-time-modal period_time_modal' ref={toModal} keepContentsMounted={true}>
                             <IonHeader>
                                 <IonToolbar>
                                     <IonText>

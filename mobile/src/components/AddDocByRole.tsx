@@ -16,7 +16,7 @@ import React, { useRef, useState } from 'react';
 import GImageDocPreview from './GImageDocPreview';
 import { classListDummy, docData } from '../common/utility';
 import CustomizedModal from './GCustomizedModal';
-import CustomSelectDrop from './CustomSelectDrop';
+import GCustomSelectDrop from './GCustomSelectDrop';
 
 interface IProps {
   title?: string;
@@ -41,8 +41,8 @@ const AddDoc: React.FC<IProps> = ({ title, subtitle }) => {
   return (
     <>
       <div className="add_documents_btn">
-        <IonButton onClick={openPopover} className="add-doc-button">
-          <IonIcon icon={addCircleOutline}></IonIcon> Add Doc
+        <IonButton onClick={openPopover} className="add-doc-button g_txt_cap">
+          <IonIcon icon={addCircleOutline}></IonIcon> Add Document
         </IonButton>
       </div>
       <CustomizedModal
@@ -53,26 +53,26 @@ const AddDoc: React.FC<IProps> = ({ title, subtitle }) => {
         onSave={onSave}
       >
         <div>
-          {/* <h1 className="g-fontweight-600 g-fontsize-18 text-color-blue g_flex g_jstfy_content_cntr">Add New Document</h1> */}
-          <p className="g-fontweight-400 g-fontsize-12 g_flex g_jstfy_content_cntr">Select Location for Document</p>
-          <div className="g_flex g_space_btwn">
+          {/* <h1 className="g-font-weight-600 g-font-size-18 text-color-blue g_flex g-justify-center">Add New Document</h1> */}
+          <p className="g-font-weight-400 g-font-size-12 g_flex g-justify-center">Select Location for Document</p>
+          <div className="g_flex g-space-between">
             {[{ 'School Documents': 'School' }, { 'Class Documents': 'Class' }, { 'Personal Documents': 'Personal' }].map((mainLocation: any, index: number) => {
               const key = Object.keys(mainLocation)[0];
               const value = mainLocation[key];
               return (
                 title == Object.keys(mainLocation)[0] ?
-                  <div key={index} className='doc_location_current g_flex g_align_cntr g_space_around'>
-                    <div className='text-color-blue g-fontweight-600 g-fontsize-18'>{value}</div>
-                    <IonIcon className='g-fontsize-16 cicle-icon' icon={checkmarkCircleOutline}></IonIcon>
+                  <div key={index} className='doc_location_current g_flex g-align-center g-space-around'>
+                    <div className='text-color-blue g-font-weight-600 g-font-size-18'>{value}</div>
+                    <IonIcon className='g-font-size-16 circle-icon' icon={checkmarkCircleOutline}></IonIcon>
                   </div>
                   :
-                  <div key={index} className='doc_location g_flex g_align_cntr g_jstfy_content_cntr text-color-blue g-fontweight-600 g-fontsize-18'>{value}</div>
+                  <div key={index} className='doc_location g_flex g-align-center g-justify-center text-color-blue g-font-weight-600 g-font-size-18'>{value}</div>
               )
             })}
           </div>
           <div className='add_doc_sa'>
             <div className='field'>
-            <CustomSelectDrop options={classDummyData} name='classId'
+            <GCustomSelectDrop options={classDummyData} name='classId'
                     value={''} label="Select Class"
                     handleOnChange={()=>{}} classNames='custom-select' />
             </div>

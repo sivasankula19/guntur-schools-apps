@@ -67,21 +67,21 @@ export const DashboardSA = () => {
         <div className='dashboard_sa'>
             <IonCard>
                 <IonCardContent className='resource_content'>
-                    <div className='resources_text g_flex g_space_btwn'>
-                        <div className='g_flex g_align_cntr width-30'>
+                    <div className='resources_text g_flex g-space-between'>
+                        <div className='g_flex g-align-center width-30'>
                             <IonText>
                                 <h1>Resources</h1>
                             </IonText>
                         </div>
-                        <div className='g_flex width-70 btns_resources'>
-                            <button className={`${moduleSelected === 'privateModule' ? 'selected_module_btn' : ''}`} name='privateModule' id='privateModule' onClick={handleModule}>Public Modules</button>
-                            <button className={`${moduleSelected === 'publicModule' ? 'selected_module_btn' : ''}`} name='publicModule' id='publicModule' onClick={handleModule}>Private Modules</button>
+                        <div className='g_flex width-70 btn-resources'>
+                            <button className={`${moduleSelected === 'privateModule' ? 'selected-module-btn' : ''}`} name='privateModule' id='privateModule' onClick={handleModule}>Public Modules</button>
+                            <button className={`${moduleSelected === 'publicModule' ? 'selected-module-btn' : ''}`} name='publicModule' id='publicModule' onClick={handleModule}>Private Modules</button>
                         </div>
                     </div>
                 </IonCardContent>
             </IonCard>
             {moduleSelected !== '' &&
-                (<div className='dsbrd dasbrd_sa'>
+                (<div className='dashboard dashboard-sa'>
                     <NavChipCard
                         isOpen={true}
                         handleView={() => handleModule(null)}
@@ -89,8 +89,8 @@ export const DashboardSA = () => {
                     ></NavChipCard>
                 </div>)
             }
-            <div onClick={handleModule} className='analytics_container'>
-                <div className='g_full_height g_txt_center analytics_holder_ds'>
+            <div onClick={handleModule} className='analytics-container'>
+                <div className='g_full_height g_txt_center analytics-holder-ds'>
                     Analytics Here!
                 </div>
             </div>

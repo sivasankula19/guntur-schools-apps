@@ -50,7 +50,7 @@ const ChatScreen: React.FC = () => {
             <IonToolbar>
               <div className="g_flex custom_chat_tool">
                 <IonIcon onClick={handleNavigateBack} icon={arrowBackOutline} />
-                <div className="g_flex g_align_cntr text_img">
+                <div className="g_flex g-align-center text_img">
                   <div className="chat_profile_icon">
                     <img src="https://www.static-contents.youth4work.com/y4w/Images/Users/3126495.png?v=20180128190106" alt="Profile" />
                   </div>
