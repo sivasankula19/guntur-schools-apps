@@ -21,7 +21,7 @@ interface IProps {
   data: {},
   resetOpenCallback: Function,
 }
-const WibeComments: React.FC<IProps> = ({ isopencomments, data, resetOpenCallback }) => {
+const VibeComments: React.FC<IProps> = ({ isopencomments, data, resetOpenCallback }) => {
 
   const modal = useRef<HTMLIonModalElement>(null);
   const [isOpen, setIsOpen] = useState<boolean>(isopencomments);
@@ -97,7 +97,7 @@ const WibeComments: React.FC<IProps> = ({ isopencomments, data, resetOpenCallbac
                     <p className="g-fontweight-400 g-fontsize-10 m3">{formatTime(comments.commentedBy.time)}</p>
                   </div>
                 </div>
-                <div className='g-fontweight-400 g-fontsize-12 wibe-main-comment'>{comments.comment}</div>
+                <div className='g-fontweight-400 g-fontsize-12 vibe-main-comment'>{comments.comment}</div>
                 <div className='g_flex g_space_btwn m6 ml10' >
                   {repliesUI(comments?.replies)}
                   {likesUI(comments?.likes)}
@@ -106,7 +106,7 @@ const WibeComments: React.FC<IProps> = ({ isopencomments, data, resetOpenCallbac
             )
           })}
         </div>
-        <input className="wibe-comment-reply-input" type="text" placeholder='Reply Text Here!'></input>
+        <input className="vibe-comment-reply-input" type="text" placeholder='Reply Text Here!'></input>
       </IonContent>
     )
   }
@@ -129,4 +129,4 @@ const WibeComments: React.FC<IProps> = ({ isopencomments, data, resetOpenCallbac
   );
 };
 
-export default WibeComments;
+export default VibeComments;

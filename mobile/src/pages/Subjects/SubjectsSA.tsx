@@ -14,7 +14,7 @@ import {
 } from '@ionic/react';
 import { classListDummy, classSubjects, sectionListDummy } from '../../common/utility';
 import ProgressBar from '../../components/ProgressBar';
-import GCustomisedModal from '../../components/GCustomisedModal';
+import CustomizedModal from '../../components/GCustomizedModal';
 import CustomSelectDrop from '../../components/CustomSelectDrop';
 
 function SubjectsSA() {
@@ -147,7 +147,7 @@ function SubjectsSA() {
           ))}
         </IonList>
       </div>
-      <GCustomisedModal
+      <CustomizedModal
         title={`Add Subject For ${selectedClass} - ${selectedSec}`}
         isOpen={isModelOpen}
         onClose={handleModelClose}
@@ -171,7 +171,7 @@ function SubjectsSA() {
             <IonInput value={formValue.subjectDefaultMarks} onIonChange={handleInput} name='subjectDefaultMarks' label="Subject Marks Default" labelPlacement="floating" fill="outline" placeholder="Ex. 100"></IonInput>
           </div>
         </div>
-      </GCustomisedModal>
+      </CustomizedModal>
     </div>
   );
 }

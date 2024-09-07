@@ -57,7 +57,7 @@ export const DashboardSA = () => {
         { id: 10, moduleName: 'Messages', icon: chatboxOutline, redirectTo: '/messages' },
         { id: 11, moduleName: 'Documents', icon: documentOutline, redirectTo: '/documents' },
         { id: 12, moduleName: 'Calendar', icon: calendarOutline, redirectTo: '/calendar' },
-        { id: 13, moduleName: 'Wibe', icon: newspaperOutline, redirectTo: '/school-wibe' },
+        { id: 13, moduleName: 'Vibe', icon: newspaperOutline, redirectTo: '/school-vibe' },
         { id: 14, moduleName: 'Exam Schedules', icon: calendarOutline, redirectTo: '/exam-schedules' },
         { id: 15, moduleName: 'My Dues', icon: walletOutline, redirectTo: '/fee-structure' },
         { id: 16, moduleName: 'Assets', icon: businessOutline, redirectTo: '/assets' },

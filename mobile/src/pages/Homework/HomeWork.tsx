@@ -5,7 +5,7 @@ import { formatDate, homeWorkDataBe } from '../../common/utility';
 import { attachOutline, banOutline, expandOutline, cloudUpload } from 'ionicons/icons';
 import SwapableImages from './SwapableImges';
 import { useSelector } from 'react-redux';
-import GCustomisedModal from '../../components/GCustomisedModal';
+import CustomizedModal from '../../components/GCustomizedModal';
 const HomeWork: React.FC = () => {
 
   const [homeWorkData, setHomeWorkData] = useState<any>([])
@@ -105,7 +105,7 @@ const IonTextAreaUI=(label:string,value:string,ph:string,endIcon?:any,type?:any)
           <IonButton onClick={openPopover} className="add_homework">Add Home Work</IonButton>
       </div> }
       {/* add achievements popup */}
-      <GCustomisedModal
+      <CustomizedModal
           // ref={popover}
           title="Add Homework"
           isOpen={popoverOpen}
@@ -123,7 +123,7 @@ const IonTextAreaUI=(label:string,value:string,ph:string,endIcon?:any,type?:any)
               {IonInputUI('Date','date','Date','date')}              
              </div>
 
-      </GCustomisedModal>
+      </CustomizedModal>
       <div className='home_work'>
         <IonSearchbar placeholder='Search subject or Task name'></IonSearchbar>
         <div className="g_flex g_space_btwn select_conatainer">

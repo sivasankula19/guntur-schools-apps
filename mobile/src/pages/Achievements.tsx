@@ -12,7 +12,7 @@ import {
 } from '@ionic/react';
 import { addOutline, cloudUpload, location, alertCircleOutline, caretDownOutline } from 'ionicons/icons';
 import React, { useState } from 'react';
-import GCustomisedModal from '../components/GCustomisedModal';
+import CustomizedModal from '../components/GCustomizedModal';
 import { useSelector } from 'react-redux';
 
 const Achievements: React.FC = () => {
@@ -211,7 +211,7 @@ const Achievements: React.FC = () => {
           </IonButton>
       </div> }
       {/* add achievements popup */}
-      <GCustomisedModal
+      <CustomizedModal
           // ref={popover}
           title="Add Achievement"
           isOpen={popoverOpen}
@@ -233,7 +233,7 @@ const Achievements: React.FC = () => {
               {IonInputUI('Date','date','Date','date')}              
              </div>
 
-        </GCustomisedModal>
+        </CustomizedModal>
       <div className='school_achieve_title g_flex g_align_cntr g_jstfy_content_cntr text-color-blue g-fontweight-600 g-fontsize-16'>
         School Achievements
       </div>

@@ -25,7 +25,7 @@
 //     trashOutline,
 //   } from 'ionicons/icons';
 //   import React, { useEffect, useRef, useState } from 'react';
-//   import GCustomisedModal from '../components/GCustomisedModal';
+//   import CustomizedModal from '../components/GCustomizedModal';
 //   import { remainderDummyData } from '../common/utility';
 //   import GBreadCrumbs from '../components/GBreadCrumbs';
   
@@ -135,7 +135,7 @@
 //         </div>
   
 //         {/*to be validate to staff and admin modules in further!...  */}
-//         {/* <GCustomisedModal
+//         {/* <CustomizedModal
 //           title="My Modal"
 //           isOpen={eventModal}
 //           onClose={() => {
@@ -224,7 +224,7 @@
 //               </IonSelect>
 //             </IonItem>
 //           </div>
-//         </GCustomisedModal> */}
+//         </CustomizedModal> */}
 //       </div>
 //     );
 //   };

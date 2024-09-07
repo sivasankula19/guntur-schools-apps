@@ -15,7 +15,7 @@ import {
 import React, { useRef, useState } from 'react';
 import GImageDocPreview from './GImageDocPreview';
 import { classListDummy, docData } from '../common/utility';
-import GCustomisedModal from './GCustomisedModal';
+import CustomizedModal from './GCustomizedModal';
 import CustomSelectDrop from './CustomSelectDrop';
 
 interface IProps {
@@ -45,7 +45,7 @@ const AddDoc: React.FC<IProps> = ({ title, subtitle }) => {
           <IonIcon icon={addCircleOutline}></IonIcon> Add Doc
         </IonButton>
       </div>
-      <GCustomisedModal
+      <CustomizedModal
         // ref={popover}
         title="Add New Document"
         isOpen={popoverOpen}
@@ -84,7 +84,7 @@ const AddDoc: React.FC<IProps> = ({ title, subtitle }) => {
             </div>
           </div>
         </div>
-      </GCustomisedModal>
+      </CustomizedModal>
     </>
   );
 };

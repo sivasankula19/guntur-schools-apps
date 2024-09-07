@@ -53,11 +53,10 @@ import FeesDues from './pages/FeesDues';
 import Calendar from './pages/Calendar/Calendar';
 import TimeTable from './pages/TimeTable/TimeTable';
 import Gallery from './pages/Gallery';
-import SchoolWibe from './pages/wibe/SchoolWibe';
+import SchoolVibe from './pages/vibe/SchoolVibe';
 import Achievements from './pages/Achievements';
 import Courses from './pages/Courses/Courses';
 import ContactUs from './pages/ContactUs/ContactUs';
-import AcedamicSubject from './pages/AcedamicSubjects';
 import About from './pages/About/About';
 import ExCircularActivities from './pages/ExCircularActivities';
 import Dairy from './pages/Dairy';
@@ -83,6 +82,7 @@ import StudentListSA from './pages/Students/StudentListSA';
 import StaffListSA from './pages/Staff/StaffListSA';
 import ProgressCardSA from './pages/ProgressCard/ProgressCardSA';
 import ProgressCardSubjectAdd from './pages/ProgressCard/ProgressCardSubjectAdd';
+import AcademicSubject from './pages/AcademicSubject';
 
 setupIonicReact({
   animated: true,
@@ -92,15 +92,15 @@ setupIonicReact({
 
 const App: React.FC = () => {
   const isDarkMode = useSelector((state: any) => state?.darkMode.isDarkMode);
-  const [role, setRole] = useState('Student')
+  const [role, setRole] = useState('Student');
   const currentRole = useSelector((state: any) => state.auth.role);
   const isUserAcknowledgedMode = useSelector(
     (state: any) => state?.darkMode.isUserAcknowledgedMode
   );
-  // const fullstate = useSelector((state: any) => state);
+  // const fullState = useSelector((state: any) => state);
   const school = useSelector((state: any) => state.school.selectedSchool);
   const isAuthenticated = useSelector((state: any) => state.auth.isAuthenticated);
-  // console.log(fullstate)
+  // console.log(fullState)
   // const preLoginModules = useSelector((state:any) => state.)
   const ionRouter = useIonRouter();
 
@@ -166,7 +166,7 @@ const App: React.FC = () => {
         header="Dark Mode!"
         backdropDismiss={false}
         subHeader="Would you like to use Dark Mode ?"
-        message="You can customise it later also in the menu!"
+        message="You can customize it later also in the menu!"
         isOpen={isUserAcknowledgedMode === false}
         buttons={[
           {
@@ -201,7 +201,7 @@ const App: React.FC = () => {
                 <Route path='/students-list' element={role === 'Student' ? <StudentList /> : <StudentListSA />} />
                 <Route path='/staff-list' element={role === 'student' ? <StaffList /> : <StaffListSA />} />
                 <Route path='/subjects' element={role === 'Student' ? <Subjects /> : <SubjectsSA />} />
-                <Route path='/school-wibe' element={<SchoolWibe />} />
+                <Route path='/school-vibe' element={<SchoolVibe />} />
                 <Route path='/documents' element={<Documents />} />
                 <Route path={'/user/:id'} element={<UserByID />} />
                 <Route path='/messages' element={<Messages />} />
@@ -216,7 +216,7 @@ const App: React.FC = () => {
                 <Route path='/gallery' element={<Gallery />} />
                 <Route path='/ex-circular' element={<ExCircularActivities />} />
                 <Route path='/about' element={role === 'Student' ? <About /> : <AboutSuperAdmin />} />
-                <Route path='/academic-subjects' element={<AcedamicSubject />} />
+                <Route path='/academic-subjects' element={<AcademicSubject />} />
                 <Route path='/contact-us' element={role === 'Student' ? <ContactUs /> : <ContactUsSa />} />
                 <Route path='/courses' element={role === 'Student' ? <Courses /> : <CoursesSuperAdmin />} />
                 <Route path='/achievements' element={<Achievements />} />

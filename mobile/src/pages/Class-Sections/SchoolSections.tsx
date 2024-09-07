@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { IonButton, IonCard, IonCardContent, IonIcon, IonInput, IonLabel } from '@ionic/react';
-import GCustomisedModal from '../../components/GCustomisedModal';
+import CustomizedModal from '../../components/GCustomizedModal';
 import { addCircleOutline } from 'ionicons/icons';
 
 function SchoolSections() {
@@ -89,7 +89,7 @@ function SchoolSections() {
                 </div>
             </div>
 
-            <GCustomisedModal
+            <CustomizedModal
                 title={`Add Class`}
                 isOpen={isAddClassModal}
                 onClose={handleModelClose}
@@ -107,7 +107,7 @@ function SchoolSections() {
                         <IonInput value={formValue.classIconValue} onIonChange={handleInput} name='classIconValue' label="Class Icon Value" labelPlacement="floating" fill="outline" placeholder="Ex. 10"></IonInput>
                     </div>
                 </div>
-            </GCustomisedModal>
+            </CustomizedModal>
         </div>
     )
 }
