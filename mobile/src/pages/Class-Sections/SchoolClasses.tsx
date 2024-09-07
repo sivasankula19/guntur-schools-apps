@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { IonButton, IonCard, IonCardContent, IonIcon, IonInput, IonLabel, IonSelect, IonSelectOption, IonText } from '@ionic/react';
-import GCustomisedModal from '../../components/GCustomisedModal';
+import CustomizedModal from '../../components/GCustomizedModal';
 import { addCircleOutline, closeCircleOutline } from 'ionicons/icons';
 import { useNavigate } from 'react-router';
 
@@ -137,7 +137,7 @@ function SchoolClasses() {
         </div>
       </div>
 
-      <GCustomisedModal
+      <CustomizedModal
         title={`Add Class`}
         isOpen={isAddClassModal}
         onClose={handleModelClose}
@@ -187,7 +187,7 @@ function SchoolClasses() {
             <IonInput value={formValue.classIconValue} onIonChange={handleInput} name='classIconValue' label="Class Icon Value" labelPlacement="floating" fill="outline" placeholder="Ex. 10"></IonInput>
           </div>
         </div>
-      </GCustomisedModal>
+      </CustomizedModal>
     </div>
   )
 }

@@ -833,6 +833,10 @@ ion-header {
   width: 70%;
 }
 
+.width-65{
+  width: 65%;
+}
+
 .width-60 {
   width: 60%;
 }
@@ -1725,6 +1729,7 @@ ion-breadcrumbs {
   font-weight: bold;
   width: 38%;
   height: 30px;
+  --border-radius: 12px;
   --padding-top: 0px;
   --padding-bottom: 0px;
 }
@@ -1746,6 +1751,7 @@ ion-breadcrumbs {
 .add-doc-button {
   --background: #ffffff;
   --color: #1D7AF5;
+  --border-radius:12px;
   --ion-toolbar-background: none;
   --border-color: #1D7AF5;
   --border-style: solid;
@@ -1757,6 +1763,10 @@ ion-breadcrumbs {
   min-height: auto;
   height: 4vh !important;
   margin-bottom: 1vh;
+}
+
+.add-doc-button ion-icon{
+  margin-right: 8px;
 }
 
 .doc_location {
@@ -3943,13 +3953,13 @@ label.input-wrapper.sc-ion-input-ios {
   font-size: 50px;
 }
 
-/* School wibe */
+/* School vibe */
 
-.scl_wibe {
+.scl_vibe {
   height: calc(100% - 40px);
 }
 
-.scl_wibe .toggle_io {
+.scl_vibe .toggle_io {
   margin: 8px 16px;
   display: flex;
   justify-content: center;
@@ -3957,7 +3967,7 @@ label.input-wrapper.sc-ion-input-ios {
 
 }
 
-.scl_wibe .custom_msg_card {
+.scl_vibe .custom_msg_card {
   animation: slideInFromLeft 0.8s linear;
   margin: 0 12px 8px 12px;
 }
@@ -3967,7 +3977,7 @@ label.input-wrapper.sc-ion-input-ios {
   width: 96%;
 }
 
-.date_select_wibe {
+.date_select_vibe {
   height: 40px;
   width: 96%;
   border-radius: 8px;
@@ -3975,20 +3985,20 @@ label.input-wrapper.sc-ion-input-ios {
   padding: 4px 8px;
 }
 
-.dark .date_select_wibe {
+.dark .date_select_vibe {
   background: #2f2f2f;
 }
 
-.date_wibe_container {
+.date_vibe_container {
   display: flex;
   justify-content: flex-end;
 }
 
-.scl_wibe .custom_msg_content {
+.scl_vibe .custom_msg_content {
   padding: 8px;
 }
 
-.scl_wibe .custom_sub_item {
+.scl_vibe .custom_sub_item {
   --background: transparent;
   --inner-border-width: 0;
 }
@@ -4001,16 +4011,16 @@ label.input-wrapper.sc-ion-input-ios {
   padding-left: 2%;
 }
 
-.wibe_posts ion-card-content {
+.vibe_posts ion-card-content {
   padding: 0;
 }
 
-.wibe_posts .header_post {
+.vibe_posts .header_post {
   background: #F5F5F5;
   padding: 8px;
 }
 
-.dark .wibe_posts .header_post {
+.dark .vibe_posts .header_post {
   background-color: #3d3d3d;
 }
 
@@ -4018,12 +4028,13 @@ label.input-wrapper.sc-ion-input-ios {
   height: calc(100% - 174px);
 }
 
-.wibe_posts {
+.vibe_posts {
   overflow-y: auto;
   background: #ffffff;
+  padding-bottom: 120px;
 }
 
-.dark .wibe_posts {
+.dark .vibe_posts {
   background-color: #000000;
 }
 
@@ -4031,27 +4042,27 @@ label.input-wrapper.sc-ion-input-ios {
   height: calc(100% - 46px);
 }
 
-.wibe_posts .profile_name {
+.vibe_posts .profile_name {
   display: flex;
   align-items: center;
   height: 100%;
   width: calc(100% - 54px);
 }
 
-.wibe_posts .wibe_profile {
+.vibe_posts .vibe_profile {
   width: 40px;
   height: 40px;
   border-radius: 40px;
   border: 1px solid;
 }
 
-.wibe_posts .wibe_profile img {
+.vibe_posts .vibe_profile img {
   width: 100%;
   height: 100%;
   border-radius: 36px;
 }
 
-.wibe_posts .post_title_wrap {
+.vibe_posts .post_title_wrap {
   padding-left: 12px;
   width: calc(100% - 40px);
 }
@@ -4532,13 +4543,13 @@ label.input-wrapper.sc-ion-input-ios {
   margin-left: 6px;
 }
 
-.wibe-main-comment {
+.vibe-main-comment {
   width: 80vw;
   margin-left: 10vw;
   margin-top: 5px;
 }
 
-.wibe-comment-reply-input {
+.vibe-comment-reply-input {
   border: 1px solid #1D7AF5;
   outline: none;
   border-radius: 12px;
@@ -4577,7 +4588,7 @@ label.input-wrapper.sc-ion-input-ios {
   margin-top: 2vh;
 }
 
-.wibe-profile {
+.vibe-profile {
   height: 30px;
   width: 30px;
   border-radius: 50px;
@@ -4799,13 +4810,6 @@ label.input-wrapper.sc-ion-input-ios {
   display: flex;
 }
 
-/* .sec-add-show ion-icon{
-  font-size: 32px;
-  margin-top: 12px;
-  margin-left: 4px;
-  color: #1D7AF5;
-} */
-
 .school-classes .section-show-con {
   margin-top: 12px;
   display: flex;
@@ -4904,7 +4908,16 @@ label.input-wrapper.sc-ion-input-ios {
   margin: 12px;
 }
 
+.add-vibe-post {
+  position: absolute;
+  bottom: 44px;
+  z-index: 1;
+  right: 12px;
+}
 
+.post-add-modal ion-textarea{
+  padding-bottom: 8px;
+}
 
 
 

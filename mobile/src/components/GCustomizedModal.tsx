@@ -14,7 +14,7 @@ import {
 import { closeOutline } from 'ionicons/icons';
 import React, { useRef } from 'react';
 
-const GCustomisedModal: React.FC<ICustomModalProps> = ({
+const CustomizedModal: React.FC<ICustomModalProps> = ({
   title,
   onClose,
   onSave,
@@ -103,4 +103,4 @@ interface ICustomModalProps {
   styles?: React.CSSProperties
 }
 
-export default GCustomisedModal;
+export default CustomizedModal;

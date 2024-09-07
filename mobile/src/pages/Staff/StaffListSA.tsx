@@ -14,7 +14,7 @@ import { classListDummy, genderListDummy, sectionListDummy, staffDummyArr } from
 import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
-import GCustomisedModal from '../../components/GCustomisedModal';
+import CustomizedModal from '../../components/GCustomizedModal';
 import CustomSelectDrop from '../../components/CustomSelectDrop';
 
 interface IStaffForm {
@@ -86,8 +86,8 @@ const StaffListSA: React.FC = () => {
         navigate(item.redirectTo);
     }
 
-    const handleViewMore = (id: string) => {
-        setCurrentSelected(id)
+    const handleViewMore = (id: string, isClose: boolean = false) => {
+        setCurrentSelected(isClose ? '': id);
     }
 
     const handleEditClass = (item: any) => {
@@ -193,7 +193,7 @@ const StaffListSA: React.FC = () => {
                     <IonCard key={item.id} className={`student_card animation-none custom-class-card ${currentSelected === item.id ? 'custom-class-card-selected' : ''}`}>
                         <IonCardContent className="card_content">
                             <div className="g_flex g_space_btwn g_align_cntr">
-                                <div className="g_flex first_container width-70 g_align_cntr">
+                                <div className="g_flex first_container width-65 g_align_cntr">
                                     <div className="profile_item">
                                         <img
                                             onClick={() => navigateToUser(item.id)}
@@ -214,7 +214,7 @@ const StaffListSA: React.FC = () => {
                                         <span className="user_id_data g_text_ellipses">ID : {item.id}</span>
                                     </div>
                                     <div className="g_flex">
-                                        <a onClick={() => handleViewMore(item.id)}>View More</a> <a className='edit-a-student' onClick={() => handleEditClass(item)}>Edit</a>
+                                        <a onClick={() => handleViewMore(item.id, currentSelected === item.id)}>{currentSelected === item.id ? 'View Less' : 'View More'}</a> <a className='edit-a-student' onClick={() => handleEditClass(item)}>Edit</a>
                                     </div>
                                 </div>
                             </div>
@@ -229,7 +229,7 @@ const StaffListSA: React.FC = () => {
                     </IonCard>
                 ))}
             </div>
-            <GCustomisedModal
+            <CustomizedModal
                 title={`Add Employee`}
                 isOpen={isAddClassModal}
                 onClose={handleModelClose}
@@ -270,7 +270,7 @@ const StaffListSA: React.FC = () => {
                         <IonInput value={formValue.defaultPassword} onIonChange={handleInput} name='defaultPassword' label="Default Password" labelPlacement="floating" fill="outline" placeholder="Default User Password"></IonInput>
                     </div>
                 )}
-            </GCustomisedModal>
+            </CustomizedModal>
         </div>
     );
 };

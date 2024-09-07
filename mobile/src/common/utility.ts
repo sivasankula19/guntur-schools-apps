@@ -1035,7 +1035,7 @@ export const msgDummyData =  [
 ];
 
 
-export const wibePostsData =  [
+export const vibePostsData =  [
   {
     postId: '1',
     type:'general',

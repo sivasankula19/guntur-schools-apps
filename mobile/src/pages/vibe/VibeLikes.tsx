@@ -20,7 +20,7 @@ interface IProps {
   data: {},
   resetOpenCallback: Function,
 }
-const WibeLikes: React.FC<IProps> = ({ isopenlikes, data, resetOpenCallback }) => {
+const VibeLikes: React.FC<IProps> = ({ isopenlikes, data, resetOpenCallback }) => {
 
   const modal = useRef<HTMLIonModalElement>(null);
   const [isOpen, setIsOpen] = useState<boolean>(isopenlikes);
@@ -84,7 +84,7 @@ const LikesUI = ({likesData,formatDate, formatTime}:any) => {
           return (
             <div className='g_flex g_space_btwn m6' key={index}>
               <div className='g_flex g_align_cntr' >
-                <img className='wibe-profile' src={likes.img} alt="profile"></img>
+                <img className='vibe-profile' src={likes.img} alt="profile"></img>
                 <div>
                   <p className="g-fontweight-600 g-fontsize-14 text-color-blue m3">{likes.liked_by}</p>
                   <p className="g-fontweight-400 g-fontsize-12 m3">{likes.designation} / {likes.user_id} </p>
@@ -102,6 +102,6 @@ const LikesUI = ({likesData,formatDate, formatTime}:any) => {
   )
 }
 
-export default WibeLikes;
+export default VibeLikes;
 
 

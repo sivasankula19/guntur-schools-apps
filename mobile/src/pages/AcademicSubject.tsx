@@ -2,7 +2,7 @@ import { IonBreadcrumb, IonBreadcrumbs } from '@ionic/react';
 import React from 'react';
 import GBreadCrumbs from '../components/GBreadCrumbs';
 
-const AcedamicSubject: React.FC = () => {
+const AcademicSubject: React.FC = () => {
 
   const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Acedamic Subjects', path: '/' }];
 
@@ -13,4 +13,4 @@ const AcedamicSubject: React.FC = () => {
   );
 };
 
-export default AcedamicSubject;
+export default AcademicSubject;
