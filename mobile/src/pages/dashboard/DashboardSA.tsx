@@ -1,5 +1,5 @@
 import { IonCard, IonCardContent, IonText } from '@ionic/react';
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import NavChipCard from '../../components/NavChipsCard';
 import './Dashboard.css';
 import {
@@ -21,9 +21,11 @@ import {
     trophyOutline,
     walletOutline,
 } from 'ionicons/icons';
+import DashboardTimeView from './DashboardTimeView';
 
 export const DashboardSA = () => {
     const [moduleSelected, setModuleSelected] = useState('publicModule');
+    const dashboardRef = useRef<any>(null);
 
     const handleModule = (e: any) => {
         let value = e?.target?.name || ''
@@ -93,7 +95,9 @@ export const DashboardSA = () => {
                 <div className='g_full_height g_txt_center analytics-holder-ds'>
                     Analytics Here!
                 </div>
+                <DashboardTimeView dashboardRef={dashboardRef} />
             </div>
         </div>
     )
 }
+

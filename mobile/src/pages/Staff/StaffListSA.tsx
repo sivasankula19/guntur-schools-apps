@@ -75,10 +75,10 @@ const StaffListSA: React.FC = () => {
     const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Employee List', path: '/staff-list' }];
 
     const navigateEle = [
-        { id: 1, elementName: 'Progress Card', redirectTo: '/progress-card' },
-        { id: 2, elementName: 'Attendance', redirectTo: '/attendance-by-student' },
-        { id: 3, elementName: 'Fees Dues', redirectTo: '/fee-structure' },
-        { id: 4, elementName: 'Home Work', redirectTo: '/home-work' },
+        { id: 1, elementName: 'Time Table', redirectTo: '/time-table' },
+        { id: 2, elementName: 'Subjects', redirectTo: '/subjects' },
+        { id: 3, elementName: 'Messages', redirectTo: '/messages' },
+        { id: 4, elementName: 'Classes', redirectTo: '/school-classes' },
     ]
 
     const handleNavigate = (item: any) => {
