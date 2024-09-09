@@ -311,10 +311,12 @@
 .dashboard-sa {
     width: 100%;
     position: absolute;
+    z-index: 9;
 }
 
 .analytics-container {
     height: calc(100% - 102px);
+    overflow-y: auto;
 }
 
 .analytics-holder-ds {
@@ -326,4 +328,5 @@
     justify-content: center;
     align-items: center;
     margin-top: 40px;
+    margin-bottom: 40px;
 }

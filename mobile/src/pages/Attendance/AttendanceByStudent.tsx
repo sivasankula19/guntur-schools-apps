@@ -48,7 +48,6 @@ function AttendanceByStudent() {
             calculatedYears.unshift(currentYear - 1);
         }
         setYearCalculatedData(calculatedYears)
-        console.log(currentMonth, currentYear, calculatedYears);
         setSearchResult(searchStudentsData);
         window.addEventListener('click', handleScreenClick);
         return () => {
