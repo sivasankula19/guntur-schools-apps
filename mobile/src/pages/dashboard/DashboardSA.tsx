@@ -24,7 +24,7 @@ import {
 import DashboardTimeView from './DashboardTimeView';
 
 export const DashboardSA = () => {
-    const [moduleSelected, setModuleSelected] = useState('publicModule');
+    const [moduleSelected, setModuleSelected] = useState('');
     const dashboardRef = useRef<any>(null);
 
     const handleModule = (e: any) => {
@@ -76,8 +76,8 @@ export const DashboardSA = () => {
                             </IonText>
                         </div>
                         <div className='g_flex width-70 btn-resources'>
-                            <button className={`${moduleSelected === 'privateModule' ? 'selected-module-btn' : ''}`} name='privateModule' id='privateModule' onClick={handleModule}>Public Modules</button>
-                            <button className={`${moduleSelected === 'publicModule' ? 'selected-module-btn' : ''}`} name='publicModule' id='publicModule' onClick={handleModule}>Private Modules</button>
+                            <button className={`${moduleSelected === 'privateModule' ? 'selected-module-btn' : ''}`} name='privateModule' id='privateModule' onClick={handleModule}>Private Modules</button>
+                            <button className={`${moduleSelected === 'publicModule' ? 'selected-module-btn' : ''}`} name='publicModule' id='publicModule' onClick={handleModule}>Public Modules</button>
                         </div>
                     </div>
                 </IonCardContent>
@@ -87,11 +87,11 @@ export const DashboardSA = () => {
                     <NavChipCard
                         isOpen={true}
                         handleView={() => handleModule(null)}
-                        chips={moduleSelected === 'privateModule' ? chipsDataPrivate : chipsDataPublic}
+                        chips={moduleSelected === 'publicModule' ? chipsDataPrivate : chipsDataPublic}
                     ></NavChipCard>
                 </div>)
             }
-            <div onClick={handleModule} className='analytics-container'>
+            <div onClick={handleModule} className='analytics-container p-h-10'>
                 <div className='g_full_height g_txt_center analytics-holder-ds'>
                     Analytics Here!
                 </div>

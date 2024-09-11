@@ -177,13 +177,18 @@ ion-header {
 
 /* app header */
 
-.header_caret ion-button {
-  --color: #000000;
-  --padding-end: 8px;
-  --padding-start: 8px;
+.header_caret ion-label{
+  position: relative;
+  top: 4px;
+  right: 12px;
+  color: #ffffff;
+  font-size: 12px;
+  height: 10px;
 }
 
-.dark .header_caret ion-button {
+.header_caret ion-button {
+  --padding-end: 8px;
+  --padding-start: 8px;
   --color: #ffffff;
 }
 
@@ -534,13 +539,20 @@ ion-header {
   --border-radius: 12px;
 }
 
+.m-top-20{
+  margin-top: 20px;
+}
+
+.m-top-16 {
+  margin-top: 16px;
+}
 
 .m-top-10 {
   margin-top: 10px;
 }
 
-.m-top-12 {
-  margin-top: 12px;
+.m-top-8 {
+  margin-top: 8px;
 }
 
 .m-bottom-10 {
@@ -549,6 +561,10 @@ ion-header {
 
 .m-left-10 {
   margin-left: 10px;
+}
+
+.m-right-8{
+  margin-right: 8px;
 }
 
 .m-right-10 {
@@ -605,6 +621,14 @@ ion-header {
 
 .p-12 {
   padding: 12px;
+}
+
+.p-t-10{
+  padding-top: 10px;
+}
+
+.p-b-8{
+  padding-bottom: 8px;
 }
 
 .p-10 {
@@ -1095,6 +1119,10 @@ ion-toggle::part(track) {
 
 .filter_card_content {
   padding: 8px;
+}
+
+.filter_card_content ion-searchbar{
+  padding: 0 0 10px 0;
 }
 
 @keyframes slideInFromLeft {
@@ -1882,6 +1910,12 @@ ion-breadcrumbs {
 
 .progress_container {
   width: 50%;
+}
+
+.subject_item_card_content {
+  border: 1px solid;
+  border-bottom: 5px solid;
+  border-color: #1D7AF5;
 }
 
 .subject_item_card_content ion-item {
@@ -3735,6 +3769,11 @@ label.input-wrapper.sc-ion-input-ios {
   font-size: 28px;
 }
 
+.popover_actions {
+  max-height: 40vh;
+  overflow-y: auto;
+}
+
 .popover_actions ion-icon {
   font-size: 22px;
   margin-right: 8px;
@@ -4157,6 +4196,7 @@ label.input-wrapper.sc-ion-input-ios {
 
 .home_work_container ion-card {
   margin: 12px 0;
+  border-radius: 6px;
 }
 
 .home_work_container ion-card-content {
@@ -4883,6 +4923,7 @@ label.input-wrapper.sc-ion-input-ios {
 
 .add-employee-student {
   margin: 12px;
+  height: 40px;
 }
 
 .add-vibe-post {
@@ -4901,3 +4942,102 @@ label.input-wrapper.sc-ion-input-ios {
   display: flex;
   align-items: center;
 }
+
+/* Notifications */
+
+ion-popover {
+  --width: 75%;
+  --max-width: 400px;
+}
+
+.notification-popover{
+  --width:90%;
+}
+
+.notifications-page {
+  height: calc(100% - 86px);
+  overflow-y: auto;
+}
+
+.notify-msgs-text{
+  width: calc(100% - 50px);
+}
+
+.menu-notify-text p{
+  font-size: 16px;
+}
+
+.menu-notify-msg-text p {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.exams-schedule-sa{
+  height: calc(100% - 190px);
+  overflow-y: auto;
+}
+
+.exams-schedule-sa ion-card{
+  margin: 12px 0;
+}
+
+.exam-card-sa{
+  padding: 12px;
+  border: 1px solid;
+  border-bottom: 5px solid;
+  border-color: #1D7AF5;
+}
+
+.exam-card-sa .heading-text-exam{
+  width: calc(100% - 120px);
+}
+
+.exam-card-sa .heading-text-exam h3{
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.status-edit-exam{
+  width: 110px;
+}
+
+.exam-card-sa ion-icon{
+  font-size: 26px;
+}
+
+.exam-card-sa .conducts-on-date{
+  width: auto;
+  height: 30px;
+  border-radius: 8px;
+  border: 1px solid;
+  border-color: #1D7AF5;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
+}
+
+.exam-card-sa .conducts-on-date{
+  margin: 0;
+}
+
+.exam-card-sa .conducts-on-date ion-icon{
+  font-size: 20px;
+  margin-left: 12px;
+}
+
+.exam-card-sa .view-more-exam {
+  display: flex;
+  align-items: flex-end;
+}
+
+.exm-title-view{
+  text-align: center;
+}
+
+.exm-title-view p{
+  font-size: 16px;
+  color: #1D7AF5;
+  font-weight: 600;
+}
+

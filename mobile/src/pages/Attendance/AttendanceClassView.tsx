@@ -91,7 +91,7 @@ function AttendanceClassView() {
                         <p className='font-12'>Attendance for {classId} / {sectionId} / {selectedDate}</p>
                     </IonText>
                 </div>
-                <div className='g_flex g-align-center'>
+                <div className='g_flex g-align-center p-b-8'>
                     <div className='width-40'>
                         <IonLabel>
                             Default Apply
