@@ -1796,3 +1796,13 @@ export const searchStudentsData = [
   {id:10, studentName:'Siva Sankula', regNumber:'GHMS000120',className:'8th Class', sectionName:'B Section'}
 ]
 
+export const notificationSampleData = [
+  {id:1, moduleName:'StudentsList',type:'New Student Registered', message:'A New Student named Siva Sankula from class 9th b section is Registered for this academic year!.',data:{classId:'', sectionId:'', searchStr:'Siva Sankula',}},
+  {id:2, moduleName:'Messages', type:'New Text Message', message:'You have got a message from Narra Deva y12C00029.', data:{message:'Can we meet today?.',userId:'y12C0029'}},
+  {id:3, moduleName:'Documents', type:'New Document Added', message:'A New Documents is Added in 9th class documents list.', data:{category:'Class Documents', subCategory:'9th Class' }},
+  {id:4, moduleName:'Attendance', type:'Attendance Marked',message:'Your Attendance for 10/09/2024 am session is marked as Present.', },
+  {id:5, moduleName:'ProgressCard', type:'Progress Report', message:'Your Progress report for unit test 2 is available now!.', },
+  {id:6, moduleName:'HomeWork', type:'Home Work Added', message:'You have been assigned for today homework given by Siva Sir , please visit here!.', data:{taskNameStr:'Trigonometry assessment', date:'10/09/2024'}},
+  {id:7, moduleName:'ExamSchedule', type:'Exam Schedule', message:'Exam schedule for academic year 2024-2025 unit test 2 was added please check here!.'},
+  {id:8, moduleName:'Vibe', type:'A New Comment',message:'A New Comment for your post Post Title is added by minoosh reddy y12C00014.', data:{comment:'Cheers up!...', searchStr:'Post Title',postedBy:'Siva Sankula'}}
+]

@@ -84,6 +84,7 @@ import ProgressCardSA from './pages/ProgressCard/ProgressCardSA';
 import ProgressCardSubjectAdd from './pages/ProgressCard/ProgressCardSubjectAdd';
 import AcademicSubject from './pages/AcademicSubject';
 import ExamScheduleSA from './pages/ExamSchedule/ExamScheduleSA';
+import NotificationsList from './pages/NotificationsList';
 
 setupIonicReact({
   animated: true,
@@ -213,6 +214,7 @@ const App: React.FC = () => {
                 <Route path='/diary' element={<Dairy />} />
                 <Route path='/school-classes' element={<SchoolClasses />} />
                 <Route path='/school-sections' element={<SchoolSections />} />
+                <Route path='/my-notifications' element={<NotificationsList />} />
                 {/* public modules! */}
                 <Route path='/gallery' element={<Gallery />} />
                 <Route path='/ex-circular' element={<ExCircularActivities />} />
