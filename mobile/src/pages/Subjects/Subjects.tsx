@@ -6,13 +6,13 @@ import {
   IonList,
   IonSearchbar,
   IonText,
-  IonToggle,
 } from '@ionic/react';
 import React, { useState } from 'react';
 import { classSubjects } from '../../common/utility';
 import { starOutline } from 'ionicons/icons';
 import ProgressBar from '../../components/ProgressBar';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
+import GCustomToggle from '../../components/GCustomToggle';
 
 const Subjects: React.FC = () => {
   const [data, setData] = useState(classSubjects);
@@ -36,18 +36,7 @@ const Subjects: React.FC = () => {
       <div className="g_flex g-space-between g-align-center bread_toggle_container">
         <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
         <div>
-          <IonToggle
-            className="custom-toggle"
-            checked={isFilterEnabled}
-            onIonChange={handleToggleChange}
-          >
-            <span
-              className={`toggle-text ${isFilterEnabled ? 'enabled_filter' : 'disabled_filter'
-                }`}
-            >
-              {isFilterEnabled ? 'On' : 'Off'}
-            </span>
-          </IonToggle>
+          <GCustomToggle checked={isFilterEnabled} onHandleChange={handleToggleChange}/>
         </div>
       </div>
       <IonItem className="custom_sub_item">

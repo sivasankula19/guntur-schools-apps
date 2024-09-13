@@ -205,6 +205,10 @@
     position: relative;
 }
 
+.dark .time_day_view_con ion-list {
+    background: #000000;
+}
+
 .current-time-indicator {
     position: absolute;
     top: 14px;

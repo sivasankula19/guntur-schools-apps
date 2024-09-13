@@ -19,6 +19,15 @@
   background: #555;
 }
 
+ion-card ion-card-content {
+  background: #ffffff;
+}
+
+.dark ion-card ion-card-content {
+  background: #000000;
+  border-radius: 8px;
+}
+
 .custom_content_view {
   --overflow: hidden;
 }
@@ -177,7 +186,7 @@ ion-header {
 
 /* app header */
 
-.header_caret ion-label{
+.header_caret ion-label {
   position: relative;
   top: 4px;
   right: 12px;
@@ -539,7 +548,11 @@ ion-header {
   --border-radius: 12px;
 }
 
-.m-top-20{
+.m-top-0{
+  margin-top: 0 !important;
+}
+
+.m-top-20 {
   margin-top: 20px;
 }
 
@@ -563,7 +576,7 @@ ion-header {
   margin-left: 10px;
 }
 
-.m-right-8{
+.m-right-8 {
   margin-right: 8px;
 }
 
@@ -623,11 +636,11 @@ ion-header {
   padding: 12px;
 }
 
-.p-t-10{
+.p-t-10 {
   padding-top: 10px;
 }
 
-.p-b-8{
+.p-b-8 {
   padding-bottom: 8px;
 }
 
@@ -637,6 +650,10 @@ ion-header {
 
 .p-h-12 {
   padding: 0 12px;
+}
+
+.m-h-10 {
+  margin: 0 16px;
 }
 
 .p-h-10 {
@@ -1032,8 +1049,20 @@ ion-breadcrumb {
   }
 }
 
+.dark .g_bread {
+  box-shadow: 0px 1px 4px rgba(255, 255, 255, 0.6) !important;
+}
+
 .g_bread_last {
   cursor: not-allowed;
+}
+
+.g_bread_last p {
+  color: #696969;
+}
+
+.dark .g_bread_last p {
+  color: lightgray;
 }
 
 .dark .g_bread {
@@ -1121,7 +1150,7 @@ ion-toggle::part(track) {
   padding: 8px;
 }
 
-.filter_card_content ion-searchbar{
+.filter_card_content ion-searchbar {
   padding: 0 0 10px 0;
 }
 
@@ -1698,7 +1727,7 @@ ion-breadcrumbs {
 /* ion modal */
 
 .dark ion-modal {
-  --ion-backdrop-color: #fff;
+  --ion-backdrop-color: #959595;
 }
 
 .g-customized-modal {
@@ -1939,6 +1968,10 @@ ion-breadcrumbs {
   cursor: pointer;
 }
 
+.dark .subject_item_card_content ion-item {
+  --background: #000000 !important;
+}
+
 /* progress bar */
 
 .progress_bar {
@@ -1995,7 +2028,8 @@ ion-breadcrumbs {
 }
 
 .profile-card {
-  border: 1px solid rgb(216, 227, 235);
+  border: 1px solid;
+  border-color: #1D7AF5;
   width: 90%;
   height: 100%;
   padding: 5px;
@@ -2004,6 +2038,11 @@ ion-breadcrumbs {
   align-items: center;
   margin: 0 10px;
   justify-content: center;
+  background: #ffffff;
+}
+
+.dark .profile-card {
+  background: #000000;
 }
 
 .profile-card .icon_full_expand {
@@ -2377,7 +2416,7 @@ ion-breadcrumbs {
   --padding-start: 8px;
   --padding-end: 0px;
   --inner-padding-end: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.6) !important;
   border-radius: 8px;
   padding-bottom: 4px;
   margin: 4px;
@@ -3477,6 +3516,8 @@ label.input-wrapper.sc-ion-input-ios {
 
 .ex_circular ion-card {
   margin: 12px 0;
+  border: 1px solid;
+  border-color: #1D7AF5;
 }
 
 .ex_circular ion-card-content {
@@ -3655,6 +3696,10 @@ label.input-wrapper.sc-ion-input-ios {
   overflow-y: auto;
 }
 
+.dark .chat_list ion-item {
+  --background: #000000;
+}
+
 .messages .select_chat .filter_chat ion-button {
   min-height: 30px;
   height: 36px;
@@ -3772,6 +3817,18 @@ label.input-wrapper.sc-ion-input-ios {
 .popover_actions {
   max-height: 40vh;
   overflow-y: auto;
+}
+
+.dark .popover_actions ion-item {
+  --background: #000000;
+}
+
+.dark .popover_actions ion-item p {
+  color: #ffffff;
+}
+
+.dark .popover_actions ion-item ion-icon {
+  color: #ffffff;
 }
 
 .popover_actions ion-icon {
@@ -4030,6 +4087,7 @@ label.input-wrapper.sc-ion-input-ios {
 
 .vibe_posts ion-card-content {
   padding: 0;
+  background: #202020 !important;
 }
 
 .vibe_posts .header_post {
@@ -4837,6 +4895,7 @@ label.input-wrapper.sc-ion-input-ios {
 
 .nav-ele-show-con {
   margin-top: 12px;
+  padding-bottom: 4px;
   display: flex;
   width: 100%;
   overflow-x: auto;
@@ -4917,9 +4976,20 @@ label.input-wrapper.sc-ion-input-ios {
   cursor: pointer;
 }
 
+.dark .disabled-edit {
+  color: #656565 !important;
+}
+
 .disabled-edit {
   color: lightgray !important;
 }
+
+/* ion backdrop */
+
+.dark ion-backdrop {
+  background: #656565 !important;
+}
+
 
 .add-employee-student {
   margin: 12px;
@@ -4950,8 +5020,8 @@ ion-popover {
   --max-width: 400px;
 }
 
-.notification-popover{
-  --width:90%;
+.notification-popover {
+  --width: 90%;
 }
 
 .notifications-page {
@@ -4959,11 +5029,11 @@ ion-popover {
   overflow-y: auto;
 }
 
-.notify-msgs-text{
+.notify-msgs-text {
   width: calc(100% - 50px);
 }
 
-.menu-notify-text p{
+.menu-notify-text p {
   font-size: 16px;
 }
 
@@ -4972,40 +5042,40 @@ ion-popover {
   font-weight: 600;
 }
 
-.exams-schedule-sa{
+.exams-schedule-sa {
   height: calc(100% - 190px);
   overflow-y: auto;
 }
 
-.exams-schedule-sa ion-card{
+.exams-schedule-sa ion-card {
   margin: 12px 0;
 }
 
-.exam-card-sa{
+.exam-card-sa {
   padding: 12px;
   border: 1px solid;
   border-bottom: 5px solid;
   border-color: #1D7AF5;
 }
 
-.exam-card-sa .heading-text-exam{
+.exam-card-sa .heading-text-exam {
   width: calc(100% - 120px);
 }
 
-.exam-card-sa .heading-text-exam h3{
+.exam-card-sa .heading-text-exam h3 {
   font-size: 14px;
   font-weight: 600;
 }
 
-.status-edit-exam{
+.status-edit-exam {
   width: 110px;
 }
 
-.exam-card-sa ion-icon{
+.exam-card-sa ion-icon {
   font-size: 26px;
 }
 
-.exam-card-sa .conducts-on-date{
+.exam-card-sa .conducts-on-date {
   width: auto;
   height: 30px;
   border-radius: 8px;
@@ -5017,11 +5087,11 @@ ion-popover {
   margin-left: 8px;
 }
 
-.exam-card-sa .conducts-on-date{
+.exam-card-sa .conducts-on-date {
   margin: 0;
 }
 
-.exam-card-sa .conducts-on-date ion-icon{
+.exam-card-sa .conducts-on-date ion-icon {
   font-size: 20px;
   margin-left: 12px;
 }
@@ -5031,13 +5101,127 @@ ion-popover {
   align-items: flex-end;
 }
 
-.exm-title-view{
+.exm-title-view {
   text-align: center;
 }
 
-.exm-title-view p{
+.exm-title-view p {
   font-size: 16px;
   color: #1D7AF5;
   font-weight: 600;
+}
+
+/* Access Control */
+
+.access-control-sa{
+  height: calc(100% - 40px);
+}
+
+.access-control-sa .access-data {
+  height: calc(100% - 44px);
+}
+
+.access-control-sa .access-item {
+  height: 40px;
+  width: auto;
+  padding: 0 8px;
+  margin-right: 12px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  border-bottom: 3px solid;
+  border-right: 0.5px;
+  border-left: 0.5px;
+}
+
+.dark .access-control-sa .access-item {
+  box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.6) !important;
+}
+
+.access-control-sa .selected-access-item {
+  border-color: #1D7AF5;
+}
+
+.access-control-sa .access-item p {
+  color: #000000;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.dark .access-control-sa .access-item p {
+  color: #ffffff;
+}
+
+.access-control-sa .selected-access-item p {
+  color: #1D7AF5 !important;
+}
+
+.access-control-sa .text-save-label ion-icon{
+  font-size: 26px;
+}
+
+.access-control-sa .text-save-label ion-label{
+  width: calc(100% - 44px);
+  font-size: 14px;
+}
+
+.access-control-sa .drop-down-access {
+  width: calc(100% - 90px);
+  border: 0.5px solid;
+  border-color: #a7caf8;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  padding: 0 12px;
+}
+
+.disabled-drop-access .disabled-drop-access{
+  border: 1px solid !important;
+  border-color:#505050 !important;
+}
+
+.access-control-sa .enabled-drop-access{
+  border: 1px solid !important;
+  border-color: #1D7AF5 !important;
+}
+
+.access-control-sa .drop-down-access ion-icon {
+  font-size: 22px;
+}
+
+.access-control-sa .access-table {
+  height: calc(100% - 140px);
+}
+
+.access-control-sa .access-table .head-col{
+  background: #F5F5F5;
+  justify-content: center;
+  border-bottom: none;
+}
+
+.dark .access-control-sa .access-table .head-col{
+  background: #1a1a1a;
+}
+
+.access-control-sa .access-table .row{
+  display: flex;
+}
+
+.access-control-sa .access-table .col{
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  border-right: 1px solid;
+  border-bottom: 0.5px solid;
+  border-bottom-color: #a7caf8;
+}
+
+.access-control-sa .access-table-fixed{
+  height: calc(100% - 40px);
+  overflow-y: auto;
 }
 

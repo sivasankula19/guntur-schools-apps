@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import {  useNavigate } from 'react-router';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
-import { IonButton, IonCard, IonCardContent, IonIcon, IonItem, IonSearchbar, IonText, IonToggle } from '@ionic/react';
+import { IonButton, IonCard, IonCardContent, IonIcon, IonItem, IonSearchbar, IonText } from '@ionic/react';
 import { banSharp } from 'ionicons/icons';
 import { chatContactList } from '../../common/utility';
+import GCustomToggle from '../../components/GCustomToggle';
 
 const Messages: React.FC = () => {
   const [isFilterEnabled, setIsFilterEnabled] = useState(true);
@@ -35,18 +36,7 @@ const Messages: React.FC = () => {
       <div className='g_flex g-space-between'>
         <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
         <div className='toggle_io'>
-          <IonToggle
-            className="custom-toggle"
-            checked={isFilterEnabled}
-            onIonChange={handleToggleChange}
-          >
-            <span
-              className={`toggle-text ${isFilterEnabled ? 'enabled_filter' : 'disabled_filter'
-                }`}
-            >
-              {isFilterEnabled ? 'On' : 'Off'}
-            </span>
-          </IonToggle>
+          <GCustomToggle checked={isFilterEnabled} onHandleChange={handleToggleChange}/>
         </div>
       </div>
       <div className='select_chat'>

@@ -4,10 +4,7 @@ import {
     IonCardContent,
     IonInput,
     IonSearchbar,
-    IonSelect,
-    IonSelectOption,
     IonText,
-    IonToggle,
 } from '@ionic/react';
 import React, { useState } from 'react';
 import { classListDummy, genderListDummy, sectionListDummy, staffDummyArr } from '../../common/utility';
@@ -16,6 +13,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import CustomizedModal from '../../components/GCustomizedModal';
 import GCustomSelectDrop from '../../components/GCustomSelectDrop';
+import GCustomToggle from '../../components/GCustomToggle';
 
 interface IStaffForm {
     staffFirstName: string,
@@ -145,18 +143,7 @@ const StaffListSA: React.FC = () => {
             <div className="g_flex g-space-between g-align-center bread_toggle_container">
                 <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
                 <div>
-                    <IonToggle
-                        className="custom-toggle"
-                        checked={isFilterEnabled}
-                        onIonChange={handleToggleChange}
-                    >
-                        <span
-                            className={`toggle-text ${isFilterEnabled ? 'enabled_filter' : 'disabled_filter'
-                                }`}
-                        >
-                            {isFilterEnabled ? 'On' : 'Off'}
-                        </span>
-                    </IonToggle>
+                    <GCustomToggle checked={isFilterEnabled} onHandleChange={handleToggleChange}/>
                 </div>
             </div>
             <div>
