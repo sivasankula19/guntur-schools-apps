@@ -5,6 +5,7 @@ import GCustomSelectDrop from '../../components/GCustomSelectDrop';
 import { IonButton, IonCard, IonCardContent, IonIcon, IonInput, IonItem, IonLabel, IonText } from '@ionic/react';
 import { calendarOutline, checkmarkCircleOutline, pencilOutline, starOutline } from 'ionicons/icons';
 import CustomizedModal from '../../components/GCustomizedModal';
+import GCustomToggle from '../../components/GCustomToggle';
 
 function ExamScheduleSA() {
   const [examsList, setExamsList] = useState<any[]>([]);
@@ -13,11 +14,11 @@ function ExamScheduleSA() {
     classId: '',
     sectionId: '',
   });
-  const [formValue, setFormValue] = useState({
-    examName:'',
-    startData:'',
-    subjectsList:[
-      {subjectId:'', subjectName:'', dateOfExam:'', slot:''}
+  const [formValue, setFormValue] = useState<any>({
+    examName: '',
+    startData: '',
+    subjectsList: [
+
     ]
   })
   const [isAddExamModal, setIsAddExamModal] = useState(false);
@@ -26,15 +27,54 @@ function ExamScheduleSA() {
   const classDummyData = classListDummy.map(i => ({ id: i.classId, label: i.className }));
   const sectionDummyData = sectionListDummy.map(i => ({ id: i.sectionId, label: i.sectionName }));
 
+  const subjectsSampleData = [{
+    subjectId: 'GH-Sub-10/1',
+    subjectName: 'Telugu',
+    date: '2024-06-19T19:03:51.500Z',
+    slot: "PM",
+  },
+  {
+    subjectId: 'GH-Sub-10/2',
+    subjectName: 'English',
+    date: '2024-06-20T19:03:51.500Z',
+    slot: "PM",
+  },
+  {
+    subjectId: 'GH-Sub-10/3',
+    subjectName: 'Hind',
+    date: '2024-06-21T19:03:51.500Z',
+    slot: "PM",
+  },
+  {
+    subjectId: 'GH-Sub-10/4',
+    subjectName: 'Mathematics',
+    date: '2024-06-22T19:03:51.500Z',
+    slot: "PM",
+  },
+  {
+    subjectId: 'GH-Sub-10/5',
+    subjectName: 'Science',
+    date: '2024-06-23T19:03:51.500Z',
+    slot: "PM",
+  },
+  {
+    subjectId: 'GH-Sub-10/6',
+    subjectName: 'Social',
+    date: '2024-06-24T19:03:51.500Z',
+    slot: "PM",
+  }]
+
   const handleChange = (e: any) => {
     setFilterValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
   const handleAdd = () => {
+
+    setFormValue((prev: any) => ({ ...prev, subjectsList: subjectsSampleData.map(s => ({ subjectId: s.subjectId, subjectName: s.subjectName, slot: 'AM', date: '' })) }));
     setIsAddExamModal(true);
   }
 
-  const handleViewMoreExam = (id:any) => {
+  const handleViewMoreExam = (id: any) => {
     setCurrentSelected(currentSelected === id ? null : id)
   }
 
@@ -45,11 +85,23 @@ function ExamScheduleSA() {
   const handleSubmit = () => {
 
   }
-  
+
   const handleInput = (e: any) => {
-    setFormValue((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+    setFormValue((prev: any) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
+  const handleSlotToggleChange = (e: any) => {
+    const subjectsDummy = [...formValue.subjectsList];
+    const updatedSubjectDummy = subjectsDummy.map(subjectD => {
+      if (subjectD.subjectId === e.target.name) {
+        return { ...subjectD, slot: e.target.checked ? 'AM' : 'PM' }
+      } else {
+        return subjectD
+      }
+    });
+    setFormValue((prev: any) => ({ ...prev, subjectsList: updatedSubjectDummy }))
+
+  }
 
   return (
     <div className='g_full_height'>
@@ -90,14 +142,14 @@ function ExamScheduleSA() {
                 <div className='g_flex g-align-center'>
                   <IonLabel className='m-right-8'>Dates</IonLabel>
                   <div className='conducts-on-date'>
-                   <IonText><p>11/09/2024</p></IonText>
-                   <b> - </b>
-                   <IonText><p>20/09/2024</p></IonText> 
-                   <IonIcon icon={calendarOutline}></IonIcon>
-                    </div>
+                    <IonText><p>11/09/2024</p></IonText>
+                    <b> - </b>
+                    <IonText><p>20/09/2024</p></IonText>
+                    <IonIcon icon={calendarOutline}></IonIcon>
+                  </div>
                 </div>
                 <IonText className='view-more-exam'>
-                  <a onClick={()=>handleViewMoreExam(item.id)}>{currentSelected === item.id ? 'View Less' : 'View More'}</a>
+                  <a onClick={() => handleViewMoreExam(item.id)}>{currentSelected === item.id ? 'View Less' : 'View More'}</a>
                 </IonText>
               </div>
               {currentSelected === item.id && (<div className='m-top-20'>
@@ -107,29 +159,29 @@ function ExamScheduleSA() {
                   </IonText>
                 </div>
                 <div className='unit_test_table'>
-                    <div className='row row_head g_flex'>
-                      {["Subject", "Date", "Slot"].map((row_item, indx) => (<div className={`cell ${indx == 1 ? 'bordered_cell' : ''}`} style={{ width: `${100 / 3}%` }} key={`row ${indx}`}>
-                        {row_item}
-                      </div>))}
-                    </div>
-                    {
-                      item.subjects.map((subjectItem:any, indexVal:number) => (
-                        <div className='row row_body g_flex' key={`sub-row-${indexVal}`}>
-                          {[{name:'subjectName', id:'Subject'},{name:'date', id:'Date'},{name:'slot', id:'Slot'},].map((row_item, indx) => (<div className={`cell ${indx == 1 ? 'bordered_cell' : ''}`} style={{ width: `${100 / 3}%` }} key={`row ${indx}-${indexVal}`}>
-                            {row_item.id === "Date" ? <>
-                            {formatDate(subjectItem[row_item.name])}
-                            </> : <>{subjectItem[row_item.name]}</> }
-                          </div>))}
-                        </div>
-                      ))
-                    }
+                  <div className='row row_head g_flex'>
+                    {["Subject", "Date", "Slot"].map((row_item, indx) => (<div className={`cell ${indx == 1 ? 'bordered_cell' : ''}`} style={{ width: `${100 / 3}%` }} key={`row ${indx}`}>
+                      {row_item}
+                    </div>))}
                   </div>
+                  {
+                    item.subjects.map((subjectItem: any, indexVal: number) => (
+                      <div className='row row_body g_flex' key={`sub-row-${indexVal}`}>
+                        {[{ name: 'subjectName', id: 'Subject' }, { name: 'date', id: 'Date' }, { name: 'slot', id: 'Slot' },].map((row_item, indx) => (<div className={`cell ${indx == 1 ? 'bordered_cell' : ''}`} style={{ width: `${100 / 3}%` }} key={`row ${indx}-${indexVal}`}>
+                          {row_item.id === "Date" ? <>
+                            {formatDate(subjectItem[row_item.name])}
+                          </> : <>{subjectItem[row_item.name]}</>}
+                        </div>))}
+                      </div>
+                    ))
+                  }
+                </div>
               </div>)}
             </IonCardContent>
           </IonCard>
         ))}
       </div>
-      
+
       <CustomizedModal
         title={`Add Exam For ${'10th Class'} ${'B Sec'}`}
         isOpen={isAddExamModal}
@@ -138,12 +190,21 @@ function ExamScheduleSA() {
       >
         <div>
           <div className='field m-bottom-10'>
-            <IonInput value={formValue.examName} onIonChange={handleInput} name='className' label="Class Name" labelPlacement="floating" fill="outline" placeholder="Subject Name"></IonInput>
+            <IonInput value={formValue.examName} onIonChange={handleInput} name='examName' label="Class Name" labelPlacement="floating" fill="outline" placeholder="Subject Name"></IonInput>
           </div>
           <div className='field m-bottom-10'>
-            <IonInput value={formValue.startData} onIonChange={handleInput} name='classIconValue' label="Class Icon Value" labelPlacement="floating" fill="outline" placeholder="Ex. 10"></IonInput>
+            <IonInput value={formValue.startData} onIonChange={handleInput} name='startData' label="Class Icon Value" labelPlacement="floating" fill="outline" placeholder="Ex. 10"></IonInput>
           </div>
-          
+          {
+            formValue.subjectsList?.map((subject: any) => (<div key={subject.subjectId} className='g_flex g-align-center'>
+              <GCustomSelectDrop options={classDummyData} name='classId'
+                value={filterValues.classId} label="Select Class"
+                handleOnChange={handleChange} classNames='custom-select' />
+              <IonInput value={formValue.startData} onIonChange={handleInput} name='classIconValue' label="Class Icon Value" labelPlacement="floating" fill="outline" placeholder="Ex. 10"></IonInput>
+              <GCustomToggle name={subject.subjectId} onTxt='AM' offTxt='PM' checked={subject.slot === 'AM'} onHandleChange={handleSlotToggleChange} />
+
+            </div>))
+          }
         </div>
       </CustomizedModal>
     </div>

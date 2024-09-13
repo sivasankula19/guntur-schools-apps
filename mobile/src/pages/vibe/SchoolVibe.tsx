@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
-import { IonCard, IonCardContent, IonItem, IonLabel, IonSearchbar, IonToggle, IonText, IonIcon, IonButton, IonInput, IonTextarea } from '@ionic/react';
+import { IonCard, IonCardContent, IonItem, IonLabel, IonSearchbar, IonText, IonIcon, IonButton, IonInput, IonTextarea } from '@ionic/react';
 import { classListDummy, formatDate, formatTime, sectionListDummy, vibePostsData } from '../../common/utility';
 import { chatboxOutline, cloudUploadOutline, heartOutline, imageOutline, shareSocialOutline } from 'ionicons/icons';
 import VibeLikes from './VibeLikes';
@@ -9,6 +9,7 @@ import VibeComments from './VibeComments';
 import GCustomSelectDrop from '../../components/GCustomSelectDrop';
 import { useSelector } from 'react-redux';
 import CustomizedModal from '../../components/GCustomizedModal';
+import GCustomToggle from '../../components/GCustomToggle';
 
 const SchoolVibe: React.FC = () => {
   const [isFilterEnabled, setIsFilterEnabled] = useState(false);
@@ -122,18 +123,7 @@ const SchoolVibe: React.FC = () => {
           <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
           <div className='toggle_io'>
             <IonLabel>Filter</IonLabel>
-            <IonToggle
-              className="custom-toggle"
-              checked={isFilterEnabled}
-              onIonChange={handleToggleChange}
-            >
-              <span
-                className={`toggle-text ${isFilterEnabled ? 'enabled_filter' : 'disabled_filter'
-                  }`}
-              >
-                {isFilterEnabled ? 'On' : 'Off'}
-              </span>
-            </IonToggle>
+            <GCustomToggle checked={isFilterEnabled} onHandleChange={handleToggleChange} />
           </div>
         </div>
         {isFilterEnabled && <>
@@ -293,29 +283,12 @@ const SchoolVibe: React.FC = () => {
             </div>
             <div className='m-bottom-10 toggle_io g_flex'>
               <IonLabel>Enabled Likes ? </IonLabel>
-              <IonToggle
-                className="custom-toggle"
-                name='isEnabledLikes'
-                checked={formValue.isEnabledLikes}
-                onIonChange={handleAddToggleChange}
-              >
-                <span className={`toggle-text ${formValue.isEnabledLikes ? 'enabled_filter' : 'disabled_filter'}`}>
-                  {formValue.isEnabledLikes ? 'On' : 'Off'}
-                </span>
-              </IonToggle>
+              <GCustomToggle name='isEnabledLikes' checked={formValue.isEnabledLikes} onHandleChange={handleAddToggleChange} />
             </div>
             <div className='m-bottom-10 toggle_io g_flex'>
               <IonLabel>Enabled Comments ? </IonLabel>
-              <IonToggle
-                className="custom-toggle"
-                name='isEnabledComments'
-                checked={formValue.isEnabledComments}
-                onIonChange={handleAddToggleChange}
-              >
-                <span className={`toggle-text ${formValue.isEnabledComments ? 'enabled_filter' : 'disabled_filter'}`}>
-                  {formValue.isEnabledComments ? 'On' : 'Off'}
-                </span>
-              </IonToggle>
+              <GCustomToggle name='isEnabledComments' checked={formValue.isEnabledComments} onHandleChange={handleAddToggleChange} />
+
             </div>
           </div>
         </CustomizedModal>

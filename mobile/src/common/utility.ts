@@ -1796,6 +1796,19 @@ export const searchStudentsData = [
   {id:10, studentName:'Siva Sankula', regNumber:'GHMS000120',className:'8th Class', sectionName:'B Section'}
 ]
 
+export const searchStaffData = [
+  {id:1, staffName:'Siva Sankula', staffId:'GHMSTAFF2',designation:'M.Tech'},
+  {id:2, staffName:'Narra Dev Qumar', staffId:'GHMSTAFF9',designation:'M.Tech'},
+  {id:3, staffName:'Sankula', staffId:'GHMSTAFF3',designation:'M.Tech'},
+  {id:4, staffName:'Kallam Minoosh', staffId:'GHMSTAFF1',designation:'M.Tech'},
+  {id:5, staffName:'Siva Krishna', staffId:'GHMSTAFF8',designation:'M.Tech'},
+  {id:6, staffName:'Sankula Krishna Sankula', staffId:'GHMSTAFF19',designation:'M.Tech'},
+  {id:7, staffName:'Siva Sankula', staffId:'GHMSTAFF10',designation:'M.Tech'},
+  {id:8, staffName:'Siva Sankula', staffId:'GHMSTAFF4',designation:'M.Tech'},
+  {id:9, staffName:'Siva Sankula', staffId:'GHMSTAFF6',designation:'M.Tech'},
+  {id:10, staffName:'Siva Sankula', staffId:'GHMSTAFF5',designation:'M.Tech'}
+]
+
 export const notificationSampleData = [
   {id:1, moduleName:'StudentsList',type:'New Student Registered', message:'A New Student named Siva Sankula from class 9th b section is Registered for this academic year!.',data:{classId:'', sectionId:'', searchStr:'Siva Sankula',}},
   {id:2, moduleName:'Messages', type:'New Text Message', message:'You have got a message from Narra Deva y12C00029.', data:{message:'Can we meet today?.',userId:'y12C0029'}},

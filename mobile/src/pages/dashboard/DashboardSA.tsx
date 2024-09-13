@@ -14,6 +14,7 @@ import {
     gridOutline,
     imageOutline,
     informationCircleOutline,
+    keyOutline,
     newspaperOutline,
     peopleOutline,
     ribbonOutline,
@@ -39,6 +40,7 @@ export const DashboardSA = () => {
 
     const chipsDataPrivate = [
         { id: 14, moduleName: 'Ex-Circular', icon: ribbonOutline, redirectTo: '/ex-circular' },
+        { id: 888, moduleName: 'Assets', icon: businessOutline, redirectTo: '/assets' },
         { id: 15, moduleName: 'Gallery', icon: imageOutline, redirectTo: '/gallery' },
         { id: 16, moduleName: 'Achievements', icon: trophyOutline, redirectTo: '/achievements' },
         { id: 17, moduleName: 'Contact-Us', icon: callOutline, redirectTo: '/contact-us' },
@@ -46,6 +48,7 @@ export const DashboardSA = () => {
         { id: 19, moduleName: 'Courses', icon: bookOutline, redirectTo: '/courses' }
     ];
     const chipsDataPublic = [
+        { id: 999, moduleName: 'Access Control', icon: keyOutline, redirectTo: '/access-control' },
         { id: 1, moduleName: 'Staff', icon: peopleOutline, redirectTo: '/staff-list' },
         { id: 2, moduleName: 'Students', icon: peopleOutline, redirectTo: '/students-list' },
         { id: 3, moduleName: 'Sections', icon: cubeOutline, redirectTo: '/school-sections' },
@@ -62,7 +65,6 @@ export const DashboardSA = () => {
         { id: 13, moduleName: 'Vibe', icon: newspaperOutline, redirectTo: '/school-vibe' },
         { id: 14, moduleName: 'Exam Schedules', icon: calendarOutline, redirectTo: '/exam-schedules' },
         { id: 15, moduleName: 'My Dues', icon: walletOutline, redirectTo: '/fee-structure' },
-        { id: 16, moduleName: 'Assets', icon: businessOutline, redirectTo: '/assets' },
     ];
 
     return (

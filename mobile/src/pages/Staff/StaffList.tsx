@@ -2,15 +2,13 @@ import {
   IonCard,
   IonCardContent,
   IonSearchbar,
-  IonSelect,
-  IonSelectOption,
-  IonToggle,
 } from '@ionic/react';
 import React, { useState } from 'react';
 import { classListDummy, sectionListDummy, staffDummyArr } from '../../common/utility';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { useNavigate } from 'react-router';
 import GCustomSelectDrop from '../../components/GCustomSelectDrop';
+import GCustomToggle from '../../components/GCustomToggle';
 
 const StaffList: React.FC = () => {
   const [isFilterEnabled, setIsFilterEnabled] = useState(true);
@@ -49,18 +47,7 @@ const StaffList: React.FC = () => {
       <div className="g_flex g-space-between g-align-center bread_toggle_container">
         <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
         <div>
-          <IonToggle
-            className="custom-toggle"
-            checked={isFilterEnabled}
-            onIonChange={handleToggleChange}
-          >
-            <span
-              className={`toggle-text ${isFilterEnabled ? 'enabled_filter' : 'disabled_filter'
-                }`}
-            >
-              {isFilterEnabled ? 'On' : 'Off'}
-            </span>
-          </IonToggle>
+          <GCustomToggle checked={isFilterEnabled} onHandleChange={handleToggleChange}/>
         </div>
       </div>
       <div className={`${isFilterEnabled ? 'filter_container' : ''}`}>

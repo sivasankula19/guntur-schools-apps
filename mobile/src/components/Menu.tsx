@@ -8,7 +8,6 @@ import {
   IonMenu,
   IonMenuToggle,
   IonText,
-  IonToggle,
 } from '@ionic/react';
 
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -19,6 +18,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setMode } from '../redux/reducers/darkModeSlice';
 import { useEffect } from 'react';
 import { setPreLoginPublicView } from '../redux/reducers/schoolSlice';
+import GCustomToggle from './GCustomToggle';
 
 const appPages: AppPage[] = RoutesListDynamic;
 
@@ -100,18 +100,7 @@ const Menu: React.FC = () => {
             <div className="g_flex dark-mode-container">
               <div className='g_flex g-align-center'><IonLabel>Dark Mode</IonLabel> </div>
               <div>
-                <IonToggle
-                  className="custom-toggle"
-                  checked={isDarkMode}
-                  onIonChange={handleToggleChange}
-                >
-                  <span
-                    className={`toggle-text ${isDarkMode ? 'enabled_filter' : 'disabled_filter'
-                      }`}
-                  >
-                    {isDarkMode ? 'On' : 'Off'}
-                  </span>
-                </IonToggle>
+                <GCustomToggle checked={isDarkMode} onHandleChange={handleToggleChange}/>
               </div>
             </div>
           </div>
