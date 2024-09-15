@@ -49,7 +49,8 @@ import Subjects from './pages/Subjects/Subjects';
 import StaffList from './pages/Staff/StaffList';
 import StudentList from './pages/Students/StudentList';
 import Documents from './pages/Documents';
-import FeesDues from './pages/FeesDues';
+import FeesDues from './pages/FeesDues/FeesDues';
+import FeesDuesSA from './pages/FeesDues/FeesDuesSA';
 import Calendar from './pages/Calendar/Calendar';
 import TimeTable from './pages/TimeTable/TimeTable';
 import Gallery from './pages/Gallery';
@@ -209,7 +210,7 @@ const App: React.FC = () => {
                 <Route path={'/user/:id'} element={<UserByID />} />
                 <Route path='/messages' element={<Messages />} />
                 <Route path={'/messages/:id'} element={<ChatScreen></ChatScreen>} />
-                <Route path='/fee-structure' element={<FeesDues />} />
+                <Route path='/fee-structure' element={role === 'Student' ? <FeesDues /> : <FeesDuesSA />} />
                 <Route path='/exam-schedules' element={role === 'Student' ? <ExamSchedule /> : <ExamScheduleSA />} />
                 <Route path='/home-work' element={<HomeWork />} />
                 <Route path='/diary' element={<Dairy />} />

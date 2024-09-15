@@ -1,8 +1,8 @@
 import React from 'react';
-import GBreadCrumbs from '../components/GBreadCrumbs';
+import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { IonCard, IonCardContent, IonIcon, IonItem, IonLabel, IonSelect, IonSelectOption, IonText } from '@ionic/react';
 import { addCircleOutline, checkmarkCircleOutline, closeCircleOutline, removeCircleOutline } from 'ionicons/icons';
-import { formatDate } from '../common/utility';
+import { formatDate } from '../../common/utility';
 
 const FeesDues: React.FC = () => {
 
