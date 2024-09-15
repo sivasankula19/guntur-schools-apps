@@ -109,7 +109,7 @@ function WeekDashboard() {
                                         width: `${100 / 7}%`,
                                     }}
                                 >
-                                    {tItem.periods[indx].subShort}
+                                    {tItem?.periods[indx]?.subShort || ''}
                                 </div>
                             ))}
                         </div>

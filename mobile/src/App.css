@@ -19,6 +19,10 @@
   background: #555;
 }
 
+a{
+  cursor: pointer;
+}
+
 ion-card ion-card-content {
   background: #ffffff;
 }
@@ -716,6 +720,22 @@ ion-header {
   overflow-y: auto;
 }
 
+.color-0{
+  color: #000000;
+}
+
+.dark .color-0{
+  color: #ffffff;
+}
+
+.color-F{
+  color: #ffffff;
+}
+
+.dark .color-F{
+  color: #000000;
+}
+
 
 /* Student List & Staff List css */
 
@@ -728,19 +748,19 @@ ion-header {
 }
 
 .g-font-16 {
-  font-size: 16px;
+  font-size: 16px !important;
 }
 
 .g-font-14 {
-  font-size: 14px;
+  font-size: 14px !important;
 }
 
 .g-font-12 {
-  font-size: 12px;
+  font-size: 12px !important;
 }
 
 .g-font-10 {
-  font-size: 10px;
+  font-size: 10px !important;
 }
 
 .g-height-10 {
@@ -884,7 +904,7 @@ ion-header {
 }
 
 .width-50 {
-  width: 50%;
+  width: 50% !important;
 }
 
 .width-65 {
@@ -1027,7 +1047,7 @@ ion-breadcrumb {
 }
 
 .g_breadcrumbs {
-  animation: slideInFromLeft 0.8s linear;
+  animation: slideIn 0.5s linear;
   margin: 8px 16px;
 }
 
@@ -1058,11 +1078,7 @@ ion-breadcrumb {
 }
 
 .g_bread_last p {
-  color: #696969;
-}
-
-.dark .g_bread_last p {
-  color: lightgray;
+  color: #999999;
 }
 
 .dark .g_bread {
@@ -1164,11 +1180,6 @@ ion-toggle::part(track) {
     transform: translateX(0%);
     opacity: 1;
   }
-}
-
-ion-breadcrumbs {
-  margin-left: 10px;
-  animation: slideInFromLeft 0.8s linear;
 }
 
 @keyframes slideIn {
@@ -1679,7 +1690,7 @@ ion-breadcrumbs {
   border-radius: 8px;
 }
 
-.student-picker .users-list-dis .student-search-card {
+.student-picker .users-list-dis .student-search-card, .class-section-item {
   height: 50px;
   display: flex;
   justify-content: space-between;
@@ -1692,7 +1703,7 @@ ion-breadcrumbs {
   background-color: #ffffff;
 }
 
-.student-picker .users-list-dis .selected-card {
+.student-picker .users-list-dis .selected-card, .selected-card {
   background-color: rgba(29, 122, 245, 0.25) !important;
 }
 
@@ -1739,6 +1750,10 @@ ion-breadcrumbs {
 
 .custom-modal-container-view {
   height: 100vh;
+}
+
+.custom-modal-container-view ion-card-content{
+  overflow-x: hidden;
 }
 
 .g-customized-modal .modal-child-con {
@@ -2724,10 +2739,13 @@ label.input-wrapper.sc-ion-input-ios {
   margin-top: 6px;
 }
 
+.home .home-container{
+  height: calc(100% - 70px);
+  overflow-y: auto;
+}
+
 .home .location-control {
   display: flex;
-  position: absolute;
-  bottom: 50px;
   height: 50px;
   margin: auto;
   justify-content: center;
@@ -3819,6 +3837,14 @@ label.input-wrapper.sc-ion-input-ios {
   overflow-y: auto;
 }
 
+.popover-cls-sec .cls-sec-list{
+  max-height: 200px;
+  @media (max-height: 700px) {
+    max-height: 150px;
+  }
+  overflow-y: auto;
+}
+
 .dark .popover_actions ion-item {
   --background: #000000;
 }
@@ -4087,6 +4113,9 @@ label.input-wrapper.sc-ion-input-ios {
 
 .vibe_posts ion-card-content {
   padding: 0;
+}
+
+.dark .vibe_posts ion-card-content {
   background: #202020 !important;
 }
 
@@ -4742,6 +4771,14 @@ label.input-wrapper.sc-ion-input-ios {
   color: #1D7AF5;
 }
 
+.width-95{
+  width: 95%;
+}
+
+.width-5{
+  width: 5%;
+}
+
 .width-30 {
   width: 30%;
 }
@@ -5255,7 +5292,7 @@ ion-popover {
 }
 
 .access-control-sa .access-table {
-  height: calc(100% - 140px);
+  height: calc(100% - 190px);
 }
 
 .access-control-sa .access-table .head-col{
@@ -5277,13 +5314,64 @@ ion-popover {
   display: flex;
   align-items: center;
   padding: 0 8px;
-  border-right: 1px solid;
   border-bottom: 0.5px solid;
   border-bottom-color: #a7caf8;
+}
+
+.access-control-sa .access-table .first-col {
+  border-right: 1px solid;
 }
 
 .access-control-sa .access-table-fixed{
   height: calc(100% - 40px);
   overflow-y: auto;
 }
+
+.access-control-sa .access-private{
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.access-control-sa .access-private ion-button{
+  width: 100%;
+}
+
+.access-private-modules .card-modules{
+  background: #F5F5F5;
+  margin: 12px;
+  padding: 12px;
+  min-height: 200px;
+}
+
+.dark .access-private-modules .card-modules {
+  background: #1a1a1a;
+}
+
+.access-private-modules .items-pvt{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.items-pvt .item-pvt{
+  width: 30%;
+  cursor: pointer;
+  border: 1px solid;
+  border-color: #1D7AF5;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  margin: 12px 0;
+  padding: 0 12px;
+  border-radius: 8px;
+}
+
+.items-pvt .item-pvt ion-icon{
+  margin-right: 8px;
+  font-size: 20px;
+}
+
+
 

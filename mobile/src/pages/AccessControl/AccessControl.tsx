@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 import GBreadCrumbs from '../../components/GBreadCrumbs';
-import { IonIcon, IonLabel, IonText } from '@ionic/react';
-import { caretDownOutline, caretUpOutline, saveOutline } from 'ionicons/icons';
+import { IonButton, IonContent, IonIcon, IonLabel, IonPopover, IonSearchbar, IonText } from '@ionic/react';
+import { caretDownOutline, caretUpOutline, checkmarkCircleOutline, saveOutline } from 'ionicons/icons';
 import GCustomItemSelect from '../../components/GCustomItemSelect';
 import { searchStaffData } from '../../common/utility';
+import { useNavigate } from 'react-router';
 
 function AccessControl() {
     const [currentSelected, setCurrentSelected] = useState<string>('');
@@ -13,7 +14,11 @@ function AccessControl() {
     const studentsDisplayRef = useRef<any>();
     const [selectedStudent, setSelectedStudent] = useState<any>(null);
     const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Access Control', path: '/access-control' }];
-    const [accessTableData, setAccessTableData] = useState<any>([])
+    const [accessTableData, setAccessTableData] = useState<any>([]);
+    const navigate = useNavigate();
+    const [popoverOpen, setPopoverOpen] = useState('');
+    const [search, setSearch] = useState('');
+    const [selectedClsSec, setSelectedClsSec] = useState<any[]>([])
 
     const accessModules = [
         { id: 'acc-1', moduleName: 'Attendance', moduleId: 'access-attendance' },
@@ -25,13 +30,12 @@ function AccessControl() {
         { id: 'acc-7', moduleName: 'Class - Subjects', moduleId: 'access-cls-sub' },
     ]
 
-
     useEffect(() => {
         // select it from location state 
         setSearchResult(searchStaffData);
         setAccessTableData([
-            { id: Math.random().toString(), isOpen: false, staffDetails: { staffId: 'GHMSTAFF10', staffName: 'Siva Sankula' }, accessClasses: [{ classId: 'mdgl-scl-cls-10', className: '10th Class', sectionId: 'mdgl-sec-a', sectionName: 'A Section' }] },
-            { id: Math.random().toString(), isOpen: false, staffDetails: { staffId: 'GHMSTAFF09', staffName: 'Krishna S' }, accessClasses: [] }
+            { id: Math.random().toString(), isOpen: false, staffDetails: { staffId: 'GHMSTAFF10', staffName: 'Siva Sankula' }, accessClasses: [] },
+            { id: Math.random().toString(), isOpen: false, staffDetails: { staffId: 'GHMSTAFF09', staffName: 'Krishna S' }, accessClasses: [ { id: 2, shortName: '10-B', classSecName: '10th B Sec', classId: 'ghmd-10th', sectionId: 'ghmd-sec-b' },] }
         ])
         setCurrentSelected(accessModules[0].moduleId);
     }, []);
@@ -55,6 +59,57 @@ function AccessControl() {
     const handleAccessItemClick = (id: string) => {
         setCurrentSelected(id);
     }
+
+    const handleNavigate = () => {
+        navigate('/access-private-modules');
+    }
+
+    const handleInput = (ev: any) => {
+        setSearch(ev.detail.value);
+    };
+
+    const classListWithSections = [
+        { id: 1, shortName: '10-A', classSecName: '10th A Sec', classId: 'ghmd-10th', sectionId: 'ghmd-sec-a' },
+        { id: 2, shortName: '10-B', classSecName: '10th B Sec', classId: 'ghmd-10th', sectionId: 'ghmd-sec-b' },
+        { id: 3, shortName: '9-A', classSecName: '9th A Sec', classId: 'ghmd-9th', sectionId: 'ghmd-sec-a' },
+        { id: 4, shortName: '9-B', classSecName: '9th B Sec', classId: 'ghmd-9th', sectionId: 'ghmd-sec-b' },
+        { id: 5, shortName: '8-A', classSecName: '8th A Sec', classId: 'ghmd-8th', sectionId: 'ghmd-sec-a' },
+        { id: 6, shortName: '8-B', classSecName: '8th B Sec', classId: 'ghmd-8th', sectionId: 'ghmd-sec-b' },
+        { id: 7, shortName: '8-C', classSecName: '8th C Sec', classId: 'ghmd-8th', sectionId: 'ghmd-sec-c' },
+    ]
+
+    const handleStudentChange = (classInfo: any) => {
+        if (classInfo.isSelect) {
+            setSelectedClsSec(classInfo.selectAll ? [...classListWithSections] : []);
+        } else {
+            const updatedSelectedClsSec = [...selectedClsSec];
+            if (updatedSelectedClsSec.find((clsSec: any) => clsSec.id === classInfo.id)) {
+                setSelectedClsSec(prev => ([...prev.filter(prvCls => prvCls.id !== classInfo.id)]));
+            } else {
+                setSelectedClsSec(prev => ([...prev, classInfo]));
+            }
+        }
+    }
+
+    const handlePopoverClose = (currentItem: any, clsSecInfo: any) => {
+        setAccessTableData((prevData: any) =>
+            prevData.map((item: any) =>
+                item.id === currentItem.id
+                    ? { ...item, accessClasses: clsSecInfo }
+                    : item
+            )
+        );
+        setSelectedClsSec([]);
+    }
+
+    const openPopover = (e: any, clsSecInfo: any) => {
+        setSelectedClsSec(clsSecInfo.accessClasses)
+        setPopoverOpen(e.target.id);
+    };
+
+    useEffect(() => {
+        console.log('Selected--', selectedClsSec)
+    }, [selectedClsSec])
 
     return (
         <div className='access-control-sa'>
@@ -90,16 +145,17 @@ function AccessControl() {
                 />
                 <div className='access-table'>
                     <div className='row'>
-                        <div className='head-col col width-40'>
+                        <div className='head-col col width-40 first-col'>
                             <IonLabel >Staff Name</IonLabel>
                         </div>
                         <div className='head-col col width-60'>
                             <IonLabel>Access Classes</IonLabel>
                         </div>
                     </div>
+
                     <div className='access-table-fixed'>
                         <div className='row'>
-                            <div className='col width-40'>
+                            <div className='col width-40 first-col'>
                                 <IonLabel >Staff Name</IonLabel>
                             </div>
                             <div className='col width-60'>
@@ -109,18 +165,61 @@ function AccessControl() {
                                 </div>
                             </div>
                         </div>
-                        {accessTableData.map((staff: any) => (<div key={staff.id} className='row'>
-                            <div className='col width-40'>
+                        {accessTableData.map((staff: any, staffIndex: number) => (<div key={staff.id} className='row'>
+                            <div className='col width-40 first-col'>
                                 <IonLabel >{staff.staffDetails.staffName}</IonLabel>
                             </div>
-                            <div className='col width-60'>
+                            <div className='col width-60' onClick={(e: any) => openPopover(e, staff)} id={`click-trigger-${staffIndex}`}>
                                 <div className='drop-down-access g_full_width enabled-drop-access'>
-                                    <IonLabel>{"<Select Classes>"}</IonLabel>
+                                    <IonLabel className='g_text_ellipses'>{"<Select Classes>"}</IonLabel>
                                     <IonIcon icon={isOpenStudentCard ? caretUpOutline : caretDownOutline}></IonIcon>
                                 </div>
                             </div>
+                            <IonPopover side="top" alignment="center" isOpen={popoverOpen == `click-trigger-${staffIndex}`} onDidDismiss={() => handlePopoverClose(staff, selectedClsSec)} className='notification-popover' trigger={`click-trigger-${staffIndex}`} triggerAction="click">
+                                <IonContent class="ion-padding">
+                                    <div className='popover-cls-sec'>
+                                        <div className='m-bottom-10'>
+                                            <IonSearchbar placeholder='Search Class - Section / Id' showClearButton="focus"
+                                                value={search}
+                                                debounce={500}
+                                                onIonInput={handleInput}></IonSearchbar>
+                                        </div>
+                                        <div className='cls-sec-list'>
+                                            {classListWithSections.length ? <>
+                                                <div onClick={() => handleStudentChange({ selectAll: selectedClsSec.length !== classListWithSections.length, isSelect: true })} className={`class-section-item ${selectedClsSec.length === classListWithSections.length ? ' selected-card' : ''}`}>
+                                                    <div className='width-95 student-name'><p className='g_text_ellipses'>{"All Classes Sections"}</p></div>
+                                                    <div className='width-5'>
+                                                        {selectedClsSec.length === classListWithSections.length && (
+                                                            <IonIcon icon={checkmarkCircleOutline}></IonIcon>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                                {classListWithSections.map((itemInfo: any) => (
+                                                    <div key={itemInfo.id} onClick={() => handleStudentChange(itemInfo)} className={`class-section-item ${selectedClsSec.find(clsItem => clsItem.id === itemInfo.id) ? ' selected-card' : ''}`}>
+                                                        <div className='width-70 student-name'><p className='g_text_ellipses'>{itemInfo.classSecName}</p></div>
+                                                        <div className='width-25 student-id-cls'>
+                                                            <div><p className='g_text_ellipses font-500'>{itemInfo.classId}</p></div>
+                                                            <div><p className='g_text_ellipses'>{itemInfo.sectionId}</p></div>
+                                                        </div>
+                                                        <div className='width-5'>
+                                                            {selectedClsSec.find(clsItem => clsItem.id === itemInfo.id) && (
+                                                                <IonIcon icon={checkmarkCircleOutline}></IonIcon>
+                                                            )}
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </> : <>
+                                                <div>No Results Found!</div>
+                                            </>}
+                                        </div>
+                                    </div>
+                                </IonContent>
+                            </IonPopover>
                         </div>))}
                     </div>
+                </div>
+                <div className='access-private'>
+                    <IonButton className='br-ion-12 m-top-12 g_txt_cap add-employee-student' onClick={handleNavigate} fill="outline" expand="block">Private Modules</IonButton>
                 </div>
             </div>
         </div>
