@@ -86,6 +86,7 @@ import AcademicSubject from './pages/AcademicSubject';
 import ExamScheduleSA from './pages/ExamSchedule/ExamScheduleSA';
 import NotificationsList from './pages/NotificationsList';
 import AccessControl from './pages/AccessControl/AccessControl';
+import AccessPrivateModules from './pages/AccessControl/AccessPrivateModules';
 
 setupIonicReact({
   animated: true,
@@ -217,6 +218,7 @@ const App: React.FC = () => {
                 <Route path='/school-sections' element={<SchoolSections />} />
                 <Route path='/my-notifications' element={<NotificationsList />} />
                 <Route path='/access-control' element={<AccessControl />} />
+                <Route path='/access-private-modules' element={<AccessPrivateModules />} />
                 {/* public modules! */}
                 <Route path='/gallery' element={<Gallery />} />
                 <Route path='/ex-circular' element={<ExCircularActivities />} />

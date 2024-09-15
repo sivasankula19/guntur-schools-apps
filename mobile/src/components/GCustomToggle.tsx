@@ -8,6 +8,7 @@ interface IGCustomToggleProps {
     classNames?: string
     onTxt?: string,
     offTxt?: string,
+    isDisabled?:boolean,
 }
 
 function GCustomToggle({
@@ -17,6 +18,7 @@ function GCustomToggle({
     classNames = 'custom-toggle',
     onTxt = 'On',
     offTxt = 'Off',
+    isDisabled = false,
 }: IGCustomToggleProps) {
     return (
         <IonToggle
@@ -24,6 +26,7 @@ function GCustomToggle({
             name={name}
             checked={checked}
             onIonChange={onHandleChange}
+            disabled={isDisabled}
         >
             <span className={`toggle-text ${checked ? 'enabled_filter' : 'disabled_filter'}`}>
                 {checked ? onTxt : offTxt}

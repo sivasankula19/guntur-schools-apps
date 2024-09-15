@@ -714,78 +714,78 @@ export const timeTableVal = [
     "day": "Monday",
     dayShort:'MON',
     "periods": [
-      { "subject": "Math", "time": "10:00 AM - 11:00 AM", subShort:'MAT', timeStart:'10:00' },
-      { "subject": "English", "time": "11:00 AM - 12:00 PM",subShort:'ENG',timeStart:'11:00'  },
-      { "subject": "Science", "time": "12:00 PM - 1:00 PM",subShort:'SCI',timeStart:'12:00'  },
-      { "subject": "Lunch", "time": "1:00 PM - 2:00 PM",subShort:'BREAK',timeStart:'1:00'  },
-      { "subject": "Social", "time": "2:00 PM - 3:00 PM",subShort:'SOC',timeStart:'2:00'  },
-      { "subject": "Hindi", "time": "3:00 PM - 4:00 PM",subShort:'HIN' ,timeStart:'3:00' },
-      { "subject": "Telugu", "time": "4:00 PM - 5:00 PM",subShort:'TEL',timeStart:'4:00'  }
+      { "subjectId":'ghm_math',"subject": "Math", "time": "10:00 AM - 11:00 AM", subShort:'MAT', timeStart:'10:00 AM',timeEnd:'11:15 AM' },
+      { "subjectId":'ghm_eng',"subject": "English", "time": "11:00 AM - 12:00 PM",subShort:'ENG',timeStart:'11:00 AM',timeEnd:'12:07 PM'  },
+      { "subjectId":'ghm_sci',"subject": "Science", "time": "12:00 PM - 1:00 PM",subShort:'SCI',timeStart:'12:00 PM',timeEnd:'01:00 PM'  },
+      { "subjectId":'ghm_0',"subject": "Lunch", "time": "1:00 PM - 2:00 PM",subShort:'BREAK',timeStart:'01:00 PM',timeEnd:'02:00 PM'  },
+      { "subjectId":'ghm_social',"subject": "Social", "time": "2:00 PM - 3:00 PM",subShort:'SOC',timeStart:'02:00 PM',timeEnd:'03:00 PM'  },
+      { "subjectId":'ghm_hindi',"subject": "Hindi", "time": "3:00 PM - 4:00 PM",subShort:'HIN' ,timeStart:'03:00 PM',timeEnd:'04:00 PM' },
+      { "subjectId":'ghm_tel',"subject": "Telugu", "time": "4:00 PM - 5:00 PM",subShort:'TEL',timeStart:'04:00 PM',timeEnd:'05:00 PM'  }
     ]
   },
   {
     "day": "Tuesday",
     dayShort:'TUE',
     "periods": [
-      { "subject": "Math", "time": "10:00 AM - 11:00 AM", subShort:'MAT', timeStart:'10:00' },
-      { "subject": "English", "time": "11:00 AM - 12:00 PM",subShort:'ENG',timeStart:'11:00'  },
-      { "subject": "Science", "time": "12:00 PM - 1:00 PM",subShort:'SCI',timeStart:'12:00'  },
-      { "subject": "Lunch", "time": "1:00 PM - 2:00 PM",subShort:'BREAK',timeStart:'1:00'  },
-      { "subject": "Social", "time": "2:00 PM - 3:00 PM",subShort:'SOC',timeStart:'2:00'  },
-      { "subject": "Hindi", "time": "3:00 PM - 4:00 PM",subShort:'HIN' ,timeStart:'3:00' },
-      { "subject": "Telugu", "time": "4:00 PM - 5:00 PM",subShort:'TEL',timeStart:'4:00'  }
+      { "subjectId":'ghm_math', "subject": "Math", "time": "10:15 AM - 11:15 AM", subShort:'MAT', timeStart:'10:15 AM',timeEnd:'11:15 AM' },
+      { "subjectId":'ghm_eng', "subject": "English", "time": "11:00 AM - 12:00 PM",subShort:'ENG',timeStart:'11:17 AM',timeEnd:'12:07 PM'  },
+      { "subjectId":'ghm_sci', "subject": "Science", "time": "12:00 PM - 1:00 PM",subShort:'SCI',timeStart:'12:15 PM',timeEnd:'01:00 PM'  },
+      { "subjectId":'ghm_0', "subject": "Lunch", "time": "1:00 PM - 2:00 PM",subShort:'BREAK',timeStart:'01:00 PM',timeEnd:'02:00 PM'  },
+      { "subjectId":'ghm_social', "subject": "Social", "time": "2:00 PM - 3:00 PM",subShort:'SOC',timeStart:'02:00 PM',timeEnd:'03:00 PM'  },
+      { "subjectId":'ghm_hindi', "subject": "Hindi", "time": "3:00 PM - 4:00 PM",subShort:'HIN' ,timeStart:'03:00 PM',timeEnd:'04:00 PM' },
+      { "subjectId":'ghm_tel', "subject": "Telugu", "time": "4:00 PM - 5:00 PM",subShort:'TEL',timeStart:'04:00 PM',timeEnd:'05:00 PM'  }
     ]
   },
   {
     "day": "Wednesday",
     dayShort:'WED',
     "periods": [
-      { "subject": "Math", "time": "10:00 AM - 11:00 AM", subShort:'MAT', timeStart:'10:00' },
-      { "subject": "English", "time": "11:00 AM - 12:00 PM",subShort:'ENG',timeStart:'11:00'  },
-      { "subject": "Science", "time": "12:00 PM - 1:00 PM",subShort:'SCI',timeStart:'12:00'  },
-      { "subject": "Lunch", "time": "1:00 PM - 2:00 PM",subShort:'BREAK',timeStart:'1:00'  },
-      { "subject": "Social", "time": "2:00 PM - 3:00 PM",subShort:'SOC',timeStart:'2:00'  },
-      { "subject": "Hindi", "time": "3:00 PM - 4:00 PM",subShort:'HIN' ,timeStart:'3:00' },
-      { "subject": "Telugu", "time": "4:00 PM - 5:00 PM",subShort:'TEL',timeStart:'4:00'  }
+      { "subjectId":'ghm_math', "subject": "Math", "time": "10:00 AM - 11:00 AM", subShort:'MAT', timeStart:'10:00 AM',timeEnd:'11:15 AM' },
+      { "subjectId":'ghm_eng', "subject": "English", "time": "11:00 AM - 12:00 PM",subShort:'ENG',timeStart:'11:00 AM' ,timeEnd:'12:07 PM' },
+      { "subjectId":'ghm_sci', "subject": "Science", "time": "12:00 PM - 1:00 PM",subShort:'SCI',timeStart:'12:00 PM' ,timeEnd:'01:00 PM' },
+      { "subjectId":'ghm_0', "subject": "Lunch", "time": "1:00 PM - 2:00 PM",subShort:'BREAK',timeStart:'01:00 PM' ,timeEnd:'02:00 PM' },
+      { "subjectId":'ghm_social', "subject": "Social", "time": "2:00 PM - 3:00 PM",subShort:'SOC',timeStart:'02:00 PM' ,timeEnd:'03:00 PM' },
+      { "subjectId":'ghm_hindi', "subject": "Hindi", "time": "3:00 PM - 4:00 PM",subShort:'HIN' ,timeStart:'03:00 PM',timeEnd:'04:00 PM' },
+      { "subjectId":'ghm_tel', "subject": "Telugu", "time": "4:00 PM - 5:00 PM",subShort:'TEL',timeStart:'04:00 PM',timeEnd:'05:00 PM'  }
     ]
   },
   {
     "day": "Thursday",
     dayShort:'THU',
     "periods": [
-      { "subject": "Math", "time": "10:00 AM - 11:00 AM", subShort:'MAT', timeStart:'10:00' },
-      { "subject": "English", "time": "11:00 AM - 12:00 PM",subShort:'ENG',timeStart:'11:00'  },
-      { "subject": "Science", "time": "12:00 PM - 1:00 PM",subShort:'SCI',timeStart:'12:00'  },
-      { "subject": "Lunch", "time": "1:00 PM - 2:00 PM",subShort:'BREAK',timeStart:'1:00'  },
-      { "subject": "Social", "time": "2:00 PM - 3:00 PM",subShort:'SOC',timeStart:'2:00'  },
-      { "subject": "Hindi", "time": "3:00 PM - 4:00 PM",subShort:'HIN' ,timeStart:'3:00' },
-      { "subject": "Telugu", "time": "4:00 PM - 5:00 PM",subShort:'TEL',timeStart:'4:00'  }
+      { "subjectId":'ghm_math', "subject": "Math", "time": "10:00 AM - 11:00 AM", subShort:'MAT', timeStart:'10:00 AM',timeEnd:'11:15 AM' },
+      { "subjectId":'ghm_eng', "subject": "English", "time": "11:00 AM - 12:00 PM",subShort:'ENG',timeStart:'11:00 AM',timeEnd:'12:07 PM'  },
+      { "subjectId":'ghm_sci', "subject": "Science", "time": "12:00 PM - 1:00 PM",subShort:'SCI',timeStart:'12:00 PM',timeEnd:'01:00 PM'  },
+      { "subjectId":'ghm_0', "subject": "Lunch", "time": "1:00 PM - 2:00 PM",subShort:'BREAK',timeStart:'01:00 PM',timeEnd:'02:00 PM'  },
+      { "subjectId":'ghm_social', "subject": "Social", "time": "2:00 PM - 3:00 PM",subShort:'SOC',timeStart:'02:00 PM',timeEnd:'03:00 PM'  },
+      { "subjectId":'ghm_hindi', "subject": "Hindi", "time": "3:00 PM - 4:00 PM",subShort:'HIN' ,timeStart:'03:00 PM',timeEnd:'04:00 PM' },
+      { "subjectId":'ghm_tel', "subject": "Telugu", "time": "4:00 PM - 5:00 PM",subShort:'TEL',timeStart:'04:00 PM',timeEnd:'05:00 PM'  }
     ]
   },
   {
     "day": "Friday",
     dayShort:'FRI',
     "periods": [
-      { "subject": "Math", "time": "10:00 AM - 11:00 AM", subShort:'MAT', timeStart:'10:00' },
-      { "subject": "English", "time": "11:00 AM - 12:00 PM",subShort:'ENG',timeStart:'11:00'  },
-      { "subject": "Science", "time": "12:00 PM - 1:00 PM",subShort:'SCI',timeStart:'12:00'  },
-      { "subject": "Lunch", "time": "1:00 PM - 2:00 PM",subShort:'BREAK',timeStart:'1:00'  },
-      { "subject": "Social", "time": "2:00 PM - 3:00 PM",subShort:'SOC',timeStart:'2:00'  },
-      { "subject": "Hindi", "time": "3:00 PM - 4:00 PM",subShort:'HIN' ,timeStart:'3:00' },
-      { "subject": "Telugu", "time": "4:00 PM - 5:00 PM",subShort:'TEL',timeStart:'4:00'  }
+      { "subjectId":'ghm_math', "subject": "Math", "time": "10:00 AM - 11:00 AM", subShort:'MAT', timeStart:'10:00 AM' ,timeEnd:'11:15 AM'},
+      { "subjectId":'ghm_eng', "subject": "English", "time": "11:00 AM - 12:00 PM",subShort:'ENG',timeStart:'11:00 AM'  ,timeEnd:'12:07 PM'},
+      { "subjectId":'ghm_sci', "subject": "Science", "time": "12:00 PM - 1:00 PM",subShort:'SCI',timeStart:'12:00 PM'  ,timeEnd:'01:00 PM'},
+      { "subjectId":'ghm_0', "subject": "Lunch", "time": "1:00 PM - 2:00 PM",subShort:'BREAK',timeStart:'01:00 PM'  ,timeEnd:'02:00 PM'},
+      { "subjectId":'ghm_social', "subject": "Social", "time": "2:00 PM - 3:00 PM",subShort:'SOC',timeStart:'02:00 PM'  ,timeEnd:'03:00 PM'},
+      { "subjectId":'ghm_hindi', "subject": "Hindi", "time": "3:00 PM - 4:00 PM",subShort:'HIN' ,timeStart:'03:00 PM' ,timeEnd:'04:00 PM'},
+      { "subjectId":'ghm_tel', "subject": "Telugu", "time": "4:00 PM - 5:00 PM",subShort:'TEL',timeStart:'04:00 PM' ,timeEnd:'05:00 PM' }
     ]
   },
   {
     "day": "Saturday",
     dayShort:'SAT',
     "periods": [
-      { "subject": "Math", "time": "10:00 AM - 11:00 AM", subShort:'MAT', timeStart:'10:00' },
-      { "subject": "English", "time": "11:00 AM - 12:00 PM",subShort:'ENG',timeStart:'11:00'  },
-      { "subject": "Science", "time": "12:00 PM - 1:00 PM",subShort:'SCI',timeStart:'12:00'  },
-      { "subject": "Lunch", "time": "1:00 PM - 2:00 PM",subShort:'BREAK',timeStart:'1:00'  },
-      { "subject": "Social", "time": "2:00 PM - 3:00 PM",subShort:'SOC',timeStart:'2:00'  },
-      { "subject": "Hindi", "time": "3:00 PM - 4:00 PM",subShort:'HIN' ,timeStart:'3:00' },
-      { "subject": "Telugu", "time": "4:00 PM - 5:00 PM",subShort:'TEL',timeStart:'4:00'  }
+      { "subjectId":'ghm_math', "subject": "Math", "time": "10:00 AM - 11:00 AM", subShort:'MAT', timeStart:'10:00 AM' ,timeEnd:'11:15 AM'},
+      { "subjectId":'ghm_eng', "subject": "English", "time": "11:00 AM - 12:00 PM",subShort:'ENG',timeStart:'11:00 AM'  ,timeEnd:'12:07 PM'},
+      { "subjectId":'ghm_sci', "subject": "Science", "time": "12:00 PM - 1:00 PM",subShort:'SCI',timeStart:'12:00 PM'  ,timeEnd:'01:00 PM'},
+      { "subjectId":'ghm_0', "subject": "Lunch", "time": "1:00 PM - 2:00 PM",subShort:'BREAK',timeStart:'01:00 PM'  ,timeEnd:'02:00 PM'},
+      { "subjectId":'ghm_social', "subject": "Social", "time": "2:00 PM - 3:00 PM",subShort:'SOC',timeStart:'02:00 PM'  ,timeEnd:'03:00 PM'},
+      { "subjectId":'ghm_hindi', "subject": "Hindi", "time": "3:00 PM - 4:00 PM",subShort:'HIN' ,timeStart:'03:00 PM' ,timeEnd:'04:00 PM'},
+      { "subjectId":'ghm_tel', "subject": "Telugu", "time": "4:00 PM - 5:00 PM",subShort:'TEL',timeStart:'04:00 PM' ,timeEnd:'05:00 PM' }
     ]
   },
 ]
@@ -1027,11 +1027,11 @@ export const msgDummyData =  [
   { id: '6', msgText: 'haaa', time: '2024-06-08T17:28:00.559Z', sent: false },
   { id: '7', msgText: 'Hoo kkkk.', time: '2024-06-08T17:33:45.559Z', sent: false },
   { id: '8', msgText: 'what is special', time: '2024-06-08T17:30:55.559Z', sent: true },
-  { id: '9', msgText: 'at evng', time: '2024-06-08T20:39:02.559Z', sent: false },
-  { id: '10', msgText: 'at evng', time: '2024-06-08T20:39:02.559Z', sent: false },
-  { id: '11', msgText: 'at evng', time: '2024-06-08T20:39:02.559Z', sent: true },
-  { id: '12', msgText: 'at evng', time: '2024-06-08T20:39:02.559Z', sent: false },
-  { id: '13', msgText: 'at evng', time: '2024-06-08T20:39:02.559Z', sent: true }
+  { id: '9', msgText: 'at evng in the park', time: '2024-06-08T20:39:02.559Z', sent: false },
+  { id: '10', msgText: 'okay sure', time: '2024-06-08T20:39:02.559Z', sent: true },
+  { id: '11', msgText: 'Wlecome to English course', time: '2024-06-08T20:39:02.559Z', sent: true },
+  { id: '12', msgText: 'Thanks and !good', time: '2024-06-08T20:39:02.559Z', sent: true },
+  { id: '13', msgText: 'ohh nice', time: '2024-06-08T20:39:02.559Z', sent: true }
 ];
 
 

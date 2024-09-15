@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 import GBreadCrumbs from '../../components/GBreadCrumbs';
-import { IonIcon, IonLabel, IonText } from '@ionic/react';
+import { IonButton, IonIcon, IonLabel, IonText } from '@ionic/react';
 import { caretDownOutline, caretUpOutline, saveOutline } from 'ionicons/icons';
 import GCustomItemSelect from '../../components/GCustomItemSelect';
 import { searchStaffData } from '../../common/utility';
+import { useNavigate } from 'react-router';
 
 function AccessControl() {
     const [currentSelected, setCurrentSelected] = useState<string>('');
@@ -13,7 +14,8 @@ function AccessControl() {
     const studentsDisplayRef = useRef<any>();
     const [selectedStudent, setSelectedStudent] = useState<any>(null);
     const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Access Control', path: '/access-control' }];
-    const [accessTableData, setAccessTableData] = useState<any>([])
+    const [accessTableData, setAccessTableData] = useState<any>([]);
+    const navigate = useNavigate();
 
     const accessModules = [
         { id: 'acc-1', moduleName: 'Attendance', moduleId: 'access-attendance' },
@@ -56,6 +58,10 @@ function AccessControl() {
         setCurrentSelected(id);
     }
 
+    const handleNavigate = () => {
+        navigate('/access-private-modules');
+    }
+
     return (
         <div className='access-control-sa'>
             <GBreadCrumbs data={breadCrumbsValue} />
@@ -90,16 +96,35 @@ function AccessControl() {
                 />
                 <div className='access-table'>
                     <div className='row'>
-                        <div className='head-col col width-40'>
+                        <div className='head-col col width-40 first-col'>
                             <IonLabel >Staff Name</IonLabel>
                         </div>
                         <div className='head-col col width-60'>
                             <IonLabel>Access Classes</IonLabel>
                         </div>
                     </div>
+                   
+                    {/* <GCustomItemSelect itemData={searchResult.map((i: any) => ({ itemName: i.studentName, itemId: i.regNumber, itemDescription: i.className + i.sectionName }))}
+                    isOpen={isOpenMonthYearCard}
+                    setIsOpen={setIsOpenMonthYearCard}
+                    isPlain={true}
+                    parentItemDetailsRef={monthYearDetailsRef}
+                ><div className='g_flex' >
+                        <div className='g_half_width g_txt_center g_full_height'>
+                            <div className='g_full_height month-date-dis  o-flow-y'>
+                                {calendarMonths.map((m, mIndex) => (<div onClick={() => handleMonthYearSelect(m, true)} className={`height-px-40 month-year-item ${currentMY.month - 1 === mIndex ? 'selected-month-year' : ''}`} key={mIndex}>{m.monthFull}</div>))}
+                            </div>
+                        </div>
+                        <div className='g_half_width g_txt_center'>
+                            <div className='g_full_height month-date-dis  o-flow-y'>
+                                {yearCalculatedData.map((y, yIndex) => (<div onClick={() => handleMonthYearSelect(y, false)} className={`height-px-40 month-year-item ${currentMY.year === y ? 'selected-month-year' : ''}`} key={yIndex}>{y}</div>))}
+                            </div>
+                        </div>
+                    </div></GCustomItemSelect> */}
+
                     <div className='access-table-fixed'>
                         <div className='row'>
-                            <div className='col width-40'>
+                            <div className='col width-40 first-col'>
                                 <IonLabel >Staff Name</IonLabel>
                             </div>
                             <div className='col width-60'>
@@ -109,8 +134,8 @@ function AccessControl() {
                                 </div>
                             </div>
                         </div>
-                        {accessTableData.map((staff: any) => (<div key={staff.id} className='row'>
-                            <div className='col width-40'>
+                        {accessTableData.map((staff: any,) => (<div key={staff.id} className='row'>
+                            <div className='col width-40 first-col'>
                                 <IonLabel >{staff.staffDetails.staffName}</IonLabel>
                             </div>
                             <div className='col width-60'>
@@ -121,6 +146,9 @@ function AccessControl() {
                             </div>
                         </div>))}
                     </div>
+                </div>
+                <div className='access-private'>
+                    <IonButton className='br-ion-12 m-top-12 g_txt_cap add-employee-student' onClick={handleNavigate} fill="outline" expand="block">Private Modules</IonButton>
                 </div>
             </div>
         </div>

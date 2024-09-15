@@ -64,7 +64,7 @@ const Home: React.FC = () => {
   { id: 4, moduleName: 'Achievements', icon: trophyOutline, redirectTo: '/achievements' },
   { id: 5, moduleName: 'Gallery', icon: imageOutline, redirectTo: '/gallery' },
   { id: 6, moduleName: 'Ex-Circular', icon: newspaperOutline, redirectTo: '/ex-circular' },]
-  
+
   useEffect(() => {
     setTimeout(() => {
       if (userNameRef && userNameRef.current) {
@@ -75,6 +75,7 @@ const Home: React.FC = () => {
 
   return (
     <div className='home'>
+      <div className='home-container'>
       <IonCard>
         <IonCardContent>
           <div className='logo'>logo</div>
@@ -119,6 +120,7 @@ const Home: React.FC = () => {
             </IonButton>
           </div>
         ))}
+      </div>
       </div>
       <div className='location-control'>
         <div className='location'>

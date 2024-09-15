@@ -67,7 +67,7 @@ function DashboardTimeView({ dashboardRef }: any) {
                     </div>
                 </div>
                 {selectedSegment === 'Today' ? (
-                    <TodayDashboard />
+                    <TodayDashboard currentDay='TUE' />
                 ) : (
                     <WeekDashboard />
                 )}
