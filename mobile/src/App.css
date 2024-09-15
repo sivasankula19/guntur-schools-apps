@@ -1690,7 +1690,7 @@ ion-toggle::part(track) {
   border-radius: 8px;
 }
 
-.student-picker .users-list-dis .student-search-card {
+.student-picker .users-list-dis .student-search-card, .class-section-item {
   height: 50px;
   display: flex;
   justify-content: space-between;
@@ -1703,7 +1703,7 @@ ion-toggle::part(track) {
   background-color: #ffffff;
 }
 
-.student-picker .users-list-dis .selected-card {
+.student-picker .users-list-dis .selected-card, .selected-card {
   background-color: rgba(29, 122, 245, 0.25) !important;
 }
 
@@ -3837,6 +3837,14 @@ label.input-wrapper.sc-ion-input-ios {
   overflow-y: auto;
 }
 
+.popover-cls-sec .cls-sec-list{
+  max-height: 200px;
+  @media (max-height: 700px) {
+    max-height: 150px;
+  }
+  overflow-y: auto;
+}
+
 .dark .popover_actions ion-item {
   --background: #000000;
 }
@@ -4761,6 +4769,14 @@ label.input-wrapper.sc-ion-input-ios {
   height: 15px;
   width: 15px;
   color: #1D7AF5;
+}
+
+.width-95{
+  width: 95%;
+}
+
+.width-5{
+  width: 5%;
 }
 
 .width-30 {

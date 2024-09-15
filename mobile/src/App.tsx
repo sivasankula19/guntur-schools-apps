@@ -161,8 +161,8 @@ const App: React.FC = () => {
 
   useEffect(() => {
     if (currentRole)
-      setRole(currentRole)
-  }, [currentRole])
+      setRole(currentRole);
+  }, [currentRole]);
 
   return (
     <IonApp className="dark-theme">

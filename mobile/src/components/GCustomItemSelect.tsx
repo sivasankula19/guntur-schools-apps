@@ -32,12 +32,14 @@ function GCustomItemSelect(props: IGCustomItemSelectProps) {
     }, []);
 
     useEffect(() => {
+        if(itemData){
         setSearchResult(itemData);
         setSearchResult(itemData.filter((item: any) => (((item.itemName).toLowerCase().includes((search).toLowerCase()) || (item.itemId).toLowerCase().includes((search).toLowerCase())))))
-
+        }
     }, [itemData]);
 
     useEffect(() => {
+        if(isOpen)
         setSearch('');
     }, [isOpen])
 
