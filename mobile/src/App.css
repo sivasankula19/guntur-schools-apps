@@ -4421,6 +4421,65 @@ label.input-wrapper.sc-ion-input-ios {
   border-radius: 12px;
 }
 
+.total_fee_main{
+  height: 40px;
+  border: 1px solid;
+  border-color: #1D7AF5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35%;
+  border-radius: 8px;
+  margin: 8px 0 12px 0;
+}
+.fees_input{
+  border-radius: 8px !important;
+  height:5vh !important;
+  width:39vw;
+  min-height: 5vh !important;
+}
+.fees_sa_input{
+  height:5vh !important;
+  min-height: 5vh !important;
+  border-radius: 8px !important;
+  /* border:1px solid #000000; */
+}
+
+.fees-sa-select-height{
+  width:98%;
+}
+
+.adjust-space{
+  margin-top: -5px;
+  height: 64px;
+}
+
+.fees_sa_select{
+  width:48vw;
+  height:30px;
+}
+
+.settleup{
+  text-decoration: underline;
+}
+.paid{
+  color:green;
+}
+.expired{
+  color:red;
+}
+
+.term{
+  width:58%;
+}
+
+.convert_to_terms_btn {
+   border: 1px solid #1D7AF5;
+   border-radius: 12px;
+   height:4vh;
+   width:90vw;
+} 
+
 .own-school-main {
   height: 40px;
 }
@@ -4649,6 +4708,9 @@ label.input-wrapper.sc-ion-input-ios {
 
 .m3 {
   margin: 3px;
+}
+.mr3{
+  margin:3px;
 }
 
 .ml10 {
