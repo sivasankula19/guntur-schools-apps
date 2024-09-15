@@ -11,7 +11,7 @@ import {
 } from 'ionicons/icons';
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router';
-import GCustomisedModal from '../components/GCustomisedModal';
+import CustomizedModal from '../components/GCustomizedModal';
 import { useNavigate } from 'react-router';
 import GImageDocPreview from '../components/GImageDocPreview';
 import GBreadCrumbs from '../components/GBreadCrumbs';
@@ -95,7 +95,7 @@ const UserByID: React.FC = () => {
           </IonButton>
         </div>
       )}
-      <GCustomisedModal
+      <CustomizedModal
         title="Update Profile"
         isOpen={eventModal}
         onClose={() => {
@@ -121,7 +121,7 @@ const UserByID: React.FC = () => {
             );
           })}
         </IonList>
-      </GCustomisedModal>
+      </CustomizedModal>
       <GImageDocPreview
         src={
           'https://www.static-contents.youth4work.com/y4w/Images/Users/3126495.png?v=20180128190106'

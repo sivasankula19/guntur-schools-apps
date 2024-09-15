@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { IonCard, IonCardContent, IonContent, IonIcon, IonItem, IonLabel, IonPopover, IonText, IonToolbar } from '@ionic/react';
@@ -11,6 +11,8 @@ const ChatScreen: React.FC = () => {
   const [message, setMessage] = useState('');
   const [openPopover, setOpenPopover] = useState(false);
   const navigate = useNavigate();
+  const msgTextInput = useRef<any>();
+  const msgsScrollConRef = useRef<any>();
 
   const breadCrumbsValue = [
     { bName: 'Home', path: '/dashboard' },
@@ -27,6 +29,10 @@ const ChatScreen: React.FC = () => {
   const handleSendMsg = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log('msg ping', message);
+    if (message) {
+      const msgData = { id: Math.random().toString(), msgText: message, time: '2024-06-08T16:21:35.559Z', sent: false };
+      setMsgDataResponse((prev: any) => ([ ...prev, msgData ]))
+    }
     // Trigger event for message sending, e.g., via sockets
     setMessage('');
   };
@@ -39,7 +45,18 @@ const ChatScreen: React.FC = () => {
     if (id !== 'Y24C8A019') {
       setMsgDataResponse(msgData)
     }
-  }, [])
+    setTimeout(()=>{
+      if(msgTextInput.current){
+        msgTextInput.current.focus();
+      }
+    },0)
+  }, []);
+
+  useEffect(()=>{
+    if(msgsScrollConRef.current){
+      msgsScrollConRef.current.scrollTop = msgsScrollConRef.current.scrollHeight;
+    }
+  },[msgDataResponse])
 
   return (
     <div className="chat_screen">
@@ -50,7 +67,7 @@ const ChatScreen: React.FC = () => {
             <IonToolbar>
               <div className="g_flex custom_chat_tool">
                 <IonIcon onClick={handleNavigateBack} icon={arrowBackOutline} />
-                <div className="g_flex g_align_cntr text_img">
+                <div className="g_flex g-align-center text_img">
                   <div className="chat_profile_icon">
                     <img src="https://www.static-contents.youth4work.com/y4w/Images/Users/3126495.png?v=20180128190106" alt="Profile" />
                   </div>
@@ -89,7 +106,7 @@ const ChatScreen: React.FC = () => {
               </div>
             </IonToolbar>
             <div className="msgs_holder">
-              <div className="msgs_scroll">
+              <div className="msgs_scroll" ref={msgsScrollConRef}>
                 {msgDataResponse.length ? (
                   msgDataResponse.map((msg: any) => (
                     <div className={`txt_msg_receive_sent ${msg.sent ? 'received' : 'sent'}`} key={msg.id}>
@@ -123,7 +140,7 @@ const ChatScreen: React.FC = () => {
               </div>
               <div className="type_msg">
                 <form onSubmit={handleSendMsg}>
-                  <input value={message} onChange={handleMsgChange} placeholder="Type Anything..!" />
+                  <input ref={msgTextInput} value={message} onChange={handleMsgChange} placeholder="Type Anything..!" />
                   <div className="send_icon">
                     <button disabled={!message.length} type="submit">
                       <IonIcon icon={send} />

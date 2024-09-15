@@ -4,17 +4,16 @@ import {
     IonCardContent,
     IonInput,
     IonSearchbar,
-    IonSelect,
-    IonSelectOption,
     IonText,
-    IonToggle,
 } from '@ionic/react';
 import React, { useState } from 'react';
-import { studentDummyData } from '../../common/utility';
+import { classListDummy, genderListDummy, sectionListDummy, studentDummyData } from '../../common/utility';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
-import GCustomisedModal from '../../components/GCustomisedModal';
+import CustomizedModal from '../../components/GCustomizedModal';
+import GCustomSelectDrop from '../../components/GCustomSelectDrop';
+import GCustomToggle from '../../components/GCustomToggle';
 
 interface IStudentForm {
     studentFirstName: string,
@@ -50,6 +49,10 @@ const StudentListSA: React.FC = () => {
         defaultPassword: '',
     }
     const [formValue, setFormValue] = useState<IStudentForm>(formInitialVal);
+    const [filterValues, setFilterValue] = useState({
+        classId: '',
+        sectionId: '',
+    });
     const studentsDataList = studentDummyData;
     const stdData = [{
         studentName: 'Sankula Siva', profileImage:
@@ -91,8 +94,8 @@ const StudentListSA: React.FC = () => {
         navigate(item.redirectTo);
     }
 
-    const handleViewMore = (id: string) => {
-        setCurrentSelected(id)
+    const handleViewMore = (id: string, isClose:boolean=false) => {
+        setCurrentSelected(isClose ? '' : id);
     }
 
     const handleEditStudentInfo = (item: any) => {
@@ -127,23 +130,22 @@ const StudentListSA: React.FC = () => {
         console.log(formValue)
     }
 
+
+    const classDummyData = classListDummy.map(i => ({ id: i.classId, label: i.className }));
+    const sectionDummyData = sectionListDummy.map(i => ({ id: i.sectionId, label: i.sectionName }));
+    const genderDummyData = genderListDummy;
+
+    const handleChange = (e: any) => {
+        setFilterValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    }
+
+
     return (
         <div className='g_full_height'>
-            <div className="g_flex g_space_btwn g_align_cntr bread_toggle_container">
+            <div className="g_flex g-space-between g-align-center bread_toggle_container">
                 <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
                 <div>
-                    <IonToggle
-                        className="custom-toggle"
-                        checked={isFilterEnabled}
-                        onIonChange={handleToggleChange}
-                    >
-                        <span
-                            className={`toggle-text ${isFilterEnabled ? 'enabled_filter' : 'disabled_filter'
-                                }`}
-                        >
-                            {isFilterEnabled ? 'On' : 'Off'}
-                        </span>
-                    </IonToggle>
+                    <GCustomToggle checked={isFilterEnabled} onHandleChange={handleToggleChange}/>
                 </div>
             </div>
             <div>
@@ -159,57 +161,32 @@ const StudentListSA: React.FC = () => {
                                 debounce={500}
                                 onIonInput={handleSearchInput}
                             ></IonSearchbar>
-                            <div className="g_flex g_space_btwn select_conatainer">
+                            <div className="g_flex g-space-between select-container">
                                 <div style={{ width: '47%' }}>
-                                    <IonSelect
-                                        className="custome_select"
-                                        multiple={true}
-                                        label="Select Class"
-                                        labelPlacement="floating"
-                                        fill="outline"
-                                        interface="popover"
-                                    >
-                                        <IonSelectOption value="class-8">Class 8</IonSelectOption>
-                                        <IonSelectOption value="class-9">Class 9</IonSelectOption>
-                                        <IonSelectOption value="class-10">Class 10</IonSelectOption>
-                                        <IonSelectOption value="class-0">Class 0</IonSelectOption>
-                                    </IonSelect>
+                                    <GCustomSelectDrop options={classDummyData} name='classId'
+                                        value={filterValues.classId} label="Select Class"
+                                        handleOnChange={handleChange} classNames='custom-select' />
                                 </div>
                                 <div style={{ width: '47%' }}>
-                                    <IonSelect
-                                        multiple={true}
-                                        className="custome_select"
-                                        label="Select Section"
-                                        labelPlacement="floating"
-                                        fill="outline"
-                                        interface="popover"
-                                    >
-                                        <IonSelectOption value="A-Section">
-                                            A Section
-                                        </IonSelectOption>
-                                        <IonSelectOption value="B-Section">
-                                            B Section
-                                        </IonSelectOption>
-                                        <IonSelectOption value="C-Section">
-                                            C section
-                                        </IonSelectOption>
-                                    </IonSelect>
+                                    <GCustomSelectDrop options={sectionDummyData} name='sectionId'
+                                        value={filterValues.sectionId} label="Select Section"
+                                        handleOnChange={handleChange} classNames='custom-select' />
                                 </div>
                             </div>
                         </IonCardContent>
                     </IonCard>
                 )}
             </div>
-            <div className={`students_cards_container p-h-16 ${!isFilterEnabled ? 'with_filter_off' : ''}`}>
+            <div className={`students_cards_container p-h-10 ${!isFilterEnabled ? 'with_filter_off' : ''}`}>
                 {studentsDataList.map((item) => (
                     <IonCard key={item.id} className={`student_card animation-none custom-class-card ${currentSelected === item.id ? 'custom-class-card-selected' : ''}`}>
                         <IonCardContent className="card_content">
-                            <div className="g_flex g_space_btwn g_align_cntr">
-                                <div className="g_flex first_container width-70 g_align_cntr">
+                            <div className="g_flex g-space-between g-align-center">
+                                <div className="g_flex first_container width-65 g-align-center">
                                     <div className="profile_item">
                                         <img
                                             onClick={() => navigateToUser(item.id)}
-                                            className="prifile_image"
+                                            className="profile-image"
                                             src={item.profileImage}
                                             alt="profile"
                                         />
@@ -226,7 +203,7 @@ const StudentListSA: React.FC = () => {
                                         <span className="user_id_data g_text_ellipses">ID : {item.id}</span>
                                     </div>
                                     <div className="g_flex">
-                                        <a onClick={() => handleViewMore(item.id)}>View More</a> <a className='edit-a-student' onClick={() => handleEditStudentInfo(item)}>Edit</a>
+                                        <a onClick={() => handleViewMore(item.id, currentSelected === item.id)}>{currentSelected === item.id ? 'View Less' : 'View More'}</a> <a className='edit-a-student' onClick={() => handleEditStudentInfo(item)}>Edit</a>
                                     </div>
                                 </div>
                             </div>
@@ -241,7 +218,7 @@ const StudentListSA: React.FC = () => {
                     </IonCard>
                 ))}
             </div>
-            <GCustomisedModal
+            <CustomizedModal
                 title={`Add Student`}
                 isOpen={isStudentModalOpen}
                 onClose={handleModelClose}
@@ -254,38 +231,14 @@ const StudentListSA: React.FC = () => {
                     <IonInput value={formValue.studentLastName} onIonChange={handleInput} name='studentLastName' label="Student Last Name" labelPlacement="floating" fill="outline" placeholder="Last Name"></IonInput>
                 </div>
                 <div className='field m-bottom-10'>
-                    <IonSelect
-                        className="custome_select"
-                        label="Class Of Study"
-                        labelPlacement="floating"
-                        fill="outline"
-                        name='classOfStudy'
-                        value={formValue.classOfStudy}
-                        onIonChange={handleInput}
-                        interface="popover"
-                    >
-                        <IonSelectOption value="">Select Class</IonSelectOption>
-                        <IonSelectOption value="cls-10">10th Class</IonSelectOption>
-                        <IonSelectOption value="cls-9">9th Class</IonSelectOption>
-                        <IonSelectOption value="cls-8">8th Class</IonSelectOption>
-                    </IonSelect>
+                    <GCustomSelectDrop options={classDummyData} name='classOfStudy'
+                        value={formValue.classOfStudy} label="Class"
+                        handleOnChange={handleInput} classNames='custom-select' />
                 </div>
                 <div className='field m-bottom-10'>
-                    <IonSelect
-                        className="custome_select"
-                        label="Section"
-                        labelPlacement="floating"
-                        fill="outline"
-                        name='section'
-                        value={formValue.section}
-                        interface="popover"
-                        onIonChange={handleInput}
-                    >
-                        <IonSelectOption value="">Select Section</IonSelectOption>
-                        <IonSelectOption value="sec-a">A Section</IonSelectOption>
-                        <IonSelectOption value="sec-b">B Section</IonSelectOption>
-                        <IonSelectOption value="sec-c">C Section</IonSelectOption>
-                    </IonSelect>
+                    <GCustomSelectDrop options={classDummyData} name='section'
+                        value={formValue.section} label="Section"
+                        handleOnChange={handleInput} classNames='custom-select' />
                 </div>
                 <div className='field m-bottom-10'>
                     <IonInput value={formValue.mobileNumber} onIonChange={handleInput} name='mobileNumber' label="Mobile Number" labelPlacement="floating" fill="outline" placeholder="Ex. +91 9876543210"></IonInput>
@@ -294,21 +247,9 @@ const StudentListSA: React.FC = () => {
                     <IonInput value={formValue.emailAddress} onIonChange={handleInput} name='emailAddress' label="Email Address" labelPlacement="floating" fill="outline" placeholder="test@gmail.com"></IonInput>
                 </div>
                 <div className='field m-bottom-10'>
-                    <IonSelect
-                        className="custome_select"
-                        label="Gender"
-                        labelPlacement="floating"
-                        fill="outline"
-                        name='gender'
-                        value={formValue.gender}
-                        interface="popover"
-                        onIonChange={handleInput}
-                    >
-                        <IonSelectOption value="--">Default Section</IonSelectOption>
-                        <IonSelectOption value="gen-male">Male</IonSelectOption>
-                        <IonSelectOption value="gen-female">Female</IonSelectOption>
-                        <IonSelectOption value="gen-trans">Trans</IonSelectOption>
-                    </IonSelect>
+                    <GCustomSelectDrop options={genderDummyData} name='gender'
+                        value={formValue.gender} label="Gender"
+                        handleOnChange={handleInput} classNames='custom-select' />
                 </div>
                 <div className='field m-bottom-10'>
                     <IonInput value={formValue.parentName} onIonChange={handleInput} name='parentName' label="Parent / Guardian Name" labelPlacement="floating" fill="outline" placeholder="Parent Name"></IonInput>
@@ -321,7 +262,7 @@ const StudentListSA: React.FC = () => {
                         <IonInput value={formValue.defaultPassword} onIonChange={handleInput} name='defaultPassword' label="Default Password" labelPlacement="floating" fill="outline" placeholder="Default User Password"></IonInput>
                     </div>
                 )}
-            </GCustomisedModal>
+            </CustomizedModal>
         </div>
     );
 };

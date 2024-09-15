@@ -42,7 +42,7 @@ const Gallery: any = (props: any) => {
       <IonText className='title_gallery'>
         <h4>School Images</h4>
       </IonText>
-      <div className='scl_imgs'>
+      <div className='scl-images'>
         {schlImages.slice(0, 4).map((sclImg, index) => (<div key={sclImg.id} className='img_item'>
           {(index < 3 || schlImages.length <= 4) ? (<>
             <div><IonImg src={sclImg.imageUrl} /></div>
@@ -70,10 +70,10 @@ const Gallery: any = (props: any) => {
         <div onClick={handleButtonClick} className='custom_place_val'></div>
       </div>}
 
-      <div className='g_flex g_space_btwn'>
+      <div className='g_flex g-space-between'>
         <div style={{ width: '30%' }}>
           <IonSelect
-            className="custome_select"
+            className="custom-select"
             multiple={true}
             label="Class"
             labelPlacement="floating"
@@ -88,7 +88,7 @@ const Gallery: any = (props: any) => {
         </div>
         <div style={{ width: '30%' }}>
           <IonSelect
-            className="custome_select"
+            className="custom-select"
             multiple={true}
             label="Section"
             labelPlacement="floating"
@@ -103,7 +103,7 @@ const Gallery: any = (props: any) => {
         </div>
         <div style={{ width: '30%' }}>
           <IonSelect
-            className="custome_select"
+            className="custom-select"
             multiple={true}
             label="Year"
             labelPlacement="floating"
@@ -119,8 +119,8 @@ const Gallery: any = (props: any) => {
       </div>
       <div className='cls_sec_year_images'>
         {selectedClsImgs.length ? (<>
-          <div className='cls_imgs_container'>
-            <div className='g_flex g_align_cntr g_jstfy_content_cntr actual_image'>
+          <div className='cls-images-container'>
+            <div className='g_flex g-align-center g-justify-center actual_image'>
               <IonImg src={selectedClsImgs[0].imageUrl} />
             </div>
             <div className='img_title_ex'>
@@ -132,11 +132,11 @@ const Gallery: any = (props: any) => {
               <IonIcon icon={arrowForwardCircleOutline}></IonIcon>
             </div>
           </div>
-          <div className='dots_imgs'>
+          <div className='dots-images'>
             {selectedClsImgs.map((clImag, index) => (<span key={clImag.id} className={`dot ${index === currentImg ? 'selected_dot' : ''}`}></span>))}
           </div>
         </>) : (<>
-          <div className='no_imgs'>
+          <div className='no-images'>
             <div>
               <IonText>
                 <h1>No Images Found!</h1>

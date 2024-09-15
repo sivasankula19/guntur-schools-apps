@@ -12,7 +12,7 @@ import {
 } from '@ionic/react';
 import { addOutline, cloudUpload, location, alertCircleOutline, caretDownOutline } from 'ionicons/icons';
 import React, { useState } from 'react';
-import GCustomisedModal from '../components/GCustomisedModal';
+import CustomizedModal from '../components/GCustomizedModal';
 import { useSelector } from 'react-redux';
 
 const Achievements: React.FC = () => {
@@ -166,7 +166,7 @@ const Achievements: React.FC = () => {
   const IonSelectUI=(label:string,value:string,options:any)=>{
       return(
             <IonSelect
-                className="custome_select achieve_popup"
+                className="custom-select achieve_popup"
                 multiple={false}
                 label={label}
                 labelPlacement="floating"
@@ -205,13 +205,13 @@ const Achievements: React.FC = () => {
   return (
     <div className="achievements">
       {!isStudent &&
-      <div className='g_flex g_align_cntr g_jstfy_content_cntr'>
+      <div className='g_flex g-align-center g-justify-center'>
           <IonButton onClick={openPopover} className="add_achievement">
             <IonIcon icon={addOutline}></IonIcon> Add
           </IonButton>
       </div> }
       {/* add achievements popup */}
-      <GCustomisedModal
+      <CustomizedModal
           // ref={popover}
           title="Add Achievement"
           isOpen={popoverOpen}
@@ -232,8 +232,8 @@ const Achievements: React.FC = () => {
               {IonInputUI('Date','date','Date','date')}              
              </div>
 
-        </GCustomisedModal>
-      <div className='school_achieve_title g_flex g_align_cntr g_jstfy_content_cntr text-color-blue g-fontweight-600 g-fontsize-16'>
+        </CustomizedModal>
+      <div className='school_achieve_title g_flex g-align-center g-justify-center text-color-blue g-font-weight-600 g-font-size-16'>
         School Achievements
       </div>
 

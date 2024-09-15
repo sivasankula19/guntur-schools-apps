@@ -7,7 +7,7 @@ import {
   useIonRouter,
 } from '@ionic/react';
 
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import Menu from './components/Menu';
 import { App as CapacitorApp } from '@capacitor/app';
 
@@ -54,17 +54,16 @@ import FeesDuesSA from './pages/Fees/FeesDuesSA';
 import Calendar from './pages/Calendar/Calendar';
 import TimeTable from './pages/TimeTable/TimeTable';
 import Gallery from './pages/Gallery';
-import SchoolWibe from './pages/wibe/SchoolWibe';
+import SchoolVibe from './pages/vibe/SchoolVibe';
 import Achievements from './pages/Achievements';
 import Courses from './pages/Courses/Courses';
 import ContactUs from './pages/ContactUs/ContactUs';
-import AcedamicSubject from './pages/AcedamicSubjects';
 import About from './pages/About/About';
 import ExCircularActivities from './pages/ExCircularActivities';
 import Dairy from './pages/Dairy';
 import HomeWork from './pages/Homework/HomeWork';
 import SchoolAssets from './pages/SchoolAssets/SchoolAssets';
-import ExamSchedule from './pages/ExamSchedule';
+import ExamSchedule from './pages/ExamSchedule/ExamSchedule';
 import Messages from './pages/messages/Messages';
 import PageNotFound from './pages/PageNotFound';
 import AboutSuperAdmin from './pages/About/AboutSuperAdmin';
@@ -83,7 +82,11 @@ import SchoolSections from './pages/Class-Sections/SchoolSections';
 import StudentListSA from './pages/Students/StudentListSA';
 import StaffListSA from './pages/Staff/StaffListSA';
 import ProgressCardSA from './pages/ProgressCard/ProgressCardSA';
-import BackButtonHandler from './components/BackButtonHandler';
+import ProgressCardSubjectAdd from './pages/ProgressCard/ProgressCardSubjectAdd';
+import AcademicSubject from './pages/AcademicSubject';
+import ExamScheduleSA from './pages/ExamSchedule/ExamScheduleSA';
+import NotificationsList from './pages/NotificationsList';
+import AccessControl from './pages/AccessControl/AccessControl';
 
 setupIonicReact({
   animated:true,
@@ -93,16 +96,15 @@ setupIonicReact({
 
 const App: React.FC = () => {
   const isDarkMode = useSelector((state: any) => state?.darkMode.isDarkMode);
-  const isDashboardActive = useSelector((state:any)=> state?.routes?.isDashboardRoute);
   const [role, setRole] = useState('Student');
   const currentRole = useSelector((state: any) => state.auth.role);
   const isUserAcknowledgedMode = useSelector(
     (state: any) => state?.darkMode.isUserAcknowledgedMode
   );
-  // const fullstate = useSelector((state: any) => state);
+  // const fullState = useSelector((state: any) => state);
   const school = useSelector((state: any) => state.school.selectedSchool);
   const isAuthenticated = useSelector((state: any) => state.auth.isAuthenticated);
-  // console.log(fullstate)
+  // console.log(fullState)
   // const preLoginModules = useSelector((state:any) => state.)
   const ionRouter = useIonRouter();
 
@@ -133,21 +135,21 @@ const App: React.FC = () => {
     dispatch(setMode(ev.detail.role === 'confirm'));
   };
 
-  // useEffect(() => {
-  //   const handleBackButton = (ev: any) => {
-  //     ev.detail.register(-1, () => {
-  //       if(isDashboardActive){
-  //         CapacitorApp.exitApp();
-  //       }
-  //       else{
-  //         if (!ionRouter.canGoBack()) {
-  //           CapacitorApp.exitApp();
-  //         } else {
-  //           ionRouter.goBack();
-  //         }
-  //       }
-  //     });
-  //   };
+  useEffect(() => {
+    const handleBackButton = (ev: any) => {
+      ev.detail.register(10, (processNextHandler: any) => {
+        console.log('Handler was called!');
+        // get the modal active state via store, if any active then close that modal and don't call processNextHandler 
+        processNextHandler();
+      });
+      ev.detail.register(-1, () => {
+        if (!ionRouter.canGoBack()) {
+          CapacitorApp.exitApp();
+        } else {
+          ionRouter.goBack();
+        }
+      });
+    };
 
   //   document.addEventListener('ionBackButton', handleBackButton);
 
@@ -168,7 +170,7 @@ const App: React.FC = () => {
         header="Dark Mode!"
         backdropDismiss={false}
         subHeader="Would you like to use Dark Mode ?"
-        message="You can customise it later also in the menu!"
+        message="You can customize it later also in the menu!"
         isOpen={isUserAcknowledgedMode === false}
         buttons={[
           {
@@ -198,28 +200,30 @@ const App: React.FC = () => {
                 <Route path='/attendance-by-student' element={<AttendanceByStudent />} /> //SA
                 <Route path='/attendance:id' element={<Attendance />} />
                 <Route path='/progress-card' element={role === 'Student' ? <ProgressCard /> : <ProgressCardSA />} /> //both
+                <Route path='/progress-card-class-subject' element={<ProgressCardSubjectAdd />} />
                 <Route path='/time-table' element={role === 'Student' ? <TimeTable /> : <TimeTableSA />} /> //both
                 <Route path='/calendar' element={role === 'Student' ? <Calendar /> : <CalendarSA />} /> //both
                 <Route path='/students-list' element={role === 'Student' ? <StudentList /> : <StudentListSA />} />
-                <Route path='/staff-list' element={role === 'student' ? <StaffList /> : <StaffListSA />} />
+                <Route path='/staff-list' element={role === 'Student' ? <StaffList /> : <StaffListSA />} />
                 <Route path='/subjects' element={role === 'Student' ? <Subjects /> : <SubjectsSA />} />
-                <Route path='/school-wibe' element={<SchoolWibe />} />
+                <Route path='/school-vibe' element={<SchoolVibe />} />
                 <Route path='/documents' element={<Documents />} />
                 <Route path={'/user/:id'} element={<UserByID />} />
                 <Route path='/messages' element={<Messages />} />
                 <Route path={'/messages/:id'} element={<ChatScreen></ChatScreen>} />
-                {/* <Route path='/fee-structure' element={<FeesDues />} /> */}
-                <Route path='/fee-structure' element={role === 'Student' ? <FeesDues /> : <FeesDuesSA /> } />
-                <Route path='/exam-schedules' element={<ExamSchedule />} />
+                <Route path='/fee-structure' element={<FeesDues />} />
+                <Route path='/exam-schedules' element={role === 'Student' ? <ExamSchedule /> : <ExamScheduleSA />} />
                 <Route path='/home-work' element={<HomeWork />} />
                 <Route path='/diary' element={<Dairy />} />
                 <Route path='/school-classes' element={<SchoolClasses />} />
                 <Route path='/school-sections' element={<SchoolSections />} />
-
+                <Route path='/my-notifications' element={<NotificationsList />} />
+                <Route path='/access-control' element={<AccessControl />} />
+                {/* public modules! */}
                 <Route path='/gallery' element={<Gallery />} />
                 <Route path='/ex-circular' element={<ExCircularActivities />} />
                 <Route path='/about' element={role === 'Student' ? <About /> : <AboutSuperAdmin />} />
-                <Route path='/academic-subjects' element={<AcedamicSubject />} />
+                <Route path='/academic-subjects' element={<AcademicSubject />} />
                 <Route path='/contact-us' element={role === 'Student' ? <ContactUs /> : <ContactUsSa />} />
                 <Route path='/courses' element={role === 'Student' ? <Courses /> : <CoursesSuperAdmin />} />
                 <Route path='/achievements' element={<Achievements />} />

@@ -10,16 +10,16 @@ import {
   appsSharp,
   listSharp,
 } from 'ionicons/icons';
-import RenderSelectedTableUnit from './RenderSelectedTableUnit';
-import RenderAllExams from './RenderAllExams';
-import StudentInfoProCard from './StudentInfoProCard';
+import StudentInfoProCard from '../../components/StudentInfoProCard';
+import RenderSelectedTableUnit from '../../components/RenderSelectedTableUnit';
+import RenderAllExams from '../../components/RenderAllExams';
 
 const ProgressCard: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState('unit1');
   const [viewMode, setViewMode] = useState('list');
 
   const unitsScrollRef = useRef<any>(null);
-  const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' },{ bName: 'Progress Card', path: '/progress-card' },];
+  const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Progress Card', path: '/progress-card' },];
 
   const studentInfo: any = {
     fullName: 'Siva S User',
@@ -90,19 +90,19 @@ const ProgressCard: React.FC = () => {
               </>
             )}
           </div>
-          <div className="g_flex g_align_cntr progress_icons_container">
+          <div className="g_flex g-align-center progress_icons_container">
             <IonIcon
               onClick={() => {
                 setViewMode('list');
               }}
-              className={`list_viwe_icon ${viewMode === 'list' && 'selected'}`}
+              className={`list-view-icon ${viewMode === 'list' && 'selected'}`}
               icon={listSharp}
             ></IonIcon>
             <IonIcon
               onClick={() => {
                 setViewMode('grid');
               }}
-              className={`grdi_view_icon ${viewMode === 'grid' && 'selected'}`}
+              className={`grid-view-icon ${viewMode === 'grid' && 'selected'}`}
               icon={appsSharp}
             ></IonIcon>
           </div>

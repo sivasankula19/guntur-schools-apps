@@ -91,16 +91,16 @@ function AttendanceClassView() {
                         <p className='font-12'>Attendance for {classId} / {sectionId} / {selectedDate}</p>
                     </IonText>
                 </div>
-                <div className='g_flex g_align_cntr'>
+                <div className='g_flex g-align-center p-b-8'>
                     <div className='width-40'>
                         <IonLabel>
                             Default Apply
                         </IonLabel>
                     </div>
-                    <div className='g_flex width-60 g_align_cntr g_space_btwn'>
+                    <div className='g_flex width-60 g-align-center g-space-between'>
                         <div style={{ width: '60%' }}>
                             <IonSelect
-                                className="custome_select"
+                                className="custom-select"
                                 label="Default Status"
                                 labelPlacement="floating"
                                 fill="outline"
@@ -123,12 +123,12 @@ function AttendanceClassView() {
                         classStudentAttendanceDate.map((student: any) => (
                             <IonCard key={student.id} className="student_card">
                                 <IonCardContent className="card_content">
-                                    <div className="g_flex g_space_btwn g_align_cntr">
-                                        <div className="g_flex first_container g_align_cntr">
+                                    <div className="g_flex g-space-between g-align-center">
+                                        <div className="g_flex first_container g-align-center">
                                             <div className="profile_item">
                                                 <img
                                                     onClick={() => navigateToUser(student.id)}
-                                                    className="prifile_image"
+                                                    className="profile-image"
                                                     src={student.profileImage}
                                                     alt="profile"
                                                 />
@@ -143,7 +143,7 @@ function AttendanceClassView() {
                                         <div className='g_flex g_half_width'>
                                             <div style={{ width: '50%', paddingRight: '4px' }}>
                                                 <IonSelect
-                                                    className="custome_select"
+                                                    className="custom-select"
                                                     label="Status"
                                                     labelPlacement="floating"
                                                     fill="outline"
@@ -159,7 +159,7 @@ function AttendanceClassView() {
                                             </div>
                                             <div style={{ width: '50%', paddingLeft: '4px' }}>
                                                 <IonSelect
-                                                    className="custome_select"
+                                                    className="custom-select"
                                                     label="Status"
                                                     labelPlacement="floating"
                                                     fill="outline"

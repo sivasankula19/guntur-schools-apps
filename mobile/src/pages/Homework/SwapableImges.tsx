@@ -23,7 +23,7 @@ const SwapableImages = ({images = []}:any) => {
   const renderImages = () => {
     if (images.length === 1) {
       return (
-        <div className="image-wrapper g_jstfy_content_cntr">
+        <div className="image-wrapper g-justify-center">
           <img src={images[0]} alt="current" className="main-image" />
         </div>
       );

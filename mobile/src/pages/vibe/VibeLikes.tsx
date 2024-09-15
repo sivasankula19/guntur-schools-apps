@@ -20,7 +20,7 @@ interface IProps {
   data: {},
   resetOpenCallback: Function,
 }
-const WibeLikes: React.FC<IProps> = ({ isopenlikes, data, resetOpenCallback }) => {
+const VibeLikes: React.FC<IProps> = ({ isopenlikes, data, resetOpenCallback }) => {
 
   const modal = useRef<HTMLIonModalElement>(null);
   const [isOpen, setIsOpen] = useState<boolean>(isopenlikes);
@@ -73,8 +73,8 @@ const LikesUI = ({likesData,formatDate, formatTime}:any) => {
   return (
     <IonContent className="ion-padding footer_container">
       <IonText>
-        <h6 className="g-fontsize-16 g-fontweight-600 text-color-blue" >{likesData.postName}</h6>
-        <h6 className="g-fontsize-14 g-fontweight-400" >Liked By</h6>
+        <h6 className="g-font-size-16 g-font-weight-600 text-color-blue" >{likesData.postName}</h6>
+        <h6 className="g-font-size-14 g-font-weight-400" >Liked By</h6>
       </IonText>
       <div>
         <IonItemDivider ></IonItemDivider>
@@ -82,17 +82,17 @@ const LikesUI = ({likesData,formatDate, formatTime}:any) => {
       <div className='likes-data-view'>
         {likesData?.likesData?.map((likes: any, index: number) => {
           return (
-            <div className='g_flex g_space_btwn m6' key={index}>
-              <div className='g_flex g_align_cntr' >
-                <img className='wibe-profile' src={likes.img} alt="profile"></img>
+            <div className='g_flex g-space-between m6' key={index}>
+              <div className='g_flex g-align-center' >
+                <img className='vibe-profile' src={likes.img} alt="profile"></img>
                 <div>
-                  <p className="g-fontweight-600 g-fontsize-14 text-color-blue m3">{likes.liked_by}</p>
-                  <p className="g-fontweight-400 g-fontsize-12 m3">{likes.designation} / {likes.user_id} </p>
+                  <p className="g-font-weight-600 g-font-size-14 text-color-blue m3">{likes.liked_by}</p>
+                  <p className="g-font-weight-400 g-font-size-12 m3">{likes.designation} / {likes.user_id} </p>
                 </div>
               </div>
               <div>
-                <p className="g-fontweight-400 g-fontsize-10 m3">{formatDate(likes.time)}</p>
-                <p className="g-fontweight-400 g-fontsize-10 m3">{formatTime(likes.time)}</p>
+                <p className="g-font-weight-400 g-font-size-10 m3">{formatDate(likes.time)}</p>
+                <p className="g-font-weight-400 g-font-size-10 m3">{formatTime(likes.time)}</p>
               </div>
             </div>
           )
@@ -102,6 +102,6 @@ const LikesUI = ({likesData,formatDate, formatTime}:any) => {
   )
 }
 
-export default WibeLikes;
+export default VibeLikes;
 
 

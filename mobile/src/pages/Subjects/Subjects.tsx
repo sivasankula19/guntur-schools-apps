@@ -6,13 +6,13 @@ import {
   IonList,
   IonSearchbar,
   IonText,
-  IonToggle,
 } from '@ionic/react';
 import React, { useState } from 'react';
 import { classSubjects } from '../../common/utility';
 import { starOutline } from 'ionicons/icons';
 import ProgressBar from '../../components/ProgressBar';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
+import GCustomToggle from '../../components/GCustomToggle';
 
 const Subjects: React.FC = () => {
   const [data, setData] = useState(classSubjects);
@@ -32,21 +32,10 @@ const Subjects: React.FC = () => {
 
   return (
     <div className='subjects'>
-      <div className="g_flex g_space_btwn g_align_cntr bread_toggle_container">
+      <div className="g_flex g-space-between g-align-center bread_toggle_container">
         <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
         <div>
-          <IonToggle
-            className="custom-toggle"
-            checked={isFilterEnabled}
-            onIonChange={handleToggleChange}
-          >
-            <span
-              className={`toggle-text ${isFilterEnabled ? 'enabled_filter' : 'disabled_filter'
-                }`}
-            >
-              {isFilterEnabled ? 'On' : 'Off'}
-            </span>
-          </IonToggle>
+          <GCustomToggle checked={isFilterEnabled} onHandleChange={handleToggleChange}/>
         </div>
       </div>
       <IonItem className="custom_sub_item">
@@ -63,11 +52,11 @@ const Subjects: React.FC = () => {
             <IonCard key={item.subjectCode}>
               <IonCardContent className="subject_item_card_content">
                 <IonItem>
-                  <div className="g_flex g_space_btwn g_full_width">
+                  <div className="g_flex g-space-between g_full_width">
                     <IonText className="subject_text_name">
                       <h3>{item.subjectName}</h3>
                     </IonText>
-                    <div className="progress_container g_flex g_align_cntr">
+                    <div className="progress_container g_flex g-align-center">
                       <ProgressBar filled={item.percentCovered}></ProgressBar>
                     </div>
                     <IonIcon
@@ -78,7 +67,7 @@ const Subjects: React.FC = () => {
                   </div>
                 </IonItem>
                 <IonItem>
-                  <div className="g_flex g_space_btwn g_full_width">
+                  <div className="g_flex g-space-between g_full_width">
                     <IonText>
                       <a>{item.subjectTeacher}</a>
                     </IonText>

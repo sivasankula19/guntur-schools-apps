@@ -21,7 +21,7 @@ interface IProps {
   data: {},
   resetOpenCallback: Function,
 }
-const WibeComments: React.FC<IProps> = ({ isopencomments, data, resetOpenCallback }) => {
+const VibeComments: React.FC<IProps> = ({ isopencomments, data, resetOpenCallback }) => {
 
   const modal = useRef<HTMLIonModalElement>(null);
   const [isOpen, setIsOpen] = useState<boolean>(isopencomments);
@@ -54,8 +54,8 @@ const WibeComments: React.FC<IProps> = ({ isopencomments, data, resetOpenCallbac
     return (
       <div className='g_flex'>
         <IonIcon className="chat-heart-icons" icon={chatboxOutline}></IonIcon>
-        <h6 className='g-fontweight-400 g-fontsize-10 ml3'>{replies?.length ? replies?.length : 0}</h6>
-        <h6 className='g-fontweight-400 g-fontsize-10 ml3 text-dec-underline'>reply's</h6>
+        <h6 className='g-font-weight-400 g-font-size-10 ml3'>{replies?.length ? replies?.length : 0}</h6>
+        <h6 className='g-font-weight-400 g-font-size-10 ml3 text-dec-underline'>reply's</h6>
       </div>
     )
   }
@@ -64,8 +64,8 @@ const WibeComments: React.FC<IProps> = ({ isopencomments, data, resetOpenCallbac
     return (
       <div className='g_flex'>
         <IonIcon className="chat-heart-icons" icon={heartOutline}></IonIcon>
-        <h6 className='g-fontweight-400 g-fontsize-10 ml3'>{Likes}</h6>
-        <h6 className='g-fontweight-400 g-fontsize-10 ml3 text-dec-underline'>likes</h6>
+        <h6 className='g-font-weight-400 g-font-size-10 ml3'>{Likes}</h6>
+        <h6 className='g-font-weight-400 g-font-size-10 ml3 text-dec-underline'>likes</h6>
       </div>
     )
   }
@@ -74,8 +74,8 @@ const WibeComments: React.FC<IProps> = ({ isopencomments, data, resetOpenCallbac
     return (
       <IonContent className="ion-padding footer_container">
         <IonText>
-          <h6 className="g-fontsize-16 g-fontweight-600 text-color-blue">{commentsData.postName}</h6>
-          <h6 className="g-fontsize-14 g-fontweight-400" >Comments</h6>
+          <h6 className="g-font-size-16 g-font-weight-600 text-color-blue">{commentsData.postName}</h6>
+          <h6 className="g-font-size-14 g-font-weight-400" >Comments</h6>
         </IonText>
         <div>
           <IonItemDivider></IonItemDivider>
@@ -84,21 +84,21 @@ const WibeComments: React.FC<IProps> = ({ isopencomments, data, resetOpenCallbac
           {commentsData?.comments?.map((comments: any, index: number) => {
             return (
               <div key={index}>
-                <div className='g_flex g_space_btwn m6' key={index}>
-                  <div className='g_flex g_align_cntr'>
+                <div className='g_flex g-space-between m6' key={index}>
+                  <div className='g_flex g-align-center'>
                     <img style={{ height: 30, width: 30, borderRadius: 50, marginRight: 5 }} src={comments.commentedBy.img} alt="profile"></img>
                     <div>
-                      <p className="g-fontweight-600 g-fontsize-14 m3 text-color-blue">{comments.commentedBy.name}</p>
-                      <p className="g-fontweight-400 g-fontsize-10 m3">{comments.commentedBy.designation} / {comments.commentedBy.id} </p>
+                      <p className="g-font-weight-600 g-font-size-14 m3 text-color-blue">{comments.commentedBy.name}</p>
+                      <p className="g-font-weight-400 g-font-size-10 m3">{comments.commentedBy.designation} / {comments.commentedBy.id} </p>
                     </div>
                   </div>
                   <div>
-                    <p className="g-fontweight-400 g-fontsize-10 m3">{formatDate(comments.commentedBy.time)}</p>
-                    <p className="g-fontweight-400 g-fontsize-10 m3">{formatTime(comments.commentedBy.time)}</p>
+                    <p className="g-font-weight-400 g-font-size-10 m3">{formatDate(comments.commentedBy.time)}</p>
+                    <p className="g-font-weight-400 g-font-size-10 m3">{formatTime(comments.commentedBy.time)}</p>
                   </div>
                 </div>
-                <div className='g-fontweight-400 g-fontsize-12 wibe-main-comment'>{comments.comment}</div>
-                <div className='g_flex g_space_btwn m6 ml10' >
+                <div className='g-font-weight-400 g-font-size-12 vibe-main-comment'>{comments.comment}</div>
+                <div className='g_flex g-space-between m6 ml10' >
                   {repliesUI(comments?.replies)}
                   {likesUI(comments?.likes)}
                 </div>
@@ -106,7 +106,7 @@ const WibeComments: React.FC<IProps> = ({ isopencomments, data, resetOpenCallbac
             )
           })}
         </div>
-        <input className="wibe-comment-reply-input" type="text" placeholder='Reply Text Here!'></input>
+        <input className="vibe-comment-reply-input" type="text" placeholder='Reply Text Here!'></input>
       </IonContent>
     )
   }
@@ -129,4 +129,4 @@ const WibeComments: React.FC<IProps> = ({ isopencomments, data, resetOpenCallbac
   );
 };
 
-export default WibeComments;
+export default VibeComments;

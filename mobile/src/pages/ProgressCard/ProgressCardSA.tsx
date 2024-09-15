@@ -17,10 +17,12 @@ import {
     saveOutline,
     settingsOutline,
 } from 'ionicons/icons';
-import RenderSelectedTableUnit from './RenderSelectedTableUnit';
-import RenderAllExams from './RenderAllExams';
-import StudentInfoProCard from './StudentInfoProCard';
+
 import { searchStudentsData } from '../../common/utility';
+import RenderSelectedTableUnit from '../../components/RenderSelectedTableUnit';
+import RenderAllExams from '../../components/RenderAllExams';
+import StudentInfoProCard from '../../components/StudentInfoProCard';
+import GCustomItemSelect from '../../components/GCustomItemSelect';
 
 const ProgressCardSA: React.FC = () => {
     const [isOpenStudentCard, setIsOpenStudentCard] = useState<boolean>(false);
@@ -28,18 +30,12 @@ const ProgressCardSA: React.FC = () => {
     const [viewMode, setViewMode] = useState('list');
     const [searchResult, setSearchResult] = useState<any>([]);
     const [selectedStudent, setSelectedStudent] = useState<any>({
-        "id": 2,
-        "studentName": "Narra Dev Qumar",
-        "regNumber": "GHMS00020",
-        "className": "8th Class",
-        "sectionName": "B Section"
+        "itemName": "Narra Dev Qumar",
+        "itemId": "GHMS00020",
+        "itemDescription": ''
     });
-    const [search, setSearch] = useState('');
-
     const unitsScrollRef = useRef<any>(null);
     const studentsDisplayRef = useRef<any>();
-    const studentsDetailsRef = useRef<any>();
-
     const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Progress Card', path: '/progress-card' },];
 
     const studentInfo: any = {
@@ -51,18 +47,12 @@ const ProgressCardSA: React.FC = () => {
         signOn: false,
     };
 
-    const handleInput = (ev: any) => {
-        setSearch(ev.detail.value);
-        setSearchResult(searchStudentsData.filter((item: any) => ((item.studentName).toLowerCase().includes((ev.detail.value).toLowerCase())) || ev.detail.value == ''))
-        //  debounce function can be executed!!! here i.e api
-    };
-
     useEffect(() => {
+        setSearchResult(searchStudentsData)
         setTimeout(() => {
             if (selectedTab && unitsScrollRef.current) {
                 const container = unitsScrollRef.current;
                 const selectedButton = container.querySelector(`.${selectedTab}`);
-
                 if (selectedButton) {
                     const containerRect = container.getBoundingClientRect();
                     const buttonRect = selectedButton.getBoundingClientRect();
@@ -73,20 +63,6 @@ const ProgressCardSA: React.FC = () => {
         }, 1);
 
     }, [selectedTab, viewMode]);
-
-    useEffect(() => {
-        setSearchResult(searchStudentsData);
-        window.addEventListener('click', handleScreenClick);
-        return () => {
-            window.removeEventListener('click', handleScreenClick)
-        };
-    }, []);
-
-    const handleScreenClick = (e: any) => {
-        setIsOpenStudentCard((studentsDetailsRef && studentsDetailsRef.current?.contains(e.target)) || (studentsDisplayRef && studentsDisplayRef?.current?.contains(e.target)));
-    }
-
-
 
     useEffect(() => {
         setSelectedTab('unit1')
@@ -104,13 +80,6 @@ const ProgressCardSA: React.FC = () => {
         setSelectedTab(e.target.name);
     };
 
-    const handleStudentChange = (student: any) => {
-        setSelectedStudent(student)
-    }
-
-    const handlePopOverClose = (e: any) => {
-        setIsOpenStudentCard(false);
-    }
     return (
         <>
             <div className="breadcrumbs_progress">
@@ -119,14 +88,14 @@ const ProgressCardSA: React.FC = () => {
             <div className='p-h-10'>
                 <IonCard className='custom-att-card'>
                     <IonCardContent className='padding-0'>
-                        <div className='back-save-icons g_align_cntr'>
+                        <div className='back-save-icons g-align-center'>
                             <IonIcon icon={chevronBackOutline}></IonIcon>
                             <div className='g_flex p-h-10 username-holder m-width-60' ref={studentsDisplayRef}>
                                 <IonLabel class='g_text_ellipses'>
-                                    {selectedStudent.studentName}
+                                    {selectedStudent.itemName}
                                 </IonLabel>
                                 <IonLabel>
-                                    ({selectedStudent.regNumber})
+                                    ({selectedStudent.itemId})
                                 </IonLabel>
                                 <IonIcon icon={caretDownOutline}></IonIcon>
                             </div>
@@ -134,39 +103,17 @@ const ProgressCardSA: React.FC = () => {
                         </div>
                     </IonCardContent>
                 </IonCard>
-                {
-                    isOpenStudentCard && (
-                        <IonCard ref={studentsDetailsRef} className='student-picker'>
-                            <IonCardContent>
-                                <div>
-                                    <div className='m-bottom-10'>
-                                        <IonSearchbar placeholder='Search A Student Name / Id' showClearButton="focus"
-                                            value={search}
-                                            debounce={500}
-                                            onIonInput={handleInput}></IonSearchbar>
-                                    </div>
-                                    <div className='users-list-dis'>
-                                        {searchResult.map((student: any) => (
-                                            <div key={student.id} onClick={() => handleStudentChange(student)} className={`student-search-card${student.regNumber === selectedStudent.regNumber ? ' selected-card' : ''}`}>
-                                                <div className='width-65 student-name'><p className='g_text_ellipses'>{student.studentName}</p></div>
-                                                <div className='width-35 student-id-cls'>
-                                                    <div><p className='g_text_ellipses font-500'>{student.regNumber}</p></div>
-                                                    <div><p className='g_text_ellipses'>{student.className} - {student.sectionName}</p></div>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                    <div className='m-top-10'>
-                                        <IonButton id='student-list-select' fill="outline" expand="block" onClick={handlePopOverClose}>Close</IonButton>
-                                    </div>
-                                </div>
-                            </IonCardContent>
-                        </IonCard>)
-                }
+                <GCustomItemSelect itemData={searchResult.map((i: any) => ({ itemName: i.studentName, itemId: i.regNumber, itemDescription: i.className + i.sectionName }))}
+                    isOpen={isOpenStudentCard}
+                    setIsOpen={setIsOpenStudentCard}
+                    selectedItem={selectedStudent}
+                    setSelectedItem={setSelectedStudent}
+                    parentItemDetailsRef={studentsDisplayRef}
+                />
             </div>
             <div className="progress_card custom-progress-card">
                 <StudentInfoProCard studentInfo={studentInfo} />
-                <div className='g_flex g_align_cntr g_space_btwn p-h-16 custom-btn-progress'>
+                <div className='g_flex g-align-center g-space-between p-h-16 custom-btn-progress'>
                     <div className='g_flex'>
                         <IonButton className='br-ion-12 g_txt_cap' fill="outline">Notify Parent</IonButton>
                         <IonButton className='br-ion-12 g_txt_cap' fill="outline">Edit Report</IonButton>
@@ -196,19 +143,19 @@ const ProgressCardSA: React.FC = () => {
                             </>
                         )}
                     </div>
-                    <div className="g_flex g_align_cntr progress_icons_container">
+                    <div className="g_flex g-align-center progress_icons_container">
                         <IonIcon
                             onClick={() => {
                                 setViewMode('list');
                             }}
-                            className={`list_viwe_icon ${viewMode === 'list' && 'selected'}`}
+                            className={`list-view-icon ${viewMode === 'list' && 'selected'}`}
                             icon={listSharp}
                         ></IonIcon>
                         <IonIcon
                             onClick={() => {
                                 setViewMode('grid');
                             }}
-                            className={`grdi_view_icon ${viewMode === 'grid' && 'selected'}`}
+                            className={`grid-view-icon ${viewMode === 'grid' && 'selected'}`}
                             icon={appsSharp}
                         ></IonIcon>
                     </div>

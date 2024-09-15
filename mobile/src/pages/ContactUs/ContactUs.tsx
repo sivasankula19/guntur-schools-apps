@@ -21,7 +21,7 @@ const ContactUs: React.FC = () => {
               </IonText>
             </div>
           </div>
-          <div className='g_flex g_space_btwn contact_me'>
+          <div className='g_flex g-space-between contact_me'>
             <div className='left'>
               <IonIcon icon={mailOutline}></IonIcon>
               <IonText>
@@ -32,7 +32,7 @@ const ContactUs: React.FC = () => {
               <IonIcon icon={copyOutline}></IonIcon>
             </div>
           </div>
-          <div className='g_flex g_space_btwn contact_me'>
+          <div className='g_flex g-space-between contact_me'>
             <div className='left'>
               <IonIcon icon={phonePortraitOutline}></IonIcon>
               <IonText>
@@ -129,7 +129,7 @@ const ContactUs: React.FC = () => {
             </div>
             <div className='contact_field'>
               <IonSelect
-                className="custome_select"
+                className="custom-select"
                 label="Select Reason"
                 labelPlacement="floating"
                 fill="outline"
@@ -145,7 +145,7 @@ const ContactUs: React.FC = () => {
                 labelPlacement="floating"
                 fill="outline"></IonTextarea>
             </div>
-            <div className='g_flex g_jstfy_content_cntr'>
+            <div className='g_flex g-justify-center'>
               <IonButton>Submit</IonButton>
             </div>
           </form>

@@ -6,7 +6,7 @@ const ContactUsSa = () => {
     return (
         <div className='contact_us_sa g_full_height'>
             <div>
-                <div className='m-v-10 g_flex g_jstfy_content_cntr'>
+                <div className='m-v-10 g_flex g-justify-center'>
                     <IonLabel className='sub_heading'>Principal Details</IonLabel>
                 </div>
                 <div className='field m-bottom-10'>
@@ -30,7 +30,7 @@ const ContactUsSa = () => {
                 </div>
             </div>
             <div>
-                <div className='m-v-10 g_flex g_jstfy_content_cntr'>
+                <div className='m-v-10 g_flex g-justify-center'>
                     <IonLabel className='sub_heading'>School Full Address</IonLabel>
                 </div>
                 <div className='field m-bottom-10'>
@@ -61,17 +61,17 @@ const ContactUsSa = () => {
                 </div>
             </div>
             <div>
-                <div className='m-v-10 g_flex g_jstfy_content_cntr'>
+                <div className='m-v-10 g_flex g-justify-center'>
                     <IonLabel className='sub_heading'>Google Location</IonLabel>
                 </div>
-                <div className='g_flex g_jstfy_content_cntr m-bottom-10'>
+                <div className='g_flex g-justify-center m-bottom-10'>
                     <div className='field width-80'>
                         <IonInput label="Location" labelPlacement="floating" fill="outline" placeholder="Enter Location"></IonInput>
                         <IonIcon icon={locationOutline}></IonIcon>
                     </div>
                 </div>
-                <div className='g_flex g_jstfy_content_cntr'>
-                    <div className='google_location g_flex g_jstfy_content_cntr g_align_cntr'>
+                <div className='g_flex g-justify-center'>
+                    <div className='google_location g_flex g-justify-center g-align-center'>
                         <IonText>
                             <p>pick your current location</p>
                         </IonText>

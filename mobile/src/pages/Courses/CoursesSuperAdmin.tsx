@@ -50,12 +50,13 @@ export const CoursesSuperAdmin = () => {
                 <div className='g_flex'>
                     <div className='width-80'>
                         <IonSelect
-                            className="custome_select"
+                            className="custom-select"
                             multiple={true}
                             label="Select Medium"
                             labelPlacement="floating"
                             fill="outline"
-                            interface="popover">
+                            interface="popover"
+                        >
                             <IonSelectOption value="Telugu">Telugu Medium</IonSelectOption>
                             <IonSelectOption value="English">English Medium</IonSelectOption>
                         </IonSelect></div>
@@ -70,19 +71,19 @@ export const CoursesSuperAdmin = () => {
                     <p>Courses Offered</p>
                 </IonText>
                 {coursesModuleData.length ? <>
-                    {coursesModuleData.map((course: any) => (<div key={Math.random().toLocaleString()} className="g_flex g_space_btwn course_sa_item">
-                        <div className="g_flex height-px-40 g_align_cntr course_title_txt ">
+                    {coursesModuleData.map((course: any) => (<div key={Math.random().toLocaleString()} className="g_flex g-space-between course_sa_item">
+                        <div className="g_flex height-px-40 g-align-center course_title_txt ">
                             <IonText>
                                 <p>{course.courseName}</p>
                             </IonText>
                         </div>
-                        <div className='g_flex height-px-40 g_align_cntr course_medium_txt'><IonText>
+                        <div className='g_flex height-px-40 g-align-center course_medium_txt'><IonText>
                                 <p>TM</p>
                             </IonText></div>
-                        <div className='g_flex height-px-40 g_align_cntr course_medium_txt'><IonText>
+                        <div className='g_flex height-px-40 g-align-center course_medium_txt'><IonText>
                                 <p>EM</p>
                             </IonText></div>
-                        <div className="g_flex height-px-40 g_align_cntr remove_about">
+                        <div className="g_flex height-px-40 g-align-center remove_about">
                             <IonIcon icon={removeCircleOutline}></IonIcon>
                         </div>
                     </div>))}

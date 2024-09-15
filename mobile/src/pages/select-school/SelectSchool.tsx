@@ -64,7 +64,7 @@ const SelectSchool: React.FC = () => {
           <IonCard>
             <IonCardContent>
               <div className="container_full_select">
-                <div className="g_jstfy_content_cntr g_flex g_app_logo_conatiner">
+                <div className="g-justify-center g_flex g-app-logo-container">
                   <div className="g_app_logo"></div>
                 </div>
                 <div className="app_info_content">

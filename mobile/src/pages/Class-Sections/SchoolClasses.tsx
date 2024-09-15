@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { IonButton, IonCard, IonCardContent, IonIcon, IonInput, IonLabel, IonSelect, IonSelectOption, IonText } from '@ionic/react';
-import GCustomisedModal from '../../components/GCustomisedModal';
+import CustomizedModal from '../../components/GCustomizedModal';
 import { addCircleOutline, closeCircleOutline } from 'ionicons/icons';
 import { useNavigate } from 'react-router';
 
@@ -93,9 +93,9 @@ function SchoolClasses() {
           {classListDataApi.map((item) => (
             <IonCard key={item.id} className={`student_card animation-none custom-class-card ${currentSelected === item.id ? 'custom-class-card-selected' : ''}`}>
               <IonCardContent className="card_content">
-                <div className="g_flex g_space_btwn g_align_cntr">
-                  <div className="g_flex width-70 g_align_cntr">
-                    <div className="profile_item g_flex g_align_cntr g_jstfy_content_cntr font-600 font-24">
+                <div className="g_flex g-space-between g-align-center">
+                  <div className="g_flex width-70 g-align-center">
+                    <div className="profile_item g_flex g-align-center g-justify-center font-600 font-24">
                       {item.classIcon}
                     </div>
                     <div className="title_designation">
@@ -137,7 +137,7 @@ function SchoolClasses() {
         </div>
       </div>
 
-      <GCustomisedModal
+      <CustomizedModal
         title={`Add Class`}
         isOpen={isAddClassModal}
         onClose={handleModelClose}
@@ -149,7 +149,7 @@ function SchoolClasses() {
           </div>
           {formValue.linkedSections.map((secItem, indexSec) => (<div key={indexSec} className='m-bottom-10 g_flex'>
             <IonSelect
-              className="custome_select two-select-field"
+              className="custom-select two-select-field"
               label="Section Name"
               labelPlacement="floating"
               fill="outline"
@@ -162,7 +162,7 @@ function SchoolClasses() {
               <IonSelectOption value="mdgl-sec-c">C Section</IonSelectOption>
             </IonSelect>
             <IonSelect
-              className="custome_select two-select-field"
+              className="custom-select two-select-field"
               label="Class Staff Name"
               labelPlacement="floating"
               fill="outline"
@@ -179,7 +179,7 @@ function SchoolClasses() {
             </div>
           </div>))}
 
-          <div className='m-bottom-10 g_flex g_space_btwn'>
+          <div className='m-bottom-10 g_flex g-space-between'>
             <IonLabel>{"Add More Sections"}</IonLabel>
             <IonIcon className='add-sec-circle' icon={addCircleOutline}></IonIcon>
           </div>
@@ -187,7 +187,7 @@ function SchoolClasses() {
             <IonInput value={formValue.classIconValue} onIonChange={handleInput} name='classIconValue' label="Class Icon Value" labelPlacement="floating" fill="outline" placeholder="Ex. 10"></IonInput>
           </div>
         </div>
-      </GCustomisedModal>
+      </CustomizedModal>
     </div>
   )
 }

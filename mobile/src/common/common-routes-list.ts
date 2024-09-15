@@ -120,8 +120,8 @@ export const RoutesListDynamic : AppPage[] = [
       mdIcon: trophySharp,
     },
     {
-      title: 'Wibe',
-      url: '/school-wibe',
+      title: 'Vibe',
+      url: '/school-vibe',
       iosIcon: newspaperOutline,
       mdIcon: newspaperSharp,
     },

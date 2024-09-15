@@ -1,12 +1,12 @@
 import React from 'react';
-import GBreadCrumbs from '../components/GBreadCrumbs';
+import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { IonAccordion, IonAccordionGroup, IonIcon, IonItem, IonLabel, IonText } from '@ionic/react';
 import { caretDownOutline, readerOutline, warning } from 'ionicons/icons';
-import { examScedulesData, formatDate } from '../common/utility';
+import { examSchedulesData, formatDate } from '../../common/utility';
 
 const ExamSchedule: React.FC = () => {
   const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Exam Schedules', path: '/exam-schedules' }];
-  const examScheduleJson = examScedulesData
+  const examScheduleJson = examSchedulesData
 
   return (
     <div className='g_full_height'>
@@ -27,7 +27,7 @@ const ExamSchedule: React.FC = () => {
               <div className="exam-time-table" slot="content">
                 <div>
                   <IonLabel>{item.isDateConfirmed ? 'Confirmed Date' : 'Tentative Date'} </IonLabel>
-                  <div className='g_flex g_jstfy_content_cntr'>
+                  <div className='g_flex g-justify-center'>
                     <IonItem className='date_item'>
                       <IonText className='g_full_width'>
                         <p>19/06/2024</p>  
@@ -52,7 +52,7 @@ const ExamSchedule: React.FC = () => {
                       ))
                     }
                   </div>
-                  <div className='g_flex g_space_btwn user_ack_text'>
+                  <div className='g_flex g-space-between user_ack_text'>
                     <div>
                     <IonIcon icon={warning}></IonIcon>
                     </div>

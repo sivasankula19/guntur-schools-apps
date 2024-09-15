@@ -25,7 +25,7 @@
 //     trashOutline,
 //   } from 'ionicons/icons';
 //   import React, { useEffect, useRef, useState } from 'react';
-//   import GCustomisedModal from '../components/GCustomisedModal';
+//   import CustomizedModal from '../components/GCustomizedModal';
 //   import { remainderDummyData } from '../common/utility';
 //   import GBreadCrumbs from '../components/GBreadCrumbs';
   
@@ -59,7 +59,7 @@
   
 //     return (
 //       <div className='g_full_height'>
-//         <div className="g_flex g_space_btwn g_align_cntr bread_toggle_container">
+//         <div className="g_flex g-space-between g-align-center bread_toggle_container">
 //           <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
 //           <div>
 //             {/* to be validate to staff and admin modules!... */}
@@ -117,13 +117,13 @@
 //                     </div>
 //                   </IonItem>
 //                   <IonItem className="no_records_remainder">
-//                     <div className="g_flex g_flex_direction_clm no_records_remainder_text">
+//                     <div className="g_flex g-flex-direction-clm no_records_remainder_text">
 //                       <IonText>No Records Found</IonText>
 //                       {/* <IonText>Please Add Remaindes!</IonText> */}
 //                     </div>
 //                   </IonItem>
 //                   {/* teaches view may be!.... */}
-//                   {/* <div className="g_flex g_jstfy_content_cntr add_remainder_btn_container">
+//                   {/* <div className="g_flex g-justify-center add_remainder_btn_container">
 //                     <IonButton className="btn_remainders">
 //                       Add Remainder
 //                     </IonButton>
@@ -135,7 +135,7 @@
 //         </div>
   
 //         {/*to be validate to staff and admin modules in further!...  */}
-//         {/* <GCustomisedModal
+//         {/* <CustomizedModal
 //           title="My Modal"
 //           isOpen={eventModal}
 //           onClose={() => {
@@ -151,7 +151,7 @@
 //               <IonIcon size="small" icon={calendarClearOutline}></IonIcon>
 //               <IonDatetimeButton datetime="datetime"></IonDatetimeButton>
 //               <IonModal
-//                 className="custome_date_time_modal"
+//                 className="custom-date-time-modal"
 //                 ref={modal}
 //                 keepContentsMounted={true}
 //               >
@@ -195,7 +195,7 @@
 //             </IonItem>
 //             <IonItem className="custom_modal_item">
 //               <IonTextarea
-//                 className="cutsome_textarea"
+//                 className="custom-textarea"
 //                 label="Event Description"
 //                 labelPlacement="floating"
 //                 placeholder="Event Description"
@@ -203,7 +203,7 @@
 //             </IonItem>
 //             <IonItem className="custom_modal_item">
 //               <IonSelect
-//                 className="custome_select"
+//                 className="custom-select"
 //                 label="Notify Me"
 //                 labelPlacement="floating"
 //                 fill="outline"
@@ -224,7 +224,7 @@
 //               </IonSelect>
 //             </IonItem>
 //           </div>
-//         </GCustomisedModal> */}
+//         </CustomizedModal> */}
 //       </div>
 //     );
 //   };

@@ -6,7 +6,7 @@ import PreLoginFoot from './PreLoginFoot';
 function PreLoginContent(props: any) {
     const role = useSelector((state: any) => state.auth.role) || 'Student';
     return (
-        <div className="prelogin_container">
+        <div className="pre-login-container">
             <PreLoginHead></PreLoginHead>
             <div className="actual_content">
                 {props.children}

@@ -4,6 +4,7 @@ import { IonButton, IonCard, IonCardContent, IonIcon, IonItem, IonSelect, IonSel
 import { caretBackOutline, caretForwardOutline, chevronBackOutline, chevronForwardOutline } from 'ionicons/icons';
 import { classListDummy, getDatesForMonth, sectionListDummy, transformListToGrid } from '../../common/utility';
 import { useLocation, useNavigate } from 'react-router';
+import GCustomSelectDrop from '../../components/GCustomSelectDrop';
 
 function AttendanceByClass() {
     const todayDate = new Date();
@@ -12,19 +13,18 @@ function AttendanceByClass() {
     const [gridAttendance, setGridAttendance] = useState<any>([]);
     const [selectedClass, setSelectedClass] = useState<string>('');
     const [selectedSection, setSelectedSection] = useState<string>('');
-    const [classList, setClassList] = useState<any>([]);
-    const [sectionList, setSectionList] = useState<any>([]);
     const [selectedDate, setSelectedDate] = useState<string>(todayFormate);
     const location = useLocation();
+    const [filterValues, setFilterValue] = useState({
+        classId: '',
+        sectionId: '',
+    });
+
+    console.log(gridAttendance)
 
     const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Class Attendance', path: '/attendance-by-class' },];
 
     const navigate = useNavigate();
-
-    useEffect(() => {
-        setClassList(classListDummy);
-        setSectionList(sectionListDummy);
-    }, [])
 
     useEffect(() => {
         setGridAttendance(transformListToGrid(getDatesForMonth(currentMY.month, currentMY.year)))
@@ -32,97 +32,86 @@ function AttendanceByClass() {
     }, [currentMY]);
 
     useEffect(() => {
-
-    }, [selectedClass, selectedSection]);
-
-    useEffect(() => {
         if (location.state) {
-            setSelectedClass(location.state.classId);
-            setSelectedSection(location.state.sectionId);
+            setFilterValue(({ classId: location.state.classId || '', sectionId: location.state.sectionId || '' }))
             setSelectedDate(location.state.selectedDate);
         }
     }, [location.state])
 
     const handleDateSelected = (day: string) => {
-        setSelectedDate(day)
-    }
-
-    const handleChange = (e: any) => {
-        if (e.target.id === 'class_select') {
-            setSelectedClass(e.detail.value);
-        } else if (e.target.id === 'section_select') {
-            setSelectedSection(e.detail.value);
+        if (day) {
+            setSelectedDate(day);
         }
     }
 
+    const handleDateChange = (action: string) => {
+        setCurrentMY((prevState: any) => {
+            let newMonth = prevState.month;
+            let newYear = prevState.year;
+            switch (action) {
+                case 'previousMonth':
+                    newMonth = newMonth === 1 ? 12 : newMonth - 1;
+                    newYear = newMonth === 12 ? newYear - 1 : newYear;
+                    break;
+                case 'nextMonth':
+                    newMonth = newMonth === 12 ? 1 : newMonth + 1;
+                    newYear = newMonth === 1 ? newYear + 1 : newYear;
+                    break;
+                case 'previousYear':
+                    newYear -= 1;
+                    break;
+                case 'nextYear':
+                    newYear += 1;
+                    break;
+                default:
+                    break;
+            }
+            return { month: newMonth, year: newYear };
+        });
+    };
+
     const handleContinue = () => {
-        const urlEncoded = encodeURIComponent(`${selectedClass}&&${selectedSection}&&${selectedDate}`)
+        const urlEncoded = encodeURIComponent(`${filterValues.classId}&&${filterValues.sectionId}&&${selectedDate}`)
         navigate('/attendance-by-class/' + urlEncoded)
+    }
+
+    const classDummyData = classListDummy.map(i => ({ id: i.classId, label: i.className }));
+    const sectionDummyData = sectionListDummy.map(i => ({ id: i.sectionId, label: i.sectionName }));
+
+    const handleChangeSelect = (e: any) => {
+        setFilterValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     }
 
     return (
         <div className='attendance_sa'>
             <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
             <div className='p-h-10 scroll-class-att'>
-                <IonCard className="custom-month-select">
-                    <IonCardContent className="custome__card_attendance_container">
-                        <div className="g_flex g_space_btwn icons_holder_attendance p-h-10">
-                            <IonIcon icon={chevronBackOutline}></IonIcon>
-                            <div className="month_year_view g_flex g_space_evnly g_align_cntr">
-                                <IonText className="month_year">{todayDate.getDate()}</IonText>
-                                <IonText className="month_year">{todayDate.getMonth()}</IonText>
-                                <IonText className="month_year">{todayDate.getFullYear()}</IonText>
-                            </div>
-                            <IonIcon icon={chevronForwardOutline}></IonIcon>
-                        </div>
-                    </IonCardContent>
-                </IonCard>
                 <IonText>
                     <p className='g-font-18'>Add / Edit Attendance For</p>
                 </IonText>
-                <div className="g_flex g_space_btwn select_conatainer">
+                <div className="g_flex g-space-between select-container">
                     <div style={{ width: '47%' }}>
-                        <IonSelect
-                            className="custome_select"
-                            label="Select Class"
-                            labelPlacement="floating"
-                            fill="outline"
-                            id='class_select'
-                            interface="popover"
-                            value={selectedClass}
-                            onIonChange={handleChange}
-                        >
-                            {classList.map((clOp: any) => (
-                                <IonSelectOption key={clOp.id} value={clOp.classId}>{clOp.className}</IonSelectOption>
-                            ))}
-                        </IonSelect>
+                        <GCustomSelectDrop options={classDummyData} name='classId'
+                            value={filterValues.classId} label="Select Class"
+                            handleOnChange={handleChangeSelect} classNames='custom-select' />
                     </div>
                     <div style={{ width: '47%' }}>
-                        <IonSelect
-                            className="custome_select"
-                            label="Select Section"
-                            labelPlacement="floating"
-                            id='section_select'
-                            fill="outline"
-                            interface="popover"
-                            value={selectedSection}
-                            onIonChange={handleChange}
-                        >
-                            {sectionList.map((scOp: any) => (
-                                <IonSelectOption key={scOp.id} value={scOp.sectionId}>{scOp.sectionName}</IonSelectOption>
-                            ))}
-                        </IonSelect>
+                        <GCustomSelectDrop options={sectionDummyData} name='sectionId'
+                            value={filterValues.sectionId} label="Select Section"
+                            handleOnChange={handleChangeSelect} classNames='custom-select' />
                     </div>
                 </div>
                 <div className='calendar-view-cls'>
-                    <div className='g_flex g_space_around g_align_cntr'>
-                        <IonIcon icon={caretBackOutline}></IonIcon>
-                        <div className="month_year_view g_flex g_space_evnly g_align_cntr ">
+                    <div className='g_flex g-space-around g-align-center'>
+                        <IonIcon onClick={() => handleDateChange('previousYear')} icon={caretBackOutline}></IonIcon>
+                        <IonIcon onClick={() => handleDateChange('previousMonth')} icon={chevronBackOutline}></IonIcon>
+                        <div className="month_year_view g_flex g-space-evenly g-align-center ">
                             <IonText className="month_year">6th</IonText>
                             <IonText className="month_year">March</IonText>
                             <IonText className="month_year">2024</IonText>
                         </div>
-                        <IonIcon icon={caretForwardOutline}></IonIcon>
+                        <IonIcon onClick={() => handleDateChange('nextMonth')} icon={chevronForwardOutline}></IonIcon>
+                        <IonIcon onClick={() => handleDateChange('nextYear')} icon={caretForwardOutline}></IonIcon>
                     </div>
                     <IonCard>
                         <IonCardContent>
@@ -142,8 +131,8 @@ function AttendanceByClass() {
                                 {gridAttendance.map((gridItem: any, index: number) => (<div
                                     key={`grids-data-${index}`} className="g_flex row-item">
                                     {gridItem.map((dayItem: any, subIndex: number) => (<div
-                                        key={`days-${subIndex}`} className="day-list-map g_flex g_align_cntr g_jstfy_content_cntr">
-                                        <div id={dayItem?.date} onClick={() => handleDateSelected(dayItem.date)} className={`day-item-display${dayItem?.date === selectedDate ? ' today-selected' : ''}${dayItem?.attendanceMarked >= 1 ? ' att-marked' : ''}${dayItem?.isSchoolHoliday ? ' scl-holiday' : ''}`}>
+                                        key={`days-${subIndex}`} className="day-list-map g_flex g-align-center g-justify-center">
+                                        <div id={dayItem?.date} onClick={() => handleDateSelected(dayItem?.date)} className={`day-item-display${dayItem?.date === selectedDate ? ' today-selected' : ''}${dayItem?.attendanceMarked >= 1 ? ' att-marked' : ''}${dayItem?.isSchoolHoliday ? ' scl-holiday' : ''}`}>
                                             <IonText className="ion_text_day_view">{dayItem?.currentDay}</IonText>
                                         </div>
                                     </div>))}
@@ -153,7 +142,9 @@ function AttendanceByClass() {
                     </IonCard>
                 </div>
                 <div className='continue-btn'>
-                    <IonButton onClick={handleContinue} fill="outline" expand="block" disabled={(selectedClass === '' || selectedSection === '')}>Continue With {`${selectedClass} - ${selectedSection}`} </IonButton>
+                    <IonButton onClick={handleContinue} fill="outline" expand="block" disabled={(filterValues.classId === '' || filterValues.sectionId === '')}>
+                        Continue With {`${classDummyData.find(i => i.id === filterValues.classId)?.label || ''} - ${sectionDummyData.find(i => i.id === filterValues.sectionId)?.label || ''}`}
+                    </IonButton>
                 </div>
             </div>
         </div>
