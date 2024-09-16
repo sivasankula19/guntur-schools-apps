@@ -2,18 +2,11 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import {
-  IonToolbar,
-  IonFooter,
-  IonIcon,
   IonModal,
   IonText,
   IonContent,
   IonItemDivider,
 } from '@ionic/react';
-import {
-  caretUpCircleOutline,
-} from 'ionicons/icons';
-
 
 interface IProps {
   isopenlikes: boolean,

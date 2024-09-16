@@ -6,7 +6,6 @@ import {
     IonCardContent,
     IonIcon,
     IonLabel,
-    IonSearchbar,
 } from '@ionic/react';
 import {
     appsSharp,

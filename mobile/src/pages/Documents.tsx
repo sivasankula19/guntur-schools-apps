@@ -1,6 +1,7 @@
 import {
   IonAccordion,
   IonAccordionGroup,
+  IonButton,
   IonContent,
   IonIcon,
   IonItem,
@@ -10,6 +11,7 @@ import {
 } from '@ionic/react';
 import {
   caretDownOutline,
+  checkmarkCircleOutline,
   createOutline,
   documentOutline,
   ellipsisVerticalOutline,
@@ -19,20 +21,59 @@ import {
 } from 'ionicons/icons';
 import React, { useState } from 'react';
 import GImageDocPreview from '../components/GImageDocPreview';
-import { docData } from '../common/utility';
+import { classListDummy, docData } from '../common/utility';
 import GBreadCrumbs from '../components/GBreadCrumbs';
-import AddDoc from '../components/AddDocByRole';
+import GCustomSelectDrop from '../components/GCustomSelectDrop';
+import CustomizedModal from '../components/GCustomizedModal';
+import GCustomInput from '../components/GCustomInput';
+import GImagUpload from '../components/GImagUpload';
 
 const Documents: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const accordianContent = docData;
-  const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Documents', path: '/documents' }]
+  const [isOpenAdd, setIsOpenAdd] = useState(false);
+  const formInitialVal = {
+    documentType: 'School',
+    documentName: '',
+    documentSrc: '',
+    documentDescription: '',
+    documentClass: '',
+  }
+  const [formValue, setFormValue] = useState(formInitialVal);
+  const accordionContent = docData;
+  const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Documents', path: '/documents' }];
+
+  const classDummyData = classListDummy.map(i => ({ id: i.classId, label: i.className }));
+
+  const handleSaveFile = () => { };
+
+  const handleAdd = () => {
+    setIsOpenAdd(true)
+  };
+
+  const handleInput = (e: any) => {
+    setFormValue((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
+  const handleDocTypeItemClick = (typeVal: string) => {
+    setFormValue((prev) => ({ ...prev, documentType: typeVal }))
+  }
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      console.log('Selected file:', file.name);
+    }
+  };
+
   return (
     <div className='g_full_height'>
       <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
+      <div className='p-h-16 m-bottom-10'>
+        <IonButton className='br-ion-12 m-top-12 g_txt_cap' onClick={handleAdd} fill="outline" expand="block">Add Class</IonButton>
+      </div>
       <div className="documents">
         <IonAccordionGroup>
-          {accordianContent.map((item) => (
+          {accordionContent.map((item) => (
             <IonAccordion
               key={item.id}
               value={item.id}
@@ -139,7 +180,6 @@ const Documents: React.FC = () => {
                               </IonItem>
                             </>
                           )}
-                          <AddDoc title={item.title} subtitle={innerItem.title} />
                         </div>
                       </IonAccordion>
                     ))}
@@ -192,7 +232,6 @@ const Documents: React.FC = () => {
                     )}
                   </>
                 )}
-                <AddDoc title={item.title} subtitle={''} />
               </div>
             </IonAccordion>
           ))}
@@ -210,6 +249,30 @@ const Documents: React.FC = () => {
         isOpen={isOpen}
       >
       </GImageDocPreview>
+      <CustomizedModal
+        title="Add New Document"
+        isOpen={isOpenAdd}
+        onClose={() => setIsOpenAdd(false)}
+        onSave={handleSaveFile}
+        styles={{ maxHeight: '50vh' }}
+      >
+        <div>
+          <div className='width-100 nav-ele-show-con m-bottom-10'>
+            {["School", "Class", "Personal"].map((typeVal) => (<div className={`document-type-check ${formValue.documentType === typeVal ? 'selected-doc-type-item' : ''}`} key={typeVal} onClick={() => handleDocTypeItemClick(typeVal)}>
+              <IonText>
+                <p>{typeVal}</p>
+                {formValue.documentType === typeVal && (<IonIcon icon={checkmarkCircleOutline}></IonIcon>)}
+              </IonText>
+            </div>))}
+          </div>
+          <div className='field'>
+            {formValue.documentType === 'Class' && (<GCustomSelectDrop options={classDummyData} name='classId' value={formValue.documentClass} label="Select Class" handleOnChange={() => { }} classNames='custom-select m-bottom-10' />)}
+          </div>
+          <GImagUpload onFileChange={handleFileChange} multiple={false} accept='.doc,.docx,.xml,application/msword,.pdf, image/*' label='Upload Image' classNames='m-bottom-10' />
+          <GCustomInput name={'documentName'} value={formValue['documentName']} onChange={handleInput} label="Document Name" placeholder={'English Verbs'} />
+          <GCustomInput name={'documentDescription'} value={formValue['documentDescription']} onChange={handleInput} label="Document Description" placeholder={'Ex. 10'} />
+        </div>
+      </CustomizedModal>
     </div>
   );
 };

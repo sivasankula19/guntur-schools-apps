@@ -3,19 +3,21 @@ import {
   IonInput,
   IonButton,
   IonIcon,
-  IonList,
 } from '@ionic/react';
 import {
   pencil,
   expandOutline,
+  calendarOutline,
 } from 'ionicons/icons';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import CustomizedModal from '../components/GCustomizedModal';
 import { useNavigate } from 'react-router';
 import GImageDocPreview from '../components/GImageDocPreview';
 import GBreadCrumbs from '../components/GBreadCrumbs';
 import { useSelector } from 'react-redux';
+import GCustomInput from '../components/GCustomInput';
+import GImagUpload from '../components/GImagUpload';
 
 const userData: any = [
   { key: 'Full Name', value: 'Sivaiah Sankula' },
@@ -29,9 +31,18 @@ const userData: any = [
 const UserByID: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const authInfo = useSelector((state: any) => state.auth);
-  const [eventModal, setEventModal] = useState(false);
+  const [isEditOpen, setIsEditOpen] = useState(false);
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+  const formInitialVal = {
+    fullName: '',
+    mobileNumber: '',
+    emailAddress: '',
+    regNumber: '',
+    dob: '',
+    uploadProfileImage: '',
+  }
+  const [formValue, setFormValue] = useState<any>(formInitialVal);
 
   const [breadCrumbsState, setBreadCrumbsState] = useState([
     { bName: 'Home', path: '/dashboard' },
@@ -40,7 +51,35 @@ const UserByID: React.FC = () => {
 
   useEffect(() => {
     setBreadCrumbsState(prev => [prev[0], { bName: authInfo.user.regNumber === id ? 'My Profile' : `USER - ${id}`, path: '/' }])
-  }, [id])
+  }, [id]);
+
+  const handleInput = (e: any) => {
+    setFormValue((prev:any) => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
+  const handleEditProfile = () => {
+    setFormValue({
+      fullName: 'Siva Sankula',
+      mobileNumber: '7995954105',
+      emailAddress: 'sivasankula143@gmail.com',
+      regNumber: 'Y25GHM00349',
+      dob: '13/04/2000',
+      uploadProfileImage: '',
+    })
+    setIsEditOpen(true);
+  }
+
+  const formEditValues = [{name:'fullName', readOnly:false,label:'Full Name',placeholder:'Enter Full Name'},
+    {name:'mobileNumber', readOnly:false,label:'Full Name',placeholder:'Ex. 9876543210'},
+    {name:'emailAddress', readOnly:false,label:'Full Name',placeholder:'Ex. user@school.com'},
+    {name:'regNumber', readOnly:true,label:'Registration Number',placeholder:'Ex. Y25C000'},]
+    
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      console.log('Selected file:', file.name);
+    }
+  };
 
   return (
     <>
@@ -83,7 +122,7 @@ const UserByID: React.FC = () => {
       {authInfo.user.regNumber === id && (
         <div className="bottom-button">
           <IonButton
-            onClick={() => setEventModal(true)}
+            onClick={handleEditProfile}
             size="small"
             className="button-text"
           >
@@ -97,30 +136,21 @@ const UserByID: React.FC = () => {
       )}
       <CustomizedModal
         title="Update Profile"
-        isOpen={eventModal}
+        isOpen={isEditOpen}
         onClose={() => {
-          setEventModal(false);
+          setIsEditOpen(false);
         }}
         onSave={() => { }}
       >
-        <IonList className='custom_user_list'>
-          {userData.map((user: any, index: number) => {
-            return (
-              <div
-                key={index}
-                className="custom-ion-input-wrapper"
-              >
-                <IonInput
-                  className="custom-ion-input"
-                  label={user.key}
-                  labelPlacement="floating"
-                  fill="outline"
-                  placeholder={`Enter ${user.key}`}
-                ></IonInput>
-              </div>
-            );
-          })}
-        </IonList>
+        <div>
+          {formEditValues.map((data:any)=>(<GCustomInput name={data.name} value={formValue[data.name]} onChange={handleInput} label={data.label}  placeholder={data.placeholder}/>))}
+          {/* date picker */}
+          <div className='field m-bottom-10'>
+            <IonInput value={formValue.dob} onIonChange={handleInput} name='dob' label="Dob" labelPlacement="floating" fill="outline" placeholder="Date of Birth"></IonInput>
+            <IonIcon icon={calendarOutline}></IonIcon>
+          </div>
+          <GImagUpload onFileChange={handleFileChange} label='Upload Image' classNames='m-bottom-10' />
+        </div>
       </CustomizedModal>
       <GImageDocPreview
         src={

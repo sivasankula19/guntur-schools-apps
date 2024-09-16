@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import { classListDummy, examSchedulesData, formatDate, sectionListDummy } from '../../common/utility';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
 import GCustomSelectDrop from '../../components/GCustomSelectDrop';
-import { IonButton, IonCard, IonCardContent, IonIcon, IonInput, IonItem, IonLabel, IonText } from '@ionic/react';
-import { calendarOutline, checkmarkCircleOutline, pencilOutline, starOutline } from 'ionicons/icons';
+import { IonButton, IonCard, IonCardContent, IonIcon, IonInput, IonLabel, IonText } from '@ionic/react';
+import { calendarOutline, checkmarkCircleOutline, pencilOutline } from 'ionicons/icons';
 import CustomizedModal from '../../components/GCustomizedModal';
 import GCustomToggle from '../../components/GCustomToggle';
+import GCustomInput from '../../components/GCustomInput';
 
 function ExamScheduleSA() {
-  const [examsList, setExamsList] = useState<any[]>([]);
   const [currentSelected, setCurrentSelected] = useState(null);
   const [filterValues, setFilterValue] = useState({
     classId: '',
@@ -16,7 +16,7 @@ function ExamScheduleSA() {
   });
   const [formValue, setFormValue] = useState<any>({
     examName: '',
-    startData: '',
+    startDate: '',
     subjectsList: [
 
     ]
@@ -106,7 +106,7 @@ function ExamScheduleSA() {
   return (
     <div className='g_full_height'>
       <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
-      <div className="g_flex g-space-between select-container p-h-16">
+      <div className="g_flex g-space-between select-container p-h-16 m-top-16">
         <div style={{ width: '47%' }}>
           <GCustomSelectDrop options={classDummyData} name='classId'
             value={filterValues.classId} label="Select Class"
@@ -189,20 +189,15 @@ function ExamScheduleSA() {
         onSave={handleSubmit}
       >
         <div>
-          <div className='field m-bottom-10'>
-            <IonInput value={formValue.examName} onIonChange={handleInput} name='examName' label="Class Name" labelPlacement="floating" fill="outline" placeholder="Subject Name"></IonInput>
-          </div>
-          <div className='field m-bottom-10'>
-            <IonInput value={formValue.startData} onIonChange={handleInput} name='startData' label="Class Icon Value" labelPlacement="floating" fill="outline" placeholder="Ex. 10"></IonInput>
-          </div>
+          <GCustomInput name={'examName'} value={formValue.examName} onChange={handleInput} label={'Exam Name'} placeholder={'Exam Name'} />
+          <GCustomInput name={'startDate'} value={formValue.startDate} onChange={handleInput} label={'Exam Start Date'} placeholder={'DD/mm/YYYY'} />
           {
-            formValue.subjectsList?.map((subject: any) => (<div key={subject.subjectId} className='g_flex g-align-center'>
+            formValue.subjectsList?.map((subject: any) => (<div key={subject.subjectId} className='g_flex g-align-center m-bottom-10'>
               <GCustomSelectDrop options={classDummyData} name='classId'
                 value={filterValues.classId} label="Select Class"
-                handleOnChange={handleChange} classNames='custom-select' />
+                handleOnChange={handleChange} classNames='custom-select m-r-10' />
               <IonInput value={formValue.startData} onIonChange={handleInput} name='classIconValue' label="Class Icon Value" labelPlacement="floating" fill="outline" placeholder="Ex. 10"></IonInput>
               <GCustomToggle name={subject.subjectId} onTxt='AM' offTxt='PM' checked={subject.slot === 'AM'} onHandleChange={handleSlotToggleChange} />
-
             </div>))
           }
         </div>

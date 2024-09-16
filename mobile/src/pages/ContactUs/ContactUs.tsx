@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { IonButton, IonCard, IonCardContent, IonIcon, IonInput, IonSelect, IonSelectOption, IonText, IonTextarea } from '@ionic/react';
 import { copyOutline, expandOutline, locationOutline, mailOutline, phonePortraitOutline, schoolOutline } from 'ionicons/icons';
+import GCustomInput from '../../components/GCustomInput';
+import GCustomSelectDrop from '../../components/GCustomSelectDrop';
 
 const ContactUs: React.FC = () => {
+  const formInitialVal = {
+    fullName: '',
+    emailAddress:'',
+    mobileNumber:'',
+    reasonFor:'',
+    description:'',
+  }
+  const [formValue, setFormValue] = useState(formInitialVal);
+
+  const handleInput = (e: any) => {
+    setFormValue((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
+  const reasonListDummy = [{id:'exams', label:'Exams'},{id:'admission', label:'Admission'},{id:'games', label:'Games'},{id:'others', label:'Others'}]
 
   return (
     <div>
@@ -64,7 +80,7 @@ const ContactUs: React.FC = () => {
           <h6>Mobile</h6>
         </IonText>
         <IonText>
-          <p>+91 9999888876</p>
+          <p>+91 9999888876 </p>
         </IonText>
         <IonText>
           <h6>Email</h6>
@@ -107,48 +123,15 @@ const ContactUs: React.FC = () => {
             <h4>Contact Form</h4>
           </IonText>
           <form>
-            <div className='contact_field'>
-              <IonInput
-                value={""}
-                onIonInput={() => { }}
-                className="custom-ion-input_home"
-                label={'Full Name'}
-                labelPlacement="floating"
-                fill="outline"
-              ></IonInput>
-            </div>
-            <div className='contact_field'>
-              <IonInput
-                value={""}
-                onIonInput={() => { }}
-                className="custom-ion-input_home"
-                label={'Email Address'}
-                labelPlacement="floating"
-                fill="outline"
-              ></IonInput>
-            </div>
-            <div className='contact_field'>
-              <IonSelect
-                className="custom-select"
-                label="Select Reason"
-                labelPlacement="floating"
-                fill="outline"
-                interface="popover"
-                onIonChange={(e) =>
-                  console.log(
-                    `ionChange fired with value: ${e.detail.value}`
-                  )
-                }
-              >
-                <IonSelectOption value="admission">Admission</IonSelectOption>
-                <IonSelectOption value="exams">Exams</IonSelectOption>
-                <IonSelectOption value="games">Games</IonSelectOption>
-                <IonSelectOption value="others">Others</IonSelectOption>
-              </IonSelect>
-            </div>
+          <GCustomInput name={'fullName'} value={formValue['fullName']} onChange={handleInput} label={'Full Name'} placeholder={'Full Name'} />
+          <GCustomInput name={'emailAddress'} value={formValue['emailAddress']} onChange={handleInput} label={'Email Address'} placeholder={'Email Address'} />
+            <GCustomSelectDrop options={reasonListDummy} name='reasonFor' value={formValue.reasonFor} label="Section Name" handleOnChange={handleInput} classNames='custom-select m-bottom-10' />
             <div className='contact_field'>
               <IonTextarea label={'Description...'}
                 labelPlacement="floating"
+                name='description'
+                value={formValue.description}
+                onIonChange={handleInput}
                 fill="outline"></IonTextarea>
             </div>
             <div className='g_flex g-justify-center'>

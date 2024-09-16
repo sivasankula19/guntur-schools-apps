@@ -1,5 +1,5 @@
 import { IonText } from '@ionic/react';
-import React, { ReactElement } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router';
 
 const GBreadCrumb: React.FC<IBreadCrumbProps> = ({ bName,path, isLast,state }) => {

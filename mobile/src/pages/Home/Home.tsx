@@ -7,7 +7,7 @@ import {
   IonItem,
   IonText,
 } from '@ionic/react';
-import { callOutline, expandOutline, imageOutline, informationCircleOutline, informationOutline, newspaperOutline, schoolOutline, trophyOutline } from 'ionicons/icons';
+import { callOutline, expandOutline, imageOutline, informationCircleOutline, newspaperOutline, schoolOutline, trophyOutline } from 'ionicons/icons';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authenticateUser } from '../../redux/reducers/authSlice';

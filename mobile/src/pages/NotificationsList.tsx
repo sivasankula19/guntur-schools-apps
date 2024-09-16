@@ -72,7 +72,7 @@ function NotificationsList() {
     <div className='g_full_height'>
       <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
       <div className='notifications-page p-h-16'>
-        {notificationSampleData.map((item) => (
+        {notificationsData.map((item) => (
           <IonCard key={item.id} className={`student_card animation-none custom-class-card`}>
             <IonCardContent className="card_content">
               <div className="g_flex g-space-between g-align-center">

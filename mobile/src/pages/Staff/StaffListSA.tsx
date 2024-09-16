@@ -2,7 +2,6 @@ import {
     IonButton,
     IonCard,
     IonCardContent,
-    IonInput,
     IonSearchbar,
     IonText,
 } from '@ionic/react';
@@ -14,6 +13,7 @@ import { useNavigate } from 'react-router';
 import CustomizedModal from '../../components/GCustomizedModal';
 import GCustomSelectDrop from '../../components/GCustomSelectDrop';
 import GCustomToggle from '../../components/GCustomToggle';
+import GCustomInput from '../../components/GCustomInput';
 
 interface IStaffForm {
     staffFirstName: string,
@@ -85,7 +85,7 @@ const StaffListSA: React.FC = () => {
     }
 
     const handleViewMore = (id: string, isClose: boolean = false) => {
-        setCurrentSelected(isClose ? '': id);
+        setCurrentSelected(isClose ? '' : id);
     }
 
     const handleEditClass = (item: any) => {
@@ -143,7 +143,7 @@ const StaffListSA: React.FC = () => {
             <div className="g_flex g-space-between g-align-center bread_toggle_container">
                 <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
                 <div>
-                    <GCustomToggle checked={isFilterEnabled} onHandleChange={handleToggleChange}/>
+                    <GCustomToggle checked={isFilterEnabled} onHandleChange={handleToggleChange} />
                 </div>
             </div>
             <div>
@@ -222,40 +222,16 @@ const StaffListSA: React.FC = () => {
                 onClose={handleModelClose}
                 onSave={handleSubmit}
             >
-                <div className='field m-bottom-10'>
-                    <IonInput value={formValue.staffFirstName} onIonChange={handleInput} name='staffFirstName' label="Staff First Name" labelPlacement="floating" fill="outline" placeholder="First Name"></IonInput>
-                </div>
-                <div className='field m-bottom-10'>
-                    <IonInput value={formValue.staffLastName} onIonChange={handleInput} name='staffLastName' label="Staff Last Name" labelPlacement="floating" fill="outline" placeholder="Last Name"></IonInput>
-                </div>
-                <div className='field m-bottom-10'>
-                    <GCustomSelectDrop options={positionDummyData} name='position'
-                        value={formValue.position} label="Position"
-                        handleOnChange={handleInput} classNames='custom-select' />
-                </div>
-                <div className='field m-bottom-10'>
-                    <GCustomSelectDrop options={designationDummyData} name='designation'
-                        value={formValue.designation} label="Designation"
-                        handleOnChange={handleInput} classNames='custom-select' />
-                </div>
-                <div className='field m-bottom-10'>
-                    <IonInput value={formValue.mobileNumber} onIonChange={handleInput} name='mobileNumber' label="Mobile Number" labelPlacement="floating" fill="outline" placeholder="+91 9876543210"></IonInput>
-                </div>
-                <div className='field m-bottom-10'>
-                    <IonInput value={formValue.emailAddress} onIonChange={handleInput} name='emailAddress' label="Email Address" labelPlacement="floating" fill="outline" placeholder="test@gmail.com"></IonInput>
-                </div>
-                <div className='field m-bottom-10'>
-                    <GCustomSelectDrop options={genderDummyData} name='gender'
-                        value={formValue.gender} label="Gender"
-                        handleOnChange={handleInput} classNames='custom-select' />
-                </div>
-                <div className='field m-bottom-10'>
-                    <IonInput value={formValue.staffId} onIonChange={handleInput} name='staffId' label="Generated Staff ID" labelPlacement="floating" fill="outline" placeholder="Staff Registration ID"></IonInput>
-                </div>
+                <GCustomInput name={'staffFirstName'} value={formValue['staffFirstName']} onChange={handleInput} label={'Staff First Name'} placeholder={'First Name'} />
+                <GCustomInput name={'staffLastName'} value={formValue['staffLastName']} onChange={handleInput} label={'Staff Last Name'} placeholder={'Last Name'} />
+                <GCustomSelectDrop options={positionDummyData} name='position' value={formValue.position} label="Position" handleOnChange={handleInput} classNames='custom-select m-bottom-10' />
+                <GCustomSelectDrop options={designationDummyData} name='designation' value={formValue.designation} label="Designation" handleOnChange={handleInput} classNames='custom-select m-bottom-10' />
+                <GCustomInput name={'mobileNumber'} value={formValue['mobileNumber']} onChange={handleInput} label={'Mobile Number'} placeholder={'Ex. 999999999'} />
+                <GCustomInput name={'emailAddress'} value={formValue['emailAddress']} onChange={handleInput} label={'Email Address'} placeholder={'Ex. test@gmail.com'} />
+                <GCustomSelectDrop options={genderDummyData} name='gender' value={formValue.gender} label="Gender" handleOnChange={handleInput} classNames='custom-select m-bottom-10' />
+                <GCustomInput name={'staffId'} value={formValue['staffId']} onChange={handleInput} label={'Class Name'} placeholder={'Subject Name'} />
                 {!isEdit && (
-                    <div className='field m-bottom-10'>
-                        <IonInput value={formValue.defaultPassword} onIonChange={handleInput} name='defaultPassword' label="Default Password" labelPlacement="floating" fill="outline" placeholder="Default User Password"></IonInput>
-                    </div>
+                    <GCustomInput name={'defaultPassword'} value={formValue['defaultPassword'] || ''} onChange={handleInput} label={'Default Password'} placeholder={'Default User Password'} />
                 )}
             </CustomizedModal>
         </div>

@@ -1755,6 +1755,13 @@ export const sectionListDummy = [
   { id:'3', sectionName:'C Section', sectionId:'c-section'}
 ]
 
+export const staffListDummy = [
+  {id:1, staffName:'Siva Sankula', staffId:'mdgl-staff-00009'},
+  {id:1, staffName:'Narra Deva', staffId:'mdgl-staff-00019'},
+  {id:1, staffName:'Minoosh', staffId:'mdgl-staff-00029'},
+  {id:1, staffName:'Sankul', staffId:'mdgl-staff-00022'},
+]
+
 export const examinationListDummy = [
   {id:1, examName:'Unit Test 1', examid:'scl-ex-unit1'},
   {id:2, examName:'Unit Test 2', examid:'scl-ex-unit2'},

@@ -1,64 +1,66 @@
-import { IonIcon, IonInput, IonLabel, IonText } from '@ionic/react'
+import { IonLabel, IonText } from '@ionic/react'
 import { bookOutline, callOutline, locationOutline, mailOpenOutline } from 'ionicons/icons'
-import React from 'react'
+import React, { useState } from 'react'
+import GCustomInput from '../../components/GCustomInput'
 
 const ContactUsSa = () => {
+    const [location, setLocation] = useState('');
+    const formInitialVal = {
+        fullName: '',
+        email: '',
+        mobileNumber: '',
+        location: '',
+        qualification: '',
+    }
+    const [formValue, setFormValue] = useState<any>(formInitialVal);
+    const formInitialAddress = {
+        addressLine1: '',
+        addressLine2: '',
+        city: '',
+        town: '',
+        district: '',
+        pinCode: '',
+        schoolEmail: '',
+        mobileNumber: '',
+    }
+    const [formAddressValue, setFormAddressValue] = useState<any>(formInitialAddress);
+
+    const handleInput = (e: any) => {
+        setFormValue((prev: any) => ({ ...prev, [e.target.name]: e.target.value }));
+    }
+
+    const handleAddressInput = (e: any) => {
+        setFormAddressValue((prev: any) => ({ ...prev, [e.target.name]: e.target.value }));
+    }
+
+    const handleLocationChange = (e: any) => {
+        setLocation(e.target.value);
+    }
+
     return (
         <div className='contact_us_sa g_full_height'>
             <div>
                 <div className='m-v-10 g_flex g-justify-center'>
                     <IonLabel className='sub_heading'>Principal Details</IonLabel>
                 </div>
-                <div className='field m-bottom-10'>
-                    <IonInput label="Full Name" labelPlacement="floating" fill="outline" placeholder="Enter Full Name"></IonInput>
-                </div>
-                <div className='field m-bottom-10'>
-                    <IonInput label="Email" labelPlacement="floating" fill="outline" placeholder="Enter Email"></IonInput>
-                    <IonIcon icon={mailOpenOutline}></IonIcon>
-                </div>
-                <div className='field m-bottom-10'>
-                    <IonInput label="Mobile Number" labelPlacement="floating" fill="outline" placeholder="Enter Mobile Number"></IonInput>
-                    <IonIcon icon={callOutline}></IonIcon>
-                </div>
-                <div className='field m-bottom-10'>
-                    <IonInput label="Location" labelPlacement="floating" fill="outline" placeholder="Enter Location"></IonInput>
-                    <IonIcon icon={locationOutline}></IonIcon>
-                </div>
-                <div className='field m-bottom-10'>
-                    <IonInput label="Qualification" labelPlacement="floating" fill="outline" placeholder="Enter Qualification"></IonInput>
-                    <IonIcon icon={bookOutline}></IonIcon>
-                </div>
+                <GCustomInput name={'fullName'} value={formValue['fullName']} onChange={handleInput} label={'Full Name'} placeholder={'Full Name'} />
+                <GCustomInput name={'email'} icon={mailOpenOutline} value={formValue['email']} onChange={handleInput} label={'Email Address'} placeholder={'Email Address'} />
+                <GCustomInput name={'mobileNumber'} icon={callOutline} value={formValue['mobileNumber']} onChange={handleInput} label={'Mobile Number'} placeholder={'Mobile Number'} />
+                <GCustomInput name={'location'} icon={locationOutline} value={formValue['location']} onChange={handleInput} label={'Location'} placeholder={'Enter Location'} />
+                <GCustomInput name={'qualification'} icon={bookOutline} value={formValue['qualification']} onChange={handleInput} label={'Qualification'} placeholder={'Enter Qualification'} />
             </div>
             <div>
                 <div className='m-v-10 g_flex g-justify-center'>
                     <IonLabel className='sub_heading'>School Full Address</IonLabel>
                 </div>
-                <div className='field m-bottom-10'>
-                    <IonInput label="Line Number 1" labelPlacement="floating" fill="outline" placeholder="House Number,Street 1"></IonInput>
-                </div>
-                <div className='field m-bottom-10'>
-                    <IonInput label="Line Number 2" labelPlacement="floating" fill="outline" placeholder="Line Number 2"></IonInput>
-                </div>
-                <div className='field m-bottom-10'>
-                    <IonInput label="City" labelPlacement="floating" fill="outline" placeholder="Enter City"></IonInput>
-                </div>
-                <div className='field m-bottom-10'>
-                    <IonInput label="Town" labelPlacement="floating" fill="outline" placeholder="Enter Town"></IonInput>
-                </div>
-                <div className='field m-bottom-10'>
-                    <IonInput label="District" labelPlacement="floating" fill="outline" placeholder="Enter District"></IonInput>
-                </div>
-                <div className='field m-bottom-10'>
-                    <IonInput label="Pin Code" labelPlacement="floating" fill="outline" placeholder="Enter Pin Code"></IonInput>
-                </div>
-                <div className='field m-bottom-10'>
-                    <IonInput label="School Email" labelPlacement="floating" fill="outline" placeholder="school@gvtscl"></IonInput>
-                    <IonIcon icon={mailOpenOutline}></IonIcon>
-                </div>
-                <div className='field m-bottom-10'>
-                    <IonInput label="Mobile Number" labelPlacement="floating" fill="outline" placeholder="+917995954105"></IonInput>
-                    <IonIcon icon={callOutline}></IonIcon>
-                </div>
+                <GCustomInput name={'addressLine1'} value={formValue['addressLine1']} onChange={handleAddressInput} label={'Address Line 1'} placeholder={'House No.'} />
+                <GCustomInput name={'addressLine2'} value={formValue['addressLine2']} onChange={handleAddressInput} label={'Address Line 2'} placeholder={'Road Name'} />
+                <GCustomInput name={'city'} value={formValue['city']} onChange={handleAddressInput} label={'City'} placeholder={'Enter City Name'} />
+                <GCustomInput name={'town'} value={formValue['town']} onChange={handleAddressInput} label={'Town Name'} placeholder={'Enter Town Name'} />
+                <GCustomInput name={'district'} value={formValue['district']} onChange={handleAddressInput} label={'District'} placeholder={'Enter District'} />
+                <GCustomInput name={'pinCode'} value={formValue['pinCode']} onChange={handleAddressInput} label={'Pin Code'} placeholder={'Enter Pin Code'} />
+                <GCustomInput name={'schoolEmail'} icon={mailOpenOutline} value={formValue['schoolEmail']} onChange={handleAddressInput} label={'School Email'} placeholder={'Enter School Email'} />
+                <GCustomInput name={'mobileNumber'} icon={callOutline} value={formValue['mobileNumber']} onChange={handleAddressInput} label={'School Mobile Number'} placeholder={'Enter School Mobile Number'} />
             </div>
             <div>
                 <div className='m-v-10 g_flex g-justify-center'>
@@ -66,8 +68,7 @@ const ContactUsSa = () => {
                 </div>
                 <div className='g_flex g-justify-center m-bottom-10'>
                     <div className='field width-80'>
-                        <IonInput label="Location" labelPlacement="floating" fill="outline" placeholder="Enter Location"></IonInput>
-                        <IonIcon icon={locationOutline}></IonIcon>
+                        <GCustomInput name={'location'} icon={locationOutline} value={location} onChange={handleLocationChange} label={'Location'} placeholder={'Enter Exact Location'} />
                     </div>
                 </div>
                 <div className='g_flex g-justify-center'>

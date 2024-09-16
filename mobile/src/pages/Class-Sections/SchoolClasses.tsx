@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import GBreadCrumbs from '../../components/GBreadCrumbs';
-import { IonButton, IonCard, IonCardContent, IonIcon, IonInput, IonLabel, IonSelect, IonSelectOption, IonText } from '@ionic/react';
+import { IonButton, IonCard, IonCardContent, IonIcon, IonLabel, IonText } from '@ionic/react';
 import CustomizedModal from '../../components/GCustomizedModal';
 import { addCircleOutline, closeCircleOutline } from 'ionicons/icons';
 import { useNavigate } from 'react-router';
+import GCustomInput from '../../components/GCustomInput';
+import GCustomSelectDrop from '../../components/GCustomSelectDrop';
+import { sectionListDummy, staffListDummy } from '../../common/utility';
 
 function SchoolClasses() {
   const [isAddClassModal, setIsAddClassModal] = useState<boolean>(false);
@@ -12,7 +15,7 @@ function SchoolClasses() {
   const formInitialVal = {
     className: '',
     classStaffName: '',
-    linkedSections: [{ sectionId: 'mdgl-sec-a', staffId: 'mdgl-staff-00019' }, { sectionId: 'mdgl-sec-b', staffId: 'mdgl-staff-00044' }],
+    linkedSections: [{ sectionId: 'a-section', staffId: 'mdgl-staff-00019' }, { sectionId: 'a-section', staffId: 'mdgl-staff-00009' }],
     classIconValue: ''
   }
   const [formValue, setFormValue] = useState(formInitialVal);
@@ -35,6 +38,10 @@ function SchoolClasses() {
 
   const handleInput = (e: any) => {
     setFormValue((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
+  const handleSubSections = (e: any, item: any) => {
+
   }
 
   const handleViewMore = (id: number) => {
@@ -79,6 +86,9 @@ function SchoolClasses() {
     setFormValue(updatedFormValue);
     setIsAddClassModal(true);
   }
+
+  const sectionDummyData = sectionListDummy.map(i => ({ id: i.sectionId, label: i.sectionName }));
+  const staffDummyData = staffListDummy.map(i => ({ id: i.staffId, label: i.staffName }));
 
   useEffect(() => {
     setCurrentSelectedSec(sectionsDataApi[0].sectionId)
@@ -144,48 +154,19 @@ function SchoolClasses() {
         onSave={handleSubmit}
       >
         <div>
-          <div className='field m-bottom-10'>
-            <IonInput value={formValue.className} onIonChange={handleInput} name='className' label="Class Name" labelPlacement="floating" fill="outline" placeholder="Subject Name"></IonInput>
-          </div>
+          <GCustomInput name={'className'} value={formValue['className']} onChange={handleInput} label={'Class Name'} placeholder={'Subject Name'} />
           {formValue.linkedSections.map((secItem, indexSec) => (<div key={indexSec} className='m-bottom-10 g_flex'>
-            <IonSelect
-              className="custom-select two-select-field"
-              label="Section Name"
-              labelPlacement="floating"
-              fill="outline"
-              value={secItem.sectionId}
-              interface="popover"
-            >
-              <IonSelectOption value="--">Default Section</IonSelectOption>
-              <IonSelectOption value="mdgl-sec-a">A Section</IonSelectOption>
-              <IonSelectOption value="mdgl-sec-b">B Section</IonSelectOption>
-              <IonSelectOption value="mdgl-sec-c">C Section</IonSelectOption>
-            </IonSelect>
-            <IonSelect
-              className="custom-select two-select-field"
-              label="Class Staff Name"
-              labelPlacement="floating"
-              fill="outline"
-              value={secItem.staffId}
-              interface="popover"
-            >
-              <IonSelectOption value="--">Default Section</IonSelectOption>
-              <IonSelectOption value="mdgl-staff-00019">Minoosh Reddyy K</IonSelectOption>
-              <IonSelectOption value="mdgl-staff-00029">Narra Deva Qmar</IonSelectOption>
-              <IonSelectOption value="mdgl-staff-00044">Siva Sankula</IonSelectOption>
-            </IonSelect>
+            <GCustomSelectDrop options={sectionDummyData} name='sectionId' value={secItem.sectionId} label="Section Name" handleOnChange={(e) => handleSubSections(e, secItem)} classNames='custom-select m-bottom-10 two-select-field' />
+            <GCustomSelectDrop options={staffDummyData} name='staffId' value={secItem.staffId} label="Class Staff Name" handleOnChange={(e) => handleSubSections(e, secItem)} classNames='custom-select m-bottom-10 two-select-field' />
             <div className='close-section-icon'>
               <IonIcon icon={closeCircleOutline}></IonIcon>
             </div>
           </div>))}
-
           <div className='m-bottom-10 g_flex g-space-between'>
             <IonLabel>{"Add More Sections"}</IonLabel>
             <IonIcon className='add-sec-circle' icon={addCircleOutline}></IonIcon>
           </div>
-          <div className='field m-bottom-10'>
-            <IonInput value={formValue.classIconValue} onIonChange={handleInput} name='classIconValue' label="Class Icon Value" labelPlacement="floating" fill="outline" placeholder="Ex. 10"></IonInput>
-          </div>
+          <GCustomInput name={'classIconValue'} value={formValue['classIconValue']} onChange={handleInput} label="Class Icon Value" placeholder={'Ex. 10'} />
         </div>
       </CustomizedModal>
     </div>

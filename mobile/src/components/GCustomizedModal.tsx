@@ -1,5 +1,4 @@
 import {
-  IonContent,
   IonModal,
   IonHeader,
   IonToolbar,

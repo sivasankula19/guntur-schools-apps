@@ -3,6 +3,7 @@ import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { IonButton, IonCard, IonCardContent, IonIcon, IonInput, IonLabel } from '@ionic/react';
 import CustomizedModal from '../../components/GCustomizedModal';
 import { addCircleOutline } from 'ionicons/icons';
+import GCustomInput from '../../components/GCustomInput';
 
 function SchoolSections() {
     const [isAddClassModal, setIsAddClassModal] = useState<boolean>(false);
@@ -96,16 +97,12 @@ function SchoolSections() {
                 onSave={handleSubmit}
             >
                 <div>
-                    <div className='field m-bottom-10'>
-                        <IonInput value={formValue.className} onIonChange={handleInput} name='className' label="Class Name" labelPlacement="floating" fill="outline" placeholder="Subject Name"></IonInput>
-                    </div>
+                    <GCustomInput name={'className'} value={formValue.className} onChange={handleInput} label={'Class Name'} placeholder={'Class Name'} />
                     <div className='m-bottom-10 m-left-10 g_flex g-space-between'>
                         <IonLabel>{"Add More Sections"}</IonLabel>
                         <IonIcon className='add-sec-circle' icon={addCircleOutline}></IonIcon>
                     </div>
-                    <div className='field m-bottom-10'>
-                        <IonInput value={formValue.classIconValue} onIonChange={handleInput} name='classIconValue' label="Class Icon Value" labelPlacement="floating" fill="outline" placeholder="Ex. 10"></IonInput>
-                    </div>
+                    <GCustomInput name={'classIconValue'} value={formValue.classIconValue} onChange={handleInput} label={'Class Icon Value'} placeholder={'Ex. 10'} />
                 </div>
             </CustomizedModal>
         </div>

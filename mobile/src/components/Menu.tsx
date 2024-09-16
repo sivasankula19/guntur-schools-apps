@@ -16,7 +16,7 @@ import { AppPage } from '../common/common-interface';
 import { RoutesListDynamic } from '../common/common-routes-list';
 import { useDispatch, useSelector } from 'react-redux';
 import { setMode } from '../redux/reducers/darkModeSlice';
-import { useEffect } from 'react';
+import React from 'react';
 import { setPreLoginPublicView } from '../redux/reducers/schoolSlice';
 import GCustomToggle from './GCustomToggle';
 

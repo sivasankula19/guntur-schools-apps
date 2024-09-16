@@ -18,12 +18,9 @@ import {
   caretUpCircleOutline,
   keyOutline,
   notificationsCircleOutline,
-  notificationsOffOutline,
   settingsOutline,
   thumbsUpOutline,
-  thumbsUpSharp,
 } from 'ionicons/icons';
-import { useLocation, useParams } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   const modal = useRef<HTMLIonModalElement>(null);
@@ -166,7 +163,6 @@ const Footer: React.FC = () => {
 
   return (
     <IonFooter className="custome_footer_ion">
-      {/* <div style={{position:'absolute', bottom:'0', zIndex:999, background:'red', width:'100%'}}>hello</div> */}
       <IonToolbar onClick={() => setIsOpen(true)} className="g_txt_center tool-bar-container">
         <IonIcon icon={caretUpCircleOutline}></IonIcon>
       </IonToolbar>

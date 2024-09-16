@@ -1,10 +1,12 @@
 import React, { useRef, useState } from 'react';
-import { IonIcon, IonImg, IonInput, IonSelect, IonSelectOption, IonText } from '@ionic/react';
-import { arrowBackCircleOutline, arrowForwardCircleOutline, cloudUploadOutline, expandOutline, locationOutline } from 'ionicons/icons';
+import { IonIcon, IonImg, IonSelect, IonSelectOption, IonText } from '@ionic/react';
+import { arrowBackCircleOutline, arrowForwardCircleOutline, expandOutline } from 'ionicons/icons';
+import GImagUpload from '../components/GImagUpload';
 
 const Gallery: any = (props: any) => {
-  const { isStudent } = props
-  const [currentImg, setCurrentImg] = useState(0)
+  const { isStudent } = props;
+  const [currentImg, setCurrentImg] = useState(0);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleButtonClick = (e: any) => {
@@ -14,13 +16,19 @@ const Gallery: any = (props: any) => {
     }
   };
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>, type:string) => {
     const file = event.target.files?.[0];
     if (file) {
       console.log('Selected file:', file.name);
+
+      // Use FileReader to read the image file as a data URL
+      const reader = new FileReader();
+      reader.onload = () => {
+        setSelectedImage(reader.result as string); // Set the image source
+      };
+      reader.readAsDataURL(file); // Read the file as a data URL
     }
   };
-
   const schlImages = [
     { id: '1', uploadedBy: 'Siva', uploadedById: 'Y248C039', path: '', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVJTEfzUvcFC7PHZQYOriegYSD4h7Fk_6zGQ&s' },
     { id: '2', uploadedBy: 'Siva', uploadedById: 'Y248C039', path: '', imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVJTEfzUvcFC7PHZQYOriegYSD4h7Fk_6zGQ&s' },
@@ -56,20 +64,7 @@ const Gallery: any = (props: any) => {
           </>)}
         </div>))}
       </div>
-      {!isStudent && <div onClick={handleButtonClick} className="custom-file-input">
-        <input
-          type="file"
-          ref={fileInputRef}
-          className="file-input"
-          onChange={handleFileChange}
-        />
-        <div className='field width-100 file-label'>
-          <IonInput label="Upload School Image" readonly labelPlacement="floating" fill="outline" placeholder="jpg or png"></IonInput>
-          <IonIcon icon={cloudUploadOutline}></IonIcon>
-        </div>
-        <div onClick={handleButtonClick} className='custom_place_val'></div>
-      </div>}
-
+      {!isStudent && <GImagUpload onFileChange={(e:any)=>handleFileChange(e, 'plain')} label="Upload School Image" />}
       <div className='g_flex g-space-between'>
         <div style={{ width: '30%' }}>
           <IonSelect
@@ -146,19 +141,7 @@ const Gallery: any = (props: any) => {
           </div>
         </>)}
       </div>
-      {!isStudent && <div className="custom-file-input">
-        <input
-          type="file"
-          ref={fileInputRef}
-          className="file-input"
-          onChange={handleFileChange}
-        />
-        <div className='field width-100 file-label'>
-          <IonInput label="Upload Year - Class - Section image" readonly labelPlacement="floating" fill="outline" placeholder="jpg or png"></IonInput>
-          <IonIcon icon={cloudUploadOutline}></IonIcon>
-        </div>
-        <div onClick={handleButtonClick} className='custom_place_val'></div>
-      </div>}
+      {!isStudent && <GImagUpload onFileChange={(e:any)=>handleFileChange(e, 'year')} label="Upload Year - Class - Section image" />}
     </div>
   );
 };

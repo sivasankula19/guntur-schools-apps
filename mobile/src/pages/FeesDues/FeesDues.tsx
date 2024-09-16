@@ -1,6 +1,6 @@
 import React from 'react';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
-import { IonCard, IonCardContent, IonIcon, IonItem, IonLabel, IonSelect, IonSelectOption, IonText } from '@ionic/react';
+import { IonCard, IonCardContent, IonIcon, IonLabel, IonSelect, IonSelectOption, IonText } from '@ionic/react';
 import { addCircleOutline, checkmarkCircleOutline, closeCircleOutline, removeCircleOutline } from 'ionicons/icons';
 import { formatDate } from '../../common/utility';
 

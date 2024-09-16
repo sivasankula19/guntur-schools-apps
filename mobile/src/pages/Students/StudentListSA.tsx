@@ -2,7 +2,6 @@ import {
     IonButton,
     IonCard,
     IonCardContent,
-    IonInput,
     IonSearchbar,
     IonText,
 } from '@ionic/react';
@@ -14,6 +13,7 @@ import { useNavigate } from 'react-router';
 import CustomizedModal from '../../components/GCustomizedModal';
 import GCustomSelectDrop from '../../components/GCustomSelectDrop';
 import GCustomToggle from '../../components/GCustomToggle';
+import GCustomInput from '../../components/GCustomInput';
 
 interface IStudentForm {
     studentFirstName: string,
@@ -94,7 +94,7 @@ const StudentListSA: React.FC = () => {
         navigate(item.redirectTo);
     }
 
-    const handleViewMore = (id: string, isClose:boolean=false) => {
+    const handleViewMore = (id: string, isClose: boolean = false) => {
         setCurrentSelected(isClose ? '' : id);
     }
 
@@ -145,7 +145,7 @@ const StudentListSA: React.FC = () => {
             <div className="g_flex g-space-between g-align-center bread_toggle_container">
                 <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
                 <div>
-                    <GCustomToggle checked={isFilterEnabled} onHandleChange={handleToggleChange}/>
+                    <GCustomToggle checked={isFilterEnabled} onHandleChange={handleToggleChange} />
                 </div>
             </div>
             <div>
@@ -224,43 +224,17 @@ const StudentListSA: React.FC = () => {
                 onClose={handleModelClose}
                 onSave={handleSubmit}
             >
-                <div className='field m-bottom-10'>
-                    <IonInput value={formValue.studentFirstName} onIonChange={handleInput} name='studentFirstName' label="Student First Name" labelPlacement="floating" fill="outline" placeholder="First Name"></IonInput>
-                </div>
-                <div className='field m-bottom-10'>
-                    <IonInput value={formValue.studentLastName} onIonChange={handleInput} name='studentLastName' label="Student Last Name" labelPlacement="floating" fill="outline" placeholder="Last Name"></IonInput>
-                </div>
-                <div className='field m-bottom-10'>
-                    <GCustomSelectDrop options={classDummyData} name='classOfStudy'
-                        value={formValue.classOfStudy} label="Class"
-                        handleOnChange={handleInput} classNames='custom-select' />
-                </div>
-                <div className='field m-bottom-10'>
-                    <GCustomSelectDrop options={classDummyData} name='section'
-                        value={formValue.section} label="Section"
-                        handleOnChange={handleInput} classNames='custom-select' />
-                </div>
-                <div className='field m-bottom-10'>
-                    <IonInput value={formValue.mobileNumber} onIonChange={handleInput} name='mobileNumber' label="Mobile Number" labelPlacement="floating" fill="outline" placeholder="Ex. +91 9876543210"></IonInput>
-                </div>
-                <div className='field m-bottom-10'>
-                    <IonInput value={formValue.emailAddress} onIonChange={handleInput} name='emailAddress' label="Email Address" labelPlacement="floating" fill="outline" placeholder="test@gmail.com"></IonInput>
-                </div>
-                <div className='field m-bottom-10'>
-                    <GCustomSelectDrop options={genderDummyData} name='gender'
-                        value={formValue.gender} label="Gender"
-                        handleOnChange={handleInput} classNames='custom-select' />
-                </div>
-                <div className='field m-bottom-10'>
-                    <IonInput value={formValue.parentName} onIonChange={handleInput} name='parentName' label="Parent / Guardian Name" labelPlacement="floating" fill="outline" placeholder="Parent Name"></IonInput>
-                </div>
-                <div className='field m-bottom-10'>
-                    <IonInput value={formValue.regNumber} onIonChange={handleInput} name='regNumber' label="Generated Registration ID" labelPlacement="floating" fill="outline" placeholder="Ex. Y2024C0001"></IonInput>
-                </div>
+                <GCustomInput name={'studentFirstName'} value={formValue['studentFirstName']} onChange={handleInput} label={'Student First Name'} placeholder={'First Name'} />
+                <GCustomInput name={'studentLastName'} value={formValue['studentLastName']} onChange={handleInput} label={'Student First Name'} placeholder={'Last Name'} />
+                <GCustomSelectDrop options={classDummyData} name='classOfStudy' value={formValue.classOfStudy} label="Class" handleOnChange={handleInput} classNames='custom-select m-bottom-10' />
+                <GCustomSelectDrop options={classDummyData} name='section' value={formValue.section} label="Section" handleOnChange={handleInput} classNames='custom-select m-bottom-10' />
+                <GCustomInput name={'mobileNumber'} value={formValue['mobileNumber']} onChange={handleInput} label={'Mobile Number'} placeholder={'Ex. 999887888'} />
+                <GCustomInput name={'emailAddress'} value={formValue['emailAddress']} onChange={handleInput} label={'Email Address'} placeholder={'Ex. user@mail.com'} />
+                <GCustomSelectDrop options={genderDummyData} name='gender' value={formValue.gender} label="Gender" handleOnChange={handleInput} classNames='custom-select' />
+                <GCustomInput name={'parentName'} value={formValue['parentName']} onChange={handleInput} label={'Parent / Guardian Name'} placeholder={'Parent Name'} />
+                <GCustomInput name={'regNumber'} value={formValue['regNumber']} onChange={handleInput} label={'Generated Registration ID'} placeholder={'Reg. Number'} />
                 {!isEdit && (
-                    <div className='field m-bottom-10'>
-                        <IonInput value={formValue.defaultPassword} onIonChange={handleInput} name='defaultPassword' label="Default Password" labelPlacement="floating" fill="outline" placeholder="Default User Password"></IonInput>
-                    </div>
+                    <GCustomInput name={'defaultPassword'} value={formValue['defaultPassword'] || ''} onChange={handleInput} label={'Default Password'} placeholder={'Default User Password'} />
                 )}
             </CustomizedModal>
         </div>

@@ -1,4 +1,4 @@
-import { getPlatforms, IonItem, IonList, IonText, isPlatform } from '@ionic/react'
+import { IonItem, IonList, IonText, isPlatform } from '@ionic/react'
 import React, { useEffect, useState } from 'react'
 import { timeTableVal } from '../../common/utility';
 
