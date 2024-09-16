@@ -1,15 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router';
+import React, { useRef, useState } from 'react';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
-import { IonCard, IonCardContent, IonItem, IonLabel, IonSearchbar, IonText, IonIcon, IonButton, IonInput, IonTextarea } from '@ionic/react';
+import { IonCard, IonCardContent, IonItem, IonLabel, IonSearchbar, IonText, IonIcon, IonButton, IonTextarea } from '@ionic/react';
 import { classListDummy, formatDate, formatTime, sectionListDummy, vibePostsData } from '../../common/utility';
-import { chatboxOutline, cloudUploadOutline, heartOutline, imageOutline, shareSocialOutline } from 'ionicons/icons';
+import { chatboxOutline, heartOutline, imageOutline, shareSocialOutline } from 'ionicons/icons';
 import VibeLikes from './VibeLikes';
 import VibeComments from './VibeComments';
 import GCustomSelectDrop from '../../components/GCustomSelectDrop';
 import { useSelector } from 'react-redux';
 import CustomizedModal from '../../components/GCustomizedModal';
 import GCustomToggle from '../../components/GCustomToggle';
+import GCustomInput from '../../components/GCustomInput';
+import GImagUpload from '../../components/GImagUpload';
 
 const SchoolVibe: React.FC = () => {
   const [isFilterEnabled, setIsFilterEnabled] = useState(false);
@@ -262,22 +263,8 @@ const SchoolVibe: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className='field m-bottom-10'>
-              <IonInput value={formValue.postTitle} onIonChange={handleInput} name='postTitle' label="Post Name" labelPlacement="floating" fill="outline" placeholder="Post Name"></IonInput>
-            </div>
-            <div onClick={handleButtonClick} className="m-bottom-10 custom-file-input">
-              <input
-                type="file"
-                ref={fileInputRef}
-                className="file-input"
-                onChange={handleFileChange}
-              />
-              <div className='field width-100 file-label'>
-                <IonInput label="Upload file PNG/jpeg/jpg" readonly labelPlacement="floating" fill="outline" placeholder="jpg or png"></IonInput>
-                <IonIcon icon={cloudUploadOutline}></IonIcon>
-              </div>
-              <div onClick={handleButtonClick} className='custom_place_val'></div>
-            </div>
+            <GCustomInput name={'postTitle'} value={formValue.postTitle} onChange={handleInput} label={'Post Name'} placeholder={'Post Name'} />
+            <GImagUpload onFileChange={handleFileChange} multiple={true} label='Upload Image' classNames='m-bottom-10' />
             <div className='field m-bottom-10'>
               <IonTextarea value={formValue.postDesc} autoGrow={true} rows={4} onIonChange={handleInput} name='postDesc' label="Post Description" labelPlacement="floating" fill="outline" placeholder="description..."></IonTextarea>
             </div>
@@ -288,7 +275,6 @@ const SchoolVibe: React.FC = () => {
             <div className='m-bottom-10 toggle_io g_flex'>
               <IonLabel>Enabled Comments ? </IonLabel>
               <GCustomToggle name='isEnabledComments' checked={formValue.isEnabledComments} onHandleChange={handleAddToggleChange} />
-
             </div>
           </div>
         </CustomizedModal>

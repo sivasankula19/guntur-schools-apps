@@ -1,18 +1,28 @@
 import React, { useEffect, useRef, useState } from 'react';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
-import { IonButton, IonCard, IonCardContent, IonIcon, IonInput, IonSearchbar, IonSelect, IonSelectOption, IonText, IonTextarea } from '@ionic/react';
-import { classListDummy, formatDate, homeWorkDataBe } from '../../common/utility';
-import { attachOutline, banOutline, expandOutline, cloudUpload } from 'ionicons/icons';
+import { IonButton, IonCard, IonCardContent, IonIcon, IonSearchbar, IonText } from '@ionic/react';
+import { classSubjects, formatDate, homeWorkDataBe } from '../../common/utility';
+import { attachOutline, banOutline, expandOutline } from 'ionicons/icons';
 import SwapableImages from './SwapableImges';
 import { useSelector } from 'react-redux';
 import CustomizedModal from '../../components/GCustomizedModal';
 import GCustomSelectDrop from '../../components/GCustomSelectDrop';
+import GCustomInput from '../../components/GCustomInput';
+import GImagUpload from '../../components/GImagUpload';
 const HomeWork: React.FC = () => {
 
   const [homeWorkData, setHomeWorkData] = useState<any>([])
   const isStudent = useSelector((state: any) => state.auth.role) === 'Student'
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [homework, setHomework] = useState<any>({ title: '', desc: '', subject: '', image: '', due_date: '' });
+  const formInitialVal = {
+    homeWorkName: '',
+    description: '',
+    subjectName: '',
+    images: '',
+    dueDate: '',
+  }
+  const [formValue, setFormValue] = useState(formInitialVal);
 
   const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Home Work', path: '/home-work' }]
 
@@ -37,70 +47,20 @@ const HomeWork: React.FC = () => {
     console.log("clicked on save", homework)
   }
 
-  const handleInput = (key: string, value: string) => {
-    setHomework(() => ({ ...homework, [key]: value }))
+
+  const handleInput = (e: any) => {
+    setFormValue((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  const classDummyData = classListDummy.map(i => ({ id: i.classId, label: i.className }));
-
-  const IonSelectUI = (label: string, value: string, options: any) => {
-    return (
-      <IonSelect
-        className="custom-select achieve_popup"
-        multiple={false}
-        label={label}
-        labelPlacement="floating"
-        fill="outline"
-        value={homework[value]}
-        onIonChange={(e: any) => handleInput(value, e.target.value)}
-      // interface="popover"
-      >
-        {options.map((option: any) => {
-          return (
-            <IonSelectOption key={option.key} value={option.value}>{option.key}</IonSelectOption>
-          )
-        })}
-      </IonSelect>
-    )
-  }
-
-  const IonInputUI = (label: string, value: string, ph: string, endIcon?: any, type?: any) => {
-    return (
-      <div className='input-with-icon'>
-        <IonInput
-          value={homework[value]}
-          onIonInput={(e: any) => handleInput(value, e.target.value)}
-          className="custom-ion-input_home achieve_popup"
-          label={label}
-          labelPlacement="floating"
-          fill="outline"
-          type={type || 'text'}
-          placeholder={ph}
-        ></IonInput>
-        {endIcon && <IonIcon icon={endIcon} className="input-icon" />}
-      </div>
-    )
-  }
-
-  const IonTextAreaUI = (label: string, value: string, ph: string, endIcon?: any, type?: any) => {
-    return (
-      <div className='input-with-icon'>
-        <IonTextarea
-          value={homework[value]}
-          onIonInput={(e: any) => handleInput(value, e.target.value)}
-          className="custom-ion-input_home achieve_popup"
-          label={label}
-          labelPlacement="floating"
-          fill="outline"
-          // type={type || 'text'}
-          placeholder={ph}
-        ></IonTextarea>
-        {endIcon && <IonIcon icon={endIcon} className="input-icon" />}
-      </div>
-    )
-  }
-
+  const subjectsDummyData = classSubjects.map(i => ({ id: i.subjectCode, label: i.subjectName }))
   const handleChangeSelect = () => { }
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      console.log('Selected file:', file.name);
+    }
+  };
 
   return (
     <div className='g_full_height'>
@@ -109,32 +69,12 @@ const HomeWork: React.FC = () => {
         <div className='g_flex g-align-center g-justify-center'>
           <IonButton onClick={openPopover} className="add_homework br-ion-12 g_txt_cap">Add Home Work</IonButton>
         </div>}
-      {/* add achievements popup */}
-      <CustomizedModal
-        // ref={popover}
-        title="Add Homework"
-        isOpen={popoverOpen}
-        onClose={() => setPopoverOpen(false)}
-        onSave={onSave}
-      >
-        <div>
-          {/* <h1 className="g-font-weight-600 g-font-size-18 text-color-blue g_flex g-justify-center">Add New Document</h1> */}
-          <div className="g_flex g-space-between">
-          </div>
-          {IonInputUI('Homework title', 'title', 'Home Work Title')}
-          {IonTextAreaUI('Homework Description', 'desc', 'Home Work Description')}
-          {IonSelectUI('Subject Name', 'subject', [{ 'key': 'Maths', 'value': 'maths' }, { 'key': 'Social', 'value': 'social' }, { 'key': 'Science', 'value': 'science' }])}
-          {IonInputUI('Images', 'image', 'Images', cloudUpload)}
-          {IonInputUI('Date', 'date', 'Date', 'date')}
-        </div>
-
-      </CustomizedModal>
       <div className='home_work p-h-16'>
         <IonSearchbar placeholder='Search subject or Task name'></IonSearchbar>
         <div className="g_flex g-space-between select-container">
           <div style={{ width: '47%' }}>
-            <GCustomSelectDrop options={classDummyData} name='classId'
-              value={''} label="Select Class"
+            <GCustomSelectDrop options={subjectsDummyData} name='classId'
+              value={''} label="Select Subject"
               handleOnChange={handleChangeSelect} classNames='custom-select' />
           </div>
           <div style={{ width: '47%' }}>
@@ -204,6 +144,22 @@ const HomeWork: React.FC = () => {
           </IonCard>))}
         </div>
       </div>
+      <CustomizedModal
+        title="Add Homework"
+        isOpen={popoverOpen}
+        onClose={() => setPopoverOpen(false)}
+        onSave={onSave}
+        styles={{ height: 'auto', maxHeight: '50vh' }}
+      >
+        <div>
+          <GCustomInput name={'homeWorkName'} value={formValue.homeWorkName} onChange={handleInput} label={'Home Work Title'} placeholder={'Ex. Algorithms'} />
+          <GCustomInput name={'description'} value={formValue.description} onChange={handleInput} label={'Description'} placeholder={'Description'} />
+          <GCustomInput name={'subjectName'} value={formValue.subjectName} onChange={handleInput} label={'Subject Name'} placeholder={'Subject Name'} />
+          <GImagUpload onFileChange={handleFileChange} multiple={true} label='Upload Image' classNames='m-bottom-10' />
+          {/* date */}
+          <GCustomInput name={'dueDate'} value={formValue.dueDate} onChange={handleInput} label={'Due Date'} placeholder={'01/01/2024'} />
+        </div>
+      </CustomizedModal>
     </div>
   );
 };

@@ -2,7 +2,6 @@ import {
     IonModal,
     IonHeader,
     IonToolbar,
-    IonTitle,
     IonButtons,
     IonButton,
     createAnimation,
@@ -12,7 +11,7 @@ import {
     IonImg,
     IonLabel,
   } from '@ionic/react';
-  import { arrowBackOutline, closeOutline, downloadOutline } from 'ionicons/icons';
+  import { arrowBackOutline, downloadOutline } from 'ionicons/icons';
   import React, { useRef } from 'react';
   
   const GImageDocPreview: React.FC<ICustomModalProps> = ({

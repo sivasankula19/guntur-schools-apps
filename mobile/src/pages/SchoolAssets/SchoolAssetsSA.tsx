@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import GBreadCrumbs from '../../components/GBreadCrumbs'
-import { IonAccordion, IonAccordionGroup, IonIcon, IonInput, IonItem, IonLabel } from '@ionic/react';
+import { IonAccordion, IonAccordionGroup, IonIcon, IonItem, IonLabel } from '@ionic/react';
 import { caretDownCircleOutline, caretDownOutline, saveOutline } from 'ionicons/icons';
 import { schoolAssetsDataDummy } from '../../common/utility';
 

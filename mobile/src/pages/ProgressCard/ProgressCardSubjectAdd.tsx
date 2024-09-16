@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import GBreadCrumbs from '../../components/GBreadCrumbs';
-import { IonCard, IonCardContent, IonIcon, IonLabel, IonSelect, IonSelectOption } from '@ionic/react';
+import { IonCard, IonCardContent, IonIcon, IonLabel } from '@ionic/react';
 import { checkmarkCircleOutline, saveOutline } from 'ionicons/icons';
 import { classListDummy, classSubjects, examinationListDummy, sectionListDummy, studentDummyData } from '../../common/utility';
 import GCustomSelectDrop from '../../components/GCustomSelectDrop';

@@ -6,9 +6,7 @@ import {
   IonCardContent,
   IonIcon,
   IonInput,
-  IonItem,
   IonLabel,
-  IonList,
   IonSelect,
   IonSelectOption,
   IonText,
@@ -17,9 +15,7 @@ import {
   addCircleOutline,
   checkmarkCircleOutline,
   closeCircleOutline,
-  removeCircleOutline,
 } from 'ionicons/icons';
-import { formatDate } from '../../common/utility';
 import CustomizedModal from '../../components/GCustomizedModal';
 
 const initialStateForTermFees:any=[

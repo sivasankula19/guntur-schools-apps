@@ -49,7 +49,7 @@ const Attendance = () => {
 
     const scrollTimeOut = setTimeout(() => {
       if (containerRef.current) {
-        const scrollPosition = (todayDate.getDate() - 1) * (isPlatform('ios') ? 44 : 48);
+        const scrollPosition = (todayDate.getDate() - 1) * (isPlatform('ios') ? 52 : 56);
         containerRef.current.scrollTo({
           top: currentMY.month === todayDate.getMonth() + 1 && currentMY.year === todayDate.getFullYear() ? scrollPosition : 0,
           behavior: 'smooth',
@@ -226,7 +226,7 @@ const Attendance = () => {
                         }`}
                     >
                       <div className="chip_item_grid">
-                        <IonText className="ion_text_day_view">
+                        <IonText className={`ion_text_day_view ${dayItem?.date === todayFormate ? 'special_today_item' : ''}`}>
                           {dayItem?.currentDay}
                         </IonText>
                         {dayItem !== null && !dayItem?.isSchoolHoliday ? (

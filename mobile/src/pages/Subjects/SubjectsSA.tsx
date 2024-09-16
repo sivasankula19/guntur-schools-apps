@@ -4,18 +4,16 @@ import {
   IonButton,
   IonCard,
   IonCardContent,
-  IonInput,
   IonItem,
   IonList,
   IonRange,
-  IonSelect,
-  IonSelectOption,
   IonText,
 } from '@ionic/react';
 import { classListDummy, classSubjects, sectionListDummy } from '../../common/utility';
 import ProgressBar from '../../components/ProgressBar';
 import CustomizedModal from '../../components/GCustomizedModal';
 import GCustomSelectDrop from '../../components/GCustomSelectDrop';
+import GCustomInput from '../../components/GCustomInput';
 
 function SubjectsSA() {
   const [data, setData] = useState(classSubjects);
@@ -154,12 +152,8 @@ function SubjectsSA() {
         onSave={handleSubmit}
       >
         <div>
-          <div className='field m-bottom-10'>
-            <IonInput value={formValue.subjectName} onIonChange={handleInput} name='subjectName' label="Subject Name" labelPlacement="floating" fill="outline" placeholder="Subject Name"></IonInput>
-          </div>
-          <div className='field m-bottom-10'>
-            <IonInput value={formValue.subjectStaffName} onIonChange={handleInput} name='subjectStaffName' label="Subject Staff Name" labelPlacement="floating" fill="outline" placeholder="Subject Staff Name"></IonInput>
-          </div>
+          <GCustomInput name={'subjectName'} value={formValue.subjectName} onChange={handleInput} label={'Subject Name'} placeholder={'Subject Name'} />
+          <GCustomInput name={'subjectStaffName'} value={formValue.subjectStaffName} onChange={handleInput} label={'Subject Staff Name'} placeholder={'Subject Staff Name'} />
           <div className='field m-bottom-10 m-r-18'>
             <IonRange value={formValue.percentCovered} pin={true} onIonChange={handleInput} name='percentCovered'>
               <div slot='label'>
@@ -167,9 +161,7 @@ function SubjectsSA() {
               </div>
             </IonRange>
           </div>
-          <div className='field m-bottom-10'>
-            <IonInput value={formValue.subjectDefaultMarks} onIonChange={handleInput} name='subjectDefaultMarks' label="Subject Marks Default" labelPlacement="floating" fill="outline" placeholder="Ex. 100"></IonInput>
-          </div>
+          <GCustomInput name={'subjectDefaultMarks'} value={formValue.subjectDefaultMarks} onChange={handleInput} label={'Subject Marks Default'} placeholder={'Ex. 100'} />
         </div>
       </CustomizedModal>
     </div>

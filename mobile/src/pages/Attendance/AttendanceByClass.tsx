@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import GBreadCrumbs from '../../components/GBreadCrumbs'
-import { IonButton, IonCard, IonCardContent, IonIcon, IonItem, IonSelect, IonSelectOption, IonText } from '@ionic/react';
+import { IonButton, IonCard, IonCardContent, IonIcon, IonText } from '@ionic/react';
 import { caretBackOutline, caretForwardOutline, chevronBackOutline, chevronForwardOutline } from 'ionicons/icons';
 import { classListDummy, getDatesForMonth, sectionListDummy, transformListToGrid } from '../../common/utility';
 import { useLocation, useNavigate } from 'react-router';
@@ -11,16 +11,12 @@ function AttendanceByClass() {
     const todayFormate = `${todayDate.getMonth() + 1}/${todayDate.getDate()}/${todayDate.getFullYear()}`;
     const [currentMY, setCurrentMY] = useState<any>({ month: todayDate.getMonth() + 1, year: todayDate.getFullYear() });
     const [gridAttendance, setGridAttendance] = useState<any>([]);
-    const [selectedClass, setSelectedClass] = useState<string>('');
-    const [selectedSection, setSelectedSection] = useState<string>('');
     const [selectedDate, setSelectedDate] = useState<string>(todayFormate);
     const location = useLocation();
     const [filterValues, setFilterValue] = useState({
         classId: '',
         sectionId: '',
     });
-
-    console.log(gridAttendance)
 
     const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Class Attendance', path: '/attendance-by-class' },];
 

@@ -1,4 +1,4 @@
-import { IonButton, IonCard, IonCardContent, IonText } from '@ionic/react';
+import { IonCard, IonCardContent, IonText } from '@ionic/react';
 import React from 'react';
 
 const ExCircularActivities: React.FC = () => {

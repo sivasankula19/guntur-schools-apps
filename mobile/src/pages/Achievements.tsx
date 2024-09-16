@@ -6,20 +6,33 @@ import {
   IonInput,
   IonItem,
   IonLabel,
-  IonSelect,
-  IonSelectOption,
   IonText,
 } from '@ionic/react';
-import { addOutline, cloudUpload, location, alertCircleOutline, caretDownOutline } from 'ionicons/icons';
+import { alertCircleOutline, caretDownOutline, calendarOutline } from 'ionicons/icons';
 import React, { useState } from 'react';
 import CustomizedModal from '../components/GCustomizedModal';
 import { useSelector } from 'react-redux';
+import GCustomInput from '../components/GCustomInput';
+import GCustomSelectDrop from '../components/GCustomSelectDrop';
+import GImagUpload from '../components/GImagUpload';
 
 const Achievements: React.FC = () => {
 
-  const [newAchievement, setNewAchievement] = useState<any>({category:'',achievement_name:'',sub_category:'',level:'',presented_to:'',images:'',grand_total:'',location:'',date:''});
+  const [newAchievement, setNewAchievement] = useState<any>({ category: '', achievement_name: '', sub_category: '', level: '', presented_to: '', images: '', grand_total: '', location: '', date: '' });
   const [popoverOpen, setPopoverOpen] = useState(false);
-  const isStudent = useSelector((state:any)=>state.auth.role) === 'Student'
+  const isStudent = useSelector((state: any) => state.auth.role) === 'Student';
+  const formInitialVal = {
+    category: '',
+    achievementName: '',
+    subCategory: '',
+    level: '',
+    presentedTo: '',
+    images: '',
+    grandTotal: '',
+    location: '',
+    date: '',
+  }
+  const [formValue, setFormValue] = useState<any>(formInitialVal);
 
   const colData = [
     { id: 'cl1', name: 'Title', key: 'title' },
@@ -151,89 +164,31 @@ const Achievements: React.FC = () => {
       data: []
     },
   ];
-  const onSave=()=>{
-    console.log("clicked on save",newAchievement)
+  const onSave = () => {
+    console.log("clicked on save", newAchievement)
   }
 
   const openPopover = (e: any) => {
     setPopoverOpen(true);
   };
 
-  const handleInput=(key:string,value:string)=>{
-    setNewAchievement(()=> ({...newAchievement,[key]:value}))
+  const handleInput = (e: any) => {
+    setFormValue((prev: any) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  const IonSelectUI=(label:string,value:string,options:any)=>{
-      return(
-            <IonSelect
-                className="custom-select achieve_popup"
-                multiple={false}
-                label={label}
-                labelPlacement="floating"
-                fill="outline"
-                value={newAchievement[value]}
-                onIonChange={(e:any)=>handleInput(value,e.target.value)}
-                // interface="popover"
-                >
-                  {options.map((option:any)=>{
-                    return(
-                      <IonSelectOption key={option.key} value={option.value}>{option.key}</IonSelectOption>
-                    )
-                  })}
-            </IonSelect>
-      )
-  }
-
-  const IonInputUI=(label:string,value:string,ph:string,endIcon?:any,type?:any)=>{
-    return(
-        <div className='input-with-icon'>
-            <IonInput
-                value={newAchievement[value]}
-                onIonInput={(e:any)=>handleInput(value,e.target.value)}
-                className="custom-ion-input_home achieve_popup"
-                label={label}
-                labelPlacement="floating"
-                fill="outline"
-                type={type || 'text'}
-                placeholder={ph}
-                ></IonInput>
-            {endIcon && <IonIcon icon={endIcon} className="input-icon" />}
-        </div>
-    )
-  }
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      console.log('Selected file:', file.name);
+    }
+  };
 
   return (
     <div className="achievements">
       {!isStudent &&
-      <div className='g_flex g-align-center g-justify-center'>
-          <IonButton onClick={openPopover} className="add_achievement">
-            <IonIcon icon={addOutline}></IonIcon> Add
-          </IonButton>
-      </div> }
-      {/* add achievements popup */}
-      <CustomizedModal
-          // ref={popover}
-          title="Add Achievement"
-          isOpen={popoverOpen}
-          onClose={() => setPopoverOpen(false)}
-          onSave={onSave}
-        >
-           <div>
-              {/* <h1 className="g-font-weight-600 g-font-size-18 text-color-blue g_flex g-justify-center">Add New Document</h1> */}
-              <div className="g_flex g-space-between">
-              </div>
-              {IonSelectUI('Category','category',[{'key':'Class','value':'class'},{'key':'School','value':'school'},{'key':'Student','value':'student'}])}
-              {IonInputUI('Achievement','achievement_name','Achievement Name')}              
-              {IonSelectUI('Sub Category','sub_category',[{'key':'Class','value':'class'},{'key':'School','value':'school'},{'key':'Student','value':'student'}])}
-              {IonInputUI('Level','level','Level Name')}              
-              {IonInputUI('Presented To','presented_to','Presented To')}              
-              {IonInputUI('Images','images','Images',cloudUpload)}              
-              {IonInputUI('Grand Total','grand_total','Grand Total')}              
-              {IonInputUI('Location','location','Location',location,'url')}              
-              {IonInputUI('Date','date','Date','date')}              
-             </div>
-
-        </CustomizedModal>
+        <div className='p-b-10'>
+          <IonButton className='br-ion-12 g_txt_cap g_full_width ' onClick={openPopover} fill="outline" expand="block">Add Class</IonButton>
+        </div>}
       <div className='school_achieve_title g_flex g-align-center g-justify-center text-color-blue g-font-weight-600 g-font-size-16'>
         School Achievements
       </div>
@@ -289,18 +244,40 @@ const Achievements: React.FC = () => {
                   ))}
                 </div>
               </> : <>
-                  <IonItem className='achieve_no_data'>
-                    <IonIcon icon={alertCircleOutline}></IonIcon>
-                    <IonText>
-                      <p>No Data Found!</p>
-                    </IonText>
-                  </IonItem>
+                <IonItem className='achieve_no_data'>
+                  <IonIcon icon={alertCircleOutline}></IonIcon>
+                  <IonText>
+                    <p>No Data Found!</p>
+                  </IonText>
+                </IonItem>
               </>}
 
             </div>
           </IonAccordion>
         ))}
       </IonAccordionGroup>
+      <CustomizedModal
+        title="Add Achievement"
+        isOpen={popoverOpen}
+        onClose={() => setPopoverOpen(false)}
+        onSave={onSave}
+      >
+        <div>
+          <GCustomSelectDrop options={[]} name='category' value={formValue.category} label="Category" handleOnChange={handleInput} classNames='custom-select m-bottom-10' />
+          <GCustomInput name={'achievementName'} value={formValue['achievementName']} onChange={handleInput} label={'AchievementName'} placeholder='Enter Achievement Name' />
+          <GCustomSelectDrop options={[]} name='subCategory' value={formValue.subCategory} label="Sub Category" handleOnChange={handleInput} classNames='custom-select m-bottom-10' />
+          <GCustomInput name={'level'} value={formValue['level']} onChange={handleInput} label={'Level'} placeholder='Enter Level' />
+          <GCustomInput name={'presentedTo'} value={formValue['presentedTo']} onChange={handleInput} label={'Presented To'} placeholder='Presented To' />
+          <GImagUpload onFileChange={handleFileChange} multiple={true} label='Upload Image' classNames='m-bottom-10' />
+          <GCustomInput name={'grandTotal'} value={formValue['grandTotal']} onChange={handleInput} label={'Grand Total'} placeholder='Enter Grand Total ' />
+          <GCustomInput name={'location'} value={formValue['location']} onChange={handleInput} label={'Location'} placeholder='Enter Location' />
+          {/* date picker */}
+          <div className='field m-bottom-10'>
+            <IonInput value={formValue.date} onIonChange={handleInput} name='date' label="Date" labelPlacement="floating" fill="outline" placeholder="Date of Birth"></IonInput>
+            <IonIcon icon={calendarOutline}></IonIcon>
+          </div>
+        </div>
+      </CustomizedModal>
     </div>
   );
 };
