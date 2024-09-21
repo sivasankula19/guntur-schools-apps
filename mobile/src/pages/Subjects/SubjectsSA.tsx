@@ -103,7 +103,7 @@ function SubjectsSA() {
             handleOnChange={handleChange} classNames='custom-select' />
         </div>
       </div>
-      <div className='p-10'>
+      <div className='m-10'>
         <IonButton className='g_txt_cap font-16' fill="outline" expand="block" onClick={handleAddSubject}>Add Subject</IonButton>
       </div>
       <div className="subjects_cls_container-edit">

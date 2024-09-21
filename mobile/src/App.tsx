@@ -88,6 +88,8 @@ import ExamScheduleSA from './pages/ExamSchedule/ExamScheduleSA';
 import NotificationsList from './pages/NotificationsList';
 import AccessControl from './pages/AccessControl/AccessControl';
 import AccessPrivateModules from './pages/AccessControl/AccessPrivateModules';
+import ModuleAccess from './pages/AccessControl/ModuleAccess';
+import Settings from './pages/AccessControl/Settings';
 
 setupIonicReact({
   animated: true,
@@ -167,7 +169,7 @@ const App: React.FC = () => {
   return (
     <IonApp className="dark-theme">
       {/* un comment below after development!!! */}
-      <IonAlert
+      {/* <IonAlert
         header="Dark Mode!"
         backdropDismiss={false}
         subHeader="Would you like to use Dark Mode ?"
@@ -184,7 +186,7 @@ const App: React.FC = () => {
           },
         ]}
         onDidDismiss={handleDismissAlert}
-      ></IonAlert>
+      ></IonAlert> */}
       <BrowserRouter>
         <IonSplitPane contentId="main">
           <Menu />
@@ -210,7 +212,7 @@ const App: React.FC = () => {
                 <Route path='/documents' element={<Documents />} />
                 <Route path={'/user/:id'} element={<UserByID />} />
                 <Route path='/messages' element={<Messages />} />
-                <Route path={'/messages/:id'} element={<ChatScreen></ChatScreen>} />
+                <Route path={'/messages/:id'} element={<ChatScreen />} />
                 <Route path='/fee-structure' element={role === 'Student' ? <FeesDues /> : <FeesDuesSA />} />
                 <Route path='/exam-schedules' element={role === 'Student' ? <ExamSchedule /> : <ExamScheduleSA />} />
                 <Route path='/home-work' element={<HomeWork />} />
@@ -218,8 +220,10 @@ const App: React.FC = () => {
                 <Route path='/school-classes' element={<SchoolClasses />} />
                 <Route path='/school-sections' element={<SchoolSections />} />
                 <Route path='/my-notifications' element={<NotificationsList />} />
+                <Route path='/settings' element={<Settings />} />
                 <Route path='/access-control' element={<AccessControl />} />
                 <Route path='/access-private-modules' element={<AccessPrivateModules />} />
+                <Route path='/module-access' element={<ModuleAccess />} />
                 {/* public modules! */}
                 <Route path='/gallery' element={<Gallery />} />
                 <Route path='/ex-circular' element={<ExCircularActivities />} />

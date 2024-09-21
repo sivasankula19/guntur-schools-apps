@@ -79,29 +79,34 @@ const Header: React.FC = React.memo(() => {
               </IonTitle>
 
               <IonButton onClick={openPopover} fill="clear" id="click-trigger"><IonIcon slot="icon-only" icon={notificationsOutline}></IonIcon></IonButton>
-              <IonLabel>+3</IonLabel>
+              <IonLabel>{newNotifications.length ? `+${newNotifications.length}` : null}</IonLabel>
               <IonPopover ref={popover} isOpen={popoverOpen} onDidDismiss={() => setPopoverOpen(false)} className='notification-popover' trigger="click-trigger" triggerAction="click">
                 <IonContent class="ion-padding">
                   <div className='popover_actions'>
-                    {newNotifications.map((notify: any, indexN: number) => (<IonItem key={notify.id} className='first_action_item'>
-                      <IonIcon icon={iconsListModule[notify.moduleName || 'Default']}></IonIcon>
-                      <IonLabel>
-                        <div className='menu-notify-text'>
-                          <IonText>
-                            <p>
-                              {notify.message}
-                            </p>
-                          </IonText>
-                        </div>
-                        {(notify?.data?.message || notify?.data?.comment) && (
-                          <div className='menu-notify-msg-text'>
+                    {newNotifications.length ? <>
+                      {newNotifications.map((notify: any, indexN: number) => (<IonItem key={notify.id} className='first_action_item'>
+                        <IonIcon icon={iconsListModule[notify.moduleName || 'Default']}></IonIcon>
+                        <IonLabel>
+                          <div className='menu-notify-text'>
                             <IonText>
-                              <p>" {notify?.data?.comment || notify?.data?.message} "</p>
+                              <p>
+                                {notify.message}
+                              </p>
                             </IonText>
                           </div>
-                        )}
-                      </IonLabel>
-                    </IonItem>))}
+                          {(notify?.data?.message || notify?.data?.comment) && (
+                            <div className='menu-notify-msg-text'>
+                              <IonText>
+                                <p>" {notify?.data?.comment || notify?.data?.message} "</p>
+                              </IonText>
+                            </div>
+                          )}
+                        </IonLabel>
+                      </IonItem>))}</> : <>
+                      <IonText>
+                        <p className='g_txt_center'>No Notifications yet!</p>
+                      </IonText>
+                    </>}
                   </div>
                   <div className='g_full_width p-t-10'>
                     <IonButton onClick={handleNavigate} expand="block">View All</IonButton>

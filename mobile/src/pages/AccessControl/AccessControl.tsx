@@ -23,11 +23,14 @@ function AccessControl() {
     const accessModules = [
         { id: 'acc-1', moduleName: 'Attendance', moduleId: 'access-attendance' },
         { id: 'acc-2', moduleName: 'Progress Card', moduleId: 'access-progress-card' },
-        { id: 'acc-3', moduleName: 'Documents', moduleId: 'access-documents' },
-        { id: 'acc-4', moduleName: 'Students CRUD', moduleId: 'access-students' },
-        { id: 'acc-5', moduleName: 'Staff CRUD', moduleId: 'access-staff' },
-        { id: 'acc-6', moduleName: 'School Info Public', moduleId: 'access-school' },
-        { id: 'acc-7', moduleName: 'Class - Subjects', moduleId: 'access-cls-sub' },
+        { id: 'acc-4', moduleName: 'Class Time Table', moduleId: 'class-time-table' },
+        { id: 'acc-5', moduleName: 'Documents', moduleId: 'access-documents' },
+        { id: 'acc-6', moduleName: 'Exam Schedule', moduleId: 'access-exam-schedule' },
+        { id: 'acc-7', moduleName: 'Home Work', moduleId: 'access-homework' },
+        // { id: 'acc-6', moduleName: 'Students CRUD', moduleId: 'access-students' },
+        // { id: 'acc-7', moduleName: 'Staff CRUD', moduleId: 'access-staff' },
+        // { id: 'acc-8', moduleName: 'School Info Public', moduleId: 'access-school' },
+        // { id: 'acc-9', moduleName: 'Class - Subjects', moduleId: 'access-cls-sub' },
     ]
 
     useEffect(() => {
@@ -69,13 +72,13 @@ function AccessControl() {
     };
 
     const classListWithSections = [
-        { id: 1, shortName: '10-A', classSecName: '10th A Sec', classId: 'ghmd-10th', sectionId: 'ghmd-sec-a' },
-        { id: 2, shortName: '10-B', classSecName: '10th B Sec', classId: 'ghmd-10th', sectionId: 'ghmd-sec-b' },
-        { id: 3, shortName: '9-A', classSecName: '9th A Sec', classId: 'ghmd-9th', sectionId: 'ghmd-sec-a' },
-        { id: 4, shortName: '9-B', classSecName: '9th B Sec', classId: 'ghmd-9th', sectionId: 'ghmd-sec-b' },
-        { id: 5, shortName: '8-A', classSecName: '8th A Sec', classId: 'ghmd-8th', sectionId: 'ghmd-sec-a' },
-        { id: 6, shortName: '8-B', classSecName: '8th B Sec', classId: 'ghmd-8th', sectionId: 'ghmd-sec-b' },
-        { id: 7, shortName: '8-C', classSecName: '8th C Sec', classId: 'ghmd-8th', sectionId: 'ghmd-sec-c' },
+        { id: "ghmd-10-a", shortName: '10-A', classSecName: '10th A Sec', classId: 'ghmd-10th', sectionId: 'ghmd-sec-a' },
+        { id: "ghmd-10-b", shortName: '10-B', classSecName: '10th B Sec', classId: 'ghmd-10th', sectionId: 'ghmd-sec-b' },
+        { id: "ghmd-9-a", shortName: '9-A', classSecName: '9th A Sec', classId: 'ghmd-9th', sectionId: 'ghmd-sec-a' },
+        { id: "ghmd-9-b", shortName: '9-B', classSecName: '9th B Sec', classId: 'ghmd-9th', sectionId: 'ghmd-sec-b' },
+        { id: "ghmd-8-a", shortName: '8-A', classSecName: '8th A Sec', classId: 'ghmd-8th', sectionId: 'ghmd-sec-a' },
+        { id: "ghmd-8-b", shortName: '8-B', classSecName: '8th B Sec', classId: 'ghmd-8th', sectionId: 'ghmd-sec-b' },
+        { id: "ghmd-8-c", shortName: '8-C', classSecName: '8th C Sec', classId: 'ghmd-8th', sectionId: 'ghmd-sec-c' },
     ]
 
     const handleStudentChange = (classInfo: any) => {
@@ -106,10 +109,6 @@ function AccessControl() {
         setSelectedClsSec(clsSecInfo.accessClasses)
         setPopoverOpen(e.target.id);
     };
-
-    useEffect(() => {
-        console.log('Selected--', selectedClsSec)
-    }, [selectedClsSec])
 
     return (
         <div className='access-control-sa'>

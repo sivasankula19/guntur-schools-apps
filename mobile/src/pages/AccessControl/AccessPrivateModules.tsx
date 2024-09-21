@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
-import { IonIcon, IonLabel } from '@ionic/react';
+import { IonIcon, IonLabel, IonText } from '@ionic/react';
 import { arrowBackOutline, bookOutline, businessOutline, callOutline, imageOutline, informationCircleOutline, ribbonOutline, saveOutline, trophyOutline } from 'ionicons/icons';
 import { useNavigate } from 'react-router';
 import CustomizedModal from '../../components/GCustomizedModal';
@@ -62,7 +62,10 @@ function AccessPrivateModules() {
         <div className='access-private-modules'>
             <GBreadCrumbs data={breadCrumbsValue} />
             <div className='back-save-icons m-top-10 p-h-16'>
+                <div className='g_flex g-align-center'>
                 <IonIcon onClick={handleBack} icon={arrowBackOutline}></IonIcon>
+                <IonText onClick={handleBack}><p>Back</p></IonText>
+                </div>
                 <IonIcon onClick={handleSave} icon={saveOutline}></IonIcon>
             </div>
             <div className='p-h-16 m-top-10 card-modules'>
