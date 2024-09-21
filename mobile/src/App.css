@@ -19,7 +19,7 @@
   background: #555;
 }
 
-a{
+a {
   cursor: pointer;
 }
 
@@ -552,7 +552,7 @@ ion-header {
   --border-radius: 12px;
 }
 
-.m-top-0{
+.m-top-0 {
   margin-top: 0 !important;
 }
 
@@ -632,6 +632,10 @@ ion-header {
   margin: 0 12px;
 }
 
+.m-0 {
+  margin: 0 !important;
+}
+
 .m-12 {
   margin: 12px;
 }
@@ -656,6 +660,10 @@ ion-header {
   padding: 12px;
 }
 
+.ph-20-pv-10 {
+  padding: 10px 20px;
+}
+
 .p-h-12 {
   padding: 0 12px;
 }
@@ -668,6 +676,14 @@ ion-header {
   padding: 0 10px;
 }
 
+.p-10 {
+  padding: 10px;
+}
+
+.m-10 {
+  margin: 10px;
+}
+
 .p-h-16 {
   padding: 0 16px;
 }
@@ -676,7 +692,7 @@ ion-header {
   padding-right: 10px;
 }
 
-.m-r-10{
+.m-r-10 {
   margin-right: 10px;
 }
 
@@ -728,19 +744,19 @@ ion-header {
   overflow-y: auto;
 }
 
-.color-0{
+.color-0 {
   color: #000000;
 }
 
-.dark .color-0{
+.dark .color-0 {
   color: #ffffff;
 }
 
-.color-F{
+.color-F {
   color: #ffffff;
 }
 
-.dark .color-F{
+.dark .color-F {
   color: #000000;
 }
 
@@ -1698,7 +1714,8 @@ ion-toggle::part(track) {
   border-radius: 8px;
 }
 
-.student-picker .users-list-dis .student-search-card, .class-section-item {
+.student-picker .users-list-dis .student-search-card,
+.class-section-item {
   height: 50px;
   display: flex;
   justify-content: space-between;
@@ -1711,7 +1728,8 @@ ion-toggle::part(track) {
   background-color: #ffffff;
 }
 
-.student-picker .users-list-dis .selected-card, .selected-card {
+.student-picker .users-list-dis .selected-card,
+.selected-card {
   background-color: rgba(29, 122, 245, 0.25) !important;
 }
 
@@ -1760,7 +1778,7 @@ ion-toggle::part(track) {
   height: 100vh;
 }
 
-.custom-modal-container-view ion-card-content{
+.custom-modal-container-view ion-card-content {
   overflow-x: hidden;
 }
 
@@ -1940,6 +1958,7 @@ ion-toggle::part(track) {
 .subjects_cls_container ion-card,
 .subjects_cls_container-edit ion-card {
   margin: 12px;
+  border-radius: 8px;
 }
 
 .subjects_cls_select {
@@ -1968,6 +1987,7 @@ ion-toggle::part(track) {
   border: 1px solid;
   border-bottom: 5px solid;
   border-color: #1D7AF5;
+  border-radius: 8px;
 }
 
 .subject_item_card_content ion-item {
@@ -2161,7 +2181,8 @@ ion-toggle::part(track) {
 /* Exam Schedule */
 
 .exam_schedule {
-  height: calc(100% - 36px);
+  height: 100%;
+  border: 1px solid;
 }
 
 .exam_schedule ion-label {
@@ -2254,21 +2275,21 @@ ion-toggle::part(track) {
   border-radius: 8px;
 }
 
-.document-type-check p{
+.document-type-check p {
   font-size: 14px;
   color: #1D7AF5;
 }
 
-.document-type-check ion-icon{
+.document-type-check ion-icon {
   position: absolute;
   right: 4px;
   top: 2px;
   font-size: 18px;
 }
 
-.selected-doc-type-item{
+.selected-doc-type-item {
   padding-right: 30px;
-  border-color:#1D7AF5;
+  border-color: #1D7AF5;
 }
 
 .exam_schedule ion-accordion-group,
@@ -2385,7 +2406,7 @@ ion-toggle::part(track) {
 }
 
 .g-customized-image-doc-preview ion-card-content {
-  overflow-y: auto;
+  overflow-y: hidden;
   height: 100%;
 }
 
@@ -2597,6 +2618,10 @@ ion-toggle::part(track) {
   height: calc(100% - 60px);
 }
 
+.dark .progress-hold input {
+  background: #000000;
+}
+
 .progress-add-con {
   height: calc(100% - 200px) !important;
   overflow-y: auto;
@@ -2763,7 +2788,7 @@ label.input-wrapper.sc-ion-input-ios {
   margin-top: 6px;
 }
 
-.home .home-container{
+.home .home-container {
   height: calc(100% - 70px);
   overflow-y: auto;
 }
@@ -3555,13 +3580,14 @@ label.input-wrapper.sc-ion-input-ios {
 }
 
 .file-label ion-input {
-  --padding-end:45px !important;
+  --padding-end: 45px !important;
 }
 
-.uploaded-images-con{
+.uploaded-images-con {
   padding: 10px 8px 0 8px;
 }
-.uploaded-images-con .upload-img{
+
+.uploaded-images-con .upload-img {
   width: 100%;
   border: 0.4px solid;
   border-color: #1D7AF5;
@@ -3574,11 +3600,11 @@ label.input-wrapper.sc-ion-input-ios {
   justify-content: space-between;
 }
 
-.upload-img p{
+.upload-img p {
   font-size: 14px;
 }
 
-.upload-img ion-icon{
+.upload-img ion-icon {
   font-size: 22px;
 }
 
@@ -3889,11 +3915,13 @@ label.input-wrapper.sc-ion-input-ios {
   overflow-y: auto;
 }
 
-.popover-cls-sec .cls-sec-list{
+.popover-cls-sec .cls-sec-list {
   max-height: 200px;
+
   @media (max-height: 700px) {
     max-height: 150px;
   }
+
   overflow-y: auto;
 }
 
@@ -4283,6 +4311,15 @@ label.input-wrapper.sc-ion-input-ios {
   height: 100%;
 }
 
+.user_page .ph-20-pv-10 ion-icon {
+  font-size: 26px;
+}
+
+.user_page .ph-20-pv-10 p {
+  margin: 4px 8px;
+}
+
+
 /* Home work */
 
 .add_homework {
@@ -4336,6 +4373,7 @@ label.input-wrapper.sc-ion-input-ios {
 .home_work_container ion-card {
   margin: 12px 0;
   border-radius: 6px;
+  border-radius: 8px;
 }
 
 .home_work_container ion-card-content {
@@ -4343,6 +4381,7 @@ label.input-wrapper.sc-ion-input-ios {
   border: 1px solid;
   border-bottom: 5px solid;
   border-color: #1D7AF5;
+  border-radius: 8px;
 }
 
 .home_work_container .home_task_title {
@@ -4502,7 +4541,7 @@ label.input-wrapper.sc-ion-input-ios {
   border-radius: 12px;
 }
 
-.total_fee_main{
+.total_fee_main {
   height: 40px;
   border: 1px solid;
   border-color: #1D7AF5;
@@ -4513,53 +4552,57 @@ label.input-wrapper.sc-ion-input-ios {
   border-radius: 8px;
   margin: 8px 0 12px 0;
 }
-.fees_input{
+
+.fees_input {
   border-radius: 8px !important;
-  height:5vh !important;
-  width:39vw;
+  height: 5vh !important;
+  width: 39vw;
   min-height: 5vh !important;
 }
-.fees_sa_input{
-  height:5vh !important;
+
+.fees_sa_input {
+  height: 5vh !important;
   min-height: 5vh !important;
   border-radius: 8px !important;
   /* border:1px solid #000000; */
 }
 
-.fees-sa-select-height{
-  width:98%;
+.fees-sa-select-height {
+  width: 98%;
 }
 
-.adjust-space{
+.adjust-space {
   margin-top: -5px;
   height: 64px;
 }
 
-.fees_sa_select{
-  width:48vw;
-  height:30px;
+.fees_sa_select {
+  width: 48vw;
+  height: 30px;
 }
 
-.settleup{
+.settleup {
   text-decoration: underline;
 }
-.paid{
-  color:green;
-}
-.expired{
-  color:red;
+
+.paid {
+  color: green;
 }
 
-.term{
-  width:58%;
+.expired {
+  color: red;
+}
+
+.term {
+  width: 58%;
 }
 
 .convert_to_terms_btn {
-   border: 1px solid #1D7AF5;
-   border-radius: 12px;
-   height:4vh;
-   width:90vw;
-} 
+  border: 1px solid #1D7AF5;
+  border-radius: 12px;
+  height: 4vh;
+  width: 90vw;
+}
 
 .own-school-main {
   height: 40px;
@@ -4790,8 +4833,9 @@ label.input-wrapper.sc-ion-input-ios {
 .m3 {
   margin: 3px;
 }
-.mr3{
-  margin:3px;
+
+.mr3 {
+  margin: 3px;
 }
 
 .ml10 {
@@ -4823,11 +4867,11 @@ label.input-wrapper.sc-ion-input-ios {
   color: #1D7AF5;
 }
 
-.width-95{
+.width-95 {
   width: 95%;
 }
 
-.width-5{
+.width-5 {
   width: 5%;
 }
 
@@ -5264,7 +5308,7 @@ ion-popover {
 
 /* Access Control */
 
-.access-control-sa{
+.access-control-sa {
   height: calc(100% - 40px);
 }
 
@@ -5308,11 +5352,11 @@ ion-popover {
   color: #1D7AF5 !important;
 }
 
-.access-control-sa .text-save-label ion-icon{
+.access-control-sa .text-save-label ion-icon {
   font-size: 26px;
 }
 
-.access-control-sa .text-save-label ion-label{
+.access-control-sa .text-save-label ion-label {
   width: calc(100% - 44px);
   font-size: 14px;
 }
@@ -5329,12 +5373,12 @@ ion-popover {
   padding: 0 12px;
 }
 
-.disabled-drop-access .disabled-drop-access{
+.disabled-drop-access .disabled-drop-access {
   border: 1px solid !important;
-  border-color:#505050 !important;
+  border-color: #505050 !important;
 }
 
-.access-control-sa .enabled-drop-access{
+.access-control-sa .enabled-drop-access {
   border: 1px solid !important;
   border-color: #1D7AF5 !important;
 }
@@ -5347,21 +5391,21 @@ ion-popover {
   height: calc(100% - 190px);
 }
 
-.access-control-sa .access-table .head-col{
+.access-control-sa .access-table .head-col {
   background: #F5F5F5;
   justify-content: center;
   border-bottom: none;
 }
 
-.dark .access-control-sa .access-table .head-col{
+.dark .access-control-sa .access-table .head-col {
   background: #1a1a1a;
 }
 
-.access-control-sa .access-table .row{
+.access-control-sa .access-table .row {
   display: flex;
 }
 
-.access-control-sa .access-table .col{
+.access-control-sa .access-table .col {
   height: 40px;
   display: flex;
   align-items: center;
@@ -5374,23 +5418,23 @@ ion-popover {
   border-right: 1px solid;
 }
 
-.access-control-sa .access-table-fixed{
+.access-control-sa .access-table-fixed {
   height: calc(100% - 40px);
   overflow-y: auto;
 }
 
-.access-control-sa .access-private{
+.access-control-sa .access-private {
   height: 50px;
   width: 100%;
   display: flex;
   align-items: center;
 }
 
-.access-control-sa .access-private ion-button{
+.access-control-sa .access-private ion-button {
   width: 100%;
 }
 
-.access-private-modules .card-modules{
+.access-private-modules .card-modules {
   background: #F5F5F5;
   margin: 12px;
   padding: 12px;
@@ -5401,13 +5445,13 @@ ion-popover {
   background: #1a1a1a;
 }
 
-.access-private-modules .items-pvt{
+.access-private-modules .items-pvt {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
-.items-pvt .item-pvt{
+.items-pvt .item-pvt {
   width: 30%;
   cursor: pointer;
   border: 1px solid;
@@ -5420,10 +5464,55 @@ ion-popover {
   border-radius: 8px;
 }
 
-.items-pvt .item-pvt ion-icon{
+.items-pvt .item-pvt ion-icon {
   margin-right: 8px;
   font-size: 20px;
 }
 
+.page-not-found p {
+  color: #000000;
+}
 
+.dark .page-not-found p {
+  color: #ffffff;
+}
 
+ion-toast.custom-toast {
+  --background: #00AF00;
+  --box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
+  --color: #ffffff;
+}
+
+ion-toast.warn-toast {
+  --background: #FF9966;
+  --box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
+  --color: #ffffff;
+}
+
+ion-toast.info-toast {
+  --background: #ffc409;
+  --box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
+  --color: #ffffff;
+}
+
+ion-toast.failure-toast {
+  --background: #C5000F;
+  --box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
+  --color: #ffffff;
+}
+
+ion-toast.custom-toast::part(message),
+ion-toast.warn-toast::part(message) {
+  font-style: italic;
+  font-size: 16px !important;
+  font-weight: 600;
+}
+
+.toast-button-icon {
+  font-size: 20px !important;
+}
+
+ion-toast.custom-toast::part(button),
+ion-toast.toast-toast::part(button) {
+  color: #ffffff;
+}

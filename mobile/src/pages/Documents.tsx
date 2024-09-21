@@ -27,10 +27,12 @@ import GCustomSelectDrop from '../components/GCustomSelectDrop';
 import CustomizedModal from '../components/GCustomizedModal';
 import GCustomInput from '../components/GCustomInput';
 import GImagUpload from '../components/GImagUpload';
+import { useSelector } from 'react-redux';
 
 const Documents: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenAdd, setIsOpenAdd] = useState(false);
+  const currentRole = useSelector((state: any) => state.auth.role);
   const formInitialVal = {
     documentType: 'School',
     documentName: '',
@@ -65,6 +67,17 @@ const Documents: React.FC = () => {
     }
   };
 
+  const fileActionsList =
+    [{ name: 'Disable Edit', id: 'disable file', icon: createOutline },
+    { name: 'Move Folder', id: 'move folder', icon: moveOutline },
+    { name: 'Delete', id: 'delete', icon: trashOutline }
+    ]
+
+  const folderActionsList = [
+    { name: 'Disable Edit', id: 'disable file', icon: createOutline },
+    { name: 'Move Folder', id: 'move folder', icon: moveOutline },
+  ]
+
   return (
     <div className='g_full_height'>
       <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
@@ -83,22 +96,7 @@ const Documents: React.FC = () => {
               <IonItem slot="header" color="light">
                 <IonIcon icon={folderOutline}></IonIcon>{' '}
                 <IonLabel>{item.title}</IonLabel>
-                <IonIcon id={`menu-item-doc-folder${item.id}`} icon={ellipsisVerticalOutline}></IonIcon>
-                <IonPopover size="auto" trigger={`menu-item-doc-folder${item.id}`} triggerAction="click">
-                  <IonContent class="ion-padding">
-                    <div className='popover_actions'>
-                      <div className='g_custom_title_pop'><IonText><p className='g_text_ellipses p-r-10 p-l-10'>Actions For {item.title}</p></IonText></div>
-                      <IonItem className='first_action_item'>
-                        <IonIcon icon={createOutline}></IonIcon>
-                        <IonLabel>Disable Edit</IonLabel>
-                      </IonItem>
-                      <IonItem>
-                        <IonIcon icon={moveOutline}></IonIcon>
-                        <IonLabel>Move Folder</IonLabel>
-                      </IonItem>
-                    </div>
-                  </IonContent>
-                </IonPopover>
+                {currentRole !== 'Student' && (<DocPopActions id={`menu-item-doc-folder${item.id}`} titleStr={item.title} actionsList={folderActionsList} />)}
               </IonItem>
               <div className="document_inner_content" slot="content">
                 {item.childrens.length >= 1 && (
@@ -113,22 +111,7 @@ const Documents: React.FC = () => {
                         <IonItem slot="header" color="light">
                           <IonIcon icon={folderOutline}></IonIcon>{' '}
                           <IonLabel>{innerItem.title}</IonLabel>
-                          <IonIcon id={`menu-item-sub-doc-folder${innerItem.id}`} icon={ellipsisVerticalOutline}></IonIcon>
-                          <IonPopover size="auto" trigger={`menu-item-sub-doc-folder${innerItem.id}`} triggerAction="click">
-                            <IonContent class="ion-padding">
-                              <div className='popover_actions'>
-                                <div className='g_custom_title_pop'><IonText><p className='g_text_ellipses p-r-10 p-l-10'>Actions For {innerItem.title}</p></IonText></div>
-                                <IonItem className='first_action_item'>
-                                  <IonIcon icon={createOutline}></IonIcon>
-                                  <IonLabel>Disable Edit</IonLabel>
-                                </IonItem>
-                                <IonItem>
-                                  <IonIcon icon={moveOutline}></IonIcon>
-                                  <IonLabel>Move Folder</IonLabel>
-                                </IonItem>
-                              </div>
-                            </IonContent>
-                          </IonPopover>
+                          {currentRole !== 'Student' && (<DocPopActions id={`menu-item-sub-doc-folder${innerItem.id}`} titleStr={innerItem.title} actionsList={folderActionsList} />)}
                         </IonItem>
                         <div
                           className="document_inner_content inside-container-block"
@@ -144,26 +127,7 @@ const Documents: React.FC = () => {
                                   >
                                     <IonIcon icon={documentOutline}></IonIcon>
                                     <IonLabel>{innerItemDoc.docTitle}</IonLabel>
-                                    <IonIcon id={`menu-item-sub-doc-file${innerItemDoc.id}`} icon={ellipsisVerticalOutline}></IonIcon>
-                                    <IonPopover size="auto" trigger={`menu-item-sub-doc-file${innerItemDoc.id}`} triggerAction="click">
-                                      <IonContent class="ion-padding">
-                                        <div className='popover_actions'>
-                                          <div className='g_custom_title_pop'><IonText><p className='g_text_ellipses p-r-10 p-l-10'>Actions For {innerItemDoc.docTitle}</p></IonText></div>
-                                          <IonItem className='first_action_item'>
-                                            <IonIcon icon={createOutline}></IonIcon>
-                                            <IonLabel>Disable Edit</IonLabel>
-                                          </IonItem>
-                                          <IonItem>
-                                            <IonIcon icon={moveOutline}></IonIcon>
-                                            <IonLabel>Move Folder</IonLabel>
-                                          </IonItem>
-                                          <IonItem>
-                                            <IonIcon icon={trashOutline}></IonIcon>
-                                            <IonLabel>Delete</IonLabel>
-                                          </IonItem>
-                                        </div>
-                                      </IonContent>
-                                    </IonPopover>
+                                    {currentRole !== 'Student' && (<DocPopActions id={`menu-item-sub-doc-file${innerItemDoc.id}`} titleStr={innerItemDoc.docTitle} actionsList={fileActionsList} />)}
                                     <IonText>
                                       <a onClick={() => setIsOpen(true)}>view</a>
                                     </IonText>
@@ -192,26 +156,7 @@ const Documents: React.FC = () => {
                         <IonItem className="documents_file_item" key={itemDoc.id}>
                           <IonIcon icon={documentOutline}></IonIcon>
                           <IonLabel>{itemDoc.docTitle}</IonLabel>
-                          <IonIcon id={`menu-item-sub-doc-file${itemDoc.id}`} icon={ellipsisVerticalOutline}></IonIcon>
-                          <IonPopover size="auto" trigger={`menu-item-sub-doc-file${itemDoc.id}`} triggerAction="click">
-                            <IonContent class="ion-padding">
-                              <div className='popover_actions'>
-                                <div className='g_custom_title_pop'><IonText><p className='g_text_ellipses p-r-10 p-l-10'>Actions For {itemDoc.docTitle}</p></IonText></div>
-                                <IonItem className='first_action_item'>
-                                  <IonIcon icon={createOutline}></IonIcon>
-                                  <IonLabel>Disable Edit</IonLabel>
-                                </IonItem>
-                                <IonItem>
-                                  <IonIcon icon={moveOutline}></IonIcon>
-                                  <IonLabel>Move Folder</IonLabel>
-                                </IonItem>
-                                <IonItem>
-                                  <IonIcon icon={trashOutline}></IonIcon>
-                                  <IonLabel>Delete</IonLabel>
-                                </IonItem>
-                              </div>
-                            </IonContent>
-                          </IonPopover>
+                          {currentRole !== 'Student' && (<DocPopActions id={`menu-item-sub-doc-file${itemDoc.id}`} titleStr={itemDoc.docTitle} actionsList={fileActionsList} />)}
                           <IonText>
                             <a onClick={() => setIsOpen(true)}>view</a>
                           </IonText>
@@ -239,13 +184,14 @@ const Documents: React.FC = () => {
       </div>
       <GImageDocPreview
         src={
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5Pxol7CM9TBMVe8l7LW-0nwsGZQiOGd48Tw&s'
+          'https://css4.pub/2017/newsletter/drylab.pdf'
         }
         title="Student Name"
         onClose={() => {
           setIsOpen(false);
         }}
         onDownload={() => { }}
+        type='pdf'
         isOpen={isOpen}
       >
       </GImageDocPreview>
@@ -276,5 +222,28 @@ const Documents: React.FC = () => {
     </div>
   );
 };
+
+interface IDocPopActionsProps {
+  id: string
+  titleStr: string,
+  actionsList: { name: string, id: string, icon: any }[],
+}
+const DocPopActions = ({ id, titleStr, actionsList }: IDocPopActionsProps) => {
+
+  return (<>
+    <IonIcon id={id} icon={ellipsisVerticalOutline}></IonIcon>
+    <IonPopover size="auto" trigger={id} triggerAction="click">
+      <IonContent class="ion-padding">
+        <div className='popover_actions'>
+          <div className='g_custom_title_pop'><IonText><p className='g_text_ellipses p-r-10 p-l-10'>Actions For {titleStr}</p></IonText></div>
+          {actionsList.map((actionI, indexN: number) => (<IonItem key={actionI.id} className={`${indexN == 0 ? 'first_action_item' : ''}`}>
+            <IonIcon icon={actionI.icon}></IonIcon>
+            <IonLabel className='g_flex g-align-center'><IonText><p className='m-0'>{actionI.name}</p></IonText></IonLabel>
+          </IonItem>))}
+        </div>
+      </IonContent>
+    </IonPopover>
+  </>)
+}
 
 export default Documents;

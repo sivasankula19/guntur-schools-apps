@@ -115,7 +115,7 @@ const ChatScreen: React.FC = () => {
                           <p>{msg.msgText}</p>
                         </IonText>
                         <div className={`time_msg ${msg.msgText.length < 10 ? 'custom_time_msg' : ''}`}>
-                          <span>{new Date(msg.time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                          <span>{new Date(msg.time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12:true })}</span>
                         </div>
                       </div>
                     </div>

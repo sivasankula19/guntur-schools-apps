@@ -3,14 +3,17 @@ import {
   IonInput,
   IonButton,
   IonIcon,
+  IonLabel,
+  IonText,
 } from '@ionic/react';
 import {
   pencil,
   expandOutline,
   calendarOutline,
+  arrowBackOutline,
 } from 'ionicons/icons';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useLocation, useParams } from 'react-router';
 import CustomizedModal from '../components/GCustomizedModal';
 import { useNavigate } from 'react-router';
 import GImageDocPreview from '../components/GImageDocPreview';
@@ -32,7 +35,9 @@ const UserByID: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const authInfo = useSelector((state: any) => state.auth);
   const [isEditOpen, setIsEditOpen] = useState(false);
+  const [parentRout, setParentRoute] = useState('');
   const navigate = useNavigate();
+  const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const formInitialVal = {
     fullName: '',
@@ -46,15 +51,26 @@ const UserByID: React.FC = () => {
 
   const [breadCrumbsState, setBreadCrumbsState] = useState([
     { bName: 'Home', path: '/dashboard' },
-    { bName: '', path: '/students-list' },
   ])
 
   useEffect(() => {
     setBreadCrumbsState(prev => [prev[0], { bName: authInfo.user.regNumber === id ? 'My Profile' : `USER - ${id}`, path: '/' }])
   }, [id]);
 
+  useEffect(() => {
+    const breadCrumbsPrev = [{ bName: 'Home', path: '/dashboard' }];
+    if (location.state && location.state.parentRout) {
+      setParentRoute(location.state.parentRout);
+      breadCrumbsPrev.push({ bName: location.state.parentName, path: location.state.parentRout });
+    }
+    if (id) {
+      breadCrumbsPrev.push({ bName: authInfo.user.regNumber === id ? 'My Profile' : `USER - ${id}`, path: '/' });
+    }
+    setBreadCrumbsState([...breadCrumbsPrev]);
+  }, [location]);
+
   const handleInput = (e: any) => {
-    setFormValue((prev:any) => ({ ...prev, [e.target.name]: e.target.value }))
+    setFormValue((prev: any) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
   const handleEditProfile = () => {
@@ -69,11 +85,11 @@ const UserByID: React.FC = () => {
     setIsEditOpen(true);
   }
 
-  const formEditValues = [{name:'fullName', readOnly:false,label:'Full Name',placeholder:'Enter Full Name'},
-    {name:'mobileNumber', readOnly:false,label:'Full Name',placeholder:'Ex. 9876543210'},
-    {name:'emailAddress', readOnly:false,label:'Full Name',placeholder:'Ex. user@school.com'},
-    {name:'regNumber', readOnly:true,label:'Registration Number',placeholder:'Ex. Y25C000'},]
-    
+  const formEditValues = [{ name: 'fullName', readOnly: false, label: 'Full Name', placeholder: 'Enter Full Name' },
+  { name: 'mobileNumber', readOnly: false, label: 'Full Name', placeholder: 'Ex. 9876543210' },
+  { name: 'emailAddress', readOnly: false, label: 'Full Name', placeholder: 'Ex. user@school.com' },
+  { name: 'regNumber', readOnly: true, label: 'Registration Number', placeholder: 'Ex. Y25C000' },]
+
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
@@ -81,10 +97,21 @@ const UserByID: React.FC = () => {
     }
   };
 
+  const handleBack = () => {
+    navigate(parentRout);
+  }
+
   return (
     <>
       <div className='user_page'>
         <GBreadCrumbs data={breadCrumbsState}></GBreadCrumbs>
+        {parentRout && (<div className='ph-20-pv-10'>
+          <div className='g_flex g_align-center'>
+            <IonIcon icon={arrowBackOutline} onClick={handleBack}></IonIcon>
+            <IonText><p onClick={handleBack}>Back</p></IonText>
+          </div>
+        </div>)}
+
         <div className="d-flex-jc-center">
           <IonCard className="profile-card">
             <img
@@ -143,7 +170,7 @@ const UserByID: React.FC = () => {
         onSave={() => { }}
       >
         <div>
-          {formEditValues.map((data:any)=>(<GCustomInput name={data.name} value={formValue[data.name]} onChange={handleInput} label={data.label}  placeholder={data.placeholder}/>))}
+          {formEditValues.map((data: any) => (<GCustomInput key={data.name} name={data.name} value={formValue[data.name]} onChange={handleInput} label={data.label} placeholder={data.placeholder} />))}
           {/* date picker */}
           <div className='field m-bottom-10'>
             <IonInput value={formValue.dob} onIonChange={handleInput} name='dob' label="Dob" labelPlacement="floating" fill="outline" placeholder="Date of Birth"></IonInput>

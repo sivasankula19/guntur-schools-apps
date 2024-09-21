@@ -45,7 +45,7 @@ const Menu: React.FC = () => {
   };
 
   const navigateProfile = () => {
-    navigate(`/user/${authInfo.user.regNumber}`)
+    navigate(`/user/${authInfo.user.regNumber}` )
   }
 
   return (

@@ -5,6 +5,8 @@ import { caretBackOutline, caretForwardOutline, chevronBackOutline, chevronForwa
 import { classListDummy, getDatesForMonth, sectionListDummy, transformListToGrid } from '../../common/utility';
 import { useLocation, useNavigate } from 'react-router';
 import GCustomSelectDrop from '../../components/GCustomSelectDrop';
+import { useDispatch, useSelector } from 'react-redux';
+import { setWarnToast } from '../../redux/reducers/toastMessageSlice';
 
 function AttendanceByClass() {
     const todayDate = new Date();
@@ -12,7 +14,11 @@ function AttendanceByClass() {
     const [currentMY, setCurrentMY] = useState<any>({ month: todayDate.getMonth() + 1, year: todayDate.getFullYear() });
     const [gridAttendance, setGridAttendance] = useState<any>([]);
     const [selectedDate, setSelectedDate] = useState<string>(todayFormate);
+    const attendanceAccessClasses = useSelector((state: any) => state.accessControl.accessModules) || [];
+    const rootAccess = useSelector((state: any) => state.accessControl.rootAccess);
+    const [permissionEnable, setPermissionEnable] = useState(false);
     const location = useLocation();
+    const dispatch = useDispatch();
     const [filterValues, setFilterValue] = useState({
         classId: '',
         sectionId: '',
@@ -76,7 +82,18 @@ function AttendanceByClass() {
 
     const handleChangeSelect = (e: any) => {
         setFilterValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-    }
+    };
+
+    useEffect(() => {
+        if (!rootAccess) {
+            if (filterValues.classId && filterValues.sectionId) {
+                console.log(attendanceAccessClasses);
+                // add exact conditions!
+                dispatch(setWarnToast('Unable to proceed!, Please get permission from Admin'));
+                setPermissionEnable(true);
+            }
+        }
+    }, [filterValues]);
 
     return (
         <div className='attendance_sa'>

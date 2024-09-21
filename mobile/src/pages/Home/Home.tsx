@@ -13,6 +13,8 @@ import { useDispatch } from 'react-redux';
 import { authenticateUser } from '../../redux/reducers/authSlice';
 import { useNavigate } from 'react-router';
 import { setPreLoginPublicView } from '../../redux/reducers/schoolSlice';
+import { setAccessModulesList, setRootAccessValue } from '../../redux/reducers/accessControlSlice';
+import { setSuccessToast } from '../../redux/reducers/toastMessageSlice';
 
 const Home: React.FC = () => {
   const [userName, setUserName] = useState('superAdmin');
@@ -26,7 +28,7 @@ const Home: React.FC = () => {
     e.preventDefault();
     console.log('e submitted', userName, password);
     // perform login API call fetch the user auth token
-    const payload = {
+    const responseData = {
       token: 'someTokenValue',
       // role: 'SuperAdmin', // SuperAdmin , Teacher, Student
       role: userName === 'superAdmin' ? 'SuperAdmin' : userName === 'teacher' ? 'Teacher' : 'Student',
@@ -41,8 +43,31 @@ const Home: React.FC = () => {
         gender: 'male'
       }
     }
-    dispatch(authenticateUser(payload))
-    navigate('/dashboard')
+    dispatch(authenticateUser(responseData));
+    if (responseData.role === 'SuperAdmin') {
+      // logged in role as SuperAdmin then set access modules list as * by calling root access dispatch to true; 
+      dispatch(setRootAccessValue(true));
+    } else if (responseData.role === 'Teacher') {
+      // logged in roles as Teacher / staff then call or get the access modules from api!... and use in dispatch
+      const rolesData = [
+        { id: 1, moduleName: 'Attendance', moduleId: 'attendance', moduleRootAccess: false, accessibleClasses: ['ghmd-10-a', 'ghmd-10-b', 'ghmd-9-a'] },
+        { id: 1, moduleName: 'Progress Card', moduleId: 'progressCard', moduleRootAccess: false, accessibleClasses: ['ghmd-10-a', 'ghmd-10-b', 'ghmd-9-a', 'ghmd-8-a', 'ghmd-9-a'] },
+        { id: 1, moduleName: 'Students List', moduleId: 'studentsList', moduleRootAccess: true, accessibleClasses: ["*"] },
+        { id: 1, moduleName: 'Staff List', moduleId: 'staffList', moduleRootAccess: false, accessibleClasses: [] },
+        { id: 1, moduleName: 'Create Class - Section', moduleId: 'create-cls-sec', moduleRootAccess: true, accessibleClasses: ["*"] },
+        { id: 1, moduleName: 'Fees Dues', moduleId: 'feesDues', moduleRootAccess: true, accessibleClasses: ["*"] },
+        { id: 1, moduleName: 'Documents', moduleId: 'documents', moduleRootAccess: true, accessibleClasses: ["*"] },
+        { id: 1, moduleName: 'School Public Info', moduleId: 'schoolPublicInfo', moduleRootAccess: true, accessibleClasses: ["*"] },
+        { id: 1, moduleName: 'Assets', moduleId: 'assets', moduleRootAccess: false, accessibleClasses: [] },
+      ];
+      dispatch(setAccessModulesList(rolesData));
+    } else if (responseData.role === 'Student') {
+      // logged in role as - student then no need of access modules list 
+
+    }
+
+    dispatch(setSuccessToast('Successfully Signed in!...'));
+    navigate('/dashboard');
   };
 
   const handleUserName = (e: any) => {
@@ -76,51 +101,51 @@ const Home: React.FC = () => {
   return (
     <div className='home'>
       <div className='home-container'>
-      <IonCard>
-        <IonCardContent>
-          <div className='logo'>logo</div>
-          <form onSubmit={handleSubmit}>
-            <IonItem>
-              <IonInput
-                value={userName}
-                ref={userNameRef}
-                onIonInput={handleUserName}
-                className="custom-ion-input_home"
-                label={'User ID'}
-                labelPlacement="floating"
-                fill="outline"
-                placeholder={`Enter User ID`}
-              ></IonInput>
-            </IonItem>
-            <IonItem>
-              <IonInput
-                value={password}
-                type="password"
-                onIonInput={handlePassword}
-                className="custom-ion-input_home"
-                label={'Password'}
-                labelPlacement="floating"
-                fill="outline"
-                placeholder={`Enter Password`}
-              ></IonInput>
-            </IonItem>
-            <IonItem>
-              <IonButton type="submit">Log in</IonButton>
-            </IonItem>
-          </form>
-        </IonCardContent>
-      </IonCard>
-      <div className='pre-login-btn'>
-        {preLoginModules.map((chip, index) => (
-          <div key={chip.id} className='chip_btn'>
-            <IonButton onClick={() => handleNavigate(chip.redirectTo, chip.moduleName)}>
-              <div><IonIcon icon={chip.icon}></IonIcon>
-                <div ><IonText><p className='g_text_ellipses'>{chip.moduleName}</p></IonText></div>
-              </div>
-            </IonButton>
-          </div>
-        ))}
-      </div>
+        <IonCard>
+          <IonCardContent>
+            <div className='logo'>logo</div>
+            <form onSubmit={handleSubmit}>
+              <IonItem>
+                <IonInput
+                  value={userName}
+                  ref={userNameRef}
+                  onIonInput={handleUserName}
+                  className="custom-ion-input_home"
+                  label={'User ID'}
+                  labelPlacement="floating"
+                  fill="outline"
+                  placeholder={`Enter User ID`}
+                ></IonInput>
+              </IonItem>
+              <IonItem>
+                <IonInput
+                  value={password}
+                  type="password"
+                  onIonInput={handlePassword}
+                  className="custom-ion-input_home"
+                  label={'Password'}
+                  labelPlacement="floating"
+                  fill="outline"
+                  placeholder={`Enter Password`}
+                ></IonInput>
+              </IonItem>
+              <IonItem>
+                <IonButton type="submit">Log in</IonButton>
+              </IonItem>
+            </form>
+          </IonCardContent>
+        </IonCard>
+        <div className='pre-login-btn'>
+          {preLoginModules.map((chip, index) => (
+            <div key={chip.id} className='chip_btn'>
+              <IonButton onClick={() => handleNavigate(chip.redirectTo, chip.moduleName)}>
+                <div><IonIcon icon={chip.icon}></IonIcon>
+                  <div ><IonText><p className='g_text_ellipses'>{chip.moduleName}</p></IonText></div>
+                </div>
+              </IonButton>
+            </div>
+          ))}
+        </div>
       </div>
       <div className='location-control'>
         <div className='location'>

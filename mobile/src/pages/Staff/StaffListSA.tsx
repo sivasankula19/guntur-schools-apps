@@ -67,7 +67,7 @@ const StaffListSA: React.FC = () => {
     }
 
     const navigateToUser = (id: string) => {
-        navigate(`/user/${id}`)
+        navigate(`/user/${id}`, {state:{parentRout:'/staff-list',parentName:'Staff List'}});
     }
 
     const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Employee List', path: '/staff-list' }];

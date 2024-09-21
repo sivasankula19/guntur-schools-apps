@@ -1,8 +1,9 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import counterReducer from './reducers/counterSlice';
 import schoolReducer from './reducers/schoolSlice';
 import darkModeReducer from './reducers/darkModeSlice';
 import authReducer from './reducers/authSlice';
+import accessReducer from './reducers/accessControlSlice';
+import toastReducer from './reducers/toastMessageSlice';
 import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // Defaults to localStorage
 
@@ -14,10 +15,11 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-    counter: counterReducer,
     darkMode:darkModeReducer,
     auth:authReducer,
-    school:schoolReducer
+    school:schoolReducer,
+    accessControl:accessReducer,
+    toastMessage:toastReducer
   });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

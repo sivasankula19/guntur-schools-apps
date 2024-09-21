@@ -35,7 +35,7 @@ const StudentList: React.FC = () => {
   };
 
   const navigateToUser = (id: string) => {
-    navigate(`/user/${id}`)
+    navigate(`/user/${id}`, {state:{parentRout:'/students-list',parentName:'Student List'}});
   }
 
   const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Students List', path: '/students-list' }];
