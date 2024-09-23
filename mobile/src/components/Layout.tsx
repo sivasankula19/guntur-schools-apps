@@ -78,10 +78,11 @@ function Layout() {
         )}
       </IonContent>
       {!location.pathname.includes('/messages/') && <Footer></Footer>}
-      {(successToastMsgTex.length || warnToastMsgText.length || failureToastMsgText.length || infoToastMsgText.length) && (<IonToast
+      {isOpen && ( <IonToast
         isOpen={isOpen}
         message={successToastMsgTex || warnToastMsgText || infoToastMsgText || failureToastMsgText}
         duration={warnToastMsgText ? 6000 : 3000}
+        onDidDismiss={() => setIsOpen(false)}
         className={`${warnToastMsgText ? 'warn-toast' : infoToastMsgText ? 'info-toast' : failureToastMsgText ? 'failure-toast' : 'custom-toast'}`}
         buttons={[{
           icon: closeCircleOutline,
@@ -91,6 +92,7 @@ function Layout() {
           }
         }]}
       ></IonToast>)}
+     
     </IonPage>
   );
 }

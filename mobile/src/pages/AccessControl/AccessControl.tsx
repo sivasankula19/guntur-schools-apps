@@ -27,7 +27,7 @@ function AccessControl() {
         { id: 'acc-5', moduleName: 'Documents', moduleId: 'access-documents' },
         { id: 'acc-6', moduleName: 'Exam Schedule', moduleId: 'access-exam-schedule' },
         { id: 'acc-7', moduleName: 'Home Work', moduleId: 'access-homework' },
-        // { id: 'acc-6', moduleName: 'Students CRUD', moduleId: 'access-students' },
+        { id: 'acc-8', moduleName: 'Class Subjects', moduleId: 'access-subjects' },
         // { id: 'acc-7', moduleName: 'Staff CRUD', moduleId: 'access-staff' },
         // { id: 'acc-8', moduleName: 'School Info Public', moduleId: 'access-school' },
         // { id: 'acc-9', moduleName: 'Class - Subjects', moduleId: 'access-cls-sub' },
@@ -63,8 +63,12 @@ function AccessControl() {
         setCurrentSelected(id);
     }
 
-    const handleNavigate = () => {
-        navigate('/access-private-modules');
+    const handleNavigate = (e:any) => {
+        if(e.target.id === 'other-modules-btn'){
+            navigate('/module-access');
+        } else {
+            navigate('/access-private-modules');
+        }
     }
 
     const handleInput = (ev: any) => {
@@ -160,7 +164,7 @@ function AccessControl() {
                             <div className='col width-60'>
                                 <div className='drop-down-access g_full_width disabled-drop-access'>
                                     <IonLabel>*</IonLabel>
-                                    <IonIcon icon={isOpenStudentCard ? caretUpOutline : caretDownOutline}></IonIcon>
+                                    <IonIcon icon={caretDownOutline}></IonIcon>
                                 </div>
                             </div>
                         </div>
@@ -171,7 +175,7 @@ function AccessControl() {
                             <div className='col width-60' onClick={(e: any) => openPopover(e, staff)} id={`click-trigger-${staffIndex}`}>
                                 <div className='drop-down-access g_full_width enabled-drop-access'>
                                     <IonLabel className='g_text_ellipses'>{"<Select Classes>"}</IonLabel>
-                                    <IonIcon icon={isOpenStudentCard ? caretUpOutline : caretDownOutline}></IonIcon>
+                                    <IonIcon icon={caretDownOutline}></IonIcon>
                                 </div>
                             </div>
                             <IonPopover side="top" alignment="center" isOpen={popoverOpen == `click-trigger-${staffIndex}`} onDidDismiss={() => handlePopoverClose(staff, selectedClsSec)} className='notification-popover' trigger={`click-trigger-${staffIndex}`} triggerAction="click">
@@ -218,7 +222,8 @@ function AccessControl() {
                     </div>
                 </div>
                 <div className='access-private'>
-                    <IonButton className='br-ion-12 m-top-12 g_txt_cap add-employee-student' onClick={handleNavigate} fill="outline" expand="block">Private Modules</IonButton>
+                    <IonButton id='other-modules-btn' className='br-ion-12 m-top-12 g_txt_cap add-employee-student' onClick={handleNavigate} fill="outline" expand="block">Other Modules</IonButton>
+                    <IonButton id='private-modules-btn' className='br-ion-12 m-top-12 g_txt_cap add-employee-student' onClick={handleNavigate} fill="outline" expand="block">Private Modules</IonButton>
                 </div>
             </div>
         </div>

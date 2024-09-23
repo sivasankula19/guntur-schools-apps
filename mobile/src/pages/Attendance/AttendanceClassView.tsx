@@ -21,7 +21,7 @@ function AttendanceClassView() {
             const breadCrumbDummy = [{ bName: 'Home', path: '/dashboard' },
             { bName: 'Class Attendance', path: '/attendance-by-class', state: { classId, sectionId, selectedDate } },
             { bName: `${classId} : ${sectionId}`, path: '/' }];
-            setBreadCrumbState(breadCrumbDummy)
+            setBreadCrumbState(breadCrumbDummy);
             // make api
             setClassStudentAttendanceDate(classStudentsDateAttendance)
         }
@@ -42,10 +42,6 @@ function AttendanceClassView() {
     const handleApply = () => {
         // apply to all fields
         setIsDisabled(true)
-    }
-
-    const navigateToUser = (id: string) => {
-        navigate(`/user/${id}`)
     }
 
     const handleSave = () => {
@@ -127,14 +123,13 @@ function AttendanceClassView() {
                                         <div className="g_flex first_container g-align-center">
                                             <div className="profile_item">
                                                 <img
-                                                    onClick={() => navigateToUser(student.id)}
                                                     className="profile-image"
                                                     src={student.profileImage}
                                                     alt="profile"
                                                 />
                                             </div>
                                             <div className="title_designation">
-                                                <h2 onClick={() => navigateToUser(student.id)} className="title_name g_text_ellipses">{student.studentName}</h2>
+                                                <h2 className="title_name g_text_ellipses">{student.studentName}</h2>
                                                 <div className="g_txt_start user_id ">
                                                     Id : <span className="user_id_data">{student.regNumber}</span>
                                                 </div>

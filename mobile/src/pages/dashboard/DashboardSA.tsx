@@ -1,5 +1,5 @@
 import { IonCard, IonCardContent, IonText } from '@ionic/react';
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import NavChipCard from '../../components/NavChipsCard';
 import './Dashboard.css';
 import {
@@ -23,10 +23,15 @@ import {
     walletOutline,
 } from 'ionicons/icons';
 import DashboardTimeView from './DashboardTimeView';
+import { useSelector } from 'react-redux';
+import { chipsDataPrivate, chipsDataPublic } from '../../common/common-routes-list';
 
 export const DashboardSA = () => {
     const [moduleSelected, setModuleSelected] = useState('');
+    const [chipsToRender, setChipsRender] = useState<any>([]);
+    const [privateChipsToRender, setPrivateChipsToRender] = useState<any>([]);
     const dashboardRef = useRef<any>(null);
+    const currentRole = useSelector((state: any) => state.auth.role);
 
     const handleModule = (e: any) => {
         let value = e?.target?.name || ''
@@ -34,38 +39,21 @@ export const DashboardSA = () => {
             setTimeout(() => {
                 setModuleSelected(value)
             }, 100);
-            setModuleSelected('')
+            setModuleSelected('');
         }
     }
 
-    const chipsDataPrivate = [
-        { id: 14, moduleName: 'Ex-Circular', icon: ribbonOutline, redirectTo: '/ex-circular' },
-        { id: 888, moduleName: 'Assets', icon: businessOutline, redirectTo: '/assets' },
-        { id: 15, moduleName: 'Gallery', icon: imageOutline, redirectTo: '/gallery' },
-        { id: 16, moduleName: 'Achievements', icon: trophyOutline, redirectTo: '/achievements' },
-        { id: 17, moduleName: 'Contact-Us', icon: callOutline, redirectTo: '/contact-us' },
-        { id: 18, moduleName: 'About', icon: informationCircleOutline, redirectTo: '/about' },
-        { id: 19, moduleName: 'Courses', icon: bookOutline, redirectTo: '/courses' }
-    ];
-    const chipsDataPublic = [
-        { id: 999, moduleName: 'Access Control', icon: keyOutline, redirectTo: '/access-control' },
-        { id: 1, moduleName: 'Staff', icon: peopleOutline, redirectTo: '/staff-list' },
-        { id: 2, moduleName: 'Students', icon: peopleOutline, redirectTo: '/students-list' },
-        { id: 3, moduleName: 'Sections', icon: cubeOutline, redirectTo: '/school-sections' },
-        { id: 4, moduleName: 'Classes', icon: gridOutline, redirectTo: '/school-classes' },
-        { id: 5, moduleName: 'Class Attendance', icon: calendarOutline, redirectTo: '/attendance-by-class' },
-        { id: 6, moduleName: 'Student Attendance', icon: calendarOutline, redirectTo: '/attendance-by-student' },
-        { id: 7, moduleName: 'Progress Cards', icon: documentTextOutline, redirectTo: '/progress-card' },
-        { id: 99, moduleName: 'Subject Progress Card', icon: documentTextOutline, redirectTo: '/progress-card-class-subject' },
-        { id: 8, moduleName: 'Home Works', icon: bookOutline, redirectTo: '/home-work' },
-        { id: 9, moduleName: 'Class Subjects', icon: schoolOutline, redirectTo: '/subjects' },
-        { id: 10, moduleName: 'Messages', icon: chatboxOutline, redirectTo: '/messages' },
-        { id: 11, moduleName: 'Documents', icon: documentOutline, redirectTo: '/documents' },
-        { id: 12, moduleName: 'Calendar', icon: calendarOutline, redirectTo: '/calendar' },
-        { id: 13, moduleName: 'Vibe', icon: newspaperOutline, redirectTo: '/school-vibe' },
-        { id: 14, moduleName: 'Exam Schedules', icon: calendarOutline, redirectTo: '/exam-schedules' },
-        { id: 15, moduleName: 'My Dues', icon: walletOutline, redirectTo: '/fee-structure' },
-    ];
+    const chipsDataPrivate1 = chipsDataPrivate;
+    const chipsDataPublic1 = chipsDataPublic;
+
+    useEffect(() => {
+        let chipsData = [...chipsDataPublic1];
+        if (currentRole === 'SuperAdmin') {
+            chipsData.unshift({ id: 999, moduleName: 'Access Control', icon: keyOutline, redirectTo: '/access-control' });
+        }
+        setChipsRender(chipsData);
+        setPrivateChipsToRender(chipsDataPrivate1);
+    }, [currentRole]);
 
     return (
         <div className='dashboard_sa'>
@@ -89,7 +77,7 @@ export const DashboardSA = () => {
                     <NavChipCard
                         isOpen={true}
                         handleView={() => handleModule(null)}
-                        chips={moduleSelected === 'publicModule' ? chipsDataPrivate : chipsDataPublic}
+                        chips={moduleSelected === 'publicModule' ? privateChipsToRender : chipsToRender}
                     ></NavChipCard>
                 </div>)
             }

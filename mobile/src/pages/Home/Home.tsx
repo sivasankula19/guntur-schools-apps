@@ -14,7 +14,7 @@ import { authenticateUser } from '../../redux/reducers/authSlice';
 import { useNavigate } from 'react-router';
 import { setPreLoginPublicView } from '../../redux/reducers/schoolSlice';
 import { setAccessModulesList, setRootAccessValue } from '../../redux/reducers/accessControlSlice';
-import { setSuccessToast } from '../../redux/reducers/toastMessageSlice';
+import { setSuccessToast, setWarnToast } from '../../redux/reducers/toastMessageSlice';
 
 const Home: React.FC = () => {
   const [userName, setUserName] = useState('superAdmin');

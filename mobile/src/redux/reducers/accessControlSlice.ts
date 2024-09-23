@@ -14,10 +14,14 @@ const accessControlSlice = createSlice({
     },
     setRootAccessValue(state, action){
         state.rootAccess = action.payload;
+    },
+    resetAccessState(state){
+      state.accessModules = [];
+      state.rootAccess = false;
     }
   },
 });
 
-export const { setAccessModulesList, setRootAccessValue } = accessControlSlice.actions;
+export const { setAccessModulesList, setRootAccessValue ,resetAccessState} = accessControlSlice.actions;
 export default accessControlSlice.reducer;
 

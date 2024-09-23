@@ -10,6 +10,7 @@ import {
 import {
     appsSharp,
     caretDownOutline,
+    caretUpOutline,
     chevronBackOutline,
     chevronForwardOutline,
     listSharp,
@@ -47,7 +48,7 @@ const ProgressCardSA: React.FC = () => {
     };
 
     useEffect(() => {
-        setSearchResult(searchStudentsData)
+        setSearchResult(searchStudentsData);
         setTimeout(() => {
             if (selectedTab && unitsScrollRef.current) {
                 const container = unitsScrollRef.current;
@@ -96,7 +97,7 @@ const ProgressCardSA: React.FC = () => {
                                 <IonLabel>
                                     ({selectedStudent.itemId})
                                 </IonLabel>
-                                <IonIcon icon={caretDownOutline}></IonIcon>
+                                <IonIcon icon={isOpenStudentCard ? caretUpOutline : caretDownOutline}></IonIcon>
                             </div>
                             <IonIcon icon={chevronForwardOutline}></IonIcon>
                         </div>

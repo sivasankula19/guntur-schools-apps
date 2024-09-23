@@ -90,6 +90,7 @@ import AccessControl from './pages/AccessControl/AccessControl';
 import AccessPrivateModules from './pages/AccessControl/AccessPrivateModules';
 import ModuleAccess from './pages/AccessControl/ModuleAccess';
 import Settings from './pages/AccessControl/Settings';
+import PeopleTimeTable from './pages/TimeTable/PeopleTimeTable';
 
 setupIonicReact({
   animated: true,
@@ -204,6 +205,7 @@ const App: React.FC = () => {
                 <Route path='/progress-card' element={role === 'Student' ? <ProgressCard /> : <ProgressCardSA />} /> //both
                 <Route path='/progress-card-class-subject' element={<ProgressCardSubjectAdd />} />
                 <Route path='/time-table' element={role === 'Student' ? <TimeTable /> : <TimeTableSA />} /> //both
+                <Route path='/people-time-table' element={<PeopleTimeTable />} />
                 <Route path='/calendar' element={role === 'Student' ? <Calendar /> : <CalendarSA />} /> //both
                 <Route path='/students-list' element={role === 'Student' ? <StudentList /> : <StudentListSA />} />
                 <Route path='/staff-list' element={role === 'Student' ? <StaffList /> : <StaffListSA />} />

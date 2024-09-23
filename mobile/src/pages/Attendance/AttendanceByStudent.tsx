@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import GBreadCrumbs from '../../components/GBreadCrumbs'
-import {  IonCard, IonCardContent, IonIcon, IonItem, IonLabel, IonSelect, IonSelectOption, IonText, isPlatform, } from '@ionic/react';
-import { analyticsOutline, appsSharp, arrowBackOutline, caretDownOutline, checkmarkCircleOutline, chevronBackOutline, chevronForwardOutline, closeCircleOutline, listSharp, printSharp, removeOutline, saveOutline } from 'ionicons/icons';
-import { useNavigate } from 'react-router';
+import { IonCard, IonCardContent, IonIcon, IonItem, IonLabel, IonSelect, IonSelectOption, IonText, isPlatform, } from '@ionic/react';
+import { analyticsOutline, appsSharp, arrowBackOutline, caretDownOutline, caretUpOutline, checkmarkCircleOutline, chevronBackOutline, chevronForwardOutline, closeCircleOutline, listSharp, printSharp, removeOutline, saveOutline } from 'ionicons/icons';
+import { useLocation, useNavigate } from 'react-router';
 import { classListDummy, getDatesForMonth, searchStudentsData, sectionListDummy, transformListToGrid } from '../../common/utility';
 import GCustomSelectDrop from '../../components/GCustomSelectDrop';
 import GCustomItemSelect from '../../components/GCustomItemSelect';
@@ -20,6 +20,7 @@ function AttendanceByStudent() {
     const todayDate = new Date();
     const [currentMY, setCurrentMY] = useState<any>({ month: todayDate.getMonth() + 1, year: todayDate.getFullYear() });
     const [attendanceDate, setAttendanceDate] = useState<any>([]);
+    const [breadCrumbState, setBreadCrumbState] = useState<any>([]);
     const [gridAttendance, setGridAttendance] = useState<any>([]);
     const navigate = useNavigate();
     const studentsDisplayRef = useRef<any>();
@@ -30,6 +31,19 @@ function AttendanceByStudent() {
         classId: '',
         sectionId: '',
     });
+    const location = useLocation();
+
+    useEffect(() => {
+        if (location.state.classId && location.state.sectionId) {
+            setFilterValue({ classId: location.state.classId, sectionId: location.state.sectionId });
+        }
+        if (location.state.redirectFromName) {
+            const breadCrumbDummy = [{ bName: 'Home', path: '/dashboard' },
+            { bName: location.state.redirectFromName, path: location.state.redirectFrom, state: {} },
+            { bName: 'Student Attendance', path: '/' }];
+            setBreadCrumbState(breadCrumbDummy);
+        }
+    }, [location.state])
 
     const todayFormate = `${todayDate.getMonth() + 1}/${todayDate.getDate()}/${todayDate.getFullYear()}`;
 
@@ -68,14 +82,10 @@ function AttendanceByStudent() {
         }
     }, [currentMY, viewMode]);
 
-
-    const breadCrumbsValue = [
-        { bName: 'Home', path: '/dashboard' },
-        { bName: 'Student Attendance', path: '/attendance' },
-    ];
-
     const handleBack = () => {
-        // navigate('/attendance-by-class', { state: { classId, sectionId, selectedDate } })
+        if (location.state.redirectFrom) {
+            navigate(location.state.redirectFrom, { state: {} });
+        }
     }
 
     const handleSave = () => {
@@ -111,7 +121,7 @@ function AttendanceByStudent() {
     return (
         <div className='attendance_sa'>
             <div className='g_flex g-space-between g-align-center bread_toggle_container'>
-                <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
+                <GBreadCrumbs data={breadCrumbState}></GBreadCrumbs>
                 <div>
                     <IonIcon
                         onClick={() => {
@@ -157,7 +167,7 @@ function AttendanceByStudent() {
                                 <IonLabel>
                                     ({selectedStudent.itemId})
                                 </IonLabel>
-                                <IonIcon icon={caretDownOutline}></IonIcon>
+                                <IonIcon icon={isOpenStudentCard ? caretUpOutline : caretDownOutline}></IonIcon>
                             </div>
                             <IonIcon icon={chevronForwardOutline}></IonIcon>
                         </div>
