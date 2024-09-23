@@ -70,7 +70,7 @@ const StaffListSA: React.FC = () => {
         navigate(`/user/${id}`, {state:{parentRout:'/staff-list',parentName:'Staff List'}});
     }
 
-    const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Employee List', path: '/staff-list' }];
+    const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Staff List', path: '/staff-list' }];
 
     const navigateEle = [
         { id: 1, elementName: 'Time Table', redirectTo: '/time-table' },
@@ -211,6 +211,7 @@ const StaffListSA: React.FC = () => {
                                         {navigateEle.map((ele) => (<div onClick={() => handleNavigate(ele)} className='section-show-ele selected-bg-w-b' key={ele.id}><IonText><p>{ele.elementName}</p></IonText></div>))}
                                     </div>
                                 </div>
+                                <div className='m-top-8'>Class List - {"10 - A, 9 -  B"}</div>
                             </>)}
                         </IonCardContent>
                     </IonCard>

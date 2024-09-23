@@ -15,8 +15,8 @@ export const studentDummyData =  [
       parentName:'Krishna S',
       gender:'gen-male',
       isFriend: false,
-       classId:'cls-10',
-      sectionId:'sec-b',
+       classId:'10-cls',
+      sectionId:'a-section',
     },
     {
       studentName: 'Siva Sankula',
@@ -32,8 +32,8 @@ export const studentDummyData =  [
       parentName:'Krishna S',
       gender:'gen-male',
       isFriend: false,
-       classId:'cls-10',
-      sectionId:'sec-b',
+      classId:'10-cls',
+      sectionId:'a-section',
     },
     {
       studentName: 'Sankula',
@@ -49,8 +49,8 @@ export const studentDummyData =  [
       parentName:'Krishna S',
       gender:'gen-male',
       isFriend: false,
-       classId:'cls-10',
-      sectionId:'sec-b',
+      classId:'10-cls',
+      sectionId:'a-section',
     },
     {
       studentName: 'Siva',
@@ -66,8 +66,8 @@ export const studentDummyData =  [
       parentName:'Krishna S',
       gender:'gen-male',
       isFriend: false,
-       classId:'cls-10',
-      sectionId:'sec-b',
+      classId:'10-cls',
+      sectionId:'a-section',
     },
     {
       studentName: 'Siva',
@@ -83,8 +83,8 @@ export const studentDummyData =  [
       parentName:'Krishna S',
       gender:'gen-male',
       isFriend: false,
-       classId:'cls-10',
-      sectionId:'sec-b',
+      classId:'10-cls',
+      sectionId:'a-section',
     },
     {
         studentName: 'Siva',
@@ -100,8 +100,8 @@ export const studentDummyData =  [
       parentName:'Krishna S',
       gender:'gen-male',
         isFriend: false,
-         classId:'cls-10',
-      sectionId:'sec-b',
+        classId:'10-cls',
+        sectionId:'a-section',
       },
       {
         studentName: 'Siva',
@@ -117,8 +117,8 @@ export const studentDummyData =  [
       parentName:'Krishna S',
       gender:'gen-male',
         isFriend: false,
-         classId:'cls-10',
-      sectionId:'sec-b',
+        classId:'10-cls',
+      sectionId:'a-section',
       },
   ];
 
@@ -689,6 +689,14 @@ export const allUnitsMarks = [
   }
 ]
 
+export const accessModulesDummyData = [
+  { id: 1, staffId: 'GHMSTAFF9', staffName: 'Narra Dev Qumar',data:[{id:'staff', moduleName:'Staff', isAccess:true},{id:'students', moduleName:'Students', isAccess:true},{id:'sections', moduleName:'Sections', isAccess:true},{id:'classes', moduleName:'Classes', isAccess:true},{id:'messages', moduleName:'Messages', isAccess:true},{id:'calendar', moduleName:'Calendar', isAccess:true},{id:'vibe', moduleName:'Vibe', isAccess:true},{id:'feesDues', moduleName:'Fees Dues', isAccess:true},]},
+  { id: 2, staffName:'Siva Sankula', staffId:'GHMSTAFF2', data:[{id:'staff', moduleName:'Staff', isAccess:true},{id:'students', moduleName:'Students', isAccess:true},{id:'sections', moduleName:'Sections', isAccess:true},{id:'classes', moduleName:'Classes', isAccess:true},{id:'messages', moduleName:'Messages', isAccess:true},{id:'calendar', moduleName:'Calendar', isAccess:true},{id:'vibe', moduleName:'Vibe', isAccess:true},{id:'feesDues', moduleName:'Fees Dues', isAccess:true},]},
+  { id: 3, staffName:'Sankula', staffId:'GHMSTAFF3', data:[{id:'staff', moduleName:'Staff', isAccess:false},{id:'students', moduleName:'Students', isAccess:false},{id:'sections', moduleName:'Sections', isAccess:false},{id:'classes', moduleName:'Classes', isAccess:false},{id:'messages', moduleName:'Messages', isAccess:false},{id:'calendar', moduleName:'Calendar', isAccess:false},{id:'vibe', moduleName:'Vibe', isAccess:false},{id:'feesDues', moduleName:'Fees Dues', isAccess:false},]},
+  { id: 4, staffName:'Kallam Minoosh', staffId:'GHMSTAFF1',data:[{id:'staff', moduleName:'Staff', isAccess:false},{id:'students', moduleName:'Students', isAccess:true},{id:'sections', moduleName:'Sections', isAccess:true},{id:'classes', moduleName:'Classes', isAccess:true},{id:'messages', moduleName:'Messages', isAccess:true},{id:'calendar', moduleName:'Calendar', isAccess:true},{id:'vibe', moduleName:'Vibe', isAccess:true},{id:'feesDues', moduleName:'Fees Dues', isAccess:true},]},
+  { id: 5,  staffName:'Siva Krishna', staffId:'GHMSTAFF8',data:[{id:'staff', moduleName:'Staff', isAccess:true},{id:'students', moduleName:'Students', isAccess:true},{id:'sections', moduleName:'Sections', isAccess:true},{id:'classes', moduleName:'Classes', isAccess:true},{id:'messages', moduleName:'Messages', isAccess:true},{id:'calendar', moduleName:'Calendar', isAccess:true},{id:'vibe', moduleName:'Vibe', isAccess:true},{id:'feesDues', moduleName:'Fees Dues', isAccess:true},]},
+  { id: 6,  staffName:'Sankula Krishna Sankula', staffId:'GHMSTAFF19',data:[{id:'staff', moduleName:'Staff', isAccess:true},{id:'students', moduleName:'Students', isAccess:true},{id:'sections', moduleName:'Sections', isAccess:true},{id:'classes', moduleName:'Classes', isAccess:true},{id:'messages', moduleName:'Messages', isAccess:true},{id:'calendar', moduleName:'Calendar', isAccess:true},{id:'vibe', moduleName:'Vibe', isAccess:true},{id:'feesDues', moduleName:'Fees Dues', isAccess:true},]},
+] 
 
 export const schoolsListData = [
   {schoolName:'Government High School Madugula', schoolId:'gvt-scl-mdgl01'},

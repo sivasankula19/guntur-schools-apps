@@ -5,11 +5,11 @@ import {
     IonSearchbar,
     IonText,
 } from '@ionic/react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { classListDummy, genderListDummy, sectionListDummy, studentDummyData } from '../../common/utility';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import CustomizedModal from '../../components/GCustomizedModal';
 import GCustomSelectDrop from '../../components/GCustomSelectDrop';
 import GCustomToggle from '../../components/GCustomToggle';
@@ -62,6 +62,17 @@ const StudentListSA: React.FC = () => {
     }]
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const location = useLocation();
+
+    useEffect(() => {
+        if (location?.state?.filterValues) {
+            setFilterValue(location.state.filterValues);
+        }
+        if (location?.state?.search) {
+            setSearch(location.state.search);
+        }
+    }, [location.state]);
+
     const handleToggleChange = (event: any) => {
         setIsFilterEnabled(event.detail.checked);
     };
@@ -77,7 +88,7 @@ const StudentListSA: React.FC = () => {
     }
 
     const navigateToUser = (id: string) => {
-        navigate(`/user/${id}`, {state:{parentRout:'/students-list', parentName:'Student List'}});
+        navigate(`/user/${id}`, { state: { parentRout: '/students-list', parentName: 'Student List' } });
     }
 
     const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Students List', path: '/students-list' }];
@@ -89,9 +100,9 @@ const StudentListSA: React.FC = () => {
         { id: 4, elementName: 'Home Work', redirectTo: '/home-work' },
     ]
 
-    const handleNavigate = (item: any) => {
+    const handleNavigate = (item: any, studentInfo:any) => {
         // send the params according to...!
-        navigate(item.redirectTo);
+        navigate(item.redirectTo, { state: { search, filterValues,redirectFrom:'/students-list',redirectFromName:'Students List', classId:studentInfo.classId, sectionId:studentInfo.sectionId } });
     }
 
     const handleViewMore = (id: string, isClose: boolean = false) => {
@@ -210,7 +221,7 @@ const StudentListSA: React.FC = () => {
                             {currentSelected === item.id && (<>
                                 <div className='sec-add-show'>
                                     <div className='nav-ele-show-con'>
-                                        {navigateEle.map((ele) => (<div onClick={() => handleNavigate(ele)} className='section-show-ele selected-bg-w-b' key={ele.id}><IonText><p>{ele.elementName}</p></IonText></div>))}
+                                        {navigateEle.map((ele) => (<div onClick={() => handleNavigate(ele, item)} className='section-show-ele selected-bg-w-b' key={ele.id}><IonText><p>{ele.elementName}</p></IonText></div>))}
                                     </div>
                                 </div>
                             </>)}

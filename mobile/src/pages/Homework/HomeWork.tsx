@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { IonButton, IonCard, IonCardContent, IonIcon, IonSearchbar, IonText } from '@ionic/react';
-import { classSubjects, formatDate, homeWorkDataBe } from '../../common/utility';
+import { classListDummy, classSubjects, formatDate, homeWorkDataBe, sectionListDummy } from '../../common/utility';
 import { attachOutline, banOutline, expandOutline } from 'ionicons/icons';
 import SwapableImages from './SwapableImges';
 import { useSelector } from 'react-redux';
@@ -23,6 +23,10 @@ const HomeWork: React.FC = () => {
     dueDate: '',
   }
   const [formValue, setFormValue] = useState(formInitialVal);
+  const [filterValues, setFilterValue] = useState({
+    classId: '',
+    sectionId: '',
+  });
 
   const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Home Work', path: '/home-work' }]
 
@@ -62,11 +66,32 @@ const HomeWork: React.FC = () => {
     }
   };
 
+  const classDummyData = classListDummy.map(i => ({ id: i.classId, label: i.className }));
+  const sectionDummyData = sectionListDummy.map(i => ({ id: i.sectionId, label: i.sectionName }));
+
+  const handleChange = (e: any) => {
+    setFilterValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }
+
   return (
     <div className='g_full_height'>
       <GBreadCrumbs data={breadCrumbsValue} />
+      {!isStudent && (
+        <div className='g_flex g-space-between p-16'>
+          <div className='m-right-6 width-50'>
+            <GCustomSelectDrop options={classDummyData} name='classId'
+              value={filterValues.classId} label="Select Class"
+              handleOnChange={handleChange} classNames='custom-select' />
+          </div>
+          <div className='m-left-6 width-50'>
+            <GCustomSelectDrop options={sectionDummyData} name='sectionId'
+              value={filterValues.sectionId} label="Select Section"
+              handleOnChange={handleChange} classNames='custom-select' />
+          </div>
+        </div>
+      )}
       {!isStudent &&
-        <div className='g_flex g-align-center g-justify-center'>
+        <div className='g_flex g-align-center g-justify-center  m-bottom-12'>
           <IonButton onClick={openPopover} className="add_homework br-ion-12 g_txt_cap">Add Home Work</IonButton>
         </div>}
       <div className='home_work p-h-16'>

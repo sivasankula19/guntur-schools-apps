@@ -365,6 +365,15 @@ ion-header {
   border-top: 1px solid;
 }
 
+.menu-settings{
+  margin-top: 20px;
+  margin-right: 16px;
+}
+
+.menu-settings ion-icon{
+  font-size: 26px;
+}
+
 /* All override modules */
 
 .dark ion-card {
@@ -552,6 +561,14 @@ ion-header {
   --border-radius: 12px;
 }
 
+.p-16{
+  padding: 16px;
+}
+
+.m-8{
+  margin: 8px;
+}
+
 .m-top-0 {
   margin-top: 0 !important;
 }
@@ -664,6 +681,10 @@ ion-header {
   padding: 10px 20px;
 }
 
+.p-h-4{
+  padding: 0 4px;
+}
+
 .p-h-12 {
   padding: 0 12px;
 }
@@ -724,6 +745,10 @@ ion-header {
   font-size: 24px;
 }
 
+.font-26 {
+  font-size: 26px;
+}
+
 .font-600 {
   font-weight: 600;
 }
@@ -742,6 +767,14 @@ ion-header {
 
 .o-flow-y {
   overflow-y: auto;
+}
+
+.o-f-hidden{
+  overflow: hidden;
+}
+
+.o-f-none{
+  overflow: none;
 }
 
 .color-0 {
@@ -1639,7 +1672,7 @@ ion-toggle::part(track) {
 }
 
 .attendance_sa .scroll-class-att {
-  height: calc(100% - 46px);
+  height: calc(100% - 26px);
   overflow-y: auto;
 }
 
@@ -1680,7 +1713,7 @@ ion-toggle::part(track) {
 
 .student-picker {
   position: absolute;
-  z-index: 9;
+  z-index: 999;
   width: calc(100% - 20px);
   margin: 0;
   margin-top: -10px;
@@ -1780,6 +1813,7 @@ ion-toggle::part(track) {
 
 .custom-modal-container-view ion-card-content {
   overflow-x: hidden;
+  height: 100%;
 }
 
 .g-customized-modal .modal-child-con {
@@ -5502,17 +5536,70 @@ ion-toast.failure-toast {
 }
 
 ion-toast.custom-toast::part(message),
-ion-toast.warn-toast::part(message) {
+ion-toast.warn-toast::part(message),
+ion-toast.failure-toast::part(message),
+ion-toast.info-toast::part(message) {
   font-style: italic;
   font-size: 16px !important;
   font-weight: 600;
 }
 
 .toast-button-icon {
-  font-size: 20px !important;
+  font-size: 30px !important;
+  --width: 42px;
+  --height: 42px;
 }
 
 ion-toast.custom-toast::part(button),
-ion-toast.toast-toast::part(button) {
+ion-toast.toast-toast::part(button),
+ion-toast.failure-toast::part(button),
+ion-toast.info-toast::part(button) {
   color: #ffffff;
 }
+
+.module-access .edit-text{
+  margin-right: 12px;
+}
+
+.modules-view{
+  height: calc(100% - 64px);
+}
+
+.modules-view ion-list{
+  height: calc(100% - 30px);
+  overflow-y: auto;
+}
+
+.modules-view ion-list ion-item{
+  margin-bottom: 10px;
+  border: 1px solid;
+  --height:46px;
+  border-color: #1D7AF5;
+  border-radius: 8px;
+  margin: 0 8px 10px 8px;
+}
+
+.modules-view ion-list ion-item ion-icon{
+  font-size: 22px;
+  margin-right: 8px;
+}
+
+.modules-view ion-list ion-item p {
+ margin: 0;
+}
+
+/* settings */
+
+.settings{
+  height: 100%;
+}
+
+.settings-container{
+  height: calc(100% - 110px);
+}
+
+.logout-btn ion-icon{
+  font-size: 26px;
+  margin-left: 12px;
+}
+

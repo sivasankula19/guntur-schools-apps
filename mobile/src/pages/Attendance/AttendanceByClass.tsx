@@ -23,6 +23,7 @@ function AttendanceByClass() {
         classId: '',
         sectionId: '',
     });
+    const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 
     const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Class Attendance', path: '/attendance-by-class' },];
 
@@ -38,7 +39,7 @@ function AttendanceByClass() {
             setFilterValue(({ classId: location.state.classId || '', sectionId: location.state.sectionId || '' }))
             setSelectedDate(location.state.selectedDate);
         }
-    }, [location.state])
+    }, [location.state]);
 
     const handleDateSelected = (day: string) => {
         if (day) {
@@ -46,6 +47,11 @@ function AttendanceByClass() {
         }
     }
 
+    const handleTodaySelected = () => {
+        setSelectedDate(todayFormate)
+    }
+
+    console.log(selectedDate, currentMY)
     const handleDateChange = (action: string) => {
         setCurrentMY((prevState: any) => {
             let newMonth = prevState.month;
@@ -95,6 +101,12 @@ function AttendanceByClass() {
         }
     }, [filterValues]);
 
+    // flag is to get the date, month and year from the selected date.
+    const getSelectedDateParse = (flag: number): number => {
+        const [month, date, year] = selectedDate.split('/');
+        return flag === 1 ? Number(date) : flag === 2 ? Number(month) : flag === 3 ? Number(year) : 0
+    }
+
     return (
         <div className='attendance_sa'>
             <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
@@ -119,9 +131,8 @@ function AttendanceByClass() {
                         <IonIcon onClick={() => handleDateChange('previousYear')} icon={caretBackOutline}></IonIcon>
                         <IonIcon onClick={() => handleDateChange('previousMonth')} icon={chevronBackOutline}></IonIcon>
                         <div className="month_year_view g_flex g-space-evenly g-align-center ">
-                            <IonText className="month_year">6th</IonText>
-                            <IonText className="month_year">March</IonText>
-                            <IonText className="month_year">2024</IonText>
+                            <IonText className="month_year">{months[currentMY.month-1]}</IonText>
+                            <IonText className="month_year">{currentMY.year}</IonText>
                         </div>
                         <IonIcon onClick={() => handleDateChange('nextMonth')} icon={chevronForwardOutline}></IonIcon>
                         <IonIcon onClick={() => handleDateChange('nextYear')} icon={caretForwardOutline}></IonIcon>
@@ -150,6 +161,21 @@ function AttendanceByClass() {
                                         </div>
                                     </div>))}
                                 </div>))}
+                            </div>
+                            <div className='m-v-10 p-h-16'>
+                                <div className='g_flex g-space-between'>
+                                    <div>
+                                        <IonText><p>Selected Date</p></IonText>
+                                    </div>
+                                    <div className="width-50 g_flex g-space-evenly g-align-center ">
+                                        <IonText className="month_year">{getSelectedDateParse(1)}</IonText>
+                                        <IonText className="month_year">{months[getSelectedDateParse(2)-1]}</IonText>
+                                        <IonText className="month_year">{getSelectedDateParse(3)}</IonText>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='m-v-10 p-h-16 g_txt_center'>
+                                <IonText><a onClick={handleTodaySelected}>Today</a></IonText>
                             </div>
                         </IonCardContent>
                     </IonCard>
