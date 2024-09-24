@@ -1834,3 +1834,30 @@ export const notificationSampleData = [
   {id:7, moduleName:'ExamSchedule', type:'Exam Schedule', message:'Exam schedule for academic year 2024-2025 unit test 2 was added please check here!.'},
   {id:8, moduleName:'Vibe', type:'A New Comment',message:'A New Comment for your post Post Title is added by minoosh reddy y12C00014.', data:{comment:'Cheers up!...', searchStr:'Post Title',postedBy:'Siva Sankula'}}
 ]
+
+export const studentMarksDetails = {
+  examDetails: { conductedOn: '24/09/2024' },
+  data: [
+    { id: 1, studentName: 'Siva Sankula', regNumber: 'GHMS00019', marks: { "subjectId1": 9, "subjectId2": '', "subjectId3": 20, "subjectId4": 20, "subjectId5": 20, "subjectId6": 20, } },
+    { id: 2, studentName: 'Minoosh Reddy', regNumber: 'GHMS00020', marks: { "subjectId1": 10, "subjectId2": '', "subjectId3": 20, "subjectId4": 20, "subjectId5": 20, "subjectId6": 20, } },
+    { id: 3, studentName: 'Narra', regNumber: 'GHMS00021', marks: { "subjectId1": 16, "subjectId2": '', "subjectId3": 20, "subjectId4": 20, "subjectId5": 20, "subjectId6": 20, } },
+    { id: 4, studentName: 'Deva Qmar', regNumber: 'GHMS00022', marks: { "subjectId1": 11, "subjectId2": '', "subjectId3": 20, "subjectId4": 20, "subjectId5": 20, "subjectId6": 20, } },
+    { id: 5, studentName: 'Siva ', regNumber: 'GHMS00023', marks: { "subjectId1": 18, "subjectId2": '', "subjectId3": 20, "subjectId4": 20, "subjectId5": 20, "subjectId6": 20, } },
+    { id: 6, studentName: 'Krishna', regNumber: 'GHMS00024', marks: { "subjectId1": 21, "subjectId2": '', "subjectId3": 20, "subjectId4": 20, "subjectId5": 20, "subjectId6": 20, } },
+    { id: 7, studentName: 'KINA', regNumber: 'GHMS00025', marks: { "subjectId1": 20, "subjectId2": '', "subjectId3": 20, "subjectId4": 20, "subjectId5": 20, "subjectId6": 20, } },
+    { id: 8, studentName: 'usr name', regNumber: 'GHMS00026', marks: { "subjectId1": 22, "subjectId2": '', "subjectId3": 20, "subjectId4": 20, "subjectId5": 20, "subjectId6": 20, } },
+    { id: 9, studentName: 'sivasankula', regNumber: 'GHMS00027', marks: { "subjectId1": 24, "subjectId2": '', "subjectId3": 20, "subjectId4": 20, "subjectId5": 20, "subjectId6": 20, } },
+    { id: 10, studentName: 'skrishna', regNumber: 'GHMS00028', marks: { "subjectId1": 10, "subjectId2": '', "subjectId3": 20, "subjectId4": 20, "subjectId5": 20, "subjectId6": 20, } },
+    { id: 11, studentName: 'Sankula', regNumber: 'GHMS00031', marks: { "subjectId1": 8, "subjectId2": '', "subjectId3": 20, "subjectId4": 20, "subjectId5": 20, "subjectId6": 20, } }
+  ],
+  subjectsList: [
+    { subjectName: 'Telugu', subjectId: 'subjectId1', conductedFor: 25, },
+    { subjectName: 'English', subjectId: 'subjectId2', conductedFor: 25, },
+    { subjectName: 'Hindi', subjectId: 'subjectId3', conductedFor: 25, },
+    { subjectName: 'Social', subjectId: 'subjectId4', conductedFor: 25, },
+    { subjectName: 'Chemistry', subjectId: 'subjectId5', conductedFor: 25, },
+    { subjectName: 'Mathematics', subjectId: 'subjectId6', conductedFor: 25, },
+  ]
+}
+
+

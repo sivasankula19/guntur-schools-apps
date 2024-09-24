@@ -87,10 +87,11 @@ import AcademicSubject from './pages/AcademicSubject';
 import ExamScheduleSA from './pages/ExamSchedule/ExamScheduleSA';
 import NotificationsList from './pages/NotificationsList';
 import AccessControl from './pages/AccessControl/AccessControl';
-import AccessPrivateModules from './pages/AccessControl/AccessPrivateModules';
+import AccessPrivateModules from './pages/AccessControl/AccessPublicModules';
 import ModuleAccess from './pages/AccessControl/ModuleAccess';
 import Settings from './pages/AccessControl/Settings';
 import PeopleTimeTable from './pages/TimeTable/PeopleTimeTable';
+import ProgressUnitCardAdd from './pages/ProgressCard/ProgressUnitCardAdd';
 
 setupIonicReact({
   animated: true,
@@ -204,6 +205,7 @@ const App: React.FC = () => {
                 <Route path='/attendance:id' element={<Attendance />} />
                 <Route path='/progress-card' element={role === 'Student' ? <ProgressCard /> : <ProgressCardSA />} /> //both
                 <Route path='/progress-card-class-subject' element={<ProgressCardSubjectAdd />} />
+                <Route path='/progress-card-unit-add' element={<ProgressUnitCardAdd />} />
                 <Route path='/time-table' element={role === 'Student' ? <TimeTable /> : <TimeTableSA />} /> //both
                 <Route path='/people-time-table' element={<PeopleTimeTable />} />
                 <Route path='/calendar' element={role === 'Student' ? <Calendar /> : <CalendarSA />} /> //both
@@ -224,7 +226,7 @@ const App: React.FC = () => {
                 <Route path='/my-notifications' element={<NotificationsList />} />
                 <Route path='/settings' element={<Settings />} />
                 <Route path='/access-control' element={<AccessControl />} />
-                <Route path='/access-private-modules' element={<AccessPrivateModules />} />
+                <Route path='/access-public-modules' element={<AccessPrivateModules />} />
                 <Route path='/module-access' element={<ModuleAccess />} />
                 {/* public modules! */}
                 <Route path='/gallery' element={<Gallery />} />

@@ -2,26 +2,7 @@ import { IonCard, IonCardContent, IonText } from '@ionic/react';
 import React, { useEffect, useRef, useState } from 'react'
 import NavChipCard from '../../components/NavChipsCard';
 import './Dashboard.css';
-import {
-    bookOutline,
-    businessOutline,
-    calendarOutline,
-    callOutline,
-    chatboxOutline,
-    cubeOutline,
-    documentOutline,
-    documentTextOutline,
-    gridOutline,
-    imageOutline,
-    informationCircleOutline,
-    keyOutline,
-    newspaperOutline,
-    peopleOutline,
-    ribbonOutline,
-    schoolOutline,
-    trophyOutline,
-    walletOutline,
-} from 'ionicons/icons';
+import {keyOutline} from 'ionicons/icons';
 import DashboardTimeView from './DashboardTimeView';
 import { useSelector } from 'react-redux';
 import { chipsDataPrivate, chipsDataPublic } from '../../common/common-routes-list';
@@ -29,7 +10,7 @@ import { chipsDataPrivate, chipsDataPublic } from '../../common/common-routes-li
 export const DashboardSA = () => {
     const [moduleSelected, setModuleSelected] = useState('');
     const [chipsToRender, setChipsRender] = useState<any>([]);
-    const [privateChipsToRender, setPrivateChipsToRender] = useState<any>([]);
+    const [publicChipsToRender, setPublicChipsToRender] = useState<any>([]);
     const dashboardRef = useRef<any>(null);
     const currentRole = useSelector((state: any) => state.auth.role);
 
@@ -43,16 +24,16 @@ export const DashboardSA = () => {
         }
     }
 
-    const chipsDataPrivate1 = chipsDataPrivate;
     const chipsDataPublic1 = chipsDataPublic;
+    const chipsDataPrivate1 = chipsDataPrivate ;
 
     useEffect(() => {
-        let chipsData = [...chipsDataPublic1];
+        let chipsData = [...chipsDataPrivate1];
         if (currentRole === 'SuperAdmin') {
             chipsData.unshift({ id: 999, moduleName: 'Access Control', icon: keyOutline, redirectTo: '/access-control' });
         }
         setChipsRender(chipsData);
-        setPrivateChipsToRender(chipsDataPrivate1);
+        setPublicChipsToRender(chipsDataPublic1);
     }, [currentRole]);
 
     return (
@@ -77,7 +58,7 @@ export const DashboardSA = () => {
                     <NavChipCard
                         isOpen={true}
                         handleView={() => handleModule(null)}
-                        chips={moduleSelected === 'publicModule' ? privateChipsToRender : chipsToRender}
+                        chips={moduleSelected === 'publicModule' ? publicChipsToRender : chipsToRender}
                     ></NavChipCard>
                 </div>)
             }
