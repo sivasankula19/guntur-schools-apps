@@ -1834,3 +1834,12 @@ export const notificationSampleData = [
   {id:7, moduleName:'ExamSchedule', type:'Exam Schedule', message:'Exam schedule for academic year 2024-2025 unit test 2 was added please check here!.'},
   {id:8, moduleName:'Vibe', type:'A New Comment',message:'A New Comment for your post Post Title is added by minoosh reddy y12C00014.', data:{comment:'Cheers up!...', searchStr:'Post Title',postedBy:'Siva Sankula'}}
 ]
+
+
+export const fiterDropdownValues=[
+  {id:1,moduleName:'Attendance',classId:'9-cls',sectionId:'a-section'},
+  {id:2,moduleName:'HomeWork',classId:'8-cls',sectionId:'b-section'},
+  {id:3,moduleName:'Subjects',classId:'10-cls',sectionId:'c-section'},
+  {id:4,moduleName:'ExamSchedules',classId:'7-cls',sectionId:'a-section'},
+  // {id:1,moduleName:'Attendance',classId:'9-cls',sectionId:'a-section'},
+]

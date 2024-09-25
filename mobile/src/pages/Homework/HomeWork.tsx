@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { IonButton, IonCard, IonCardContent, IonIcon, IonSearchbar, IonText } from '@ionic/react';
-import { classListDummy, classSubjects, formatDate, homeWorkDataBe, sectionListDummy } from '../../common/utility';
+import { classListDummy, classSubjects, formatDate, homeWorkDataBe, sectionListDummy,fiterDropdownValues } from '../../common/utility';
 import { attachOutline, banOutline, expandOutline } from 'ionicons/icons';
 import SwapableImages from './SwapableImges';
 import { useSelector } from 'react-redux';
@@ -27,11 +27,16 @@ const HomeWork: React.FC = () => {
     classId: '',
     sectionId: '',
   });
-
+  
   const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Home Work', path: '/home-work' }]
 
   useEffect(() => {
     setHomeWorkData(homeWorkDataBe.map((i) => ({ ...i, isFullView: false })))
+
+  const filterDropdownValue=fiterDropdownValues.find(item=>item.moduleName=="HomeWork");
+  if(filterDropdownValue){
+    setFilterValue(filterDropdownValue)
+  }
   }, [])
 
 
