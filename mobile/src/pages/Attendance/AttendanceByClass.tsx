@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import GBreadCrumbs from '../../components/GBreadCrumbs'
 import { IonButton, IonCard, IonCardContent, IonIcon, IonText } from '@ionic/react';
 import { caretBackOutline, caretForwardOutline, chevronBackOutline, chevronForwardOutline } from 'ionicons/icons';
-import { classListDummy, getDatesForMonth, sectionListDummy, transformListToGrid } from '../../common/utility';
+import { classListDummy, getDatesForMonth, sectionListDummy, transformListToGrid,fiterDropdownValues } from '../../common/utility';
 import { useLocation, useNavigate } from 'react-router';
 import GCustomSelectDrop from '../../components/GCustomSelectDrop';
 import { useDispatch, useSelector } from 'react-redux';
@@ -27,6 +27,7 @@ function AttendanceByClass() {
 
     const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Class Attendance', path: '/attendance-by-class' },];
 
+    
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -38,6 +39,12 @@ function AttendanceByClass() {
         if (location.state) {
             setFilterValue(({ classId: location.state.classId || '', sectionId: location.state.sectionId || '' }))
             setSelectedDate(location.state.selectedDate);
+        }else{
+        const filterDropdownSet=fiterDropdownValues.find(item=>item.moduleName=="Attendance");
+           
+            if(filterDropdownSet){
+                setFilterValue(filterDropdownSet)
+            }
         }
     }, [location.state]);
 
