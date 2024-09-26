@@ -19,7 +19,7 @@ import { setMode } from '../redux/reducers/darkModeSlice';
 import React, { useEffect, useState } from 'react';
 import { setPreLoginPublicView } from '../redux/reducers/schoolSlice';
 import GCustomToggle from './GCustomToggle';
-import { keyOutline, settingsOutline } from 'ionicons/icons';
+import { homeOutline, keyOutline, settingsOutline } from 'ionicons/icons';
 
 const appPages: AppPage[] = RoutesListDynamic;
 
@@ -39,12 +39,15 @@ const Menu: React.FC = () => {
   const chipsDataPublic1 = chipsDataPublic;
 
   useEffect(() => {
-    let chipsData = [...chipsDataPublic1];
+    let chipsData = [...chipsDataPrivate1];
     if (currentRole === 'SuperAdmin') {
       chipsData.unshift({ id: 999, moduleName: 'Access Control', icon: keyOutline, redirectTo: '/access-control' });
     }
+    const dashboardItem = { id: Math.random(), moduleName: 'Dashboard', icon: homeOutline, redirectTo: '/dashboard' }
+    chipsData.unshift(dashboardItem);
+    const chipsDataPrivateVal = [...chipsDataPublic1]
     setChipsRender(chipsData);
-    setPrivateChipsToRender(chipsDataPrivate1);
+    setPrivateChipsToRender(chipsDataPrivateVal);
   }, [currentRole]);
 
   const handleToggleChange = (event: any) => {

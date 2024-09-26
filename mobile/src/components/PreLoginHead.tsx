@@ -56,12 +56,6 @@ const PreLoginHead: React.FC = () => {
             preLoginBtns.filter((item) => isAuthenticated ? location.pathname.includes(item.path) : true).map((btn) => (<IonButton className={`${btn.name} ${selectedView === btn.name ? 'selected' : ''}`} onClick={() => handleToolBtns(btn)} key={btn.redirectTo}>{btn.name}</IonButton>))
           }
         </div>
-        {
-          isAuthenticated && role === 'SuperAdmin' && (<div className='g_flex'>
-            <IonIcon className='pre_login_actions' icon={closeCircleOutline}></IonIcon>
-            <IonIcon className='pre_login_actions' icon={saveOutline}></IonIcon>
-          </div>)
-        }
       </div>
     </div>
   );

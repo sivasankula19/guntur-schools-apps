@@ -15,6 +15,7 @@ import { useSelector } from 'react-redux';
 import GCustomInput from '../components/GCustomInput';
 import GCustomSelectDrop from '../components/GCustomSelectDrop';
 import GImagUpload from '../components/GImagUpload';
+import GBackSaveReset from '../components/GBackSaveReset';
 
 const Achievements: React.FC = () => {
 
@@ -183,101 +184,107 @@ const Achievements: React.FC = () => {
     }
   };
 
-  return (
-    <div className="achievements">
-      {!isStudent &&
-        <div className='p-b-10'>
-          <IonButton className='br-ion-12 g_txt_cap g_full_width ' onClick={openPopover} fill="outline" expand="block">Add Class</IonButton>
-        </div>}
-      <div className='school_achieve_title g_flex g-align-center g-justify-center text-color-blue g-font-weight-600 g-font-size-16'>
-        School Achievements
-      </div>
+  const handleReset = () => { };
+  const handleSave = () => { };
 
-      <IonAccordionGroup>
-        {data.map((item) => (
-          <IonAccordion
-            key={item.id}
-            value={item.id}
-            toggleIcon={caretDownOutline}
-            toggleIconSlot="end"
-          >
-            <IonItem slot="header" color="light">
-              <IonLabel>{item.category}</IonLabel>
-            </IonItem>
-            <div className="achieve_doc" slot="content">
-              {item.data.length ? <>
-                <div className="achieve_table_data">
-                  <div className="row first_row">
-                    {colData.map((col) => (
-                      <div
-                        style={{ width: `${100 / colData.length}%` }}
-                        className="head col"
-                        key={`id-${col.id}`}
-                      >
-                        <IonText>
-                          <p className="g_text_ellipses">{col.name}</p>
-                        </IonText>
-                      </div>
-                    ))}
-                  </div>
-                  {item.data.map((row: any, index) => (
-                    <div className={`row ${index === item.data.length - 1 ? 'last_row' : ''}`} key={row.id}>
-                      {colData.map((col, ind: number) => (
+  return (
+    <div className="achievements g_full_height">
+      {!isStudent && <GBackSaveReset handleReset={handleReset} handleSave={handleSave} />}
+      <div className={`${!isStudent ? 'achievement-m-sa' : 'g_full_height o-flow-y'}`}>
+        {!isStudent &&
+          <div className='p-b-10'>
+            <IonButton className='br-ion-12 g_txt_cap g_full_width ' onClick={openPopover} fill="outline" expand="block">Add Achievement</IonButton>
+          </div>}
+        <div className='school_achieve_title g_flex g-align-center g-justify-center text-color-blue g-font-weight-600 g-font-size-16'>
+          School Achievements
+        </div>
+
+        <IonAccordionGroup>
+          {data.map((item) => (
+            <IonAccordion
+              key={item.id}
+              value={item.id}
+              toggleIcon={caretDownOutline}
+              toggleIconSlot="end"
+            >
+              <IonItem slot="header" color="light">
+                <IonLabel>{item.category}</IonLabel>
+              </IonItem>
+              <div className="achieve_doc" slot="content">
+                {item.data.length ? <>
+                  <div className="achieve_table_data">
+                    <div className="row first_row">
+                      {colData.map((col) => (
                         <div
                           style={{ width: `${100 / colData.length}%` }}
                           className="head col"
-                          key={`${row.id}-${col.id}`}
+                          key={`id-${col.id}`}
                         >
-                          {
-                            ind === 0 ? <>
-                              <IonText>
-                                <a className="two_lines_ellipsis">{row[col.key]}</a>
-                              </IonText>
-                            </> : <><IonText>
-                              <p className="two_lines_ellipsis">{row[col.key]}</p>
-                            </IonText></>
-                          }
-
+                          <IonText>
+                            <p className="g_text_ellipses">{col.name}</p>
+                          </IonText>
                         </div>
                       ))}
                     </div>
-                  ))}
-                </div>
-              </> : <>
-                <IonItem className='achieve_no_data'>
-                  <IonIcon icon={alertCircleOutline}></IonIcon>
-                  <IonText>
-                    <p>No Data Found!</p>
-                  </IonText>
-                </IonItem>
-              </>}
+                    {item.data.map((row: any, index) => (
+                      <div className={`row ${index === item.data.length - 1 ? 'last_row' : ''}`} key={row.id}>
+                        {colData.map((col, ind: number) => (
+                          <div
+                            style={{ width: `${100 / colData.length}%` }}
+                            className="head col"
+                            key={`${row.id}-${col.id}`}
+                          >
+                            {
+                              ind === 0 ? <>
+                                <IonText>
+                                  <a className="two_lines_ellipsis">{row[col.key]}</a>
+                                </IonText>
+                              </> : <><IonText>
+                                <p className="two_lines_ellipsis">{row[col.key]}</p>
+                              </IonText></>
+                            }
 
+                          </div>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                </> : <>
+                  <IonItem className='achieve_no_data'>
+                    <IonIcon icon={alertCircleOutline}></IonIcon>
+                    <IonText>
+                      <p>No Data Found!</p>
+                    </IonText>
+                  </IonItem>
+                </>}
+
+              </div>
+            </IonAccordion>
+          ))}
+        </IonAccordionGroup>
+        <CustomizedModal
+          title="Add Achievement"
+          isOpen={popoverOpen}
+          onClose={() => setPopoverOpen(false)}
+          onSave={onSave}
+        >
+          <div>
+            <GCustomSelectDrop options={[]} name='category' value={formValue.category} label="Category" handleOnChange={handleInput} classNames='custom-select m-bottom-10' />
+            <GCustomInput name={'achievementName'} value={formValue['achievementName']} onChange={handleInput} label={'AchievementName'} placeholder='Enter Achievement Name' />
+            <GCustomSelectDrop options={[]} name='subCategory' value={formValue.subCategory} label="Sub Category" handleOnChange={handleInput} classNames='custom-select m-bottom-10' />
+            <GCustomInput name={'level'} value={formValue['level']} onChange={handleInput} label={'Level'} placeholder='Enter Level' />
+            <GCustomInput name={'presentedTo'} value={formValue['presentedTo']} onChange={handleInput} label={'Presented To'} placeholder='Presented To' />
+            <GImagUpload onFileChange={handleFileChange} multiple={true} label='Upload Image' classNames='m-bottom-10' />
+            <GCustomInput name={'grandTotal'} value={formValue['grandTotal']} onChange={handleInput} label={'Grand Total'} placeholder='Enter Grand Total ' />
+            <GCustomInput name={'location'} value={formValue['location']} onChange={handleInput} label={'Location'} placeholder='Enter Location' />
+            {/* date picker */}
+            <div className='field m-bottom-10'>
+              <IonInput value={formValue.date} onIonChange={handleInput} name='date' label="Date" labelPlacement="floating" fill="outline" placeholder="Date of Birth"></IonInput>
+              <IonIcon icon={calendarOutline}></IonIcon>
             </div>
-          </IonAccordion>
-        ))}
-      </IonAccordionGroup>
-      <CustomizedModal
-        title="Add Achievement"
-        isOpen={popoverOpen}
-        onClose={() => setPopoverOpen(false)}
-        onSave={onSave}
-      >
-        <div>
-          <GCustomSelectDrop options={[]} name='category' value={formValue.category} label="Category" handleOnChange={handleInput} classNames='custom-select m-bottom-10' />
-          <GCustomInput name={'achievementName'} value={formValue['achievementName']} onChange={handleInput} label={'AchievementName'} placeholder='Enter Achievement Name' />
-          <GCustomSelectDrop options={[]} name='subCategory' value={formValue.subCategory} label="Sub Category" handleOnChange={handleInput} classNames='custom-select m-bottom-10' />
-          <GCustomInput name={'level'} value={formValue['level']} onChange={handleInput} label={'Level'} placeholder='Enter Level' />
-          <GCustomInput name={'presentedTo'} value={formValue['presentedTo']} onChange={handleInput} label={'Presented To'} placeholder='Presented To' />
-          <GImagUpload onFileChange={handleFileChange} multiple={true} label='Upload Image' classNames='m-bottom-10' />
-          <GCustomInput name={'grandTotal'} value={formValue['grandTotal']} onChange={handleInput} label={'Grand Total'} placeholder='Enter Grand Total ' />
-          <GCustomInput name={'location'} value={formValue['location']} onChange={handleInput} label={'Location'} placeholder='Enter Location' />
-          {/* date picker */}
-          <div className='field m-bottom-10'>
-            <IonInput value={formValue.date} onIonChange={handleInput} name='date' label="Date" labelPlacement="floating" fill="outline" placeholder="Date of Birth"></IonInput>
-            <IonIcon icon={calendarOutline}></IonIcon>
           </div>
-        </div>
-      </CustomizedModal>
+        </CustomizedModal>
+      </div>
     </div>
   );
 };

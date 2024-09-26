@@ -67,7 +67,7 @@ function AccessControl() {
         if(e.target.id === 'other-modules-btn'){
             navigate('/module-access');
         } else {
-            navigate('/access-private-modules');
+            navigate('/access-public-modules');
         }
     }
 
@@ -223,7 +223,7 @@ function AccessControl() {
                 </div>
                 <div className='access-private'>
                     <IonButton id='other-modules-btn' className='br-ion-12 m-top-12 g_txt_cap add-employee-student' onClick={handleNavigate} fill="outline" expand="block">Other Modules</IonButton>
-                    <IonButton id='private-modules-btn' className='br-ion-12 m-top-12 g_txt_cap add-employee-student' onClick={handleNavigate} fill="outline" expand="block">Private Modules</IonButton>
+                    <IonButton id='private-modules-btn' className='br-ion-12 m-top-12 g_txt_cap add-employee-student' onClick={handleNavigate} fill="outline" expand="block">Public Modules</IonButton>
                 </div>
             </div>
         </div>

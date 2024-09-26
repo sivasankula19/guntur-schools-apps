@@ -15,40 +15,38 @@ const About: React.FC = () => {
   const data = AboutModuleData;
 
   return (
-    // <PreLoginContent>
-      <div className="about_container">
-        <IonText>
-          <p>Government High school</p>
-        </IonText>
-        <div className="banner_img"></div>
-        {data.map((item: any) => (
-          <div key={item.id}>
+    <div className="about_container">
+      <IonText>
+        <p>Government High school</p>
+      </IonText>
+      <div className="banner_img"></div>
+      {data.map((item: any) => (
+        <div key={item.id}>
+          <IonText>
+            <h5>{item.title}</h5>
+          </IonText>
+          {item.contentType === 'text' && (
             <IonText>
-              <h5>{item.title}</h5>
+              <p>{item.content}</p>
             </IonText>
-            {item.contentType === 'text' && (
-              <IonText>
-                <p>{item.content}</p>
-              </IonText>
-            )}
-            {item.contentType === 'map' && (
-              <>
-                <a>{item.location}</a>
-              </>
-            )}
-            {item.contentType === 'list' && (
-              <>
-                <ul>
-                  {item.listContent.map((lItem: any, index: number) => (<li key={index}>
-                    {lItem}
-                  </li>))}
-                </ul>
-              </>
-            )}
-          </div>
-        ))}
-      </div>
-    // </PreLoginContent>
+          )}
+          {item.contentType === 'map' && (
+            <>
+              <a>{item.location}</a>
+            </>
+          )}
+          {item.contentType === 'list' && (
+            <>
+              <ul>
+                {item.listContent.map((lItem: any, index: number) => (<li key={index}>
+                  {lItem}
+                </li>))}
+              </ul>
+            </>
+          )}
+        </div>
+      ))}
+    </div>
   );
 };
 
