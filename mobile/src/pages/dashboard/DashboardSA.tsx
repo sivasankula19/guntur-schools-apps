@@ -63,7 +63,7 @@ export const DashboardSA = () => {
                 </div>)
             }
             <div onClick={handleModule} className='analytics-container p-h-10'>
-                <div className='g_full_height g_txt_center analytics-holder-ds'>
+                <div className='g_txt_center analytics-holder-ds'>
                     Analytics Here!
                 </div>
                 <DashboardTimeView dashboardRef={dashboardRef} />

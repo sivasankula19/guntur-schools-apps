@@ -1,6 +1,7 @@
 import { IonButton, IonIcon, IonItem, IonLabel, IonText, IonTextarea } from "@ionic/react"
 import { addCircleOutline, removeCircleOutline } from "ionicons/icons"
 import React, { useEffect, useState } from "react"
+import GBackSaveReset from "../../components/GBackSaveReset"
 
 const AboutSuperAdmin: React.FC = () => {
     const [aboutModuleData, setAboutModuleData] = useState<any>({
@@ -37,6 +38,8 @@ const AboutSuperAdmin: React.FC = () => {
         })
     }, []);
 
+    const handleReset = () => { };
+    const handleSave = () => { };
 
     const handleInputChange = (event: any) => {
         const { name, value } = event.target
@@ -45,113 +48,116 @@ const AboutSuperAdmin: React.FC = () => {
 
     return (
         <div className="g_full_height">
-            <div className="school_name_sa">
-                <IonText>
-                    <p>{aboutModuleData.schoolInfo.schoolName} {aboutModuleData.schoolInfo.schoolLocation}</p>
-                </IonText>
-            </div>
-            <div>
-                <div className="scl_banner g_flex g-align-center g-justify-center">
-                    <div>
-                        <input name="shool_logo" id="school_logo" type="file" placeholder="Please upload image" />
-                        <div className="g_txt_center">School Logo</div>
+            <GBackSaveReset handleReset={handleReset} handleSave={handleSave} />
+            <div className="about-m-sa">
+                <div className="school_name_sa">
+                    <IonText>
+                        <p>{aboutModuleData.schoolInfo.schoolName} {aboutModuleData.schoolInfo.schoolLocation}</p>
+                    </IonText>
+                </div>
+                <div>
+                    <div className="scl_banner g_flex g-align-center g-justify-center">
+                        <div>
+                            <input name="shool_logo" id="school_logo" type="file" placeholder="Please upload image" />
+                            <div className="g_txt_center">School Logo</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="sa_field">
-                <IonLabel>Mission</IonLabel>
-                <IonItem>
-                    <IonTextarea
-                        name="mission"
-                        id="mission"
-                        onIonChange={handleInputChange}
-                        value={aboutModuleData.mission}
-                        placeholder="Please Enter Your School Mission"
-                        autoGrow={true}
-                    ></IonTextarea>
-                </IonItem>
-            </div>
-            <div className="sa_field">
-                <IonLabel>Vision</IonLabel>
-                <IonItem>
-                    <IonTextarea
-                        name="vision"
-                        id="vision"
-                        onIonChange={handleInputChange}
-                        value={aboutModuleData.vision}
-                        placeholder="Please Enter Your School Mission"
-                        autoGrow={true}
-                    ></IonTextarea>
-                </IonItem>
-            </div>
-            <div className="sa_field">
-                <IonLabel>Established On</IonLabel>
-                <IonItem>
-                    <input onChange={handleInputChange} name="establishedOn" id="establishedOn" value={aboutModuleData.establishedOn} placeholder="Enter Year" />
-                </IonItem>
-            </div>
-            <div className="sa_field">
-                <IonLabel>Location</IonLabel>
-                <IonItem>
-                    <input onChange={handleInputChange} name="location" id="location" value={aboutModuleData.location} placeholder="Enter Location" />
-                </IonItem>
-            </div>
-            <div className="sa_field">
-                <IonLabel>Staff Count</IonLabel>
-                <IonItem>
-                    <input onChange={handleInputChange} name="staffCount" id="staffCount" value={aboutModuleData.staffCount} placeholder="Enter Staff Count" />
-                </IonItem>
-            </div>
-            <div className="sa_field">
-                <IonLabel>Student Count</IonLabel>
-                <IonItem>
-                    <input onChange={handleInputChange} name="studentCount" id="studentCount" value={aboutModuleData.studentCount} placeholder="Enter Student Count" />
-                </IonItem>
-            </div>
-            <div className="sa_field">
-                <IonLabel>Facilities</IonLabel>
-                <RenderLoopItems data={aboutModuleData.facilities || []} />
-                <IonItem>
-                    <div className="g_flex g-space-between g_full_width">
-                        <div className="width-80">
-                            <input className="g_full_width" placeholder="Add Facilities Here!." />
+                <div className="sa_field">
+                    <IonLabel>Mission</IonLabel>
+                    <IonItem>
+                        <IonTextarea
+                            name="mission"
+                            id="mission"
+                            onIonChange={handleInputChange}
+                            value={aboutModuleData.mission}
+                            placeholder="Please Enter Your School Mission"
+                            autoGrow={true}
+                        ></IonTextarea>
+                    </IonItem>
+                </div>
+                <div className="sa_field">
+                    <IonLabel>Vision</IonLabel>
+                    <IonItem>
+                        <IonTextarea
+                            name="vision"
+                            id="vision"
+                            onIonChange={handleInputChange}
+                            value={aboutModuleData.vision}
+                            placeholder="Please Enter Your School Mission"
+                            autoGrow={true}
+                        ></IonTextarea>
+                    </IonItem>
+                </div>
+                <div className="sa_field">
+                    <IonLabel>Established On</IonLabel>
+                    <IonItem>
+                        <input onChange={handleInputChange} name="establishedOn" id="establishedOn" value={aboutModuleData.establishedOn} placeholder="Enter Year" />
+                    </IonItem>
+                </div>
+                <div className="sa_field">
+                    <IonLabel>Location</IonLabel>
+                    <IonItem>
+                        <input onChange={handleInputChange} name="location" id="location" value={aboutModuleData.location} placeholder="Enter Location" />
+                    </IonItem>
+                </div>
+                <div className="sa_field">
+                    <IonLabel>Staff Count</IonLabel>
+                    <IonItem>
+                        <input onChange={handleInputChange} name="staffCount" id="staffCount" value={aboutModuleData.staffCount} placeholder="Enter Staff Count" />
+                    </IonItem>
+                </div>
+                <div className="sa_field">
+                    <IonLabel>Student Count</IonLabel>
+                    <IonItem>
+                        <input onChange={handleInputChange} name="studentCount" id="studentCount" value={aboutModuleData.studentCount} placeholder="Enter Student Count" />
+                    </IonItem>
+                </div>
+                <div className="sa_field">
+                    <IonLabel>Facilities</IonLabel>
+                    <RenderLoopItems data={aboutModuleData.facilities || []} />
+                    <IonItem>
+                        <div className="g_flex g-space-between g_full_width">
+                            <div className="width-80">
+                                <input className="g_full_width" placeholder="Add Facilities Here!." />
+                            </div>
+                            <div>
+                                <IonButton fill="outline">
+                                    <IonIcon slot="icon-only" icon={addCircleOutline}></IonIcon>
+                                </IonButton>
+                            </div>
                         </div>
-                        <div>
-                            <IonButton fill="outline">
-                                <IonIcon slot="icon-only" icon={addCircleOutline}></IonIcon>
-                            </IonButton>
+                    </IonItem>
+                </div>
+                <div className="sa_field">
+                    <IonLabel>Achievements</IonLabel>
+                    <RenderLoopItems data={aboutModuleData.achievements || []} />
+                    <IonItem>
+                        <div className="g_flex g-space-between g_full_width">
+                            <div className="width-80">
+                                <input className="g_full_width" placeholder="Add Achievements Here!." />
+                            </div>
+                            <div>
+                                <IonButton fill="outline">
+                                    <IonIcon slot="icon-only" icon={addCircleOutline}></IonIcon>
+                                </IonButton>
+                            </div>
                         </div>
-                    </div>
-                </IonItem>
-            </div>
-            <div className="sa_field">
-                <IonLabel>Achievements</IonLabel>
-                <RenderLoopItems data={aboutModuleData.achievements || []} />
-                <IonItem>
-                    <div className="g_flex g-space-between g_full_width">
-                        <div className="width-80">
-                            <input className="g_full_width" placeholder="Add Achievements Here!." />
-                        </div>
-                        <div>
-                            <IonButton fill="outline">
-                                <IonIcon slot="icon-only" icon={addCircleOutline}></IonIcon>
-                            </IonButton>
-                        </div>
-                    </div>
-                </IonItem>
-            </div>
-            <div className="sa_field pb-px-200">
-                <IonLabel>Recognitions</IonLabel>
-                <IonItem>
-                    <IonTextarea
-                        name="recognitions"
-                        id="recognitions"
-                        onIonChange={handleInputChange}
-                        value={aboutModuleData.recognitions}
-                        placeholder="Please Enter Recognitions"
-                        autoGrow={true}
-                    ></IonTextarea>
-                </IonItem>
+                    </IonItem>
+                </div>
+                <div className="sa_field pb-px-200">
+                    <IonLabel>Recognitions</IonLabel>
+                    <IonItem>
+                        <IonTextarea
+                            name="recognitions"
+                            id="recognitions"
+                            onIonChange={handleInputChange}
+                            value={aboutModuleData.recognitions}
+                            placeholder="Please Enter Recognitions"
+                            autoGrow={true}
+                        ></IonTextarea>
+                    </IonItem>
+                </div>
             </div>
         </div>
     )

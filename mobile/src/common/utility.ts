@@ -1837,6 +1837,8 @@ export const notificationSampleData = [
 
 export const studentMarksDetails = {
   examDetails: { conductedOn: '24/09/2024' },
+  examName:'Unit 1',
+  examId:'scl-2024unit1',
   data: [
     { id: 1, studentName: 'Siva Sankula', regNumber: 'GHMS00019', marks: { "subjectId1": 9, "subjectId2": '', "subjectId3": 20, "subjectId4": 20, "subjectId5": 20, "subjectId6": 20, } },
     { id: 2, studentName: 'Minoosh Reddy', regNumber: 'GHMS00020', marks: { "subjectId1": 10, "subjectId2": '', "subjectId3": 20, "subjectId4": 20, "subjectId5": 20, "subjectId6": 20, } },
@@ -1848,7 +1850,11 @@ export const studentMarksDetails = {
     { id: 8, studentName: 'usr name', regNumber: 'GHMS00026', marks: { "subjectId1": 22, "subjectId2": '', "subjectId3": 20, "subjectId4": 20, "subjectId5": 20, "subjectId6": 20, } },
     { id: 9, studentName: 'sivasankula', regNumber: 'GHMS00027', marks: { "subjectId1": 24, "subjectId2": '', "subjectId3": 20, "subjectId4": 20, "subjectId5": 20, "subjectId6": 20, } },
     { id: 10, studentName: 'skrishna', regNumber: 'GHMS00028', marks: { "subjectId1": 10, "subjectId2": '', "subjectId3": 20, "subjectId4": 20, "subjectId5": 20, "subjectId6": 20, } },
-    { id: 11, studentName: 'Sankula', regNumber: 'GHMS00031', marks: { "subjectId1": 8, "subjectId2": '', "subjectId3": 20, "subjectId4": 20, "subjectId5": 20, "subjectId6": 20, } }
+    { id: 11, studentName: 'RRC', regNumber: 'GHMS00144', marks: { "subjectId1": 8, "subjectId2": '', "subjectId3": 20, "subjectId4": 20, "subjectId5": 20, "subjectId6": 20, } },
+    { id: 12, studentName: 'Rosie', regNumber: 'GHMS000149', marks: { "subjectId1": 22, "subjectId2": '', "subjectId3": 20, "subjectId4": 20, "subjectId5": 20, "subjectId6": 20, } },
+    { id: 13, studentName: 'Sankula123', regNumber: 'GHMS00123', marks: { "subjectId1": 24, "subjectId2": '', "subjectId3": 20, "subjectId4": 20, "subjectId5": 20, "subjectId6": 20, } },
+    { id: 14, studentName: 'Siva123', regNumber: 'GHMS00190', marks: { "subjectId1": 10, "subjectId2": '', "subjectId3": 20, "subjectId4": 20, "subjectId5": 20, "subjectId6": 20, } },
+    { id: 15, studentName: 'sivasankula143', regNumber: 'GHMS000111', marks: { "subjectId1": 8, "subjectId2": '', "subjectId3": 20, "subjectId4": 20, "subjectId5": 20, "subjectId6": 20, } }
   ],
   subjectsList: [
     { subjectName: 'Telugu', subjectId: 'subjectId1', conductedFor: 25, },
@@ -1857,6 +1863,34 @@ export const studentMarksDetails = {
     { subjectName: 'Social', subjectId: 'subjectId4', conductedFor: 25, },
     { subjectName: 'Chemistry', subjectId: 'subjectId5', conductedFor: 25, },
     { subjectName: 'Mathematics', subjectId: 'subjectId6', conductedFor: 25, },
+  ]
+}
+
+export const studentUnitMarksDetails = {
+  unitsList:[
+    {examId:'scl-2024-unit1', examName:'Unit 1', examData:'25/06/2024'},
+    {examId:'scl-2024-unit2', examName:'Unit 2', examData:'25/06/2024'},
+    {examId:'scl-2024-mid', examName:'Unit 3', examData:'25/06/2024'},
+    {examId:'scl-2024-final', examName:'Unit 4', examData:'25/06/2024'},
+  ],
+  data:[
+    { id: 1, studentName: 'Siva Sankula', regNumber: 'GHMS00019', marks: { "scl-2024-unit1": 19, "scl-2024-unit2": '', "scl-2024-mid": 20, "scl-2024-final": 20,} },
+    { id: 2, studentName: 'DEva Qmar', regNumber: 'GHMS00020', marks: { "scl-2024-unit1": 21, "scl-2024-unit2": '', "scl-2024-mid": 20, "scl-2024-final": 20,} },
+    { id: 3, studentName: 'Minoosh Reddy', regNumber: 'GHMS00021', marks: { "scl-2024-unit1": 16, "scl-2024-unit2": '', "scl-2024-mid": 20, "scl-2024-final": 20,} },
+    { id: 4, studentName: 'KINAS', regNumber: 'GHMS00022', marks: { "scl-2024-unit1": 12, "scl-2024-unit2": '', "scl-2024-mid": 20, "scl-2024-final": 20,} },
+    { id: 5, studentName: 'Krishna', regNumber: 'GHMS00023', marks: { "scl-2024-unit1": 11, "scl-2024-unit2": '', "scl-2024-mid": 20, "scl-2024-final": 20,} },
+    { id: 6, studentName: 'RRC..123', regNumber: 'GHMS00024', marks: { "scl-2024-unit1": 19, "scl-2024-unit2": '', "scl-2024-mid": 20, "scl-2024-final": 20,} },
+    { id: 7, studentName: 'Ro !2', regNumber: 'GHMS00025', marks: { "scl-2024-unit1": 18, "scl-2024-unit2": '', "scl-2024-mid": 20, "scl-2024-final": 20,} },
+    { id: 8, studentName: 'sankula143', regNumber: 'GHMS00026', marks: { "scl-2024-unit1": 25, "scl-2024-unit2": '', "scl-2024-mid": 20, "scl-2024-final": 20,} },
+    { id: 9, studentName: 'Siva sasa', regNumber: 'GHMS00027', marks: { "scl-2024-unit1": 23, "scl-2024-unit2": '', "scl-2024-mid": 20, "scl-2024-final": 20,} },
+    { id: 10, studentName: 'Adwik', regNumber: 'GHMS00029', marks: { "scl-2024-unit1": 22, "scl-2024-unit2": '', "scl-2024-mid": 20, "scl-2024-final": 20,} },
+    { id: 11, studentName: 'Venkata Gagan', regNumber: 'GHMS00030', marks: { "scl-2024-unit1": 21, "scl-2024-unit2": '', "scl-2024-mid": 20, "scl-2024-final": 20,} },
+    { id: 12, studentName: 'Dhruvikkkk', regNumber: 'GHMS00032', marks: { "scl-2024-unit1": 18, "scl-2024-unit2": '', "scl-2024-mid": 20, "scl-2024-final": 20,} },
+    { id: 13, studentName: 'ssss', regNumber: 'GHMS00033', marks: { "scl-2024-unit1": 9, "scl-2024-unit2": '', "scl-2024-mid": 20, "scl-2024-final": 20,} },
+    { id: 14, studentName: 'suser 123', regNumber: 'GHMS00001', marks: { "scl-2024-unit1": 19, "scl-2024-unit2": '', "scl-2024-mid": 20, "scl-2024-final": 20,} },
+    { id: 15, studentName: 'Siva Sankula123', regNumber: 'GHMS00044', marks: { "scl-2024-unit1": 3, "scl-2024-unit2": '', "scl-2024-mid": 20, "scl-2024-final": 20,} },
+    { id: 16, studentName: 'Siva Sankulasaew', regNumber: 'GHMS00011', marks: { "scl-2024-unit1": 2, "scl-2024-unit2": '', "scl-2024-mid": 20, "scl-2024-final": 20,} },
+
   ]
 }
 

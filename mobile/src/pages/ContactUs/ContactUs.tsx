@@ -21,7 +21,7 @@ const ContactUs: React.FC = () => {
   const reasonListDummy = [{id:'exams', label:'Exams'},{id:'admission', label:'Admission'},{id:'games', label:'Games'},{id:'others', label:'Others'}]
 
   return (
-    <div>
+    <div className='contact-us-screen'>
       <div className='principal'>
         <div className='principal_contact'>
           <div className='g_flex'>
