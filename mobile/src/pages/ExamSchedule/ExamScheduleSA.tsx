@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { classListDummy, examSchedulesData, formatDate, sectionListDummy } from '../../common/utility';
+import React, { useState ,useEffect} from 'react'
+import { classListDummy, examSchedulesData, formatDate, sectionListDummy ,fiterDropdownValues} from '../../common/utility';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
 import GCustomSelectDrop from '../../components/GCustomSelectDrop';
 import { IonButton, IonCard, IonCardContent, IonIcon, IonInput, IonLabel, IonText } from '@ionic/react';
@@ -102,6 +102,16 @@ function ExamScheduleSA() {
     setFormValue((prev: any) => ({ ...prev, subjectsList: updatedSubjectDummy }))
 
   }
+
+
+  useEffect(()=>{
+  const filterDropdownValue=fiterDropdownValues.find(item=>item.moduleName=="ExamSchedules");
+
+    if(filterDropdownValue){
+      setFilterValue(filterDropdownValue)
+  }
+  },[])
+  
 
   return (
     <div className='g_full_height'>

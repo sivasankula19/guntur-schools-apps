@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
 import {
   IonButton,
@@ -9,7 +9,7 @@ import {
   IonRange,
   IonText,
 } from '@ionic/react';
-import { classListDummy, classSubjects, sectionListDummy } from '../../common/utility';
+import { classListDummy, classSubjects, sectionListDummy,fiterDropdownValues} from '../../common/utility';
 import ProgressBar from '../../components/ProgressBar';
 import CustomizedModal from '../../components/GCustomizedModal';
 import GCustomSelectDrop from '../../components/GCustomSelectDrop';
@@ -86,6 +86,13 @@ function SubjectsSA() {
     setFilterValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
+  useEffect(()=>{
+  const filterDropdownValue=fiterDropdownValues.find(item=>item.moduleName=="Subjects");
+    if(filterDropdownValue){
+      setFilterValue(filterDropdownValue)
+    }
+  },[])
+  
   return (
     <div className="subjects">
       <div className="g_flex g-space-between g-align-center bread_toggle_container">

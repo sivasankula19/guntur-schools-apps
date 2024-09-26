@@ -1895,3 +1895,11 @@ export const studentUnitMarksDetails = {
 }
 
 
+
+export const fiterDropdownValues=[
+  {id:1,moduleName:'Attendance',classId:'9-cls',sectionId:'a-section'},
+  {id:2,moduleName:'HomeWork',classId:'8-cls',sectionId:'b-section'},
+  {id:3,moduleName:'Subjects',classId:'10-cls',sectionId:'c-section'},
+  {id:4,moduleName:'ExamSchedules',classId:'7-cls',sectionId:'a-section'},
+  // {id:1,moduleName:'Attendance',classId:'9-cls',sectionId:'a-section'},
+]
