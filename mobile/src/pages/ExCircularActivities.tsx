@@ -1,4 +1,4 @@
-import { IonButton, IonCard, IonCardContent, IonText } from '@ionic/react';
+import { IonCard, IonCardContent, IonText } from '@ionic/react';
 import React from 'react';
 
 const ExCircularActivities: React.FC = () => {
@@ -23,7 +23,7 @@ const ExCircularActivities: React.FC = () => {
           eveLevel: 'School Level',
           fromDate: '01/04/2024',
           toDate: '01/04/2024',
-          desc:'',
+          desc:'event s = goingt gto be a goood and eadvanced trends adn any oen can paryicipae yjrnc presents to be an good',
           isAvailable: false,
         }
       ]
@@ -37,7 +37,7 @@ const ExCircularActivities: React.FC = () => {
           eveLevel: 'School Level',
           fromDate: '10/06/2024',
           toDate: '12/06/2024',
-          desc:'',
+          desc:'event s = goingt gto be a goood and eadvanced trends adn any oen can paryicipae yjrnc presents to be an good',
           isAvailable: true,
         },
         {
@@ -46,7 +46,7 @@ const ExCircularActivities: React.FC = () => {
           eveLevel: 'School Level',
           fromDate: '01/04/2024',
           toDate: '01/04/2024',
-          desc:'',
+          desc:'event s = goingt gto be a goood and eadvanced trends adn any oen can paryicipae yjrnc presents to be an good',
           isAvailable: false,
         }
       ]
@@ -68,7 +68,7 @@ const ExCircularActivities: React.FC = () => {
             <div className='eve_list'>
               {categoryItem.data.map((eveItem) => (<IonCard key={eveItem.id}>
                 <IonCardContent>
-                  <div className='g_flex g_space_btwn'>
+                  <div className='g_flex g-space-between'>
                     <div>
                       <IonText><h1>{eveItem.eveName}</h1></IonText>
                     </div>
@@ -76,17 +76,17 @@ const ExCircularActivities: React.FC = () => {
                       <IonText><p>{eveItem.eveLevel}</p></IonText>
                     </div>
                   </div>
-                  <div className='g_flex g_space_btwn'>
+                  <div className='g_flex g-space-between'>
                     <div>
                       <IonText>
                         <p className='event_desc'>{eveItem.desc}</p>
                       </IonText>
                     </div>
                     <div>
-                      <IonButton>Participate</IonButton>
+                      {/* <IonButton>Participate</IonButton> */}
                     </div>
                   </div>
-                  <div className='g_flex g_space_btwn dates_eves'>
+                  <div className='g_flex g-space-between dates_eves'>
                     <div>{eveItem.fromDate}</div>
                     <div>{eveItem.toDate}</div>
                     <div><IonText><a>View More</a></IonText></div>

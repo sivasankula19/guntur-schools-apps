@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router';
+import {  useNavigate } from 'react-router';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
-import { IonButton, IonCard, IonCardContent, IonIcon, IonItem, IonSearchbar, IonText, IonToggle } from '@ionic/react';
+import { IonButton, IonCard, IonCardContent, IonIcon, IonItem, IonSearchbar, IonText } from '@ionic/react';
 import { banSharp } from 'ionicons/icons';
 import { chatContactList } from '../../common/utility';
+import GCustomToggle from '../../components/GCustomToggle';
 
 const Messages: React.FC = () => {
-  const { name } = useParams<{ name: string }>();
   const [isFilterEnabled, setIsFilterEnabled] = useState(true);
   const [chatListData, setChatListData] = useState<any>([])
   const navigate = useNavigate();
   const [search, setSearch] = useState('');
-
   const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Messages', path: '/messages' }];
 
   const handleToggleChange = (event: any) => {
@@ -24,31 +23,20 @@ const Messages: React.FC = () => {
 
   const handleInput = (ev: any) => {
     setSearch(ev.target.value);
-    setChatListData(chatContactList.filter((chatContact)=> ((chatContact.name).toLowerCase().includes((ev.target.value).toLowerCase())) || ev.target.value == ''))
+    setChatListData(chatContactList.filter((chatContact) => ((chatContact.name).toLowerCase().includes((ev.target.value).toLowerCase())) || ev.target.value == ''))
     //  debounce function can be executed!!! here i.e api
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     setChatListData(chatContactList)
-  },[])
+  }, [])
 
   return (
     <div className='messages'>
-      <div className='g_flex g_space_btwn'>
+      <div className='g_flex g-space-between'>
         <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
         <div className='toggle_io'>
-          <IonToggle
-            className="custom-toggle"
-            checked={isFilterEnabled}
-            onIonChange={handleToggleChange}
-          >
-            <span
-              className={`toggle-text ${isFilterEnabled ? 'enabled_filter' : 'disabled_filter'
-                }`}
-            >
-              {isFilterEnabled ? 'On' : 'Off'}
-            </span>
-          </IonToggle>
+          <GCustomToggle checked={isFilterEnabled} onHandleChange={handleToggleChange}/>
         </div>
       </div>
       <div className='select_chat'>
@@ -60,7 +48,7 @@ const Messages: React.FC = () => {
                 showClearButton="focus"
                 value={search}
                 debounce={500}
-                onIonInput={(ev) => handleInput(ev)}></IonSearchbar>
+                onIonInput={handleInput}></IonSearchbar>
             </IonCardContent>
           </IonCard>
         </div>
@@ -70,13 +58,13 @@ const Messages: React.FC = () => {
               {
                 chatListData.map((chat: any) => (<IonItem onClick={() => handleUserChat(chat.id)} className='chat_item' key={chat.id}>
                   <div className='g_full_width'>
-                    <div className='g_flex g_align_cntr'>
+                    <div className='g_flex g-align-center'>
                       <div className='profile'>
                         <img src={chat.profile} />
                       </div>
                       <div className='name_last_msg'>
-                        <div className='g_flex g_space_btwn'>
-                          <IonText className='title_chat'>
+                        <div className='g_flex g-space-between'>
+                          <IonText className='width-80'>
                             <h2 className='g_text_ellipses'>{chat.name}</h2>
                           </IonText>
                           <IonText>

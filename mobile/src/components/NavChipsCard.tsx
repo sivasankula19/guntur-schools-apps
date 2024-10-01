@@ -6,7 +6,7 @@ import {
   IonLabel,
   IonIcon,
 } from '@ionic/react';
-import { chevronDownCircle, chevronDownCircleOutline, chevronUpCircle, chevronUpCircleOutline, expandOutline, headset } from 'ionicons/icons';
+import {  chevronDownCircleOutline, chevronUpCircleOutline } from 'ionicons/icons';
 import { useNavigate } from 'react-router';
 import { setPreLoginPublicView } from '../redux/reducers/schoolSlice';
 import { useDispatch } from 'react-redux';
@@ -32,28 +32,27 @@ const NavChipCard: React.FC<PropsWithChildren<{ chips: Chip[], isOpen: boolean, 
   const handleNavigate = (path: string, moduleName:string) => {
     if(publicModules.includes(moduleName))
       dispatch(setPreLoginPublicView(moduleName))
-    navigate(path)
+    navigate(path);
   }
-
 
   return (
     <IonCard>
-      <IonCardContent className={`${chips.length === 0 ? 'no_items_scrollled' : ''}`}>
-        <div className="nav_chip_container">
+      <IonCardContent className={`${chips.length === 0 ? 'no-items-scroll' : ''}`}>
+        <div className="nav-chip-container">
           {displayedChips.map((chip, index) => (
-            <div key={chip.id} className='item_container_chips'>
+            <div key={chip.id} className='item-container-chips'>
               <IonItem onClick={() => { handleNavigate(chip.redirectTo, chip.moduleName) }}>
                 <div className="chip_item_data">
-                  <div className="g_flex g_align_cntr g_jstfy_content_cntr">
+                  <div className="g_flex g-align-center g-justify-center">
                     <IonIcon icon={chip.icon} />
                   </div>
-                  <IonLabel>{chip.moduleName}</IonLabel>
+                  <IonLabel className='font-12'>{chip.moduleName}</IonLabel>
                 </div>
               </IonItem>
             </div>
           ))}
         </div>
-        <div onClick={handleView} className={`expand_chevron_icon ${chips.length === 0 ? '' :''}`}>
+        <div onClick={handleView} className={`expand-chevron-icon ${chips.length === 0 ? '' :''}`}>
           <IonIcon icon={isOpen ? chevronUpCircleOutline : chevronDownCircleOutline}></IonIcon>
         </div>
       </IonCardContent>

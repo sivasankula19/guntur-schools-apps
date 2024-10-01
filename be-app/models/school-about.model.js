@@ -16,30 +16,24 @@ const schoolAboutSchema = new mongoose.Schema({
     },
     about: {
       type: String,
-
     },
     mission: {
       type: String,
-
     },
     vision: {
       type: String,
     },
-    establishedDate: {
-      type: Date,
-
+    establishedOn: {
+      type: String,
     },
     location: {
       type: String,
-
     },
     staffCount: {
       type: Number,
-
     },
     studentCount: {
       type: Number,
-
     },
     facilities: {
       type: [String],

@@ -1,35 +1,25 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
 import {
   IonCard,
   IonCardContent,
   IonIcon,
-  IonItem,
   IonLabel,
-  IonText,
 } from '@ionic/react';
-import { convertToMultipleWords, unitMarksData } from '../../common/utility';
 import {
   appsSharp,
-  gridSharp,
-  listCircleOutline,
   listSharp,
 } from 'ionicons/icons';
-import RenderSelectedTableUnit from './RenderSelectedTableUnit';
-import RenderAllExams from './RenderAllExams';
+import StudentInfoProCard from '../../components/StudentInfoProCard';
+import RenderSelectedTableUnit from '../../components/RenderSelectedTableUnit';
+import RenderAllExams from '../../components/RenderAllExams';
 
 const ProgressCard: React.FC = () => {
-  const { name } = useParams<{ name: string }>();
-  const unitsScrollRef = useRef<any>(null);
-
-  const breadCrumbsValue = [
-    { bName: 'Home', path: '/dashboard' },
-    { bName: 'Progress Card', path: '/progress-card' },
-  ];
-
   const [selectedTab, setSelectedTab] = useState('unit1');
   const [viewMode, setViewMode] = useState('list');
+
+  const unitsScrollRef = useRef<any>(null);
+  const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Progress Card', path: '/progress-card' },];
 
   const studentInfo: any = {
     fullName: 'Siva S User',
@@ -57,9 +47,9 @@ const ProgressCard: React.FC = () => {
 
   }, [selectedTab, viewMode])
 
-  useEffect(()=>{
+  useEffect(() => {
     setSelectedTab('unit1')
-  },[viewMode])
+  }, [viewMode])
 
   const tabUnitsData = [
     { id: 'unit1', title: 'Unit 1' },
@@ -79,48 +69,17 @@ const ProgressCard: React.FC = () => {
         <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
       </div>
       <div className="progress_card">
-        <IonCard>
-          <IonCardContent className="progerss_student_content">
-            {Object.keys(studentInfo).map((key: string) => (
-              <IonItem key={key}>
-                <div className="g_flex student_info_item">
-                  <IonText className="over_text">
-                    <span>{convertToMultipleWords(key)}</span>
-                  </IonText>
-                  <IonText>
-                    {studentInfo[key] === true ? (
-                      <>
-                        <IonText>
-                          <h5 className="success">Signed</h5>
-                        </IonText>
-                      </>
-                    ) : studentInfo[key] === false ? (
-                      <>
-                        <IonText>
-                          <h5 className="danger">Non Signed</h5>
-                        </IonText>
-                      </>
-                    ) : (
-                      <p>{studentInfo[key]}</p>
-                    )}
-                  </IonText>
-                </div>
-              </IonItem>
-            ))}
-          </IonCardContent>
-        </IonCard>
-
+        <StudentInfoProCard studentInfo={studentInfo} />
         <div className="g_flex tabs_container_custom">
-          <div className="tabs_progress_card"  ref={unitsScrollRef}>
+          <div className="tabs_progress_card" ref={unitsScrollRef}>
             {viewMode === 'list' && (
               <>
                 <div className="g_custom_tabs">
                   {tabUnitsData.map((tabItem, index: number) => (
                     <button
                       key={index}
-                      className={`${tabItem.id} g_custom_tab ${
-                        selectedTab === tabItem.id ? 'selected_segment_btn' : ''
-                      }`}
+                      className={`${tabItem.id} g_custom_tab ${selectedTab === tabItem.id ? 'selected_segment_btn' : ''
+                        }`}
                       name={tabItem.id}
                       onClick={handleTabChange}
                     >
@@ -131,19 +90,19 @@ const ProgressCard: React.FC = () => {
               </>
             )}
           </div>
-          <div className="g_flex g_align_cntr progress_icons_container">
+          <div className="g_flex g-align-center progress_icons_container">
             <IonIcon
               onClick={() => {
                 setViewMode('list');
               }}
-              className={`list_viwe_icon ${viewMode === 'list' && 'selected'}`}
+              className={`list-view-icon ${viewMode === 'list' && 'selected'}`}
               icon={listSharp}
             ></IonIcon>
             <IonIcon
               onClick={() => {
                 setViewMode('grid');
               }}
-              className={`grdi_view_icon ${viewMode === 'grid' && 'selected'}`}
+              className={`grid-view-icon ${viewMode === 'grid' && 'selected'}`}
               icon={appsSharp}
             ></IonIcon>
           </div>

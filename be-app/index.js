@@ -1,3 +1,4 @@
+const cors = require('cors');
 const express = require('express');
 const connectToDatabase = require('./db');
 const schools = require('./routes/schools.route');
@@ -8,6 +9,12 @@ const schoolComeptitions = require('./routes/competitions.routes');
 const schoolAchievements = require('./routes/achievements.routes')
 
 const app = express();
+app.use(cors()); // Allow all origins
+
+// Or restrict it to your frontend only
+app.use(cors({
+    origin: 'http://localhost:5173'
+}));
 app.use(express.json());
 connectToDatabase();
 

@@ -1,6 +1,6 @@
 
-import { IonButton, IonText } from '@ionic/react';
-import React, { ReactElement } from 'react';
+import { IonButton } from '@ionic/react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 
