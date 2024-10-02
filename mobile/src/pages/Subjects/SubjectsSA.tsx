@@ -111,7 +111,7 @@ function SubjectsSA() {
         </div>
       </div>
       <div className='m-10'>
-        <IonButton className='g_txt_cap font-16' fill="outline" expand="block" onClick={handleAddSubject}>Add Subject</IonButton>
+        <IonButton className='font-16 br-ion-12 g_txt_cap' fill="outline" expand="block" onClick={handleAddSubject}>Add Subject</IonButton>
       </div>
       <div className="subjects_cls_container-edit">
         <IonList>

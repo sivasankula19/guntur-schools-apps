@@ -331,7 +331,6 @@ export const studentDummyData =  [
   };
 
  export const transformListToGrid = (data:any) => {
-  // debugger
     let currentMain = 0;
     const dayToIndex:any = {"MON":0,"TUE":1,"WED":2,"THU":3,"FRI":4,"SAT":5,"SUN":6}
     const emptyArr:any = [null, null, null, null, null, null, null]
@@ -368,7 +367,7 @@ export const studentDummyData =  [
       attachments:[
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4V8KKozejQPGQqAwVpafSFMzGNadgZy-_jg&s',
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE4Y1tnrrvIBk7OTyXyNeBtwv130_sscs3wg&s',
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLHw1dRH8otuXmFkKqV_2lp9Im0oR9obYOsg&s',
+        'https://en crypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLHw1dRH8otuXmFkKqV_2lp9Im0oR9obYOsg&s',
       ]
     },
     {
@@ -1893,8 +1892,6 @@ export const studentUnitMarksDetails = {
 
   ]
 }
-
-
 
 export const fiterDropdownValues=[
   {id:1,moduleName:'Attendance',classId:'9-cls',sectionId:'a-section'},

@@ -40,18 +40,10 @@ ion-card ion-card-content {
   overflow-y: hidden !important;
 }
 
-.custome_footer_ion {
+.custom_footer_ion {
   position: absolute;
   bottom: 0;
   cursor: pointer;
-}
-
-.foote_wrapper {
-  padding: 12px;
-  min-height: 30vh;
-  height: auto;
-  max-height: 80px;
-
 }
 
 .g_text_ellipses {
@@ -491,6 +483,7 @@ ion-header {
   --inner-padding-end: 8px;
   --inner-padding-start: 8px;
   --padding-start: 0;
+  cursor: pointer;
 }
 
 .school_list_show_container ion-item .select_an_item {
@@ -1020,6 +1013,7 @@ ion-header {
 .students_cards_container {
   overflow-y: auto;
   padding-bottom: 50px;
+  padding-bottom: 120px;
   height: calc(100% - 206px);
 }
 
@@ -1034,6 +1028,10 @@ ion-header {
   border: 1px solid #1D7AF5;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
   animation: slideIn 0.8s forwards;
+}
+
+.scroll-class-att .student_card {
+  margin: 14px 0;
 }
 
 .student_card .edit-a-student {
@@ -1276,6 +1274,11 @@ ion-toggle::part(track) {
   height: 45px;
   min-height: 36px !important;
   --border-radius: 8px;
+  --border-color:#000000;
+}
+
+.dark .custom-select {
+  --border-color:#ffffff;
 }
 
 .ios .custom-select {
@@ -1646,11 +1649,22 @@ ion-toggle::part(track) {
   text-align: center;
   border: 1px solid;
   border-radius: 4px;
+}
+
+.enabled-date-field{
+  background: #ffffff ;
+}
+
+.disabled-date-field{
   background: #F5F5F5;
 }
 
-.dark .day-list-map .day-item-display {
-  background: #1a1a1a;
+.dark .enabled-date-field{
+  background: #000000 ;
+}
+
+.dark .disabled-date-field{
+  background: #3d3d3d;
 }
 
 .day-list-map .today-selected {
@@ -1682,6 +1696,7 @@ ion-toggle::part(track) {
 
 .attendance_sa .scroll-class-att {
   height: calc(100% - 26px);
+  /* padding-bottom: 100px; */
   overflow-y: auto;
 }
 
@@ -2656,6 +2671,11 @@ ion-toggle::part(track) {
   max-width: 100px;
   margin-left: 26px;
   padding: 4px 8px;
+  background: #ffffff;
+}
+
+.dark .progress-default-marks input {
+  background: #000000;
 }
 
 .progress-default-marks ion-icon {
@@ -2688,6 +2708,11 @@ ion-toggle::part(track) {
   border-radius: 8px;
   max-width: 100px;
   padding: 4px 8px;
+  background: #ffffff;
+}
+
+.dark .marks-progress-icon input {
+  background: #000000;
 }
 
 .marks-progress-icon ion-icon {
@@ -2846,6 +2871,20 @@ label.input-wrapper.sc-ion-input-ios {
   align-items: center;
 }
 
+.home .g-maps{
+  height: 60px;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #D9D9D9;
+}
+
+.dark .home .g-maps{
+  background: #333333;
+}
+
 .dark .home .logo {
   background: #333333;
 }
@@ -2900,7 +2939,6 @@ label.input-wrapper.sc-ion-input-ios {
 }
 
 .location-control ion-icon {
-  position: absolute;
   right: 24px;
   font-size: 26px;
   top: 12px;
@@ -4994,7 +5032,7 @@ label.input-wrapper.sc-ion-input-ios {
 }
 
 .time_table_sa {
-  height: calc(100% - 40px);
+  height: calc(100% - 30px);
   background: #ffffff;
 }
 
@@ -5140,7 +5178,8 @@ label.input-wrapper.sc-ion-input-ios {
   border-color: #1D7AF5;
   border-radius: 4px;
   min-height: 40px;
-  margin-top: 10px;
+  margin: 10px 12px;
+  margin-bottom: 0;
   display: flex;
   justify-content: space-between;
 }
@@ -5664,6 +5703,10 @@ ion-toast.info-toast::part(button) {
   margin: 0;
 }
 
+.menu_item_con ion-icon{
+ margin-right: 16px;
+}
+
 /* settings */
 
 .settings {
@@ -5671,7 +5714,7 @@ ion-toast.info-toast::part(button) {
 }
 
 .settings-container {
-  height: calc(100% - 110px);
+  height: calc(100% - 130px);
 }
 
 .logout-btn ion-icon {
@@ -5682,3 +5725,44 @@ ion-toast.info-toast::part(button) {
 .g-back-save-reset ion-icon {
   font-size: 32px;
 }
+
+.ios ion-input {
+  border: 1px solid;
+  border-color: #000000 !important;
+  --padding-start:12px;
+}
+
+.dark .ios ion-input {
+  border: 1px solid;
+  border-color: #ffffff !important;
+  --padding-start:12px;
+}
+
+ion-input {
+  --border: 1px solid;
+  border-color: #000000 !important;
+  border-radius: 8px;
+}
+
+.dark ion-input{
+  --border:1px solid;
+  --border-color: #ffffff !important;
+}
+
+.add-request-btn{
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+}
+
+.add-request-btn ion-button{
+  border-radius: 8px;
+  background: #ffffff;
+  text-transform: capitalize;
+}
+
+.dark .add-request-btn ion-button{
+  border-radius: 8px;
+  background: #000000;
+}
+

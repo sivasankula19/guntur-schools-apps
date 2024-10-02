@@ -26,7 +26,7 @@ function Layout() {
   ];
 
   useEffect(() => {
-    setIsOpen(successToastMsgTex.length);
+    setIsOpen(successToastMsgTex.length >= 1);
     if (successToastMsgTex.length) {
       setTimeout(() => {
         dispatch(setSuccessToast(''));
@@ -35,7 +35,7 @@ function Layout() {
   }, [successToastMsgTex]);
 
   useEffect(() => {
-    setIsOpen(warnToastMsgText.length);
+    setIsOpen(warnToastMsgText.length >= 1);
     if (warnToastMsgText.length) {
       setTimeout(() => {
         dispatch(setWarnToast(''));
@@ -44,7 +44,7 @@ function Layout() {
   }, [warnToastMsgText]);
 
   useEffect(() => {
-    setIsOpen(failureToastMsgText.length);
+    setIsOpen(failureToastMsgText.length >= 1);
     if (failureToastMsgText.length) {
       setTimeout(() => {
         dispatch(setFailureToast(''));
@@ -53,7 +53,7 @@ function Layout() {
   }, [failureToastMsgText]);
 
   useEffect(() => {
-    setIsOpen(infoToastMsgText.length);
+    setIsOpen(infoToastMsgText.length >= 1);
     if (infoToastMsgText.length) {
       setTimeout(() => {
         dispatch(setInfoToast(''));

@@ -5,15 +5,16 @@ import {
     IonSearchbar,
     IonText,
 } from '@ionic/react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { classListDummy, genderListDummy, sectionListDummy, staffDummyArr } from '../../common/utility';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 import CustomizedModal from '../../components/GCustomizedModal';
 import GCustomSelectDrop from '../../components/GCustomSelectDrop';
 import GCustomToggle from '../../components/GCustomToggle';
 import GCustomInput from '../../components/GCustomInput';
+import { setWarnToast } from '../../redux/reducers/toastMessageSlice';
 
 interface IStaffForm {
     staffFirstName: string,
@@ -49,6 +50,11 @@ const StaffListSA: React.FC = () => {
         classId: '',
         sectionId: '',
     });
+    const [unableProceed, setUnableProceed] = useState(false);
+    const currentRole = useSelector((state: any) => state.auth.role);
+    const rootAccess = useSelector((state: any) => state.accessControl.rootAccess);
+    const accessModules = useSelector((state: any) => state.accessControl.accessModules) || [];
+
     const staffData = staffDummyArr;
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -67,7 +73,7 @@ const StaffListSA: React.FC = () => {
     }
 
     const navigateToUser = (id: string) => {
-        navigate(`/user/${id}`, {state:{parentRout:'/staff-list',parentName:'Staff List'}});
+        navigate(`/user/${id}`, { state: { parentRout: '/staff-list', parentName: 'Staff List' } });
     }
 
     const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Staff List', path: '/staff-list' }];
@@ -89,18 +95,20 @@ const StaffListSA: React.FC = () => {
     }
 
     const handleEditClass = (item: any) => {
-        setFormValue({
-            staffFirstName: item.firstName,
-            staffLastName: item.lastName,
-            position: item.position,
-            designation: item.designationId,
-            mobileNumber: item.mobile,
-            emailAddress: item.email,
-            gender: item.gender,
-            staffId: item.id,
-        });
-        setIsEdit(true);
-        setIsAddClassModal(true);
+        if (!unableProceed) {
+            setFormValue({
+                staffFirstName: item.firstName,
+                staffLastName: item.lastName,
+                position: item.position,
+                designation: item.designationId,
+                mobileNumber: item.mobile,
+                emailAddress: item.email,
+                gender: item.gender,
+                staffId: item.id,
+            });
+            setIsEdit(true);
+            setIsAddClassModal(true);
+        }
     }
 
     const handleAdd = () => {
@@ -138,6 +146,26 @@ const StaffListSA: React.FC = () => {
         setFilterValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     }
 
+    const handleRaiseRequest = () => {
+        // pass the exact state here!...
+        navigate('/raise-request',{state:{}})
+    }
+
+    useEffect(() => {
+        if (currentRole === 'Teacher') {
+            if (!rootAccess) {
+                console.log(accessModules);
+                const attendanceModuleItem = accessModules.find((att: any) => att?.moduleId === 'staffList');
+                if (attendanceModuleItem?.moduleRootAccess) {
+                    setUnableProceed(false);
+                } else {
+                    setUnableProceed(true);
+                    dispatch(setWarnToast('Unable to proceed!, Please get permission from Admin'));
+                }
+            }
+        }
+    }, []);
+
     return (
         <div className='g_full_height'>
             <div className="g_flex g-space-between g-align-center bread_toggle_container">
@@ -147,7 +175,7 @@ const StaffListSA: React.FC = () => {
                 </div>
             </div>
             <div>
-                <IonButton className='br-ion-12 m-top-12 g_txt_cap add-employee-student' onClick={handleAdd} fill="outline" expand="block">Add Employee</IonButton>
+                <IonButton disabled={unableProceed} className='br-ion-12 m-top-12 g_txt_cap add-employee-student' onClick={handleAdd} fill="outline" expand="block">Add Employee</IonButton>
             </div>
             <div className={`${isFilterEnabled && 'filter_container'}`}>
                 {isFilterEnabled && (
@@ -201,7 +229,7 @@ const StaffListSA: React.FC = () => {
                                         <span className="user_id_data g_text_ellipses">ID : {item.id}</span>
                                     </div>
                                     <div className="g_flex">
-                                        <a onClick={() => handleViewMore(item.id, currentSelected === item.id)}>{currentSelected === item.id ? 'View Less' : 'View More'}</a> <a className='edit-a-student' onClick={() => handleEditClass(item)}>Edit</a>
+                                        <a onClick={() => handleViewMore(item.id, currentSelected === item.id)}>{currentSelected === item.id ? 'View Less' : 'View More'}</a> <a className={`edit-a-student ${unableProceed ? 'disabled-edit' : ''}`} onClick={() => handleEditClass(item)}>Edit</a>
                                     </div>
                                 </div>
                             </div>
@@ -235,6 +263,9 @@ const StaffListSA: React.FC = () => {
                     <GCustomInput name={'defaultPassword'} value={formValue['defaultPassword'] || ''} onChange={handleInput} label={'Default Password'} placeholder={'Default User Password'} />
                 )}
             </CustomizedModal>
+            {unableProceed && (<div className='g_txt_center add-request-btn'>
+                <IonButton className='br-ion-8' onClick={handleRaiseRequest} fill="outline" > Raise Request! </IonButton>
+            </div>)}
         </div>
     );
 };

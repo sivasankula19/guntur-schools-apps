@@ -17,7 +17,6 @@ function Settings() {
     dispatch(logout());
     dispatch(resetAccessState())
     navigate('/home');
-
   }
 
   return (

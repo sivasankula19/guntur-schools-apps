@@ -25,6 +25,7 @@ const TimeTableSA: React.FC = () => {
 
     const fromModal = useRef<HTMLIonModalElement>(null);
     const toModal = useRef<HTMLIonModalElement>(null);
+    const classScrollRef = useRef<any>(null);
 
     useEffect(() => {
         const classListData: IClassItem[] = [
@@ -98,18 +99,35 @@ const TimeTableSA: React.FC = () => {
         console.log('To Time:', toTime);
     };
 
+    useEffect(() => {
+        setTimeout(() => {
+            if (selectedClass && classScrollRef.current) {
+                const container = classScrollRef.current;
+                const selectedButton = container.querySelector(`.${selectedClass}`);
+
+                if (selectedButton) {
+                    const containerRect = container.getBoundingClientRect();
+                    const buttonRect = selectedButton.getBoundingClientRect();
+                    const scrollLeft = buttonRect.left - containerRect.left + container.scrollLeft;
+                    container.scrollTo({ left: scrollLeft - 10, behavior: 'smooth' });
+                }
+            }
+        }, 1);
+
+    }, [selectedClass]);
+
     return (
         <div className='time_table_sa'>
             <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
             <div className='table_scrollable'>
                 <div className='m-h-12'>
-                    <div className='scroll_container'>
+                    <div className='scroll_container' ref={classScrollRef}>
                         {classList.map((cls: IClassItem) => (
                             <div
                                 id={cls.classId}
                                 onClick={() => handleUpdateCls(cls.classId)}
                                 key={cls.classId}
-                                className={`scroll_item ${cls.classId === selectedClass && 'selected'}`}
+                                className={`scroll_item ${cls.classId} ${cls.classId === selectedClass && 'selected'}`}
                             >
                                 <IonText>
                                     <p>{cls.className}</p>

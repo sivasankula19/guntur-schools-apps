@@ -22,6 +22,7 @@ const Achievements: React.FC = () => {
   const [newAchievement, setNewAchievement] = useState<any>({ category: '', achievement_name: '', sub_category: '', level: '', presented_to: '', images: '', grand_total: '', location: '', date: '' });
   const [popoverOpen, setPopoverOpen] = useState(false);
   const isStudent = useSelector((state: any) => state.auth.role) === 'Student';
+  const isAuthenticated = useSelector((state: any) => state.auth.isAuthenticated);
   const formInitialVal = {
     category: '',
     achievementName: '',
@@ -189,9 +190,9 @@ const Achievements: React.FC = () => {
 
   return (
     <div className="achievements g_full_height">
-      {!isStudent && <GBackSaveReset handleReset={handleReset} handleSave={handleSave} />}
-      <div className={`${!isStudent ? 'achievement-m-sa' : 'g_full_height o-flow-y'}`}>
-        {!isStudent &&
+      {(!isStudent && isAuthenticated) && <GBackSaveReset handleReset={handleReset} handleSave={handleSave} />}
+      <div className={`${(!isStudent && isAuthenticated) ? 'achievement-m-sa' : 'g_full_height o-flow-y'}`}>
+        {(!isStudent && isAuthenticated) &&
           <div className='p-b-10'>
             <IonButton className='br-ion-12 g_txt_cap g_full_width ' onClick={openPopover} fill="outline" expand="block">Add Achievement</IonButton>
           </div>}

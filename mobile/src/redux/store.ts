@@ -10,7 +10,7 @@ import storage from 'redux-persist/lib/storage'; // Defaults to localStorage
 const persistConfig = {
   key: 'root', 
   storage,
-  whitelist: ['counter', 'darkMode', 'auth', 'school'],
+  whitelist: ['counter', 'darkMode', 'auth', 'school','accessControl'],
   blacklist: ['register'],
 };
 

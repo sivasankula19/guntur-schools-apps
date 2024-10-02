@@ -7,7 +7,7 @@ import {
   IonItem,
   IonText,
 } from '@ionic/react';
-import { callOutline, expandOutline, imageOutline, informationCircleOutline, newspaperOutline, schoolOutline, trophyOutline } from 'ionicons/icons';
+import { arrowBackOutline, callOutline, expandOutline, imageOutline, informationCircleOutline, newspaperOutline, schoolOutline, trophyOutline } from 'ionicons/icons';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authenticateUser } from '../../redux/reducers/authSlice';
@@ -50,8 +50,8 @@ const Home: React.FC = () => {
     } else if (responseData.role === 'Teacher') {
       // logged in roles as Teacher / staff then call or get the access modules from api!... and use in dispatch
       const rolesData = [
-        { id: 1, moduleName: 'Attendance', moduleId: 'attendance', moduleRootAccess: false, accessibleClasses: ['ghmd-10-a', 'ghmd-10-b', 'ghmd-9-a'] },
-        { id: 1, moduleName: 'Progress Card', moduleId: 'progressCard', moduleRootAccess: false, accessibleClasses: ['ghmd-10-a', 'ghmd-10-b', 'ghmd-9-a', 'ghmd-8-a', 'ghmd-9-a'] },
+        { id: 1, moduleName: 'Attendance', moduleId: 'attendance', moduleRootAccess: false, accessibleClasses: [{classId:'10-cls', sectionId:'a-section'},{classId:'9-cls', sectionId:'b-section'},{classId:'9-cls', sectionId:'a-section'},{classId:'9-cls', sectionId:'c-section'},] },
+        { id: 1, moduleName: 'Progress Card', moduleId: 'progressCard', moduleRootAccess: false, accessibleClasses: [{classId:'10-cls', sectionId:'a-section'},{classId:'9-cls', sectionId:'b-section'},{classId:'9-cls', sectionId:'a-section'},{classId:'9-cls', sectionId:'c-section'},] },
         { id: 1, moduleName: 'Students List', moduleId: 'studentsList', moduleRootAccess: true, accessibleClasses: ["*"] },
         { id: 1, moduleName: 'Staff List', moduleId: 'staffList', moduleRootAccess: false, accessibleClasses: [] },
         { id: 1, moduleName: 'Create Class - Section', moduleId: 'create-cls-sec', moduleRootAccess: true, accessibleClasses: ["*"] },
@@ -96,11 +96,21 @@ const Home: React.FC = () => {
         userNameRef.current.setFocus();
       }
     }, 0)
-  }, [userNameRef])
+  }, [userNameRef]);
+
+  const handleBack = () => {
+    navigate('/select-school');
+  }
 
   return (
     <div className='home'>
       <div className='home-container'>
+        <div className='back-save-icons p-h-16'>
+          <div className='g_flex g-align-center'>
+            <IonIcon onClick={handleBack} icon={arrowBackOutline}></IonIcon>
+            <IonText onClick={handleBack}><p>Back</p></IonText>
+          </div>
+        </div>
         <IonCard>
           <IonCardContent>
             <div className='logo'>logo</div>
@@ -147,11 +157,10 @@ const Home: React.FC = () => {
           ))}
         </div>
       </div>
-      <div className='location-control'>
-        <div className='location'>
-          <div><IonText>Google Map</IonText></div>
-        </div>
-        <IonIcon icon={expandOutline}></IonIcon>
+      <div className='g-maps'>
+        <IonText>
+          <p>Google Maps!</p>
+        </IonText>
       </div>
     </div>
   );

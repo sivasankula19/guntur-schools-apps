@@ -8,12 +8,13 @@ import {
 import React, { useEffect, useState } from 'react';
 import { classListDummy, genderListDummy, sectionListDummy, studentDummyData } from '../../common/utility';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router';
 import CustomizedModal from '../../components/GCustomizedModal';
 import GCustomSelectDrop from '../../components/GCustomSelectDrop';
 import GCustomToggle from '../../components/GCustomToggle';
 import GCustomInput from '../../components/GCustomInput';
+import { setWarnToast } from '../../redux/reducers/toastMessageSlice';
 
 interface IStudentForm {
     studentFirstName: string,
@@ -53,6 +54,11 @@ const StudentListSA: React.FC = () => {
         classId: '',
         sectionId: '',
     });
+    const [unableProceed, setUnableProceed] = useState(false);
+    const currentRole = useSelector((state: any) => state.auth.role);
+    const rootAccess = useSelector((state: any) => state.accessControl.rootAccess);
+    const accessModules = useSelector((state: any) => state.accessControl.accessModules) || [];
+
     const studentsDataList = studentDummyData;
     const stdData = [{
         studentName: 'Sankula Siva', profileImage:
@@ -100,9 +106,9 @@ const StudentListSA: React.FC = () => {
         { id: 4, elementName: 'Home Work', redirectTo: '/home-work' },
     ]
 
-    const handleNavigate = (item: any, studentInfo:any) => {
+    const handleNavigate = (item: any, studentInfo: any) => {
         // send the params according to...!
-        navigate(item.redirectTo, { state: { search, filterValues,redirectFrom:'/students-list',redirectFromName:'Students List', classId:studentInfo.classId, sectionId:studentInfo.sectionId } });
+        navigate(item.redirectTo, { state: { search, filterValues, redirectFrom: '/students-list', redirectFromName: 'Students List', classId: studentInfo.classId, sectionId: studentInfo.sectionId } });
     }
 
     const handleViewMore = (id: string, isClose: boolean = false) => {
@@ -150,6 +156,25 @@ const StudentListSA: React.FC = () => {
         setFilterValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     }
 
+    const handleRaiseRequest = () => {
+        // pass the exact state here!...
+        navigate('/raise-request',{state:{}})
+    }
+
+    useEffect(() => {
+        if (currentRole === 'Teacher') {
+            if (!rootAccess) {
+                console.log(accessModules);
+                const attendanceModuleItem = accessModules.find((att: any) => att?.moduleId === 'studentsList');
+                if (attendanceModuleItem?.moduleRootAccess) {
+                    setUnableProceed(false);
+                } else {
+                    setUnableProceed(true);
+                    dispatch(setWarnToast('Unable to proceed!, Please get permission from Admin'));
+                }
+            }
+        }
+    }, []);
 
     return (
         <div className='g_full_height'>
@@ -160,7 +185,7 @@ const StudentListSA: React.FC = () => {
                 </div>
             </div>
             <div>
-                <IonButton className='br-ion-12 m-top-12 g_txt_cap add-employee-student' onClick={handleAdd} fill="outline" expand="block">Add Student</IonButton>
+                <IonButton disabled={unableProceed} className='br-ion-12 m-top-12 g_txt_cap add-employee-student' onClick={handleAdd} fill="outline" expand="block">Add Student</IonButton>
             </div>
             <div className={`${isFilterEnabled && 'filter_container'}`}>
                 {isFilterEnabled && (
@@ -214,7 +239,7 @@ const StudentListSA: React.FC = () => {
                                         <span className="user_id_data g_text_ellipses">ID : {item.id}</span>
                                     </div>
                                     <div className="g_flex">
-                                        <a onClick={() => handleViewMore(item.id, currentSelected === item.id)}>{currentSelected === item.id ? 'View Less' : 'View More'}</a> <a className='edit-a-student' onClick={() => handleEditStudentInfo(item)}>Edit</a>
+                                        <a onClick={() => handleViewMore(item.id, currentSelected === item.id)}>{currentSelected === item.id ? 'View Less' : 'View More'}</a> <a className={`edit-a-student ${unableProceed ? 'disabled-edit' : ''}`} onClick={() => handleEditStudentInfo(item)}>Edit</a>
                                     </div>
                                 </div>
                             </div>
@@ -248,6 +273,9 @@ const StudentListSA: React.FC = () => {
                     <GCustomInput name={'defaultPassword'} value={formValue['defaultPassword'] || ''} onChange={handleInput} label={'Default Password'} placeholder={'Default User Password'} />
                 )}
             </CustomizedModal>
+            {unableProceed && (<div className='g_txt_center add-request-btn'>
+                <IonButton className='br-ion-8' onClick={handleRaiseRequest} fill="outline" > Raise Request! </IonButton>
+            </div>)}
         </div>
     );
 };

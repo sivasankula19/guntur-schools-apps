@@ -146,14 +146,14 @@ function ProgressUnitCardAdd() {
             onClick={() => {
               setViewMode('list');
             }}
-            className={`list-view-icon ${viewMode === 'list' && 'selected'}`}
+            className={`list-view-icon ${viewMode === 'list' ? 'selected' : ''}`}
             icon={listSharp}
           ></IonIcon>
           <IonIcon
             onClick={() => {
               setViewMode('grid');
             }}
-            className={`grid-view-icon ${viewMode === 'grid' && 'selected'}`}
+            className={`grid-view-icon ${viewMode === 'grid' ? 'selected' : ''}`}
             icon={appsSharp}
           ></IonIcon>
         </div>
