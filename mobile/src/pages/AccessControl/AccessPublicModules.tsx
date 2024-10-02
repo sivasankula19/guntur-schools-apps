@@ -6,14 +6,14 @@ import { useNavigate } from 'react-router';
 import CustomizedModal from '../../components/GCustomizedModal';
 import GCustomToggle from '../../components/GCustomToggle';
 
-function AccessPrivateModules() {
+function AccessPublicModules() {
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [chipsData, setChipsData] = useState<any>([]);
     const breadCrumbsValue = [
         { bName: 'Home', path: '/dashboard' },
         { bName: 'Access Control', path: '/access-control' },
-        { bName: 'Private Modules', path: '/access-private-modules' }
+        { bName: 'Public Modules', path: '/access-public-modules' }
     ];
 
     const handleSave = () => {
@@ -104,4 +104,4 @@ function AccessPrivateModules() {
     )
 }
 
-export default AccessPrivateModules;
+export default AccessPublicModules;

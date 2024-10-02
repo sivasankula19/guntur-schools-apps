@@ -82,7 +82,7 @@ const Documents: React.FC = () => {
     <div className='g_full_height'>
       <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
       <div className='p-h-16 m-bottom-10'>
-        <IonButton className='br-ion-12 m-top-12 g_txt_cap' onClick={handleAdd} fill="outline" expand="block">Add Class</IonButton>
+        <IonButton className='br-ion-12 m-top-12 g_txt_cap' onClick={handleAdd} fill="outline" expand="block">Add Document</IonButton>
       </div>
       <div className="documents">
         <IonAccordionGroup>
