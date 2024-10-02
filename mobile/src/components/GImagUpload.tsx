@@ -22,7 +22,6 @@ function GImagUpload({ onFileChange, uploadIcon = cloudUploadOutline, label = 'U
     };
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        debugger
         const files = event.target.files;
         if (files) {
             const fileArray = Array.from(files);

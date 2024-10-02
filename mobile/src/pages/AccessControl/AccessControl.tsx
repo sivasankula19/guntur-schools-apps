@@ -76,13 +76,13 @@ function AccessControl() {
     };
 
     const classListWithSections = [
-        { id: "ghmd-10-a", shortName: '10-A', classSecName: '10th A Sec', classId: 'ghmd-10th', sectionId: 'ghmd-sec-a' },
-        { id: "ghmd-10-b", shortName: '10-B', classSecName: '10th B Sec', classId: 'ghmd-10th', sectionId: 'ghmd-sec-b' },
-        { id: "ghmd-9-a", shortName: '9-A', classSecName: '9th A Sec', classId: 'ghmd-9th', sectionId: 'ghmd-sec-a' },
-        { id: "ghmd-9-b", shortName: '9-B', classSecName: '9th B Sec', classId: 'ghmd-9th', sectionId: 'ghmd-sec-b' },
-        { id: "ghmd-8-a", shortName: '8-A', classSecName: '8th A Sec', classId: 'ghmd-8th', sectionId: 'ghmd-sec-a' },
-        { id: "ghmd-8-b", shortName: '8-B', classSecName: '8th B Sec', classId: 'ghmd-8th', sectionId: 'ghmd-sec-b' },
-        { id: "ghmd-8-c", shortName: '8-C', classSecName: '8th C Sec', classId: 'ghmd-8th', sectionId: 'ghmd-sec-c' },
+        { id: "ghmd-10-a", shortName: '10-A', classSecName: '10th A Sec', classId: '10-cls', sectionId: 'a-section' },
+        { id: "ghmd-10-b", shortName: '10-B', classSecName: '10th B Sec', classId: '10-cls', sectionId: 'b-section' },
+        { id: "ghmd-9-a", shortName: '9-A', classSecName: '9th A Sec', classId: '9-cls', sectionId: 'a-section' },
+        { id: "ghmd-9-b", shortName: '9-B', classSecName: '9th B Sec', classId: '9-cls', sectionId: 'b-section' },
+        { id: "ghmd-8-a", shortName: '8-A', classSecName: '8th A Sec', classId: '8-cls', sectionId: 'a-section' },
+        { id: "ghmd-8-b", shortName: '8-B', classSecName: '8th B Sec', classId: '8-cls', sectionId: 'b-section' },
+        { id: "ghmd-8-c", shortName: '8-C', classSecName: '8th C Sec', classId: '8-cls', sectionId: 'c-section' },
     ]
 
     const handleStudentChange = (classInfo: any) => {

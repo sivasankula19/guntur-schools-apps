@@ -23,7 +23,8 @@ import {
   cubeOutline,
   gridOutline,
   chatboxOutline,
-  documentOutline
+  documentOutline,
+  timeOutline
 } from 'ionicons/icons';
 
 export const RoutesListDynamic: AppPage[] = [
@@ -157,7 +158,6 @@ export const RoutesListDynamic: AppPage[] = [
 
 export const chipsDataPublic = [
   { id: 14, moduleName: 'Ex-Circular', icon: ribbonOutline, redirectTo: '/ex-circular' },
-  { id: 888, moduleName: 'Assets', icon: businessOutline, redirectTo: '/assets' },
   { id: 15, moduleName: 'Gallery', icon: imageOutline, redirectTo: '/gallery' },
   { id: 16, moduleName: 'Achievements', icon: trophyOutline, redirectTo: '/achievements' },
   { id: 17, moduleName: 'Contact-Us', icon: callOutline, redirectTo: '/contact-us' },
@@ -170,6 +170,7 @@ export const chipsDataPrivate = [
   { id: 3, moduleName: 'Edit Progress Card', icon: documentTextOutline, redirectTo: '/progress-card-unit-add' },
   { id: 4, moduleName: 'Sections', icon: cubeOutline, redirectTo: '/school-sections' },
   { id: 5, moduleName: 'Classes', icon: gridOutline, redirectTo: '/school-classes' },
+  { id: 20, moduleName: 'Time Table', icon: timeOutline, redirectTo: '/time-table' },
   { id: 6, moduleName: 'Class Attendance', icon: calendarOutline, redirectTo: '/attendance-by-class' },
   { id: 7, moduleName: 'Subject Progress Card', icon: documentTextOutline, redirectTo: '/progress-card-class-subject' },
   { id: 8, moduleName: 'Home Works', icon: bookOutline, redirectTo: '/home-work' },
@@ -177,6 +178,7 @@ export const chipsDataPrivate = [
   { id: 10, moduleName: 'Messages', icon: chatboxOutline, redirectTo: '/messages' },
   { id: 11, moduleName: 'Documents', icon: documentOutline, redirectTo: '/documents' },
   { id: 12, moduleName: 'Calendar', icon: calendarOutline, redirectTo: '/calendar' },
+  { id: 888, moduleName: 'Assets', icon: businessOutline, redirectTo: '/assets' },
   { id: 13, moduleName: 'Vibe', icon: newspaperOutline, redirectTo: '/school-vibe' },
   { id: 14, moduleName: 'Exam Schedules', icon: calendarOutline, redirectTo: '/exam-schedules' },
   { id: 15, moduleName: 'Fees Dues', icon: walletOutline, redirectTo: '/fee-structure' },

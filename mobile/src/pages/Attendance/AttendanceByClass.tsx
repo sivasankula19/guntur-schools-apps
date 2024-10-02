@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import GBreadCrumbs from '../../components/GBreadCrumbs'
 import { IonButton, IonCard, IonCardContent, IonIcon, IonText } from '@ionic/react';
 import { caretBackOutline, caretForwardOutline, chevronBackOutline, chevronForwardOutline } from 'ionicons/icons';
-import { classListDummy, getDatesForMonth, sectionListDummy, transformListToGrid,fiterDropdownValues } from '../../common/utility';
+import { classListDummy, getDatesForMonth, sectionListDummy, transformListToGrid, fiterDropdownValues } from '../../common/utility';
 import { useLocation, useNavigate } from 'react-router';
 import GCustomSelectDrop from '../../components/GCustomSelectDrop';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,10 +13,11 @@ function AttendanceByClass() {
     const todayFormate = `${todayDate.getMonth() + 1}/${todayDate.getDate()}/${todayDate.getFullYear()}`;
     const [currentMY, setCurrentMY] = useState<any>({ month: todayDate.getMonth() + 1, year: todayDate.getFullYear() });
     const [gridAttendance, setGridAttendance] = useState<any>([]);
+    const currentRole = useSelector((state: any) => state.auth.role);
     const [selectedDate, setSelectedDate] = useState<string>(todayFormate);
-    const attendanceAccessClasses = useSelector((state: any) => state.accessControl.accessModules) || [];
+    const accessModules = useSelector((state: any) => state.accessControl.accessModules) || [];
     const rootAccess = useSelector((state: any) => state.accessControl.rootAccess);
-    const [permissionEnable, setPermissionEnable] = useState(false);
+    const [unableProceed, setUnableProceed] = useState(false);
     const location = useLocation();
     const dispatch = useDispatch();
     const [filterValues, setFilterValue] = useState({
@@ -24,10 +25,8 @@ function AttendanceByClass() {
         sectionId: '',
     });
     const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-
     const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Class Attendance', path: '/attendance-by-class' },];
 
-    
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -39,26 +38,34 @@ function AttendanceByClass() {
         if (location.state) {
             setFilterValue(({ classId: location.state.classId || '', sectionId: location.state.sectionId || '' }))
             setSelectedDate(location.state.selectedDate);
-        }else{
-        const filterDropdownSet=fiterDropdownValues.find(item=>item.moduleName=="Attendance");
-           
-            if(filterDropdownSet){
+        } else {
+            const filterDropdownSet = fiterDropdownValues.find(item => item.moduleName == "Attendance");
+            if (filterDropdownSet) {
                 setFilterValue(filterDropdownSet)
             }
         }
     }, [location.state]);
 
     const handleDateSelected = (day: string) => {
-        if (day) {
+        if (day && compareDates(day, todayFormate)) {
             setSelectedDate(day);
         }
     }
 
     const handleTodaySelected = () => {
+        setCurrentMY({ month: todayDate.getMonth() + 1, year: todayDate.getFullYear() })
         setSelectedDate(todayFormate)
     }
 
-    console.log(selectedDate, currentMY)
+    const compareDates = (day1: string, day2: string): boolean => {
+        if (day1 && day2) {
+            const date1 = new Date(day1);
+            const date2 = new Date(day2);
+            return date1 <= date2
+        }
+        return false
+    }
+
     const handleDateChange = (action: string) => {
         setCurrentMY((prevState: any) => {
             let newMonth = prevState.month;
@@ -98,12 +105,19 @@ function AttendanceByClass() {
     };
 
     useEffect(() => {
-        if (!rootAccess) {
-            if (filterValues.classId && filterValues.sectionId) {
-                console.log(attendanceAccessClasses);
-                // add exact conditions!
-                dispatch(setWarnToast('Unable to proceed!, Please get permission from Admin'));
-                setPermissionEnable(true);
+        if (currentRole === 'Teacher') {
+            if (!rootAccess) {
+                if (filterValues.classId && filterValues.sectionId) {
+                    console.log(accessModules);
+                    const attendanceModuleItem = accessModules.find((att: any) => att?.moduleId === 'attendance');
+                    console.log(attendanceModuleItem, 'attendanceModuleItem')
+                    if ((attendanceModuleItem.accessibleClasses.find((accItem: any) => accItem.classId === filterValues.classId && accItem.sectionId === filterValues.sectionId)) || attendanceModuleItem?.accessibleClasses[0] === '*') {
+                        setUnableProceed(false);
+                    } else {
+                        setUnableProceed(true);
+                        dispatch(setWarnToast('Unable to proceed!, Please get permission from Admin'));
+                    }
+                }
             }
         }
     }, [filterValues]);
@@ -112,6 +126,11 @@ function AttendanceByClass() {
     const getSelectedDateParse = (flag: number): number => {
         const [month, date, year] = selectedDate.split('/');
         return flag === 1 ? Number(date) : flag === 2 ? Number(month) : flag === 3 ? Number(year) : 0
+    }
+
+    const handleRaiseRequest = () => {
+        // pass the exact state here!...
+        navigate('/raise-request',{state:{}})
     }
 
     return (
@@ -138,7 +157,7 @@ function AttendanceByClass() {
                         <IonIcon onClick={() => handleDateChange('previousYear')} icon={caretBackOutline}></IonIcon>
                         <IonIcon onClick={() => handleDateChange('previousMonth')} icon={chevronBackOutline}></IonIcon>
                         <div className="month_year_view g_flex g-space-evenly g-align-center ">
-                            <IonText className="month_year">{months[currentMY.month-1]}</IonText>
+                            <IonText className="month_year">{months[currentMY.month - 1]}</IonText>
                             <IonText className="month_year">{currentMY.year}</IonText>
                         </div>
                         <IonIcon onClick={() => handleDateChange('nextMonth')} icon={chevronForwardOutline}></IonIcon>
@@ -163,7 +182,8 @@ function AttendanceByClass() {
                                     key={`grids-data-${index}`} className="g_flex row-item">
                                     {gridItem.map((dayItem: any, subIndex: number) => (<div
                                         key={`days-${subIndex}`} className="day-list-map g_flex g-align-center g-justify-center">
-                                        <div id={dayItem?.date} onClick={() => handleDateSelected(dayItem?.date)} className={`day-item-display${dayItem?.date === selectedDate ? ' today-selected' : ''}${dayItem?.attendanceMarked >= 1 ? ' att-marked' : ''}${dayItem?.isSchoolHoliday ? ' scl-holiday' : ''}`}>
+                                        <div id={dayItem?.date} onClick={() => handleDateSelected(dayItem?.date)}
+                                            className={`day-item-display ${compareDates(dayItem?.date, todayFormate) ? ' enabled-date-field' : ' disabled-date-field'} ${dayItem?.date === selectedDate ? ' today-selected' : ''}${dayItem?.attendanceMarked >= 1 ? ' att-marked' : ''}${dayItem?.isSchoolHoliday ? ' scl-holiday' : ''}`}>
                                             <IonText className="ion_text_day_view">{dayItem?.currentDay}</IonText>
                                         </div>
                                     </div>))}
@@ -176,7 +196,7 @@ function AttendanceByClass() {
                                     </div>
                                     <div className="width-50 g_flex g-space-evenly g-align-center ">
                                         <IonText className="month_year">{getSelectedDateParse(1)}</IonText>
-                                        <IonText className="month_year">{months[getSelectedDateParse(2)-1]}</IonText>
+                                        <IonText className="month_year">{months[getSelectedDateParse(2) - 1]}</IonText>
                                         <IonText className="month_year">{getSelectedDateParse(3)}</IonText>
                                     </div>
                                 </div>
@@ -192,6 +212,9 @@ function AttendanceByClass() {
                         Continue With {`${classDummyData.find(i => i.id === filterValues.classId)?.label || ''} - ${sectionDummyData.find(i => i.id === filterValues.sectionId)?.label || ''}`}
                     </IonButton>
                 </div>
+                {unableProceed && (<div className='g_txt_center add-request-btn'>
+                    <IonButton className='br-ion-8' onClick={handleRaiseRequest} fill="outline" > Raise Request! </IonButton>
+                </div>)}
             </div>
         </div>
     )

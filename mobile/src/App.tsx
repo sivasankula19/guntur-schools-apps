@@ -92,6 +92,8 @@ import ModuleAccess from './pages/AccessControl/ModuleAccess';
 import Settings from './pages/AccessControl/Settings';
 import PeopleTimeTable from './pages/TimeTable/PeopleTimeTable';
 import ProgressUnitCardAdd from './pages/ProgressCard/ProgressUnitCardAdd';
+import AppConfigurations from './pages/App-Configurations/AppConfigurations';
+import RaiseRequest from './pages/App-Configurations/RaiseRequest';
 
 setupIonicReact({
   animated: true,
@@ -106,10 +108,10 @@ const App: React.FC = () => {
   const isUserAcknowledgedMode = useSelector(
     (state: any) => state?.darkMode.isUserAcknowledgedMode
   );
-  // const fullState = useSelector((state: any) => state);
+  const fullState = useSelector((state: any) => state);
   const school = useSelector((state: any) => state.school.selectedSchool);
   const isAuthenticated = useSelector((state: any) => state.auth.isAuthenticated);
-  // console.log(fullState)
+  console.log(fullState)
   // const preLoginModules = useSelector((state:any) => state.)
   const ionRouter = useIonRouter();
 
@@ -225,9 +227,11 @@ const App: React.FC = () => {
                 <Route path='/school-sections' element={<SchoolSections />} />
                 <Route path='/my-notifications' element={<NotificationsList />} />
                 <Route path='/settings' element={<Settings />} />
-                <Route path='/access-control' element={<AccessControl />} />
-                <Route path='/access-public-modules' element={<AccessPrivateModules />} />
-                <Route path='/module-access' element={<ModuleAccess />} />
+                <Route path='/access-control' element={<AccessControl />} /> //- parent for access
+                <Route path='/access-public-modules' element={<AccessPrivateModules />} /> //parent for access - child 1
+                <Route path='/module-access' element={<ModuleAccess />} /> // parent for access - child 2
+                <Route path='/app-configurations' element={<AppConfigurations />} />
+                <Route path='/raise-request' element={<RaiseRequest />} />
                 {/* public modules! */}
                 <Route path='/gallery' element={<Gallery />} />
                 <Route path='/ex-circular' element={<ExCircularActivities />} />

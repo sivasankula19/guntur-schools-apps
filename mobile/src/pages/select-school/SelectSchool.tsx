@@ -11,12 +11,12 @@ import {
   IonText,
 } from '@ionic/react';
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import Footer from '../../components/Footer';
 import { schoolsListData } from '../../common/utility';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setSelectedSchool } from '../../redux/reducers/schoolSlice';
-import { closeCircleOutline } from 'ionicons/icons';
+import { checkmarkCircleOutline, closeCircleOutline } from 'ionicons/icons';
 
 interface ISchoolObj {
   schoolId: string;
@@ -26,23 +26,25 @@ interface ISchoolObj {
 const SelectSchool: React.FC = () => {
   const [search, setSearch] = useState('');
   const [schoolsList, setSchoolsList] = useState<ISchoolObj[]>([]);
-  const [selectedSchoolVal, setSelectedSchoolVal] = useState<ISchoolObj | null>(
-    null
-  );
+  const getSelectedSchool = useSelector((state: any) => state.school.selectedSchool);
+  // const [selectedSchoolVal, setSelectedSchoolVal] = useState<ISchoolObj | null>(null);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSelectedSchool = (selectedScl: ISchoolObj) => {
-    if (selectedSchoolVal?.schoolId === selectedScl.schoolId) {
-      setSelectedSchoolVal(null)
+    if (getSelectedSchool?.schoolId === selectedScl.schoolId) {
+      // setSelectedSchoolVal(null)
+      dispatch(setSelectedSchool(null));
     } else {
-      setSelectedSchoolVal(selectedScl);
+      dispatch(setSelectedSchool(selectedScl));
+      // setSelectedSchoolVal(selectedScl);
     }
   };
 
   const handleProceed = () => {
-    dispatch(setSelectedSchool(selectedSchoolVal));
+    // dispatch(setSelectedSchool(selectedSchoolVal));
     navigate('/home');
   };
 
@@ -53,9 +55,8 @@ const SelectSchool: React.FC = () => {
   };
 
   useEffect(() => {
-    setSchoolsList(schoolsListData)
-  }, [])
-
+    setSchoolsList(schoolsListData);
+  }, []);
 
   return (
     <IonPage className="my_page">
@@ -84,32 +85,40 @@ const SelectSchool: React.FC = () => {
                   ></IonSearchbar>
                   <div className="school_list_show_container">
                     <IonList>
-                      {schoolsList.map((schoolItem, index) => (
-                        <IonItem
-                          onClick={() => handleSelectedSchool(schoolItem)}
-                          className={`${index === 0 ? 'first_item' : ''} ${selectedSchoolVal?.schoolId ===
-                            schoolItem.schoolId ? 'school_item_selected' : ''
-                            }`}
-                          key={schoolItem.schoolId}
-                        >
-                          <div className='select_an_item'>
-                            <IonText className={`${selectedSchoolVal?.schoolId === schoolItem.schoolId ? 'is_icon_present' : ''}`}>
-                              <p>{schoolItem.schoolName}</p>
-                            </IonText>
-                            {selectedSchoolVal && selectedSchoolVal.schoolId === schoolItem.schoolId && <>
-                              <IonIcon icon={closeCircleOutline}></IonIcon>
-                            </>}
-                          </div>
+                      {schoolsList.length ? (<>
+                        {schoolsList.map((schoolItem, index) => (
+                          <IonItem
+                            onClick={() => handleSelectedSchool(schoolItem)}
+                            className={`${index === 0 ? 'first_item' : ''} ${getSelectedSchool?.schoolId ===
+                              schoolItem.schoolId ? 'school_item_selected' : ''
+                              }`}
+                            key={schoolItem.schoolId}
+                          >
+                            <div className='select_an_item'>
+                              <IonText className={`${getSelectedSchool?.schoolId === schoolItem.schoolId ? 'is_icon_present' : ''}`}>
+                                <p>{schoolItem.schoolName}</p>
+                              </IonText>
+                              {getSelectedSchool && getSelectedSchool?.schoolId === schoolItem.schoolId && <>
+                                <IonIcon icon={checkmarkCircleOutline}></IonIcon>
+                              </>}
+                            </div>
+                          </IonItem>
+                        ))}
+                      </>) : (<>
+                        {search.length ? <>
+                          <IonText className='g_txt_center'><p>{`No Schools With ${search} Keyword!.`}</p></IonText>
+                        </> : <>
+                          <IonText className='g_txt_center'><p>Please Try Again Later!.</p></IonText>
+                        </>}
+                      </>)}
 
-                        </IonItem>
-                      ))}
                     </IonList>
                   </div>
                 </div>
                 <div className="select_btn_holder">
                   <IonButton
                     onClick={handleProceed}
-                    disabled={selectedSchoolVal === null}
+                    disabled={getSelectedSchool === null}
                   >
                     Proceed
                   </IonButton>

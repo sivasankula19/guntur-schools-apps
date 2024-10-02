@@ -19,7 +19,7 @@ import { setMode } from '../redux/reducers/darkModeSlice';
 import React, { useEffect, useState } from 'react';
 import { setPreLoginPublicView } from '../redux/reducers/schoolSlice';
 import GCustomToggle from './GCustomToggle';
-import { homeOutline, keyOutline, settingsOutline } from 'ionicons/icons';
+import { cogOutline, homeOutline, keyOutline, settingsOutline } from 'ionicons/icons';
 
 const appPages: AppPage[] = RoutesListDynamic;
 
@@ -42,6 +42,7 @@ const Menu: React.FC = () => {
     let chipsData = [...chipsDataPrivate1];
     if (currentRole === 'SuperAdmin') {
       chipsData.unshift({ id: 999, moduleName: 'Access Control', icon: keyOutline, redirectTo: '/access-control' });
+      chipsData.unshift({ id: 998, moduleName: 'Configurations', icon: cogOutline, redirectTo: '/app-configurations' });
     }
     const dashboardItem = { id: Math.random(), moduleName: 'Dashboard', icon: homeOutline, redirectTo: '/dashboard' }
     chipsData.unshift(dashboardItem);
@@ -101,7 +102,7 @@ const Menu: React.FC = () => {
                     return (
                       <IonMenuToggle key={index} autoHide={false}>
                         <IonItem
-                          className={`${location.pathname === appPage.redirectTo ? 'selected selected_app' : ''}`}
+                          className={`menu_item_con ${location.pathname === appPage.redirectTo ? 'selected selected_app' : ''}`}
                           lines="none"
                           onClick={() => handleNavigation(appPage.redirectTo)}
                           detail={false}
