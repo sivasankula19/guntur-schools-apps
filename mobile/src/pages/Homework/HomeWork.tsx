@@ -182,12 +182,12 @@ const HomeWork: React.FC = () => {
         styles={{ height: 'auto', maxHeight: '50vh' }}
       >
         <div>
-          <GCustomInput name={'homeWorkName'} value={formValue.homeWorkName} onChange={handleInput} label={'Home Work Title'} placeholder={'Ex. Algorithms'} />
-          <GCustomInput name={'description'} value={formValue.description} onChange={handleInput} label={'Description'} placeholder={'Description'} />
-          <GCustomInput name={'subjectName'} value={formValue.subjectName} onChange={handleInput} label={'Subject Name'} placeholder={'Subject Name'} />
+          <GCustomInput name={'homeWorkName'} value={formValue.homeWorkName} onInput={handleInput} label={'Home Work Title'} placeholder={'Ex. Algorithms'} />
+          <GCustomInput name={'description'} value={formValue.description} onInput={handleInput} label={'Description'} placeholder={'Description'} />
+          <GCustomInput name={'subjectName'} value={formValue.subjectName} onInput={handleInput} label={'Subject Name'} placeholder={'Subject Name'} />
           <GImagUpload onFileChange={handleFileChange} multiple={true} label='Upload Image' classNames='m-bottom-10' />
           {/* date */}
-          <GCustomInput name={'dueDate'} value={formValue.dueDate} onChange={handleInput} label={'Due Date'} placeholder={'01/01/2024'} />
+          <GCustomInput name={'dueDate'} value={formValue.dueDate} onInput={handleInput} label={'Due Date'} placeholder={'01/01/2024'} />
         </div>
       </CustomizedModal>
     </div>

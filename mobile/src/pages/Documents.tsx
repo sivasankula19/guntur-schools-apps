@@ -215,8 +215,8 @@ const Documents: React.FC = () => {
             {formValue.documentType === 'Class' && (<GCustomSelectDrop options={classDummyData} name='classId' value={formValue.documentClass} label="Select Class" handleOnChange={() => { }} classNames='custom-select m-bottom-10' />)}
           </div>
           <GImagUpload onFileChange={handleFileChange} multiple={false} accept='.doc,.docx,.xml,application/msword,.pdf, image/*' label='Upload Image' classNames='m-bottom-10' />
-          <GCustomInput name={'documentName'} value={formValue['documentName']} onChange={handleInput} label="Document Name" placeholder={'English Verbs'} />
-          <GCustomInput name={'documentDescription'} value={formValue['documentDescription']} onChange={handleInput} label="Document Description" placeholder={'Ex. 10'} />
+          <GCustomInput name={'documentName'} value={formValue['documentName']} onInput={handleInput} label="Document Name" placeholder={'English Verbs'} />
+          <GCustomInput name={'documentDescription'} value={formValue['documentDescription']} onInput={handleInput} label="Document Description" placeholder={'Ex. 10'} />
         </div>
       </CustomizedModal>
     </div>

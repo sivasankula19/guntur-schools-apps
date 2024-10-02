@@ -263,7 +263,7 @@ const SchoolVibe: React.FC = () => {
                 </div>
               </div>
             </div>
-            <GCustomInput name={'postTitle'} value={formValue.postTitle} onChange={handleInput} label={'Post Name'} placeholder={'Post Name'} />
+            <GCustomInput name={'postTitle'} value={formValue.postTitle} onInput={handleInput} label={'Post Name'} placeholder={'Post Name'} />
             <GImagUpload onFileChange={handleFileChange} multiple={true} label='Upload Image' classNames='m-bottom-10' />
             <div className='field m-bottom-10'>
               <IonTextarea value={formValue.postDesc} autoGrow={true} rows={4} onIonChange={handleInput} name='postDesc' label="Post Description" labelPlacement="floating" fill="outline" placeholder="description..."></IonTextarea>

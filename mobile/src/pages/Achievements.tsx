@@ -264,13 +264,13 @@ const Achievements: React.FC = () => {
       >
         <div>
           <GCustomSelectDrop options={[]} name='category' value={formValue.category} label="Category" handleOnChange={handleInput} classNames='custom-select m-bottom-10' />
-          <GCustomInput name={'achievementName'} value={formValue['achievementName']} onChange={handleInput} label={'AchievementName'} placeholder='Enter Achievement Name' />
+          <GCustomInput name={'achievementName'} value={formValue['achievementName']} onInput={handleInput} label={'AchievementName'} placeholder='Enter Achievement Name' />
           <GCustomSelectDrop options={[]} name='subCategory' value={formValue.subCategory} label="Sub Category" handleOnChange={handleInput} classNames='custom-select m-bottom-10' />
-          <GCustomInput name={'level'} value={formValue['level']} onChange={handleInput} label={'Level'} placeholder='Enter Level' />
-          <GCustomInput name={'presentedTo'} value={formValue['presentedTo']} onChange={handleInput} label={'Presented To'} placeholder='Presented To' />
+          <GCustomInput name={'level'} value={formValue['level']} onInput={handleInput} label={'Level'} placeholder='Enter Level' />
+          <GCustomInput name={'presentedTo'} value={formValue['presentedTo']} onInput={handleInput} label={'Presented To'} placeholder='Presented To' />
           <GImagUpload onFileChange={handleFileChange} multiple={true} label='Upload Image' classNames='m-bottom-10' />
-          <GCustomInput name={'grandTotal'} value={formValue['grandTotal']} onChange={handleInput} label={'Grand Total'} placeholder='Enter Grand Total ' />
-          <GCustomInput name={'location'} value={formValue['location']} onChange={handleInput} label={'Location'} placeholder='Enter Location' />
+          <GCustomInput name={'grandTotal'} value={formValue['grandTotal']} onInput={handleInput} label={'Grand Total'} placeholder='Enter Grand Total ' />
+          <GCustomInput name={'location'} value={formValue['location']} onInput={handleInput} label={'Location'} placeholder='Enter Location' />
           {/* date picker */}
           <div className='field m-bottom-10'>
             <IonInput value={formValue.date} onIonChange={handleInput} name='date' label="Date" labelPlacement="floating" fill="outline" placeholder="Date of Birth"></IonInput>

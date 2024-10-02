@@ -8,10 +8,8 @@ import GCustomInput from '../../components/GCustomInput';
 function SchoolSections() {
     const [isAddClassModal, setIsAddClassModal] = useState<boolean>(false);
     const formInitialVal = {
-        className: '',
-        classStaffName: '',
-        linkedSections: [{ sectionId: 'mdgl-sec-a', staffId: 'mdgl-staff-00019' }, { sectionId: 'mdgl-sec-b', staffId: 'mdgl-staff-00044' }],
-        classIconValue: ''
+        sectionName: '',
+        sectionIconValue: ''
     }
     const [formValue, setFormValue] = useState(formInitialVal);
 
@@ -27,7 +25,13 @@ function SchoolSections() {
     }
 
     const handleSubmit = () => {
-
+       if(formValue.sectionName && formValue.sectionIconValue){
+        var addSectionItem={id:sectionsListData.length+1,sectionName:formValue.sectionName,sectionId:'mdgl-sec-'+formValue.sectionIconValue,SectionIcon:formValue.sectionIconValue};
+        if(addSectionItem){
+            setSectionsListData([...sectionsListData,addSectionItem])
+            handleModelClose();
+        }
+       }
     }
 
     const handleInput = (e: any) => {
@@ -41,13 +45,15 @@ function SchoolSections() {
         { id: 3, sectionName: 'C Section', sectionId: 'mdgl-sec-c', SectionIcon: 'C', },
     ]
 
+    const [sectionsListData,setSectionsListData]=useState(sectionsListDataApi);
+
     const handleEditClass = (classInfo: any) => {
         if (classInfo.sectionId !== 'default-9999') {
             const updatedFormValue = {
-                className: classInfo.className,
+                sectionName: classInfo.className,
                 classStaffName: '',
                 linkedSections: [],
-                classIconValue: classInfo.classIcon,
+                sectionIconValue: classInfo.classIcon,
             }
             setFormValue(updatedFormValue);
             setIsAddClassModal(true);
@@ -60,7 +66,7 @@ function SchoolSections() {
             <div className='p-h-16 cls-container-view'>
                 <IonButton className='br-ion-12 m-top-12 g_txt_cap' onClick={handleAdd} fill="outline" expand="block">Add Section</IonButton>
                 <div className='school-class-list'>
-                    {sectionsListDataApi.map((item) => (
+                    {sectionsListData.map((item) => (
                         <IonCard key={item.id} className="student_card animation-none custom-class-card">
                             <IonCardContent className="card_content">
                                 <div className="g_flex g-space-between g-align-center">
@@ -97,12 +103,9 @@ function SchoolSections() {
                 onSave={handleSubmit}
             >
                 <div>
-                    <GCustomInput name={'className'} value={formValue.className} onChange={handleInput} label={'Class Name'} placeholder={'Class Name'} />
-                    <div className='m-bottom-10 m-left-10 g_flex g-space-between'>
-                        <IonLabel>{"Add More Sections"}</IonLabel>
-                        <IonIcon className='add-sec-circle' icon={addCircleOutline}></IonIcon>
-                    </div>
-                    <GCustomInput name={'classIconValue'} value={formValue.classIconValue} onChange={handleInput} label={'Class Icon Value'} placeholder={'Ex. 10'} />
+                    <GCustomInput name={'sectionName'} value={formValue.sectionName} onInput={handleInput} label={'Section Name'} placeholder={'Section Name'} />
+                    
+                    <GCustomInput name={'sectionIconValue'} value={formValue.sectionIconValue} onInput={handleInput} label={'Section Icon Value'} placeholder={'Ex. 10'} />
                 </div>
             </CustomizedModal>
         </div>

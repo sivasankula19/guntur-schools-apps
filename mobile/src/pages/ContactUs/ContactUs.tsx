@@ -123,8 +123,8 @@ const ContactUs: React.FC = () => {
             <h4>Contact Form</h4>
           </IonText>
           <form>
-          <GCustomInput name={'fullName'} value={formValue['fullName']} onChange={handleInput} label={'Full Name'} placeholder={'Full Name'} />
-          <GCustomInput name={'emailAddress'} value={formValue['emailAddress']} onChange={handleInput} label={'Email Address'} placeholder={'Email Address'} />
+          <GCustomInput name={'fullName'} value={formValue['fullName']} onInput={handleInput} label={'Full Name'} placeholder={'Full Name'} />
+          <GCustomInput name={'emailAddress'} value={formValue['emailAddress']} onInput={handleInput} label={'Email Address'} placeholder={'Email Address'} />
             <GCustomSelectDrop options={reasonListDummy} name='reasonFor' value={formValue.reasonFor} label="Section Name" handleOnChange={handleInput} classNames='custom-select m-bottom-10' />
             <div className='contact_field'>
               <IonTextarea label={'Description...'}
