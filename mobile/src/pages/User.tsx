@@ -170,7 +170,7 @@ const UserByID: React.FC = () => {
         onSave={() => { }}
       >
         <div>
-          {formEditValues.map((data: any) => (<GCustomInput key={data.name} name={data.name} value={formValue[data.name]} onChange={handleInput} label={data.label} placeholder={data.placeholder} />))}
+          {formEditValues.map((data: any) => (<GCustomInput key={data.name} name={data.name} value={formValue[data.name]} onInput={handleInput} label={data.label} placeholder={data.placeholder} />))}
           {/* date picker */}
           <div className='field m-bottom-10'>
             <IonInput value={formValue.dob} onIonChange={handleInput} name='dob' label="Dob" labelPlacement="floating" fill="outline" placeholder="Date of Birth"></IonInput>

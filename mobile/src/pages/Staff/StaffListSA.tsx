@@ -49,7 +49,7 @@ const StaffListSA: React.FC = () => {
         classId: '',
         sectionId: '',
     });
-    const staffData = staffDummyArr;
+    const [staffData,setStaffData]=useState(staffDummyArr);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const handleToggleChange = (event: any) => {
@@ -116,7 +116,31 @@ const StaffListSA: React.FC = () => {
 
     const handleSubmit = () => {
         // submit actions
-        console.log(formValue)
+        if(formValue){
+            var staffItem=
+            {
+                empName:formValue.staffFirstName+' '+formValue.staffLastName,
+                empImage:'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
+                id:'gvt-tcr-'+staffData.length,
+                subject:'Telugu',
+                designation:formValue.designation,
+                classList: ["6 A", "7 A", "7 B" ,"8 C", "10 C"],
+                firstName:formValue.staffFirstName,
+                lastName:formValue.staffLastName,
+                position:formValue.position,
+                mobile:Number(formValue.mobileNumber),
+                email:formValue.emailAddress,
+                gender:formValue.gender,
+                designationId:'btech'
+            };
+        console.log(staffItem)
+
+            if(staffItem){
+                setStaffData([...staffData,staffItem]);
+                handleModelClose();
+            }
+        }
+
     }
 
     const classDummyData = classListDummy.map(i => ({ id: i.classId, label: i.className }));
@@ -223,16 +247,16 @@ const StaffListSA: React.FC = () => {
                 onClose={handleModelClose}
                 onSave={handleSubmit}
             >
-                <GCustomInput name={'staffFirstName'} value={formValue['staffFirstName']} onChange={handleInput} label={'Staff First Name'} placeholder={'First Name'} />
-                <GCustomInput name={'staffLastName'} value={formValue['staffLastName']} onChange={handleInput} label={'Staff Last Name'} placeholder={'Last Name'} />
+                <GCustomInput name={'staffFirstName'} value={formValue['staffFirstName']} onInput={handleInput} label={'Staff First Name'} placeholder={'First Name'} />
+                <GCustomInput name={'staffLastName'} value={formValue['staffLastName']} onInput={handleInput} label={'Staff Last Name'} placeholder={'Last Name'} />
                 <GCustomSelectDrop options={positionDummyData} name='position' value={formValue.position} label="Position" handleOnChange={handleInput} classNames='custom-select m-bottom-10' />
                 <GCustomSelectDrop options={designationDummyData} name='designation' value={formValue.designation} label="Designation" handleOnChange={handleInput} classNames='custom-select m-bottom-10' />
-                <GCustomInput name={'mobileNumber'} value={formValue['mobileNumber']} onChange={handleInput} label={'Mobile Number'} placeholder={'Ex. 999999999'} />
-                <GCustomInput name={'emailAddress'} value={formValue['emailAddress']} onChange={handleInput} label={'Email Address'} placeholder={'Ex. test@gmail.com'} />
+                <GCustomInput name={'mobileNumber'} value={formValue['mobileNumber']} onInput={handleInput} label={'Mobile Number'} placeholder={'Ex. 999999999'} />
+                <GCustomInput name={'emailAddress'} value={formValue['emailAddress']} onInput={handleInput} label={'Email Address'} placeholder={'Ex. test@gmail.com'} />
                 <GCustomSelectDrop options={genderDummyData} name='gender' value={formValue.gender} label="Gender" handleOnChange={handleInput} classNames='custom-select m-bottom-10' />
-                <GCustomInput name={'staffId'} value={formValue['staffId']} onChange={handleInput} label={'Class Name'} placeholder={'Subject Name'} />
+                <GCustomInput name={'staffId'} value={formValue['staffId']} onInput={handleInput} label={'Staff Id'} placeholder={'Staff Id'} />
                 {!isEdit && (
-                    <GCustomInput name={'defaultPassword'} value={formValue['defaultPassword'] || ''} onChange={handleInput} label={'Default Password'} placeholder={'Default User Password'} />
+                    <GCustomInput name={'defaultPassword'} value={formValue['defaultPassword'] || ''} onInput={handleInput} label={'Default Password'} placeholder={'Default User Password'} />
                 )}
             </CustomizedModal>
         </div>

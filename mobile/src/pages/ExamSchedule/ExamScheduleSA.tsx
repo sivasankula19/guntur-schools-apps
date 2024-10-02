@@ -199,8 +199,8 @@ function ExamScheduleSA() {
         onSave={handleSubmit}
       >
         <div>
-          <GCustomInput name={'examName'} value={formValue.examName} onChange={handleInput} label={'Exam Name'} placeholder={'Exam Name'} />
-          <GCustomInput name={'startDate'} value={formValue.startDate} onChange={handleInput} label={'Exam Start Date'} placeholder={'DD/mm/YYYY'} />
+          <GCustomInput name={'examName'} value={formValue.examName} onInput={handleInput} label={'Exam Name'} placeholder={'Exam Name'} />
+          <GCustomInput name={'startDate'} value={formValue.startDate} onInput={handleInput} label={'Exam Start Date'} placeholder={'DD/mm/YYYY'} />
           {
             formValue.subjectsList?.map((subject: any) => (<div key={subject.subjectId} className='g_flex g-align-center m-bottom-10'>
               <GCustomSelectDrop options={classDummyData} name='classId'
