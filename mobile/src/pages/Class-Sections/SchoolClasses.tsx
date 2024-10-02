@@ -33,7 +33,14 @@ function SchoolClasses() {
   }
 
   const handleSubmit = () => {
-
+    if(formValue){
+      var classItem={ id:classListData.length, className:formValue.className, classId: 'mdgl-scl-cls-'+formValue.classIconValue, linkedStaffName: formValue.classStaffName, classIcon: formValue.classIconValue, linkedSections: formValue.linkedSections}
+      if(classItem){
+        setClassListData([...classListData,classItem]);
+        handleModelClose();
+      }
+      
+    }
   }
 
   const handleInput = (e: any) => {
@@ -66,6 +73,7 @@ function SchoolClasses() {
     { id: 4, elementName: 'Home Work', redirectTo: '/home-work' },
 
   ]
+  const [classListData,setClassListData]=useState(classListDataApi);
 
   const handleSectionChange = (secId: string) => {
     setCurrentSelectedSec(secId);
@@ -100,7 +108,7 @@ function SchoolClasses() {
       <div className='p-h-16 cls-container-view'>
         <IonButton className='br-ion-12 m-top-12 g_txt_cap' onClick={handleAdd} fill="outline" expand="block">Add Class</IonButton>
         <div className='school-class-list'>
-          {classListDataApi.map((item) => (
+          {classListData.map((item) => (
             <IonCard key={item.id} className={`student_card animation-none custom-class-card ${currentSelected === item.id ? 'custom-class-card-selected' : ''}`}>
               <IonCardContent className="card_content">
                 <div className="g_flex g-space-between g-align-center">
@@ -154,7 +162,7 @@ function SchoolClasses() {
         onSave={handleSubmit}
       >
         <div>
-          <GCustomInput name={'className'} value={formValue['className']} onChange={handleInput} label={'Class Name'} placeholder={'Subject Name'} />
+          <GCustomInput name={'className'} value={formValue['className']} onInput={handleInput} label={'Class Name'} placeholder={'Subject Name'} />
           {formValue.linkedSections.map((secItem, indexSec) => (<div key={indexSec} className='m-bottom-10 g_flex'>
             <GCustomSelectDrop options={sectionDummyData} name='sectionId' value={secItem.sectionId} label="Section Name" handleOnChange={(e) => handleSubSections(e, secItem)} classNames='custom-select m-bottom-10 two-select-field' />
             <GCustomSelectDrop options={staffDummyData} name='staffId' value={secItem.staffId} label="Class Staff Name" handleOnChange={(e) => handleSubSections(e, secItem)} classNames='custom-select m-bottom-10 two-select-field' />
@@ -166,7 +174,7 @@ function SchoolClasses() {
             <IonLabel>{"Add More Sections"}</IonLabel>
             <IonIcon className='add-sec-circle' icon={addCircleOutline}></IonIcon>
           </div>
-          <GCustomInput name={'classIconValue'} value={formValue['classIconValue']} onChange={handleInput} label="Class Icon Value" placeholder={'Ex. 10'} />
+          <GCustomInput name={'classIconValue'} value={formValue['classIconValue']} onInput={handleInput} label="Class Icon Value" placeholder={'Ex. 10'} />
         </div>
       </CustomizedModal>
     </div>

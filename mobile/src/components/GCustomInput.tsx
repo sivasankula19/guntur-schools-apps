@@ -3,7 +3,7 @@ import React from 'react'
 
 interface ICustomInputProps {
     value: string | number,
-    onChange: (e: any) => void,
+    onInput: (e: any) => void,
     name: string,
     label: string,
     labelPlacement?: 'start' | 'end' | 'floating' | 'stacked' | 'fixed',
@@ -13,11 +13,11 @@ interface ICustomInputProps {
     classNames?: string,
     readonly?:boolean
 }
-function GCustomInput({ value, onChange, name, label = "Enter", labelPlacement = 'floating', fill = 'outline', placeholder = 'Enter Something!', icon, classNames = 'field m-bottom-10',readonly=false }: ICustomInputProps) {
+function GCustomInput({ value, onInput, name, label = "Enter", labelPlacement = 'floating', fill = 'outline', placeholder = 'Enter Something!', icon, classNames = 'field m-bottom-10',readonly=false }: ICustomInputProps) {
 
     return (
         <div className={classNames}>
-            <IonInput value={value || ''} readonly={readonly} onIonChange={onChange} name={name} label={label} labelPlacement={labelPlacement} fill={fill} placeholder={placeholder}></IonInput>
+            <IonInput value={value || ''} readonly={readonly} onIonInput={onInput} name={name} label={label} labelPlacement={labelPlacement} fill={fill} placeholder={placeholder}></IonInput>
             {icon && (<IonIcon icon={icon}></IonIcon>)}
         </div>)
 }

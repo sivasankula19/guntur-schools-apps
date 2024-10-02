@@ -159,8 +159,8 @@ function SubjectsSA() {
         onSave={handleSubmit}
       >
         <div>
-          <GCustomInput name={'subjectName'} value={formValue.subjectName} onChange={handleInput} label={'Subject Name'} placeholder={'Subject Name'} />
-          <GCustomInput name={'subjectStaffName'} value={formValue.subjectStaffName} onChange={handleInput} label={'Subject Staff Name'} placeholder={'Subject Staff Name'} />
+          <GCustomInput name={'subjectName'} value={formValue.subjectName} onInput={handleInput} label={'Subject Name'} placeholder={'Subject Name'} />
+          <GCustomInput name={'subjectStaffName'} value={formValue.subjectStaffName} onInput={handleInput} label={'Subject Staff Name'} placeholder={'Subject Staff Name'} />
           <div className='field m-bottom-10 m-r-18'>
             <IonRange value={formValue.percentCovered} pin={true} onIonChange={handleInput} name='percentCovered'>
               <div slot='label'>
@@ -168,7 +168,7 @@ function SubjectsSA() {
               </div>
             </IonRange>
           </div>
-          <GCustomInput name={'subjectDefaultMarks'} value={formValue.subjectDefaultMarks} onChange={handleInput} label={'Subject Marks Default'} placeholder={'Ex. 100'} />
+          <GCustomInput name={'subjectDefaultMarks'} value={formValue.subjectDefaultMarks} onInput={handleInput} label={'Subject Marks Default'} placeholder={'Ex. 100'} />
         </div>
       </CustomizedModal>
     </div>

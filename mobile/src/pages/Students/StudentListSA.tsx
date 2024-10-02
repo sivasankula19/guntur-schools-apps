@@ -58,8 +58,8 @@ const StudentListSA: React.FC = () => {
     const currentRole = useSelector((state: any) => state.auth.role);
     const rootAccess = useSelector((state: any) => state.accessControl.rootAccess);
     const accessModules = useSelector((state: any) => state.accessControl.accessModules) || [];
+    const [studentsDataList,setStudentsDataList]=useState(studentDummyData);
 
-    const studentsDataList = studentDummyData;
     const stdData = [{
         studentName: 'Sankula Siva', profileImage:
             'https://avatars.githubusercontent.com/u/93701195?s=60&v=4', id: '8A001',
@@ -144,7 +144,29 @@ const StudentListSA: React.FC = () => {
 
     const handleSubmit = () => {
         // submit actions
-        console.log(formValue)
+        if(formValue){
+            var studentItem={
+                studentName: formValue.studentFirstName+' '+formValue.studentLastName,
+                profileImage:
+                  'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
+                id: '8A00'+studentsDataList.length,
+                class: formValue.classOfStudy,
+                section: formValue.section,
+                firstName: formValue.studentFirstName,
+                lastName: formValue.studentLastName,
+                mobile:Number(formValue.mobileNumber),
+                email:formValue.emailAddress,
+                parentName:formValue.parentName,
+                gender:formValue.gender,
+                isFriend: false,
+                classId:'10-cls',
+                sectionId:'a-section',
+              }
+              if(studentItem){
+                setStudentsDataList([...studentsDataList,studentItem]);
+                handleModelClose();
+              }
+        }
     }
 
 
@@ -260,17 +282,17 @@ const StudentListSA: React.FC = () => {
                 onClose={handleModelClose}
                 onSave={handleSubmit}
             >
-                <GCustomInput name={'studentFirstName'} value={formValue['studentFirstName']} onChange={handleInput} label={'Student First Name'} placeholder={'First Name'} />
-                <GCustomInput name={'studentLastName'} value={formValue['studentLastName']} onChange={handleInput} label={'Student First Name'} placeholder={'Last Name'} />
+                <GCustomInput name={'studentFirstName'} value={formValue['studentFirstName']} onInput={handleInput} label={'Student First Name'} placeholder={'First Name'} />
+                <GCustomInput name={'studentLastName'} value={formValue['studentLastName']} onInput={handleInput} label={'Student First Name'} placeholder={'Last Name'} />
                 <GCustomSelectDrop options={classDummyData} name='classOfStudy' value={formValue.classOfStudy} label="Class" handleOnChange={handleInput} classNames='custom-select m-bottom-10' />
                 <GCustomSelectDrop options={classDummyData} name='section' value={formValue.section} label="Section" handleOnChange={handleInput} classNames='custom-select m-bottom-10' />
-                <GCustomInput name={'mobileNumber'} value={formValue['mobileNumber']} onChange={handleInput} label={'Mobile Number'} placeholder={'Ex. 999887888'} />
-                <GCustomInput name={'emailAddress'} value={formValue['emailAddress']} onChange={handleInput} label={'Email Address'} placeholder={'Ex. user@mail.com'} />
+                <GCustomInput name={'mobileNumber'} value={formValue['mobileNumber']} onInput={handleInput} label={'Mobile Number'} placeholder={'Ex. 999887888'} />
+                <GCustomInput name={'emailAddress'} value={formValue['emailAddress']} onInput={handleInput} label={'Email Address'} placeholder={'Ex. user@mail.com'} />
                 <GCustomSelectDrop options={genderDummyData} name='gender' value={formValue.gender} label="Gender" handleOnChange={handleInput} classNames='custom-select' />
-                <GCustomInput name={'parentName'} value={formValue['parentName']} onChange={handleInput} label={'Parent / Guardian Name'} placeholder={'Parent Name'} />
-                <GCustomInput name={'regNumber'} value={formValue['regNumber']} onChange={handleInput} label={'Generated Registration ID'} placeholder={'Reg. Number'} />
+                <GCustomInput name={'parentName'} value={formValue['parentName']} onInput={handleInput} label={'Parent / Guardian Name'} placeholder={'Parent Name'} />
+                <GCustomInput name={'regNumber'} value={formValue['regNumber']} onInput={handleInput} label={'Generated Registration ID'} placeholder={'Reg. Number'} />
                 {!isEdit && (
-                    <GCustomInput name={'defaultPassword'} value={formValue['defaultPassword'] || ''} onChange={handleInput} label={'Default Password'} placeholder={'Default User Password'} />
+                    <GCustomInput name={'defaultPassword'} value={formValue['defaultPassword'] || ''} onInput={handleInput} label={'Default Password'} placeholder={'Default User Password'} />
                 )}
             </CustomizedModal>
             {unableProceed && (<div className='g_txt_center add-request-btn'>
