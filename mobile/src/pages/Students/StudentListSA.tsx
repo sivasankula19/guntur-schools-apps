@@ -186,7 +186,6 @@ const StudentListSA: React.FC = () => {
     useEffect(() => {
         if (currentRole === 'Teacher') {
             if (!rootAccess) {
-                console.log(accessModules);
                 const attendanceModuleItem = accessModules.find((att: any) => att?.moduleId === 'studentsList');
                 if (attendanceModuleItem?.moduleRootAccess) {
                     setUnableProceed(false);

@@ -2,7 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { IonButton, IonDatetime, IonDatetimeButton, IonFooter, IonHeader, IonIcon, IonModal, IonSelect, IonSelectOption, IonText, IonToolbar } from '@ionic/react';
 import { saveOutline } from 'ionicons/icons';
-import { periodsListData } from '../../common/utility';
+import { classListDummy, periodsListData, sectionListDummy } from '../../common/utility';
+import { useDispatch, useSelector } from 'react-redux';
+import { setWarnToast } from '../../redux/reducers/toastMessageSlice';
 
 interface IClassItem {
     className: string,
@@ -21,59 +23,19 @@ const TimeTableSA: React.FC = () => {
     const [selectedSection, setSelectedSection] = useState<string>('');
     const [fromTime, setFromTime] = useState<string>('08:00:00');
     const [toTime, setToTime] = useState<string>('09:00:00');
+    const [unableProceed, setUnableProceed] = useState(false);
     const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Time Table', path: '/time-table' }];
-
     const fromModal = useRef<HTMLIonModalElement>(null);
     const toModal = useRef<HTMLIonModalElement>(null);
     const classScrollRef = useRef<any>(null);
+    const currentRole = useSelector((state: any) => state.auth.role);
+    const rootAccess = useSelector((state: any) => state.accessControl.rootAccess);
+    const accessModules = useSelector((state: any) => state.accessControl.accessModules) || [];
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        const classListData: IClassItem[] = [
-            {
-                className: '10th Class',
-                classId: 'mdgl_scl_10th',
-            },
-            {
-                className: '9th Class',
-                classId: 'mdgl_scl_9th',
-            },
-            {
-                className: '8th Class',
-                classId: 'mdgl_scl_8th',
-            },
-            {
-                className: '7th Class',
-                classId: 'mdgl_scl_7th',
-            },
-            {
-                className: '6th Class',
-                classId: 'mdgl_scl_6th',
-            },
-            {
-                className: '5th Class',
-                classId: 'mdgl_scl_5th',
-            },
-            {
-                className: '4th Class',
-                classId: 'mdgl_scl_4th',
-            },
-        ];
-        const sectionListData: ISectionItem[] = [
-            {
-                sectionName: 'A Section',
-                sectionId: 'mdgl_scl_sec_a',
-            },
-            {
-                sectionName: 'B Section',
-                sectionId: 'mdgl_scl_sec_b',
-            },
-            {
-                sectionName: 'C Section',
-                sectionId: 'mdgl_scl_sec_c',
-            },
-        ];
-        setClassList(classListData);
-        setSectionList(sectionListData);
+        setClassList(classListDummy);
+        setSectionList(sectionListDummy);
     }, []);
 
     useEffect(() => {
@@ -103,7 +65,7 @@ const TimeTableSA: React.FC = () => {
         setTimeout(() => {
             if (selectedClass && classScrollRef.current) {
                 const container = classScrollRef.current;
-                const selectedButton = container.querySelector(`.${selectedClass}`);
+                const selectedButton = container.querySelector(`._${selectedClass}`);
 
                 if (selectedButton) {
                     const containerRect = container.getBoundingClientRect();
@@ -116,6 +78,22 @@ const TimeTableSA: React.FC = () => {
 
     }, [selectedClass]);
 
+    useEffect(() => {
+        if (currentRole === 'Teacher') {
+            if (!rootAccess) {
+                if (selectedClass && selectedSection) {
+                    const progressCardItem = accessModules.find((att: any) => att?.moduleId === 'progressCard');
+                    if ((progressCardItem.accessibleClasses.find((accItem: any) => accItem.classId === selectedClass && accItem.sectionId === selectedSection)) || progressCardItem?.accessibleClasses[0] === '*') {
+                        setUnableProceed(false);
+                    } else {
+                        setUnableProceed(true);
+                        dispatch(setWarnToast('Unable to proceed!, Please get permission from Admin'));
+                    }
+                }
+            }
+        }
+    }, [selectedClass, selectedSection]);
+
     return (
         <div className='time_table_sa'>
             <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
@@ -127,7 +105,7 @@ const TimeTableSA: React.FC = () => {
                                 id={cls.classId}
                                 onClick={() => handleUpdateCls(cls.classId)}
                                 key={cls.classId}
-                                className={`scroll_item ${cls.classId} ${cls.classId === selectedClass && 'selected'}`}
+                                className={`scroll_item _${cls.classId} ${cls.classId === selectedClass && 'selected'}`}
                             >
                                 <IonText>
                                     <p>{cls.className}</p>
@@ -294,7 +272,7 @@ const TimeTableSA: React.FC = () => {
                     </div>
                 </div>
                 <div>
-                    <IonButton onClick={handleAddClick}>+ ADD</IonButton>
+                    <IonButton disabled={unableProceed} onClick={handleAddClick}>+ ADD</IonButton>
                 </div>
             </div>
         </div>

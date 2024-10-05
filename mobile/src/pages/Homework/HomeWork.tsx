@@ -96,7 +96,7 @@ const HomeWork: React.FC = () => {
         </div>
       )}
       {!isStudent &&
-        <div className='g_flex g-align-center g-justify-center  m-bottom-12'>
+        <div className='g_flex g-align-center g-justify-center '>
           <IonButton onClick={openPopover} className="add_homework br-ion-12 g_txt_cap">Add Home Work</IonButton>
         </div>}
       <div className='home_work p-h-16'>

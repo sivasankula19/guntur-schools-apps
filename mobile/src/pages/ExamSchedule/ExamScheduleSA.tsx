@@ -69,7 +69,6 @@ function ExamScheduleSA() {
   }
 
   const handleAdd = () => {
-
     setFormValue((prev: any) => ({ ...prev, subjectsList: subjectsSampleData.map(s => ({ subjectId: s.subjectId, subjectName: s.subjectName, slot: 'AM', date: '' })) }));
     setIsAddExamModal(true);
   }
@@ -106,12 +105,18 @@ function ExamScheduleSA() {
 
   useEffect(()=>{
   const filterDropdownValue=fiterDropdownValues.find(item=>item.moduleName=="ExamSchedules");
-
     if(filterDropdownValue){
       setFilterValue(filterDropdownValue)
   }
   },[])
   
+  const handleEditExam = (item:any) => {
+    setFormValue((prev: any) => ({ ...prev,
+      examName: item.examName,
+      startDate: '',
+      subjectsList: subjectsSampleData.map(s => ({ subjectId: s.subjectId, subjectName: s.subjectName, slot: 'AM', date: '' })) }));
+    setIsAddExamModal(true);
+  }
 
   return (
     <div className='g_full_height'>
@@ -145,10 +150,10 @@ function ExamScheduleSA() {
                     {/* add condition and add corresponding icon!. */}
                     <IonIcon icon={checkmarkCircleOutline}></IonIcon>
                   </div>
-                  <IonIcon icon={pencilOutline}></IonIcon>
+                  <a onClick={()=>handleEditExam(item)}>Edit</a>
                 </div>
               </div>
-              <div className="g_flex g-space-between g_full_width m-top-12">
+              <div className="g_flex g-space-between g_full_width m-top-12 g-align-center">
                 <div className='g_flex g-align-center'>
                   <IonLabel className='m-right-8'>Dates</IonLabel>
                   <div className='conducts-on-date'>
@@ -203,10 +208,10 @@ function ExamScheduleSA() {
           <GCustomInput name={'startDate'} value={formValue.startDate} onInput={handleInput} label={'Exam Start Date'} placeholder={'DD/mm/YYYY'} />
           {
             formValue.subjectsList?.map((subject: any) => (<div key={subject.subjectId} className='g_flex g-align-center m-bottom-10'>
-              <GCustomSelectDrop options={classDummyData} name='classId'
-                value={filterValues.classId} label="Select Class"
+              <GCustomSelectDrop options={[{id:subject.subjectId, label:subject.subjectName}]} name='classId'
+                value={subject.subjectId} label="Select Class"
                 handleOnChange={handleChange} classNames='custom-select m-r-10' />
-              <IonInput value={formValue.startData} onIonChange={handleInput} name='classIconValue' label="Class Icon Value" labelPlacement="floating" fill="outline" placeholder="Ex. 10"></IonInput>
+              <IonInput value={formValue.startData} onIonChange={handleInput} name='classIconValue' label="Exam Date" labelPlacement="floating" fill="outline" placeholder="Ex. 10"></IonInput>
               <GCustomToggle name={subject.subjectId} onTxt='AM' offTxt='PM' checked={subject.slot === 'AM'} onHandleChange={handleSlotToggleChange} />
             </div>))
           }

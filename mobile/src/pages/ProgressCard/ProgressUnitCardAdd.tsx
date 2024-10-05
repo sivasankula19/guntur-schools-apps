@@ -1,9 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
 import GBreadCrumbs from '../../components/GBreadCrumbs';
 import GCustomSelectDrop from '../../components/GCustomSelectDrop';
-import { classListDummy, sectionListDummy, studentMarksDetails, studentUnitMarksDetails } from '../../common/utility';
-import { IonCard, IonCardContent, IonFooter, IonIcon, IonLabel, IonText, IonToolbar } from '@ionic/react';
-import { appsSharp, listSharp } from 'ionicons/icons';
+import { classListDummy, fiterDropdownValues, sectionListDummy, studentMarksDetails, studentUnitMarksDetails } from '../../common/utility';
+import { IonButton, IonCard, IonCardContent, IonFooter, IonIcon, IonLabel, IonText, IonToolbar } from '@ionic/react';
+import { appsSharp, listSharp, saveOutline } from 'ionicons/icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { setWarnToast } from '../../redux/reducers/toastMessageSlice';
+import { useNavigate } from 'react-router';
 
 function ProgressUnitCardAdd() {
   const [breadCrumbState, setBreadCrumbState] = useState<any>([{ bName: 'Home', path: '/dashboard' },
@@ -21,6 +24,12 @@ function ProgressUnitCardAdd() {
   const [currentSelectedSubject, setCurrentSelectedSubject] = useState('subjectId1');
   const unitsScrollRef = useRef<any>(null);
   const parentContainerRef = useRef<any>();
+  const [unableProceed, setUnableProceed] = useState(false);
+  const currentRole = useSelector((state: any) => state.auth.role);
+  const rootAccess = useSelector((state: any) => state.accessControl.rootAccess);
+  const accessModules = useSelector((state: any) => state.accessControl.accessModules) || [];
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const classDummyData = classListDummy.map(i => ({ id: i.classId, label: i.className }));
   const sectionDummyData = sectionListDummy.map(i => ({ id: i.sectionId, label: i.sectionName }));
@@ -45,7 +54,7 @@ function ProgressUnitCardAdd() {
     if (selectedTab && unitsScrollRef.current) {
       const container = unitsScrollRef.current;
       let selectedButton = container.querySelector(`.${selectedTab}`);
-      if(!selectedButton){
+      if (!selectedButton) {
         selectedButton = container.querySelector(`.${currentSelectedSubject}`);
       }
 
@@ -59,7 +68,7 @@ function ProgressUnitCardAdd() {
         });
       }
     }
-  }, [selectedTab, viewMode,currentSelectedSubject]);
+  }, [selectedTab, viewMode, currentSelectedSubject]);
 
   const subjectsData = [
     { subjectName: 'Telugu', subjectId: 'subjectId1', conductedFor: 25, },
@@ -77,6 +86,30 @@ function ProgressUnitCardAdd() {
     setStudentAllExams(studentUnitMarksDetails.unitsList);
   }, [])
 
+  useEffect(() => {
+    const filterDropdownValue = fiterDropdownValues.find(item => item.moduleName == "ProgressCard");
+    if (filterDropdownValue) {
+      setFilterValue(filterDropdownValue)
+    }
+  }, []);
+
+  useEffect(() => {
+    if (currentRole === 'Teacher') {
+      if (!rootAccess) {
+        if (filterValues.classId && filterValues.sectionId) {
+          const progressCardItem = accessModules.find((att: any) => att?.moduleId === 'progressCard');
+          if ((progressCardItem.accessibleClasses.find((accItem: any) => accItem.classId === filterValues.classId && accItem.sectionId === filterValues.sectionId)) || progressCardItem?.accessibleClasses[0] === '*') {
+            setUnableProceed(false);
+          } else {
+            setUnableProceed(true);
+            dispatch(setWarnToast('Unable to proceed!, Please get permission from Admin'));
+          }
+        }
+      }
+    }
+  }, [filterValues]);
+
+
   const handleSubjectMarksChange = (e: any, subjectItem: any, studentItem: any) => {
     setStudentUnitMarks(studentUnitMarks.map((stdI: any) => {
       if (stdI.regNumber === studentItem.regNumber) {
@@ -92,9 +125,22 @@ function ProgressUnitCardAdd() {
     setCurrentSelectedSubject(subject.subjectId);
   }
 
+  const handleRaiseRequest = () => {
+    // pass the exact state here!...
+    navigate('/raise-request', { state: {} })
+  }
+
+  const handleSaveProgress = () => {
+
+  }
+
   return (
     <div className='progress-card-sa'>
-      <GBreadCrumbs data={breadCrumbState} />
+      <div className='g_flex g-space-between g-align-center'>
+        <GBreadCrumbs data={breadCrumbState} />
+        <IonIcon className='save-progress-card' icon={saveOutline} onClick={handleSaveProgress}></IonIcon>
+      </div>
+
       <div className='g_flex g-space-between p-12-16'>
         <div className='m-right-6 width-50'>
           <GCustomSelectDrop options={classDummyData} name='classId'
@@ -174,8 +220,8 @@ function ProgressUnitCardAdd() {
                         }}
                       >
                         <div
-                          style={{ minHeight: '40px', }}
-                          className="g_txt_center g_flex g-align-center g-justify-center marks_column_header"
+                          style={{ minHeight: '40px', lineHeight: '2rem' }}
+                          className="g_txt_center g_text_ellipses g_flex g-align-center g-justify-center marks_column_header"
                         >
                           {'Student Name'}
                         </div>
@@ -233,7 +279,7 @@ function ProgressUnitCardAdd() {
                                   }}
                                   className="g_flex g-align-center text-enter-input"
                                 >
-                                  <input onChange={(e: any) => handleSubjectMarksChange(e, examItem, student)} id={student.regNumber + examItem.examId} value={student.marks[examItem.examId] || ''} placeholder='marks' />
+                                  <input disabled={unableProceed} onChange={(e: any) => handleSubjectMarksChange(e, examItem, student)} id={student.regNumber + examItem.examId} value={student.marks[examItem.examId] || ''} placeholder='marks' />
                                 </div>
                               ))}
                             </div>
@@ -253,8 +299,8 @@ function ProgressUnitCardAdd() {
                         }}
                       >
                         <div
-                          style={{ minHeight: '40px', }}
-                          className="g_txt_center g_flex g-align-center g-justify-center marks_column_header"
+                          style={{ minHeight: '40px', lineHeight: '2.5rem', padding: '0 8px' }}
+                          className="g_txt_center g_text_ellipses g_text_ellipses g-justify-center g_full_width marks_column_header"
                         >
                           {'Student Name'}
                         </div>
@@ -312,7 +358,7 @@ function ProgressUnitCardAdd() {
                                   }}
                                   className="g_flex g-align-center text-enter-input"
                                 >
-                                  <input onChange={(e: any) => handleSubjectMarksChange(e, subjectItem, student)} id={student.regNumber + subjectItem.subjectId} value={student.marks[subjectItem.subjectId] || ''} placeholder='marks' />
+                                  <input disabled={unableProceed} onChange={(e: any) => handleSubjectMarksChange(e, subjectItem, student)} id={student.regNumber + subjectItem.subjectId} value={student.marks[subjectItem.subjectId] || ''} placeholder='marks' />
                                 </div>
                               ))}
                             </div>
@@ -347,6 +393,9 @@ function ProgressUnitCardAdd() {
           </IonCardContent>
         </IonCard>
       </div>
+      {unableProceed && (<div className='g_txt_center add-request-btn'>
+        <IonButton className='br-ion-8' onClick={handleRaiseRequest} fill="outline" > Raise Request! </IonButton>
+      </div>)}
     </div>
   )
 }

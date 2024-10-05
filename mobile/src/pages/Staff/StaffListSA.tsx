@@ -125,7 +125,7 @@ const StaffListSA: React.FC = () => {
     const handleSubmit = () => {
         // submit actions
         if(formValue){
-            var staffItem=
+            let staffItem=
             {
                 empName:formValue.staffFirstName+' '+formValue.staffLastName,
                 empImage:'https://avatars.githubusercontent.com/u/93701195?s=60&v=4',
@@ -141,8 +141,6 @@ const StaffListSA: React.FC = () => {
                 gender:formValue.gender,
                 designationId:'btech'
             };
-        console.log(staffItem)
-
             if(staffItem){
                 setStaffData([...staffData,staffItem]);
                 handleModelClose();
@@ -178,7 +176,6 @@ const StaffListSA: React.FC = () => {
     useEffect(() => {
         if (currentRole === 'Teacher') {
             if (!rootAccess) {
-                console.log(accessModules);
                 const attendanceModuleItem = accessModules.find((att: any) => att?.moduleId === 'staffList');
                 if (attendanceModuleItem?.moduleRootAccess) {
                     setUnableProceed(false);

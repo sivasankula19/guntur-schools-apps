@@ -591,6 +591,10 @@ ion-header {
   margin-bottom: 10px;
 }
 
+.m-bottom-0 {
+  margin-bottom: 0 !important;
+}
+
 .m-left-10 {
   margin-left: 10px;
 }
@@ -1600,6 +1604,10 @@ ion-toggle::part(track) {
   height: calc(100% - 40px);
 }
 
+.attendance_sa .continue-btn {
+  padding-bottom: 50px;
+}
+
 .calendar-view-cls {
   margin-top: 50px;
 }
@@ -1709,10 +1717,15 @@ ion-toggle::part(track) {
 .back-save-icons {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .back-save-icons ion-icon {
   font-size: 32px;
+}
+
+.back-save-icons ion-icon:last-of-type {
+  font-size: 22px;
 }
 
 .cl-students-list {
@@ -1919,6 +1932,10 @@ ion-toggle::part(track) {
   min-height: auto;
   height: 4vh !important;
   margin-bottom: 1vh;
+}
+
+.dark .add-doc-button {
+  --background: #000000;
 }
 
 .add-doc-button ion-icon {
@@ -2679,7 +2696,8 @@ ion-toggle::part(track) {
 }
 
 .progress-default-marks ion-icon {
-  font-size: 32px;
+  font-size: 22px;
+  margin-right: 12px;
 }
 
 .progress-hold {
@@ -4488,6 +4506,10 @@ label.input-wrapper.sc-ion-input-ios {
   border-radius: 12px;
 }
 
+.dark .add_homework {
+  --background: #000000;
+}
+
 .home_work {
   height: calc(100% - 92px);
 }
@@ -5081,7 +5103,7 @@ label.input-wrapper.sc-ion-input-ios {
 }
 
 .time_table_sa .save_icon {
-  font-size: 32px;
+  font-size: 22px;
 }
 
 .table_view .time_container {
@@ -5169,11 +5191,12 @@ label.input-wrapper.sc-ion-input-ios {
 }
 
 .table_scrollable {
-  height: calc(100% - 100px);
+  height: calc(100% - 120px);
   overflow-y: auto;
 }
 
 .add-time-block {
+  padding: 0 8px;
   border: 1px solid;
   border-color: #1D7AF5;
   border-radius: 4px;
@@ -5183,6 +5206,14 @@ label.input-wrapper.sc-ion-input-ios {
   display: flex;
   justify-content: space-between;
 }
+
+.ios .add-time-block ion-button {
+  max-height: 30px;
+  min-height: 30px;
+  max-height: 32px;
+  height: 30px;
+  font-size: 14px;
+} 
 
 .period_time_modal {
   --width: 80%;
@@ -5393,6 +5424,7 @@ ion-popover {
 
 .exams-schedule-sa ion-card {
   margin: 12px 0;
+  border-radius: 8px;
 }
 
 .exam-card-sa {
@@ -5400,6 +5432,7 @@ ion-popover {
   border: 1px solid;
   border-bottom: 5px solid;
   border-color: #1D7AF5;
+  border-radius: 8px;
 }
 
 .exam-card-sa .heading-text-exam {
@@ -5666,7 +5699,7 @@ ion-toast.info-toast::part(message) {
 }
 
 ion-toast.custom-toast::part(button),
-ion-toast.toast-toast::part(button),
+ion-toast.warn-toast::part(button),
 ion-toast.failure-toast::part(button),
 ion-toast.info-toast::part(button) {
   color: #ffffff;
@@ -5751,8 +5784,10 @@ ion-input {
 
 .add-request-btn{
   position: absolute;
-  bottom: 40px;
-  width: 100%;
+  bottom: 20px;
+  width: auto;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .add-request-btn ion-button{
@@ -5761,8 +5796,68 @@ ion-input {
   text-transform: capitalize;
 }
 
+.ios .add-request-btn ion-button {
+  max-height: 30px;
+  min-height: 30px;
+  max-height: 32px;
+  height: 30px;
+  font-size: 14px;
+}
+
 .dark .add-request-btn ion-button{
   border-radius: 8px;
   background: #000000;
 }
+
+.save-progress-card{
+  font-size: 22px;
+  margin-right: 16px;
+}
+
+.register-school{
+  height: 100%;
+}
+
+.register-scl-form ion-text p{
+  text-align: center;
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #1D7AF5;
+  font-weight: bold;
+}
+
+.back-icon-scl{
+  margin-top: 8px;
+}
+
+.back-icon-scl ion-icon{
+  font-size: 32px;
+}
+
+.back-icon-scl ion-text p{
+  font-size: 16px;
+  margin-left: 8px;
+}
+
+.scrollable-scl{
+  height: calc(100% - 62px);
+  overflow-y: auto;
+}
+
+.text-info-scl .title{
+  font-size: 16px;
+  color:#1D7AF5;
+  text-align: center;
+  font-weight: bold;
+}
+
+.text-info-scl .text-head{
+  font-size: 16px;
+  color:#1D7AF5;
+}
+
+.text-info-scl .text-data{
+  font-size: 14px;
+}
+
 
