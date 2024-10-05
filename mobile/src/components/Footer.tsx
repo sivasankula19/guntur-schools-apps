@@ -21,6 +21,7 @@ import {
   settingsOutline,
   thumbsUpOutline,
 } from 'ionicons/icons';
+import { useNavigate } from 'react-router';
 
 const Footer: React.FC = () => {
   const modal = useRef<HTMLIonModalElement>(null);
@@ -36,6 +37,8 @@ const Footer: React.FC = () => {
       path: '/notifications ',
     },
   ];
+
+  const navigate = useNavigate();
 
   return (
     <IonFooter className="custom_footer_ion">
@@ -95,10 +98,13 @@ const RowUI = ({ firstEle, secondEle }: any) => {
 }
 
 const OwnSchoolUI = () => {
+
+  const navigate = useNavigate();
+
   const handleRegisterSchool = (registerType: string) => {
-    console.log(registerType)
     switch (registerType) {
       case 'Register': // navigate to register page
+        navigate('/register-school');
         break;
       case 'Register Call Back': // navigate to register call back
         break;

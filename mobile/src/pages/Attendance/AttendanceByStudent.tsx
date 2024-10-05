@@ -122,7 +122,7 @@ function AttendanceByStudent() {
         <div className='attendance_sa'>
             <div className='g_flex g-space-between g-align-center bread_toggle_container'>
                 <GBreadCrumbs data={breadCrumbState}></GBreadCrumbs>
-                <div>
+                <div className='g_flex g-align-center'>
                     <IonIcon
                         onClick={() => {
                             setViewMode('list');
@@ -134,7 +134,7 @@ function AttendanceByStudent() {
                         onClick={() => {
                             setViewMode('grid');
                         }}
-                        className={`grid-view-icon ${viewMode === 'grid' ? 'selected' : ''}`}
+                        className={`grid-view-icon ${viewMode === 'grid' ? 'selected' : ''} m-bottom-0`}
                         icon={appsSharp}
                     ></IonIcon>
                 </div>

@@ -31,7 +31,7 @@ const SchoolVibe: React.FC = () => {
     isEnabledLikes: true,
     isEnabledComments: true,
   }
-  const [formValue, setFormValue] = useState(formVal)
+  const [formValue, setFormValue] = useState(formVal);
   const [isAddVibe, setIsVibeAdd] = useState(false);
   const [selectedPostType, setSelectedPostType] = useState('general');
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -65,6 +65,9 @@ const SchoolVibe: React.FC = () => {
     setIsOpenComments(() => true)
   }
 
+  const handleFormInput = (e: any) => {
+    setFormValue((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+  }
 
   const resetOpenCallback = (value: boolean) => {
     setIsOpenLikes(() => value)
@@ -263,10 +266,10 @@ const SchoolVibe: React.FC = () => {
                 </div>
               </div>
             </div>
-            <GCustomInput name={'postTitle'} value={formValue.postTitle} onInput={handleInput} label={'Post Name'} placeholder={'Post Name'} />
+            <GCustomInput name={'postTitle'} value={formValue.postTitle} onInput={handleFormInput} label={'Post Name'} placeholder={'Post Name'} />
             <GImagUpload onFileChange={handleFileChange} multiple={true} label='Upload Image' classNames='m-bottom-10' />
             <div className='field m-bottom-10'>
-              <IonTextarea value={formValue.postDesc} autoGrow={true} rows={4} onIonChange={handleInput} name='postDesc' label="Post Description" labelPlacement="floating" fill="outline" placeholder="description..."></IonTextarea>
+              <IonTextarea value={formValue.postDesc} autoGrow={true} rows={4} onIonChange={handleFormInput} name='postDesc' label="Post Description" labelPlacement="floating" fill="outline" placeholder="description..."></IonTextarea>
             </div>
             <div className='m-bottom-10 toggle_io g_flex'>
               <IonLabel>Enabled Likes ? </IonLabel>

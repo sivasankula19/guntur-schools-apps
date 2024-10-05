@@ -94,11 +94,6 @@ const FeesDues: React.FC = () => {
             fill="outline"
             value={'2024-2025'}
             interface="popover"
-            onIonChange={(e) =>
-              console.log(
-                `ionChange fired with value: ${e.detail.value}`
-              )
-            }
           >
             <IonSelectOption value="2024-2025">2024-2025</IonSelectOption>
             <IonSelectOption value="2023-2024">2024-2025</IonSelectOption>

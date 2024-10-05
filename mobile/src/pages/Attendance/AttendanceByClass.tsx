@@ -108,9 +108,7 @@ function AttendanceByClass() {
         if (currentRole === 'Teacher') {
             if (!rootAccess) {
                 if (filterValues.classId && filterValues.sectionId) {
-                    console.log(accessModules);
                     const attendanceModuleItem = accessModules.find((att: any) => att?.moduleId === 'attendance');
-                    console.log(attendanceModuleItem, 'attendanceModuleItem')
                     if ((attendanceModuleItem.accessibleClasses.find((accItem: any) => accItem.classId === filterValues.classId && accItem.sectionId === filterValues.sectionId)) || attendanceModuleItem?.accessibleClasses[0] === '*') {
                         setUnableProceed(false);
                     } else {

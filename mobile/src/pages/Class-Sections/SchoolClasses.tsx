@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router';
 import GCustomInput from '../../components/GCustomInput';
 import GCustomSelectDrop from '../../components/GCustomSelectDrop';
 import { sectionListDummy, staffListDummy } from '../../common/utility';
+import { useDispatch, useSelector } from 'react-redux';
+import { setWarnToast } from '../../redux/reducers/toastMessageSlice';
 
 function SchoolClasses() {
   const [isAddClassModal, setIsAddClassModal] = useState<boolean>(false);
@@ -19,12 +21,19 @@ function SchoolClasses() {
     classIconValue: ''
   }
   const [formValue, setFormValue] = useState(formInitialVal);
+  const [unableProceed, setUnableProceed] = useState(false);
+  const currentRole = useSelector((state: any) => state.auth.role);
+  const rootAccess = useSelector((state: any) => state.accessControl.rootAccess);
+  const accessModules = useSelector((state: any) => state.accessControl.accessModules) || [];
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Classes', path: '/school-classes' }];
 
   const handleAdd = () => {
-    setIsAddClassModal(true);
+    if (!unableProceed) {
+      setIsAddClassModal(true);
+    }
   }
 
   const handleModelClose = () => {
@@ -33,13 +42,12 @@ function SchoolClasses() {
   }
 
   const handleSubmit = () => {
-    if(formValue){
-      var classItem={ id:classListData.length, className:formValue.className, classId: 'mdgl-scl-cls-'+formValue.classIconValue, linkedStaffName: formValue.classStaffName, classIcon: formValue.classIconValue, linkedSections: formValue.linkedSections}
-      if(classItem){
-        setClassListData([...classListData,classItem]);
+    if (formValue) {
+      var classItem = { id: classListData.length, className: formValue.className, classId: 'mdgl-scl-cls-' + formValue.classIconValue, linkedStaffName: formValue.classStaffName, classIcon: formValue.classIconValue, linkedSections: formValue.linkedSections }
+      if (classItem) {
+        setClassListData([...classListData, classItem]);
         handleModelClose();
       }
-      
     }
   }
 
@@ -73,7 +81,7 @@ function SchoolClasses() {
     { id: 4, elementName: 'Home Work', redirectTo: '/home-work' },
 
   ]
-  const [classListData,setClassListData]=useState(classListDataApi);
+  const [classListData, setClassListData] = useState(classListDataApi);
 
   const handleSectionChange = (secId: string) => {
     setCurrentSelectedSec(secId);
@@ -102,11 +110,25 @@ function SchoolClasses() {
     setCurrentSelectedSec(sectionsDataApi[0].sectionId)
   }, [currentSelected])
 
+  useEffect(() => {
+    if (currentRole === 'Teacher') {
+      if (!rootAccess) {
+        const attendanceModuleItem = accessModules.find((att: any) => att?.moduleId === 'create-cls-sec');
+        if (attendanceModuleItem?.moduleRootAccess) {
+          setUnableProceed(false);
+        } else {
+          setUnableProceed(true);
+          dispatch(setWarnToast('Unable to proceed!, Please get permission from Admin'));
+        }
+      }
+    }
+  }, []);
+
   return (
     <div className='school-classes'>
       <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
       <div className='p-h-16 cls-container-view'>
-        <IonButton className='br-ion-12 m-top-12 g_txt_cap' onClick={handleAdd} fill="outline" expand="block">Add Class</IonButton>
+        <IonButton disabled={unableProceed} className='br-ion-12 m-top-12 g_txt_cap' onClick={handleAdd} fill="outline" expand="block">Add Class</IonButton>
         <div className='school-class-list'>
           {classListData.map((item) => (
             <IonCard key={item.id} className={`student_card animation-none custom-class-card ${currentSelected === item.id ? 'custom-class-card-selected' : ''}`}>
@@ -132,7 +154,7 @@ function SchoolClasses() {
                       <span className="user_id_data g_text_ellipses">{item.classId}</span>
                     </div>
                     <div className="g_flex">
-                      <a onClick={() => handleEditClass(item)}>Edit</a>
+                      <a className={`${unableProceed ? 'disabled-edit' : ''}`} onClick={() => handleEditClass(item)}>Edit</a>
                     </div>
                   </div>
                 </div>

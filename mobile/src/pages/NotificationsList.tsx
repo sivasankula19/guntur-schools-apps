@@ -61,7 +61,7 @@ function NotificationsList() {
         break;
       case 'Vibe':
         // add corresponding state for initial setup
-        navigate('/vibe', { state: {} });
+        navigate('/school-vibe', { state: {} });
         break;
       default:
         return

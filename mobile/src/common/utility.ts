@@ -15,8 +15,8 @@ export const studentDummyData =  [
       parentName:'Krishna S',
       gender:'gen-male',
       isFriend: false,
-       classId:'10-cls',
-      sectionId:'a-section',
+       classId:'10_cls',
+      sectionId:'a_section',
     },
     {
       studentName: 'Siva Sankula',
@@ -32,8 +32,8 @@ export const studentDummyData =  [
       parentName:'Krishna S',
       gender:'gen-male',
       isFriend: false,
-      classId:'10-cls',
-      sectionId:'a-section',
+      classId:'10_cls',
+      sectionId:'a_section',
     },
     {
       studentName: 'Sankula',
@@ -49,8 +49,8 @@ export const studentDummyData =  [
       parentName:'Krishna S',
       gender:'gen-male',
       isFriend: false,
-      classId:'10-cls',
-      sectionId:'a-section',
+      classId:'10_cls',
+      sectionId:'a_section',
     },
     {
       studentName: 'Siva',
@@ -66,8 +66,8 @@ export const studentDummyData =  [
       parentName:'Krishna S',
       gender:'gen-male',
       isFriend: false,
-      classId:'10-cls',
-      sectionId:'a-section',
+      classId:'10_cls',
+      sectionId:'a_section',
     },
     {
       studentName: 'Siva',
@@ -83,8 +83,8 @@ export const studentDummyData =  [
       parentName:'Krishna S',
       gender:'gen-male',
       isFriend: false,
-      classId:'10-cls',
-      sectionId:'a-section',
+      classId:'10_cls',
+      sectionId:'a_section',
     },
     {
         studentName: 'Siva',
@@ -100,8 +100,8 @@ export const studentDummyData =  [
       parentName:'Krishna S',
       gender:'gen-male',
         isFriend: false,
-        classId:'10-cls',
-        sectionId:'a-section',
+        classId:'10_cls',
+        sectionId:'a_section',
       },
       {
         studentName: 'Siva',
@@ -117,8 +117,8 @@ export const studentDummyData =  [
       parentName:'Krishna S',
       gender:'gen-male',
         isFriend: false,
-        classId:'10-cls',
-      sectionId:'a-section',
+        classId:'10_cls',
+      sectionId:'a_section',
       },
   ];
 
@@ -534,47 +534,47 @@ export const docData = [
     childrens: [
       {
         title: '10th Class',
-        id: 'gvt/doc/cls/10-cls',
+        id: 'gvt/doc/cls/10_cls',
         documents: [
           {
             docTitle: 'English Grammer By Siva',
-            id: 'gvt/doc/cls/10-cls/001',
+            id: 'gvt/doc/cls/10_cls/001',
           },
           {
             docTitle: `Physics Law of Motion Newton's`,
-            id: 'gvt/doc/cls/10-cls/002',
+            id: 'gvt/doc/cls/10_cls/002',
           },
           {
             docTitle: `10th Mathematics Previous Questions`,
-            id: 'gvt/doc/cls/10-cls/003',
+            id: 'gvt/doc/cls/10_cls/003',
           },
         ],
       },
       {
         title: '09th Class',
-        id: 'gvt/doc/cls/09-cls',
+        id: 'gvt/doc/cls/09_cls',
         documents: [
           {
             docTitle: 'English Grammer By Siva',
-            id: 'gvt/doc/cls/09-cls/001',
+            id: 'gvt/doc/cls/09_cls/001',
           },
           {
             docTitle: `Physics Law of Motion Newton's`,
-            id: 'gvt/doc/cls/09-cls/002',
+            id: 'gvt/doc/cls/09_cls/002',
           },
           {
             docTitle: `9th Mathematics Previous Questions`,
-            id: 'gvt/doc/cls/09-cls/003',
+            id: 'gvt/doc/cls/09_cls/003',
           },
         ],
       },
       {
         title: '08th Class',
-        id: 'gvt/doc/cls/08-cls',
+        id: 'gvt/doc/cls/08_cls',
         documents: [
           {
             docTitle: '8th English Grammer By Siva',
-            id: 'gvt/doc/cls/08-cls/001',
+            id: 'gvt/doc/cls/08_cls/001',
           },
         ],
       },
@@ -1749,17 +1749,17 @@ export const periodsListData =[
 ]
 
 export const classListDummy = [
-  { id:'1', className:'10th Class', classId:'10-cls'},
-  { id:'2', className:'9th Class', classId:'9-cls'},
-  { id:'3', className:'8th Class', classId:'8-cls'},
-  { id:'4', className:'7th Class', classId:'7-cls'},
-  { id:'5', className:'6th Class', classId:'6-cls'},
+  { id:'1', className:'10th Class', classId:'10_cls'},
+  { id:'2', className:'9th Class', classId:'9_cls'},
+  { id:'3', className:'8th Class', classId:'8_cls'},
+  { id:'4', className:'7th Class', classId:'7_cls'},
+  { id:'5', className:'6th Class', classId:'6_cls'},
 ]
 
 export const sectionListDummy = [
-  { id:'1', sectionName:'A Section', sectionId:'a-section'},
-  { id:'2', sectionName:'B Section', sectionId:'b-section'},
-  { id:'3', sectionName:'C Section', sectionId:'c-section'}
+  { id:'1', sectionName:'A Section', sectionId:'a_section'},
+  { id:'2', sectionName:'B Section', sectionId:'b_section'},
+  { id:'3', sectionName:'C Section', sectionId:'c_section'}
 ]
 
 export const staffListDummy = [
@@ -1894,9 +1894,9 @@ export const studentUnitMarksDetails = {
 }
 
 export const fiterDropdownValues=[
-  {id:1,moduleName:'Attendance',classId:'9-cls',sectionId:'a-section'},
-  {id:2,moduleName:'HomeWork',classId:'8-cls',sectionId:'b-section'},
-  {id:3,moduleName:'Subjects',classId:'10-cls',sectionId:'c-section'},
-  {id:4,moduleName:'ExamSchedules',classId:'7-cls',sectionId:'a-section'},
-  // {id:1,moduleName:'Attendance',classId:'9-cls',sectionId:'a-section'},
+  {id:1,moduleName:'Attendance',classId:'9_cls',sectionId:'a_section'},
+  {id:2,moduleName:'HomeWork',classId:'8_cls',sectionId:'b_section'},
+  {id:3,moduleName:'Subjects',classId:'10_cls',sectionId:'c_section'},
+  {id:4,moduleName:'ExamSchedules',classId:'7_cls',sectionId:'a_section'},
+  {id:1,moduleName:'ProgressCard',classId:'8_cls',sectionId:'a_section'},
 ]

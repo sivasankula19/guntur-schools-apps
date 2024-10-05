@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { IonButton, IonCard, IonCardContent, IonIcon, IonInput, IonLabel } from '@ionic/react';
 import CustomizedModal from '../../components/GCustomizedModal';
 import { addCircleOutline } from 'ionicons/icons';
 import GCustomInput from '../../components/GCustomInput';
+import { setWarnToast } from '../../redux/reducers/toastMessageSlice';
+import { useNavigate } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
 
 function SchoolSections() {
     const [isAddClassModal, setIsAddClassModal] = useState<boolean>(false);
@@ -12,11 +15,19 @@ function SchoolSections() {
         sectionIconValue: ''
     }
     const [formValue, setFormValue] = useState(formInitialVal);
+    const [unableProceed, setUnableProceed] = useState(false);
+    const currentRole = useSelector((state: any) => state.auth.role);
+    const rootAccess = useSelector((state: any) => state.accessControl.rootAccess);
+    const accessModules = useSelector((state: any) => state.accessControl.accessModules) || [];
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Sections', path: '/school-sections' }];
 
     const handleAdd = () => {
-        setIsAddClassModal(true);
+        if (!unableProceed) {
+            setIsAddClassModal(true);
+        }
     }
 
     const handleModelClose = () => {
@@ -25,13 +36,13 @@ function SchoolSections() {
     }
 
     const handleSubmit = () => {
-       if(formValue.sectionName && formValue.sectionIconValue){
-        var addSectionItem={id:sectionsListData.length+1,sectionName:formValue.sectionName,sectionId:'mdgl-sec-'+formValue.sectionIconValue,SectionIcon:formValue.sectionIconValue};
-        if(addSectionItem){
-            setSectionsListData([...sectionsListData,addSectionItem])
-            handleModelClose();
+        if (formValue.sectionName && formValue.sectionIconValue) {
+            var addSectionItem = { id: sectionsListData.length + 1, sectionName: formValue.sectionName, sectionId: 'mdgl-sec-' + formValue.sectionIconValue, SectionIcon: formValue.sectionIconValue };
+            if (addSectionItem) {
+                setSectionsListData([...sectionsListData, addSectionItem])
+                handleModelClose();
+            }
         }
-       }
     }
 
     const handleInput = (e: any) => {
@@ -45,7 +56,7 @@ function SchoolSections() {
         { id: 3, sectionName: 'C Section', sectionId: 'mdgl-sec-c', SectionIcon: 'C', },
     ]
 
-    const [sectionsListData,setSectionsListData]=useState(sectionsListDataApi);
+    const [sectionsListData, setSectionsListData] = useState(sectionsListDataApi);
 
     const handleEditClass = (classInfo: any) => {
         if (classInfo.sectionId !== 'default-9999') {
@@ -60,11 +71,25 @@ function SchoolSections() {
         }
     }
 
+    useEffect(() => {
+        if (currentRole === 'Teacher') {
+            if (!rootAccess) {
+                const attendanceModuleItem = accessModules.find((att: any) => att?.moduleId === 'create-cls-sec');
+                if (attendanceModuleItem?.moduleRootAccess) {
+                    setUnableProceed(false);
+                } else {
+                    setUnableProceed(true);
+                    dispatch(setWarnToast('Unable to proceed!, Please get permission from Admin'));
+                }
+            }
+        }
+    }, []);
+
     return (
         <div className='school-classes'>
             <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
             <div className='p-h-16 cls-container-view'>
-                <IonButton className='br-ion-12 m-top-12 g_txt_cap' onClick={handleAdd} fill="outline" expand="block">Add Section</IonButton>
+                <IonButton disabled={unableProceed} className='br-ion-12 m-top-12 g_txt_cap' onClick={handleAdd} fill="outline" expand="block">Add Section</IonButton>
                 <div className='school-class-list'>
                     {sectionsListData.map((item) => (
                         <IonCard key={item.id} className="student_card animation-none custom-class-card">
@@ -86,7 +111,7 @@ function SchoolSections() {
                                             <span className="user_id_data g_text_ellipses">{item.sectionId}</span>
                                         </div>
                                         <div className="g_flex">
-                                            <a className={`${item.sectionId === 'default-9999' ? 'disabled-edit' : ''}`} onClick={() => handleEditClass(item)}>Edit</a>
+                                            <a className={`${(item.sectionId === 'default-9999' || unableProceed) ? 'disabled-edit' : ''}`} onClick={() => handleEditClass(item)}>Edit</a>
                                         </div>
                                     </div>
                                 </div>
@@ -104,7 +129,7 @@ function SchoolSections() {
             >
                 <div>
                     <GCustomInput name={'sectionName'} value={formValue.sectionName} onInput={handleInput} label={'Section Name'} placeholder={'Section Name'} />
-                    
+
                     <GCustomInput name={'sectionIconValue'} value={formValue.sectionIconValue} onInput={handleInput} label={'Section Icon Value'} placeholder={'Ex. 10'} />
                 </div>
             </CustomizedModal>

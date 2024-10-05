@@ -50,15 +50,16 @@ const Home: React.FC = () => {
     } else if (responseData.role === 'Teacher') {
       // logged in roles as Teacher / staff then call or get the access modules from api!... and use in dispatch
       const rolesData = [
-        { id: 1, moduleName: 'Attendance', moduleId: 'attendance', moduleRootAccess: false, accessibleClasses: [{classId:'10-cls', sectionId:'a-section'},{classId:'9-cls', sectionId:'b-section'},{classId:'9-cls', sectionId:'a-section'},{classId:'9-cls', sectionId:'c-section'},] },
-        { id: 1, moduleName: 'Progress Card', moduleId: 'progressCard', moduleRootAccess: false, accessibleClasses: [{classId:'10-cls', sectionId:'a-section'},{classId:'9-cls', sectionId:'b-section'},{classId:'9-cls', sectionId:'a-section'},{classId:'9-cls', sectionId:'c-section'},] },
-        { id: 1, moduleName: 'Students List', moduleId: 'studentsList', moduleRootAccess: true, accessibleClasses: ["*"] },
-        { id: 1, moduleName: 'Staff List', moduleId: 'staffList', moduleRootAccess: false, accessibleClasses: [] },
-        { id: 1, moduleName: 'Create Class - Section', moduleId: 'create-cls-sec', moduleRootAccess: true, accessibleClasses: ["*"] },
-        { id: 1, moduleName: 'Fees Dues', moduleId: 'feesDues', moduleRootAccess: true, accessibleClasses: ["*"] },
-        { id: 1, moduleName: 'Documents', moduleId: 'documents', moduleRootAccess: true, accessibleClasses: ["*"] },
-        { id: 1, moduleName: 'School Public Info', moduleId: 'schoolPublicInfo', moduleRootAccess: true, accessibleClasses: ["*"] },
-        { id: 1, moduleName: 'Assets', moduleId: 'assets', moduleRootAccess: false, accessibleClasses: [] },
+        { id: 1, moduleName: 'Attendance', moduleId: 'attendance', moduleRootAccess: false, accessibleClasses: [{ classId: '10_cls', sectionId: 'a_section' }, { classId: '9_cls', sectionId: 'b_section' }, { classId: '9_cls', sectionId: 'a_section' }, { classId: '9_cls', sectionId: 'c_section' },] },
+        { id: 2, moduleName: 'Progress Card', moduleId: 'progressCard', moduleRootAccess: false, accessibleClasses: [{ classId: '10_cls', sectionId: 'a_section' }, { classId: '9_cls', sectionId: 'b_section' }, { classId: '9_cls', sectionId: 'a_section' }, { classId: '9_cls', sectionId: 'c_section' },] },
+        { id: 3, moduleName: 'Students List', moduleId: 'studentsList', moduleRootAccess: true, accessibleClasses: ["*"] },
+        { id: 4, moduleName: 'Staff List', moduleId: 'staffList', moduleRootAccess: false, accessibleClasses: [] },
+        { id: 5, moduleName: 'Create Class - Section', moduleId: 'create-cls-sec', moduleRootAccess: true, accessibleClasses: ["*"] },
+        { id: 6, moduleName: 'Fees Dues', moduleId: 'feesDues', moduleRootAccess: true, accessibleClasses: ["*"] },
+        { id: 7, moduleName: 'Documents', moduleId: 'documents', moduleRootAccess: true, accessibleClasses: ["*"] },
+        { id: 8, moduleName: 'Time Table', moduleId: 'timeTable', moduleRootAccess: false, accessibleClasses: [{ classId: '10_cls', sectionId: 'a_section' }, { classId: '9_cls', sectionId: 'b_section' }, { classId: '9_cls', sectionId: 'a_section' }, { classId: '9_cls', sectionId: 'c_section' },] },
+        { id: 9, moduleName: 'School Public Info', moduleId: 'schoolPublicInfo', moduleRootAccess: true, accessibleClasses: ["*"] },
+        { id: 10, moduleName: 'Assets', moduleId: 'assets', moduleRootAccess: false, accessibleClasses: [] },
       ];
       dispatch(setAccessModulesList(rolesData));
     } else if (responseData.role === 'Student') {
