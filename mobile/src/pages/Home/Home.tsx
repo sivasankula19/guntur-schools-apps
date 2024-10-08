@@ -30,7 +30,7 @@ const Home: React.FC = () => {
     // perform login API call fetch the user auth token
     const responseData = {
       token: 'someTokenValue',
-      // role: 'SuperAdmin', // SuperAdmin , Teacher, Student
+      // role: 'SuperAdmin', // SuperAdmin , Teacher, Student , Parent
       role: userName === 'superAdmin' ? 'SuperAdmin' : userName === 'teacher' ? 'Teacher' : 'Student',
       user: {
         fullName: 'Siva Sankula',
@@ -58,7 +58,7 @@ const Home: React.FC = () => {
         { id: 6, moduleName: 'Fees Dues', moduleId: 'feesDues', moduleRootAccess: true, accessibleClasses: ["*"] },
         { id: 7, moduleName: 'Documents', moduleId: 'documents', moduleRootAccess: true, accessibleClasses: ["*"] },
         { id: 8, moduleName: 'Time Table', moduleId: 'timeTable', moduleRootAccess: false, accessibleClasses: [{ classId: '10_cls', sectionId: 'a_section' }, { classId: '9_cls', sectionId: 'b_section' }, { classId: '9_cls', sectionId: 'a_section' }, { classId: '9_cls', sectionId: 'c_section' },] },
-        { id: 9, moduleName: 'School Public Info', moduleId: 'schoolPublicInfo', moduleRootAccess: true, accessibleClasses: ["*"] },
+        { id: 9, moduleName: 'School Public Info', moduleId: 'schoolPublicInfo', moduleRootAccess: false, accessibleClasses: ["*"] },
         { id: 10, moduleName: 'Assets', moduleId: 'assets', moduleRootAccess: false, accessibleClasses: [] },
       ];
       dispatch(setAccessModulesList(rolesData));
@@ -157,11 +157,11 @@ const Home: React.FC = () => {
             </div>
           ))}
         </div>
-      </div>
-      <div className='g-maps'>
-        <IonText>
-          <p>Google Maps!</p>
-        </IonText>
+        <div className='g-maps'>
+          <IonText>
+            <p>Google Maps!</p>
+          </IonText>
+        </div>
       </div>
     </div>
   );

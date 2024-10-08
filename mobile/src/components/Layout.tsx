@@ -14,7 +14,8 @@ function Layout() {
   const successToastMsgTex = useSelector((state: any) => state.toastMessage?.successToastMsg || '');
   const warnToastMsgText = useSelector((state: any) => state.toastMessage?.warnToastMsg || '');
   const failureToastMsgText = useSelector((state: any) => state.toastMessage?.failedToastMsg || '');
-  const infoToastMsgText = useSelector((state: any) => state.toastMessage?.infoToastMsg)
+  const infoToastMsgText = useSelector((state: any) => state.toastMessage?.infoToastMsg);
+  const currentRole = useSelector((state:any)=> state.auth.role);
   const dispatch = useDispatch();
   const preLoginModules = [
     '/about',
@@ -61,10 +62,12 @@ function Layout() {
     }
   }, [infoToastMsgText]);
 
+  const footersListModules = ['/dashboard', '/home', '/select-school', '/settings']
+
   return (
     <IonPage className="my_page">
       <Header />
-      <IonContent class="custom_content_view" fullscreen>
+      <IonContent class={`custom_content_view ${currentRole === 'Student' ? 'student' : ''}`} fullscreen>
         {preLoginModules.includes(location.pathname) ? (
           <>
             <PreLoginContent>
@@ -77,7 +80,7 @@ function Layout() {
           </>
         )}
       </IonContent>
-      {!location.pathname.includes('/messages/') && <Footer></Footer>}
+      {footersListModules.includes(location.pathname) && <Footer></Footer>}
       {isOpen && ( <IonToast
         isOpen={isOpen}
         message={successToastMsgTex || warnToastMsgText || infoToastMsgText || failureToastMsgText}

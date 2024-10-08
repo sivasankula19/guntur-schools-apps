@@ -13,7 +13,7 @@ import {
 import { useLocation, useNavigate } from 'react-router-dom';
 import './Menu.css';
 import { AppPage } from '../common/common-interface';
-import { chipsDataPrivate, chipsDataPublic, RoutesListDynamic } from '../common/common-routes-list';
+import { chipsDataPrivate, chipsDataPublic, RoutesListDynamic, studentsChipsData } from '../common/common-routes-list';
 import { useDispatch, useSelector } from 'react-redux';
 import { setMode } from '../redux/reducers/darkModeSlice';
 import React, { useEffect, useState } from 'react';
@@ -39,16 +39,22 @@ const Menu: React.FC = () => {
   const chipsDataPublic1 = chipsDataPublic;
 
   useEffect(() => {
-    let chipsData = [...chipsDataPrivate1];
-    if (currentRole === 'SuperAdmin') {
-      chipsData.unshift({ id: 999, moduleName: 'Access Control', icon: keyOutline, redirectTo: '/access-control' });
-      chipsData.unshift({ id: 998, moduleName: 'Configurations', icon: cogOutline, redirectTo: '/app-configurations' });
+    if (currentRole === "Student") {
+      setChipsRender([...studentsChipsData])
+    } else if (currentRole === 'Parent') {
+
+    } else {
+      let chipsData = [...chipsDataPrivate1];
+      if (currentRole === 'SuperAdmin') {
+        chipsData.unshift({ id: 999, moduleName: 'Access Control', icon: keyOutline, redirectTo: '/access-control' });
+        chipsData.unshift({ id: 998, moduleName: 'Configurations', icon: cogOutline, redirectTo: '/app-configurations' });
+      }
+      const dashboardItem = { id: Math.random(), moduleName: 'Dashboard', icon: homeOutline, redirectTo: '/dashboard' }
+      chipsData.unshift(dashboardItem);
+      const chipsDataPrivateVal = [...chipsDataPublic1]
+      setChipsRender(chipsData);
+      setPrivateChipsToRender(chipsDataPrivateVal);
     }
-    const dashboardItem = { id: Math.random(), moduleName: 'Dashboard', icon: homeOutline, redirectTo: '/dashboard' }
-    chipsData.unshift(dashboardItem);
-    const chipsDataPrivateVal = [...chipsDataPublic1]
-    setChipsRender(chipsData);
-    setPrivateChipsToRender(chipsDataPrivateVal);
   }, [currentRole]);
 
   const handleToggleChange = (event: any) => {

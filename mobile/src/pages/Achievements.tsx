@@ -190,7 +190,7 @@ const Achievements: React.FC = () => {
 
   return (
     <div className="achievements g_full_height">
-      {(!isStudent && isAuthenticated) && <GBackSaveReset handleReset={handleReset} handleSave={handleSave} />}
+     <GBackSaveReset handleReset={handleReset} handleSave={handleSave} />
       <div className={`${(!isStudent && isAuthenticated) ? 'achievement-m-sa' : 'g_full_height o-flow-y'}`}>
         {(!isStudent && isAuthenticated) &&
           <div className='p-b-10'>

@@ -26,8 +26,6 @@ const StudentList: React.FC = () => {
     setIsFilterEnabled(event.detail.checked);
   };
 
-  const count = useSelector((state: any) => state.counter);
-
   const handleInput = (ev: any) => {
     setSearch(ev.target.value);
     console.log(ev?.target.value);

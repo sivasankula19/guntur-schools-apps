@@ -4,7 +4,7 @@ import GBreadCrumbs from '../../components/GBreadCrumbs';
 const Calendar = () => {
   const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' },{ bName: 'Calendar', path: '/calendar' },];
   return (
-    <div>
+    <div className='g_full_height'>
       <GBreadCrumbs data={breadCrumbsValue}/>
     </div>
   )

@@ -66,7 +66,7 @@ const Gallery: any = (props: any) => {
 
   return (
     <div className='g_full_height gallery'>
-    {!isStudent && <GBackSaveReset handleReset={handleReset} handleSave={handleSave} />}
+    <GBackSaveReset handleReset={handleReset} handleSave={handleSave} />
       <div className={`${!isStudent ? 'gallery-m-sa' : 'g_full_height'}`}>
         <IonText className='title_gallery'>
           <h4>School Images</h4>

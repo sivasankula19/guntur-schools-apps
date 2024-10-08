@@ -78,7 +78,7 @@ function ModuleAccess() {
 
 
   return (
-    <div className='module-access'>
+    <div className='module-access g_full_height'>
       <GBreadCrumbs data={breadCrumbsValue} />
       <div className='back-save-icons m-top-10 p-h-16'>
         <div className='g_flex g-align-center'>
