@@ -1018,11 +1018,15 @@ ion-header {
   overflow-y: auto;
   padding-bottom: 50px;
   padding-bottom: 120px;
-  height: calc(100% - 206px);
+  height: calc(100% - 236px);
+}
+
+.student .students_cards_container {
+  height: calc(100% - 170px);
 }
 
 .with_filter_off {
-  height: calc(100% - 82px);
+  height: calc(100% - 120px);
 }
 
 .student_card {
@@ -1278,11 +1282,11 @@ ion-toggle::part(track) {
   height: 45px;
   min-height: 36px !important;
   --border-radius: 8px;
-  --border-color:#000000;
+  --border-color: #000000;
 }
 
 .dark .custom-select {
-  --border-color:#ffffff;
+  --border-color: #ffffff;
 }
 
 .ios .custom-select {
@@ -1370,7 +1374,7 @@ ion-toggle::part(track) {
   height: auto;
   overflow-y: auto;
   padding-bottom: 60px;
-  height: calc(100% - 180px);
+  height: calc(100% - 148px);
 }
 
 .attendance_container_items ion-icon,
@@ -1421,7 +1425,7 @@ ion-toggle::part(track) {
 .summery_attendance_show {
   animation: slideIn 0.8s forwards;
   position: absolute;
-  bottom: 50px;
+  bottom: 10px;
   z-index: 1;
   border: 1px solid;
   margin: 0;
@@ -1659,19 +1663,19 @@ ion-toggle::part(track) {
   border-radius: 4px;
 }
 
-.enabled-date-field{
-  background: #ffffff ;
+.enabled-date-field {
+  background: #ffffff;
 }
 
-.disabled-date-field{
+.disabled-date-field {
   background: #F5F5F5;
 }
 
-.dark .enabled-date-field{
-  background: #000000 ;
+.dark .enabled-date-field {
+  background: #000000;
 }
 
-.dark .disabled-date-field{
+.dark .disabled-date-field {
   background: #3d3d3d;
 }
 
@@ -2016,7 +2020,7 @@ ion-toggle::part(track) {
 }
 
 .subjects_cls_container {
-  height: calc(100% - 100px);
+  height: calc(100% - 70px);
   overflow-y: auto;
 }
 
@@ -2202,7 +2206,7 @@ ion-toggle::part(track) {
 }
 
 .display-data {
-  height: calc(66% - 50px);
+  height: calc(66% - 26px);
   overflow: auto;
   padding-bottom: 48px;
 }
@@ -2239,7 +2243,7 @@ ion-toggle::part(track) {
   justify-content: center;
   width: 100%;
   position: fixed;
-  bottom: 6%;
+  bottom: 10px;
 }
 
 .bottom-button {
@@ -2257,7 +2261,6 @@ ion-toggle::part(track) {
 
 .exam_schedule {
   height: 100%;
-  border: 1px solid;
 }
 
 .exam_schedule ion-label {
@@ -2377,8 +2380,13 @@ ion-toggle::part(track) {
 .documents,
 .exam_schedule {
   animation: slideIn 0.8s forwards;
-  height: calc(100% - 140px);
+  height: calc(100% - 100px);
   overflow-y: auto;
+}
+
+.student .documents,
+.exam_schedule {
+  height: calc(100% - 54px);
 }
 
 .exam_schedule ion-accordion,
@@ -2517,7 +2525,7 @@ ion-toggle::part(track) {
 
 .progress_card {
   height: auto;
-  height: calc(100% - 84px);
+  height: calc(100% - 54px);
   overflow-y: auto;
   padding-bottom: 30px;
 }
@@ -2709,7 +2717,7 @@ ion-toggle::part(track) {
 }
 
 .progress-add-con {
-  height: calc(100% - 200px) !important;
+  height: calc(100% - 180px) !important;
   overflow-y: auto;
 }
 
@@ -2802,7 +2810,7 @@ ion-toggle::part(track) {
 }
 
 .pr-editable-container {
-  height: calc(100% - 200px);
+  height: calc(100% - 170px);
 }
 
 .pr-editable-container ion-card {
@@ -2815,7 +2823,7 @@ ion-toggle::part(track) {
   overflow-x: auto;
 }
 
-.grid-table-wrap{
+.grid-table-wrap {
   height: calc(100% - 100px);
   overflow-y: auto;
 }
@@ -2889,7 +2897,7 @@ label.input-wrapper.sc-ion-input-ios {
   align-items: center;
 }
 
-.home .g-maps{
+.home .g-maps {
   height: 60px;
   width: 80%;
   margin: auto;
@@ -2899,7 +2907,7 @@ label.input-wrapper.sc-ion-input-ios {
   background: #D9D9D9;
 }
 
-.dark .home .g-maps{
+.dark .home .g-maps {
   background: #333333;
 }
 
@@ -2910,11 +2918,17 @@ label.input-wrapper.sc-ion-input-ios {
 .home ion-item {
   margin: 12px 0;
   --inner-border-width: 0;
+  --background:#ffffff;
+}
+
+.dark .home ion-item {
+  margin: 12px 0;
+  --inner-border-width: 0;
+  --background:#000000;
 }
 
 .home ion-card-content {
-  padding: 0;
-  padding-top: 12px;
+  padding: 12px 0;
 }
 
 .home ion-card {
@@ -2930,7 +2944,7 @@ label.input-wrapper.sc-ion-input-ios {
 }
 
 .home .home-container {
-  height: calc(100% - 70px);
+  height: 100%;
   overflow-y: auto;
 }
 
@@ -3015,7 +3029,7 @@ label.input-wrapper.sc-ion-input-ios {
 /* About CSS */
 
 .about-m-sa {
-  height: calc(100% - 78px);
+  height: calc(100% - 68px);
   overflow-y: auto;
 }
 
@@ -3178,7 +3192,7 @@ label.input-wrapper.sc-ion-input-ios {
 /* courses css */
 
 .courses-m-sa {
-  height: calc(100% - 78px);
+  height: calc(100% - 68px);
   overflow-y: auto;
 }
 
@@ -3536,7 +3550,7 @@ label.input-wrapper.sc-ion-input-ios {
 }
 
 .contact_us_sa {
-  height: calc(100% - 78px);
+  height: calc(100% - 68px);
   overflow-y: auto;
 }
 
@@ -3556,8 +3570,12 @@ label.input-wrapper.sc-ion-input-ios {
 /* gallery */
 
 .gallery-m-sa {
-  height: calc(100% - 78px);
+  height: calc(100% - 68px);
   overflow-y: auto;
+}
+
+.student .gallery-m-sa {
+  height: calc(100% - 10px);
 }
 
 .gallery {
@@ -3827,7 +3845,7 @@ label.input-wrapper.sc-ion-input-ios {
 /* Achievements */
 
 .achievement-m-sa {
-  height: calc(100% - 78px);
+  height: calc(100% - 68px);
   overflow-y: auto;
 }
 
@@ -3935,7 +3953,7 @@ label.input-wrapper.sc-ion-input-ios {
 }
 
 .messages .select_chat {
-  height: calc(100% - 84px);
+  height: calc(100% - 44px);
   width: 100%;
 }
 
@@ -3954,7 +3972,7 @@ label.input-wrapper.sc-ion-input-ios {
 
 .messages .select_chat .chat_list {
   padding: 0 16px;
-  height: calc(100% - 118px);
+  height: calc(100% - 128px);
   overflow-y: auto;
 }
 
@@ -4032,7 +4050,7 @@ label.input-wrapper.sc-ion-input-ios {
 }
 
 .chat_container {
-  height: calc(100% - 12px);
+  height: calc(100% - 8px);
 }
 
 .chat_container ion-card-content {
@@ -4375,7 +4393,7 @@ label.input-wrapper.sc-ion-input-ios {
 }
 
 .filter_enable_posts {
-  height: calc(100% - 174px);
+  height: calc(100% - 140px);
 }
 
 .vibe_posts {
@@ -4389,7 +4407,7 @@ label.input-wrapper.sc-ion-input-ios {
 }
 
 .filter_disabled_posts {
-  height: calc(100% - 46px);
+  height: calc(100% - 18px);
 }
 
 .vibe_posts .profile_name {
@@ -4511,7 +4529,11 @@ label.input-wrapper.sc-ion-input-ios {
 }
 
 .home_work {
-  height: calc(100% - 92px);
+  height: calc(100% - 160px);
+}
+
+.student .home_work {
+  height: calc(100% - 54px);
 }
 
 .custom_homework_date {
@@ -4645,8 +4667,12 @@ label.input-wrapper.sc-ion-input-ios {
 }
 
 .fees_card_holder {
-  height: calc(100% - 160px);
+  height: calc(100% - 220px);
   overflow-y: auto;
+}
+
+.student .fees_card_holder {
+  height: calc(100% - 124px);
 }
 
 .fees_card_holder ion-card {
@@ -4847,10 +4873,6 @@ label.input-wrapper.sc-ion-input-ios {
 
 /* Assets */
 
-.school-assets {
-  height: calc(100% - 36px);
-}
-
 .main-ion-label {
   color: #1D7AF5 !important;
 }
@@ -4866,6 +4888,10 @@ label.input-wrapper.sc-ion-input-ios {
   animation: slideIn 0.8s forwards;
   height: calc(100% - 100px);
   overflow-y: auto;
+}
+
+.student .school-assets {
+  height: calc(100% - 50px);
 }
 
 .school-assets ion-accordion {
@@ -4918,7 +4944,7 @@ label.input-wrapper.sc-ion-input-ios {
 }
 
 .school-assets-sa {
-  height: calc(100% - 140px);
+  height: calc(100% - 100px);
 }
 
 .add_assets_cnt {
@@ -5054,7 +5080,7 @@ label.input-wrapper.sc-ion-input-ios {
 }
 
 .time_table_sa {
-  height: calc(100% - 30px);
+  height: calc(100% - 12px);
   background: #ffffff;
 }
 
@@ -5191,7 +5217,7 @@ label.input-wrapper.sc-ion-input-ios {
 }
 
 .table_scrollable {
-  height: calc(100% - 120px);
+  height: calc(100% - 100px);
   overflow-y: auto;
 }
 
@@ -5213,7 +5239,7 @@ label.input-wrapper.sc-ion-input-ios {
   max-height: 32px;
   height: 30px;
   font-size: 14px;
-} 
+}
 
 .period_time_modal {
   --width: 80%;
@@ -5251,7 +5277,7 @@ label.input-wrapper.sc-ion-input-ios {
 }
 
 .school-class-list {
-  height: calc(100% - 50px);
+  height: calc(100% - 20px);
   overflow-y: auto;
 }
 
@@ -5373,7 +5399,7 @@ label.input-wrapper.sc-ion-input-ios {
 
 .add-vibe-post {
   position: absolute;
-  bottom: 44px;
+  bottom: 8px;
   z-index: 1;
   right: 12px;
 }
@@ -5400,7 +5426,7 @@ ion-popover {
 }
 
 .notifications-page {
-  height: calc(100% - 86px);
+  height: calc(100% - 56px);
   overflow-y: auto;
 }
 
@@ -5418,7 +5444,7 @@ ion-popover {
 }
 
 .exams-schedule-sa {
-  height: calc(100% - 190px);
+  height: calc(100% - 170px);
   overflow-y: auto;
 }
 
@@ -5491,7 +5517,7 @@ ion-popover {
 /* Access Control */
 
 .access-control-sa {
-  height: calc(100% - 40px);
+  height: calc(100% - 10px);
 }
 
 .access-control-sa .access-data {
@@ -5736,8 +5762,8 @@ ion-toast.info-toast::part(button) {
   margin: 0;
 }
 
-.menu_item_con ion-icon{
- margin-right: 16px;
+.menu_item_con ion-icon {
+  margin-right: 16px;
 }
 
 /* settings */
@@ -5762,13 +5788,13 @@ ion-toast.info-toast::part(button) {
 .ios ion-input {
   border: 1px solid;
   border-color: #000000 !important;
-  --padding-start:12px;
+  --padding-start: 12px;
 }
 
 .dark .ios ion-input {
   border: 1px solid;
   border-color: #ffffff !important;
-  --padding-start:12px;
+  --padding-start: 12px;
 }
 
 ion-input {
@@ -5777,12 +5803,12 @@ ion-input {
   border-radius: 8px;
 }
 
-.dark ion-input{
-  --border:1px solid;
+.dark ion-input {
+  --border: 1px solid;
   --border-color: #ffffff !important;
 }
 
-.add-request-btn{
+.add-request-btn {
   position: absolute;
   bottom: 20px;
   width: auto;
@@ -5790,7 +5816,7 @@ ion-input {
   transform: translate(-50%, -50%);
 }
 
-.add-request-btn ion-button{
+.add-request-btn ion-button {
   border-radius: 8px;
   background: #ffffff;
   text-transform: capitalize;
@@ -5804,21 +5830,21 @@ ion-input {
   font-size: 14px;
 }
 
-.dark .add-request-btn ion-button{
+.dark .add-request-btn ion-button {
   border-radius: 8px;
   background: #000000;
 }
 
-.save-progress-card{
+.save-progress-card {
   font-size: 22px;
   margin-right: 16px;
 }
 
-.register-school{
+.register-school {
   height: 100%;
 }
 
-.register-scl-form ion-text p{
+.register-scl-form ion-text p {
   text-align: center;
   margin-bottom: 8px;
   font-size: 16px;
@@ -5826,38 +5852,45 @@ ion-input {
   font-weight: bold;
 }
 
-.back-icon-scl{
+.back-icon-scl {
   margin-top: 8px;
 }
 
-.back-icon-scl ion-icon{
+.back-icon-scl ion-icon {
   font-size: 32px;
 }
 
-.back-icon-scl ion-text p{
+.back-icon-scl ion-text p {
   font-size: 16px;
   margin-left: 8px;
 }
 
-.scrollable-scl{
+.scrollable-scl {
   height: calc(100% - 62px);
   overflow-y: auto;
 }
 
-.text-info-scl .title{
+.text-info-scl .title {
   font-size: 16px;
-  color:#1D7AF5;
+  color: #1D7AF5;
   text-align: center;
   font-weight: bold;
 }
 
-.text-info-scl .text-head{
+.text-info-scl .text-head {
   font-size: 16px;
-  color:#1D7AF5;
+  color: #1D7AF5;
 }
 
-.text-info-scl .text-data{
+.text-info-scl .text-data {
   font-size: 14px;
 }
 
+ion-modal > .ion-page{
+  height: auto !important;
+}
 
+.custom-date-pick{
+  height: 100%;
+  --height:auto;
+}

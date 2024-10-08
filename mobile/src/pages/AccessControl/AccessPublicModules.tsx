@@ -59,7 +59,7 @@ function AccessPublicModules() {
     };
 
     return (
-        <div className='access-private-modules'>
+        <div className='access-private-modules g_full_height'>
             <GBreadCrumbs data={breadCrumbsValue} />
             <div className='back-save-icons m-top-10 p-h-16'>
                 <div className='g_flex g-align-center'>

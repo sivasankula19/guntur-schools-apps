@@ -1,6 +1,6 @@
 import { IonIcon, IonInput, IonText } from '@ionic/react';
 import { closeCircleOutline, cloudUploadOutline } from 'ionicons/icons';
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState } from 'react';
 
 interface IGImageUploadProps {
     onFileChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
@@ -10,8 +10,9 @@ interface IGImageUploadProps {
     multiple?: boolean,
     classNames?: string,
 }
+
 function GImagUpload({ onFileChange, uploadIcon = cloudUploadOutline, label = 'Upload', accept = "image/*", multiple = false, classNames }: IGImageUploadProps) {
-    const [uploadedImage, setUploadImag] = useState<File[]>([]);
+    const [uploadedImage, setUploadedImag] = useState<File[]>([]);
     const fileInputRef = useRef<HTMLInputElement>(null);
 
     const handleButtonClick = (e: any) => {
@@ -25,12 +26,20 @@ function GImagUpload({ onFileChange, uploadIcon = cloudUploadOutline, label = 'U
         const files = event.target.files;
         if (files) {
             const fileArray = Array.from(files);
-            setUploadImag(fileArray); // Update the state with the selected files
+            setUploadedImag(fileArray); // Update the state with the selected files
         }
         onFileChange(event);
-    }
+    };
 
     const fileNamesString = uploadedImage.map((file) => file.name).join(', ');
+
+    const handleRemoveImage = (fileName: string) => {
+        setUploadedImag((prevImages) => prevImages.filter((file) => file.name !== fileName));
+
+        if (fileInputRef.current) {
+            fileInputRef.current.value = ''; 
+        }
+    };
 
     return (
         <div className={`custom-file-input ${classNames}`}>
@@ -47,14 +56,18 @@ function GImagUpload({ onFileChange, uploadIcon = cloudUploadOutline, label = 'U
                 <IonIcon icon={uploadIcon}></IonIcon>
             </div>
             <div onClick={handleButtonClick} className='custom_place_val'></div>
-            {uploadedImage.length ? (<div className='uploaded-images-con'>
-                {uploadedImage.map((file: any) => (<div key={`file${Math.random().toString()}-${file.name}`} className='upload-img'>
-                    <IonText><p className='g_text_ellipses'>{file.name}</p></IonText>
-                    <IonIcon icon={closeCircleOutline}></IonIcon>
-                </div>))}
-            </div>) : null}
+            {uploadedImage.length ? (
+                <div className='uploaded-images-con'>
+                    {uploadedImage.map((file) => (
+                        <div key={file.name} className='upload-img'>
+                            <IonText><p className='g_text_ellipses'>{file.name}</p></IonText>
+                            <IonIcon onClick={() => handleRemoveImage(file.name)} icon={closeCircleOutline}></IonIcon>
+                        </div>
+                    ))}
+                </div>
+            ) : null}
         </div>
     )
 }
 
-export default GImagUpload
+export default GImagUpload;

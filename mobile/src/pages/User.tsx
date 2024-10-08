@@ -21,6 +21,7 @@ import GBreadCrumbs from '../components/GBreadCrumbs';
 import { useSelector } from 'react-redux';
 import GCustomInput from '../components/GCustomInput';
 import GImagUpload from '../components/GImagUpload';
+import GDatePicker from '../components/GDatePicker';
 
 const userData: any = [
   { key: 'Full Name', value: 'Sivaiah Sankula' },
@@ -172,10 +173,13 @@ const UserByID: React.FC = () => {
         <div>
           {formEditValues.map((data: any) => (<GCustomInput key={data.name} name={data.name} value={formValue[data.name]} onInput={handleInput} label={data.label} placeholder={data.placeholder} />))}
           {/* date picker */}
-          <div className='field m-bottom-10'>
-            <IonInput value={formValue.dob} onIonChange={handleInput} name='dob' label="Dob" labelPlacement="floating" fill="outline" placeholder="Date of Birth"></IonInput>
-            <IonIcon icon={calendarOutline}></IonIcon>
-          </div>
+          <GDatePicker
+            onDateChange={(date) => console.log('Selected Date:', date)}
+            label="Pick a Date"
+            placeholder="Date Of Birth"
+            classNames="m-bottom-10"
+            value={'2000-04-13T00:00:00.000Z'}
+          />
           <GImagUpload onFileChange={handleFileChange} label='Upload Image' classNames='m-bottom-10' />
         </div>
       </CustomizedModal>
