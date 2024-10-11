@@ -220,10 +220,10 @@ function ProgressUnitCardAdd() {
                         }}
                       >
                         <div
-                          style={{ minHeight: '40px', lineHeight: '2rem' }}
-                          className="g_txt_center g_text_ellipses g_flex g-align-center g-justify-center marks_column_header"
+                          style={{ minHeight: '40px'}}
+                          className="g_txt_center g_flex g-align-center g-justify-center marks_column_header"
                         >
-                          {'Student Name'}
+                          <IonText><p className='g_text_ellipses'>{'Student Name'}</p></IonText>
                         </div>
                         {studentsAllMarks.map((studentItem: any) => (
                           <div

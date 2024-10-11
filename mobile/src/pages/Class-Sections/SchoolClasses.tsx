@@ -69,9 +69,9 @@ function SchoolClasses() {
   ]
 
   const classListDataApi = [
-    { id: 1, className: '10th Class', classId: 'mdgl-scl-cls-10', linkedStaffName: 'Siva Sankula', classIcon: '10', linkedSections: [{ sectionId: 'mdgl-sec-a', staffId: 'mdgl-staff-00021' }, { sectionId: 'mdgl-sec-b', staffId: 'mdgl-staff-00019' }] },
-    { id: 2, className: '9th Class', classId: 'mdgl-scl-cls-9', linkedStaffName: 'Minoosh Reddy', classIcon: '9', linkedSections: [{ sectionId: 'mdgl-sec-a', staffId: 'mdgl-staff-00044' }, { sectionId: 'mdgl-sec-b', staffId: 'mdgl-staff-00027' }] },
-    { id: 3, className: '8th Class', classId: 'mdgl-scl-cls-8', linkedStaffName: 'Sankula Krishna', classIcon: '8', linkedSections: [{ sectionId: 'default', staffId: 'mdgl-staff-0001' }] },
+    { id: 1, className: '10th Class', classId: '10_cls', linkedStaffName: 'Siva Sankula', classIcon: '10', linkedSections: [{ sectionId: '10_cls', staffId: 'mdgl-staff-00021' }, { sectionId: '8_cls', staffId: 'mdgl-staff-00019' }] },
+    { id: 2, className: '9th Class', classId: '9_cls', linkedStaffName: 'Minoosh Reddy', classIcon: '9', linkedSections: [{ sectionId: '10_cls', staffId: 'mdgl-staff-00044' }, { sectionId: '9_cls', staffId: 'mdgl-staff-00027' }] },
+    { id: 3, className: '8th Class', classId: '8_cls', linkedStaffName: 'Sankula Krishna', classIcon: '8', linkedSections: [{ sectionId: 'default', staffId: 'mdgl-staff-0001' }] },
   ]
 
   const navigateEle = [
@@ -96,7 +96,7 @@ function SchoolClasses() {
     const updatedFormValue = {
       className: classInfo.className,
       classStaffName: '',
-      linkedSections: [],
+      linkedSections: classInfo.linkedSections,
       classIconValue: classInfo.classIcon,
     }
     setFormValue(updatedFormValue);
@@ -124,11 +124,18 @@ function SchoolClasses() {
     }
   }, []);
 
+  const handleSectionNavigate = () => {
+    navigate('/school-sections')
+  }
+
   return (
     <div className='school-classes'>
       <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
       <div className='p-h-16 cls-container-view'>
-        <IonButton disabled={unableProceed} className='br-ion-12 m-top-12 g_txt_cap' onClick={handleAdd} fill="outline" expand="block">Add Class</IonButton>
+        <div className='g_flex'>
+          <IonButton disabled={unableProceed} className='width-50 br-ion-12 m-r8-t12 g_txt_cap' onClick={handleAdd} fill="outline" expand="block">Add Class</IonButton>
+          <IonButton  className='width-50 br-ion-12 m-l8-t12 g_txt_cap' onClick={handleSectionNavigate} fill="outline" expand="block">Sections</IonButton>
+        </div>
         <div className='school-class-list'>
           {classListData.map((item) => (
             <IonCard key={item.id} className={`student_card animation-none custom-class-card ${currentSelected === item.id ? 'custom-class-card-selected' : ''}`}>

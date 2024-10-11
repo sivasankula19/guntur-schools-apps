@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import GBreadCrumbs from '../../components/GBreadCrumbs';
 import { IonCard, IonCardContent, IonIcon, IonLabel } from '@ionic/react';
 import { checkmarkCircleOutline, saveOutline } from 'ionicons/icons';
 import { classListDummy, classSubjects, examinationListDummy, sectionListDummy, studentDummyData } from '../../common/utility';
 import GCustomSelectDrop from '../../components/GCustomSelectDrop';
+import { useLocation } from 'react-router';
 
 function ProgressCardSubjectAdd() {
     const [filterValues, setFilterValue] = useState({
@@ -12,7 +13,8 @@ function ProgressCardSubjectAdd() {
         subjectId: '',
         examinationId: ''
     });
-    const breadCrumbsValue = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Subject Progress Card', path: '/progress-card' },];
+    const [breadCrumbState, setBreadCrumbsState] = useState<any>([]);
+    const location = useLocation();
 
     const studentsListForClass = studentDummyData;
     const classDummyData = classListDummy.map(i => ({ id: i.classId, label: i.className }));
@@ -24,9 +26,20 @@ function ProgressCardSubjectAdd() {
         setFilterValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     }
 
+    useEffect(() => {
+        const breadCrumbs: any = [{ bName: 'Home', path: '/dashboard' }, { bName: 'Subject Progress Card', path: '/progress-card-class-subject' }]
+        if (location.state && location.state.parent) {
+            breadCrumbs.splice(1, 0, { bName: location.state.parent, path: location.state.parentRoute, 
+                state: { classId: location.state.classId, sectionId: location.state.sectionId } });
+            setFilterValue({classId:location.state.classId, sectionId:location.state.sectionId, subjectId:location.state.subjectId, examinationId:''})
+        }
+        setBreadCrumbsState(breadCrumbs);
+
+    }, [location.state])
+
     return (
         <div className='g_full_height'>
-            <GBreadCrumbs data={breadCrumbsValue} />
+            <GBreadCrumbs data={breadCrumbState} />
             <div className='p-h-10 progress-hold'>
                 <div className='g_flex g-space-between m-top-12 '>
                     <div className='m-right-6 width-50'>

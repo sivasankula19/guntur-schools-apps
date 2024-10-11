@@ -18,6 +18,7 @@ interface IGDatePickerProps {
     format?: string,
     classNames?: string,
     value?: string,
+    initialDate?:string,
 }
 
 function GDatePicker({
@@ -27,12 +28,11 @@ function GDatePicker({
     placeholder = 'Select a date',
     classNames,
     value,
+    initialDate = '2000-01-01T12:00:00.000Z'
 }: IGDatePickerProps) {
     const [selectedDate, setSelectedDate] = useState<string | null>(value || '');
     const [showDatePicker, setShowDatePicker] = useState(false);
     const fromModal = useRef<HTMLIonModalElement>(null);
-    const initialDate = '2000-01-01T12:00:00.000Z'
-
     useEffect(() => {
         if (value) {
             setSelectedDate(value);

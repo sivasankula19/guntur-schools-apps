@@ -52,7 +52,7 @@ function GImagUpload({ onFileChange, uploadIcon = cloudUploadOutline, label = 'U
                 multiple={multiple}
             />
             <div className='field width-100 file-label'>
-                <IonInput label={uploadedImage.length ? 'Uploaded Images' : label} value={uploadedImage.length ? fileNamesString : ''} readonly labelPlacement="floating" fill="outline"></IonInput>
+                <IonInput label={uploadedImage.length ? 'Uploaded Images' : label} onFocus={(e) => e.target.blur()} value={uploadedImage.length ? fileNamesString : ''} readonly labelPlacement="floating" fill="outline"></IonInput>
                 <IonIcon icon={uploadIcon}></IonIcon>
             </div>
             <div onClick={handleButtonClick} className='custom_place_val'></div>
