@@ -206,7 +206,7 @@ function AttendanceByClass() {
                     </IonCard>
                 </div>
                 <div className='continue-btn'>
-                    <IonButton onClick={handleContinue} fill="outline" expand="block" disabled={(filterValues.classId === '' || filterValues.sectionId === '')}>
+                    <IonButton className='br-ion-8' onClick={handleContinue} fill="outline" expand="block" disabled={(filterValues.classId === '' || filterValues.sectionId === '')}>
                         Continue With {`${classDummyData.find(i => i.id === filterValues.classId)?.label || ''} - ${sectionDummyData.find(i => i.id === filterValues.sectionId)?.label || ''}`}
                     </IonButton>
                 </div>

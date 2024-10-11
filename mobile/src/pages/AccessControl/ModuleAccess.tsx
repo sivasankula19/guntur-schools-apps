@@ -36,8 +36,7 @@ function ModuleAccess() {
   const listAccessModules = [
     { id: 1, moduleName: 'Staff', icon: peopleOutline, redirectTo: '/staff-list' },
     { id: 2, moduleName: 'Students', icon: peopleOutline, redirectTo: '/students-list' },
-    { id: 3, moduleName: 'Sections', icon: cubeOutline, redirectTo: '/school-sections' },
-    { id: 4, moduleName: 'Classes', icon: gridOutline, redirectTo: '/school-classes' },
+    { id: 4, moduleName: 'Class -  Sections', icon: gridOutline, redirectTo: '/school-classes' },
     { id: 10, moduleName: 'Messages', icon: chatboxOutline, redirectTo: '/messages' },
     { id: 12, moduleName: 'Calendar', icon: calendarOutline, redirectTo: '/calendar' },
     { id: 13, moduleName: 'Vibe', icon: newspaperOutline, redirectTo: '/school-vibe' },

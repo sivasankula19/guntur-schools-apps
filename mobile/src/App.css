@@ -639,6 +639,22 @@ ion-header {
   margin-top: 12px;
 }
 
+.m-r10-t12 {
+  margin: 12px 10px 0 0;
+}
+
+.m-l10-t12 {
+  margin: 12px 0 0 10px;
+}
+
+.m-r8-t12 {
+  margin: 12px 8px 0 0;
+}
+
+.m-l8-t12 {
+  margin: 12px 0 0 8px;
+}
+
 .m-bottom-12 {
   margin-bottom: 12px;
 }
@@ -1030,7 +1046,7 @@ ion-header {
 }
 
 .student_card {
-  margin: 14px 10px;
+  margin: 8px 10px;
   color: black;
   font-family: 'auto';
   border: 1px solid #1D7AF5;
@@ -1707,8 +1723,7 @@ ion-toggle::part(track) {
 }
 
 .attendance_sa .scroll-class-att {
-  height: calc(100% - 26px);
-  /* padding-bottom: 100px; */
+  height: calc(100% - 16px);
   overflow-y: auto;
 }
 
@@ -2722,6 +2737,7 @@ ion-toggle::part(track) {
 }
 
 .marks-progress-icon {
+  width: 50%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -2732,7 +2748,7 @@ ion-toggle::part(track) {
   border: 1px solid;
   height: 36px;
   border-radius: 8px;
-  max-width: 100px;
+  max-width: 80px;
   padding: 4px 8px;
   background: #ffffff;
 }
@@ -2918,13 +2934,13 @@ label.input-wrapper.sc-ion-input-ios {
 .home ion-item {
   margin: 12px 0;
   --inner-border-width: 0;
-  --background:#ffffff;
+  --background: #ffffff;
 }
 
 .dark .home ion-item {
   margin: 12px 0;
   --inner-border-width: 0;
-  --background:#000000;
+  --background: #000000;
 }
 
 .home ion-card-content {
@@ -5336,7 +5352,7 @@ label.input-wrapper.sc-ion-input-ios {
 .custom-class-card {
   border-bottom: 5px solid;
   border-color: #1D7AF5;
-  margin: 16px 0 !important;
+  margin: 8px 0 !important;
 }
 
 .custom-class-card-selected {
@@ -5785,25 +5801,29 @@ ion-toast.info-toast::part(button) {
   font-size: 32px;
 }
 
-.ios ion-input {
+.ios ion-input,
+.ios ion-textarea {
   border: 1px solid;
   border-color: #000000 !important;
   --padding-start: 12px;
 }
 
-.dark .ios ion-input {
+.dark .ios ion-input,
+.dark .ios ion-textarea {
   border: 1px solid;
   border-color: #ffffff !important;
   --padding-start: 12px;
 }
 
-ion-input {
+ion-input,
+ion-textarea {
   --border: 1px solid;
   border-color: #000000 !important;
   border-radius: 8px;
 }
 
-.dark ion-input {
+.dark ion-input,
+.dark ion-textarea {
   --border: 1px solid;
   --border-color: #ffffff !important;
 }
@@ -5886,11 +5906,16 @@ ion-input {
   font-size: 14px;
 }
 
-ion-modal > .ion-page{
-  height: auto !important;
+.custom-date-pick {
+  height: 100%;
+  --height: auto;
 }
 
-.custom-date-pick{
-  height: 100%;
-  --height:auto;
+.config-page-con p {
+  font-size: 14px;
+}
+
+.config-page-con{
+  height: calc(100% - 49px);
+  overflow-y: auto;
 }

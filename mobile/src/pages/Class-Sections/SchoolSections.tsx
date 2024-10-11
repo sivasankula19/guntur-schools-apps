@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import GBreadCrumbs from '../../components/GBreadCrumbs';
-import { IonButton, IonCard, IonCardContent, IonIcon, IonInput, IonLabel } from '@ionic/react';
+import { IonButton, IonCard, IonCardContent, IonIcon, IonInput, IonLabel, IonText } from '@ionic/react';
 import CustomizedModal from '../../components/GCustomizedModal';
-import { addCircleOutline } from 'ionicons/icons';
 import GCustomInput from '../../components/GCustomInput';
 import { setWarnToast } from '../../redux/reducers/toastMessageSlice';
 import { useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
+import { arrowBackOutline } from 'ionicons/icons';
 
 function SchoolSections() {
     const [isAddClassModal, setIsAddClassModal] = useState<boolean>(false);
@@ -85,9 +85,17 @@ function SchoolSections() {
         }
     }, []);
 
+    const handleBack = () => {
+        navigate('/school-classes');
+    }
+
     return (
         <div className='school-classes'>
             <GBreadCrumbs data={breadCrumbsValue}></GBreadCrumbs>
+            <div className='g_flex g-align-center back-icon-scl p-h-16'>
+                <IonIcon onClick={handleBack} icon={arrowBackOutline}></IonIcon>
+                <IonText onClick={handleBack}><p>Back</p></IonText>
+            </div>
             <div className='p-h-16 cls-container-view'>
                 <IonButton disabled={unableProceed} className='br-ion-12 m-top-12 g_txt_cap' onClick={handleAdd} fill="outline" expand="block">Add Section</IonButton>
                 <div className='school-class-list'>
@@ -126,6 +134,7 @@ function SchoolSections() {
                 isOpen={isAddClassModal}
                 onClose={handleModelClose}
                 onSave={handleSubmit}
+                styles={{maxHeight:'fit-content'}}
             >
                 <div>
                     <GCustomInput name={'sectionName'} value={formValue.sectionName} onInput={handleInput} label={'Section Name'} placeholder={'Section Name'} />

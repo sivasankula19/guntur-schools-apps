@@ -9,11 +9,12 @@ import {
   IonRange,
   IonText,
 } from '@ionic/react';
-import { classListDummy, classSubjects, sectionListDummy,fiterDropdownValues} from '../../common/utility';
+import { classListDummy, classSubjects, sectionListDummy, fiterDropdownValues } from '../../common/utility';
 import ProgressBar from '../../components/ProgressBar';
 import CustomizedModal from '../../components/GCustomizedModal';
 import GCustomSelectDrop from '../../components/GCustomSelectDrop';
 import GCustomInput from '../../components/GCustomInput';
+import { useLocation, useNavigate } from 'react-router';
 
 function SubjectsSA() {
   const [data, setData] = useState(classSubjects);
@@ -36,6 +37,8 @@ function SubjectsSA() {
     { bName: 'Home', path: '/dashboard' },
     { bName: 'Subjects', path: '/subjects' },
   ];
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleAddSubject = () => {
     setIsModelOpen(true);
@@ -86,13 +89,29 @@ function SubjectsSA() {
     setFilterValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  useEffect(()=>{
-  const filterDropdownValue=fiterDropdownValues.find(item=>item.moduleName=="Subjects");
-    if(filterDropdownValue){
+  useEffect(() => {
+    const filterDropdownValue = fiterDropdownValues.find(item => item.moduleName == "Subjects");
+    if (filterDropdownValue) {
       setFilterValue(filterDropdownValue)
     }
-  },[])
-  
+  }, []);
+
+  useEffect(() => {
+    if (location.state && location.state.classId && location.state.sectionId) {
+      setFilterValue({ classId: location.state.classId, sectionId: location.state.sectionId });
+    }
+  }, [location.state])
+
+  const handleNavigateProgressCard = (path: string, item:any) => {
+    navigate(path, { state: 
+      { parent: 'Subjects', 
+        parentRoute: '/subjects', 
+        classId: filterValues.classId, 
+        sectionId: filterValues.sectionId, 
+        subjectId:item.subjectCode,
+      } });
+  };
+
   return (
     <div className="subjects">
       <div className="g_flex g-space-between g-align-center bread_toggle_container">
@@ -138,7 +157,7 @@ function SubjectsSA() {
                       <a>Time Table</a>
                     </IonText>
                     <IonText>
-                      <a>Marks</a>
+                      <a onClick={() => handleNavigateProgressCard('/progress-card-class-subject', item)}>Marks</a>
                     </IonText>
                     <IonText>
                       <p>
@@ -157,6 +176,7 @@ function SubjectsSA() {
         isOpen={isModelOpen}
         onClose={handleModelClose}
         onSave={handleSubmit}
+        styles={{maxHeight:'fit-content'}}
       >
         <div>
           <GCustomInput name={'subjectName'} value={formValue.subjectName} onInput={handleInput} label={'Subject Name'} placeholder={'Subject Name'} />

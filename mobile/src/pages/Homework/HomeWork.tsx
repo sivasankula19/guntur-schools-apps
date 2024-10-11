@@ -9,6 +9,7 @@ import CustomizedModal from '../../components/GCustomizedModal';
 import GCustomSelectDrop from '../../components/GCustomSelectDrop';
 import GCustomInput from '../../components/GCustomInput';
 import GImagUpload from '../../components/GImagUpload';
+import GDatePicker from '../../components/GDatePicker';
 const HomeWork: React.FC = () => {
 
   const [homeWorkData, setHomeWorkData] = useState<any>([])
@@ -77,6 +78,14 @@ const HomeWork: React.FC = () => {
   const handleChange = (e: any) => {
     setFilterValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
+
+  const handleDateChange = (date:string) => {
+    setFormValue(prev=>({...prev, dueDate:date}));
+  }
+
+  const tomorrowDate = new Date()
+  tomorrowDate.setDate(tomorrowDate.getDate()+1);
+  tomorrowDate.setHours(12,0,0)
 
   return (
     <div className='g_full_height'>
@@ -185,9 +194,16 @@ const HomeWork: React.FC = () => {
           <GCustomInput name={'homeWorkName'} value={formValue.homeWorkName} onInput={handleInput} label={'Home Work Title'} placeholder={'Ex. Algorithms'} />
           <GCustomInput name={'description'} value={formValue.description} onInput={handleInput} label={'Description'} placeholder={'Description'} />
           <GCustomInput name={'subjectName'} value={formValue.subjectName} onInput={handleInput} label={'Subject Name'} placeholder={'Subject Name'} />
+          <GDatePicker
+            onDateChange={handleDateChange}
+            label="Pick a Date"
+            placeholder="Date Of Birth"
+            classNames="m-bottom-10"
+            value={formValue.dueDate}
+            initialDate={tomorrowDate.toISOString()}
+          />
+          {/* <GCustomInput name={'dueDate'} value={formValue.dueDate} onInput={handleInput} label={'Due Date'} placeholder={'01/01/2024'} /> */}
           <GImagUpload onFileChange={handleFileChange} multiple={true} label='Upload Image' classNames='m-bottom-10' />
-          {/* date */}
-          <GCustomInput name={'dueDate'} value={formValue.dueDate} onInput={handleInput} label={'Due Date'} placeholder={'01/01/2024'} />
         </div>
       </CustomizedModal>
     </div>

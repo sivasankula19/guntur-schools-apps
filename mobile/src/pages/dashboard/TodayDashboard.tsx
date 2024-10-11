@@ -97,7 +97,7 @@ function TodayDashboard({ currentDay }: ITodayDashboardProps) {
                 ></div>
                 <IonList>
                     {timeDisplay.map((time) => {
-                        const period = currentDayObj.periods?.find((p: any) => {
+                        const period = currentDayObj?.periods?.find((p: any) => {
                             const periodMinutes = parseTimeStringToMinutes(p.timeStart);
                             const startMinutes = parseTimeStringToMinutes(time.startTime);
                             const endMinutes = parseTimeStringToMinutes(time.endTime);

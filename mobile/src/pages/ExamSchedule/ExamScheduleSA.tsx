@@ -7,6 +7,7 @@ import { calendarOutline, checkmarkCircleOutline, pencilOutline } from 'ionicons
 import CustomizedModal from '../../components/GCustomizedModal';
 import GCustomToggle from '../../components/GCustomToggle';
 import GCustomInput from '../../components/GCustomInput';
+import GDatePicker from '../../components/GDatePicker';
 
 function ExamScheduleSA() {
   const [currentSelected, setCurrentSelected] = useState(null);
@@ -210,8 +211,15 @@ function ExamScheduleSA() {
             formValue.subjectsList?.map((subject: any) => (<div key={subject.subjectId} className='g_flex g-align-center m-bottom-10'>
               <GCustomSelectDrop options={[{id:subject.subjectId, label:subject.subjectName}]} name='classId'
                 value={subject.subjectId} label="Select Class"
-                handleOnChange={handleChange} classNames='custom-select m-r-10' />
-              <IonInput value={formValue.startData} onIonChange={handleInput} name='classIconValue' label="Exam Date" labelPlacement="floating" fill="outline" placeholder="Ex. 10"></IonInput>
+                handleOnChange={handleChange} classNames='custom-select m-r-10 width-50' />
+              {/* <IonInput value={formValue.startData} onIonChange={handleInput} name='classIconValue' label="Exam Date" labelPlacement="floating" fill="outline" placeholder="Ex. 10"></IonInput> */}
+              <GDatePicker
+            onDateChange={(date) => console.log('Selected Date:', date)}
+            label="Pick a Date"
+            placeholder="Date"
+            classNames="m-bottom-10"
+            // value={tomorrowDate.toISOString()}
+          />
               <GCustomToggle name={subject.subjectId} onTxt='AM' offTxt='PM' checked={subject.slot === 'AM'} onHandleChange={handleSlotToggleChange} />
             </div>))
           }

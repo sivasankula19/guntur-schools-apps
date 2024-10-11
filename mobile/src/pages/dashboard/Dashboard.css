@@ -348,7 +348,7 @@
 }
 
 .analytics-container {
-    height: calc(100% - 78px);
+    height: calc(100% - 94px);
     overflow-y: auto;
 }
 
