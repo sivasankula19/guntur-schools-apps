@@ -1,4 +1,4 @@
-import { IonIcon, IonInput, IonText } from '@ionic/react';
+import { IonIcon, IonImg, IonInput, IonText } from '@ionic/react';
 import { closeCircleOutline, cloudUploadOutline } from 'ionicons/icons';
 import React, { useRef, useState } from 'react';
 
@@ -37,7 +37,7 @@ function GImagUpload({ onFileChange, uploadIcon = cloudUploadOutline, label = 'U
         setUploadedImag((prevImages) => prevImages.filter((file) => file.name !== fileName));
 
         if (fileInputRef.current) {
-            fileInputRef.current.value = ''; 
+            fileInputRef.current.value = '';
         }
     };
 
@@ -60,7 +60,12 @@ function GImagUpload({ onFileChange, uploadIcon = cloudUploadOutline, label = 'U
                 <div className='uploaded-images-con'>
                     {uploadedImage.map((file) => (
                         <div key={file.name} className='upload-img'>
-                            <IonText><p className='g_text_ellipses'>{file.name}</p></IonText>
+                            <div className='g_flex g-align-center'>
+                                {accept === 'image/*' && (
+                                    <IonImg src={URL.createObjectURL(file)} alt={file.name}></IonImg>
+                                )}
+                                <IonText><p className='g_text_ellipses'>{file.name}</p></IonText>
+                            </div>
                             <IonIcon onClick={() => handleRemoveImage(file.name)} icon={closeCircleOutline}></IonIcon>
                         </div>
                     ))}

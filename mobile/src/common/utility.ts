@@ -689,12 +689,12 @@ export const allUnitsMarks = [
 ]
 
 export const accessModulesDummyData = [
-  { id: 1, staffId: 'GHMSTAFF9', staffName: 'Narra Dev Qumar',data:[{id:'staff', moduleName:'Staff', isAccess:true},{id:'students', moduleName:'Students', isAccess:true},{id:'sections', moduleName:'Sections', isAccess:true},{id:'classes', moduleName:'Classes', isAccess:true},{id:'messages', moduleName:'Messages', isAccess:true},{id:'calendar', moduleName:'Calendar', isAccess:true},{id:'vibe', moduleName:'Vibe', isAccess:true},{id:'feesDues', moduleName:'Fees Dues', isAccess:true},]},
-  { id: 2, staffName:'Siva Sankula', staffId:'GHMSTAFF2', data:[{id:'staff', moduleName:'Staff', isAccess:true},{id:'students', moduleName:'Students', isAccess:true},{id:'sections', moduleName:'Sections', isAccess:true},{id:'classes', moduleName:'Classes', isAccess:true},{id:'messages', moduleName:'Messages', isAccess:true},{id:'calendar', moduleName:'Calendar', isAccess:true},{id:'vibe', moduleName:'Vibe', isAccess:true},{id:'feesDues', moduleName:'Fees Dues', isAccess:true},]},
-  { id: 3, staffName:'Sankula', staffId:'GHMSTAFF3', data:[{id:'staff', moduleName:'Staff', isAccess:false},{id:'students', moduleName:'Students', isAccess:false},{id:'sections', moduleName:'Sections', isAccess:false},{id:'classes', moduleName:'Classes', isAccess:false},{id:'messages', moduleName:'Messages', isAccess:false},{id:'calendar', moduleName:'Calendar', isAccess:false},{id:'vibe', moduleName:'Vibe', isAccess:false},{id:'feesDues', moduleName:'Fees Dues', isAccess:false},]},
-  { id: 4, staffName:'Kallam Minoosh', staffId:'GHMSTAFF1',data:[{id:'staff', moduleName:'Staff', isAccess:false},{id:'students', moduleName:'Students', isAccess:true},{id:'sections', moduleName:'Sections', isAccess:true},{id:'classes', moduleName:'Classes', isAccess:true},{id:'messages', moduleName:'Messages', isAccess:true},{id:'calendar', moduleName:'Calendar', isAccess:true},{id:'vibe', moduleName:'Vibe', isAccess:true},{id:'feesDues', moduleName:'Fees Dues', isAccess:true},]},
-  { id: 5,  staffName:'Siva Krishna', staffId:'GHMSTAFF8',data:[{id:'staff', moduleName:'Staff', isAccess:true},{id:'students', moduleName:'Students', isAccess:true},{id:'sections', moduleName:'Sections', isAccess:true},{id:'classes', moduleName:'Classes', isAccess:true},{id:'messages', moduleName:'Messages', isAccess:true},{id:'calendar', moduleName:'Calendar', isAccess:true},{id:'vibe', moduleName:'Vibe', isAccess:true},{id:'feesDues', moduleName:'Fees Dues', isAccess:true},]},
-  { id: 6,  staffName:'Sankula Krishna Sankula', staffId:'GHMSTAFF19',data:[{id:'staff', moduleName:'Staff', isAccess:true},{id:'students', moduleName:'Students', isAccess:true},{id:'sections', moduleName:'Sections', isAccess:true},{id:'classes', moduleName:'Classes', isAccess:true},{id:'messages', moduleName:'Messages', isAccess:true},{id:'calendar', moduleName:'Calendar', isAccess:true},{id:'vibe', moduleName:'Vibe', isAccess:true},{id:'feesDues', moduleName:'Fees Dues', isAccess:true},]},
+  { id: 1, staffId: 'GHMSTAFF9', staffName: 'Narra Dev Qumar',data:[{id:'staff', moduleName:'Staff', isAccess:true},{id:'students', moduleName:'Students', isAccess:true},{id:'messages', moduleName:'Messages', isAccess:true},{id:'calendar', moduleName:'Calendar', isAccess:true},{id:'vibe', moduleName:'Vibe', isAccess:true},{id:'feesDues', moduleName:'Fees Dues', isAccess:true},]},
+  { id: 2, staffName:'Siva Sankula', staffId:'GHMSTAFF2', data:[{id:'staff', moduleName:'Staff', isAccess:true},{id:'students', moduleName:'Students', isAccess:true},{id:'messages', moduleName:'Messages', isAccess:true},{id:'calendar', moduleName:'Calendar', isAccess:true},{id:'vibe', moduleName:'Vibe', isAccess:true},{id:'feesDues', moduleName:'Fees Dues', isAccess:true},]},
+  { id: 3, staffName:'Sankula', staffId:'GHMSTAFF3', data:[{id:'staff', moduleName:'Staff', isAccess:false},{id:'students', moduleName:'Students', isAccess:false},{id:'messages', moduleName:'Messages', isAccess:false},{id:'calendar', moduleName:'Calendar', isAccess:false},{id:'vibe', moduleName:'Vibe', isAccess:false},{id:'feesDues', moduleName:'Fees Dues', isAccess:false},]},
+  { id: 4, staffName:'Kallam Minoosh', staffId:'GHMSTAFF1',data:[{id:'staff', moduleName:'Staff', isAccess:false},{id:'students', moduleName:'Students', isAccess:true},{id:'messages', moduleName:'Messages', isAccess:true},{id:'calendar', moduleName:'Calendar', isAccess:true},{id:'vibe', moduleName:'Vibe', isAccess:true},{id:'feesDues', moduleName:'Fees Dues', isAccess:true},]},
+  { id: 5,  staffName:'Siva Krishna', staffId:'GHMSTAFF8',data:[{id:'staff', moduleName:'Staff', isAccess:true},{id:'students', moduleName:'Students', isAccess:true},{id:'messages', moduleName:'Messages', isAccess:true},{id:'calendar', moduleName:'Calendar', isAccess:true},{id:'vibe', moduleName:'Vibe', isAccess:true},{id:'feesDues', moduleName:'Fees Dues', isAccess:true},]},
+  { id: 6,  staffName:'Sankula Krishna Sankula', staffId:'GHMSTAFF19',data:[{id:'staff', moduleName:'Staff', isAccess:true},{id:'students', moduleName:'Students', isAccess:true},{id:'messages', moduleName:'Messages', isAccess:true},{id:'calendar', moduleName:'Calendar', isAccess:true},{id:'vibe', moduleName:'Vibe', isAccess:true},{id:'feesDues', moduleName:'Fees Dues', isAccess:true},]},
 ] 
 
 export const schoolsListData = [
@@ -1867,10 +1867,10 @@ export const studentMarksDetails = {
 
 export const studentUnitMarksDetails = {
   unitsList:[
-    {examId:'scl-2024-unit1', examName:'Unit 1', examData:'25/06/2024'},
-    {examId:'scl-2024-unit2', examName:'Unit 2', examData:'25/06/2024'},
-    {examId:'scl-2024-mid', examName:'Unit 3', examData:'25/06/2024'},
-    {examId:'scl-2024-final', examName:'Unit 4', examData:'25/06/2024'},
+    {examId:'scl-2024-unit1', examName:'Unit 1', examData:'25/06/2024',conductedFor:25},
+    {examId:'scl-2024-unit2', examName:'Unit 2', examData:'25/06/2024',conductedFor:25},
+    {examId:'scl-2024-mid', examName:'Unit 3', examData:'25/06/2024',conductedFor:25},
+    {examId:'scl-2024-final', examName:'Unit 4', examData:'25/06/2024',conductedFor:25},
   ],
   data:[
     { id: 1, studentName: 'Siva Sankula', regNumber: 'GHMS00019', marks: { "scl-2024-unit1": 19, "scl-2024-unit2": '', "scl-2024-mid": 20, "scl-2024-final": 20,} },

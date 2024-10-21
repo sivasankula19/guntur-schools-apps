@@ -19,7 +19,7 @@ import { setMode } from '../redux/reducers/darkModeSlice';
 import React, { useEffect, useState } from 'react';
 import { setPreLoginPublicView } from '../redux/reducers/schoolSlice';
 import GCustomToggle from './GCustomToggle';
-import { cogOutline, homeOutline, keyOutline, settingsOutline } from 'ionicons/icons';
+import { cogOutline, handRightOutline, homeOutline, keyOutline, settingsOutline } from 'ionicons/icons';
 
 const appPages: AppPage[] = RoutesListDynamic;
 
@@ -40,14 +40,18 @@ const Menu: React.FC = () => {
 
   useEffect(() => {
     if (currentRole === "Student") {
-      setChipsRender([...studentsChipsData])
+      const updatedStudentChips = [...studentsChipsData];
+      const dashboardItem = { id: Math.random(), moduleName: 'Dashboard', icon: homeOutline, redirectTo: '/dashboard' }
+      updatedStudentChips.unshift(dashboardItem);
+      setChipsRender([...updatedStudentChips])
     } else if (currentRole === 'Parent') {
 
     } else {
       let chipsData = [...chipsDataPrivate1];
       if (currentRole === 'SuperAdmin') {
-        chipsData.unshift({ id: 999, moduleName: 'Access Control', icon: keyOutline, redirectTo: '/access-control' });
+        chipsData.unshift({ id: 997, moduleName: 'Requests', icon: handRightOutline, redirectTo: '/raised-requests' });
         chipsData.unshift({ id: 998, moduleName: 'Configurations', icon: cogOutline, redirectTo: '/app-configurations' });
+        chipsData.unshift({ id: 999, moduleName: 'Access Control', icon: keyOutline, redirectTo: '/access-control' });
       }
       const dashboardItem = { id: Math.random(), moduleName: 'Dashboard', icon: homeOutline, redirectTo: '/dashboard' }
       chipsData.unshift(dashboardItem);

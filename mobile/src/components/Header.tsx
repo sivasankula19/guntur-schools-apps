@@ -79,7 +79,7 @@ const Header: React.FC = React.memo(() => {
               </IonTitle>
 
               <IonButton onClick={openPopover} fill="clear" id="click-trigger"><IonIcon slot="icon-only" icon={notificationsOutline}></IonIcon></IonButton>
-              <IonLabel>{newNotifications.length ? `+${newNotifications.length}` : null}</IonLabel>
+              <IonLabel onClick={openPopover}>{newNotifications.length ? `+${newNotifications.length}` : null}</IonLabel>
               <IonPopover ref={popover} isOpen={popoverOpen} onDidDismiss={() => setPopoverOpen(false)} className='notification-popover' trigger="click-trigger" triggerAction="click">
                 <IonContent class="ion-padding">
                   <div className='popover_actions'>

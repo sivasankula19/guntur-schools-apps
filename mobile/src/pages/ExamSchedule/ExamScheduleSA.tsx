@@ -27,6 +27,8 @@ function ExamScheduleSA() {
   const examScheduleJson = examSchedulesData;
   const classDummyData = classListDummy.map(i => ({ id: i.classId, label: i.className }));
   const sectionDummyData = sectionListDummy.map(i => ({ id: i.sectionId, label: i.sectionName }));
+  let todayDate = new Date()
+  todayDate.setHours(12,0,0);
 
   const subjectsSampleData = [{
     subjectId: 'GH-Sub-10/1',
@@ -70,7 +72,7 @@ function ExamScheduleSA() {
   }
 
   const handleAdd = () => {
-    setFormValue((prev: any) => ({ ...prev, subjectsList: subjectsSampleData.map(s => ({ subjectId: s.subjectId, subjectName: s.subjectName, slot: 'AM', date: '' })) }));
+    setFormValue((prev: any) => ({ ...prev, examName:'', subjectsList: subjectsSampleData.map(s => ({ subjectId: s.subjectId, subjectName: s.subjectName, slot: 'AM', date: '' })) }));
     setIsAddExamModal(true);
   }
 
@@ -100,9 +102,7 @@ function ExamScheduleSA() {
       }
     });
     setFormValue((prev: any) => ({ ...prev, subjectsList: updatedSubjectDummy }))
-
   }
-
 
   useEffect(()=>{
   const filterDropdownValue=fiterDropdownValues.find(item=>item.moduleName=="ExamSchedules");
@@ -206,19 +206,25 @@ function ExamScheduleSA() {
       >
         <div>
           <GCustomInput name={'examName'} value={formValue.examName} onInput={handleInput} label={'Exam Name'} placeholder={'Exam Name'} />
-          <GCustomInput name={'startDate'} value={formValue.startDate} onInput={handleInput} label={'Exam Start Date'} placeholder={'DD/mm/YYYY'} />
+          <GDatePicker
+            onDateChange={(date) => console.log('Selected Date:', date)}
+            label="Pick a Date"
+            placeholder="Date"
+            classNames="m-bottom-10"
+            initialDate={todayDate.toISOString()}
+            value={formValue.startDate}
+          />
           {
             formValue.subjectsList?.map((subject: any) => (<div key={subject.subjectId} className='g_flex g-align-center m-bottom-10'>
               <GCustomSelectDrop options={[{id:subject.subjectId, label:subject.subjectName}]} name='classId'
                 value={subject.subjectId} label="Select Class"
                 handleOnChange={handleChange} classNames='custom-select m-r-10 width-50' />
-              {/* <IonInput value={formValue.startData} onIonChange={handleInput} name='classIconValue' label="Exam Date" labelPlacement="floating" fill="outline" placeholder="Ex. 10"></IonInput> */}
               <GDatePicker
             onDateChange={(date) => console.log('Selected Date:', date)}
             label="Pick a Date"
             placeholder="Date"
             classNames="m-bottom-10"
-            // value={tomorrowDate.toISOString()}
+            initialDate={todayDate.toISOString()}
           />
               <GCustomToggle name={subject.subjectId} onTxt='AM' offTxt='PM' checked={subject.slot === 'AM'} onHandleChange={handleSlotToggleChange} />
             </div>))

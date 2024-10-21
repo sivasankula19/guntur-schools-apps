@@ -2,7 +2,7 @@ import { IonCard, IonCardContent, IonText } from '@ionic/react';
 import React, { useEffect, useRef, useState } from 'react'
 import NavChipCard from '../../components/NavChipsCard';
 import './Dashboard.css';
-import {cogOutline, keyOutline} from 'ionicons/icons';
+import {cogOutline, handRightOutline, keyOutline} from 'ionicons/icons';
 import DashboardTimeView from './DashboardTimeView';
 import { useSelector } from 'react-redux';
 import { chipsDataPrivate, chipsDataPublic } from '../../common/common-routes-list';
@@ -30,8 +30,9 @@ export const DashboardSA = () => {
     useEffect(() => {
         let chipsData = [...chipsDataPrivate1];
         if (currentRole === 'SuperAdmin') {
-            chipsData.unshift({ id: 999, moduleName: 'Access Control', icon: keyOutline, redirectTo: '/access-control' });
+            chipsData.unshift({ id: 997, moduleName: 'Requests', icon: handRightOutline, redirectTo: '/raised-requests' });
             chipsData.unshift({ id: 998, moduleName: 'Configurations', icon: cogOutline, redirectTo: '/app-configurations' });
+            chipsData.unshift({ id: 999, moduleName: 'Access Control', icon: keyOutline, redirectTo: '/access-control' });
         }
         setChipsRender(chipsData);
         setPublicChipsToRender(chipsDataPublic1);

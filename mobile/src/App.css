@@ -184,8 +184,8 @@ ion-header {
 
 .header_caret ion-label {
   position: relative;
-  top: 4px;
-  right: 12px;
+  top: 10px;
+  right: 14px;
   color: #ffffff;
   font-size: 12px;
   height: 10px;
@@ -1041,6 +1041,10 @@ ion-header {
   height: calc(100% - 170px);
 }
 
+.student .with_filter_off{
+  height: calc(100% - 50px);
+}
+
 .with_filter_off {
   height: calc(100% - 120px);
 }
@@ -1875,6 +1879,10 @@ ion-toggle::part(track) {
 .g-customized-modal .modal-child-con {
   height: calc(100% - 112px);
   overflow-y: auto;
+}
+
+.ios .g-customized-modal .modal-child-con {
+  height: calc(100% - 102px);
 }
 
 .dark .g-customized-modal {
@@ -3790,7 +3798,7 @@ label.input-wrapper.sc-ion-input-ios {
   width: 100%;
   border: 0.4px solid;
   border-color: #1D7AF5;
-  padding: 0 12px;
+  padding: 0 12px 0 8px;
   height: 40px;
   display: flex;
   align-items: center;
@@ -3805,6 +3813,12 @@ label.input-wrapper.sc-ion-input-ios {
 
 .upload-img ion-icon {
   font-size: 22px;
+}
+
+.upload-img ion-img {
+  height: 30px;
+  width: 30px;
+  margin-right: 8px;
 }
 
 /* Ex circular */
@@ -4162,6 +4176,14 @@ label.input-wrapper.sc-ion-input-ios {
 
 .popover_actions ion-item ion-label {
   --color: #000000;
+}
+
+.dark .popover_actions ion-item ion-label {
+  --color: #ffffff;
+}
+
+.dark .custom-popover ion-content{
+  --background: #333333;
 }
 
 .popover_actions .first_action_item {
@@ -4991,6 +5013,10 @@ label.input-wrapper.sc-ion-input-ios {
   border-radius: 8px;
 }
 
+.dark .input_btn_assets input {
+  background: #000000;
+}
+
 .input_btn_assets button {
   width: 80px;
   height: 30px;
@@ -5441,6 +5467,10 @@ ion-popover {
   --width: 90%;
 }
 
+.dark .notification-popover ion-content {
+  --background:#333333;
+}
+
 .notifications-page {
   height: calc(100% - 56px);
   overflow-y: auto;
@@ -5576,11 +5606,11 @@ ion-popover {
   color: #1D7AF5 !important;
 }
 
-.access-control-sa .text-save-label ion-icon {
+ .text-save-label ion-icon {
   font-size: 26px;
 }
 
-.access-control-sa .text-save-label ion-label {
+.text-save-label ion-label {
   width: calc(100% - 44px);
   font-size: 14px;
 }
@@ -5919,3 +5949,11 @@ ion-textarea {
   height: calc(100% - 49px);
   overflow-y: auto;
 }
+
+.scroll-card-conf{
+  max-height: calc(100% - 200px);
+  height: auto;
+  border: 1px solid;
+  overflow-y: auto;
+}
+

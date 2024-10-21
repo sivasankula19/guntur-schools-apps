@@ -71,8 +71,8 @@ function ModuleAccess() {
   const handleToggleChange = (event: any, moduleItem: any) => {
     const updatedSelected = [...selectedStaffModules].map((item: any) =>
       item.id === moduleItem.id ? { ...item, isAccess: event.detail.checked } : item
-  );;
-  setSelectedStaffModules(updatedSelected);
+    );
+    setSelectedStaffModules(updatedSelected);
   };
 
 
@@ -208,16 +208,15 @@ function ModuleAccess() {
             </div>
             <IonList>
               {selectedStaffModules.map((listAcc: any) => {
-                const currentModule: any = listAccessModules.find(liAcc => liAcc.moduleName === listAcc.moduleName)
+                const currentModule: any = listAccessModules.find(liAcc => liAcc.moduleName === listAcc.moduleName);
                 return (<IonItem key={listAcc.id}>
                   <div className='g_flex g-space-between g_full_width'>
                     <div className='g_flex g-align-center'>
-                      <IonIcon icon={currentModule.icon}></IonIcon>
+                      <IonIcon icon={currentModule?.icon}></IonIcon>
                       <IonText><p>{listAcc.moduleName}</p></IonText>
                     </div>
                     <div>
-
-                      <GCustomToggle checked={listAcc.isAccess} onHandleChange={(e: any) => handleToggleChange(e, listAcc)} />                  </div>
+                      <GCustomToggle checked={listAcc.isAccess} onHandleChange={(e: any) => handleToggleChange(e, listAcc)} /></div>
                   </div>
                 </IonItem>)
               })}

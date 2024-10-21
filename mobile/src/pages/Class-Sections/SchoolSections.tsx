@@ -130,7 +130,7 @@ function SchoolSections() {
             </div>
 
             <CustomizedModal
-                title={`Add Class`}
+                title={`Add Section`}
                 isOpen={isAddClassModal}
                 onClose={handleModelClose}
                 onSave={handleSubmit}

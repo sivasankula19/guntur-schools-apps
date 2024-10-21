@@ -95,6 +95,7 @@ import ProgressUnitCardAdd from './pages/ProgressCard/ProgressUnitCardAdd';
 import AppConfigurations from './pages/App-Configurations/AppConfigurations';
 import RaiseRequest from './pages/App-Configurations/RaiseRequest';
 import RegisterSchool from './pages/RegisterSchool/RegisterSchool';
+import RaisedRequestSA from './pages/App-Configurations/RaisedRequestSA';
 
 setupIonicReact({
   animated: true,
@@ -232,7 +233,8 @@ const App: React.FC = () => {
                 <Route path='/access-public-modules' element={<AccessPrivateModules />} /> //parent for access - child 1
                 <Route path='/module-access' element={<ModuleAccess />} /> // parent for access - child 2
                 <Route path='/app-configurations' element={<AppConfigurations />} />
-                <Route path='/raise-request' element={<RaiseRequest />} />
+                <Route path='/raise-request' element={<RaiseRequest />} /> //for the staff
+                <Route path='/raised-requests' element={<RaisedRequestSA />} /> // Only super admin
                 {/* public modules! */}
                 <Route path='/gallery' element={<Gallery />} />
                 <Route path='/ex-circular' element={<ExCircularActivities />} />

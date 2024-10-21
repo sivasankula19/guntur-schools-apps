@@ -22,6 +22,7 @@ function SchoolClasses() {
   }
   const [formValue, setFormValue] = useState(formInitialVal);
   const [unableProceed, setUnableProceed] = useState(false);
+  const [currentEditItem, setCurrentEditItem] = useState(null);
   const currentRole = useSelector((state: any) => state.auth.role);
   const rootAccess = useSelector((state: any) => state.accessControl.rootAccess);
   const accessModules = useSelector((state: any) => state.accessControl.accessModules) || [];
@@ -43,7 +44,13 @@ function SchoolClasses() {
 
   const handleSubmit = () => {
     if (formValue) {
-      var classItem = { id: classListData.length, className: formValue.className, classId: 'mdgl-scl-cls-' + formValue.classIconValue, linkedStaffName: formValue.classStaffName, classIcon: formValue.classIconValue, linkedSections: formValue.linkedSections }
+      debugger
+      if(currentEditItem){
+
+      } else {
+
+      }
+      let classItem = { id: classListData.length, className: formValue.className, classId: 'mdgl-scl-cls-' + formValue.classIconValue,linkedStaffId:'scl-md-so', linkedStaffName: formValue.classStaffName, classIcon: formValue.classIconValue, linkedSections: formValue.linkedSections }
       if (classItem) {
         setClassListData([...classListData, classItem]);
         handleModelClose();
@@ -69,9 +76,13 @@ function SchoolClasses() {
   ]
 
   const classListDataApi = [
-    { id: 1, className: '10th Class', classId: '10_cls', linkedStaffName: 'Siva Sankula', classIcon: '10', linkedSections: [{ sectionId: '10_cls', staffId: 'mdgl-staff-00021' }, { sectionId: '8_cls', staffId: 'mdgl-staff-00019' }] },
-    { id: 2, className: '9th Class', classId: '9_cls', linkedStaffName: 'Minoosh Reddy', classIcon: '9', linkedSections: [{ sectionId: '10_cls', staffId: 'mdgl-staff-00044' }, { sectionId: '9_cls', staffId: 'mdgl-staff-00027' }] },
-    { id: 3, className: '8th Class', classId: '8_cls', linkedStaffName: 'Sankula Krishna', classIcon: '8', linkedSections: [{ sectionId: 'default', staffId: 'mdgl-staff-0001' }] },
+    { id: 1, className: '10th Class', classId: '10_cls',linkedStaffId:'scl-md-siva', linkedStaffName: 'Siva Sankula', classIcon: '10', linkedSections: [{ sectionId: '10_cls', staffId: 'mdgl-staff-00021' }, { sectionId: '8_cls', staffId: 'mdgl-staff-00019' }] },
+    { id: 2, className: '9th Class', classId: '9_cls',linkedStaffId:'scl-md-siva', linkedStaffName: 'Minoosh Reddy', classIcon: '9', linkedSections: [{ sectionId: '10_cls', staffId: 'mdgl-staff-00044' }, { sectionId: '9_cls', staffId: 'mdgl-staff-00027' }] },
+    { id: 3, className: '8th Class', classId: '8_cls',linkedStaffId:'scl-md-siva', linkedStaffName: 'Sankula Krishna', classIcon: '8', linkedSections: [{ sectionId: 'default', staffId: 'mdgl-staff-0001' }] },
+    { id: 4, className: '8th Class', classId: '8_cls',linkedStaffId:'scl-md-siva', linkedStaffName: 'Sankula Krishna', classIcon: '8', linkedSections: [{ sectionId: 'default', staffId: 'mdgl-staff-0001' }] },
+    { id: 5, className: '8th Class', classId: '8_cls',linkedStaffId:'scl-md-siva', linkedStaffName: 'Sankula Krishna', classIcon: '8', linkedSections: [{ sectionId: 'default', staffId: 'mdgl-staff-0001' }] },
+    { id: 6, className: '8th Class', classId: '8_cls',linkedStaffId:'scl-md-siva', linkedStaffName: 'Sankula Krishna', classIcon: '8', linkedSections: [{ sectionId: 'default', staffId: 'mdgl-staff-0001' }] },
+  
   ]
 
   const navigateEle = [
@@ -95,10 +106,11 @@ function SchoolClasses() {
   const handleEditClass = (classInfo: any) => {
     const updatedFormValue = {
       className: classInfo.className,
-      classStaffName: '',
+      classStaffName: classInfo.linkedStaffId,
       linkedSections: classInfo.linkedSections,
       classIconValue: classInfo.classIcon,
     }
+    setCurrentEditItem(classInfo);
     setFormValue(updatedFormValue);
     setIsAddClassModal(true);
   }
@@ -203,7 +215,7 @@ function SchoolClasses() {
             <IonLabel>{"Add More Sections"}</IonLabel>
             <IonIcon className='add-sec-circle' icon={addCircleOutline}></IonIcon>
           </div>
-          <GCustomInput name={'classIconValue'} value={formValue['classIconValue']} onInput={handleInput} label="Class Icon Value" placeholder={'Ex. 10'} />
+          <GCustomInput name={'classIconValue'} value={formValue['classIconValue']} onInput={handleInput} label="Class Icon Value" placeholder={'Ex. 10'} maxLength={2} />
         </div>
       </CustomizedModal>
     </div>

@@ -110,11 +110,34 @@ function ProgressUnitCardAdd() {
   }, [filterValues]);
 
 
-  const handleSubjectMarksChange = (e: any, subjectItem: any, studentItem: any) => {
+  const handleSubjectMarksChange = (e: any, subjectItem: any, studentItem: any, conductedFor:any) => {
     setStudentUnitMarks(studentUnitMarks.map((stdI: any) => {
       if (stdI.regNumber === studentItem.regNumber) {
+        const numericValue = Number(e.target.value);
         const updatedMarks = { ...stdI.marks };
-        updatedMarks[subjectItem.subjectId] = e.target.value;
+        // updatedMarks[subjectItem.subjectId] = e.target.value;
+        if (/^\d+$/.test(e.target.value) && numericValue >= 0 && numericValue <= conductedFor) {
+          updatedMarks[subjectItem.subjectId] = e.target.value;
+        } else if (e.target.value === '') {
+          updatedMarks[subjectItem.subjectId] = '';
+        }
+        return { ...stdI, marks: updatedMarks }
+      }
+      return { ...stdI }
+    }))
+  }
+
+  const handleAllUnitExamMarksChange = (e:any,examId:any, studentItem:any, conductedFor:any) => {
+    setStudentsAllMarks(studentsAllMarks.map((stdI: any) => {
+      if (stdI.regNumber === studentItem.regNumber) {
+        const numericValue = Number(e.target.value);
+        const updatedMarks = { ...stdI.marks };
+        // updatedMarks[subjectItem.subjectId] = e.target.value;
+        if (/^\d+$/.test(e.target.value) && numericValue >= 0 && numericValue <= conductedFor) {
+          updatedMarks[examId] = e.target.value;
+        } else if (e.target.value === '') {
+          updatedMarks[examId] = '';
+        }
         return { ...stdI, marks: updatedMarks }
       }
       return { ...stdI }
@@ -219,11 +242,11 @@ function ProgressUnitCardAdd() {
                           borderRight: '1px solid',
                         }}
                       >
-                        <div
-                          style={{ minHeight: '40px'}}
-                          className="g_txt_center g_flex g-align-center g-justify-center marks_column_header"
+                       <div
+                          style={{ minHeight: '40px', lineHeight: '2.5rem', padding: '0 8px' }}
+                          className="g_txt_center g_text_ellipses g_text_ellipses g-justify-center g_full_width marks_column_header"
                         >
-                          <IonText><p className='g_text_ellipses'>{'Student Name'}</p></IonText>
+                          {'Student Name'}
                         </div>
                         {studentsAllMarks.map((studentItem: any) => (
                           <div
@@ -279,7 +302,7 @@ function ProgressUnitCardAdd() {
                                   }}
                                   className="g_flex g-align-center text-enter-input"
                                 >
-                                  <input disabled={unableProceed} onChange={(e: any) => handleSubjectMarksChange(e, examItem, student)} id={student.regNumber + examItem.examId} value={student.marks[examItem.examId] || ''} placeholder='marks' />
+                                  <input type="tel" maxLength={String(examItem.conductedFor).length}  disabled={unableProceed} onChange={(e: any) => handleAllUnitExamMarksChange(e, examItem.examId, student,examItem.conductedFor)} id={student.regNumber + examItem.examId} value={student.marks[examItem.examId] || ''} placeholder='marks' />
                                 </div>
                               ))}
                             </div>
@@ -358,7 +381,7 @@ function ProgressUnitCardAdd() {
                                   }}
                                   className="g_flex g-align-center text-enter-input"
                                 >
-                                  <input disabled={unableProceed} onChange={(e: any) => handleSubjectMarksChange(e, subjectItem, student)} id={student.regNumber + subjectItem.subjectId} value={student.marks[subjectItem.subjectId] || ''} placeholder='marks' />
+                                  <input type="tel" maxLength={String(subjectItem.conductedFor).length} disabled={unableProceed} onChange={(e: any) => handleSubjectMarksChange(e, subjectItem, student,subjectItem.conductedFor)} id={student.regNumber + subjectItem.subjectId} value={student.marks[subjectItem.subjectId] || ''} placeholder='marks' />
                                 </div>
                               ))}
                             </div>
@@ -370,7 +393,6 @@ function ProgressUnitCardAdd() {
                 </>)
               }
             </>
-            <IonFooter>
               <IonToolbar>
                 <div className="g_flex g-space-between marks_all_container">
                   <div style={{ width: '25%' }}>
@@ -389,7 +411,6 @@ function ProgressUnitCardAdd() {
                   </div>
                 </div>
               </IonToolbar>
-            </IonFooter>
           </IonCardContent>
         </IonCard>
       </div>

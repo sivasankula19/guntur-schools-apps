@@ -287,7 +287,7 @@ const StudentListSA: React.FC = () => {
                 <GCustomSelectDrop options={classDummyData} name='section' value={formValue.section} label="Section" handleOnChange={handleInput} classNames='custom-select m-bottom-10' />
                 <GCustomInput name={'mobileNumber'} value={formValue['mobileNumber']} onInput={handleInput} label={'Mobile Number'} placeholder={'Ex. 999887888'} />
                 <GCustomInput name={'emailAddress'} value={formValue['emailAddress']} onInput={handleInput} label={'Email Address'} placeholder={'Ex. user@mail.com'} />
-                <GCustomSelectDrop options={genderDummyData} name='gender' value={formValue.gender} label="Gender" handleOnChange={handleInput} classNames='custom-select' />
+                <GCustomSelectDrop options={genderDummyData} name='gender' value={formValue.gender} label="Gender" handleOnChange={handleInput} classNames='custom-select m-bottom-10' />
                 <GCustomInput name={'parentName'} value={formValue['parentName']} onInput={handleInput} label={'Parent / Guardian Name'} placeholder={'Parent Name'} />
                 <GCustomInput name={'regNumber'} value={formValue['regNumber']} onInput={handleInput} label={'Generated Registration ID'} placeholder={'Reg. Number'} />
                 {!isEdit && (

@@ -1,5 +1,6 @@
 import { IonCard, IonCardContent, IonText } from '@ionic/react';
 import React from 'react';
+import GBackSaveReset from '../components/GBackSaveReset';
 
 const ExCircularActivities: React.FC = () => {
 
@@ -53,8 +54,12 @@ const ExCircularActivities: React.FC = () => {
     }
   ]
 
+  const handleReset = () => { };
+  const handleSave = () => { };
+  
   return (
     <div>
+       <GBackSaveReset handleReset={handleReset} handleSave={handleSave} />
       {
         exCircularData.map(categoryItem => (
           <div key={categoryItem.id} className='ex_circular'>
