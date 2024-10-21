@@ -12,13 +12,14 @@ interface ICustomInputProps {
     icon?: any,
     classNames?: string,
     id?:string,
-    readonly?:boolean
+    readonly?:boolean,
+    maxLength?:number
 }
-function GCustomInput({ value, onInput,id, name, label = "Enter", labelPlacement = 'floating', fill = 'outline', placeholder = 'Enter Something!', icon, classNames = 'field m-bottom-10',readonly=false }: ICustomInputProps) {
+function GCustomInput({ value, onInput,id, name, label = "Enter", labelPlacement = 'floating', fill = 'outline', placeholder = 'Enter Something!', icon, classNames = 'field m-bottom-10',readonly=false, maxLength=9999 }: ICustomInputProps) {
 
     return (
         <div className={classNames}>
-            <IonInput id={id} value={value || ''} readonly={readonly} onIonInput={onInput} name={name} label={label} labelPlacement={labelPlacement} fill={fill} placeholder={placeholder}></IonInput>
+            <IonInput id={id} value={value || ''} maxlength={maxLength} readonly={readonly} onIonInput={onInput} name={name} label={label} labelPlacement={labelPlacement} fill={fill} placeholder={placeholder}></IonInput>
             {icon && (<IonIcon icon={icon}></IonIcon>)}
         </div>)
 }

@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 import GBreadCrumbs from '../../components/GBreadCrumbs'
-import { IonButton, IonCard, IonCardContent, IonLabel, IonText } from '@ionic/react';
+import { IonButton, IonCard, IonCardContent, IonIcon, IonLabel, IonText } from '@ionic/react';
 import GCustomSelectDrop from '../../components/GCustomSelectDrop';
 import { classListDummy, sectionListDummy } from '../../common/utility';
 import GCustomToggle from '../../components/GCustomToggle';
+import { saveOutline } from 'ionicons/icons';
 
 function AppConfigurations() {
     const [filterValues, setFilterValue] = useState({
@@ -48,14 +49,21 @@ function AppConfigurations() {
         setModuleAccessList(modulesList);
     }, [])
 
-    const handleAddDefault = () => {}
+    const handleAddDefault = () => {
+         setModuleAccessList((prev: any) => prev.map((prevItem: any) => {
+            return ({ ...prevItem, classId: filterValues.classId, sectionId:filterValues.sectionId })
+        }));
+    }
 
     return (
         <div className='g_full_height'>
             <GBreadCrumbs data={breadCrumbsValue} />
             <div className='p-h-16 config-page-con'>
                 <IonText><p>Would you like default <b>Class Section</b> for Below Modules?</p></IonText>
-                    <IonLabel>Default Apply</IonLabel>
+                    <div className='g_flex g-space-between g-align-center p-t-10 text-save-label'>
+                    <IonLabel>Default Apply </IonLabel>
+                    <IonIcon icon={saveOutline}></IonIcon>
+                </div>
                 <div className="g_flex g-space-between select-container">
                     <div className='width-50 m-r8-t12'>
                         <GCustomSelectDrop options={classDummyData} name='classId'
@@ -71,7 +79,7 @@ function AppConfigurations() {
                 <div className='m-top-10'>
                 <IonButton className='font-16 br-ion-12 g_txt_cap' fill="outline" expand="block" onClick={handleAddDefault}>Apply For All</IonButton>
                 </div>
-                <IonCard className='m-v-10'>
+                <IonCard className='m-v-10 scroll-card-conf'>
                     <IonCardContent>
                     <div className='list-modules-scroll'>
                     <div className="g_flex">

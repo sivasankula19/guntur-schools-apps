@@ -143,6 +143,9 @@ const Home: React.FC = () => {
               <IonItem>
                 <IonButton type="submit">Log in</IonButton>
               </IonItem>
+              <IonText>
+                <a className='font-14'>Forgot password</a>
+              </IonText>
             </form>
           </IonCardContent>
         </IonCard>

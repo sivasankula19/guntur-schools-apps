@@ -162,6 +162,7 @@ export const RoutesListDynamic: AppPage[] = [
 ];
 
 export const chipsDataPublic = [
+  { id: 16, moduleName: 'Ex-Circular', icon: gameControllerOutline, redirectTo: '/ex-circular' },
   { id: 17, moduleName: 'Gallery', icon: imageOutline, redirectTo: '/gallery' },
   { id: 18, moduleName: 'Achievements', icon: trophyOutline, redirectTo: '/achievements' },
   { id: 19, moduleName: 'Contact-Us', icon: callOutline, redirectTo: '/contact-us' },
@@ -184,7 +185,6 @@ export const chipsDataPrivate = [
   { id: 13, moduleName: 'Vibe', icon: sparklesOutline, redirectTo: '/school-vibe' },
   { id: 14, moduleName: 'Exam Schedules', icon: calendarNumberOutline, redirectTo: '/exam-schedules' },
   { id: 15, moduleName: 'Fees Dues', icon: walletOutline, redirectTo: '/fee-structure' },
-  { id: 16, moduleName: 'Ex-Circular', icon: gameControllerOutline, redirectTo: '/ex-circular' },
 ];
 
 

@@ -70,7 +70,7 @@ const SelectSchool: React.FC = () => {
                 </div>
                 <div className="app_info_content">
                   <IonText>
-                    <p>Welcome To *** Please Search your School and Explore</p>
+                    <p>Welcome To Vyuham Please Search your School and Explore</p>
                   </IonText>
                 </div>
                 <div className="select_holder">
